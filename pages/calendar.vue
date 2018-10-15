@@ -66,6 +66,14 @@
     <template slot="view">
       <div />
     </template>
+
+    <template slot="containerInside">
+      <v-progress-linear
+        v-if="loading"
+        :indeterminate="true"
+        height="5"
+        style="position: absolute; top: -1em; left: 3em;" />
+    </template>
   </ds-calendar-app>
 </template>
 
@@ -103,6 +111,7 @@ export default {
     return {
       calendar,
       types: [ calendarWeekType ],
+      loading: false,
     };
   },
   computed: {
@@ -177,11 +186,13 @@ export default {
       console.log('calendar changed');
       this.setWeek(calendar.start.weekOfYear);
     },
-    refresh() {
-      this.loadLectures({
+    async refresh() {
+      this.loading = true;
+      await this.loadLectures({
         course: this.currentCourse.id,
         week: this.currentWeek
       });
+      this.loading = false;
     },
     ...mapMutations({
       setWeek: 'calendar/setWeek',
