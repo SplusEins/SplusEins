@@ -5,6 +5,10 @@
     :read-only="true"
     @change="calendarChanged">
 
+    <template slot="title">
+      SplusEins
+    </template>
+
     <template slot="drawerPicker">
       <v-list>
         <v-list-group
