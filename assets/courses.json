@@ -1,0 +1,92 @@
+[ {
+  "id": "SPLUS63AE59",
+  "slug": "I-B-I1",
+  "label": "Informatik",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 1
+}, {
+  "id": "SPLUSB3BC21",
+  "slug": "I-B-I2-CE",
+  "label": "Computer Engineering",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSB3BC22",
+  "slug": "I-B-I2-MI",
+  "label": "Medieninformatik",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSB3BC20",
+  "slug": "I-B-I2-SE",
+  "label": "Software Engineering",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSB3BC1F",
+  "slug": "I-B-I2-SysE",
+  "label": "System Engineering",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 2
+}, {
+  "id": "SPLUS63AE5A",
+  "slug": "I-B-I2-IE",
+  "label": "Information Engineering",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSB3BC29",
+  "slug": "I-B-I3-IE",
+  "label": "Information Engineering",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 3
+}, {
+  "id": "SPLUSA2822B",
+  "slug": "I-M-1",
+  "label": "Informatik",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 1
+}, {
+  "id": "SPLUSA2822D",
+  "slug": "I-M-2",
+  "label": "Informatik",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSA2822E",
+  "slug": "I-M-3",
+  "label": "Informatik",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 3
+}, {
+  "id": "SPLUSA2822F",
+  "slug": "I-M-4",
+  "label": "Informatik",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 4
+}, {
+  "id": "SPLUS477D4B",
+  "slug": "S-BA-1",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Bachelor of Arts",
+  "semester": 1
+}, {
+  "id": "SPLUS0ACEC2",
+  "slug": "S-BA-2",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Bachelor of Arts",
+  "semester": 2
+} ]

@@ -1,40 +1,38 @@
+import COURSES from '~/assets/courses.json';
+
+const identity = (x) => x;
+const uniqBy = (keyGen) => (value, index, self) =>
+  self.findIndex((otherValue) => keyGen(value) == keyGen(otherValue))
+    == index;
+const uniq = uniqBy(identity);
+
 export const state = () => ({
   lectures: [],
-  courses: [ {
-    id: 'SPLUS63AE59',
-    slug: 'I-B-I1',
-    label: 'B.Sc. - 1. Sem. Informatik',
-  }, {
-    id: 'SPLUSB3BC21',
-    slug: 'I-B-I2-CE',
-    label: 'B.Sc. - 2. Sem. Computer Engineering',
-  }, {
-    id: 'SPLUSB3BC22',
-    slug: 'I-B-I2-MI',
-    label: 'B.Sc. - 2. Sem. Medieninformatik',
-  }, {
-    id: 'SPLUSB3BC20',
-    slug: 'I-B-I2-SE',
-    label: 'B.Sc. - 2. Sem. Software Engineering',
-  }, {
-    id: 'SPLUSB3BC1F',
-    slug: 'I-B-I2-SysE',
-    label: 'B.Sc. - 2. Sem. System Engineering',
-  }, {
-    id: 'SPLUS63AE5A',
-    slug: 'I-B-I2-IE',
-    label: 'B.Sc. - 2. Sem. Information Engineering',
-  }, {
-    id: 'SPLUSB3BC29',
-    slug: 'I-B-I3-IE',
-    label: 'B.Sc. - 3. Sem. Information Engineering',
-  } ],
+  courses: COURSES,
 });
 
 export const getters = {
   getLecturesByWeekAndCourse: (state) => (week, course) => {
     return state.lectures.filter((lecture) =>
       lecture.week == week && lecture.course == course);
+  },
+  facultiesAndDegrees: (state) => {
+    return state.courses
+      .map(({ faculty, degree }) => ({ faculty, degree }))
+      .filter(uniqBy(({ faculty, degree }) => faculty + degree));
+  },
+  getSemestersByFacultyAndDegree: (state) => (faculty, degree) => {
+    return state.courses
+      .filter((course) => course.faculty == faculty
+        && course.degree == degree)
+      .map((course) => course.semester)
+      .filter(uniq);
+  },
+  getCoursesByFacultyAndDegreeAndSemester: (state) => (faculty, degree, semester) => {
+    return state.courses
+      .filter((course) => course.faculty == faculty
+        && course.degree == degree
+        && course.semester == semester);
   },
 };
 
