@@ -2,54 +2,11 @@
   <ds-calendar-app
     :calendar="calendar"
     :types="types"
-    :read-only="true">
+    :read-only="true"
+    @change="calendarChange">
 
     <template slot="view">
       <div />
-    </template>
-
-    <template
-      slot="today"
-      slot-scope="slotProps">
-      <v-tooltip bottom>
-        <v-btn
-          slot="activator"
-          :icon="$vuetify.breakpoint.smAndDown"
-          class="ds-skinny-button"
-          depressed
-          @click="setToday">
-          <span v-if="$vuetify.breakpoint.mdAndUp">Heute</span>
-          <v-icon v-else>today</v-icon>
-        </v-btn>
-      </v-tooltip>
-    </template>
-
-    <template slot="prev">
-      <v-tooltip bottom>
-        <v-btn
-          slot="activator"
-          icon
-          depressed
-          class="ds-light-forecolor ds-skinny-button"
-          @click="prev">
-          <v-icon>keyboard_arrow_left</v-icon>
-        </v-btn>
-        <span>Zurück</span>
-      </v-tooltip>
-    </template>
-
-    <template slot="next">
-      <v-tooltip bottom>
-        <v-btn
-          slot="activator"
-          icon
-          depressed
-          class="ds-light-forecolor ds-skinny-button"
-          @click="next">
-          <v-icon>keyboard_arrow_right</v-icon>
-        </v-btn>
-        <span>Vor</span>
-      </v-tooltip>
     </template>
   </ds-calendar-app>
 </template>
@@ -126,36 +83,22 @@ export default {
     'events': 'applyEvents',
   },
   mounted() {
-    this.setToday();
+    this.calendarChange({ calendar: this.calendar });
   },
   methods: {
-    setToday() {
-      this.$store.commit('calendar/setWeek', moment().week());
-      this.dispatchLoad();
-      this.calendar.set({
-        around: Day.fromMoment(moment().startOf('week')),
-        otherwiseFocus: 0,
-      });
-    },
-    next() {
-      this.$store.commit('calendar/incrementWeek');
-      this.dispatchLoad();
-      this.calendar.next(undefined, true);
-    },
-    prev() {
-      this.$store.commit('calendar/decrementWeek');
-      this.dispatchLoad();
-      this.calendar.prev(undefined, true);
-    },
-    dispatchLoad() {
-      this.$store.dispatch('splus/load', {
-        course: '63AE5A',
-        week: this.$store.state.calendar.week
-      });
-    },
     applyEvents() {
+      console.log('refreshed events');
       this.calendar.setEvents(this.events);
       this.calendar.refresh();
+    },
+    calendarChange({ calendar }) {
+      console.log('calendar changed');
+      const week = calendar.start.weekOfYear;
+      this.$store.commit('calendar/setWeek', week);
+      this.$store.dispatch('splus/load', {
+        course: '63AE5A',
+        week: week
+      });
     },
   },
 };
