@@ -10,7 +10,12 @@
         <v-btn
           slot="activator"
           flat>
-          {{ currentCourse.label }}
+          <span v-if="!this.$vuetify.breakpoint.xs">
+            {{ currentCourse.label }}
+          </span>
+          <span v-else>
+            {{ currentCourse.slug }}
+          </span>
           <v-icon>arrow_drop_down</v-icon>
         </v-btn>
         <v-list>

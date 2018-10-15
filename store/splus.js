@@ -1,11 +1,33 @@
 export const state = () => ({
   lectures: [],
   courses: [ {
+    id: 'SPLUS63AE59',
+    slug: 'I-B-I1',
+    label: 'B.Sc. - 1. Sem. Informatik',
+  }, {
+    id: 'SPLUSB3BC21',
+    slug: 'I-B-I2-CE',
+    label: 'B.Sc. - 2. Sem. Computer Engineering',
+  }, {
+    id: 'SPLUSB3BC22',
+    slug: 'I-B-I2-MI',
+    label: 'B.Sc. - 2. Sem. Medieninformatik',
+  }, {
+    id: 'SPLUSB3BC20',
+    slug: 'I-B-I2-SE',
+    label: 'B.Sc. - 2. Sem. Software Engineering',
+  }, {
+    id: 'SPLUSB3BC1F',
+    slug: 'I-B-I2-SysE',
+    label: 'B.Sc. - 2. Sem. System Engineering',
+  }, {
     id: 'SPLUS63AE5A',
-    label: 'B. Sc. - 2. Sem. Information Engineering (I-B-I2-IE)',
+    slug: 'I-B-I2-IE',
+    label: 'B.Sc. - 2. Sem. Information Engineering',
   }, {
     id: 'SPLUSB3BC29',
-    label: 'B. Sc. - 3. Sem. Information Engineering (I-B-I3-IE)',
+    slug: 'I-B-I3-IE',
+    label: 'B.Sc. - 3. Sem. Information Engineering',
   } ],
 });
 
