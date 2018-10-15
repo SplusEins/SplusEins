@@ -21,7 +21,6 @@ router.get('/:course/:week', async (req, res) => {
     async () => await SplusApi.getData('#' + course, week),
     { ttl: 600 }
   );
-  console.log(data);
   const id = (lecture) => sha256(JSON.stringify({ lecture, course, week }));
   const result = data.map((lecture) => ({ ...lecture, course, week, id: id(lecture) }));
 
