@@ -191,6 +191,11 @@ export default {
       this.setWeek(calendar.start.weekOfYear);
     },
     async refresh() {
+      if (this.getLecturesByWeekAndCourse(
+        this.currentWeek,
+        this.currentCourse.id).length > 0) {
+        return;
+      }
       this.loading = true;
       await this.loadLectures({
         course: this.currentCourse.id,
