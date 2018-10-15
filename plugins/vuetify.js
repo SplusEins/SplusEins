@@ -3,6 +3,7 @@ import Vuetify from 'vuetify';
 import moment from 'moment';
 import DaySpanVuetify from 'dayspan-vuetify';
 import colors from 'vuetify/es5/util/colors';
+import { default as LocaleDe } from '~/assets/ds-de.js';
 
 moment.locale('de');
 
@@ -11,6 +12,9 @@ Vue.use(DaySpanVuetify, {
     getDefaultEventColor: () => '#1976d2',
   },
 });
+
+Vue.$dayspan.addLocale('de', LocaleDe);
+Vue.$dayspan.setLocale('de', true);
 
 Vue.use(Vuetify, {
   theme: {
