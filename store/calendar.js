@@ -7,10 +7,4 @@ export const mutations = {
   setWeek(state, week) {
     state.week = week;
   },
-  incrementWeek(state) {
-    state.week++;
-  },
-  decrementWeek(state) {
-    state.week--;
-  },
 };

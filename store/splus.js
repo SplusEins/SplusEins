@@ -1,10 +1,18 @@
 export const state = () => ({
   lectures: [],
+  courses: [ {
+    id: 'SPLUS63AE5A',
+    label: 'B. Sc. - 2. Sem. Information Engineering (I-B-I2-IE)',
+  }, {
+    id: 'SPLUSB3BC29',
+    label: 'B. Sc. - 3. Sem. Information Engineering (I-B-I3-IE)',
+  } ],
 });
 
 export const getters = {
-  getLecturesByWeek: (state) => (week) => {
-    return state.lectures.filter((lecture) => lecture.week == week);
+  getLecturesByWeekAndCourse: (state) => (week, course) => {
+    return state.lectures.filter((lecture) =>
+      lecture.week == week && lecture.course == course);
   },
 };
 

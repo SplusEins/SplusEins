@@ -3,10 +3,27 @@
     :calendar="calendar"
     :types="types"
     :read-only="true"
-    @change="calendarChange">
+    @change="calendarChanged">
 
     <template slot="view">
-      <div />
+      <v-menu>
+        <v-btn
+          slot="activator"
+          flat>
+          {{ currentCourse.label }}
+          <v-icon>arrow_drop_down</v-icon>
+        </v-btn>
+        <v-list>
+          <v-list-tile
+            v-for="course in courses"
+            :key="course.id"
+            @click="setCourse(course)">
+            <v-list-tile-content>
+              <v-list-tile-title>{{ course.label }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </template>
   </ds-calendar-app>
 </template>
@@ -14,7 +31,7 @@
 <script>
 import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
-import { mapMutations } from 'vuex';
+import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import colors from 'vuetify/es5/util/colors';
 
 const hashCode = (string) =>
@@ -51,7 +68,10 @@ export default {
     events() {
       const colorsArr = Object.values(colors);
 
-      return this.$store.getters['splus/getLecturesByWeek'](this.$store.state.calendar.week).map((lecture) => {
+      return this.getLecturesByWeekAndCourse(
+        this.currentWeek,
+        this.currentCourse.id
+      ).map((lecture) => {
         const beginHours = Math.floor(lecture.begin);
 	const start = moment()
           .week(lecture.week)
@@ -59,8 +79,8 @@ export default {
           .hour(beginHours)
           .minute((lecture.begin - beginHours) * 60);
 
-        const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0])+Math.pow(2, 31);
-        const color = colorsArr[hashOfFirstWordInTitle%colorsArr.length].lighten1;
+        const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0]) + Math.pow(2, 31);
+        const color = colorsArr[hashOfFirstWordInTitle % colorsArr.length].lighten1;
 	return {
           data: {
             title: lecture.title,
@@ -78,28 +98,47 @@ export default {
 	};
       });
     },
+    ...mapState({
+      currentWeek: state => state.calendar.week,
+      currentCourse: state => state.courses.course,
+      courses: state => state.splus.courses,
+    }),
+    ...mapGetters({
+      getLecturesByWeekAndCourse: 'splus/getLecturesByWeekAndCourse',
+    }),
   },
   watch: {
     'events': 'applyEvents',
   },
   mounted() {
-    this.calendarChange({ calendar: this.calendar });
+    this.setWeek(moment().week());
+    this.refresh();
   },
   methods: {
     applyEvents() {
-      console.log('refreshed events');
-      this.calendar.setEvents(this.events);
+      console.log('refreshing events');
+      this.calendar.setEvents(this.events, true);
       this.calendar.refresh();
+      this.refresh();
     },
-    calendarChange({ calendar }) {
+    /** Update store's week after UI input */
+    calendarChanged({ calendar }) {
       console.log('calendar changed');
-      const week = calendar.start.weekOfYear;
-      this.$store.commit('calendar/setWeek', week);
-      this.$store.dispatch('splus/load', {
-        course: '63AE5A',
-        week: week
+      this.setWeek(calendar.start.weekOfYear);
+    },
+    refresh() {
+      this.loadLectures({
+        course: this.currentCourse.id,
+        week: this.currentWeek
       });
     },
+    ...mapMutations({
+      setWeek: 'calendar/setWeek',
+      setCourse: 'courses/setCourse',
+    }),
+    ...mapActions({
+      loadLectures: 'splus/load',
+    }),
   },
 };
 </script>
