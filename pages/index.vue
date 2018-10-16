@@ -10,66 +10,12 @@
     </template>
 
     <template slot="drawerPicker">
-      <v-list>
-        <v-list-group
-          v-for="{ faculty, degree } in facultiesAndDegrees"
-          :key="faculty + degree"
-          value="true"
-          no-action>
-          <v-list-tile slot="activator">
-            <v-list-tile-content>
-              <v-list-tile-title>{{ faculty }} - {{ degree }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-
-          <template 
-            v-for="semester in getSemestersByFacultyAndDegree(faculty, degree)">
-            <v-list-group
-              v-if="getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester).length > 1"
-              :key="semester"
-              no-action
-              sub-group>
-              <v-list-tile slot="activator">
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ semester }}. Semester</v-list-tile-title>
-                </v-list-tile-content>
-                <v-list-tile-action v-if="currentCourse.semester == semester">
-                  <v-icon>check</v-icon>
-                </v-list-tile-action>
-              </v-list-tile>
-
-              <v-list-tile
-                v-for="course in getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)"
-                :key="course.id"
-                @click="currentCourse = course">
-                <v-list-tile-content value="true">
-                  <v-list-tile-title value="true">{{ course.label }}</v-list-tile-title>
-                </v-list-tile-content>
-                <v-list-tile-action v-if="currentCourse == course">
-                  <v-icon>check</v-icon>
-                </v-list-tile-action>
-              </v-list-tile>
-            </v-list-group>
-
-            <v-list-tile
-              v-else
-              :key="semester"
-              @click="currentCourse = getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)">
-              <v-list-tile-content>
-                <v-list-tile-title>{{ semester }}. Semester</v-list-tile-title>
-              </v-list-tile-content>
-              <v-list-tile-action v-if="currentCourse == getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)">
-                <v-icon>check</v-icon>
-              </v-list-tile-action>
-            </v-list-tile>
-          </template>
-        </v-list-group>
-      </v-list>
+      <nested-course-list />
     </template>
 
     <template slot="view">
       <v-dialog
-        v-model="dialog"
+        v-model="aboutDialogOpen"
         width="500">
         <v-btn
           slot="activator"
@@ -85,11 +31,7 @@
           </v-card-title>
 
           <v-card-text>
-            SplusEins, der smarte Stundenplan für Studenten der Ostfalia-Hochschule.<br>
-            Gebaut mit <a href="https://nuxtjs.org">Nuxt.js</a>, <a href="https://vuetifyjs.com">Vuetify</a> und <a href="https://github.com/ClickerMonkey/dayspan-vuetify">dayspan-vuetify</a>.<br>
-            Besonderer Dank geht an Tim für den <a href="https://github.com/xThunderbolt/splus">SPlus Parser</a>.<br>
-            Der Quellcode ist auf <a href="https://github.com/schneefux/spluseins">GitHub</a> verfügbar.<br>
-            Alle Inhalte sind öffentlich einsehbar auf <a href="http://http://splus.ostfalia.de/">splus.ostfalia.de</a>, für Vollständigkeit wird keine Haftung übernommen.
+            <about-text />
           </v-card-text>
 
           <v-divider />
@@ -99,7 +41,7 @@
             <v-btn
               color="primary"
               flat
-              @click="dialog = false">
+              @click="aboutDialogOpen = false">
               Okay
             </v-btn>
           </v-card-actions>
@@ -122,6 +64,8 @@ import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import colors from 'vuetify/es5/util/colors';
+import AboutText from '~/components/AboutText.vue';
+import NestedCourseList from '~/components/NestedCourseList.vue';
 
 const hashCode = (string) =>
   string.split('').reduce((prevHash, currVal) =>
@@ -130,6 +74,10 @@ const hashCode = (string) =>
 export default {
   name: 'HomePage',
   layout: 'empty',
+  components: {
+    AboutText,
+    NestedCourseList,
+  },
   data() {
     // prev/next lazy loading is hardwired for 7d week starting on Monday!
     const around = Day.fromMoment(moment().startOf('week'));
@@ -151,7 +99,7 @@ export default {
     return {
       calendar,
       types: [ calendarWeekType ],
-      dialog: false,
+      aboutDialogOpen: false,
       loading: false,
     };
   },
@@ -189,23 +137,13 @@ export default {
 	};
       });
     },
-    currentCourse: {
-      get() {
-        return this.$store.state.courses.course;
-      },
-      set(value) {
-        this.$store.commit('courses/setCourse', value);
-      }
-    },
     ...mapState({
+      currentCourse: state => state.courses.course,
       currentWeek: state => state.calendar.week,
       courses: state => state.splus.courses,
     }),
     ...mapGetters({
       getLecturesByWeekAndCourse: 'splus/getLecturesByWeekAndCourse',
-      facultiesAndDegrees: 'splus/facultiesAndDegrees',
-      getSemestersByFacultyAndDegree: 'splus/getSemestersByFacultyAndDegree',
-      getCoursesByFacultyAndDegreeAndSemester: 'splus/getCoursesByFacultyAndDegreeAndSemester',
     }),
   },
   watch: {
