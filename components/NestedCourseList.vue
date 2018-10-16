@@ -43,11 +43,11 @@
         <v-list-tile
           v-else
           :key="semester"
-          @click="currentCourse = getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)">
+          @click="currentCourse = getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)[0]">
           <v-list-tile-content>
             <v-list-tile-title>{{ semester }}. Semester</v-list-tile-title>
           </v-list-tile-content>
-          <v-list-tile-action v-if="currentCourse == getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)">
+          <v-list-tile-action v-if="currentCourse == getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)[0]">
             <v-icon>check</v-icon>
           </v-list-tile-action>
         </v-list-tile>
