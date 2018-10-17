@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import moment from 'moment';
-import DaySpanVuetify from 'dayspan-vuetify';
+import DaySpanVuetify from './dayspan-vuetify/src/lib';
 import colors from 'vuetify/es5/util/colors';
 import { default as LocaleDe } from '~/assets/ds-de.js';
 
