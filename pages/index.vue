@@ -124,6 +124,8 @@ export default {
           data: {
             title: lecture.title,
             color,
+            description: `${lecture.lecturer} ${lecture.room} ${lecture.info}`,
+            location: lecture.room,
           },
           schedule: {
             on: start,
