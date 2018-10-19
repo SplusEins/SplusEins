@@ -112,7 +112,7 @@ export default {
         this.currentCourse.id
       ).map((lecture) => {
         const beginHours = Math.floor(lecture.begin);
-	const start = moment()
+        const start = moment()
           .week(lecture.week)
           .day(lecture.day + 1)
           .hour(beginHours)
@@ -120,7 +120,7 @@ export default {
 
         const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0]) + Math.pow(2, 31);
         const color = colorsArr[hashOfFirstWordInTitle % colorsArr.length].lighten1;
-	return {
+        return {
           data: {
             title: lecture.title,
             color,
@@ -129,14 +129,14 @@ export default {
           },
           schedule: {
             on: start,
-	    times: [ {
-	      hour: start.hour(),
-	      minute: start.minute(),
-	    } ],
+            times: [ {
+              hour: start.hour(),
+              minute: start.minute(),
+            } ],
             duration: lecture.end - lecture.begin,
             durationUnit: 'hours',
           }
-	};
+        };
       });
     },
     ...mapState({
