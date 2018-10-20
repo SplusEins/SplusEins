@@ -13,10 +13,12 @@ export default {
   props: ['drawer'],
   data () {
     return {
-      drawerProperty: this.drawer
     }
   },
   computed: {
+    drawerProperty(){
+      return this.drawer
+    }
   },
   mounted () {
 
