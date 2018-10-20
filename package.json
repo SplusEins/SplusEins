@@ -17,6 +17,7 @@
     "@nuxtjs/axios": "^5.0.0",
     "aws-serverless-express": "^3.3.5",
     "cache-manager": "^2.9.0",
+    "cache-manager-fs-hash": "0.0.6",
     "cheerio": "^1.0.0-rc.2",
     "cross-env": "^5.2.0",
     "dayspan-vuetify": "^0.3.2",
