@@ -19,7 +19,7 @@
             <v-icon>contact_mail</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Meine Favoriten</v-list-tile-title>
+            <v-list-tile-title>Meine F<avoriten</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
