@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app>
     <header-component/>
     <v-content>
       <calendar-component/>
