@@ -20,6 +20,8 @@ export default {
       getCoursesByFacultyAndDegreeAndSemester: 'splus/getCoursesByFacultyAndDegreeAndSemester',
     }),
   },
+  mounted() {
+  },
   methods: {
     ...mapMutations({
       setWeek: 'calendar/setWeek',

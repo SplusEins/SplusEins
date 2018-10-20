@@ -13,7 +13,7 @@ export default {
   props: ['drawer'],
   data () {
     return {
-
+      drawerProperty: this.drawer
     }
   },
   computed: {
