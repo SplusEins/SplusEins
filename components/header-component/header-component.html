@@ -1,0 +1,11 @@
+<div>
+  <v-toolbar 
+    color="indigo" 
+    dark 
+    fixed 
+    app>
+    <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
+    <v-toolbar-title>SPLUSEINS</v-toolbar-title>
+  </v-toolbar>
+  <side-nav-component v-bind:drawer="drawer"/>
+</div>
