@@ -3,31 +3,11 @@
   v-model="drawer"
   fixed
   app
+  width = "350"
   >
   <v-list dense>
-    <v-list-tile>
-      <v-list-tile-action>
-        <v-icon>home</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Meine Stundenpläne</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-action>
-        <v-icon>contact_mail</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Meine Favoriten</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile>
-      <v-list-tile-action>
-        <v-icon>contact_mail</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Alle Stundenpläne</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
+    <my-timetables-component/>
+    <favourite-timetables-component/>
+    <all-timetables-component/>
   </v-list>
 </v-navigation-drawer>
