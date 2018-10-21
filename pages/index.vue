@@ -79,8 +79,7 @@ export default {
     NestedCourseList,
   },
   data() {
-    // prev/next lazy loading is hardwired for 7d week starting on Monday!
-    const around = Day.fromMoment(moment().startOf('week'));
+    const around = Day.fromMoment(moment().startOf('isoWeek'));
     const calendarWeekType = {
       id: 'W',
       label: 'Woche',
@@ -94,7 +93,7 @@ export default {
       updateRows: true,
       schedule: false
     };
-    const calendar = Calendar.days(7, around, 0);
+    const calendar = Calendar.weeks();
 
     return {
       calendar,
@@ -113,7 +112,7 @@ export default {
       ).map((lecture) => {
         const beginHours = Math.floor(lecture.begin);
         const start = moment()
-          .week(lecture.week)
+          .isoWeek(lecture.week)
           .day(lecture.day + 1)
           .hour(beginHours)
           .minute((lecture.begin - beginHours) * 60);
@@ -152,7 +151,7 @@ export default {
     'events': 'applyEvents',
   },
   mounted() {
-    this.setWeek(moment().week());
+    this.setWeek(moment().isoWeek());
     this.refresh();
   },
   methods: {
@@ -165,7 +164,7 @@ export default {
     /** Update store's week after UI input */
     calendarChanged({ calendar }) {
       console.log('calendar changed');
-      this.setWeek(calendar.start.weekOfYear);
+      this.setWeek(calendar.start.date.isoWeek());
     },
     async refresh() {
       if (this.getLecturesByWeekAndCourse(
