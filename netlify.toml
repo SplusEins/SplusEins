@@ -1,0 +1,3 @@
+[build]
+  command = "export API_URL=$DEPLOY_PRIME_URL/.netlify/functions/ && npm run generate && npm run build:api"
+  functions = "dist/server/serverless"

@@ -1,15 +1,19 @@
 import * as express from 'express';
 import { createHash } from 'crypto';
 import * as cacheManager from 'cache-manager';
+import * as fsStore from 'cache-manager-fs-hash';
 import { SplusApi } from '../lib/SplusApi';
 
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
 
 const router = express.Router();
 const cache = cacheManager.caching({
-  store: 'memory',
-  max: 1000,
-  ttl: 10,
+  store: fsStore,
+  options: {
+    path: 'cache',
+    ttl: 60,
+    subdirs: true,
+  },
 });
 
 router.get('/:course/:week', async (req, res) => {
