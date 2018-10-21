@@ -1,17 +1,17 @@
 <template>
   <v-app>
-    <header-component/>
+    <HeaderComponent/>
     <v-content>
-      <calendar-component/>
+      <CalendarComponent/>
     </v-content>
-    <footer-component/>
+    <FooterComponent/>
   </v-app>
 </template>
 
 <script>
-import HeaderComponent from '../components/header-component/index.vue'
-import CalendarComponent from '../components/calendar-component/calendar.vue'
-import FooterComponent from '../components/footer-component/index.vue'
+import HeaderComponent from '../components/header-component.vue'
+import CalendarComponent from '../components/calendar-component.vue'
+import FooterComponent from '../components/footer-component.vue'
 
 export default {
   name: 'HomePage',

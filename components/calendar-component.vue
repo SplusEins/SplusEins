@@ -1,3 +1,14 @@
+<template lang="html">
+
+  <ds-calendar
+    :calendar="calendar"
+    :types="types"
+    :read-only="true"
+    @change="calendarChanged"/>
+
+</template>
+
+<script lang="js">
 import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
@@ -9,10 +20,9 @@ string.split('').reduce((prevHash, currVal) =>
 
 
 export default {
-  name: 'calendar-component',
+  name: 'CalendarComponent',
   layout: 'empty',
   components: {},
-  props: [],
   data() {
     // prev/next lazy loading is hardwired for 7d week starting on Monday!
     const around = Day.fromMoment(moment().startOf('week'));
@@ -119,3 +129,10 @@ export default {
     }),
   }
 }
+</script>
+
+<style scoped lang="scss">
+  .calendar-component {
+
+  }
+</style>
