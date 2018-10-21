@@ -31,7 +31,6 @@
         <v-list-group
           v-if="getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester).length > 1"
           :key="semester"
-          no-action
           sub-group>
           <v-list-tile slot="activator">
             <v-list-tile-content>
@@ -88,9 +87,6 @@ export default {
         this.$store.commit('courses/setCourse', value);
       }
     },
-    ...mapState({
-      courses: state => state.splus.courses,
-    }),
     ...mapGetters({
       facultiesAndDegrees: 'splus/facultiesAndDegrees',
       getSemestersByFacultyAndDegree: 'splus/getSemestersByFacultyAndDegree',
@@ -100,12 +96,6 @@ export default {
   mounted() {
   },
   methods: {
-    ...mapMutations({
-      setWeek: 'calendar/setWeek',
-    }),
-    ...mapActions({
-      loadLectures: 'splus/load',
-    }),
   },
 }
 </script>
