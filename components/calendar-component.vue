@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <ds-calendar
+  <CustomCalendarComponent
     :calendar="calendar"
     :types="types"
     :read-only="true"
@@ -13,6 +13,7 @@ import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import colors from 'vuetify/es5/util/colors';
+import CustomCalendarComponent from './custom-calendar-component.vue'
 
 const hashCode = (string) =>
 string.split('').reduce((prevHash, currVal) =>
@@ -22,7 +23,7 @@ string.split('').reduce((prevHash, currVal) =>
 export default {
   name: 'CalendarComponent',
   layout: 'empty',
-  components: {},
+  components: {CustomCalendarComponent},
   data() {
     // prev/next lazy loading is hardwired for 7d week starting on Monday!
     const around = Day.fromMoment(moment().startOf('week'));
