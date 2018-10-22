@@ -18,7 +18,9 @@
             slot="activator"
             :icon="$vuetify.breakpoint.smAndDown"
             class="ds-skinny-button"
-            depressed
+            outline
+            grey 
+            darken-3
             @click="setToday">
 
             <span v-if="$vuetify.breakpoint.mdAndUp">{{ labels.today }}</span>
@@ -70,7 +72,7 @@
         v-bind="{summary, calendar}"
         name="summary" >
 
-        <h1 class="title ds-light-forecolor">
+        <h1 class="ds-light-forecolor">
           {{ summary }}
         </h1>
 
@@ -79,132 +81,130 @@
       <v-spacer/>
 
     </v-container>
-    <v-content class="ds-expand">
-      <v-container 
-        fluid
-        fill-height
-        class="ds-calendar-container">
+    <v-container 
+      fluid
+      fill-height
+      class="ds-calendar-container">
 
-        <ds-gestures
-          @swipeleft="next"
-          @swiperight="prev">
+      <ds-gestures
+        @swipeleft="next"
+        @swiperight="prev">
 
-          <div 
-            v-if="currentType.schedule" 
-            class="ds-expand">
+        <div 
+          v-if="currentType.schedule" 
+          class="ds-expand">
 
-            <slot
-              v-bind="{$scopedSlots, $listeners, calendar, viewDay}"
-              name="calendarAppAgenda" >
+          <slot
+            v-bind="{$scopedSlots, $listeners, calendar, viewDay}"
+            name="calendarAppAgenda" >
 
-              <ds-agenda
-                :read-only="readOnly"
-                :calendar="calendar"
-                v-bind="{$scopedSlots}"
-                v-on="$listeners"
-                @view-day="viewDay"/>
+            <ds-agenda
+              :read-only="readOnly"
+              :calendar="calendar"
+              v-bind="{$scopedSlots}"
+              v-on="$listeners"
+              @view-day="viewDay"/>
 
-            </slot>
+          </slot>
 
-          </div>
+        </div>
 
-          <div 
-            v-else 
-            class="ds-expand">
+        <div 
+          v-else 
+          class="ds-expand">
 
-            <slot
-              v-bind="{$scopedSlots, $listeners, calendar, viewDay}"
-              name="calendarAppCalendar" >
+          <slot
+            v-bind="{$scopedSlots, $listeners, calendar, viewDay}"
+            name="calendarAppCalendar" >
 
-              <ds-calendar 
-                ref="calendar"
-                :calendar="calendar"
-                :read-only="readOnly"
-                v-bind="{$scopedSlots}"
-                v-on="$listeners"
-                @view-day="viewDay"
-              />
+            <ds-calendar 
+              ref="calendar"
+              :calendar="calendar"
+              :read-only="readOnly"
+              v-bind="{$scopedSlots}"
+              v-on="$listeners"
+              @view-day="viewDay"
+            />
 
-            </slot>
+          </slot>
 
-          </div>
+        </div>
 
-        </ds-gestures>
+      </ds-gestures>
 
-        <slot
-          v-bind="{$scopedSlots, $listeners, calendar, eventFinish}"
-          name="calendarAppEventDialog" >
+      <slot
+        v-bind="{$scopedSlots, $listeners, calendar, eventFinish}"
+        name="calendarAppEventDialog" >
 
-          <ds-event-dialog 
-            ref="eventDialog"
-            :calendar="calendar"
-            :read-only="readOnly"
-            v-bind="{$scopedSlots}"
-            v-on="$listeners"
-            @saved="eventFinish"
-            @actioned="eventFinish"
-          />
+        <ds-event-dialog 
+          ref="eventDialog"
+          :calendar="calendar"
+          :read-only="readOnly"
+          v-bind="{$scopedSlots}"
+          v-on="$listeners"
+          @saved="eventFinish"
+          @actioned="eventFinish"
+        />
 
-        </slot>
+      </slot>
 
-        <slot
-          v-bind="{optionsVisible, optionsDialog, options, chooseOption}"
-          name="calendarAppOptions" >
+      <slot
+        v-bind="{optionsVisible, optionsDialog, options, chooseOption}"
+        name="calendarAppOptions" >
 
-          <v-dialog 
-            ref="optionsDialog"
-            v-model="optionsVisible"
-            v-bind="optionsDialog"
-            :fullscreen="$dayspan.fullscreenDialogs">
-            <v-list>
-              <template v-for="option in options">
-                <v-list-tile 
-                  :key="option.text" 
-                  @click="chooseOption( option )">
-                  {{ option.text }}
-                </v-list-tile>
-              </template>
-            </v-list>
-          </v-dialog>
+        <v-dialog 
+          ref="optionsDialog"
+          v-model="optionsVisible"
+          v-bind="optionsDialog"
+          :fullscreen="$dayspan.fullscreenDialogs">
+          <v-list>
+            <template v-for="option in options">
+              <v-list-tile 
+                :key="option.text" 
+                @click="chooseOption( option )">
+                {{ option.text }}
+              </v-list-tile>
+            </template>
+          </v-list>
+        </v-dialog>
 
-        </slot>
+      </slot>
 
-        <slot
-          v-bind="{promptVisible, promptDialog, promptQuestion, choosePrompt}"
-          name="calendarAppPrompt" >
+      <slot
+        v-bind="{promptVisible, promptDialog, promptQuestion, choosePrompt}"
+        name="calendarAppPrompt" >
 
-          <v-dialog 
-            ref="promptDialog"
-            v-model="promptVisible"
-            v-bind="promptDialog">
-            <v-card>
-              <v-card-title>{{ promptQuestion }}</v-card-title>
-              <v-card-actions>
-                <v-btn 
-                  color="primary" 
-                  flat 
-                  @click="choosePrompt( true )">
-                  {{ labels.promptConfirm }}
-                </v-btn>
-                <v-spacer/>
-                <v-btn 
-                  color="secondary"
-                  flat
-                  @click="choosePrompt( false )">
-                  {{ labels.promptCancel }}
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
+        <v-dialog 
+          ref="promptDialog"
+          v-model="promptVisible"
+          v-bind="promptDialog">
+          <v-card>
+            <v-card-title>{{ promptQuestion }}</v-card-title>
+            <v-card-actions>
+              <v-btn 
+                color="primary" 
+                flat 
+                @click="choosePrompt( true )">
+                {{ labels.promptConfirm }}
+              </v-btn>
+              <v-spacer/>
+              <v-btn 
+                color="secondary"
+                flat
+                @click="choosePrompt( false )">
+                {{ labels.promptCancel }}
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
 
-        </slot>
+      </slot>
 
-        <slot
-          v-bind="{events, calendar}"
-          name="containerInside" />
+      <slot
+        v-bind="{events, calendar}"
+        name="containerInside" />
 
-      </v-container>
-    </v-content>
+    </v-container>
   </div>
 </template>
 
@@ -261,8 +261,8 @@ export default {
       type: Object,
       default() {
         return {
-          next: 0,
-          prev: 0,
+          next: 'Nächste Woche',
+          prev: 'Vorherige Woche',
           moveCancel: 0,
           moveSingleEvent: 0,
           moveOccurrence: 0,
@@ -270,7 +270,7 @@ export default {
           moveDuplicate: 0,
           promptConfirm: 0,
           promptCancel: 0,
-          today: 0,
+          today: 'Heute',
           todayIcon: 'today'
         }
       }
@@ -335,21 +335,42 @@ export default {
 
     summary()
     {
-      let small = this.$vuetify.breakpoint.xs;
-
-      if (small)
-      {
-        return this.calendar.start.format( this.formats.xs );
-      }
-
-      let large = this.$vuetify.breakpoint.mdAndUp;
-
-      return this.calendar.summary(false, !large, false, !large);
+      var monthNames = [
+        "Januar", "Februar", "März",
+        "April", "Mai", "Juni", "Juli",
+        "August", "September", "Oktober",
+        "November", "Dezember"
+      ];
+      let firstDayOfWeekString = JSON.stringify(this.calendar.days[0])
+      let lastDayOfWeekString =  JSON.stringify(this.calendar.days[6])
+      let firstDayOfWeekSplitted = firstDayOfWeekString.split('-')
+      let lastDayOfWeekSplitted = lastDayOfWeekString.split('-')
+      let firstDayYear = parseInt(firstDayOfWeekSplitted[0].split('"')[1])
+      let firstDayMonth = parseInt(firstDayOfWeekSplitted[1])
+      let firstDayDay = parseInt(firstDayOfWeekSplitted[2].split('T')[0])+1
+      let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
+      let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
+      let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
+      return  firstDayDay + '. ' + monthNames[firstDayMonth-1] + ' - ' + lastDayDay + '. ' + monthNames[lastDayMonth-1]
     },
 
     todayDate()
     {
-      return 'DATE TODO'
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth()+1; //January is 0!
+      let yyyy = today.getFullYear();
+
+      if(dd<10) {
+          dd = '0'+dd
+      } 
+
+      if(mm<10) {
+          mm = '0'+mm
+      } 
+
+      today = dd + '.'+mm +'.' + yyyy;
+      return today
     },
 
     nextLabel()
