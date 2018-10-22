@@ -1,11 +1,5 @@
 import COURSES from '~/assets/courses.json';
 
-const identity = (x) => x;
-const uniqBy = (keyGen) => (value, index, self) =>
-  self.findIndex((otherValue) => keyGen(value) == keyGen(otherValue))
-    == index;
-const uniq = uniqBy(identity);
-
 export const state = () => ({
   lectures: [],
   courses: COURSES,
@@ -15,24 +9,6 @@ export const getters = {
   getLecturesByWeekAndCourse: (state) => (week, course) => {
     return state.lectures.filter((lecture) =>
       lecture.week == week && lecture.course == course);
-  },
-  facultiesAndDegrees: (state) => {
-    return state.courses
-      .map(({ faculty, degree }) => ({ faculty, degree }))
-      .filter(uniqBy(({ faculty, degree }) => faculty + degree));
-  },
-  getSemestersByFacultyAndDegree: (state) => (faculty, degree) => {
-    return state.courses
-      .filter((course) => course.faculty == faculty
-        && course.degree == degree)
-      .map((course) => course.semester)
-      .filter(uniq);
-  },
-  getCoursesByFacultyAndDegreeAndSemester: (state) => (faculty, degree, semester) => {
-    return state.courses
-      .filter((course) => course.faculty == faculty
-        && course.degree == degree
-        && course.semester == semester);
   },
 };
 
