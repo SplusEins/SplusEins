@@ -152,7 +152,6 @@ export default {
   },
   mounted() {
     this.setWeek(this.calendar.start.date.isoWeek());
-    this.refresh();
   },
   methods: {
     applyEvents() {
