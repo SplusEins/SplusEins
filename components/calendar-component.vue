@@ -23,10 +23,11 @@ string.split('').reduce((prevHash, currVal) =>
 export default {
   name: 'CalendarComponent',
   layout: 'empty',
-  components: {CustomCalendarComponent},
+  components: {
+    CustomCalendarComponent
+  },
   data() {
-    // prev/next lazy loading is hardwired for 7d week starting on Monday!
-    const around = Day.fromMoment(moment().startOf('week'));
+    const around = Day.fromMoment(moment().startOf('isoWeek'));
     const calendarWeekType = {
       id: 'W',
       label: 'Woche',
@@ -41,10 +42,10 @@ export default {
       schedule: false
     };
     const calendar = Calendar.days(7, around, 0);
-
     return {
       calendar,
       types: [ calendarWeekType ],
+      aboutDialogOpen: false,
       loading: false,
     };
   },
@@ -56,15 +57,14 @@ export default {
         this.currentCourse.id
       ).map((lecture) => {
         const beginHours = Math.floor(lecture.begin);
-      	const start = moment()
-          .week(lecture.week)
+        const start = this.calendar.start.date.clone()
+          .isoWeek(lecture.week)
           .day(lecture.day + 1)
           .hour(beginHours)
           .minute((lecture.begin - beginHours) * 60);
-
         const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0]) + Math.pow(2, 31);
         const color = colorsArr[hashOfFirstWordInTitle % colorsArr.length].lighten1;
-      	return {
+        return {
           data: {
             title: lecture.title,
             color,
@@ -73,11 +73,14 @@ export default {
           },
           schedule: {
             on: start,
-	          times: [ {hour: start.hour(),minute: start.minute(),} ],
+            times: [ {
+              hour: start.hour(),
+              minute: start.minute(),
+            } ],
             duration: lecture.end - lecture.begin,
             durationUnit: 'hours',
           }
-	};
+        };
       });
     },
     ...mapState({
@@ -88,14 +91,12 @@ export default {
     ...mapGetters({
       getLecturesByWeekAndCourse: 'splus/getLecturesByWeekAndCourse',
     }),
-
   },
   watch: {
     'events': 'applyEvents',
   },
   mounted() {
-    this.setWeek(moment().week());
-    this.refresh();
+    this.setWeek(this.calendar.start.date.isoWeek());
   },
   methods: {
     applyEvents() {
@@ -107,7 +108,7 @@ export default {
     /** Update store's week after UI input */
     calendarChanged({ calendar }) {
       console.log('calendar changed');
-      this.setWeek(calendar.start.weekOfYear);
+      this.setWeek(calendar.start.date.isoWeek());
     },
     async refresh() {
       if (this.getLecturesByWeekAndCourse(
@@ -115,7 +116,7 @@ export default {
         this.currentCourse.id).length > 0) {
         return;
       }
-      this.loading = false;
+      this.loading = true;
       await this.loadLectures({
         course: this.currentCourse.id,
         week: this.currentWeek
@@ -128,7 +129,7 @@ export default {
     ...mapActions({
       loadLectures: 'splus/load',
     }),
-  }
+  },
 }
 </script>
 

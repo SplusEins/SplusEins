@@ -12,37 +12,38 @@
     </v-list-tile>
 
     <v-list-group
-      v-for="{ faculty, degree } in facultiesAndDegrees"
-      :key="faculty + degree"
+      v-for="(semesters, level1Title) in coursesTree"
+      :key="level1Title"
       value="true"
       sub-group
       no-action>
       <v-list-tile slot="activator">
         <v-list-tile-content>
-          <v-list-tile-title>{{ faculty }} - {{ degree }}</v-list-tile-title>
+          <v-list-tile-title>{{ level1Title }}</v-list-tile-title>
         </v-list-tile-content>
-        <v-list-tile-action v-if="currentCourse.faculty == faculty && currentCourse.degree == degree">
+        <v-list-tile-action v-if="currentCourseLevel1Title == level1Title">
           <v-icon>check</v-icon>
         </v-list-tile-action>
       </v-list-tile>
 
       <template 
-        v-for="semester in getSemestersByFacultyAndDegree(faculty, degree)">
+        v-for="(courses, semester) in semesters">
         <v-list-group
-          v-if="getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester).length > 1"
-          :key="semester"
+          v-if="courses.length > 1"
+          :key="level1Title + semester"
+          no-action
           sub-group>
           <v-list-tile slot="activator">
             <v-list-tile-content>
               <v-list-tile-title>{{ semester }}. Semester</v-list-tile-title>
             </v-list-tile-content>
-            <v-list-tile-action v-if="currentCourse.degree == degree && currentCourse.semester == semester">
+            <v-list-tile-action v-if="currentCourse.semester == semester && currentCourseLevel1Title == level1Title">
               <v-icon>check</v-icon>
             </v-list-tile-action>
           </v-list-tile>
 
           <v-list-tile
-            v-for="course in getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)"
+            v-for="course in courses"
             :key="course.id"
             @click="currentCourse = course">
             <v-list-tile-content value="true">
@@ -57,11 +58,11 @@
         <v-list-tile
           v-else
           :key="semester"
-          @click="currentCourse = getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)[0]">
+          @click="currentCourse = courses[0]">
           <v-list-tile-content>
             <v-list-tile-title>{{ semester }}. Semester</v-list-tile-title>
           </v-list-tile-content>
-          <v-list-tile-action v-if="currentCourse == getCoursesByFacultyAndDegreeAndSemester(faculty, degree, semester)[0]">
+          <v-list-tile-action v-if="currentCourse == courses[0]">
             <v-icon>check</v-icon>
           </v-list-tile-action>
         </v-list-tile>
@@ -73,8 +74,8 @@
 
 </template>
 
-<script lang="js">
-import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
+<script>
+import { mapMutations, mapState, mapActions } from 'vuex';
 
 export default {
   name: 'AllTimetablesComponent',
@@ -87,15 +88,48 @@ export default {
         this.$store.commit('courses/setCourse', value);
       }
     },
-    ...mapGetters({
-      facultiesAndDegrees: 'splus/facultiesAndDegrees',
-      getSemestersByFacultyAndDegree: 'splus/getSemestersByFacultyAndDegree',
-      getCoursesByFacultyAndDegreeAndSemester: 'splus/getCoursesByFacultyAndDegreeAndSemester',
+    currentCourseLevel1Title() {
+      return this.courseToFacultyAndDegree(this.currentCourse);
+    },
+    coursesTree() {
+      const tree = {};
+      /*
+       * convert star schema: { faculty, degree, semester, ...course }
+       * into hierarchy: { (faculty, degree): { semester: courses } }
+       */
+      this.courses.forEach((course) => {
+        const level1Title = this.courseToFacultyAndDegree(course);
+        if (tree[level1Title] == undefined) {
+          tree[level1Title] = {};
+        }
+
+        const leaf1 = tree[level1Title];
+        if (leaf1[course.semester] == undefined) {
+          leaf1[course.semester] = [];
+        }
+
+        const leaf2 = leaf1[course.semester];
+        leaf2.push(course);
+      });
+
+      return tree;
+    },
+    ...mapState({
+      courses: state => state.splus.courses,
     }),
   },
   mounted() {
   },
   methods: {
+    courseToFacultyAndDegree(course) {
+      return `${course.faculty} - ${course.degree}`;
+    },
+    ...mapMutations({
+      setWeek: 'calendar/setWeek',
+    }),
+    ...mapActions({
+      loadLectures: 'splus/load',
+    }),
   },
 }
 </script>
