@@ -22,9 +22,8 @@
             grey 
             darken-3
             @click="setToday">
-
-            <span v-if="$vuetify.breakpoint.mdAndUp">{{ labels.today }}</span>
-            <v-icon v-else>{{ labels.todayIcon }}</v-icon>
+            <v-icon>today</v-icon>
+            <span>{{ labels.today }}</span>
 
           </v-btn>
           <span>{{ todayDate }}</span>
