@@ -93,7 +93,7 @@ export default {
       updateRows: true,
       schedule: false
     };
-    const calendar = Calendar.weeks();
+    const calendar = Calendar.days(7, around, 0);
 
     return {
       calendar,
@@ -111,7 +111,7 @@ export default {
         this.currentCourse.id
       ).map((lecture) => {
         const beginHours = Math.floor(lecture.begin);
-        const start = moment()
+        const start = this.calendar.start.date.clone()
           .isoWeek(lecture.week)
           .day(lecture.day + 1)
           .hour(beginHours)
@@ -151,7 +151,7 @@ export default {
     'events': 'applyEvents',
   },
   mounted() {
-    this.setWeek(moment().isoWeek());
+    this.setWeek(this.calendar.start.date.isoWeek());
     this.refresh();
   },
   methods: {
