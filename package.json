@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "dev:api": "nodemon --watch 'server/**/*.ts' --exec 'ts-node' server/index.ts",
+    "dev:api": "nodemon --watch 'server/**/*.ts' --exec ts-node server/index.ts",
     "build": "nuxt build",
     "build:api": "webpack --mode production",
     "start": "nuxt start",

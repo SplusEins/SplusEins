@@ -1,14 +1,29 @@
-<template>
-  <v-list>
+<template lang="html">
+
+  <v-list-group>
+
+    <v-list-tile slot="activator">
+      <v-list-tile-action>
+        <v-icon>list</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title>Alle Stundenpläne</v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+
     <v-list-group
       v-for="(semesters, level1Title) in coursesTree"
       :key="level1Title"
       value="true"
+      sub-group
       no-action>
       <v-list-tile slot="activator">
         <v-list-tile-content>
           <v-list-tile-title>{{ level1Title }}</v-list-tile-title>
         </v-list-tile-content>
+        <v-list-tile-action v-if="currentCourseLevel1Title == level1Title">
+          <v-icon>check</v-icon>
+        </v-list-tile-action>
       </v-list-tile>
 
       <template 
@@ -52,15 +67,18 @@
           </v-list-tile-action>
         </v-list-tile>
       </template>
+
     </v-list-group>
-  </v-list>
+
+  </v-list-group>
+
 </template>
 
 <script>
 import { mapMutations, mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'NestedCourseList',
+  name: 'GeneralTimetablesList',
   computed: {
     currentCourse: {
       get() {
@@ -100,6 +118,8 @@ export default {
       courses: state => state.splus.courses,
     }),
   },
+  mounted() {
+  },
   methods: {
     courseToFacultyAndDegree(course) {
       return `${course.faculty} - ${course.degree}`;
@@ -111,5 +131,11 @@ export default {
       loadLectures: 'splus/load',
     }),
   },
-};
+}
 </script>
+
+<style scoped lang="scss">
+  .all-timetables-component {
+
+  }
+</style>
