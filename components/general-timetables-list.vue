@@ -78,7 +78,7 @@
 import { mapMutations, mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'AllTimetablesComponent',
+  name: 'GeneralTimetablesList',
   computed: {
     currentCourse: {
       get() {

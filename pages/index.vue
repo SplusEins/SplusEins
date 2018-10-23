@@ -1,29 +1,28 @@
 <template>
   <v-app>
-    <HeaderComponent/>
+    <spluseins-header/>
     <v-content>
-      <CalendarComponent/>
+      <spluseins-calendar/>
     </v-content>
-    <FooterComponent/>
+    <spluseins-footer/>
   </v-app>
 </template>
 
 <script>
-import HeaderComponent from '../components/header-component.vue'
-import CalendarComponent from '../components/calendar-component.vue'
-import FooterComponent from '../components/footer-component.vue'
+import SpluseinsHeader from '../components/spluseins-header.vue'
+import SpluseinsCalendar from '../components/spluseins-calendar.vue'
+import SpluseinsFooter from '../components/spluseins-footer.vue'
 
 export default {
   name: 'HomePage',
   layout: 'empty',
   components: {
-    HeaderComponent,
-    CalendarComponent,
-    FooterComponent
+    SpluseinsHeader,
+    SpluseinsCalendar,
+    SpluseinsFooter
   },
   data() {
     return {
-      drawer: null
     }
   },
   computed: {

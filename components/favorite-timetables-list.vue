@@ -26,7 +26,7 @@
 
 <script lang="js">
   export default  {
-    name: 'FavoriteTimetablesComponent',
+    name: 'FavoriteTimetablesList',
     data() {
       return {
 

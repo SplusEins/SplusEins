@@ -212,7 +212,7 @@ import { Constants, Sorts, Calendar, Day, Units, Weekday, Month, DaySpan, Patter
 
 export default {
 
-  name: 'CustomCalendarComponent',
+  name: 'DayspanCustomCalendar',
 
   props:
   {

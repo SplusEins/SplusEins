@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <CustomCalendarComponent
+  <dayspan-custom-calendar
     :calendar="calendar"
     :types="types"
     :read-only="true"
@@ -13,7 +13,7 @@ import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import colors from 'vuetify/es5/util/colors';
-import CustomCalendarComponent from './custom-calendar-component.vue'
+import DayspanCustomCalendar from './dayspan-custom-calendar.vue'
 
 const hashCode = (string) =>
 string.split('').reduce((prevHash, currVal) =>
@@ -21,10 +21,10 @@ string.split('').reduce((prevHash, currVal) =>
 
 
 export default {
-  name: 'CalendarComponent',
+  name: 'SpluseinsCalendar',
   layout: 'empty',
   components: {
-    CustomCalendarComponent
+    DayspanCustomCalendar
   },
   data() {
     const around = Day.fromMoment(moment().startOf('isoWeek'));

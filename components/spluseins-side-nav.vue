@@ -5,27 +5,27 @@
     dark 
     fixed
     app
-    width = "350">
+    width="350">
     <v-list dense>
-      <my-timetables-component/>
-      <favorite-timetables-component/>
-      <all-timetables-component/>
+      <custom-timetables-list/>
+      <favorite-timetables-list/>
+      <general-timetables-list/>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script lang="js">
 
-import AllTimetablesComponent from './all-timetables-component.vue'
-import FavoriteTimetablesComponent from './favorite-timetables-component.vue'
-import MyTimetablesComponent from './my-timetables-component.vue'
+import GeneralTimetablesList from './general-timetables-list.vue'
+import FavoriteTimetablesList from './favorite-timetables-list.vue'
+import CustomTimetablesList from './custom-timetables-list.vue'
 
 export default {
-  name: 'SidenavComponent',
+  name: 'SpluseinsSideNav',
   components: {
-    AllTimetablesComponent,
-    FavoriteTimetablesComponent,
-    MyTimetablesComponent
+    GeneralTimetablesList,
+    FavoriteTimetablesList,
+    CustomTimetablesList
   },
   props: {
     drawer : {

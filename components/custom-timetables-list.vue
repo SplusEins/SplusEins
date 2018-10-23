@@ -24,7 +24,7 @@
 
 <script lang="js">
   export default  {
-    name: 'MyTimetablesComponent',
+    name: 'CustomTimetablesList',
     data() {
       return {
 

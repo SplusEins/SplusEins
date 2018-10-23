@@ -9,16 +9,16 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
       <v-toolbar-title>SPLUSEINS</v-toolbar-title>
     </v-toolbar>
-    <SidenavComponent :drawer = "drawer"/>
+    <spluseins-side-nav :drawer = "drawer"/>
   </div>
 </template>
 
 <script lang="js">
-import SidenavComponent from './side-nav-component'
+import SpluseinsSideNav from './spluseins-side-nav'
 
 export default {
-  name: 'HeaderComponent',
-  components: {SidenavComponent},
+  name: 'SplusEinsHeader',
+  components: {SpluseinsSideNav},
   data () {
     return {
       drawer: false

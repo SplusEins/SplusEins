@@ -22,7 +22,7 @@
 
 <script lang="js">
   export default  {
-    name: 'FooterComponent',
+    name: 'SplusEinsFooter',
     data() {
       return {
 

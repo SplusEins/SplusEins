@@ -10,7 +10,7 @@ const router = express.Router();
 const cache = cacheManager.caching({
   store: fsStore,
   options: {
-    path: '/tmp/spluseins-cache', // TODO make this configurable
+    path: 'spluseins-cache', // TODO make this configurable
     ttl: 60,
     subdirs: true,
   },
