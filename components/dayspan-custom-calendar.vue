@@ -6,163 +6,64 @@
       app 
       flat 
       fixed
-      pt-0
-      pl-10
-      pb-0
-      pr-0
+      pb-3
       fluid
       class="ds-app-calendar-toolbar"
       color="white">
-      <v-layout 
-        row
-        wrap
-        fill-height
-        align-center>
-        <v-flex 
-          xs1
-          height="100%">
-          <v-tooltip
-            v-bind="{setToday, todayDate, calendar}" 
-            name="today" 
-            bottom>
-            <v-btn 
-              slot="activator"
-              :icon="$vuetify.breakpoint.smAndDown"
-              class="ds-skinny-button"
-              outline
-              grey 
-              darken-3
-              @click="setToday">
-              <v-icon>today</v-icon>
-              <span>{{ labels.today }}</span>
+      <v-tooltip
+        v-bind="{setToday, todayDate, calendar}" 
+        name="today" 
+        bottom>
+        <v-btn 
+          slot="activator"
+          :icon="$vuetify.breakpoint.smAndDown"
+          class="ds-skinny-button"
+          depressed
+          color="primary"
+          outline
+          @click="setToday">
+          <v-icon>today</v-icon>
+          <span>{{ labels.today }}</span>
+        </v-btn>
+        <span>{{ todayDate }}</span>
+      </v-tooltip>
 
-            </v-btn>
-            <span>{{ todayDate }}</span>
-          </v-tooltip>
-        </v-flex>
-        <v-flex
-          text-xs-center
-          xs1>
-          <v-tooltip 
-            v-bind="{setToday, todayDate, calendar}" 
-            name="today"
-            bottom>
-            <v-btn 
-              slot="activator"
-              icon 
-              depressed 
-              class="ds-light-forecolor ds-skinny-button"
-              @click="prev" >
-              <v-icon>keyboard_arrow_left</v-icon>
-            </v-btn>
-            <span>{{ prevLabel }}</span>
-          </v-tooltip>
-          <v-tooltip  
-            v-bind="{next, nextLabel, calendar}"
-            name="next" 
-            bottom>
-            <v-btn 
-              slot="activator"
-              icon 
-              depressed
-              class="ds-light-forecolor ds-skinny-button"
-              @click="next">
-              <v-icon>keyboard_arrow_right</v-icon>
-            </v-btn>
-            <span>{{ nextLabel }}</span>
-          </v-tooltip>
-        </v-flex>
-        <v-flex 
-          v-bind="{summary, calendar}"
-          name="summary"
-          xs4>
-          <v-card-text class="ds-light-forecolor ds-summary-text">{{ summary }}</v-card-text>
-        </v-flex>
-      </v-layout>
+      <v-tooltip 
+        v-bind="{setToday, todayDate, calendar}" 
+        name="today"
+        bottom>
+        <v-btn 
+          slot="activator"
+          icon 
+          depressed
+          @click="prev" >
+          <v-icon>keyboard_arrow_left</v-icon>
+        </v-btn>
+        <span>{{ prevLabel }}</span>
+      </v-tooltip>
 
+      <v-tooltip  
+        v-bind="{next, nextLabel, calendar}"
+        name="next" 
+        bottom>
+        <v-btn 
+          slot="activator"
+          icon 
+          depressed
+          @click="next">
+          <v-icon>keyboard_arrow_right</v-icon>
+        </v-btn>
+        <span>{{ nextLabel }}</span>
+      </v-tooltip>
+
+      <span
+        v-bind="{summary, calendar}"
+        name="summary"
+        class = "ds-summary-text">
+        {{ summary }}
+      </span>
     </v-container>
 
-
-    <!-- <v-container 
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
-      app 
-      flat 
-      fixed
-      fluid
-      class="ds-app-calendar-toolbar"
-      color="white">
-
-      <slot  
-        v-bind="{setToday, todayDate, calendar}" 
-        name="today">
-
-        <v-tooltip bottom>
-          <v-btn 
-            slot="activator"
-            :icon="$vuetify.breakpoint.smAndDown"
-            class="ds-skinny-button"
-            outline
-            grey 
-            darken-3
-            @click="setToday">
-            <v-icon>today</v-icon>
-            <span>{{ labels.today }}</span>
-
-          </v-btn>
-          <span>{{ todayDate }}</span>
-        </v-tooltip>
-
-      </slot>
-
-      <slot
-        v-bind="{prev, prevLabel, calendar}"
-        name="prev" >
-
-        <v-tooltip bottom>
-          <v-btn 
-            slot="activator"
-            icon 
-            depressed 
-            class="ds-light-forecolor ds-skinny-button"
-            @click="prev" >
-            <v-icon>keyboard_arrow_left</v-icon>
-          </v-btn>
-          <span>{{ prevLabel }}</span>
-        </v-tooltip>
-
-      </slot>
-
-      <slot
-        v-bind="{next, nextLabel, calendar}"
-        name="next" >
-
-        <v-tooltip bottom>
-          <v-btn 
-            slot="activator"
-            icon 
-            depressed
-            class="ds-light-forecolor ds-skinny-button"
-            @click="next">
-            <v-icon>keyboard_arrow_right</v-icon>
-          </v-btn>
-          <span>{{ nextLabel }}</span>
-        </v-tooltip>
-
-      </slot>
-
-      <slot
-        v-bind="{summary, calendar}"
-        name="summary" >
-
-        <h1 class="ds-light-forecolor">
-          {{ summary }}
-        </h1>
-
-      </slot>
-
-      <v-spacer/>
-
-    </v-container> -->
     <v-container 
       fluid
       fill-height
@@ -291,6 +192,7 @@
 </template>
 
 <script>
+import * as moment from 'moment';
 import { Constants, Sorts, Calendar, Day, Units, Weekday, Month, DaySpan, PatternMap, Time, Op } from 'dayspan';
 
 export default {
@@ -433,7 +335,7 @@ export default {
       let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
       let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
       let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
-      return  firstDayDay + '. ' + monthNames[firstDayMonth-1] + ' - ' + lastDayDay + '. ' + monthNames[lastDayMonth-1]
+      return  firstDayDay + '. ' + monthNames[firstDayMonth-1] + ' – ' + lastDayDay + '. ' + monthNames[lastDayMonth-1]
     },
 
     todayDate()
@@ -537,6 +439,9 @@ export default {
 
     rebuild (aroundDay, force, forceType)
     {
+      console.log('aroundDay',aroundDay)
+      console.log('force',force)
+      console.log('forceType',forceType)
       let type = forceType || this.currentType || this.types[ 2 ];
 
       if (this.isType( type, aroundDay ) && !force)
@@ -577,7 +482,8 @@ export default {
 
     setToday()
     {
-      this.rebuild( this.$dayspan.today );
+      const around = Day.fromMoment(moment().startOf('isoWeek'));
+      this.rebuild( around);
     },
 
     viewDay(day)
@@ -842,6 +748,9 @@ export default {
 <style lang="scss">
 
 .ds-summary-text{
+  position: relative;
+  top: 3px;
+  left: 4px;
   font-size: 20px;
 }
 
