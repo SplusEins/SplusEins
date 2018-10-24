@@ -1,21 +1,14 @@
 <template lang="html">
 
-  <v-list-group>
+  <v-list>
 
-    <v-list-tile slot="activator">
-      <v-list-tile-action>
-        <v-icon>list</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Alle Stundenpläne</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
+    <v-subheader>
+      Alle Pläne
+    </v-subheader>
 
     <v-list-group
       v-for="(semesters, level1Title) in coursesTree"
       :key="level1Title"
-      value="true"
-      sub-group
       no-action>
       <v-list-tile slot="activator">
         <v-list-tile-content>
@@ -70,7 +63,7 @@
 
     </v-list-group>
 
-  </v-list-group>
+  </v-list>
 
 </template>
 

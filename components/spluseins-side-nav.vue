@@ -6,11 +6,11 @@
     fixed
     app
     width="350">
-    <v-list dense>
-      <custom-timetables-list/>
-      <favorite-timetables-list/>
-      <general-timetables-list/>
-    </v-list>
+    <custom-timetables-list />
+    <v-divider />
+    <favorite-timetables-list />
+    <v-divider />
+    <general-timetables-list />
   </v-navigation-drawer>
 </template>
 
