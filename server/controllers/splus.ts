@@ -16,6 +16,13 @@ const cache = cacheManager.caching({
   },
 });
 
+/**
+ * Get all lectures for the given course and week.
+ *
+ * @param course The splus "identifier" query param without "#" prefix.
+ * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
+ * @return ILecture[]
+ */
 router.get('/:course/:week', async (req, res) => {
   const course = req.params.course;
   const week = parseInt(req.params.week);
