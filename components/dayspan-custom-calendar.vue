@@ -439,9 +439,6 @@ export default {
 
     rebuild (aroundDay, force, forceType)
     {
-      console.log('aroundDay',aroundDay)
-      console.log('force',force)
-      console.log('forceType',forceType)
       let type = forceType || this.currentType || this.types[ 2 ];
 
       if (this.isType( type, aroundDay ) && !force)
