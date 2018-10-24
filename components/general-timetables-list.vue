@@ -112,6 +112,7 @@ export default {
     }),
   },
   mounted() {
+    this.currentCourse = this.courses[0];
   },
   methods: {
     courseToFacultyAndDegree(course) {
