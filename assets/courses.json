@@ -89,4 +89,74 @@
   "faculty": "Soziale Arbeit",
   "degree": "Bachelor of Arts",
   "semester": 2
+}, {
+  "id": "SPLUS0ACEC3",
+  "slug": "S-BA-3",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Bachelor of Arts",
+  "semester": 3
+}, {
+  "id": "SPLUS0ACEC4",
+  "slug": "S-BA-4",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Bachelor of Arts",
+  "semester": 4
+}, {
+  "id": "SPLUS01DA64",
+  "slug": "S-BA-4/5",
+  "label": "Soziale Arbeit 4/5",
+  "faculty": "Soziale Arbeit",
+  "degree": "Bachelor of Arts",
+  "semester": 4
+}, {
+  "id": "SPLUS0ACEC5",
+  "slug": "S-BA-5",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Bachelor of Arts",
+  "semester": 5
+}, {
+  "id": "SPLUS0ACEC6",
+  "slug": "S-BA-6",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Bachelor of Arts",
+  "semester": 6
+}, {
+  "id": "SPLUS0ACEC5",
+  "slug": "S-BP",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit TODO",
+  "degree": "Bachelor of Arts",
+  "semester": 7
+}, {
+  "id": "SPLUS213C5F",
+  "slug": "S-MA-PSA-1",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Master of Arts",
+  "semester": 1
+}, {
+  "id": "SPLUS213C60",
+  "slug": "S-MA-PSA-2",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Master of Arts",
+  "semester": 2
+}, {
+  "id": "SPLUS213C61",
+  "slug": "S-MA-PSA-3",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Master of Arts",
+  "semester": 3
+}, {
+  "id": "SPLUS213C62",
+  "slug": "S-MA-PSA-4",
+  "label": "Soziale Arbeit",
+  "faculty": "Soziale Arbeit",
+  "degree": "Master of Arts",
+  "semester": 4
 } ]
