@@ -13,7 +13,13 @@
         text-xs-center
         white--text
         xs12>
-        &copy;2018 — <strong>SplusEins</strong>
+        2018 — 
+        <strong> 
+          SplusEins
+        </strong>
+        — 
+        <spluseins-about/>
+        — Impressum
       </v-flex>
     </v-layout>
   </v-footer>
@@ -21,14 +27,26 @@
 </template>
 
 <script lang="js">
+import SpluseinsAbout from './spluseins-about.vue'
+
 export default  {
-  name: 'SpluseinsFooter',
+  name: 'SplusEinsFooter',
   components: {SpluseinsAbout},
+  data() {
+    return {
+    }
+  },
+  computed: {
+
+  },
+  mounted() {
+
+  },
+  methods: {
+
+  }
 }
 </script>
 
 <style scoped lang="scss">
-  .footer-component {
-
-  }
 </style>
