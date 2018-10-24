@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     events() {
-      const colorsArr = Object.values(colors);
+      const colorsArr = Object.values(colors).slice(0, -1); // exclude black
       return this.getLecturesByWeekAndCourse(
         this.currentWeek,
         this.currentCourse.id
