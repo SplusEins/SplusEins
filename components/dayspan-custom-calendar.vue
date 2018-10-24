@@ -1,11 +1,94 @@
 <template>
   <div class="ds-expand ds-calendar-app">
 
-    <v-container 
+    <v-container
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       app 
       flat 
       fixed
+      pt-0
+      pl-10
+      pb-0
+      pr-0
+      fluid
+      class="ds-app-calendar-toolbar"
+      color="white">
+      <v-layout 
+        row
+        wrap
+        fill-height
+        align-center>
+        <v-flex 
+          xs1
+          height="100%">
+          <v-tooltip
+            v-bind="{setToday, todayDate, calendar}" 
+            name="today" 
+            bottom>
+            <v-btn 
+              slot="activator"
+              :icon="$vuetify.breakpoint.smAndDown"
+              class="ds-skinny-button"
+              outline
+              grey 
+              darken-3
+              @click="setToday">
+              <v-icon>today</v-icon>
+              <span>{{ labels.today }}</span>
+
+            </v-btn>
+            <span>{{ todayDate }}</span>
+          </v-tooltip>
+        </v-flex>
+        <v-flex
+          text-xs-center
+          xs1>
+          <v-tooltip 
+            v-bind="{setToday, todayDate, calendar}" 
+            name="today"
+            bottom>
+            <v-btn 
+              slot="activator"
+              icon 
+              depressed 
+              class="ds-light-forecolor ds-skinny-button"
+              @click="prev" >
+              <v-icon>keyboard_arrow_left</v-icon>
+            </v-btn>
+            <span>{{ prevLabel }}</span>
+          </v-tooltip>
+          <v-tooltip  
+            v-bind="{next, nextLabel, calendar}"
+            name="next" 
+            bottom>
+            <v-btn 
+              slot="activator"
+              icon 
+              depressed
+              class="ds-light-forecolor ds-skinny-button"
+              @click="next">
+              <v-icon>keyboard_arrow_right</v-icon>
+            </v-btn>
+            <span>{{ nextLabel }}</span>
+          </v-tooltip>
+        </v-flex>
+        <v-flex 
+          v-bind="{summary, calendar}"
+          name="summary"
+          xs4>
+          <v-card-text class="ds-light-forecolor ds-summary-text">{{ summary }}</v-card-text>
+        </v-flex>
+      </v-layout>
+
+    </v-container>
+
+
+    <!-- <v-container 
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      app 
+      flat 
+      fixed
+      fluid
       class="ds-app-calendar-toolbar"
       color="white">
 
@@ -79,7 +162,7 @@
 
       <v-spacer/>
 
-    </v-container>
+    </v-container> -->
     <v-container 
       fluid
       fill-height
@@ -757,6 +840,10 @@ export default {
 </script>
 
 <style lang="scss">
+
+.ds-summary-text{
+  font-size: 20px;
+}
 
 .ds-app-calendar-toolbar {
 
