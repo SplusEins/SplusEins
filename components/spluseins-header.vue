@@ -17,7 +17,7 @@
 import SpluseinsSideNav from './spluseins-side-nav'
 
 export default {
-  name: 'SplusEinsHeader',
+  name: 'SpluseinsHeader',
   components: {SpluseinsSideNav},
   data () {
     return {
