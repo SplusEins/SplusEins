@@ -5,7 +5,7 @@
     dark 
     fixed
     app
-    width="350">
+    width="360">
     <custom-timetables-list />
     <v-divider />
     <favorite-timetables-list />
