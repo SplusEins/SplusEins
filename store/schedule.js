@@ -1,5 +1,5 @@
 export const state = () => ({
-  course: {},
+  schedule: {},
 });
 
 export const mutations = {
