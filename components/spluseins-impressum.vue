@@ -96,7 +96,7 @@
  export default {
    name: 'SpluseinsImpressum',
    props: {
-     active : {
+     active: {
        type: Boolean,
        default: false
      }
