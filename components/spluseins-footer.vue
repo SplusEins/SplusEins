@@ -21,22 +21,9 @@
 </template>
 
 <script lang="js">
-  export default  {
-    name: 'SplusEinsFooter',
-    data() {
-      return {
-
-      }
-    },
-    computed: {
-
-    },
-    mounted() {
-
-    },
-    methods: {
-
-    }
+export default  {
+  name: 'SpluseinsFooter',
+  components: {SpluseinsAbout},
 }
 </script>
 
