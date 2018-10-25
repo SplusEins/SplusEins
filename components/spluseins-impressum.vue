@@ -29,13 +29,13 @@
 
           <p><b>Vertreten durch:</b></p>
 
-          <p>Finn Kaiser</p>
+          <p class="Teammitlgied1">$Teammitglied1</p>
 
-          <p>Jan Fasel</p>
+          <p class="Teammitlgied2">$Teammitglied2</p>
 
-          <p>Fabain Pfütsch</p>
+          <p class="Teammitlgied3">$Teammitglied3</p>
 
-          <p>Timo Haumann</p>
+          <p class="Teammitlgied4">$Teammitglied4</p>
 
           <p><b>Kontakt:</b></p>
 
