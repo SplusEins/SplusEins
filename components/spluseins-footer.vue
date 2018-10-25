@@ -13,7 +13,7 @@
         text-xs-center
         white--text
         xs12>
-        &copy;2018 — <strong>sPlusEins</strong>
+        &copy;2018 — <strong>SplusEins</strong>
       </v-flex>
     </v-layout>
   </v-footer>
