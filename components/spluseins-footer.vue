@@ -14,11 +14,7 @@
         white--text
         xs12>
         &copy;2018 — <strong>sPlusEins</strong> —       
-        <strong 
-          class="impressum"
-          @click="activeImpressum = true">
-          [Impressum]
-        </strong>
+        <spluseins-impressum/>
       </v-flex>
     </v-layout>
     <spluseins-impressum
