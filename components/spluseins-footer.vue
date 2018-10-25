@@ -32,7 +32,7 @@ import SpluseinsImpressum from './spluseins-impressum.vue'
     components: {SpluseinsImpressum},
     data() {
       return {
-        activeImpressum: false
+        impressumActive: false
       }
     },
     computed: {
