@@ -3,7 +3,7 @@ export const state = () => ({
 });
 
 export const mutations = {
-  setCourse(state, course) {
-    state.course = course;
+  setSchedule(state, schedule) {
+    state.schedule = schedule;
   }
 };
