@@ -14,9 +14,6 @@
         <v-list-tile-content>
           <v-list-tile-title>{{ level1Title }}</v-list-tile-title>
         </v-list-tile-content>
-        <v-list-tile-action v-if="currentCourseLevel1Title == level1Title">
-          <v-icon>check</v-icon>
-        </v-list-tile-action>
       </v-list-tile>
 
       <template 
