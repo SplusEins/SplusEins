@@ -109,7 +109,7 @@ export default {
     }),
   },
   mounted() {
-    this.currentCourse = this.courses[0];
+    this.currentSchedule = this.schedules[0];
   },
   methods: {
     scheduleToFacultyAndDegree(schedule) {
