@@ -52,9 +52,9 @@ export default {
   computed: {
     events() {
       const colorsArr = Object.values(colors).slice(0, -1); // exclude black
-      return this.getLecturesByWeekAndCourse(
+      return this.getLecturesByWeekAndSchedule(
         this.currentWeek,
-        this.currentCourse.id
+        this.currentSchedule.id
       ).map((lecture) => {
         const beginHours = Math.floor(lecture.begin);
         const start = this.calendar.start.date.clone()
@@ -84,12 +84,12 @@ export default {
       });
     },
     ...mapState({
-      currentCourse: state => state.courses.course,
+      currentSchedule: state => state.schedule.schedule,
       currentWeek: state => state.calendar.week,
-      courses: state => state.splus.courses,
+      schedules: state => state.splus.schedules,
     }),
     ...mapGetters({
-      getLecturesByWeekAndCourse: 'splus/getLecturesByWeekAndCourse',
+      getLecturesByWeekAndSchedule: 'splus/getLecturesByWeekAndSchedule',
     }),
   },
   watch: {
@@ -111,14 +111,14 @@ export default {
       this.setWeek(calendar.start.date.isoWeek());
     },
     async refresh() {
-      if (this.getLecturesByWeekAndCourse(
+      if (this.getLecturesByWeekAndSchedule(
         this.currentWeek,
-        this.currentCourse.id).length > 0) {
+        this.currentSchedule.id).length > 0) {
         return;
       }
       this.loading = true;
       await this.loadLectures({
-        course: this.currentCourse.id,
+        schedule: this.currentSchedule.id,
         week: this.currentWeek
       });
       this.loading = false;

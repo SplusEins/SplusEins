@@ -17,23 +17,23 @@ const cache = cacheManager.caching({
 });
 
 /**
- * Get all lectures for the given course and week.
+ * Get all lectures for the given schedule and week.
  *
- * @param course The splus "identifier" query param without "#" prefix.
+ * @param schedule The splus "identifier" query param without "#" prefix.
  * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
  * @return ILecture[]
  */
-router.get('/:course/:week', async (req, res) => {
-  const course = req.params.course;
+router.get('/:schedule/:week', async (req, res) => {
+  const schedule = req.params.schedule;
   const week = parseInt(req.params.week);
-  const key = `${course}-${week}`;
+  const key = `${schedule}-${week}`;
 
   const data = await cache.wrap(key, async () => {
     console.log(`cache miss for key ${key}`);
-    return await SplusApi.getData('#' + course, week);
+    return await SplusApi.getData('#' + schedule, week);
   }, { ttl: 600 });
-  const id = (lecture) => sha256(JSON.stringify({ lecture, course, week }));
-  const result = data.map((lecture) => ({ ...lecture, course, week, id: id(lecture) }));
+  const id = (lecture) => sha256(JSON.stringify({ lecture, schedule, week }));
+  const result = data.map((lecture) => ({ ...lecture, schedule, week, id: id(lecture) }));
 
   res.json(result);
 });
