@@ -13,19 +13,30 @@
         text-xs-center
         white--text
         xs12>
-        &copy;2018 — <strong>sPlusEins</strong>
+        &copy;2018 — <strong>sPlusEins</strong> —       
+        <strong 
+          class="impressum"
+          @click="activeImpressum = true">
+          [Impressum]
+        </strong>
       </v-flex>
     </v-layout>
+    <spluseins-impressum
+      :active="activeImpressum"
+      class="impressum"
+      @close="activeImpressum = false"/>
   </v-footer>
 
 </template>
 
 <script lang="js">
+import SpluseinsImpressum from './spluseins-impressum.vue'
   export default  {
     name: 'SplusEinsFooter',
+    components: {SpluseinsImpressum},
     data() {
       return {
-
+        activeImpressum: false
       }
     },
     computed: {
@@ -41,7 +52,7 @@
 </script>
 
 <style scoped lang="scss">
-  .footer-component {
-
+  .impressum {
+    cursor: pointer;
   }
 </style>
