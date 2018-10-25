@@ -2,8 +2,8 @@
 
   <dayspan-custom-calendar
     :calendar="calendar"
-    :types="types"
     :read-only="true"
+    :types="calendarTypes"
     @change="calendarChanged"/>
 
 </template>
@@ -27,25 +27,22 @@ export default {
     DayspanCustomCalendar
   },
   data() {
-    const around = Day.fromMoment(moment().startOf('isoWeek'));
-    const calendarWeekType = {
+    const calendarTypeWeek = {
       id: 'W',
       label: 'Woche',
       shortcut: 'W',
-      type: Units.DAY,
-      size: 7,
-      around,
-      focus: 0,
+      type: Units.WEEK,
+      size: 1,
+      focus: 0.4999,
       repeat: true,
       listTimes: true,
       updateRows: true,
-      schedule: false
+      schedule: false,
     };
-    const calendar = Calendar.days(7, around, 0);
+
     return {
-      calendar,
-      types: [ calendarWeekType ],
-      aboutDialogOpen: false,
+      calendar: Calendar.weeks(),
+      calendarTypes: [calendarTypeWeek],
       loading: false,
     };
   },

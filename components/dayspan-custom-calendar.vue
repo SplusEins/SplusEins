@@ -192,7 +192,6 @@
 </template>
 
 <script>
-import * as moment from 'moment';
 import { Constants, Sorts, Calendar, Day, Units, Weekday, Month, DaySpan, PatternMap, Time, Op } from 'dayspan';
 
 export default {
@@ -479,8 +478,7 @@ export default {
 
     setToday()
     {
-      const around = Day.fromMoment(moment().startOf('isoWeek'));
-      this.rebuild( around);
+      this.rebuild(this.$dayspan.today);
     },
 
     viewDay(day)
