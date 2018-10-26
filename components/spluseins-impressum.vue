@@ -29,13 +29,13 @@
 
           <p><b>Vertreten durch:</b></p>
 
-          <p class="Teammitlgied1">$Teammitglied1</p>
+          <p class="Teammitglied1">$Teammitglied1</p>
 
-          <p class="Teammitlgied2">$Teammitglied2</p>
+          <p class="Teammitglied2">$Teammitglied2</p>
 
-          <p class="Teammitlgied3">$Teammitglied3</p>
+          <p class="Teammitglied3">$Teammitglied3</p>
 
-          <p class="Teammitlgied4">$Teammitglied4</p>
+          <p class="Teammitglied4">$Teammitglied4</p>
 
           <p><b>Kontakt:</b></p>
 
