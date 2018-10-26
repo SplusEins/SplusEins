@@ -104,11 +104,16 @@
 
 
  <style scoped lang="scss">
+@import '../assets/style/colors.scss';
+
  a{
    color: white;
  }
 
  .impressum:hover{
-   color: #FFC107;
+   color: $amber;
  }
+ .impressum {
+  cursor: pointer;
+}
  </style> 
