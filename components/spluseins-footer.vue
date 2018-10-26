@@ -18,9 +18,9 @@
       </v-flex>
     </v-layout>
     <spluseins-impressum
-      :active="activeImpressum"
+      :active="impressumActive"
       class="impressum"
-      @close="activeImpressum = false"/>
+      @close="impressumActive = false"/>
   </v-footer>
 
 </template>
