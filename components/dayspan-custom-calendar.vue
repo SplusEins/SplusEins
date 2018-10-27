@@ -134,6 +134,7 @@
           :calendar="calendar"
           :read-only="readOnly"
           v-bind="{$scopedSlots}"
+          app
           v-on="$listeners"
           @saved="eventFinish"
           @actioned="eventFinish"
@@ -762,6 +763,38 @@ export default {
 </script>
 
 <style lang="scss">
+
+.ds-week-date{
+  cursor: default !important;
+}
+
+.ds-week-date:hover{
+  text-decoration: none !important;
+}
+
+@media screen and (max-width: 500px) {
+  .ds-week-date{
+    font-size: 12px !important;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .ds-week-date{
+    font-size: 18px !important;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .ds-week-date{
+    font-size: 22px !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .ds-week-date{
+    font-size: 40px !important;
+  }
+}
 
 .ds-summary-text{
   position: relative;
