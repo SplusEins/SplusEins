@@ -134,7 +134,6 @@
           :calendar="calendar"
           :read-only="readOnly"
           v-bind="{$scopedSlots}"
-          app
           v-on="$listeners"
           @saved="eventFinish"
           @actioned="eventFinish"
