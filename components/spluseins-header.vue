@@ -9,7 +9,7 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
       <v-toolbar-title>SPLUSEINS</v-toolbar-title>
     </v-toolbar>
-    <spluseins-side-nav :drawer = "drawer"/>
+    <spluseins-side-nav :drawer.sync = "drawer"/>
   </div>
 </template>
 
