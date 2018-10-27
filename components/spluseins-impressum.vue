@@ -90,14 +90,9 @@
 <script>
 export default {
   name: 'SpluseinsImpressum',
-  props: {
-    active: {
-      type: Boolean,
-      default: false
-    }
-  },
   data () {
     return {
+      active: false
     }
   },
   // methods:{

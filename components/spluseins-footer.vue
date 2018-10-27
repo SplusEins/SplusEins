@@ -35,7 +35,6 @@ import SpluseinsAbout from './spluseins-about.vue'
     components: {SpluseinsImpressum,SpluseinsAbout},
     data() {
       return {
-        impressumActive: false
       }
     },
     computed: {
