@@ -1,6 +1,6 @@
 const path = require('path');
 
-const serverConfig = {
+const serverlessConfig = {
   mode: process.env.NODE_ENV,
   target: 'node',
   devtool: false,
@@ -37,4 +37,28 @@ const serverConfig = {
   },
 };
 
-module.exports = [ serverConfig ];
+const serverConfig = {
+  mode: process.env.NODE_ENV,
+  target: 'node',
+  entry: {
+    server: './server/index.ts',
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist/server'),
+  },
+  module: {
+    rules: [ {
+      test: /\.ts$/,
+      use: [
+        { loader: 'ts-loader' },
+      ],
+      exclude: /node_modules/
+    } ]
+  },
+  resolve: {
+    extensions: [ '.ts', '.js' ],
+  },
+};
+
+module.exports = [ serverlessConfig, serverConfig ];
