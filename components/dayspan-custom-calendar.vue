@@ -773,7 +773,7 @@ export default {
 
 @media screen and (max-width: 500px) {
   .ds-week-date{
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
 }
 
