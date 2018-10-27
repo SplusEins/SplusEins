@@ -16,14 +16,15 @@
         bottom>
         <v-btn 
           slot="activator"
-          :icon="$vuetify.breakpoint.smAndDown"
-          class="ds-skinny-button"
+          :icon="$vuetify.breakpoint.xs"
           depressed
           color="primary"
           outline
           @click="setToday">
-          <v-icon>today</v-icon>
-          <span>{{ labels.today }}</span>
+          <no-ssr>
+            <span v-if="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
+            <v-icon v-else>{{ labels.todayIcon }}</v-icon>
+          </no-ssr>
         </v-btn>
         <span>{{ todayDate }}</span>
       </v-tooltip>
@@ -57,11 +58,20 @@
       </v-tooltip>
 
       <span
+        v-if="$vuetify.breakpoint.smAndUp"
         v-bind="{summary, calendar}"
-        name="summary"
+        name="extendedDateSummary"
         class = "ds-summary-text">
-        {{ summary }}
+        {{ summary(false) }}
       </span>
+      <span
+        v-else
+        v-bind="{summary, calendar}"
+        name="shortDateSummary"
+        class = "ds-summary-text">
+        {{ summary(true) }}
+      </span>
+    
     </v-container>
 
     <v-container 
@@ -317,27 +327,6 @@ export default {
       }
     },
 
-    summary()
-    {
-      var monthNames = [
-        "Januar", "Februar", "März",
-        "April", "Mai", "Juni", "Juli",
-        "August", "September", "Oktober",
-        "November", "Dezember"
-      ];
-      let firstDayOfWeekString = JSON.stringify(this.calendar.days[0])
-      let lastDayOfWeekString =  JSON.stringify(this.calendar.days[6])
-      let firstDayOfWeekSplitted = firstDayOfWeekString.split('-')
-      let lastDayOfWeekSplitted = lastDayOfWeekString.split('-')
-      let firstDayYear = parseInt(firstDayOfWeekSplitted[0].split('"')[1])
-      let firstDayMonth = parseInt(firstDayOfWeekSplitted[1])
-      let firstDayDay = parseInt(firstDayOfWeekSplitted[2].split('T')[0])+1
-      let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
-      let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
-      let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
-      return  firstDayDay + '. ' + monthNames[firstDayMonth-1] + ' – ' + lastDayDay + '. ' + monthNames[lastDayMonth-1]
-    },
-
     todayDate()
     {
       let today = new Date();
@@ -409,6 +398,36 @@ export default {
 
   methods:
   {
+    summary(short)
+    {
+      var monthNames = [
+        "Januar", "Februar", "März",
+        "April", "Mai", "Juni", "Juli",
+        "August", "September", "Oktober",
+        "November", "Dezember"
+      ];
+      let firstDayOfWeekString = JSON.stringify(this.calendar.days[0])
+      let lastDayOfWeekString =  JSON.stringify(this.calendar.days[6])
+      let firstDayOfWeekSplitted = firstDayOfWeekString.split('-')
+      let lastDayOfWeekSplitted = lastDayOfWeekString.split('-')
+      let firstDayYear = parseInt(firstDayOfWeekSplitted[0].split('"')[1])
+      let firstDayMonth = parseInt(firstDayOfWeekSplitted[1])
+      let firstDayDay = parseInt(firstDayOfWeekSplitted[2].split('T')[0])+1
+      let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
+      let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
+      let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
+      if(short){
+        return this.minTwoDigits(firstDayDay) + '. ' + this.minTwoDigits(firstDayMonth) 
+        + ' – ' + this.minTwoDigits(lastDayDay) + '. ' + this.minTwoDigits(lastDayMonth)
+      }else{
+        return this.minTwoDigits(firstDayDay) + '. ' + monthNames[firstDayMonth-1] + ' – ' + this.minTwoDigits(lastDayDay)  + '. ' + monthNames[lastDayMonth-1]
+      }
+    },
+
+    minTwoDigits(n) {
+      return (n < 10 ? '0' : '') + n;
+    },
+
     setState(state)
     {
       state.eventSorter = state.listTimes
@@ -743,6 +762,38 @@ export default {
 </script>
 
 <style lang="scss">
+
+.ds-week-date{
+  cursor: default !important;
+}
+
+.ds-week-date:hover{
+  text-decoration: none !important;
+}
+
+@media screen and (max-width: 500px) {
+  .ds-week-date{
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .ds-week-date{
+    font-size: 18px !important;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .ds-week-date{
+    font-size: 22px !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .ds-week-date{
+    font-size: 40px !important;
+  }
+}
 
 .ds-summary-text{
   position: relative;
