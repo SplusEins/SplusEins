@@ -8,6 +8,16 @@
       app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
       <v-toolbar-title>SPLUSEINS</v-toolbar-title>
+      <v-flex class="text-xs-center">
+        <a 
+          href="https://www.spluseins.de" 
+          target="_blank">
+          <img 
+            src="../assets/img/mainLogo.png" 
+            width="50px"
+          >
+        </a>
+      </v-flex>
     </v-toolbar>
     <spluseins-side-nav :drawer = "drawer"/>
   </div>
