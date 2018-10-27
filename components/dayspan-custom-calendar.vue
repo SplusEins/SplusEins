@@ -17,13 +17,14 @@
         <v-btn 
           slot="activator"
           :icon="$vuetify.breakpoint.xs"
-          class="ds-skinny-button"
           depressed
           color="primary"
           outline
           @click="setToday">
-          <span v-if="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
-          <v-icon v-else>{{ labels.todayIcon }}</v-icon>
+          <no-ssr>
+            <span v-if="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
+            <v-icon v-else>{{ labels.todayIcon }}</v-icon>
+          </no-ssr>
         </v-btn>
         <span>{{ todayDate }}</span>
       </v-tooltip>
