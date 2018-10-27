@@ -16,14 +16,14 @@
         bottom>
         <v-btn 
           slot="activator"
-          :icon="$vuetify.breakpoint.smAndDown"
+          :icon="$vuetify.breakpoint.xs"
           class="ds-skinny-button"
           depressed
           color="primary"
           outline
           @click="setToday">
-          <v-icon>today</v-icon>
-          <span>{{ labels.today }}</span>
+          <span v-if="$vuetify.breakpoint.smAndUp">Heute</span>
+          <v-icon v-else>{{ labels.todayIcon }}</v-icon>
         </v-btn>
         <span>{{ todayDate }}</span>
       </v-tooltip>
@@ -57,11 +57,20 @@
       </v-tooltip>
 
       <span
+        v-if="$vuetify.breakpoint.smAndUp"
         v-bind="{summary, calendar}"
-        name="summary"
+        name="extendedDateSummary"
         class = "ds-summary-text">
-        {{ summary }}
+        {{ summary(false) }}
       </span>
+      <span
+        v-else
+        v-bind="{summary, calendar}"
+        name="shortDateSummary"
+        class = "ds-summary-text">
+        {{ summary(true) }}
+      </span>
+    
     </v-container>
 
     <v-container 
@@ -317,27 +326,6 @@ export default {
       }
     },
 
-    summary()
-    {
-      var monthNames = [
-        "Januar", "Februar", "März",
-        "April", "Mai", "Juni", "Juli",
-        "August", "September", "Oktober",
-        "November", "Dezember"
-      ];
-      let firstDayOfWeekString = JSON.stringify(this.calendar.days[0])
-      let lastDayOfWeekString =  JSON.stringify(this.calendar.days[6])
-      let firstDayOfWeekSplitted = firstDayOfWeekString.split('-')
-      let lastDayOfWeekSplitted = lastDayOfWeekString.split('-')
-      let firstDayYear = parseInt(firstDayOfWeekSplitted[0].split('"')[1])
-      let firstDayMonth = parseInt(firstDayOfWeekSplitted[1])
-      let firstDayDay = parseInt(firstDayOfWeekSplitted[2].split('T')[0])+1
-      let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
-      let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
-      let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
-      return  firstDayDay + '. ' + monthNames[firstDayMonth-1] + ' – ' + lastDayDay + '. ' + monthNames[lastDayMonth-1]
-    },
-
     todayDate()
     {
       let today = new Date();
@@ -409,6 +397,36 @@ export default {
 
   methods:
   {
+    summary(short)
+    {
+      var monthNames = [
+        "Januar", "Februar", "März",
+        "April", "Mai", "Juni", "Juli",
+        "August", "September", "Oktober",
+        "November", "Dezember"
+      ];
+      let firstDayOfWeekString = JSON.stringify(this.calendar.days[0])
+      let lastDayOfWeekString =  JSON.stringify(this.calendar.days[6])
+      let firstDayOfWeekSplitted = firstDayOfWeekString.split('-')
+      let lastDayOfWeekSplitted = lastDayOfWeekString.split('-')
+      let firstDayYear = parseInt(firstDayOfWeekSplitted[0].split('"')[1])
+      let firstDayMonth = parseInt(firstDayOfWeekSplitted[1])
+      let firstDayDay = parseInt(firstDayOfWeekSplitted[2].split('T')[0])+1
+      let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
+      let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
+      let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
+      if(short){
+        return this.minTwoDigits(firstDayDay) + '. ' + this.minTwoDigits(firstDayMonth-1) 
+        + ' – ' + this.minTwoDigits(lastDayDay) + '. ' + this.minTwoDigits(lastDayMonth-1)
+      }else{
+        return this.minTwoDigits(firstDayDay) + '. ' + monthNames[firstDayMonth-1] + ' – ' + this.minTwoDigits(lastDayDay)  + '. ' + monthNames[lastDayMonth-1]
+      }
+    },
+
+    minTwoDigits(n) {
+      return (n < 10 ? '0' : '') + n;
+    },
+
     setState(state)
     {
       state.eventSorter = state.listTimes
