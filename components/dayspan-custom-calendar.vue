@@ -22,7 +22,7 @@
           color="primary"
           outline
           @click="setToday">
-          <span v-if="$vuetify.breakpoint.smAndUp">Heute</span>
+          <span v-if="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
           <v-icon v-else>{{ labels.todayIcon }}</v-icon>
         </v-btn>
         <span>{{ todayDate }}</span>
