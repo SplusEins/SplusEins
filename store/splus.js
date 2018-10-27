@@ -1,14 +1,14 @@
-import COURSES from '~/assets/courses.json';
+import SCHEDULES from '~/assets/schedules.json';
 
 export const state = () => ({
   lectures: [],
-  courses: COURSES,
+  schedules: SCHEDULES,
 });
 
 export const getters = {
-  getLecturesByWeekAndCourse: (state) => (week, course) => {
+  getLecturesByWeekAndSchedule: (state) => (week, schedule) => {
     return state.lectures.filter((lecture) =>
-      lecture.week == week && lecture.course == course);
+      lecture.week == week && lecture.schedule == schedule);
   },
 };
 
@@ -21,8 +21,8 @@ export const mutations = {
 };
 
 export const actions = {
-  async load({ state, commit }, { course, week }) {
-    const response = await this.$axios.get(`/api/splus/${course}/${week}`);
+  async load({ state, commit }, { schedule, week }) {
+    const response = await this.$axios.get(`/api/splus/${schedule}/${week}`);
     commit('addLectures', response.data);
   },
 };

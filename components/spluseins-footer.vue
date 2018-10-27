@@ -13,7 +13,13 @@
         text-xs-center
         white--text
         xs12>
-        &copy;2018 — <strong>sPlusEins</strong> —       
+        2018 — 
+        <strong> 
+          SplusEins
+        </strong>
+        — 
+        <spluseins-about/>
+        — 
         <spluseins-impressum/>
       </v-flex>
     </v-layout>
@@ -23,9 +29,10 @@
 
 <script lang="js">
 import SpluseinsImpressum from './spluseins-impressum.vue'
+import SpluseinsAbout from './spluseins-about.vue'
   export default  {
     name: 'SplusEinsFooter',
-    components: {SpluseinsImpressum},
+    components: {SpluseinsImpressum,SpluseinsAbout},
     data() {
       return {
         impressumActive: false
@@ -33,16 +40,15 @@ import SpluseinsImpressum from './spluseins-impressum.vue'
     },
     computed: {
 
-    },
-    mounted() {
+  },
+  mounted() {
 
-    },
-    methods: {
+  },
+  methods: {
 
-    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
-
 </style>

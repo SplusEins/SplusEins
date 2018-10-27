@@ -1,85 +1,69 @@
 <template>
   <div class="ds-expand ds-calendar-app">
 
-    <v-container 
+    <v-container
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       app 
       flat 
       fixed
+      pb-3
+      fluid
       class="ds-app-calendar-toolbar"
       color="white">
-
-      <slot  
+      <v-tooltip
         v-bind="{setToday, todayDate, calendar}" 
-        name="today">
+        name="today" 
+        bottom>
+        <v-btn 
+          slot="activator"
+          :icon="$vuetify.breakpoint.smAndDown"
+          class="ds-skinny-button"
+          depressed
+          color="primary"
+          outline
+          @click="setToday">
+          <v-icon>today</v-icon>
+          <span>{{ labels.today }}</span>
+        </v-btn>
+        <span>{{ todayDate }}</span>
+      </v-tooltip>
 
-        <v-tooltip bottom>
-          <v-btn 
-            slot="activator"
-            :icon="$vuetify.breakpoint.smAndDown"
-            class="ds-skinny-button"
-            outline
-            grey 
-            darken-3
-            @click="setToday">
-            <v-icon>today</v-icon>
-            <span>{{ labels.today }}</span>
+      <v-tooltip 
+        v-bind="{setToday, todayDate, calendar}" 
+        name="today"
+        bottom>
+        <v-btn 
+          slot="activator"
+          icon 
+          depressed
+          @click="prev" >
+          <v-icon>keyboard_arrow_left</v-icon>
+        </v-btn>
+        <span>{{ prevLabel }}</span>
+      </v-tooltip>
 
-          </v-btn>
-          <span>{{ todayDate }}</span>
-        </v-tooltip>
-
-      </slot>
-
-      <slot
-        v-bind="{prev, prevLabel, calendar}"
-        name="prev" >
-
-        <v-tooltip bottom>
-          <v-btn 
-            slot="activator"
-            icon 
-            depressed 
-            class="ds-light-forecolor ds-skinny-button"
-            @click="prev" >
-            <v-icon>keyboard_arrow_left</v-icon>
-          </v-btn>
-          <span>{{ prevLabel }}</span>
-        </v-tooltip>
-
-      </slot>
-
-      <slot
+      <v-tooltip  
         v-bind="{next, nextLabel, calendar}"
-        name="next" >
+        name="next" 
+        bottom>
+        <v-btn 
+          slot="activator"
+          icon 
+          depressed
+          @click="next">
+          <v-icon>keyboard_arrow_right</v-icon>
+        </v-btn>
+        <span>{{ nextLabel }}</span>
+      </v-tooltip>
 
-        <v-tooltip bottom>
-          <v-btn 
-            slot="activator"
-            icon 
-            depressed
-            class="ds-light-forecolor ds-skinny-button"
-            @click="next">
-            <v-icon>keyboard_arrow_right</v-icon>
-          </v-btn>
-          <span>{{ nextLabel }}</span>
-        </v-tooltip>
-
-      </slot>
-
-      <slot
+      <span
         v-bind="{summary, calendar}"
-        name="summary" >
-
-        <h1 class="ds-light-forecolor">
-          {{ summary }}
-        </h1>
-
-      </slot>
-
-      <v-spacer/>
-
+        name="summary"
+        class = "ds-summary-text">
+        {{ summary }}
+      </span>
     </v-container>
+
     <v-container 
       fluid
       fill-height
@@ -208,6 +192,7 @@
 </template>
 
 <script>
+import * as moment from 'moment';
 import { Constants, Sorts, Calendar, Day, Units, Weekday, Month, DaySpan, PatternMap, Time, Op } from 'dayspan';
 
 export default {
@@ -350,7 +335,7 @@ export default {
       let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
       let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
       let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
-      return  firstDayDay + '. ' + monthNames[firstDayMonth-1] + ' - ' + lastDayDay + '. ' + monthNames[lastDayMonth-1]
+      return  firstDayDay + '. ' + monthNames[firstDayMonth-1] + ' – ' + lastDayDay + '. ' + monthNames[lastDayMonth-1]
     },
 
     todayDate()
@@ -494,7 +479,8 @@ export default {
 
     setToday()
     {
-      this.rebuild( this.$dayspan.today );
+      const around = Day.fromMoment(moment().startOf('isoWeek'));
+      this.rebuild( around);
     },
 
     viewDay(day)
@@ -757,6 +743,13 @@ export default {
 </script>
 
 <style lang="scss">
+
+.ds-summary-text{
+  position: relative;
+  top: 3px;
+  left: 4px;
+  font-size: 20px;
+}
 
 .ds-app-calendar-toolbar {
 
