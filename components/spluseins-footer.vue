@@ -17,10 +17,6 @@
         <spluseins-impressum/>
       </v-flex>
     </v-layout>
-    <spluseins-impressum
-      :active="impressumActive"
-      class="impressum"
-      @close="impressumActive = false"/>
   </v-footer>
 
 </template>
@@ -48,7 +44,5 @@ import SpluseinsImpressum from './spluseins-impressum.vue'
 </script>
 
 <style scoped lang="scss">
-  .impressum {
-    cursor: pointer;
-  }
+
 </style>
