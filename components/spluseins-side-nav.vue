@@ -1,11 +1,11 @@
 <template lang="html">
   <v-navigation-drawer
     :clipped="true"
-    v-model="drawer"
+    v-model="drawerProp"
     dark 
     fixed
     app
-    width="360">
+    width="350">
     <custom-timetables-list />
     <v-divider />
     <favorite-timetables-list />
@@ -35,10 +35,13 @@ export default {
   },
   data () {
     return {
-      
     }
   },
   computed: {
+    drawerProp: {
+      get() { return this.drawer},
+      set(val) { this.$emit('update:drawer', val)}
+   }
   },
   mounted () {
 
