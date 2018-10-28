@@ -19,7 +19,8 @@
         </strong>
         — 
         <spluseins-about/>
-        — Impressum
+        — 
+        <spluseins-impressum/>
       </v-flex>
     </v-layout>
   </v-footer>
@@ -27,16 +28,16 @@
 </template>
 
 <script lang="js">
+import SpluseinsImpressum from './spluseins-impressum.vue'
 import SpluseinsAbout from './spluseins-about.vue'
-
-export default  {
-  name: 'SplusEinsFooter',
-  components: {SpluseinsAbout},
-  data() {
-    return {
-    }
-  },
-  computed: {
+  export default  {
+    name: 'SplusEinsFooter',
+    components: {SpluseinsImpressum,SpluseinsAbout},
+    data() {
+      return {
+      }
+    },
+    computed: {
 
   },
   mounted() {
