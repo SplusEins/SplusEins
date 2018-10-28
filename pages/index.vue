@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <spluseins-header/>
-    <v-content>
+    <v-content fill-height>
       <spluseins-calendar/>
     </v-content>
     <spluseins-footer/>
