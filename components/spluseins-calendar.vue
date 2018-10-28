@@ -42,7 +42,7 @@ export default {
    const calendar = Calendar.days(7, startOfWeek, 0);
 
     // computed properties are not available during client rendering yet, access the getter directly
-    calendar.setEvents(this.$store.getters['splus/getLecturesAsEvents']);
+    calendar.setEvents(this.$store.getters['splus/getLecturesAsEvents'](this.$vuetify.theme.accent));
 
     return {
       calendar,
@@ -50,12 +50,15 @@ export default {
     };
   },
   computed: {
+    events() {
+      return this.getLecturesAsEvents(this.$vuetify.theme.accent);
+    },
     ...mapState({
       currentSchedule: state => state.splus.schedule,
       currentWeek: state => state.splus.week,
     }),
     ...mapGetters({
-      events: 'splus/getLecturesAsEvents',
+      getLecturesAsEvents: 'splus/getLecturesAsEvents',
     }),
   },
   watch: {

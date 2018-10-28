@@ -28,7 +28,7 @@
               <v-list-tile-title>{{ semester }}. Semester</v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action v-if="currentSchedule.semester == semester && currentScheduleLevel1Title == level1Title">
-              <v-icon>check</v-icon>
+              <v-icon color="primary">check</v-icon>
             </v-list-tile-action>
           </v-list-tile>
 
@@ -40,7 +40,7 @@
               <v-list-tile-title value="true">{{ schedule.label }}</v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action v-if="currentSchedule == schedule">
-              <v-icon>check</v-icon>
+              <v-icon color="primary">check</v-icon>
             </v-list-tile-action>
           </v-list-tile>
         </v-list-group>

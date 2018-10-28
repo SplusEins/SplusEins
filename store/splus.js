@@ -35,13 +35,12 @@ export const getters = {
    * @return The lectures as timestamp-aware dayspan calendar event inputs.
    * @see https://clickermonkey.github.io/dayspan/docs/interfaces/eventinput.html
    */
-  getLecturesAsEvents: (state) => {
+  getLecturesAsEvents: (state) => (color) => {
     if (state.lectures[state.week] == undefined) {
       return [];
     }
 
     const colorsArr = Object.values(colors).slice(0, -1); // exclude black
-
     return state.lectures[state.week].map((lecture) => {
       const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0]) + Math.pow(2, 31);
       const color = colorsArr[hashOfFirstWordInTitle % colorsArr.length].lighten1;
@@ -66,7 +65,7 @@ export const getters = {
       return {
         data: {
           title: lecture.title,
-          color,
+          color, // needs to be a hex string
           description: `${lecture.lecturer} ${lecture.room} ${lecture.info}`,
           location: lecture.room,
         },
