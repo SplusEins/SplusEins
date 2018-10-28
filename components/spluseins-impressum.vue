@@ -4,16 +4,14 @@
       v-model="active"
       width="800"
     >
-      <span 
+      <a
         slot="activator"
-        class="impressum"
-        white--text
-      >
+        class="white--text">
         Impressum
-      </span>
+      </a>
       <v-card>
         <v-card-title
-          class="headline black white--text"
+          class="headline primary"
           primary-title
         >
           Impressum
@@ -75,8 +73,7 @@
           <v-btn
             flat
             depressed
-            white
-            outline
+            color="primary"
             @click="active = false"
           >
             Schließen
@@ -106,15 +103,4 @@ export default {
 
 
 <style scoped lang="scss">
-@import '../assets/style/colors.scss';
-a{
-  color: white;
-}
-
-.impressum:hover{
-  color: $amber;
-}
-.impressum {
-  cursor: pointer;
-}
 </style> 
