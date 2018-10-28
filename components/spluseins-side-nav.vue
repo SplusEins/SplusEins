@@ -2,7 +2,6 @@
   <v-navigation-drawer
     :clipped="true"
     v-model="drawerProp"
-    dark 
     fixed
     app
     width="350">
