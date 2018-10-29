@@ -103,6 +103,7 @@ export default {
       console.log('refreshing events');
       this.calendar.setEvents(this.events, true);
       this.calendar.refresh();
+      this.setHasLecturesOnWeekend(this.events.map(event => event.schedule.on.day()).filter(weekDay => weekDay > 5).length > 0)
       this.refresh();
     },
     /** Update store's week after UI input */
@@ -125,6 +126,7 @@ export default {
     },
     ...mapMutations({
       setWeek: 'calendar/setWeek',
+      setHasLecturesOnWeekend: 'schedule/setHasLecturesOnWeekend'
     }),
     ...mapActions({
       loadLectures: 'splus/load',
