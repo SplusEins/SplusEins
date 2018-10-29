@@ -1,11 +1,15 @@
 <template lang="html">
-
   <dayspan-custom-calendar
     :calendar="calendar"
     :types="types"
     :read-only="true"
-    @change="calendarChanged"/>
-
+    @change="calendarChanged">
+    <template slot="containerInside">
+      <span class="overlay">
+        Quelle: splus.ostfalia.de
+      </span>
+    </template>
+  </dayspan-custom-calendar>
 </template>
 
 <script lang="js">
@@ -74,3 +78,13 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="scss">
+.overlay {
+  position: absolute;
+  right: 1.5em;
+  bottom: 1.5em;
+  opacity: 0.5;
+  font-size: small;
+}
+</style>

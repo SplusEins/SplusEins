@@ -21,7 +21,7 @@
 
         <v-card-text>
           <p>
-            Ein moderner Stundenplan von Studenten für Studenten der Ostfalia-Hochschule.<br>
+            Ein inoffizieller Stundenplan von Studenten für Studenten der Ostfalia-Hochschule.<br>
             Gebaut mit <a href="https://nuxtjs.org">Nuxt</a>, <a href="https://vuetifyjs.com">Vuetify</a> und <a href="https://github.com/ClickerMonkey/dayspan-vuetify">Dayspan-Vuetify</a>.<br>
             Besonderer Dank geht an Tim für den <a href="https://github.com/xThunderbolt/splus">Splus Parser</a>.<br>
             Alle Studenpläne basieren auf den Inhalten der öffentlich einsehbaren Website <a href="http://splus.ostfalia.de/">splus.ostfalia.de</a>.<br> Für Vollständigkeit wird keine Haftung übernommen.
