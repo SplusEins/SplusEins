@@ -81,11 +81,12 @@
           v-bind="{$scopedSlots, $listeners, calendar, viewDay}"
           name="calendarAppCalendar" >
 
-          <ds-calendar 
+          <ds-calendar
             ref="calendar"
             :calendar="calendar"
             :read-only="readOnly"
             v-bind="{$scopedSlots}"
+            :class="[getWeekendClass]"
             v-on="$listeners"
             @view-day="viewDay"
           />
@@ -172,6 +173,7 @@
 <script>
 import * as moment from 'moment';
 import { Constants, Sorts, Calendar, Day, Units, Weekday, Month, DaySpan, PatternMap, Time, Op } from 'dayspan';
+import { mapState } from 'vuex';
 
 export default {
 
@@ -325,6 +327,14 @@ export default {
     canAddTime()
     {
       return !this.readOnly
+    },
+
+    ...mapState({
+      displayWeekend: state => state.schedule.hasLecturesOnWeekend
+    }),
+
+    getWeekendClass(){
+      return this.displayWeekend ? '' : 'no-weekend'
     }
   },
   watch:
@@ -448,7 +458,7 @@ export default {
     setToday()
     {
       const around = Day.fromMoment(moment().startOf('isoWeek'));
-      this.rebuild( around);
+      this.rebuild(around);
     },
 
     viewDay(day)
@@ -711,6 +721,11 @@ export default {
 </script>
 
 <style lang="scss">
+
+.ds-day:nth-child(8),
+.no-weekend .ds-day:nth-child(7){
+  display: none;
+}
 
 .ds-week-date{
   cursor: default !important;
