@@ -173,7 +173,7 @@
 <script>
 import * as moment from 'moment';
 import { Constants, Sorts, Calendar, Day, Units, Weekday, Month, DaySpan, PatternMap, Time, Op } from 'dayspan';
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
 
@@ -329,12 +329,12 @@ export default {
       return !this.readOnly
     },
 
-    ...mapGetters({
-      getHasLecturesOnWeekend: 'schedule/getHasLecturesOnWeekend',
+    ...mapState({
+      displayWeekend: state => state.schedule.hasLecturesOnWeekend
     }),
 
     getWeekendClass(){
-      return this.getHasLecturesOnWeekend ? '' : 'noWeekend'
+      return this.displayWeekend ? '' : 'no-weekend'
     }
   },
   watch:
@@ -458,7 +458,7 @@ export default {
     setToday()
     {
       const around = Day.fromMoment(moment().startOf('isoWeek'));
-      this.rebuild( around);
+      this.rebuild(around);
     },
 
     viewDay(day)
@@ -722,11 +722,8 @@ export default {
 
 <style lang="scss">
 
-.noWeekend .ds-day:nth-child(7){
-  display: none;
-}
-
-.ds-day:nth-child(8){
+.ds-day:nth-child(8),
+.no-weekend .ds-day:nth-child(7){
   display: none;
 }
 
