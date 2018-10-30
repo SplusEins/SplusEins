@@ -92,7 +92,11 @@ export const mutations = {
 
 export const actions = {
   async load({ state, commit }) {
-    const response = await this.$axios.get(`/api/splus/${state.schedule.id}/${state.week}`);
-    commit('addLectures', { lectures: response.data, week: state.week });
+    try {
+      const response = await this.$axios.get(`/api/splus/${state.schedule.id}/${state.week}`);
+      commit('addLectures', { lectures: response.data, week: state.week });
+    } catch (error) {
+      console.error('error during API call', error); // TODO add notification in UI
+    }
   },
 };
