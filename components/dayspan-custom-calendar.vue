@@ -173,7 +173,7 @@
 <script>
 import * as moment from 'moment';
 import { Constants, Sorts, Calendar, Day, Units, Weekday, Month, DaySpan, PatternMap, Time, Op } from 'dayspan';
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
 
@@ -329,12 +329,12 @@ export default {
       return !this.readOnly
     },
 
-    ...mapState({
-      displayWeekend: state => state.schedule.hasLecturesOnWeekend
+    ...mapGetters({
+      hasLecturesOnWeekend: 'splus/getHasLecturesOnWeekend',
     }),
 
     getWeekendClass(){
-      return this.displayWeekend ? '' : 'no-weekend'
+      return this.hasLecturesOnWeekend ? '' : 'no-weekend'
     }
   },
   watch:
