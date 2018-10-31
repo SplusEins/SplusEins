@@ -722,6 +722,25 @@ export default {
 
 <style lang="scss">
 
+.ds-hour{
+  height: 45px !important;
+}
+
+.ds-week-view-container{
+  height: 751px !important;
+}
+
+.ds-week-view-pane,
+.ds-week-view-scrollable,
+.ds-week-view-bottom{
+  height: 675px !important;
+}
+
+.ds-hour:nth-child(n+22),
+.ds-hour:nth-child(-n+6){
+  display: none;
+}
+
 .ds-day:nth-child(8),
 .no-weekend .ds-day:nth-child(7){
   display: none;
