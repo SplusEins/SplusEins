@@ -13,6 +13,9 @@ Vue.$dayspan.addLocale('de', LocaleDe);
 Vue.$dayspan.setLocale('de', true);
 
 Vue.use(Vuetify, {
+  options: {
+    customProperties: true,
+  },
   theme: {
     primary: colors.amber.base,
     accent: colors.lightBlue.base,
