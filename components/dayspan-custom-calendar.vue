@@ -723,6 +723,7 @@ export default {
 <style lang="scss">
 
 .ds-hour{
+  // changing this means you have to change the 'multiplicator' attribute in the store aswell
   height: 45px !important;
 }
 
