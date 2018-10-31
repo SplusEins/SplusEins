@@ -816,4 +816,8 @@ export default {
 .ds-day-today {
   background-color: rgba(0, 0, 0, 0.06) !important;
 }
+
+.ds-week .ds-day-today > div:not(.ds-hour):not(.v-menu) {
+  border-top: 3px solid var(--v-primary-base) !important;
+}
 </style>
