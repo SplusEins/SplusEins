@@ -46,11 +46,16 @@ export const getters = {
       const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0]) + Math.pow(2, 31);
       const color = colorsArr[hashOfFirstWordInTitle % colorsArr.length].lighten1;
 
-      const adjustedMinutes = (lecture.begin - 6) *60;
-      const adjustedMinutesWithMultiplicator = adjustedMinutes * 1.125;
+      // standard ds-hour height: 40px, now 45px 
+      const multiplicator = 1.125;
+      // 7 am is now 1 am
+      const shiftingHours = 6;
+
+      const adjustedMinutes = (lecture.begin - shiftingHours) * 60;
+      const adjustedMinutesWithMultiplicator = adjustedMinutes * multiplicator;
       const hours = Math.floor(adjustedMinutesWithMultiplicator / 60);
       const minutes = adjustedMinutesWithMultiplicator - (hours * 60) -2;
-      const durationWithMultiplicator = (lecture.end - lecture.begin)*1.125
+      const durationWithMultiplicator = (lecture.end - lecture.begin) * multiplicator
 
       const start = moment()
         .isoWeek(lecture.week)
