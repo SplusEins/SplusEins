@@ -5,7 +5,7 @@
     fill-height>
 
     <v-layout column>
-      <v-flex>
+      <v-flex pb-3>
         <v-tooltip
           v-bind="{setToday, todayDate, calendar}" 
           name="today" 
@@ -727,8 +727,9 @@ export default {
   height: 45px !important;
 }
 
+.ds-week-view,
 .ds-week-view-container{
-  height: 751px !important;
+  max-height: 751px !important;
 }
 
 .ds-week-view-pane,
