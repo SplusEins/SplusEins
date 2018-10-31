@@ -21,14 +21,9 @@ export default {
     SpluseinsCalendar,
     SpluseinsFooter
   },
-  data() {
-    return {
-    }
+  async fetch({ store }) {
+    await store.dispatch('splus/load');
   },
-  computed: {
-  },
-  methods: {
-  }
 }
 </script>
 

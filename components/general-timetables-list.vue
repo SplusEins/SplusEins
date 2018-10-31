@@ -72,10 +72,10 @@ export default {
   computed: {
     currentSchedule: {
       get() {
-        return this.$store.state.schedule.schedule;
+        return this.$store.state.splus.schedule;
       },
       set(value) {
-        this.$store.commit('schedule/setSchedule', value);
+        this.$store.commit('splus/setSchedule', value);
       }
     },
     currentScheduleLevel1Title() {
@@ -108,19 +108,10 @@ export default {
       schedules: state => state.splus.schedules,
     }),
   },
-  mounted() {
-    this.currentSchedule = this.schedules[0];
-  },
   methods: {
     scheduleToFacultyAndDegree(schedule) {
       return `${schedule.faculty} - ${schedule.degree}`;
     },
-    ...mapMutations({
-      setWeek: 'calendar/setWeek',
-    }),
-    ...mapActions({
-      loadLectures: 'splus/load',
-    }),
   },
 }
 </script>
