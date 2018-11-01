@@ -722,6 +722,11 @@ export default {
 
 <style lang="scss">
 
+//current-time line
+.ds-day.ds-day-today > div:last-child{
+  display: none
+}
+
 .ds-hour{
   // changing this means you have to change the 'multiplicator' attribute in the store aswell
   height: 45px !important;
