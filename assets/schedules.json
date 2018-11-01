@@ -481,4 +481,179 @@
   "faculty": "Soziale Arbeit",
   "degree": "Master of Arts",
   "semester": 4
+}, {
+  "id": "SPLUS3BF4F1",
+  "slug": "E-B WPF",
+  "label": "Wahlpflichtfächer Bachelor",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 0
+}, {
+  "id": "SPLUS3BF4EF",
+  "slug": "E-B1 EIT MathePLUS",
+  "label": "EIT MathePLUS",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 1
+}, {
+  "id": "SPLUS3BF4F0",
+  "slug": "E-B1 EIT MatheSTAND A",
+  "label": "EIT MatheSTAND Gruppe A",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 1
+}, {
+  "id": "SPLUS4F841A",
+  "slug": "E-B1 EITiP MatheSTAND B",
+  "label": "EITiP MatheSTAND Gruppe B",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 1
+}, {
+  "id": "SPLUS642471",
+  "slug": "E-B1 WEIT MathePLUS",
+  "label": "WEIT MathePLUS",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 1
+}, {
+  "id": "SPLUSD18F0F",
+  "slug": "E-B1 WEIT MatheSTAND A",
+  "label": "WEIT MatheSTAND Gruppe A",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 1
+}, {
+  "id": "SPLUSF60FA9",
+  "slug": "E-B1 WEITiP MatheSTAND B",
+  "label": "WEITiP MatheSTAND Gruppe B",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 1
+}, {
+  "id": "SPLUS4F841B",
+  "slug": "E-B2 EIT/EITiP",
+  "label": "EIT(iP)",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSBD6A7C",
+  "slug": "E-B2 WEIT/WEITiP",
+  "label": "WEIT(iP)",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 2
+}, {
+  "id": "SPLUS4F841C",
+  "slug": "E-B3 EIT/EITiP",
+  "label": "EIT(iP)",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 3
+}, {
+  "id": "SPLUSF60FAB",
+  "slug": "E-B3 WEIT/WEITiP",
+  "label": "WEIT(iP)",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 3
+}, {
+  "id": "SPLUSD18F08",
+  "slug": "E-B4 EIT/EITiP-AT",
+  "label": "EIT(iP)-AT",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 4
+}, {
+  "id": "SPLUSD18F09",
+  "slug": "E-B4 EIT/EITiP-EE",
+  "label": "EIT(iP)-EE",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 4
+}, {
+  "id": "SPLUSD18F0A",
+  "slug": "E-B4 EIT/EITiP-IT",
+  "label": "EIT(iP)-IT",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 4
+}, {
+  "id": "SPLUS3579EA",
+  "slug": "E-B4 WEIT/WEITiP",
+  "label": "WEIT(iP)",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 4
+}, {
+  "id": "SPLUSD18F0B",
+  "slug": "E-B5 EIT/EITiP-AT",
+  "label": "EIT(iP)-AT",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 5
+}, {
+  "id": "SPLUSD18F0C",
+  "slug": "E-B5 EIT/EITiP-EE",
+  "label": "EIT(iP)-EE",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 5
+}, {
+  "id": "SPLUSD18F0D",
+  "slug": "E-B5 EIT/EITiP-IT",
+  "label": "EIT(iP)-IT",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 5
+}, {
+  "id": "SPLUS3579EC",
+  "slug": "E-B5 WEIT/WEITiP",
+  "label": "WEIT(iP)",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 5
+}, {
+  "id": "SPLUSF60FAC",
+  "slug": "E-B6 EIT/EITiP-AT",
+  "label": "EIT(iP)-AT",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 6
+}, {
+  "id": "SPLUSF60FAD",
+  "slug": "E-B6 EIT/EITiP-EE",
+  "label": "EIT(iP)-EE",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 6
+}, {
+  "id": "SPLUSF60FAE",
+  "slug": "E-B6 EIT/EITiP-IT",
+  "label": "EIT(iP)-IT",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 6
+}, {
+  "id": "SPLUSBD6A7D",
+  "slug": "E-B6 WEIT/WEITiP",
+  "label": "WEIT(iP)",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Science",
+  "semester": 6
+}, {
+  "id": "SPLUS4F842C",
+  "slug": "IMES Teil WS-B",
+  "label": "Teilzeit IMES",
+  "faculty": "Elektrotechnik",
+  "degree": "Master of Science",
+  "semester": 1
+}, {
+  "id": "SPLUS4F842D",
+  "slug": "IMES Vollzeit",
+  "label": "Vollzeit IMES",
+  "faculty": "Elektrotechnik",
+  "degree": "Master of Science",
+  "semester": 1
 } ]
