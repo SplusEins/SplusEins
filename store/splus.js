@@ -43,14 +43,25 @@ export const getters = {
     const colorsArr = Object.values(colors).slice(0, -1); // exclude black
 
     return state.lectures[state.week].map((lecture) => {
-      const beginHours = Math.floor(lecture.begin);
+      const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0]) + Math.pow(2, 31);
+      const color = colorsArr[hashOfFirstWordInTitle % colorsArr.length].lighten1;
+
+      // standard ds-hour height: 40px, now 45px 
+      const multiplicator = 1.125;
+      // 7 am is now 1 am
+      const shiftingHours = 6;
+
+      const adjustedMinutes = (lecture.begin - shiftingHours) * 60;
+      const adjustedMinutesWithMultiplicator = adjustedMinutes * multiplicator;
+      const hours = Math.floor(adjustedMinutesWithMultiplicator / 60);
+      const minutes = adjustedMinutesWithMultiplicator - (hours * 60) -1;
+      const durationWithMultiplicator = (lecture.end - lecture.begin) * multiplicator
+
       const start = moment()
         .isoWeek(lecture.week)
         .day(lecture.day + 1)
-        .hour(beginHours)
-        .minute((lecture.begin - beginHours) * 60);
-      const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0]) + Math.pow(2, 31);
-      const color = colorsArr[hashOfFirstWordInTitle % colorsArr.length].lighten1;
+        .hour(hours)
+        .minute(minutes);
 
       return {
         data: {
@@ -65,7 +76,7 @@ export const getters = {
             hour: start.hour(),
             minute: start.minute(),
           } ],
-          duration: lecture.end - lecture.begin,
+          duration: durationWithMultiplicator,
           durationUnit: 'hours',
         }
       };

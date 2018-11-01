@@ -5,7 +5,7 @@
     fill-height>
 
     <v-layout column>
-      <v-flex>
+      <v-flex pb-3>
         <v-tooltip
           v-bind="{setToday, todayDate, calendar}" 
           name="today" 
@@ -721,6 +721,32 @@ export default {
 </script>
 
 <style lang="scss">
+
+//current-time line
+.ds-day.ds-day-today > div:last-child{
+  display: none
+}
+
+.ds-hour{
+  // changing this means you have to change the 'multiplicator' attribute in the store aswell
+  height: 45px !important;
+}
+
+.ds-week-view,
+.ds-week-view-container{
+  max-height: 751px !important;
+}
+
+.ds-week-view-pane,
+.ds-week-view-scrollable,
+.ds-week-view-bottom{
+  height: 675px !important;
+}
+
+.ds-hour:nth-child(n+22),
+.ds-hour:nth-child(-n+6){
+  display: none;
+}
 
 .ds-day:nth-child(8),
 .no-weekend .ds-day:nth-child(7){
