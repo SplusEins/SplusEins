@@ -54,7 +54,7 @@ export const getters = {
       const adjustedMinutes = (lecture.begin - shiftingHours) * 60;
       const adjustedMinutesWithMultiplicator = adjustedMinutes * multiplicator;
       const hours = Math.floor(adjustedMinutesWithMultiplicator / 60);
-      const minutes = adjustedMinutesWithMultiplicator - (hours * 60) -2;
+      const minutes = adjustedMinutesWithMultiplicator - (hours * 60) -1;
       const durationWithMultiplicator = (lecture.end - lecture.begin) * multiplicator
 
       const start = moment()
