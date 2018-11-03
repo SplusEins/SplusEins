@@ -17,10 +17,8 @@
             color="primary"
             outline
             @click="setToday">
-            <no-ssr>
-              <span v-if="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
-              <v-icon v-else>{{ labels.todayIcon }}</v-icon>
-            </no-ssr>
+            <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
+            <v-icon v-show="!$vuetify.breakpoint.smAndUp">{{ labels.todayIcon }}</v-icon>
           </v-btn>
           <span>{{ todayDate }}</span>
         </v-tooltip>
@@ -54,14 +52,14 @@
         </v-tooltip>
 
         <span
-          v-if="$vuetify.breakpoint.smAndUp"
+          v-show="$vuetify.breakpoint.smAndUp"
           v-bind="{summary, calendar}"
           name="extendedDateSummary"
           class = "ds-summary-text">
           {{ summary(false) }}
         </span>
         <span
-          v-else
+          v-show="!$vuetify.breakpoint.smAndUp"
           v-bind="{summary, calendar}"
           name="shortDateSummary"
           class = "ds-summary-text">
