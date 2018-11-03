@@ -15,7 +15,6 @@ import SpluseinsFooter from '../components/spluseins-footer.vue'
 
 export default {
   name: 'HomePage',
-  layout: 'empty',
   components: {
     SpluseinsHeader,
     SpluseinsCalendar,
