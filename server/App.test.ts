@@ -21,6 +21,6 @@ describe('Test backend', () => {
     SplusApi.getData = jest.fn().mockImplementationOnce(splusMock);
     const response = await request(app).get(
       '/api/splus/SPLUS63AE59/40');
-    expect(response.body).toBeDefined();
+    expect(response.body).toMatchSnapshot();
   });
 });
