@@ -59,7 +59,7 @@ export const getters = {
 
       const start = moment()
         .isoWeek(lecture.week)
-        .day(lecture.day + 1)
+        .isoWeekday(lecture.day + 1)
         .hour(hours)
         .minute(minutes);
 
