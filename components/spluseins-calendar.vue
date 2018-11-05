@@ -65,6 +65,12 @@ export default {
     'currentSchedule': 'loadLectures',
     'currentWeek': 'loadLectures',
   },
+  mounted() {
+    if (this.events.length == 0) {
+      // static build -> store has not been filled yet
+      this.loadLectures();
+    }
+  },
   methods: {
     calendarChanged({ calendar }) {
       this.setWeek(calendar.start.date.isoWeek());
