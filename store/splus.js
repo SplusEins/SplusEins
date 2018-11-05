@@ -82,6 +82,13 @@ export const getters = {
       };
     });
   },
+  getCourses: (state) => {
+    const lectureToId = (lecture) => lecture.title.split(' ')[0];
+    const allLectures = [].concat(...Object.values(state.lectures));
+    const uniqueLectures = new Map();
+    allLectures.forEach((lecture) => uniqueLectures.set(lectureToId(lecture), lecture));
+    return [...uniqueLectures.values()];
+  },
 };
 
 export const mutations = {
