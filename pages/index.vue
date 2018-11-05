@@ -21,7 +21,10 @@ export default {
     SpluseinsFooter
   },
   async fetch({ store }) {
-    await store.dispatch('splus/load');
+    if (!process.static) {
+      // not for static build because it depends on the current timestamp
+      await store.dispatch('splus/load');
+    }
   },
 }
 </script>
