@@ -62,7 +62,6 @@ export default {
     'events': function(events) {
       this.calendar.setEvents(events);
     },
-    'currentSchedule': 'loadLectures',
     'currentWeek': 'loadLectures',
   },
   mounted() {
