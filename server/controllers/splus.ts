@@ -1,13 +1,13 @@
 import * as express from 'express';
 import * as cors from 'cors';
-import { createHash } from 'crypto';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
+import * as moment from 'moment';
+
 import { SplusApi } from '../lib/SplusApi';
+import { ILecture } from '../lib/ILecture';
 
 const SCHEDULE_CACHE_SECONDS = 600;
-
-const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -21,6 +21,14 @@ const cache = cacheManager.caching({
     subdirs: true,
   },
 });
+
+function lectureAndWeekToDate(lecture: ILecture, week: number): Date {
+  return moment()
+    .startOf('date')
+    .isoWeek(week)
+    .isoWeekday(lecture.day + 1)
+    .toDate();
+}
 
 /**
  * Accept CORS preflight requests.
@@ -41,13 +49,21 @@ router.get('/:schedule/:week', cors(), async (req, res) => {
 
   const data = await cache.wrap(key, async () => {
     console.log(`cache miss for key ${key}`);
-    return await SplusApi.getData('#' + schedule, week);
-  }, { ttl: SCHEDULE_CACHE_SECONDS });
-  const id = (lecture) => sha256(JSON.stringify({ lecture, schedule, week }));
-  const result = data.map((lecture) => ({ ...lecture, schedule, week, id: id(lecture) }));
+    const lectures = await SplusApi.getData('#' + schedule, week);
+
+    return lectures.map((lecture) => {
+      const richLecture = {
+        start: lectureAndWeekToDate(lecture, week),
+        duration: lecture.end - lecture.begin,
+        ...lecture,
+      };
+      delete richLecture.end;
+      return richLecture;
+    }, { ttl: SCHEDULE_CACHE_SECONDS });
+  });
 
   res.set('Cache-Control', `public, max-age=${SCHEDULE_CACHE_SECONDS}`);
-  res.json(result);
+  res.json(data);
 });
 
 export default router;
