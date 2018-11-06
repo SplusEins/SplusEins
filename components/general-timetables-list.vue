@@ -35,8 +35,9 @@
 
           <v-list-tile
             v-for="schedule in schedules"
+            :to="`/${schedule.id}`"
             :key="schedule.id"
-            @click="setCurrentSchedule(schedule)">
+            nuxt>
             <v-list-tile-content value="true">
               <v-list-tile-title value="true">{{ schedule.label }}</v-list-tile-title>
             </v-list-tile-content>
@@ -48,8 +49,9 @@
 
         <v-list-tile
           v-else
+          :to="`/${schedules[0].id}`"
           :key="semester"
-          @click="setCurrentSchedule(schedules[0])">
+          nuxt>
           <v-list-tile-content>
             <v-list-tile-title v-if="semester == 'WPF'">Wahlpflichtfächer</v-list-tile-title>
             <v-list-tile-title v-else>{{ semester }}. Semester</v-list-tile-title>

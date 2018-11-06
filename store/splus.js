@@ -134,11 +134,7 @@ export const mutations = {
   setWeek(state, week) {
     state.week = week;
   },
-  /**
-   * Set the schedule and clear the cache.
-   */
   setSchedule(state, schedule) {
-    state.lectures = {};
     state.schedule = schedule;
   },
   /**
