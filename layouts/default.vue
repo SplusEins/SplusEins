@@ -1,17 +1,7 @@
 <template>
-  <v-app :dark="isDark">
-    <nuxt />
-  </v-app>
+  <nuxt />
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
-export default {
-  computed: {
-    ...mapState({
-      isDark: state => state.theme.isDark,
-    }),
-  },
-}
+export default { };
 </script>
