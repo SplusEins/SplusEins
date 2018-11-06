@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :dark="isDark">
     <spluseins-header/>
     <v-content fill-height>
       <v-container
@@ -45,6 +45,7 @@ export default {
   computed: {
     ...mapState({
       schedule: state => state.splus.schedule,
+      isDark: state => state.theme.isDark,
     }),
   },
   async fetch({ store }) {
