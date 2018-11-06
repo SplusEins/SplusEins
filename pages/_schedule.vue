@@ -54,10 +54,20 @@ export default {
       isDark: state => state.theme.isDark,
     }),
   },
-  async fetch({ store }) {
-    if (!process.static && !!store.state.splus.schedule) {
-      // not for static build because it depends on the current timestamp
-      await store.dispatch('splus/load');
+  async fetch({ store, params }) {
+    const scheduleId = params.schedule;
+
+    if (!!scheduleId) {
+      const schedule =  store.state.splus.schedules
+        .find((schedule) => schedule.id == scheduleId);
+
+      store.commit('splus/setSchedule', schedule);
+
+      // exclude static build
+      // because loaded schedule depends on the current timestamp
+      if (!process.static) {
+        await store.dispatch('splus/load');
+      }
     }
   },
 };
