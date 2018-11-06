@@ -14,6 +14,7 @@
             slot="activator"
             :icon="$vuetify.breakpoint.xs"
             depressed
+            color="primary"
             outline
             @click="setToday">
             <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
@@ -797,23 +798,4 @@ export default {
   }
 }
 
-.ds-week-view {
-  background-color: inherit !important;
-}
-
-.ds-hour-text {
-  color: inherit !important;
-}
-
-.ds-week-date {
-  color: inherit !important;
-}
-
-.ds-week-weekday {
-  color: inherit !important;
-}
-
-.ds-day-today {
-  background-color: rgba(0, 0, 0, 0.06) !important;
-}
 </style>

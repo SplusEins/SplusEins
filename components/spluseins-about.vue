@@ -4,14 +4,16 @@
       v-model="active"
       width="500"
     >
-      <a
+      <span
         slot="activator"
-        class="white--text">
+        class="about"
+        white--text>
         Über
-      </a>
-      <v-card>
+      </span>
+      <v-card
+        dark>
         <v-card-title
-          class="headline primary"
+          class="headline black"
           primary-title
         >
           SplusEins
@@ -35,13 +37,13 @@
             href="https://github.com/spluseins/spluseins" 
             target="_blank">
             <img
-              :src="gitHubIcon"
-              class="black">
+              :src="gitHubIcon">
           </a>
           <v-btn
             flat
             depressed
-            color="primary"
+            dark
+            outline
             @click="active = false"
           >
             Schließen
@@ -74,7 +76,16 @@ export default {
 
 
 <style scoped lang="scss">
+@import '../assets/style/colors.scss';
 .githubIcon {
   padding: 5px 10px 0 5px;
+}
+
+.about:hover{
+  color: $amber;
+}
+
+a{
+  color : white;
 }
 </style>

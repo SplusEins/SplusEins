@@ -1,7 +1,7 @@
 <template lang="html">
 
-  <v-footer
-    dark
+  <v-footer 
+    color="black"
     app>
     <v-layout
       justify-center
@@ -11,6 +11,7 @@
         lighten-2
         py-3
         text-xs-center
+        white--text
         xs12>
         2018 — 
         <strong> 

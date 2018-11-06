@@ -7,16 +7,20 @@ import { default as LocaleDe } from '~/assets/ds-de.js';
 
 moment.locale('de');
 
-Vue.use(DaySpanVuetify, {});
+Vue.use(DaySpanVuetify, {
+  methods: {
+    getDefaultEventColor: () => '#1976d2',
+  },
+});
 
 Vue.$dayspan.addLocale('de', LocaleDe);
 Vue.$dayspan.setLocale('de', true);
 
 Vue.use(Vuetify, {
   theme: {
-    primary: colors.amber.base,
-    accent: colors.lightBlue.base,
-    secondary: colors.lightBlue.base,
+    primary: '#121212', // a color that is not in the material colors palette
+    accent: colors.grey.darken3,
+    secondary: colors.amber.darken3,
     info: colors.teal.lighten1,
     warning: colors.amber.base,
     error: colors.deepOrange.accent4,
