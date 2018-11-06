@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <spluseins-header/>
-    <v-content>
+    <v-content fill-height>
       <spluseins-calendar/>
     </v-content>
     <spluseins-footer/>
@@ -15,20 +15,17 @@ import SpluseinsFooter from '../components/spluseins-footer.vue'
 
 export default {
   name: 'HomePage',
-  layout: 'empty',
   components: {
     SpluseinsHeader,
     SpluseinsCalendar,
     SpluseinsFooter
   },
-  data() {
-    return {
+  async fetch({ store }) {
+    if (!process.static) {
+      // not for static build because it depends on the current timestamp
+      await store.dispatch('splus/load');
     }
   },
-  computed: {
-  },
-  methods: {
-  }
 }
 </script>
 
