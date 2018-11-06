@@ -27,7 +27,7 @@
             <v-list-tile-content>
               <v-list-tile-title>{{ semester }}. Semester</v-list-tile-title>
             </v-list-tile-content>
-            <v-list-tile-action v-if="currentSchedule.semester == semester && currentScheduleLevel1Title == level1Title">
+            <v-list-tile-action v-if="currentSemester == semester && currentScheduleLevel1Title == level1Title">
               <v-icon color="primary">check</v-icon>
             </v-list-tile-action>
           </v-list-tile>
@@ -78,8 +78,12 @@ export default {
         this.$store.commit('splus/setSchedule', value);
       }
     },
+    currentSemester() {
+      return !!this.currentSchedule ? this.currentSchedule.semester : '';
+    },
     currentScheduleLevel1Title() {
-      return this.scheduleToFacultyAndDegree(this.currentSchedule);
+      return !!this.currentSchedule ?
+        this.scheduleToFacultyAndDegree(this.currentSchedule) : '';
     },
     schedulesTree() {
       const tree = {};
@@ -113,11 +117,5 @@ export default {
       return `${schedule.faculty} - ${schedule.degree}`;
     },
   },
-}
+};
 </script>
-
-<style scoped lang="scss">
-  .all-timetables-component {
-
-  }
-</style>

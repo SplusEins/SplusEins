@@ -5,7 +5,7 @@ import SCHEDULES from '~/assets/schedules.json';
 import * as chroma from 'chroma-js';
 
 export const state = () => ({
-  schedule: SCHEDULES[0],
+  schedule: undefined,
   schedules: SCHEDULES,
   /**
    * Map of { week: lectures[] }
