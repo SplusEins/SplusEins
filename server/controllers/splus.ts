@@ -8,11 +8,14 @@ const SCHEDULE_CACHE_SECONDS = 600;
 
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
 
+// default must be in /tmp because the rest is RO on AWS Lambda
+const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
+
 const router = express.Router();
 const cache = cacheManager.caching({
   store: fsStore,
   options: {
-    path: '/tmp/spluseins-cache', // TODO make this configurable
+    path: CACHE_PATH,
     ttl: 60,
     subdirs: true,
   },
