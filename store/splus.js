@@ -45,6 +45,7 @@ export const getters = {
     const colorScale = chroma.scale([colors.amber.darken1, colors.green.lighten1]).colors(uniqueIds.length);
 
     return state.lectures[state.week].map((lecture) => {
+      const start = moment(lecture.start);
       const color = colorScale[uniqueIds.indexOf(lectureToId(lecture))];
 
       // standard ds-hour height: 40px, now 45px 
@@ -56,13 +57,11 @@ export const getters = {
       const adjustedMinutesWithMultiplicator = adjustedMinutes * multiplicator;
       const hours = Math.floor(adjustedMinutesWithMultiplicator / 60);
       const minutes = adjustedMinutesWithMultiplicator - (hours * 60) -1;
-      const durationWithMultiplicator = (lecture.end - lecture.begin) * multiplicator
+      const durationWithMultiplicator = lecture.duration * multiplicator;
 
-      const start = moment()
-        .isoWeek(lecture.week)
-        .isoWeekday(lecture.day + 1)
-        .hour(hours)
-        .minute(minutes);
+      const shiftedStart = start.clone()
+        .hours(hours)
+        .minutes(minutes);
 
       return {
         data: {
@@ -72,10 +71,10 @@ export const getters = {
           location: lecture.room,
         },
         schedule: {
-          on: start,
+          on: shiftedStart,
           times: [ {
-            hour: start.hour(),
-            minute: start.minute(),
+            hour: shiftedStart.hours(),
+            minute: shiftedStart.minutes(),
           } ],
           duration: durationWithMultiplicator,
           durationUnit: 'hours',
