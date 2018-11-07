@@ -5,6 +5,4 @@ inputs:
   - name: sources
     path: .
 run:
-  path: sh
-  args:
-  - npm install
+  path: ./pipeline/install.sh
