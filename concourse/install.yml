@@ -1,5 +1,6 @@
 platform: linux
-image: "docker"
+image_resource: 
+  type: docker-image
 inputs:
   - name: sources
     path: .
