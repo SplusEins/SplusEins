@@ -30,14 +30,16 @@
 
         <v-card-actions>
           <v-spacer/>
-          <a 
-            class="githubIcon" 
-            href="https://github.com/spluseins/spluseins" 
-            target="_blank">
+          <v-btn
+            flat
+            icon
+            color="primary"
+            target="_blank"
+            href="https://github.com/spluseins/spluseins">
             <img
               :src="gitHubIcon"
-              class="black">
-          </a>
+              class="githubIcon">
+          </v-btn>
           <v-btn
             flat
             depressed
@@ -75,6 +77,6 @@ export default {
 
 <style scoped lang="scss">
 .githubIcon {
-  padding: 5px 10px 0 5px;
+  height: 2em;
 }
 </style>
