@@ -1,7 +1,7 @@
 platform: linux
 image_resource: 
   type: docker-image  
-  source: {repository: busybox}
+  source: {repository: node:8}
 inputs:
   - name: sources
     path: .
