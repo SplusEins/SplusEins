@@ -1,5 +1,5 @@
 platform: linux
-image: "docker:///node#4.2.3"
+image: "docker"
 inputs:
   - name: sources
     path: .
