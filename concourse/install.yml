@@ -6,4 +6,4 @@ inputs:
   - name: sources
     path: .
 run:
-  path: ./pipeline/install.sh
+  path: ./concourse/install.sh
