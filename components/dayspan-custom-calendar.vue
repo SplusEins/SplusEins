@@ -813,8 +813,8 @@ export default {
   color: inherit !important;
 }
 
-.ds-day-today {
-  background-color: rgba(0, 0, 0, 0.06) !important;
+.theme--dark .ds-day-today {
+  background-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .ds-week .ds-day-today > div:not(.ds-hour):not(.v-menu) {
