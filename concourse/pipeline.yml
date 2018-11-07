@@ -3,10 +3,12 @@ resources:
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
-      branch: master
+      branch: cli-setup
 
 jobs:
 - name: build
   plan:
   - get: sources
     trigger: true
+  - task: install
+    file: sources/concourse/install.yml
