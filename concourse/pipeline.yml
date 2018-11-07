@@ -1,0 +1,12 @@
+resources:
+  - name: sources
+    type: git
+    source:
+      uri: https://github.com/spluseins/spluseins.git
+      branch: master
+
+jobs:
+- name: build
+  plan:
+  - get: sources
+    trigger: true
