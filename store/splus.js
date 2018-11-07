@@ -16,6 +16,7 @@ export const state = () => ({
    * Week 53 of year 2018 equals week 1 of year 2019.
    */
   week: moment().isoWeek(), // TODO won't work in 2019
+  error: undefined,
 });
 
 export const getters = {
@@ -106,6 +107,12 @@ export const mutations = {
     state.lectures = {};
     state.schedule = schedule;
   },
+  setError(state, error) {
+    state.error = error;
+  },
+  clearError(state) {
+    state.error = undefined;
+  },
 };
 
 export const actions = {
@@ -114,7 +121,8 @@ export const actions = {
       const response = await this.$axios.get(`/api/splus/${state.schedule.id}/${state.week}`);
       commit('addLectures', { lectures: response.data, week: state.week });
     } catch (error) {
-      console.error('error during API call', error); // TODO add notification in UI
+      commit('setError', 'API-Verbindung fehlgeschlagen');
+      console.error('error during API call', error.message);
     }
   },
 };
