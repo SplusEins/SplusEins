@@ -7,6 +7,7 @@ inputs:
     path: .
 outputs: 
   - name: modules
+    path: ./concourse
 run:
   path: npm
   args: [install]
