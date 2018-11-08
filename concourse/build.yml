@@ -10,7 +10,6 @@ inputs:
     path: /cache
 outputs:
   - name: build-result
-    path: /build-result
 run:
   path: sh
   args:

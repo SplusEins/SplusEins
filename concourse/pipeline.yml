@@ -33,7 +33,7 @@ jobs:
     - get: npm-cache-source
       passed: [cache]
 
-    - task: build
+    - task: build-project
       file: sources/concourse/build.yml
 
-    - put: build-result
+    - put: build-project
