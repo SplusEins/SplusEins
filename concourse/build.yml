@@ -4,8 +4,7 @@ image_resource:
   source: {repository: node}
 
 inputs:
-  - name: sources
-  - name: node_modules
+  - name: sources_with_node_modules
 outputs:
   - name: build-result
 run:
