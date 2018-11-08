@@ -6,5 +6,4 @@ inputs:
   - name: sources
     path: .
 run:
-  path: npm
-  args: [run build]
+  path: ./concourse/build.sh
