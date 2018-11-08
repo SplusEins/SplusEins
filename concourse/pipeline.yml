@@ -3,21 +3,20 @@ resource_types:
   type: docker-image
   source: {repository: mrsixw/concourse-rsync-resource}
 
-- name: server-deploy
-  type: rsync-resource
-  source:
-    server: spluseins.de
-    base_dir: /home/build-results
-    user: concourse
-    disable_version_path: true
-    private_key: {{server-key}}
-
 resources:
   - name: sources
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
       branch: cli-setup
+  - name: server-deploy
+    type: rsync-resource
+    source:
+      server: spluseins.de
+      base_dir: /home/build-results
+      user: concourse
+      disable_version_path: true
+      private_key: {{server-key}}
 
 jobs:
 - name: build
