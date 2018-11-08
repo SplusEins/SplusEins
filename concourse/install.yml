@@ -6,4 +6,5 @@ inputs:
   - name: sources
     path: .
 run:
-  path: ./concourse/install.sh
+  path: npm
+  args: [install]
