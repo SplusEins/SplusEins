@@ -20,6 +20,7 @@
     "cache-manager": "^2.9.0",
     "cache-manager-fs-hash": "0.0.6",
     "cheerio": "^1.0.0-rc.2",
+    "chroma-js": "^1.4.0",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "dayspan-vuetify": "^0.3.6",
