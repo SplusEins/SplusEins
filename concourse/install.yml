@@ -7,4 +7,4 @@ inputs:
     path: .
 run:
   path: npm
-  args: [install, run build]
+  args: [install]
