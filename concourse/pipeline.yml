@@ -1,15 +1,14 @@
 resource_types:
 - name: rsync-resource
   type: docker-image
-  source:
-      repository: mrsixw/concourse-rsync-resource
-      tag: latest
+  source: {repository: mrsixw/concourse-rsync-resource}
 
 - name: server-deploy
   type: rsync-resource
   source:
     server: spluseins.de
-    base_dir: /var/www/...
+    base_dir: /home/build-results
+    user: concourse
     disable_version_path: true
     private_key: {{server-key}}
 
@@ -30,5 +29,5 @@ jobs:
       file: sources/concourse/build.yml
 
     - put: server-deploy
-      params: {"sync_dir": "build-result", "rsync_opts": "--usermap=username:www-data"}
+      params: {"sync_dir": "build-result"}
 
