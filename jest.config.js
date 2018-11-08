@@ -1,15 +1,23 @@
 module.exports = {
-  "testEnvironment": "node",
-  "roots": [
-    "<rootDir>"
+  "moduleNameMapper": {
+    "^@/(.*)$": "<rootDir>/$1",
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file-mock.js",
+    "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/style-mock.js",
+  },
+  "moduleFileExtensions": [
+    "js",
+    "ts",
+    "json",
+    "vue",
   ],
   "transform": {
-    "^.+\\.ts$": "ts-jest"
+    ".*\\.(vue)$": "vue-jest",
+    "^.+\\.ts$": "ts-jest",
+    "^.+\\.js$": "babel-jest",
   },
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-  "moduleFileExtensions": [
-    "ts",
-    "js",
-    "node"
+  "testURL": "http://localhost/",
+  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  "snapshotSerializers": [
+    "jest-serializer-vue"
   ],
 };
