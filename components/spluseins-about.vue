@@ -56,22 +56,17 @@
 
 
 <script>
-import gitHubIcon from "../assets/img/gitHub.svg"
+import gitHubIcon from '../assets/img/gitHub.svg';
 
 export default {
   name: 'SpluseinsAbout',
-  props: {
-    active : {
-      type: Boolean,
-      default: false
-    }
-  },
-  data () {
+  data: function() {
     return {
-      gitHubIcon: gitHubIcon
-    }
-  }
-}
+      active: false,
+      gitHubIcon: gitHubIcon,
+    };
+  },
+};
 </script>
 
 
