@@ -1,3 +1,18 @@
+resource_types:
+- name: rsync-resource
+  type: docker-image
+  source:
+      repository: mrsixw/concourse-rsync-resource
+      tag: latest
+
+- name: server-deploy
+  type: rsync-resource
+  source:
+    server: spluseins.de
+    base_dir: /var/www/...
+    disable_version_path: true
+    private_key: {{server-key}}
+
 resources:
   - name: sources
     type: git
@@ -14,43 +29,6 @@ jobs:
     - task: build
       file: sources/concourse/build.yml
 
+    - put: server-deploy
+      params: {"sync_dir": "build-result", "rsync_opts": "--usermap=username:www-data"}
 
-# resource_types:
-#   - name: npm-cache
-#     type: docker-image
-#     source: {repository: ymedlop/npm-cache-resource, tag: "6"}
-
-# resources:
-#   - name: sources
-#     type: git
-#     source:
-#       uri: https://github.com/spluseins/spluseins.git
-#       branch: cli-setup
-#   - name: npm-cache-source
-#     type: npm-cache
-#     source:
-#       uri: https://github.com/spluseins/spluseins.git
-#       branch: cli-setup
-
-
-# jobs:
-
-# - name: cache
-#   plan:
-#   - get: sources
-#     trigger: true
-#   - get: npm-cache-source
-
-# - name: build
-#   plan:
-#     - get: sources
-#       trigger: true
-#       passed: [cache]
-
-#     - get: npm-cache-source
-#       passed: [cache]
-
-#     - task: build-project
-#       file: sources/concourse/build.yml
-
-#     - put: build-project
