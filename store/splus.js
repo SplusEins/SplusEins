@@ -4,6 +4,9 @@ import * as moment from 'moment';
 import SCHEDULES from '~/assets/schedules.json';
 import * as chroma from 'chroma-js';
 
+// update this in SS19
+const splusStartDate = moment().startOf('year').year(2018);
+
 export const state = () => ({
   schedule: undefined,
   schedules: SCHEDULES,
@@ -12,10 +15,10 @@ export const state = () => ({
    */
   lectures: {},
   /**
-   * Currently viewed iso week of year.
+   * Currently viewed week.
    * Week 53 of year 2018 equals week 1 of year 2019.
    */
-  week: moment().isoWeek(), // TODO won't work in 2019
+  week: moment().diff(splusStartDate, 'week'),
   error: undefined,
 });
 
