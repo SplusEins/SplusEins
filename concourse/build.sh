@@ -1,3 +1,4 @@
 #!/bin/sh
-cd node_modules 
-ls
+mv node_modules /sources
+cd sources
+npm run build
