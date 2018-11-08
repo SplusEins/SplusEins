@@ -4,7 +4,6 @@ image_resource:
   source: {repository: node}
 inputs:
   - name: sources
-outputs:
-  - name: node_modules
+    path: .
 run:
   path: ./concourse/install.sh
