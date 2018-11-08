@@ -5,7 +5,7 @@ image_resource:
 
 inputs:
   - name: sources
-    path: .
+    path: /src
   - name: npm-cache-source
     path: /cache
 
