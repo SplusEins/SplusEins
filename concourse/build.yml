@@ -15,4 +15,4 @@ run:
     - -exc
     - |
       mv cache/node_modules src
-      cd src && npm run build
+      cd src && npm rebuild node-sass && npm run build
