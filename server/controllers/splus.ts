@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as cors from 'cors';
 import { createHash } from 'crypto';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
@@ -22,13 +23,18 @@ const cache = cacheManager.caching({
 });
 
 /**
+ * Accept CORS preflight requests.
+ */
+router.options('/:schedule/:week', cors());
+
+/**
  * Get all lectures for the given schedule and week.
  *
  * @param schedule The splus "identifier" query param without "#" prefix.
  * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
  * @return ILecture[]
  */
-router.get('/:schedule/:week', async (req, res) => {
+router.get('/:schedule/:week', cors(), async (req, res) => {
   const schedule = req.params.schedule;
   const week = parseInt(req.params.week);
   const key = `${schedule}-${week}`;
@@ -41,7 +47,6 @@ router.get('/:schedule/:week', async (req, res) => {
   const result = data.map((lecture) => ({ ...lecture, schedule, week, id: id(lecture) }));
 
   res.set('Cache-Control', `public, max-age=${SCHEDULE_CACHE_SECONDS}`);
-  res.set('Access-Control-Allow-Origin', '*');
   res.json(result);
 });
 
