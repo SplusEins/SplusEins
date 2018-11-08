@@ -1,3 +1,3 @@
 #!/bin/sh
-cd sources
+cd node_modules
 npm run build
