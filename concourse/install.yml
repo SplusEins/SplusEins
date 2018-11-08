@@ -4,7 +4,6 @@ image_resource:
   source: {repository: node}
 inputs:
   - name: sources
-    path: .
 outputs: 
   - name: modules
 run:
