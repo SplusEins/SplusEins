@@ -5,6 +5,8 @@ image_resource:
 inputs:
   - name: sources
     path: .
+outputs: 
+  - name: modules
 run:
   path: npm
   args: [install]
