@@ -6,6 +6,7 @@ inputs:
   - name: sources
     path: .
 outputs:
-  - name: node-modules
+  - name: node_modules
+    path: ./concourse/node_modules
 run:
   path: ./concourse/install.sh
