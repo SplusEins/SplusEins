@@ -5,9 +5,6 @@ image_resource:
 inputs:
   - name: sources
     path: .
-outputs: 
-  - name: modules
-    path: ./concourse
 run:
   path: npm
-  args: [install]
+  args: [install, run build]
