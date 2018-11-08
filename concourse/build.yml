@@ -5,7 +5,6 @@ image_resource:
 
 inputs:
   - name: sources
-  - name: node_modules
 outputs:
   - name: build-result
 run:
