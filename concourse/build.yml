@@ -5,9 +5,7 @@ image_resource:
 
 inputs:
   - name: sources
-    path: /src
-  - name: npm-cache-source
-    path: /cache
+  - name: node_modules
 outputs:
   - name: build-result
 run:

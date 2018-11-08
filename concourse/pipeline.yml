@@ -1,39 +1,42 @@
-resource_types:
-  - name: npm-cache
-    type: docker-image
-    source: {repository: ymedlop/npm-cache-resource, tag: "6"}
+# resource_types:
+#   - name: npm-cache
+#     type: docker-image
+#     source: {repository: ymedlop/npm-cache-resource, tag: "6"}
 
-resources:
+# resources:
   - name: sources
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
       branch: cli-setup
-  - name: npm-cache-source
-    type: npm-cache
-    source:
-      uri: https://github.com/spluseins/spluseins.git
-      branch: cli-setup
+  # - name: npm-cache-source
+  #   type: npm-cache
+  #   source:
+  #     uri: https://github.com/spluseins/spluseins.git
+  #     branch: cli-setup
 
 
 jobs:
 
-- name: cache
-  plan:
-  - get: sources
-    trigger: true
-  - get: npm-cache-source
+# - name: cache
+#   plan:
+#   - get: sources
+#     trigger: true
+#   - get: npm-cache-source
 
 - name: build
   plan:
     - get: sources
       trigger: true
-      passed: [cache]
+ #     passed: [cache]
 
-    - get: npm-cache-source
-      passed: [cache]
+    # - get: npm-cache-source
 
-    - task: build-project
-      file: sources/concourse/build.yml
+    - task: install
+      file: sources/concourse/install.yml
+   #   passed: [cache]
 
-    - put: build-project
+    # - task: build-project
+    #   file: sources/concourse/build.yml
+
+    # - put: build-project
