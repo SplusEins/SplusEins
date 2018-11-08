@@ -36,5 +36,4 @@ jobs:
     - task: build
       file: sources/concourse/build.yml
 
-    - put: project-bin
-      params: file: build-result
+    - put: build-result
