@@ -13,6 +13,9 @@ jobs:
 
     - task: install
       file: sources/concourse/install.yml
+    
+    - task: build
+      file: sources/concourse/build.yml
 
 
 # resource_types:

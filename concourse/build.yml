@@ -9,9 +9,4 @@ inputs:
 outputs:
   - name: build-result
 run:
-  path: sh
-  args:
-    - -exc
-    - |
-      mv cache/node_modules src
-      cd src && npm rebuild node-sass && npm run build
+  path: sources/concourse/build.sh
