@@ -3,8 +3,8 @@ resource_types:
   type: docker-image
   source: {repository: mrsixw/concourse-rsync-resource}
 
-resources:
-  - name: sources
+regit-repo:
+  - name: git-repo
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
@@ -19,13 +19,13 @@ resources:
       private_key: {{server-key}}
 
 jobs:
-- name: build
+- name: nuxt-build
   plan:
-    - get: sources
+    - get: git-repo
       trigger: true
 
-    - task: build
-      file: sources/concourse/build.yml
+    - task: install-and-build
+      file: git-repo/concourse/build.yml
 
     - put: server-deploy
       params: {"sync_dir": "build-result"}

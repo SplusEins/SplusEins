@@ -1,4 +1,4 @@
 #!/bin/sh
-cd sources
+cd git-repo
 npm install
 npm run build

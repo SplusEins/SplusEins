@@ -4,8 +4,8 @@ image_resource:
   source: {repository: node}
 
 inputs:
-  - name: sources
+  - name: git-repo
 outputs:
   - name: build-result
 run:
-  path: sources/concourse/build.sh
+  path: git-repo/concourse/build.sh
