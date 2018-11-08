@@ -8,7 +8,9 @@ inputs:
     path: /src
   - name: npm-cache-source
     path: /cache
-
+outputs:
+  - name: build-result
+    path: /build-result
 run:
   path: sh
   args:
