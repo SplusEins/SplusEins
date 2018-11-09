@@ -14,10 +14,10 @@ resources:
     type: rsync-resource
     source:
       server: spluseins.de
-      base_dir: /home/build-results
+      base_dir: /home/concourse/build-results
       user: concourse
       disable_version_path: true
-      private_key: {{server-key}}
+      password: {{server-pw}}
 
 jobs:
   - name: nuxt-build
@@ -30,4 +30,3 @@ jobs:
 
       - put: server-deploy
         params: {"sync_dir": "build-result"}
-
