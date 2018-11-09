@@ -1,4 +1,5 @@
 #!/bin/sh
 cd repository
-npm install
-npm run build
+cat ~/.ssh/server_key
+# npm install
+# npm run build
