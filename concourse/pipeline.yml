@@ -14,7 +14,7 @@ resources:
     type: rsync-resource
     source:
       server: spluseins.de
-      base_dir: /home/concourse/build-results
+      base_dir: /home/concourse
       user: concourse
       disable_version_path: true
       private_key: {{server-key}}
@@ -29,4 +29,3 @@ jobs:
         file: repository/concourse/build.yml
 
       - put: server-deploy
-        params: {"sync_dir": "build-result"}

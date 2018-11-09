@@ -84,4 +84,4 @@ dist
 .DS_Store
 assets/.DS_Store
 
-*.exe
+credentials.yml
