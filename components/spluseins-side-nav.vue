@@ -14,44 +14,39 @@
 </template>
 
 <script lang="js">
+import { mapState } from 'vuex';
 
-import GeneralTimetablesList from './general-timetables-list.vue'
-import FavoriteTimetablesList from './favorite-timetables-list.vue'
-import CustomTimetablesList from './custom-timetables-list.vue'
+import GeneralTimetablesList from './general-timetables-list.vue';
+import FavoriteTimetablesList from './favorite-timetables-list.vue';
+import CustomTimetablesList from './custom-timetables-list.vue';
 
 export default {
   name: 'SpluseinsSideNav',
   components: {
     GeneralTimetablesList,
     FavoriteTimetablesList,
-    CustomTimetablesList
+    CustomTimetablesList,
   },
   props: {
-    drawer : {
+    drawer: {
       type: Boolean,
       default: false
     }
   },
-  data () {
-    return {
-    }
-  },
   computed: {
     drawerProp: {
-      get() { return this.drawer},
-      set(val) { this.$emit('update:drawer', val)}
-   }
+      get() { return this.drawer; },
+      set(val) { this.$emit('update:drawer', val); }
+    },
+    ...mapState({
+      currentSchedule: (state) => state.splus.schedule,
+    }),
   },
-  mounted () {
-
+  watch: {
+    currentSchedule() {
+      // close drawer when navigation target changes by clicking on a list item
+      this.drawerProp = false;
+    },
   },
-  methods: {
-  }
-}
+};
 </script>
-
-<style scoped lang="scss">
-  .side-nav-component {
-
-  }
-</style>
