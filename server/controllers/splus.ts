@@ -30,6 +30,10 @@ function lectureAndWeekToDate(lecture: ILecture, week: number): Date {
     .toDate();
 }
 
+function lectureToId(lecture: ILecture): string {
+  return `${lecture.title} - ${lecture.lecturer}`;
+}
+
 /**
  * Accept CORS preflight requests.
  */
@@ -53,6 +57,7 @@ router.get('/:schedule/:week', cors(), async (req, res) => {
 
     return lectures.map((lecture) => {
       const richLecture = {
+        id: lectureToId(lecture),
         start: lectureAndWeekToDate(lecture, week),
         duration: lecture.end - lecture.begin,
         ...lecture,

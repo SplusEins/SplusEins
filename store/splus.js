@@ -13,7 +13,16 @@ const isoWeek0 = moment()
 
 export const state = () => ({
   schedule: undefined,
-  schedules: SCHEDULES,
+  schedules: SCHEDULES.map(
+    (schedule) => ({ ...schedule, path: `${schedule.faculty} ${schedule.degree}` })),
+  /**
+   * schedule: Base schedule.
+   * label: Custom name.
+   * filters: Whitelist array of composite keys.
+   *
+   * { ...schedule, label, filters: [ { title, lecturer } ] }
+   */
+  customSchedule: undefined,
   /**
    * Map of { week: lectures[] }
    */
@@ -44,18 +53,17 @@ export const getters = {
       return [];
     }
 
-    const lectureToId = (lecture) => lecture.title.split(' ')[0];
     const uniq = (iterable) => [...new Set(iterable)];
     const flatten = (iterable) => [].concat(...iterable);
-    const uniqueIds = uniq(flatten(Object.values(state.lectures)).map(lectureToId));
+    const uniqueIds = uniq(flatten(Object.values(state.lectures)).map(({ id }) => id));
 
     const colorScale = chroma.scale([colors.amber.darken1, colors.green.lighten1]).colors(uniqueIds.length);
 
     return state.lectures[state.week].map((lecture) => {
       const start = moment(lecture.start);
-      const color = colorScale[uniqueIds.indexOf(lectureToId(lecture))];
+      const color = colorScale[uniqueIds.indexOf(lecture.id)];
 
-      // standard ds-hour height: 40px, now 45px 
+      // standard ds-hour height: 40px, now 45px
       const multiplicator = 1.125;
       // 7 am is now 1 am
       const shiftingHours = 6;
@@ -89,12 +97,28 @@ export const getters = {
       };
     });
   },
-  getCourses: (state) => {
-    const lectureToId = (lecture) => lecture.title.split(' ')[0];
-    const allLectures = [].concat(...Object.values(state.lectures));
-    const uniqueLectures = new Map();
-    allLectures.forEach((lecture) => uniqueLectures.set(lectureToId(lecture), lecture));
-    return [...uniqueLectures.values()];
+  /**
+   * Convert the state's star schema: { faculty, degree, semester, ...schedule }
+   * into a hierarchy: { (faculty, degree): { semester: schedules } }
+   */
+  getSchedulesAsTree: (state) => {
+    const tree = {};
+    state.schedules.forEach((schedule) => {
+      const path = schedule.path;
+      if (tree[path] == undefined) {
+        tree[path] = {};
+      }
+
+      const leaf1 = tree[path];
+      if (leaf1[schedule.semester] == undefined) {
+        leaf1[schedule.semester] = [];
+      }
+
+      const leaf2 = leaf1[schedule.semester];
+      leaf2.push(schedule);
+    });
+
+    return tree;
   },
 };
 
@@ -113,6 +137,18 @@ export const mutations = {
     state.lectures = {};
     state.schedule = schedule;
   },
+  /**
+   * Set the base schedule and filters matching the given courses.
+   */
+  setCustomSchedule(state, { schedule, courses, name }) {
+    state.customSchedule = {
+      id: schedule.id,
+      faculty: schedule.faculty,
+      semester: schedule.semester,
+      label: name,
+      whitelist: courses.map(({ id }) => id),
+    };
+  },
   setError(state, error) {
     state.error = error;
   },
@@ -125,7 +161,12 @@ export const actions = {
   async load({ state, commit }) {
     try {
       const response = await this.$axios.get(`/api/splus/${state.schedule.id}/${state.week}`);
-      commit('addLectures', { lectures: response.data, week: state.week });
+      let lectures = response.data;
+      const whitelist = state.schedule.whitelist;
+      if (!!whitelist) {
+        lectures = lectures.filter((lecture1) => whitelist.includes(lecture1.id));
+      }
+      commit('addLectures', { lectures, week: state.week });
     } catch (error) {
       commit('setError', 'API-Verbindung fehlgeschlagen');
       console.error('error during API call', error.message);

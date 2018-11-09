@@ -21,49 +21,29 @@
           <v-btn
             dark
             flat
-            @click.native="dialogOpen = false">Speichern</v-btn>
+            @click.native="save()">Speichern</v-btn>
         </v-toolbar-items>
       </v-toolbar>
-      <v-container>
+      <v-container grid-list-md>
         <v-layout
           row
           wrap>
-          <v-flex>
+          <v-flex xs12>
             <v-text-field
-              v-model="timetableName"
+              v-model="selectedName"
               label="Plan benennen"
               single-line />
           </v-flex>
 
           <v-flex xs12>
-            <v-text-field
-              v-model="search"
-              append-icon="search"
-              label="Kurs suchen"
-              single-line
-              hide-details />
-            <v-data-table
-              v-model="timetableCourses"
-              :headers="headers"
-              :items="courses"
-              :search="search"
-              hide-headers
-              hide-actions
-              item-key="title">
-              <template
-                slot="items"
-                slot-scope="props">
-                <td>
-                  <v-checkbox
-                    v-model="props.selected"
-                    primary
-                    hide-details />
-                </td>
-                <td>{{ props.item.title }}</td>
-                <td>{{ props.item.lecturer }}</td>
-                <td v-show="$vuetify.breakpoint.smAndUp">{{ props.item.room }}</td>
-              </template>
-            </v-data-table>
+            <timetable-select v-model="selectedSchedule" />
+          </v-flex>
+
+          <v-flex xs12>
+            <course-multiselect
+              v-model="selectedCourses"
+              :courses="courses"
+              :loading="loading" />
           </v-flex>
         </v-layout>
       </v-container>
@@ -71,11 +51,18 @@
   </v-dialog>
 </template>
 
-<script>
-import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
+<script lang="js">
+import { mapMutations, mapState, mapGetters } from 'vuex';
+import * as moment from 'moment';
+import TimetableSelect from './timetable-select.vue';
+import CourseMultiselect from './course-multiselect.vue';
 
 export default {
   name: 'CustomTimetableDialog',
+  components: {
+    TimetableSelect,
+    CourseMultiselect,
+  },
   props: {
     value: {
       type: Boolean,
@@ -84,14 +71,11 @@ export default {
   },
   data() {
     return {
-      headers: [
-        { text: 'Titel', value: 'title' },
-        { text: 'Dozent', value: 'lecturer' },
-        { text: 'Raum', value: 'room' },
-      ],
-      search: '',
-      timetableCourses: [],
-      timetableName: '',
+      loading: false,
+      selectedName: '',
+      selectedSchedule: undefined,
+      selectedCourses: [],
+      lectures: [],
     };
   },
   computed: {
@@ -99,9 +83,63 @@ export default {
       get() { return this.value; },
       set(value) { this.$emit('input', value); }
     },
+    courses() {
+      if (!this.selectedSchedule) {
+        return [];
+      }
+
+      const allLectures = [].concat(...Object.values(this.lectures));
+      const uniqueLectures = new Map();
+      allLectures.forEach((lecture) => uniqueLectures.set(lecture.id, lecture));
+      return [...uniqueLectures.values()];
+    },
+    ...mapState({
+      customSchedule: (state) => state.splus.customSchedule,
+    }),
     ...mapGetters({
-      courses: 'splus/getCourses',
+      schedulesTree: 'splus/getSchedulesAsTree',
     }),
   },
+  watch: {
+    async selectedSchedule(newSchedule, oldSchedule) {
+      if (newSchedule != oldSchedule) {
+        this.lectures = [];
+      }
+      if (!newSchedule) {
+        return;
+      }
+
+      this.loading = true;
+      await this.loadLectures(newSchedule);
+      this.loading = false;
+    }
+  },
+  methods: {
+    async loadLectures(schedule) {
+      const week = moment().isoWeek();
+
+      try {
+        const response = await this.$axios.get(`/api/splus/${schedule.id}/${week}`);
+        this.lectures = response.data;
+      } catch (error) {
+        this.setError('API-Verbindung fehlgeschlagen');
+        console.error('error during API call', error.message);
+      }
+    },
+    save() {
+      this.dialogOpen = false;
+      this.setCustomSchedule({
+        schedule: this.selectedSchedule,
+        courses: this.selectedCourses,
+        name: this.selectedName,
+      });
+      this.setSchedule(this.customSchedule);
+    },
+    ...mapMutations({
+      setError: 'splus/setError',
+      setCustomSchedule: 'splus/setCustomSchedule',
+      setSchedule: 'splus/setSchedule',
+    }),
+  }
 };
 </script>
