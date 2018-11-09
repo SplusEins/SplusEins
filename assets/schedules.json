@@ -172,21 +172,21 @@
   "label": "Wahlpflichtfächer IE PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
-  "semester": 0
+  "semester": "WPF"
 }, {
   "id": "SPLUS6EE71F",
   "slug": "I-M-WPF-SCE PO18",
   "label": "Wahlpflichtfächer SCE PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
-  "semester": 0
+  "semester": "WPF"
 }, {
   "id": "SPLUS6EE720",
   "slug": "I-M-WPF-SOE PO18",
   "label": "Wahlpflichtfächer SOE PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
-  "semester": 0
+  "semester": "WPF"
 }, {
   "id": "SPLUSEBD6F8",
   "slug": "I-M-I1-IE PO18",
@@ -361,14 +361,14 @@
   "label": "Überfachliche Wahlpflichtfächer Bachelor",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
-  "semester": 0
+  "semester": "WPF"
 }, {
   "id": "SPLUSD49B48",
   "slug": "I-WPF-B",
   "label": "Wahlpflichtfächer Bachelor",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
-  "semester": 0
+  "semester": "WPF"
 }, {
   "id": "SPLUSB3BC3C",
   "slug": "I-WI-S1",
@@ -487,7 +487,7 @@
   "label": "Wahlpflichtfächer Bachelor",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Science",
-  "semester": 0
+  "semester": "WPF"
 }, {
   "id": "SPLUS3BF4EF",
   "slug": "E-B1 EIT MathePLUS",

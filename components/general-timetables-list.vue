@@ -16,7 +16,7 @@
         </v-list-tile-content>
       </v-list-tile>
 
-      <template 
+      <template
         v-for="(schedules, semester) in semesters">
         <v-list-group
           v-if="schedules.length > 1"
@@ -25,7 +25,8 @@
           sub-group>
           <v-list-tile slot="activator">
             <v-list-tile-content>
-              <v-list-tile-title>{{ semester }}. Semester</v-list-tile-title>
+              <v-list-tile-title v-if="semester == 'WPF'">Wahlpflichtfächer</v-list-tile-title>
+              <v-list-tile-title v-else>{{ semester }}. Semester</v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action v-if="currentSemester == semester && currentScheduleLevel1Title == level1Title">
               <v-icon color="primary">check</v-icon>
@@ -50,7 +51,8 @@
           :key="semester"
           @click="currentSchedule = schedules[0]">
           <v-list-tile-content>
-            <v-list-tile-title>{{ semester }}. Semester</v-list-tile-title>
+            <v-list-tile-title v-if="semester == 'WPF'">Wahlpflichtfächer</v-list-tile-title>
+            <v-list-tile-title v-else>{{ semester }}. Semester</v-list-tile-title>
           </v-list-tile-content>
           <v-list-tile-action v-if="currentSchedule == schedules[0]">
             <v-icon>check</v-icon>
