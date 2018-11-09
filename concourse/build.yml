@@ -5,5 +5,7 @@ image_resource:
 
 inputs:
   - name: repository
+outputs:
+  - name: build-result
 run:
   path: repository/concourse/build.sh
