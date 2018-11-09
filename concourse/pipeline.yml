@@ -17,7 +17,7 @@ resources:
       base_dir: /home/concourse/build-results
       user: concourse
       disable_version_path: true
-      password: {{server-pw}}
+      private_key: {{server-key}}
 
 jobs:
   - name: nuxt-build
