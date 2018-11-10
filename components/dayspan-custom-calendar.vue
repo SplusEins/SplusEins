@@ -368,7 +368,7 @@ export default {
       let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
       if(short){
         return this.minTwoDigits(firstDayDay) + '.' + this.minTwoDigits(firstDayMonth) + '.'
-        + '&nbsp;–&nbsp;' + this.minTwoDigits(lastDayDay) + '.' + this.minTwoDigits(lastDayMonth) + '.'
+        + '\xa0–\xa0' + this.minTwoDigits(lastDayDay) + '.' + this.minTwoDigits(lastDayMonth) + '.'
       }else{
         return this.minTwoDigits(firstDayDay) + '. ' + monthNames[firstDayMonth-1] + ' – ' + this.minTwoDigits(lastDayDay)  + '. ' + monthNames[lastDayMonth-1]
       }
