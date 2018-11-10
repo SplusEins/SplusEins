@@ -36,11 +36,6 @@ function lectureAndWeekToDate(lecture: ILecture, week: number): Date {
 router.options('/:schedule/:week', cors());
 
 /**
- * Accept CORS preflight requests.
- */
-router.options('/:schedule/:week', cors());
-
-/**
  * Get all lectures for the given schedule and week.
  *
  * @param schedule The splus "identifier" query param without "#" prefix.
