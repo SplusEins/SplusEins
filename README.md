@@ -53,14 +53,6 @@ $ fly -t <targetname> set-pipeline -p spluseins -c pipeline.yml -l credentials.y
 
 # fly destroy pipeline
 $ fly -t <targetname> destroy-pipeline -p spluseins
-
-# credentials.yml structure
-server-key: |
-  -----BEGIN RSA PRIVATE KEY-----
-  .
-  .
-  .
-  -----END RSA PRIVATE KEY-----
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
