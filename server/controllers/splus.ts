@@ -1,9 +1,5 @@
 import * as express from 'express';
 import * as cors from 'cors';
-<<<<<<< HEAD
-import { createHash } from 'crypto';
-=======
->>>>>>> d1e6b96ddd5e92c6141ba7057823acd06ca954dc
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
@@ -72,11 +68,7 @@ router.get('/:schedule/:week', cors(), async (req, res) => {
   });
 
   res.set('Cache-Control', `public, max-age=${SCHEDULE_CACHE_SECONDS}`);
-<<<<<<< HEAD
-  res.json(result);
-=======
   res.json(data);
->>>>>>> d1e6b96ddd5e92c6141ba7057823acd06ca954dc
 });
 
 export default router;
