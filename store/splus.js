@@ -2,14 +2,10 @@ import Vue from 'vue';
 import colors from 'vuetify/es5/util/colors';
 import * as moment from 'moment';
 import SCHEDULES from '~/assets/schedules.json';
-
-const hashCode = (string) =>
-string.split('').reduce((prevHash, currVal) =>
-  (((prevHash << 5) - prevHash) + currVal.charCodeAt(0))|0, 0);
-
+import * as chroma from 'chroma-js';
 
 export const state = () => ({
-  schedule: SCHEDULES[0],
+  schedule: undefined,
   schedules: SCHEDULES,
   /**
    * Map of { week: lectures[] }
@@ -20,6 +16,7 @@ export const state = () => ({
    * Week 53 of year 2018 equals week 1 of year 2019.
    */
   week: moment().isoWeek(), // TODO won't work in 2019
+  error: undefined,
 });
 
 export const getters = {
@@ -40,11 +37,16 @@ export const getters = {
       return [];
     }
 
-    const colorsArr = Object.values(colors).slice(0, -1); // exclude black
+    const lectureToId = (lecture) => lecture.title.split(' ')[0];
+    const uniq = (iterable) => [...new Set(iterable)];
+    const flatten = (iterable) => [].concat(...iterable);
+    const uniqueIds = uniq(flatten(Object.values(state.lectures)).map(lectureToId));
+
+    const colorScale = chroma.scale([colors.amber.darken1, colors.green.lighten1]).colors(uniqueIds.length);
 
     return state.lectures[state.week].map((lecture) => {
-      const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0]) + Math.pow(2, 31);
-      const color = colorsArr[hashOfFirstWordInTitle % colorsArr.length].lighten1;
+      const start = moment(lecture.start);
+      const color = colorScale[uniqueIds.indexOf(lectureToId(lecture))];
 
       // standard ds-hour height: 40px, now 45px 
       const multiplicator = 1.125;
@@ -55,26 +57,24 @@ export const getters = {
       const adjustedMinutesWithMultiplicator = adjustedMinutes * multiplicator;
       const hours = Math.floor(adjustedMinutesWithMultiplicator / 60);
       const minutes = adjustedMinutesWithMultiplicator - (hours * 60) -1;
-      const durationWithMultiplicator = (lecture.end - lecture.begin) * multiplicator
+      const durationWithMultiplicator = lecture.duration * multiplicator;
 
-      const start = moment()
-        .isoWeek(lecture.week)
-        .isoWeekday(lecture.day + 1)
-        .hour(hours)
-        .minute(minutes);
+      const shiftedStart = start.clone()
+        .hours(hours)
+        .minutes(minutes);
 
       return {
         data: {
           title: lecture.title,
-          color,
+          color, // needs to be a hex string
           description: `${lecture.lecturer} ${lecture.room} ${lecture.info}`,
           location: lecture.room,
         },
         schedule: {
-          on: start,
+          on: shiftedStart,
           times: [ {
-            hour: start.hour(),
-            minute: start.minute(),
+            hour: shiftedStart.hours(),
+            minute: shiftedStart.minutes(),
           } ],
           duration: durationWithMultiplicator,
           durationUnit: 'hours',
@@ -106,6 +106,12 @@ export const mutations = {
     state.lectures = {};
     state.schedule = schedule;
   },
+  setError(state, error) {
+    state.error = error;
+  },
+  clearError(state) {
+    state.error = undefined;
+  },
 };
 
 export const actions = {
@@ -114,7 +120,8 @@ export const actions = {
       const response = await this.$axios.get(`/api/splus/${state.schedule.id}/${state.week}`);
       commit('addLectures', { lectures: response.data, week: state.week });
     } catch (error) {
-      console.error('error during API call', error); // TODO add notification in UI
+      commit('setError', 'API-Verbindung fehlgeschlagen');
+      console.error('error during API call', error.message);
     }
   },
 };

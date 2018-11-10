@@ -1,10 +1,7 @@
 <template>
-  <v-app>
-    <nuxt />
-  </v-app>
+  <nuxt />
 </template>
 
 <script>
-export default {
-}
+export default { };
 </script>
