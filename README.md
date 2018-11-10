@@ -42,8 +42,7 @@ $ set CACHE_PATH=spluseinscache
 ## Concourse Setup (CI/CD)
 
 ```bash
-# download the fly cli
-https://concourse-ci.org/download.html
+[Fly CLI](https://concourse-ci.org/download)
 
 # fly login (if you haven't created a target yet)
 $ fly -t <new targetname> login --concourse-url https://ci.spluseins.de
