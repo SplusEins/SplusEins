@@ -6,6 +6,6 @@ image_resource:
 inputs:
   - name: repository
 outputs:
-  - name: build-result
+  - name: npm-install-result
 run:
-  path: repository/concourse/build.sh
+  path: repository/concourse/install.sh

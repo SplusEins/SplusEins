@@ -20,13 +20,19 @@ resources:
       private_key: {{server-key}}
 
 jobs:
-  - name: nuxt-build
+  - name: build
     plan:
       - get: repository
         trigger: true
 
-      - task: install-and-build
-        file: repository/concourse/build.yml
+      - task: install-dependencies
+        file: repository/concourse/install.yml
+
+      - task: build-frontend
+        file: repository/concourse/build-frontend.yml
+
+      - task: build-api
+        file: repository/concourse/build-api.yml
 
       - put: server-deploy
         params: {"sync_dir" : "build-result" }
