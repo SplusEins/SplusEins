@@ -7,7 +7,7 @@ apps:
       exec_mode: cluster
       env:
         NODE_ENV: production
-        CACHE_PATH: /home/concourse/build-result/cache
+        CACHE_PATH: /home/concourse/api-cache
     - name: web
       port: 3001
       script: ./node_modules/nuxt/bin/nuxt-start
