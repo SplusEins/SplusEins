@@ -41,7 +41,7 @@ $ set CACHE_PATH=spluseinscache
 
 ## Concourse Setup (CI/CD)
 
-[Download the fly cli](https://concourse-ci.org/download)
+First download the [fly cli](https://concourse-ci.org/download.html).
 
 ```bash
 # fly login (if you haven't created a target yet)
