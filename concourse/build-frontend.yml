@@ -8,4 +8,4 @@ inputs:
 outputs:
   - name: frontend-build-result
 run:
-  path: repository/concourse/build-frontend.sh
+  path: npm-install-result/concourse/build-frontend.sh

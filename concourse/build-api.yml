@@ -8,4 +8,4 @@ inputs:
 outputs:
   - name: build-result
 run:
-  path: repository/concourse/build-api.sh
+  path: frontend-build-result/concourse/build-api.sh
