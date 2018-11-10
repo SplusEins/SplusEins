@@ -89,7 +89,7 @@ export default {
 
 .overlay {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   opacity: 0.5;
   font-size: 12px;
 }
