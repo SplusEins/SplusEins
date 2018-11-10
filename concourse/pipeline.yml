@@ -35,4 +35,5 @@ jobs:
         file: repository/concourse/build-api.yml
 
       - put: server-deploy
-        params: {"sync_dir" : "build-result" }
+        params: {"sync_dir" : "build-result",
+                 "rsync_opts" : ["--del"]}
