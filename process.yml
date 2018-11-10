@@ -1,7 +1,7 @@
 apps:
     - name: api
       port: 3002
-      script: ./spluseins/dist/server/server.js
+      script: ./dist/server/server.js
       instances: 1
       watch: true
       exec_mode: cluster
@@ -9,7 +9,7 @@ apps:
         NODE_ENV: production
     - name: web
       port: 3001
-      script: ./spluseins/node_modules/nuxt/bin/nuxt-start
+      script: ./node_modules/nuxt/bin/nuxt-start
       cwd: ./spluseins
       instances: 1
       watch: true
