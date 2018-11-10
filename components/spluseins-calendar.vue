@@ -88,22 +88,10 @@ export default {
 <style scoped lang="scss">
 
 .overlay {
-  position: absolute;
+  display: flex;
+  justify-content: right;
   opacity: 0.5;
   font-size: 12px;
 }
 
-@media screen and (max-width: 1000px) {
-  .overlay {
-    right: 20px;
-    bottom: 15px;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  .overlay {
-    right: 45px;
-    bottom: 22px;
-  }
-}
 </style>
