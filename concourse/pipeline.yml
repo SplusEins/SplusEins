@@ -36,4 +36,4 @@ jobs:
 
       - put: server-deploy
         params: {"sync_dir" : "build-result",
-                 "rsync_opts" : ["--del"]}
+                 "rsync_opts" : ["--delete -r"]}
