@@ -31,12 +31,30 @@ $ npm run build:api
 $ npm start:api
 
 # Set environment variables on Linux
-API_URL=https://spluseins.de/
-CACHE_PATH=spluseinscache
+$ API_URL=https://spluseins.de/
+$ CACHE_PATH=spluseinscache
 
 # Set environment variables on Windows (you have to use default cmd-line tool)
-set API_URL=https://spluseins.de/
-set CACHE_PATH=spluseinscache
+$ set API_URL=https://spluseins.de/
+$ set CACHE_PATH=spluseinscache
+```
+
+## Concourse Setup (CI/CD)
+
+First download the [fly cli](https://concourse-ci.org/download.html).
+
+```bash
+# fly login (if you haven't created a target yet)
+$ fly -t <new targetname> login --concourse-url https://ci.spluseins.de
+
+# fly login (with target)
+$ fly -t <targetname> login
+
+# fly set pipeline
+$ fly -t <targetname> set-pipeline -p spluseins -c pipeline.yml -l credentials.yml
+
+# fly destroy pipeline
+$ fly -t <targetname> destroy-pipeline -p spluseins
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
