@@ -56,3 +56,13 @@ export default {
   },
 };
 </script>
+
+
+<style scoped lang="scss">
+
+.container {
+  padding: 16px 16px 25px 16px;
+}
+
+</style>
+

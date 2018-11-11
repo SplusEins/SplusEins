@@ -86,11 +86,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .overlay {
-  position: absolute;
-  right: 1.5em;
-  bottom: 1.5em;
+  display: flex;
+  justify-content: flex-end;
   opacity: 0.5;
-  font-size: small;
+  font-size: 12px;
 }
+
 </style>
