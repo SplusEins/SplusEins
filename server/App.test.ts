@@ -1,3 +1,5 @@
+process.env.CACHE_DISABLE = '1';
+
 import App from './App';
 import * as request from 'supertest';
 
