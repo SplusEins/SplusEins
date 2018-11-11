@@ -5,7 +5,11 @@ import SCHEDULES from '~/assets/schedules.json';
 import * as chroma from 'chroma-js';
 
 // update this in SS19
-const splusStartDate = moment().startOf('year').year(2018);
+const isoWeek0 = moment()
+  .year(2018)
+  .startOf('year') // week 1
+  .startOf('isoWeek') // start of week 1
+  .subtract(1, 'weeks'); // start of week 0
 
 export const state = () => ({
   schedule: undefined,
@@ -18,7 +22,7 @@ export const state = () => ({
    * Currently viewed week.
    * Week 53 of year 2018 equals week 1 of year 2019.
    */
-  week: moment().diff(splusStartDate, 'week'),
+  week: moment().diff(isoWeek0, 'week'),
   error: undefined,
 });
 
