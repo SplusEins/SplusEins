@@ -55,7 +55,9 @@ export const getters = {
 
     const uniq = (iterable) => [...new Set(iterable)];
     const flatten = (iterable) => [].concat(...iterable);
-    const uniqueIds = uniq(flatten(Object.values(state.lectures)).map(({ id }) => id));
+    const uniqueIds = uniq(flatten(Object.values(state.lectures))
+      .map(({ id }) => id))
+      .sort();
 
     const colorScale = chroma.scale([colors.amber.darken1, colors.green.lighten1]).colors(uniqueIds.length);
 
