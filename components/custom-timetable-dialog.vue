@@ -120,7 +120,7 @@ export default {
 
       try {
         const response = await this.$axios.get(`/api/splus/${schedule.id}/${week}`);
-        this.lectures = response.data;
+        this.selectedCourses = this.lectures = response.data;
       } catch (error) {
         this.setError('API-Verbindung fehlgeschlagen');
         console.error('error during API call', error.message);
