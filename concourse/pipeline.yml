@@ -1,0 +1,39 @@
+resource_types:
+  - name: rsync-resource
+    type: docker-image
+    source: {repository: mrsixw/concourse-rsync-resource}
+
+resources:
+  - name: repository
+    type: git
+    source:
+      uri: https://github.com/spluseins/spluseins.git
+      branch: master
+
+  - name: server-deploy
+    type: rsync-resource
+    source:
+      server: spluseins.de
+      base_dir: /home/concourse/build-result
+      user: concourse
+      disable_version_path: true
+      private_key: {{server-key}}
+
+jobs:
+  - name: build
+    plan:
+      - get: repository
+        trigger: true
+
+      - task: install-dependencies
+        file: repository/concourse/install.yml
+
+      - task: build-frontend
+        file: repository/concourse/build-frontend.yml
+
+      - task: build-api
+        file: repository/concourse/build-api.yml
+
+      - put: server-deploy
+        params: {"sync_dir" : "build-result",
+                 "rsync_opts" : ["--delete-after", "--recursive"]}
