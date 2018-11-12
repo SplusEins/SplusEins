@@ -14,8 +14,6 @@
 </template>
 
 <script lang="js">
-import { mapState } from 'vuex';
-
 import GeneralTimetablesList from './general-timetables-list.vue';
 import FavoriteTimetablesList from './favorite-timetables-list.vue';
 import CustomTimetablesList from './custom-timetables-list.vue';
@@ -37,15 +35,6 @@ export default {
     drawerProp: {
       get() { return this.drawer; },
       set(val) { this.$emit('update:drawer', val); }
-    },
-    ...mapState({
-      currentSchedule: (state) => state.splus.schedule,
-    }),
-  },
-  watch: {
-    currentSchedule() {
-      // close drawer when navigation target changes by clicking on a list item
-      this.drawerProp = false;
     },
   },
 };
