@@ -90,7 +90,8 @@ export default {
 
       const allLectures = [].concat(...Object.values(this.lectures));
       const uniqueLectures = new Map();
-      allLectures.forEach((lecture) => uniqueLectures.set(lecture.id, lecture));
+      allLectures.forEach(
+        (lecture) => uniqueLectures.set(lecture.titleId, lecture));
       return [...uniqueLectures.values()];
     },
     ...mapState({
@@ -120,6 +121,7 @@ export default {
 
       try {
         const response = await this.$axios.get(`/api/splus/${schedule.id}/${week}`);
+        // select all courses by default
         this.selectedCourses = this.lectures = response.data;
       } catch (error) {
         this.setError('API-Verbindung fehlgeschlagen');

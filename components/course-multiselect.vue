@@ -14,7 +14,7 @@
       :loading="loading"
       hide-headers
       hide-actions
-      item-key="id">
+      item-key="titleId">
       <template slot="no-data">
         <v-layout
           row
