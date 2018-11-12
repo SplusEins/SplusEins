@@ -56,14 +56,16 @@ export const getters = {
     const uniq = (iterable) => [...new Set(iterable)];
     const flatten = (iterable) => [].concat(...iterable);
     const uniqueIds = uniq(flatten(Object.values(state.lectures))
-      .map(({ id }) => id))
+      .map(({ lecturerId }) => lecturerId))
       .sort();
 
-    const colorScale = chroma.scale([colors.amber.darken1, colors.green.lighten1]).colors(uniqueIds.length);
+    const colorScale = chroma
+      .scale([colors.amber.darken1, colors.green.lighten1])
+      .colors(uniqueIds.length);
 
     return state.lectures[state.week].map((lecture) => {
       const start = moment(lecture.start);
-      const color = colorScale[uniqueIds.indexOf(lecture.id)];
+      const color = colorScale[uniqueIds.indexOf(lecture.lecturerId)];
 
       // standard ds-hour height: 40px, now 45px
       const multiplicator = 1.125;
@@ -148,7 +150,7 @@ export const mutations = {
       faculty: schedule.faculty,
       semester: schedule.semester,
       label: name,
-      whitelist: courses.map(({ id }) => id),
+      whitelist: courses.map(({ titleId }) => titleId),
     };
   },
   setError(state, error) {
@@ -166,7 +168,8 @@ export const actions = {
       let lectures = response.data;
       const whitelist = state.schedule.whitelist;
       if (!!whitelist) {
-        lectures = lectures.filter((lecture1) => whitelist.includes(lecture1.id));
+        lectures = lectures.filter(
+          (lecture1) => whitelist.includes(lecture1.titleId));
       }
       commit('addLectures', { lectures, week: state.week });
     } catch (error) {

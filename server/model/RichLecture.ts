@@ -11,16 +11,23 @@ export class RichLecture {
   lecturer: string;
 
   /* derived attributes */
-  id: string;
+  titleId: string;
+  lecturerId: string;
   start: Date;
   duration: number;
 
-  private generateId(lecture: ILecture): string {
-    return (lecture.title
-      .replace(/(Alt|Sonder|Gruppe).*$/g, '')
-      .replace(/labor|vl|tut|online/gi, '')
-      .match(/[A-Z0-9]/g) || [])
-      .join('');
+  private generateTitleId(title: string): string {
+    return (title.match(/\b(\w)/g) || []).join('');
+  }
+
+  private generateLecturerId(lecturer: string): string {
+    return lecturer
+      .replace(/Prof|Dr|Dipl|Ing|Herr|Frau|MA|BA/g, '')
+      .replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue').replace('ß', 'ss')
+      .replace(/[^a-z]/gi, ' ')
+      .split(' ')
+      .filter((w) => w.length > 3)
+      .join(' ');
   }
 
   private lectureToDate(lecture: ILecture, week: number): Date {
@@ -33,12 +40,13 @@ export class RichLecture {
 
   constructor(lecture: ILecture, week: number) {
     this.title = lecture.title;
+    this.titleId = this.generateTitleId(lecture.title);
     this.day = lecture.day;
     this.begin = lecture.begin;
     this.info = lecture.info;
     this.room = lecture.room;
     this.lecturer = lecture.lecturer;
-    this.id = this.generateId(lecture);
+    this.lecturerId = this.generateLecturerId(lecture.lecturer);
     this.start = this.lectureToDate(lecture, week);
     this.duration = lecture.end - lecture.begin;
   }
