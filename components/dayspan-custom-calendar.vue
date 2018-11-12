@@ -715,6 +715,9 @@ export default {
 
 .v-menu__activator *{
   cursor: text !important;
+}
+
+.ds-calendar-event{
   user-select: auto !important;
 }
 
