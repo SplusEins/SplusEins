@@ -10,6 +10,15 @@ resources:
       uri: https://github.com/spluseins/spluseins.git
       branch: ci/automate-deploy
 
+  - name: server-deploy-dev
+    type: rsync-resource
+    source:
+      server: spluseins.de
+      base_dir: /home/concourse/build-result-dev
+      user: concourse
+      disable_version_path: true
+      private_key: {{server-key}}
+
   - name: server-deploy
     type: rsync-resource
     source:
@@ -20,7 +29,8 @@ resources:
       private_key: {{server-key}}
 
 jobs:
-  - name: build
+
+  - name: build-dev
     plan:
       - get: repository
         trigger: true
@@ -30,7 +40,26 @@ jobs:
 
       - task: build-frontend
         file: repository/concourse/build-frontend.yml
-        params: {"API_URL": {{api-url}}}
+        params: {"API_URL": {{API_URL_MASTER}}}
+
+      - task: build-api
+        file: repository/concourse/build-api.yml
+
+      - put: server-deploy
+        params: {"sync_dir" : "build-result",
+                 "rsync_opts" : ["--delete-after", "--recursive"]}
+
+  - name: build
+    plan:
+      - get: repository
+        passed: [build-dev]
+
+      - task: install-dependencies
+        file: repository/concourse/install.yml
+
+      - task: build-frontend
+        file: repository/concourse/build-frontend.yml
+        params: {"API_URL": {{API_URL}}}
 
       - task: build-api
         file: repository/concourse/build-api.yml
