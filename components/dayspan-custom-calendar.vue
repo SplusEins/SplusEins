@@ -713,6 +713,14 @@ export default {
 
 <style lang="scss">
 
+.v-menu__activator *{
+  cursor: text !important;
+}
+
+.ds-calendar-event{
+  user-select: auto !important;
+}
+
 //current-time line
 .ds-day.ds-day-today > div:last-child{
   display: none
