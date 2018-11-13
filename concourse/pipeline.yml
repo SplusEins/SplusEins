@@ -23,7 +23,7 @@ resources:
     type: rsync-resource
     source:
       server: spluseins.de
-      base_dir: /home/concourse/build-result
+      base_dir: /home/concourse/build-result-prod
       user: concourse
       disable_version_path: true
       private_key: {{server-key}}
