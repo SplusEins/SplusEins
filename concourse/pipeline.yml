@@ -45,7 +45,7 @@ jobs:
       - task: build-api
         file: repository/concourse/build-api.yml
 
-      - put: server-deploy
+      - put: server-deploy-dev
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
 
