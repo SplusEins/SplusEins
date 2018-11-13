@@ -19,7 +19,7 @@ resources:
       disable_version_path: true
       private_key: {{server-key}}
 
-  - name: server-deploy
+  - name: server-deploy-prod
     type: rsync-resource
     source:
       server: spluseins.de
@@ -49,7 +49,7 @@ jobs:
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
 
-  - name: build
+  - name: build-prod
     plan:
       - get: repository
         passed: [build-dev]
@@ -64,6 +64,6 @@ jobs:
       - task: build-api
         file: repository/concourse/build-api.yml
 
-      - put: server-deploy
+      - put: server-deploy-prod
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
