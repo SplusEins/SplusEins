@@ -367,8 +367,8 @@ export default {
       let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
       let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
       if(short){
-        return this.minTwoDigits(firstDayDay) + '.' + this.minTwoDigits(firstDayMonth) + '.'
-        + '\xa0–\xa0' + this.minTwoDigits(lastDayDay) + '.' + this.minTwoDigits(lastDayMonth) + '.'
+        return this.minTwoDigits(firstDayDay) + '.' + this.minTwoDigits(firstDayMonth) + '. - '
+        + this.minTwoDigits(lastDayDay) + '.' + this.minTwoDigits(lastDayMonth) + '.'
       }else{
         return this.minTwoDigits(firstDayDay) + '. ' + monthNames[firstDayMonth-1] + ' – ' + this.minTwoDigits(lastDayDay)  + '. ' + monthNames[lastDayMonth-1]
       }
@@ -752,6 +752,18 @@ export default {
   text-decoration: none !important;
 }
 
+@media screen and (max-width: 350px) {
+  .ds-summary-text{
+    font-size: 17px;
+  }
+}
+
+@media screen and (min-width: 350px) {
+  .ds-summary-text{
+    font-size: 20px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .ds-week-date{
     font-size: 14px !important;
@@ -780,7 +792,6 @@ export default {
   position: relative;
   top: 3px;
   left: 4px;
-  font-size: 20px;
 }
 
 .v-btn--floating.ds-add-event-today {
