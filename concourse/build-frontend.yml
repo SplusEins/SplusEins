@@ -10,4 +10,4 @@ outputs:
 run:
   path: npm-install-result/concourse/build-frontend.sh
 params:
-  API_URL: https://spluseins.de/
+  API_URL: ((param "Please provide the API_URL))
