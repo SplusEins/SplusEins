@@ -8,24 +8,29 @@
       <v-select
         :items="paths"
         v-model="selectedPath"
-        label="Studiengang" />
+        label="Studiengang"
+        required />
     </v-flex>
     <v-flex
       md2
       xs3>
       <v-select
         :items="semesters"
+        :rules="[rules.required]"
         v-model="selectedSemester"
-        label="Semester" />
+        label="Semester"
+        required />
     </v-flex>
     <v-flex
       v-show="!($vuetify.breakpoint.smAndDown && !hasMultipleSchedules)"
       md5>
       <v-select
         :items="schedules"
+        :rules="[rules.resolvesToSchedule]"
         v-model="selectedSchedule"
         label="Vertiefung"
         item-text="label"
+        required
         return-object />
     </v-flex>
   </v-layout>
@@ -46,6 +51,10 @@ export default {
     return {
       selectedPath: '',
       selectedSemester: '',
+      rules: {
+        required: (value) => !!value || 'Pflichtfeld',
+        resolvesToSchedule: () => !!this.selectedSchedule || 'Pflichtfeld',
+      }
     };
   },
   computed: {
