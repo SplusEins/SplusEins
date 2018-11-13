@@ -19,34 +19,40 @@
         <v-spacer />
         <v-toolbar-items>
           <v-btn
+            :disabled="!valid"
             dark
             flat
             @click.native="save()">Speichern</v-btn>
         </v-toolbar-items>
       </v-toolbar>
-      <v-container grid-list-md>
-        <v-layout
-          row
-          wrap>
-          <v-flex xs12>
-            <v-text-field
-              v-model="selectedName"
-              label="Plan benennen"
-              single-line />
-          </v-flex>
+      <v-form v-model="valid">
+        <v-container grid-list-md>
+          <v-layout
+            row
+            wrap>
+            <v-flex xs12>
+              <v-text-field
+                v-model="selectedName"
+                :rules="[rules.required]"
+                label="Plan benennen"
+                single-line
+                required
+                autofocus />
+            </v-flex>
 
-          <v-flex xs12>
-            <timetable-select v-model="selectedSchedule" />
-          </v-flex>
+            <v-flex xs12>
+              <timetable-select v-model="selectedSchedule"/>
+            </v-flex>
 
-          <v-flex xs12>
-            <course-multiselect
-              v-model="selectedCourses"
-              :courses="courses"
-              :loading="loading" />
-          </v-flex>
-        </v-layout>
-      </v-container>
+            <v-flex xs12>
+              <course-multiselect
+                v-model="selectedCourses"
+                :courses="courses"
+                :loading="loading" />
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-form>
     </v-card>
   </v-dialog>
 </template>
@@ -76,6 +82,10 @@ export default {
       selectedSchedule: undefined,
       selectedCourses: [],
       lectures: [],
+      valid: false,
+      rules: {
+        required: (value) => !!value || 'Pflichtfeld',
+      },
     };
   },
   computed: {
