@@ -8,7 +8,7 @@ resources:
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
-      branch: master
+      branch: ci/automate-deploy
 
   - name: server-deploy
     type: rsync-resource
