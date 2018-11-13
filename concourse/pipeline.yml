@@ -40,7 +40,7 @@ jobs:
 
       - task: build-frontend
         file: repository/concourse/build-frontend.yml
-        params: {"API_URL": {{API_URL_MASTER}}}
+        params: {"API_URL": {{API_URL_DEV}}}
 
       - task: build-api
         file: repository/concourse/build-api.yml
@@ -59,7 +59,7 @@ jobs:
 
       - task: build-frontend
         file: repository/concourse/build-frontend.yml
-        params: {"API_URL": {{API_URL}}}
+        params: {"API_URL": {{API_URL_PROD}}}
 
       - task: build-api
         file: repository/concourse/build-api.yml
