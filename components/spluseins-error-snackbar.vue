@@ -17,7 +17,7 @@
 import { mapMutations, mapState } from 'vuex';
 
 export default {
-  name: 'SpluseinsSnackbar',
+  name: 'SpluseinsErrorSnackbar',
   computed: {
     snackbarOpen: {
         get() {
