@@ -54,14 +54,17 @@ export default {
       isDark: state => state.theme.isDark,
     }),
   },
-  async fetch({ store, params }) {
+  async fetch({ store, params, query }) {
     const scheduleId = params.schedule;
 
     if (!!scheduleId) {
-      const schedule =  store.state.splus.schedules
-        .find((schedule) => schedule.id == scheduleId);
-
-      store.commit('splus/setSchedule', schedule);
+      if (!!query.v) {
+        store.dispatch('splus/importCustomSchedule', { params, query });
+      } else {
+        const schedule =  store.state.splus.schedules
+          .find((schedule) => schedule.id == scheduleId);
+        store.commit('splus/setSchedule', schedule);
+      }
 
       // exclude static build
       // because loaded schedule depends on the current timestamp

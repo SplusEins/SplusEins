@@ -58,7 +58,7 @@
 </template>
 
 <script lang="js">
-import { mapMutations, mapState, mapGetters } from 'vuex';
+import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import * as moment from 'moment';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
@@ -140,18 +140,18 @@ export default {
     },
     save() {
       this.dialogOpen = false;
-      this.setCustomSchedule({
+      this.saveCustomSchedule({
         schedule: this.selectedSchedule,
         courses: this.selectedCourses,
         name: this.selectedName,
       });
-      this.setSchedule(this.customSchedule);
     },
     ...mapMutations({
       setError: 'splus/setError',
-      setCustomSchedule: 'splus/setCustomSchedule',
-      setSchedule: 'splus/setSchedule',
     }),
-  }
+    ...mapActions({
+      saveCustomSchedule: 'splus/saveCustomSchedule',
+    }),
+  },
 };
 </script>
