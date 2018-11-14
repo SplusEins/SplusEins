@@ -8,7 +8,7 @@ resources:
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
-      branch: ci/automate-deploy
+      branch: master
 
   - name: server-deploy-dev
     type: rsync-resource
@@ -40,7 +40,7 @@ jobs:
 
       - task: build-frontend
         file: repository/concourse/build-frontend.yml
-        params: {"API_URL": {{API_URL_DEV}}}
+        params: {"API_URL": "https://master.spluseins.de/"}
 
       - task: build-api
         file: repository/concourse/build-api.yml
@@ -59,7 +59,7 @@ jobs:
 
       - task: build-frontend
         file: repository/concourse/build-frontend.yml
-        params: {"API_URL": {{API_URL_PROD}}}
+        params: {"API_URL": "https://spluseins.de/"}
 
       - task: build-api
         file: repository/concourse/build-api.yml
