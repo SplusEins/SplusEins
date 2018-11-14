@@ -4,6 +4,8 @@ import * as moment from 'moment';
 import SCHEDULES from '~/assets/schedules.json';
 import * as chroma from 'chroma-js';
 
+const uniq = (iterable) => [...new Set(iterable)];
+
 // update this in SS19
 const isoWeek0 = moment()
   .year(2018)
@@ -18,9 +20,9 @@ export const state = () => ({
   /**
    * schedule: Base schedule.
    * label: Custom name.
-   * filters: Whitelist array of composite keys.
+   * filters: Whitelist array of keys.
    *
-   * { ...schedule, label, filters: [ { title, lecturer } ] }
+   * { ...schedule, label, whitelist: [ titleId ] }
    */
   customSchedule: undefined,
   /**
@@ -53,7 +55,6 @@ export const getters = {
       return [];
     }
 
-    const uniq = (iterable) => [...new Set(iterable)];
     const flatten = (iterable) => [].concat(...iterable);
     const uniqueIds = uniq(flatten(Object.values(state.lectures))
       .map(({ lecturerId }) => lecturerId))
@@ -124,6 +125,15 @@ export const getters = {
 
     return tree;
   },
+  customScheduleAsRoute: (state) => {
+    const params = { schedule: state.customSchedule.id };
+    const query = {
+      name: state.customSchedule.label,
+      course: state.customSchedule.whitelist,
+      v: 1
+    };
+    return { params, query };
+  },
 };
 
 export const mutations = {
@@ -137,17 +147,8 @@ export const mutations = {
   setSchedule(state, schedule) {
     state.schedule = schedule;
   },
-  /**
-   * Set the base schedule and filters matching the given courses.
-   */
-  setCustomSchedule(state, { schedule, courses, name }) {
-    state.customSchedule = {
-      id: schedule.id,
-      faculty: schedule.faculty,
-      semester: schedule.semester,
-      label: name,
-      whitelist: courses.map(({ titleId }) => titleId),
-    };
+  setCustomSchedule(state, customSchedule) {
+    state.customSchedule = customSchedule;
   },
   setError(state, error) {
     state.error = error;
@@ -171,6 +172,55 @@ export const actions = {
     } catch (error) {
       commit('setError', 'API-Verbindung fehlgeschlagen');
       console.error('error during API call', error.message);
+    }
+  },
+  /**
+   * Set the base schedule and filters matching the given courses.
+   * Then, update the route.
+   */
+  saveCustomSchedule({ state, commit, getters }, { schedule, courses, name }) {
+    const titleIds = uniq(courses.map(({ titleId }) => titleId));
+
+    commit('setCustomSchedule', {
+      id: schedule.id,
+      faculty: schedule.faculty,
+      semester: schedule.semester,
+      label: name,
+      whitelist: titleIds,
+    });
+    commit('setSchedule', state.customSchedule);
+    this.$router.push(getters.customScheduleAsRoute);
+  },
+  /**
+   * Import custom schedule from route.
+   */
+  importCustomSchedule({ state, commit }, { params, query }) {
+    switch (parseFloat(query.v)) {
+      case 1:
+        if (!params.schedule || !query.name || !query.course) {
+          console.log('no custom schedule attributes present', { params, query });
+          return;
+        }
+
+        const schedule = state.schedules
+          .find((schedule) => schedule.id == params.schedule);
+
+        let courses = query.course;
+        if (!Array.isArray(courses)) {
+          courses = [courses];
+        }
+
+        commit('setCustomSchedule', {
+          id: schedule.id,
+          faculty: schedule.faculty,
+          semester: schedule.semester,
+          label: query.name,
+          whitelist: courses,
+        });
+        commit('setSchedule', state.customSchedule);
+        break;
+      default:
+        console.log('unknown custom schedule URL parameter version', { params, query });
     }
   },
 };

@@ -35,7 +35,7 @@
 
           <v-list-tile
             v-for="schedule in schedules"
-            :to="`/${schedule.id}`"
+            :to="{ params: { schedule: schedule.id } }"
             :key="schedule.id"
             nuxt>
             <v-list-tile-content value="true">
@@ -49,7 +49,7 @@
 
         <v-list-tile
           v-else
-          :to="`/${schedules[0].id}`"
+          :to="{ params: { schedule: schedules[0].id } }"
           :key="semester"
           nuxt>
           <v-list-tile-content>
