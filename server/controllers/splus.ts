@@ -5,30 +5,25 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 
 import { SplusApi } from '../lib/SplusApi';
-import { ILecture } from '../lib/ILecture';
+import { RichLecture } from '../model/RichLecture';
 
 const SCHEDULE_CACHE_SECONDS = 600;
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
+const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
 
 const router = express.Router();
-const cache = cacheManager.caching({
-  store: fsStore,
-  options: {
-    path: CACHE_PATH,
-    ttl: 60,
-    subdirs: true,
-  },
-});
-
-function lectureAndWeekToDate(lecture: ILecture, week: number): Date {
-  return moment()
-    .startOf('date')
-    .isoWeek(week)
-    .isoWeekday(lecture.day + 1)
-    .toDate();
-}
+const cache = CACHE_DISABLE ?
+  cacheManager.caching({ store: 'memory', max: 0 }) :
+  cacheManager.caching({
+    store: fsStore,
+    options: {
+      path: CACHE_PATH,
+      ttl: 60,
+      subdirs: true,
+    },
+  });
 
 /**
  * Accept CORS preflight requests.
@@ -40,7 +35,7 @@ router.options('/:schedule/:week', cors());
  *
  * @param schedule The splus "identifier" query param without "#" prefix.
  * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
- * @return ILecture[]
+ * @return RichLecture[]
  */
 router.get('/:schedule/:week', cors(), async (req, res) => {
   const schedule = req.params.schedule;
@@ -51,16 +46,8 @@ router.get('/:schedule/:week', cors(), async (req, res) => {
     console.log(`cache miss for key ${key}`);
     const lectures = await SplusApi.getData('#' + schedule, week);
 
-    return lectures.map((lecture) => {
-      const richLecture = {
-        start: lectureAndWeekToDate(lecture, week),
-        duration: lecture.end - lecture.begin,
-        ...lecture,
-      };
-      delete richLecture.end;
-      return richLecture;
-    }, { ttl: SCHEDULE_CACHE_SECONDS });
-  });
+    return lectures.map((ilecture) => new RichLecture(ilecture, week));
+  }, { ttl: SCHEDULE_CACHE_SECONDS });
 
   res.set('Cache-Control', `public, max-age=${SCHEDULE_CACHE_SECONDS}`);
   res.json(data);

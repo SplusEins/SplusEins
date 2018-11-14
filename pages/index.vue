@@ -20,7 +20,11 @@
           </v-flex>
         </v-layout>
       </v-container>
-      <spluseins-snackbar />
+      <spluseins-error-snackbar />
+      <no-ssr>
+        <!-- no ssr: show/hide depends on client's local storage settings -->
+        <spluseins-cookie-snackbar />
+      </no-ssr>
     </v-content>
     <spluseins-footer/>
   </v-app>
@@ -32,7 +36,8 @@ import { mapState } from 'vuex';
 import SpluseinsHeader from '../components/spluseins-header.vue';
 import SpluseinsCalendar from '../components/spluseins-calendar.vue';
 import SpluseinsFooter from '../components/spluseins-footer.vue';
-import SpluseinsSnackbar from '../components/spluseins-snackbar.vue';
+import SpluseinsErrorSnackbar from '../components/spluseins-error-snackbar.vue';
+import SpluseinsCookieSnackbar from '../components/spluseins-cookie-snackbar.vue';
 
 export default {
   name: 'HomePage',
@@ -40,7 +45,8 @@ export default {
     SpluseinsHeader,
     SpluseinsCalendar,
     SpluseinsFooter,
-    SpluseinsSnackbar,
+    SpluseinsErrorSnackbar,
+    SpluseinsCookieSnackbar,
   },
   computed: {
     ...mapState({
@@ -56,3 +62,13 @@ export default {
   },
 };
 </script>
+
+
+<style scoped lang="scss">
+
+.container {
+  padding: 16px 16px 25px 16px;
+}
+
+</style>
+

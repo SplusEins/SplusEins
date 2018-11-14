@@ -1,0 +1,11 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source: {repository: node}
+
+inputs:
+  - name: frontend-build-result
+outputs:
+  - name: build-result
+run:
+  path: frontend-build-result/concourse/build-api.sh

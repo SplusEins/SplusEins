@@ -55,7 +55,7 @@
 </template>
 
 
-<script lang="ts">
+<script>
 import gitHubIcon from '../assets/img/gitHub.svg';
 
 export default {
