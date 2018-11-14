@@ -11,6 +11,7 @@ export default ({ store }) => {
       theme: state.theme,
       splus: {
         schedule: state.splus.schedule,
+        customSchedule: state.splus.customSchedule,
       },
       privacy: {
         allowCookies: state.privacy.allowCookies,
