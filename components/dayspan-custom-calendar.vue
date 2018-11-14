@@ -763,12 +763,14 @@ export default {
 @media screen and (max-width: 350px) {
   .ds-summary-text{
     font-size: 17px;
+    top: 2px;
   }
 }
 
 @media screen and (min-width: 350px) {
   .ds-summary-text{
     font-size: 20px;
+    top: 3px;
   }
 }
 
@@ -798,7 +800,6 @@ export default {
 
 .ds-summary-text{
   position: relative;
-  top: 3px;
   left: 4px;
 }
 
