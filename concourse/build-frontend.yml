@@ -9,3 +9,5 @@ outputs:
   - name: frontend-build-result
 run:
   path: npm-install-result/concourse/build-frontend.sh
+params:
+  API_URL: ((API_URL))

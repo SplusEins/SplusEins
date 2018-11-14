@@ -1,0 +1,20 @@
+apps:
+    - name: api-prod
+      port: 3002
+      script: ./dist/server/server.js
+      instances: 1
+      watch: true
+      exec_mode: cluster
+      env:
+        NODE_ENV: production
+        CACHE_PATH: /home/concourse/build-result-prod/api-cache
+    - name: web-prod
+      port: 3001
+      script: ./node_modules/nuxt/bin/nuxt-start
+      cwd: ./
+      instances: 1
+      watch: true
+      exec_mode: cluster
+      env:
+        NODE_ENV: production
+        API_PORT: 3002 # for server side calls only
