@@ -10,7 +10,6 @@ export default ({ store }) => {
       /* select items to be persisted - must not change the structure! */
       theme: state.theme,
       splus: {
-        schedule: state.splus.schedule,
         customSchedule: state.splus.customSchedule,
       },
       privacy: {
