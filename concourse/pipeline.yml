@@ -12,7 +12,7 @@ resources:
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
-      branch: ci/telegram-notifcations
+      branch: ci/telegram-notifications
 
   - name: server-deploy-dev
     type: rsync-resource
