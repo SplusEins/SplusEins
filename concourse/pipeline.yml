@@ -113,3 +113,10 @@ jobs:
         params: 
           chat_id: {{telegram-chat-id}}
           text: "PROD #$BUILD_NAME: Build und Deployment sind fehlgeschlagen! [Report](http://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
+    
+    on_abort:
+      do:
+      - put: telegram-notification
+        params: 
+          chat_id: {{telegram-chat-id}}
+          text: "PROD #$BUILD_NAME: Build und Deployment wurden abgebrochen! [Report](http://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
