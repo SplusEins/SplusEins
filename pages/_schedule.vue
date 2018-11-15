@@ -1,83 +1,31 @@
 <template>
-  <v-app :dark="isDark">
-    <spluseins-header/>
-    <v-content fill-height>
-      <v-container
-        fluid
-        fill-height>
-        <spluseins-calendar v-if="!!schedule" />
-
-        <v-layout
-          v-else
-          row
-          align-center
-          justify-center>
-          <v-flex
-            class="text-xs-center"
-            xs12>
-            <v-icon>settings</v-icon>
-            <p>Leer. Wähle einen Plan aus dem Menü aus.</p>
-          </v-flex>
-        </v-layout>
-      </v-container>
-      <spluseins-error-snackbar />
-      <no-ssr>
-        <!-- no ssr: show/hide depends on client's local storage settings -->
-        <spluseins-cookie-snackbar />
-      </no-ssr>
-    </v-content>
-    <spluseins-footer/>
-  </v-app>
+  <v-container
+    fluid
+    fill-height>
+    <spluseins-calendar />
+  </v-container>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
-import SpluseinsHeader from '../components/spluseins-header.vue';
 import SpluseinsCalendar from '../components/spluseins-calendar.vue';
-import SpluseinsFooter from '../components/spluseins-footer.vue';
-import SpluseinsErrorSnackbar from '../components/spluseins-error-snackbar.vue';
-import SpluseinsCookieSnackbar from '../components/spluseins-cookie-snackbar.vue';
 
 export default {
-  name: 'HomePage',
+  name: 'SchedulePage',
   components: {
-    SpluseinsHeader,
     SpluseinsCalendar,
-    SpluseinsFooter,
-    SpluseinsErrorSnackbar,
-    SpluseinsCookieSnackbar,
-  },
-  computed: {
-    ...mapState({
-      schedule: state => state.splus.schedule,
-      isDark: state => state.theme.isDark,
-    }),
   },
   async fetch({ store, params, query }) {
-    if (!!params.schedule) {
-      store.dispatch('splus/importSchedule', { params, query });
+    store.dispatch('splus/importSchedule', { params, query });
 
-      if (process.static) {
-        store.commit('splus/enableLazyLoad');
-      }
+    if (process.static) {
+      store.commit('splus/enableLazyLoad');
+    }
 
-      if (!store.state.splus.lazyLoad) {
-        await store.dispatch('splus/load');
-      } else {
-        console.log('lazy loading is enabled: not fetching any lectures');
-      }
+    if (!store.state.splus.lazyLoad) {
+      await store.dispatch('splus/load');
+    } else {
+      console.log('lazy loading is enabled: not fetching any lectures');
     }
   },
 };
 </script>
-
-
-<style scoped lang="scss">
-
-.container {
-  padding: 16px 16px 25px 16px;
-}
-
-</style>
-

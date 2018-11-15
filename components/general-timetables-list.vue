@@ -32,7 +32,7 @@
 
           <v-list-tile
             v-for="schedule in schedules"
-            :to="{ params: { schedule: schedule.id } }"
+            :to="scheduleToRoute(schedule)"
             :key="schedule.id"
             nuxt>
             <v-list-tile-content value="true">
@@ -43,7 +43,7 @@
 
         <v-list-tile
           v-else
-          :to="{ params: { schedule: schedules[0].id } }"
+          :to="scheduleToRoute(schedules[0])"
           :key="semester"
           nuxt>
           <v-list-tile-content>
@@ -69,5 +69,13 @@ export default {
       schedulesTree: 'splus/getSchedulesAsTree',
     }),
   },
+  methods: {
+    scheduleToRoute(schedule) {
+      return {
+        name: 'schedule',
+        params: { schedule: schedule.id },
+      };
+    },
+  }
 };
 </script>
