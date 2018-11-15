@@ -32,7 +32,7 @@ resources:
       disable_version_path: true
       private_key: {{server-key}}
 
-  - name: spluseins-telegram
+  - name: telegram-notification
     type: telegram-notification
     source:
       bot_token: {{telegram-bot-token}}
@@ -57,17 +57,18 @@ jobs:
       - put: server-deploy-dev
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
+        on_success:
+          do:
+          - put: telegram-notification
+            params:
+              chat_id: {{telegram-chat-id}}
+              text: "[DEV #$BUILD_NAME] Build und Deployment war erfolgreich! http://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME"
         on_failure:
           do:
-          - put: spluseins-telegram
+          - put: telegram-notification
             params: 
               chat_id: {{telegram-chat-id}}
               text: "[DEV #$BUILD_NAME] Build und Deployment ist fehlgeschlagen! http://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME"
-
-      - put: spluseins-telegram
-        params:
-          chat_id: {{telegram-chat-id}}
-          text: "[DEV #$BUILD_NAME] Build und Deployment war erfolgreich!"
                  
   - name: build-prod
     plan:
@@ -87,14 +88,15 @@ jobs:
       - put: server-deploy-prod
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
+        on_success:
+          do:
+          - put: telegram-notification
+            params:
+              chat_id: {{telegram-chat-id}}
+              text: "[PROD #$BUILD_NAME] Build und Deployment war erfolgreich! http://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME"
         on_failure:
           do:
-          - put: spluseins-telegram
+          - put: telegram-notification
             params: 
               chat_id: {{telegram-chat-id}}
               text: "[PROD #$BUILD_NAME] Build und Deployment ist fehlgeschlagen! http://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME"
-
-      - put: spluseins-telegram
-        params:
-          chat_id: {{telegram-chat-id}}
-          text: "[PROD #$BUILD_NAME] Build und Deployment war erfolgreich!"
