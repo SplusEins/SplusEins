@@ -5,6 +5,7 @@ import SCHEDULES from '~/assets/schedules.json';
 import * as chroma from 'chroma-js';
 
 export const uniq = (iterable) => [...new Set(iterable)];
+const flatten = (iterable) => [].concat(...iterable);
 const scalarArraysEqual = (array1, array2) =>
   array1.length === array2.length &&
   array1.every((value, index) => value === array2[index]);
@@ -80,7 +81,6 @@ export const getters = {
       return [];
     }
 
-    const flatten = (iterable) => [].concat(...iterable);
     const uniqueIds = uniq(flatten(Object.values(state.lectures))
       .map(({ lecturerId }) => lecturerId))
       .sort();
@@ -153,6 +153,9 @@ export const getters = {
   customSchedulesAsRoutes: (state, getters) => {
     return Object.values(state.customSchedules)
       .map(customScheduleToRoute);
+  },
+  customScheduleLabels: (state) => {
+    return Object.keys(state.customSchedules);
   },
 };
 
