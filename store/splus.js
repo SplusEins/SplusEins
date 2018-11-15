@@ -4,7 +4,10 @@ import * as moment from 'moment';
 import SCHEDULES from '~/assets/schedules.json';
 import * as chroma from 'chroma-js';
 
-const uniq = (iterable) => [...new Set(iterable)];
+export const uniq = (iterable) => [...new Set(iterable)];
+const scalarArraysEqual = (array1, array2) =>
+  array1.length === array2.length &&
+  array1.every((value, index) => value === array2[index]);
 
 // update this in SS19
 const isoWeek0 = moment()
@@ -13,18 +16,35 @@ const isoWeek0 = moment()
   .startOf('isoWeek') // start of week 1
   .subtract(1, 'weeks'); // start of week 0
 
+
+export function customScheduleToRoute(customSchedule) {
+  const params = { schedule: customSchedule.id };
+  const query = {
+    name: customSchedule.label,
+    course: customSchedule.whitelist,
+    v: 1
+  };
+
+  return { params, query };
+}
+
 export const state = () => ({
   schedule: undefined,
   schedules: SCHEDULES.map(
     (schedule) => ({ ...schedule, path: `${schedule.faculty} ${schedule.degree}` })),
   /**
+   * Map of created or visited custom schedules.
+   * Key: label
+   *
+   * Values: custom schedule like this:
+   * { ...schedule, label, whitelist: [ titleId ] }
+   *
+   * where
    * schedule: Base schedule.
    * label: Custom name.
    * filters: Whitelist array of keys.
-   *
-   * { ...schedule, label, whitelist: [ titleId ] }
    */
-  customSchedule: undefined,
+  customSchedules: {},
   /**
    * Map of { week: lectures[] }
    */
@@ -125,14 +145,9 @@ export const getters = {
 
     return tree;
   },
-  customScheduleAsRoute: (state) => {
-    const params = { schedule: state.customSchedule.id };
-    const query = {
-      name: state.customSchedule.label,
-      course: state.customSchedule.whitelist,
-      v: 1
-    };
-    return { params, query };
+  customSchedulesAsRoutes: (state, getters) => {
+    return Object.values(state.customSchedules)
+      .map(customScheduleToRoute);
   },
 };
 
@@ -147,8 +162,25 @@ export const mutations = {
   setSchedule(state, schedule) {
     state.schedule = schedule;
   },
-  setCustomSchedule(state, customSchedule) {
-    state.customSchedule = customSchedule;
+  addCustomSchedule(state, customSchedule) {
+    const label = customSchedule.label;
+    const customScheduleStored = state.customSchedules[label];
+
+    // detect conflicts - never overwrite
+    if (customScheduleStored != undefined) {
+      const coursesGiven = customSchedule.whitelist;
+      const coursesStored = customScheduleStored.whitelist;
+
+      if (customSchedule.id != customScheduleStored.id ||
+          !scalarArraysEqual(coursesGiven, coursesStored)) {
+        console.log('not overwriting local custom schedule' +
+          'with different configuration');
+      }
+
+      return;
+    }
+
+    Vue.set(state.customSchedules, label, customSchedule);
   },
   setError(state, error) {
     state.error = error;
@@ -175,52 +207,39 @@ export const actions = {
     }
   },
   /**
-   * Set the base schedule and filters matching the given courses.
-   * Then, update the route.
+   * Import schedule from route and set as current schedule.
    */
-  saveCustomSchedule({ state, commit, getters }, { schedule, courses, name }) {
-    const titleIds = uniq(courses.map(({ titleId }) => titleId));
+  importSchedule({ state, commit }, { params, query }) {
+    const schedule = state.schedules
+      .find((schedule) => schedule.id == params.schedule);
 
-    commit('setCustomSchedule', {
-      id: schedule.id,
-      faculty: schedule.faculty,
-      semester: schedule.semester,
-      label: name,
-      whitelist: titleIds,
-    });
-    commit('setSchedule', state.customSchedule);
-    this.$router.push(getters.customScheduleAsRoute);
-  },
-  /**
-   * Import custom schedule from route.
-   */
-  importCustomSchedule({ state, commit }, { params, query }) {
     switch (parseFloat(query.v)) {
       case 1:
-        if (!params.schedule || !query.name || !query.course) {
-          console.log('no custom schedule attributes present', { params, query });
+        if (!query.name) {
+          console.log('missing custom schedule name', { query });
           return;
         }
 
-        const schedule = state.schedules
-          .find((schedule) => schedule.id == params.schedule);
-
-        let courses = query.course;
-        if (!Array.isArray(courses)) {
-          courses = [courses];
-        }
-
-        commit('setCustomSchedule', {
+        const courses = Array.isArray(query.course || []) ?
+          query.course : [query.course];
+        const customSchedule = {
           id: schedule.id,
           faculty: schedule.faculty,
           semester: schedule.semester,
           label: query.name,
           whitelist: courses,
-        });
-        commit('setSchedule', state.customSchedule);
+        };
+
+        commit('addCustomSchedule', customSchedule);
+        commit('setSchedule', customSchedule);
         break;
       default:
-        console.log('unknown custom schedule URL parameter version', { params, query });
+        if (!isNaN(query.v)) {
+          console.log('unsupported custom schedule query version', query);
+        }
+
+        // standard, no filters
+        commit('setSchedule', schedule);
     }
   },
 };

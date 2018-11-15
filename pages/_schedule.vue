@@ -55,17 +55,8 @@ export default {
     }),
   },
   async fetch({ store, params, query }) {
-    const scheduleId = params.schedule;
-
-    if (!!scheduleId) {
-      if (!!query.v) {
-        store.dispatch('splus/importCustomSchedule', { params, query });
-      } else {
-        const schedule =  store.state.splus.schedules
-          .find((schedule) => schedule.id == scheduleId);
-        store.commit('splus/setSchedule', schedule);
-      }
-
+    if (!!params.schedule) {
+      store.dispatch('splus/importSchedule', { params, query });
       // exclude static build
       // because loaded schedule depends on the current timestamp
       if (!process.static) {
