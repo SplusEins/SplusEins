@@ -8,6 +8,7 @@ export default ({ store }) => {
       storage.setItem(key, JSON.stringify(state)),
     reducer: (state) => ({
       /* select items to be persisted - must not change the structure! */
+      version: state.version,
       theme: state.theme,
       splus: {
         customSchedules: state.splus.customSchedules,
