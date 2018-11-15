@@ -7,16 +7,16 @@
     </v-subheader>
 
     <v-list-tile
-      v-if="!!customSchedule"
-      :to="customScheduleAsRoute"
+      v-for="route in customSchedulesAsRoutes"
+      :key="route.query.name"
+      :to="route"
       nuxt>
       <v-list-tile-content>
-        <v-list-tile-title>{{ customSchedule.label }}</v-list-tile-title>
+        <v-list-tile-title>{{ route.query.name }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
 
     <v-list-tile
-      v-else
       @click="customTimetableDialogOpen = true">
       <custom-timetable-dialog v-model="customTimetableDialogOpen" />
       <v-list-tile-action>
@@ -50,7 +50,7 @@ export default {
       customSchedule: (state) => state.splus.customSchedule,
     }),
     ...mapGetters({
-      customScheduleAsRoute: 'splus/customScheduleAsRoute',
+      customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
     }),
   },
 };

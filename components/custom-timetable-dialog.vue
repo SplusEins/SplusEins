@@ -60,6 +60,7 @@
 <script lang="js">
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import * as moment from 'moment';
+import { uniq, customScheduleToRoute } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
 
@@ -140,17 +141,23 @@ export default {
     },
     save() {
       this.dialogOpen = false;
-      this.saveCustomSchedule({
-        schedule: this.selectedSchedule,
-        courses: this.selectedCourses,
-        name: this.selectedName,
-      });
+
+      // Set the base schedule and filters matching the given courses.
+      const titleIds = uniq(this.selectedCourses.map(({ titleId }) => titleId));
+
+      const schedule = this.selectedSchedule;
+      const customSchedule = {
+        id: schedule.id,
+        faculty: schedule.faculty,
+        semester: schedule.semester,
+        label: this.selectedName,
+        whitelist: titleIds,
+      };
+
+      this.$router.push(customScheduleToRoute(customSchedule));
     },
     ...mapMutations({
       setError: 'splus/setError',
-    }),
-    ...mapActions({
-      saveCustomSchedule: 'splus/saveCustomSchedule',
     }),
   },
 };

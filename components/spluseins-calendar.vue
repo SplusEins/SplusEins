@@ -20,7 +20,6 @@ import DayspanCustomCalendar from './dayspan-custom-calendar.vue'
 
 export default {
   name: 'SpluseinsCalendar',
-  layout: 'empty',
   components: {
     DayspanCustomCalendar
   },
