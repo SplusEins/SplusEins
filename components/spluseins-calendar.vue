@@ -50,8 +50,9 @@ export default {
   },
   computed: {
     ...mapState({
-      currentSchedule: state => state.splus.schedule,
-      currentWeek: state => state.splus.week,
+      currentSchedule: (state) => state.splus.schedule,
+      currentWeek: (state) => state.splus.week,
+      lazyLoad: (state) => state.splus.lazyLoad,
     }),
     ...mapGetters({
       events: 'splus/getLecturesAsEvents',
@@ -64,8 +65,8 @@ export default {
     'currentWeek': 'loadLectures',
   },
   mounted() {
-    if (this.events.length == 0) {
-      // static build -> store has not been filled yet
+    if (this.lazyLoad) {
+      // static build -> no lectures are in the store
       this.loadLectures();
     }
   },

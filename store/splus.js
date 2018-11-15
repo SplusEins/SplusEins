@@ -55,6 +55,11 @@ export const state = () => ({
    */
   week: moment().diff(isoWeek0, 'week'),
   error: undefined,
+  /**
+   * If true, do not load lectures on the server.
+   * true if frontend is a static build.
+   */
+  lazyLoad: false,
 });
 
 export const getters = {
@@ -187,6 +192,9 @@ export const mutations = {
   },
   clearError(state) {
     state.error = undefined;
+  },
+  enableLazyLoad(state) {
+    state.lazyLoad = true;
   },
 };
 

@@ -57,10 +57,15 @@ export default {
   async fetch({ store, params, query }) {
     if (!!params.schedule) {
       store.dispatch('splus/importSchedule', { params, query });
-      // exclude static build
-      // because loaded schedule depends on the current timestamp
-      if (!process.static) {
+
+      if (process.static) {
+        store.commit('splus/enableLazyLoad');
+      }
+
+      if (!store.state.splus.lazyLoad) {
         await store.dispatch('splus/load');
+      } else {
+        console.log('lazy loading is enabled: not fetching any lectures');
       }
     }
   },
