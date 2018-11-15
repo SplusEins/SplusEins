@@ -25,7 +25,7 @@ export function customScheduleToRoute(customSchedule) {
     v: 1
   };
 
-  return { params, query };
+  return { name: 'schedule', params, query };
 }
 
 export const state = () => ({
