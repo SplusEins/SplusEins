@@ -33,10 +33,11 @@ export default {
   name: 'SpluseinsCookieSnackbar',
   computed: {
     snackbarOpen() {
-      return this.allowCookies == undefined;
+      return this.browserStateReady && this.allowCookies == undefined;
     },
     ...mapState({
-      allowCookies: state => state.privacy.allowCookies,
+      allowCookies: (state) => state.privacy.allowCookies,
+      browserStateReady: (state) => state.browserStateReady,
     }),
   },
   methods: {
