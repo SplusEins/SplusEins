@@ -8,7 +8,7 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
       <img 
         src="../assets/img/mainLogo.png" 
-        width="50px"
+        width="40px"
       >
       <v-toolbar-title>spluseins</v-toolbar-title>
       <v-spacer />
