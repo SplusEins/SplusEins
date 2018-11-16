@@ -7,4 +7,4 @@ inputs:
   - name: build-result
 
 run:
-  path: frontend-build-result/concourse/tests.sh
+  path: build-result/concourse/tests.sh

@@ -12,13 +12,13 @@ resources:
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
-      branch: master
+      branch: ci/test-automation
 
   - name: server-deploy-dev
     type: rsync-resource
     source:
       server: spluseins.de
-      base_dir: /home/concourse/build-result-dev
+      base_dir: /home/concourse/build-result-test
       user: concourse
       disable_version_path: true
       private_key: {{server-key}}
@@ -62,26 +62,26 @@ jobs:
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
 
-    on_success:
-      do:
-      - put: telegram-notification
-        params:
-          chat_id: {{telegram-chat-id}}
-          text: "DEV #$BUILD_NAME: Build und Deployment waren erfolgreich! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
+    # on_success:
+    #   do:
+    #   - put: telegram-notification
+    #     params:
+    #       chat_id: {{telegram-chat-id}}
+    #       text: "DEV #$BUILD_NAME: Build und Deployment waren erfolgreich! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
    
-    on_failure:
-      do:
-      - put: telegram-notification
-        params: 
-          chat_id: {{telegram-chat-id}}
-          text: "DEV #$BUILD_NAME: Build und Deployment sind fehlgeschlagen! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
+    # on_failure:
+    #   do:
+    #   - put: telegram-notification
+    #     params: 
+    #       chat_id: {{telegram-chat-id}}
+    #       text: "DEV #$BUILD_NAME: Build und Deployment sind fehlgeschlagen! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
 
-    on_abort:
-      do:
-      - put: telegram-notification
-        params: 
-          chat_id: {{telegram-chat-id}}
-          text: "DEV #$BUILD_NAME: Build und Deployment wurden abgebrochen! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
+    # on_abort:
+    #   do:
+    #   - put: telegram-notification
+    #     params: 
+    #       chat_id: {{telegram-chat-id}}
+    #       text: "DEV #$BUILD_NAME: Build und Deployment wurden abgebrochen! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
                  
   - name: build-prod
     serial: true
