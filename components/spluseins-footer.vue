@@ -1,7 +1,7 @@
 <template lang="html">
 
-  <v-footer 
-    color="black"
+  <v-footer
+    dark
     app>
     <v-layout
       justify-center
@@ -11,7 +11,6 @@
         lighten-2
         py-3
         text-xs-center
-        white--text
         xs12>
         2018 — 
         <strong> 
@@ -19,7 +18,8 @@
         </strong>
         — 
         <spluseins-about/>
-        — Impressum
+        — 
+        <spluseins-impressum/>
       </v-flex>
     </v-layout>
   </v-footer>
@@ -27,16 +27,16 @@
 </template>
 
 <script lang="js">
+import SpluseinsImpressum from './spluseins-impressum.vue'
 import SpluseinsAbout from './spluseins-about.vue'
-
-export default  {
-  name: 'SplusEinsFooter',
-  components: {SpluseinsAbout},
-  data() {
-    return {
-    }
-  },
-  computed: {
+  export default  {
+    name: 'SplusEinsFooter',
+    components: {SpluseinsImpressum,SpluseinsAbout},
+    data() {
+      return {
+      }
+    },
+    computed: {
 
   },
   mounted() {

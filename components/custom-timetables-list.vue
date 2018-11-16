@@ -6,43 +6,57 @@
       Eigene Pläne
     </v-subheader>
 
-    <v-list-tile>
+    <v-list-tile
+      v-if="!!customSchedule"
+      @click="setCurrentSchedule(customSchedule)">
       <v-list-tile-content>
-        <v-list-tile-title>Eigener Plan 1</v-list-tile-title>
+        <v-list-tile-title>{{ customSchedule.label }}</v-list-tile-title>
       </v-list-tile-content>
+      <v-list-tile-action v-if="currentSchedule == customSchedule">
+        <v-icon>check</v-icon>
+      </v-list-tile-action>
     </v-list-tile>
-    <v-list-tile>
+
+    <v-list-tile
+      v-else
+      @click="customTimetableDialogOpen = true">
+      <custom-timetable-dialog v-model="customTimetableDialogOpen" />
+      <v-list-tile-action>
+        <v-icon>add</v-icon>
+      </v-list-tile-action>
       <v-list-tile-content>
-        <v-list-tile-title>Eigener Plan 2</v-list-tile-title>
+        <v-list-tile-title>Plan erstellen</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
 
-  </v-list>    
+  </v-list>
 
 </template>
 
 <script lang="js">
-  export default  {
-    name: 'CustomTimetablesList',
-    data() {
-      return {
+import { mapState, mapMutations } from 'vuex';
+import CustomTimetableDialog from './custom-timetable-dialog.vue';
 
-      }
-    },
-    computed: {
-
-    },
-    mounted() {
-
-    },
-    methods: {
-
-    }
-}
-</script>
-
-<style scoped lang="scss">
-  .my-timetables-component {
-
+export default {
+  name: 'CustomTimetablesList',
+  components: {
+    CustomTimetableDialog,
+  },
+  data() {
+    return {
+      customTimetableDialogOpen: false,
+    };
+  },
+  computed: {
+    ...mapState({
+      currentSchedule: (state) => state.splus.schedule,
+      customSchedule: (state) => state.splus.customSchedule,
+    }),
+  },
+  methods: {
+    ...mapMutations({
+      setCurrentSchedule: 'splus/setSchedule',
+    }),
   }
-</style>
+};
+</script>

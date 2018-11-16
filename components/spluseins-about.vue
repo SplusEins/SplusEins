@@ -4,16 +4,14 @@
       v-model="active"
       width="500"
     >
-      <span
+      <a
         slot="activator"
-        class="about"
-        white--text>
+        class="white--text">
         Über
-      </span>
-      <v-card
-        dark>
+      </a>
+      <v-card>
         <v-card-title
-          class="headline black"
+          class="headline primary"
           primary-title
         >
           SplusEins
@@ -21,7 +19,7 @@
 
         <v-card-text>
           <p>
-            Ein moderner Stundenplan von Studenten für Studenten der Ostfalia-Hochschule.<br>
+            Ein inoffizieller Stundenplan von Studenten für Studenten der Ostfalia-Hochschule.<br>
             Gebaut mit <a href="https://nuxtjs.org">Nuxt</a>, <a href="https://vuetifyjs.com">Vuetify</a> und <a href="https://github.com/ClickerMonkey/dayspan-vuetify">Dayspan-Vuetify</a>.<br>
             Besonderer Dank geht an Tim für den <a href="https://github.com/xThunderbolt/splus">Splus Parser</a>.<br>
             Alle Studenpläne basieren auf den Inhalten der öffentlich einsehbaren Website <a href="http://splus.ostfalia.de/">splus.ostfalia.de</a>.<br> Für Vollständigkeit wird keine Haftung übernommen.
@@ -32,18 +30,20 @@
 
         <v-card-actions>
           <v-spacer/>
-          <a 
-            class="githubIcon" 
-            href="https://github.com/spluseins/spluseins" 
-            target="_blank">
+          <v-btn
+            flat
+            icon
+            color="primary"
+            target="_blank"
+            href="https://github.com/spluseins/spluseins">
             <img
-              :src="gitHubIcon">
-          </a>
+              :src="gitHubIcon"
+              class="githubIcon">
+          </v-btn>
           <v-btn
             flat
             depressed
-            dark
-            outline
+            color="primary"
             @click="active = false"
           >
             Schließen
@@ -56,36 +56,22 @@
 
 
 <script>
-import gitHubIcon from "../assets/img/gitHub.svg"
+import gitHubIcon from '../assets/img/gitHub.svg';
 
 export default {
   name: 'SpluseinsAbout',
-  props: {
-    active : {
-      type: Boolean,
-      default: false
-    }
-  },
-  data () {
+  data: function() {
     return {
-      gitHubIcon: gitHubIcon
-    }
-  }
-}
+      active: false,
+      gitHubIcon: gitHubIcon,
+    };
+  },
+};
 </script>
 
 
 <style scoped lang="scss">
-@import '../assets/style/colors.scss';
 .githubIcon {
-  padding: 5px 10px 0 5px;
-}
-
-.about:hover{
-  color: $amber;
-}
-
-a{
-  color : white;
+  height: 2em;
 }
 </style>

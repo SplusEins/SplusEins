@@ -1,29 +1,18 @@
 <template>
-  <div class="ds-expand ds-calendar-app">
-
-    <v-container
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
-      app 
-      flat 
-      fixed
-      pb-3
-      fluid
-      class="ds-app-calendar-toolbar"
-      color="white">
+  <v-layout column>
+    <v-flex pb-3>
       <v-tooltip
         v-bind="{setToday, todayDate, calendar}" 
         name="today" 
         bottom>
         <v-btn 
           slot="activator"
-          :icon="$vuetify.breakpoint.smAndDown"
-          class="ds-skinny-button"
+          :icon="$vuetify.breakpoint.xs"
           depressed
-          color="primary"
           outline
           @click="setToday">
-          <v-icon>today</v-icon>
-          <span>{{ labels.today }}</span>
+          <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
+          <v-icon v-show="!$vuetify.breakpoint.smAndUp">{{ labels.todayIcon }}</v-icon>
         </v-btn>
         <span>{{ todayDate }}</span>
       </v-tooltip>
@@ -57,63 +46,44 @@
       </v-tooltip>
 
       <span
+        v-show="$vuetify.breakpoint.smAndUp"
         v-bind="{summary, calendar}"
-        name="summary"
+        name="extendedDateSummary"
         class = "ds-summary-text">
-        {{ summary }}
+        {{ summary(false) }}
       </span>
-    </v-container>
+      <span
+        v-show="!$vuetify.breakpoint.smAndUp"
+        v-bind="{summary, calendar}"
+        name="shortDateSummary"
+        class = "ds-summary-text">
+        {{ summary(true) }}
+      </span>
+    
+    </v-flex>
 
-    <v-container 
-      fluid
-      fill-height
-      class="ds-calendar-container">
+    <v-flex
+      v-touch="{
+        left: next,
+        right: prev,
+      }"
+      fill-height>
 
-      <ds-gestures
-        @swipeleft="next"
-        @swiperight="prev">
+      <slot
+        v-bind="{$scopedSlots, $listeners, calendar, viewDay}"
+        name="calendarAppCalendar" >
 
-        <div 
-          v-if="currentType.schedule" 
-          class="ds-expand">
+        <ds-calendar
+          ref="calendar"
+          :calendar="calendar"
+          :read-only="readOnly"
+          v-bind="{$scopedSlots}"
+          :class="[getWeekendClass]"
+          v-on="$listeners"
+          @view-day="viewDay"
+        />
 
-          <slot
-            v-bind="{$scopedSlots, $listeners, calendar, viewDay}"
-            name="calendarAppAgenda" >
-
-            <ds-agenda
-              :read-only="readOnly"
-              :calendar="calendar"
-              v-bind="{$scopedSlots}"
-              v-on="$listeners"
-              @view-day="viewDay"/>
-
-          </slot>
-
-        </div>
-
-        <div 
-          v-else 
-          class="ds-expand">
-
-          <slot
-            v-bind="{$scopedSlots, $listeners, calendar, viewDay}"
-            name="calendarAppCalendar" >
-
-            <ds-calendar 
-              ref="calendar"
-              :calendar="calendar"
-              :read-only="readOnly"
-              v-bind="{$scopedSlots}"
-              v-on="$listeners"
-              @view-day="viewDay"
-            />
-
-          </slot>
-
-        </div>
-
-      </ds-gestures>
+      </slot>
 
       <slot
         v-bind="{$scopedSlots, $listeners, calendar, eventFinish}"
@@ -187,13 +157,14 @@
         v-bind="{events, calendar}"
         name="containerInside" />
 
-    </v-container>
-  </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 import * as moment from 'moment';
 import { Constants, Sorts, Calendar, Day, Units, Weekday, Month, DaySpan, PatternMap, Time, Op } from 'dayspan';
+import { mapGetters } from 'vuex';
 
 export default {
 
@@ -259,18 +230,6 @@ export default {
         }
       }
     },
-    styles:
-    {
-      type: Object,
-      default() {
-        return {
-           toolbar: {
-            small: { width: 'auto' },
-            large: { width: '300px' }
-          }
-        }
-      }
-    },
     optionsDialog:
     {
       type: Object,
@@ -317,27 +276,6 @@ export default {
       }
     },
 
-    summary()
-    {
-      var monthNames = [
-        "Januar", "Februar", "März",
-        "April", "Mai", "Juni", "Juli",
-        "August", "September", "Oktober",
-        "November", "Dezember"
-      ];
-      let firstDayOfWeekString = JSON.stringify(this.calendar.days[0])
-      let lastDayOfWeekString =  JSON.stringify(this.calendar.days[6])
-      let firstDayOfWeekSplitted = firstDayOfWeekString.split('-')
-      let lastDayOfWeekSplitted = lastDayOfWeekString.split('-')
-      let firstDayYear = parseInt(firstDayOfWeekSplitted[0].split('"')[1])
-      let firstDayMonth = parseInt(firstDayOfWeekSplitted[1])
-      let firstDayDay = parseInt(firstDayOfWeekSplitted[2].split('T')[0])+1
-      let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
-      let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
-      let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
-      return  firstDayDay + '. ' + monthNames[firstDayMonth-1] + ' – ' + lastDayDay + '. ' + monthNames[lastDayMonth-1]
-    },
-
     todayDate()
     {
       let today = new Date();
@@ -367,13 +305,6 @@ export default {
       return this.labels.prev
     },
 
-    toolbarStyle()
-    {
-      let large = this.$vuetify.breakpoint.lgAndUp;
-
-      return large ? this.styles.toolbar.large : this.styles.toolbar.small;
-    },
-
     hasCreatePopover()
     {
       return true
@@ -387,6 +318,14 @@ export default {
     canAddTime()
     {
       return !this.readOnly
+    },
+
+    ...mapGetters({
+      hasLecturesOnWeekend: 'splus/getHasLecturesOnWeekend',
+    }),
+
+    getWeekendClass(){
+      return this.hasLecturesOnWeekend ? '' : 'no-weekend'
     }
   },
   watch:
@@ -409,6 +348,36 @@ export default {
 
   methods:
   {
+    summary(short)
+    {
+      var monthNames = [
+        "Januar", "Februar", "März",
+        "April", "Mai", "Juni", "Juli",
+        "August", "September", "Oktober",
+        "November", "Dezember"
+      ];
+      let firstDayOfWeekString = JSON.stringify(this.calendar.days[0])
+      let lastDayOfWeekString =  JSON.stringify(this.calendar.days[6])
+      let firstDayOfWeekSplitted = firstDayOfWeekString.split('-')
+      let lastDayOfWeekSplitted = lastDayOfWeekString.split('-')
+      let firstDayYear = parseInt(firstDayOfWeekSplitted[0].split('"')[1])
+      let firstDayMonth = parseInt(firstDayOfWeekSplitted[1])
+      let firstDayDay = parseInt(firstDayOfWeekSplitted[2].split('T')[0])+1
+      let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
+      let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
+      let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
+      if(short){
+        return this.minTwoDigits(firstDayDay) + '.' + this.minTwoDigits(firstDayMonth) + '. - '
+        + this.minTwoDigits(lastDayDay) + '.' + this.minTwoDigits(lastDayMonth) + '.'
+      }else{
+        return this.minTwoDigits(firstDayDay) + '. ' + monthNames[firstDayMonth-1] + ' – ' + this.minTwoDigits(lastDayDay)  + '. ' + monthNames[lastDayMonth-1]
+      }
+    },
+
+    minTwoDigits(n) {
+      return (n < 10 ? '0' : '') + n;
+    },
+
     setState(state)
     {
       state.eventSorter = state.listTimes
@@ -480,7 +449,7 @@ export default {
     setToday()
     {
       const around = Day.fromMoment(moment().startOf('isoWeek'));
-      this.rebuild( around);
+      this.rebuild(around);
     },
 
     viewDay(day)
@@ -744,33 +713,94 @@ export default {
 
 <style lang="scss">
 
-.ds-summary-text{
-  position: relative;
-  top: 3px;
-  left: 4px;
-  font-size: 20px;
+.v-menu__activator *{
+  cursor: text !important;
 }
 
-.ds-app-calendar-toolbar {
+.ds-calendar-event{
+  user-select: auto !important;
+}
 
-  .v-toolbar__content {
-    border-bottom: 1px solid rgb(224, 224, 224);
+//current-time line
+.ds-day.ds-day-today > div:last-child{
+  display: none
+}
+
+.ds-hour{
+  // changing this means you have to change the 'multiplicator' attribute in the store aswell
+  height: 45px !important;
+}
+
+.ds-week-view,
+.ds-week-view-container{
+  max-height: 751px !important;
+}
+
+.ds-week-view-pane,
+.ds-week-view-scrollable,
+.ds-week-view-bottom{
+  height: 675px !important;
+}
+
+.ds-hour:nth-child(n+22),
+.ds-hour:nth-child(-n+6){
+  display: none;
+}
+
+.ds-day:nth-child(8),
+.no-weekend .ds-day:nth-child(7){
+  display: none;
+}
+
+.ds-week-date{
+  cursor: default !important;
+}
+
+.ds-week-date:hover{
+  text-decoration: none !important;
+}
+
+@media screen and (max-width: 350px) {
+  .ds-summary-text{
+    font-size: 17px;
+    top: 2px;
   }
 }
 
-.ds-skinny-button {
-  margin-left: 2px !important;
-  margin-right: 2px !important;
+@media screen and (min-width: 350px) {
+  .ds-summary-text{
+    font-size: 20px;
+    top: 3px;
+  }
 }
 
-.ds-expand {
-  width: 100%;
-  height: 100%;
+@media screen and (max-width: 500px) {
+  .ds-week-date{
+    font-size: 14px !important;
+  }
 }
 
-.ds-calendar-container {
-  padding: 0px !important;
+@media screen and (min-width: 500px) {
+  .ds-week-date{
+    font-size: 18px !important;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .ds-week-date{
+    font-size: 22px !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .ds-week-date{
+    font-size: 40px !important;
+  }
+}
+
+.ds-summary-text{
   position: relative;
+  left: 4px;
 }
 
 .v-btn--floating.ds-add-event-today {
@@ -781,4 +811,27 @@ export default {
   }
 }
 
+.ds-week-view {
+  background-color: inherit !important;
+}
+
+.ds-hour-text {
+  color: inherit !important;
+}
+
+.ds-week-date {
+  color: inherit !important;
+}
+
+.ds-week-weekday {
+  color: inherit !important;
+}
+
+.theme--dark .ds-day-today {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.ds-week .ds-day-today > div:not(.ds-hour):not(.v-menu) {
+  border-top: 3px solid var(--v-primary-base) !important;
+}
 </style>

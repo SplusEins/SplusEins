@@ -1,24 +1,22 @@
 <template lang="html">
-
   <dayspan-custom-calendar
     :calendar="calendar"
     :types="types"
     :read-only="true"
-    @change="calendarChanged"/>
-
+    @change="calendarChanged">
+    <template slot="containerInside">
+      <span class="overlay">
+        Quelle: splus.ostfalia.de
+      </span>
+    </template>
+  </dayspan-custom-calendar>
 </template>
 
 <script lang="js">
 import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
-import colors from 'vuetify/es5/util/colors';
 import DayspanCustomCalendar from './dayspan-custom-calendar.vue'
-
-const hashCode = (string) =>
-string.split('').reduce((prevHash, currVal) =>
-  (((prevHash << 5) - prevHash) + currVal.charCodeAt(0))|0, 0);
-
 
 export default {
   name: 'SpluseinsCalendar',
@@ -27,104 +25,58 @@ export default {
     DayspanCustomCalendar
   },
   data() {
-    const around = Day.fromMoment(moment().startOf('isoWeek'));
-    const calendarWeekType = {
+    const startOfWeek = Day.fromMoment(moment().startOf('isoWeek'));
+    const weeklyCalendar = {
       id: 'W',
       label: 'Woche',
       shortcut: 'W',
       type: Units.DAY,
       size: 7,
-      around,
+      around: startOfWeek,
       focus: 0,
       repeat: true,
       listTimes: true,
       updateRows: true,
       schedule: false
     };
-    const calendar = Calendar.days(7, around, 0);
+   const calendar = Calendar.days(7, startOfWeek, 0);
+
+    // computed properties are not available during client rendering yet, access the getter directly
+    calendar.setEvents(this.$store.getters['splus/getLecturesAsEvents']);
+
     return {
       calendar,
-      types: [ calendarWeekType ],
-      aboutDialogOpen: false,
-      loading: false,
+      types: [ weeklyCalendar ]
     };
   },
   computed: {
-    events() {
-      const colorsArr = Object.values(colors).slice(0, -1); // exclude black
-      return this.getLecturesByWeekAndSchedule(
-        this.currentWeek,
-        this.currentSchedule.id
-      ).map((lecture) => {
-        const beginHours = Math.floor(lecture.begin);
-        const start = this.calendar.start.date.clone()
-          .isoWeek(lecture.week)
-          .day(lecture.day + 1)
-          .hour(beginHours)
-          .minute((lecture.begin - beginHours) * 60);
-        const hashOfFirstWordInTitle = hashCode(lecture.title.split(' ')[0]) + Math.pow(2, 31);
-        const color = colorsArr[hashOfFirstWordInTitle % colorsArr.length].lighten1;
-        return {
-          data: {
-            title: lecture.title,
-            color,
-            description: `${lecture.lecturer} ${lecture.room} ${lecture.info}`,
-            location: lecture.room,
-          },
-          schedule: {
-            on: start,
-            times: [ {
-              hour: start.hour(),
-              minute: start.minute(),
-            } ],
-            duration: lecture.end - lecture.begin,
-            durationUnit: 'hours',
-          }
-        };
-      });
-    },
     ...mapState({
-      currentSchedule: state => state.schedule.schedule,
-      currentWeek: state => state.calendar.week,
-      schedules: state => state.splus.schedules,
+      currentSchedule: state => state.splus.schedule,
+      currentWeek: state => state.splus.week,
     }),
     ...mapGetters({
-      getLecturesByWeekAndSchedule: 'splus/getLecturesByWeekAndSchedule',
+      events: 'splus/getLecturesAsEvents',
     }),
   },
   watch: {
-    'events': 'applyEvents',
+    'events': function(events) {
+      this.calendar.setEvents(events);
+    },
+    'currentSchedule': 'loadLectures',
+    'currentWeek': 'loadLectures',
   },
   mounted() {
-    this.setWeek(this.calendar.start.date.isoWeek());
+    if (this.events.length == 0) {
+      // static build -> store has not been filled yet
+      this.loadLectures();
+    }
   },
   methods: {
-    applyEvents() {
-      console.log('refreshing events');
-      this.calendar.setEvents(this.events, true);
-      this.calendar.refresh();
-      this.refresh();
-    },
-    /** Update store's week after UI input */
     calendarChanged({ calendar }) {
-      console.log('calendar changed');
       this.setWeek(calendar.start.date.isoWeek());
     },
-    async refresh() {
-      if (this.getLecturesByWeekAndSchedule(
-        this.currentWeek,
-        this.currentSchedule.id).length > 0) {
-        return;
-      }
-      this.loading = true;
-      await this.loadLectures({
-        schedule: this.currentSchedule.id,
-        week: this.currentWeek
-      });
-      this.loading = false;
-    },
     ...mapMutations({
-      setWeek: 'calendar/setWeek',
+      setWeek: 'splus/setWeek',
     }),
     ...mapActions({
       loadLectures: 'splus/load',
@@ -134,7 +86,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .calendar-component {
 
-  }
+.overlay {
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0.5;
+  font-size: 12px;
+}
+
 </style>

@@ -1,0 +1,69 @@
+resource_types:
+  - name: rsync-resource
+    type: docker-image
+    source: {repository: mrsixw/concourse-rsync-resource}
+
+resources:
+  - name: repository
+    type: git
+    source:
+      uri: https://github.com/spluseins/spluseins.git
+      branch: master
+
+  - name: server-deploy-dev
+    type: rsync-resource
+    source:
+      server: spluseins.de
+      base_dir: /home/concourse/build-result-dev
+      user: concourse
+      disable_version_path: true
+      private_key: {{server-key}}
+
+  - name: server-deploy-prod
+    type: rsync-resource
+    source:
+      server: spluseins.de
+      base_dir: /home/concourse/build-result-prod
+      user: concourse
+      disable_version_path: true
+      private_key: {{server-key}}
+
+jobs:
+
+  - name: build-dev
+    plan:
+      - get: repository
+        trigger: true
+
+      - task: install-dependencies
+        file: repository/concourse/install.yml
+
+      - task: build-frontend
+        file: repository/concourse/build-frontend.yml
+        params: {"API_URL": "https://master.spluseins.de/"}
+
+      - task: build-api
+        file: repository/concourse/build-api.yml
+
+      - put: server-deploy-dev
+        params: {"sync_dir" : "build-result",
+                 "rsync_opts" : ["--delete-after", "--recursive"]}
+
+  - name: build-prod
+    plan:
+      - get: repository
+        passed: [build-dev]
+
+      - task: install-dependencies
+        file: repository/concourse/install.yml
+
+      - task: build-frontend
+        file: repository/concourse/build-frontend.yml
+        params: {"API_URL": "https://spluseins.de/"}
+
+      - task: build-api
+        file: repository/concourse/build-api.yml
+
+      - put: server-deploy-prod
+        params: {"sync_dir" : "build-result",
+                 "rsync_opts" : ["--delete-after", "--recursive"]}
