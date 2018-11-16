@@ -5,4 +5,8 @@ export const state = () => ({
    * needs to be migrated.
    */
   version: 1,
+  /**
+   * Set to true by vuex-persist during restoration.
+   */
+  browserStateReady: false,
 });
