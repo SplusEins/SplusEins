@@ -3,6 +3,10 @@ resource_types:
     type: docker-image
     source: {repository: mrsixw/concourse-rsync-resource}
 
+  - name: telegram-notification
+    type: docker-image
+    source: {repository: w32blaster/concourse-telegram-notifier, tag: latest}
+
 resources:
   - name: repository
     type: git
@@ -28,9 +32,15 @@ resources:
       disable_version_path: true
       private_key: {{server-key}}
 
+  - name: telegram-notification
+    type: telegram-notification
+    source:
+      bot_token: {{telegram-bot-token}}
+
 jobs:
 
   - name: build-dev
+    serial: true
     plan:
       - get: repository
         trigger: true
@@ -49,7 +59,29 @@ jobs:
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
 
+    on_success:
+      do:
+      - put: telegram-notification
+        params:
+          chat_id: {{telegram-chat-id}}
+          text: "DEV #$BUILD_NAME: Build und Deployment waren erfolgreich! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
+   
+    on_failure:
+      do:
+      - put: telegram-notification
+        params: 
+          chat_id: {{telegram-chat-id}}
+          text: "DEV #$BUILD_NAME: Build und Deployment sind fehlgeschlagen! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
+
+    on_abort:
+      do:
+      - put: telegram-notification
+        params: 
+          chat_id: {{telegram-chat-id}}
+          text: "DEV #$BUILD_NAME: Build und Deployment wurden abgebrochen! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
+                 
   - name: build-prod
+    serial: true
     plan:
       - get: repository
         passed: [build-dev]
@@ -67,3 +99,24 @@ jobs:
       - put: server-deploy-prod
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
+
+    on_success:
+      do:
+      - put: telegram-notification
+        params:
+          chat_id: {{telegram-chat-id}}
+          text: "PROD #$BUILD_NAME: Build und Deployment waren erfolgreich! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
+    
+    on_failure:
+      do:
+      - put: telegram-notification
+        params: 
+          chat_id: {{telegram-chat-id}}
+          text: "PROD #$BUILD_NAME: Build und Deployment sind fehlgeschlagen! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
+    
+    on_abort:
+      do:
+      - put: telegram-notification
+        params: 
+          chat_id: {{telegram-chat-id}}
+          text: "PROD #$BUILD_NAME: Build und Deployment wurden abgebrochen! [Report](https://ci.spluseins.de/teams/main/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME)"
