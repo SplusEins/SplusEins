@@ -3,7 +3,7 @@ apps:
       port: 3004
       script: ./dist/server/server.js
       instances: 1
-      watch: true
+      watch: dist/
       exec_mode: cluster
       env:
         NODE_ENV: production
@@ -13,7 +13,7 @@ apps:
       script: ./node_modules/nuxt/bin/nuxt-start
       cwd: ./
       instances: 1
-      watch: true
+      watch: .nuxt/
       exec_mode: cluster
       env:
         NODE_ENV: production
