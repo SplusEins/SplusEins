@@ -21,6 +21,7 @@
           justify-center>
           <v-progress-circular
             v-show="loading"
+            slot="progress"
             :indeterminate="true"
             color="secondary" />
           <p v-show="!loading">
@@ -46,13 +47,8 @@
 </template>
 
 <script lang="js">
-import TimetableSelect from './timetable-select.vue';
-
 export default {
-  name: 'CustomTimetableDialog',
-  components: {
-    TimetableSelect,
-  },
+  name: 'CourseMultiselect',
   props: {
     courses: {
       type: Array,
