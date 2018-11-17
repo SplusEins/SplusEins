@@ -8,11 +8,11 @@
 
     <v-list-tile
       v-for="route in customSchedulesAsRoutes"
-      :key="route.query.name"
+      :key="route.params.schedule"
       :to="route"
       nuxt>
       <v-list-tile-content>
-        <v-list-tile-title>{{ route.query.name }}</v-list-tile-title>
+        <v-list-tile-title>{{ route.params.schedule }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
 
