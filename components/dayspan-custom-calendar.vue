@@ -721,11 +721,6 @@ export default {
   user-select: auto !important;
 }
 
-//current-time line
-.ds-day.ds-day-today > div:last-child{
-  display: none
-}
-
 .ds-hour{
   // changing this means you have to change the 'multiplicator' attribute in the store aswell
   height: 45px !important;
@@ -746,7 +741,6 @@ export default {
 .ds-hour:nth-child(-n+6){
   display: none;
 }
-
 .ds-day:nth-child(8),
 .no-weekend .ds-day:nth-child(7){
   display: none;
