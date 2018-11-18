@@ -124,6 +124,10 @@ export default {
   },
   methods: {
     addSchedule(schedule) {
+      if (this.selectedSchedules.includes(schedule)) {
+        return;
+      }
+
       this.selectedSchedules.push(schedule);
       this.loadLectures(schedule);
     },
