@@ -43,6 +43,7 @@
             <v-flex xs12>
               <timetable-select
                 v-show="selectedSchedules.length <= maxSchedules"
+                :loading="loading"
                 @input="addSchedule" />
             </v-flex>
 
