@@ -41,7 +41,9 @@
             </v-flex>
 
             <v-flex xs12>
-              <timetable-select @input="addSchedule" />
+              <timetable-select
+                v-show="selectedSchedules.length <= maxSchedules"
+                @input="addSchedule" />
             </v-flex>
 
             <v-flex xs12>
@@ -57,6 +59,7 @@
             <v-flex xs12>
               <course-multiselect
                 v-model="selectedCourses"
+                :max-courses="maxCourses"
                 :courses="courses"
                 :loading="loading" />
             </v-flex>
@@ -100,6 +103,10 @@ export default {
           (value) => !this.customScheduleLabels.includes(value)
                      || 'Bereits vergeben',
       },
+      // reasonable limits to ensure good performance
+      // and a usable UI
+      maxSchedules: 5,
+      maxCourses: 20,
     };
   },
   computed: {
