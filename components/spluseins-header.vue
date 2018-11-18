@@ -3,36 +3,40 @@
     <v-toolbar
       :clipped-left="true"
       dark
-      fixed 
+      fixed
       app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
-      <v-flex class="text-xs-center">
-        <v-layout 
-          align-start 
-          justify-center 
-          fill-height
-          row> 
-          <img 
-            src="../assets/img/headerLogo.png" 
-            height="35px"
-          >
-          <v-toolbar-title class="header-text">SPLUSEINS</v-toolbar-title>
-        </v-layout>
-      </v-flex>
-      <v-btn 
-        icon
-        flat
-        @click="toggleDark()">
-        <v-icon v-if="isDark">brightness_2</v-icon>
-        <v-icon v-else>wb_sunny</v-icon>
-      </v-btn>
+      <v-spacer />
+      <img
+        src="../assets/img/headerLogo.png"
+        height="35px"
+      >
+      <v-toolbar-title class="header-text">SPLUSEINS</v-toolbar-title>
+      <v-spacer />
+      <v-toolbar-items>
+        <v-btn
+          v-show="isOffline"
+          color="warning"
+          icon
+          flat
+          @click="setError('Keine Internetverbindung')">
+          <v-icon>wifi_off</v-icon>
+        </v-btn>
+        <v-btn
+          icon
+          flat
+          @click="toggleDark()">
+          <v-icon v-if="isDark">brightness_2</v-icon>
+          <v-icon v-else>wb_sunny</v-icon>
+        </v-btn>
+      </v-toolbar-items>
     </v-toolbar>
     <spluseins-side-nav :drawer.sync="drawer"/>
   </div>
 </template>
 
 <script lang="js">
-import SpluseinsSideNav from './spluseins-side-nav'
+import SpluseinsSideNav from './spluseins-side-nav';
 import { mapMutations, mapState } from 'vuex';
 
 export default {
@@ -40,20 +44,27 @@ export default {
   components: {SpluseinsSideNav},
   data () {
     return {
-      drawer: false
-    }
+      drawer: false,
+      isOffline: false,
+      offlineNoticeOpen: false,
+    };
   },
   computed: {
     ...mapState({
       isDark: state => state.theme.isDark,
     }),
   },
+  mounted() {
+    window.addEventListener('offline', () => this.isOffline = true);
+    window.addEventListener('online', () => this.isOffline = false);
+  },
   methods: {
     ...mapMutations({
       toggleDark: 'theme/toggleDark',
+      setError: 'splus/setError',
     }),
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -62,10 +73,10 @@ export default {
     src: url(../assets/fonts/Schluber.otf);
   }
   .header-text{
-    font-family:Schluber; 
-    font-size: 170%; 
+    font-family:Schluber;
+    font-size: 170%;
     position: relative;
-    transform: translateY(6%); 
+    transform: translateY(6%);
   }
   .header-component {
 
