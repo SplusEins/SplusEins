@@ -33,7 +33,7 @@
             <v-flex xs12>
               <v-text-field
                 v-model="selectedName"
-                :rules="[rules.required, rules.uniqueCustomScheduleLabel]"
+                :rules="[rules.required, rules.uniqueScheduleLabel]"
                 label="Plan benennen"
                 single-line
                 required
@@ -99,8 +99,9 @@ export default {
       valid: false,
       rules: {
         required: (value) => !!value || 'Pflichtfeld',
-        uniqueCustomScheduleLabel:
-          (value) => !this.customScheduleLabels.includes(value)
+        uniqueScheduleLabel:
+          (value) => (!this.customScheduleLabels.includes(value)
+                      && !this.scheduleIds.includes(value))
                      || 'Bereits vergeben',
       },
       // reasonable limits to ensure good performance
@@ -127,6 +128,7 @@ export default {
     ...mapGetters({
       schedulesTree: 'splus/getSchedulesAsTree',
       customScheduleLabels: 'splus/customScheduleLabels',
+      scheduleIds: 'splus/scheduleIds',
     }),
   },
   methods: {
