@@ -35,6 +35,7 @@
         <td>
           <v-checkbox
             v-model="props.selected"
+            :disabled="!props.selected && selectedCourses.length > maxCourses"
             primary
             hide-details />
         </td>
@@ -50,6 +51,10 @@
 export default {
   name: 'CourseMultiselect',
   props: {
+    maxCourses: {
+      type: Number,
+      default: () => Infinity,
+    },
     courses: {
       type: Array,
       default: () => []
