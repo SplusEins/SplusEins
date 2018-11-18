@@ -9,36 +9,33 @@
         <v-select
           :items="paths"
           v-model="selectedPath"
-          label="Studiengang"
-          required />
+          label="Studiengang" />
       </v-flex>
       <v-flex
         xs4
         md2>
         <v-select
           :items="semesters"
-          :rules="[rules.required]"
+          :disabled="selectedPath == undefined"
           v-model="selectedSemester"
-          label="Semester"
-          required />
+          label="Semester" />
       </v-flex>
       <v-flex
         xs6
         md4>
         <v-select
           :items="schedules"
-          :rules="[rules.resolvesToSchedule]"
+          :disabled="selectedSemester == undefined"
           v-model="selectedSchedule"
           label="Vertiefung"
           item-text="label"
-          required
           return-object />
       </v-flex>
       <v-flex
         xs2
         md1>
         <v-btn
-          :disabled="loading"
+          :disabled="loading || selectedSchedule == undefined"
           :loading="loading"
           icon
           flat
@@ -67,12 +64,8 @@ export default {
     return {
       valid: false,
       selectedSchedule: undefined,
-      selectedPath: '',
-      selectedSemester: '',
-      rules: {
-        required: (value) => !!value || 'Pflichtfeld',
-        resolvesToSchedule: () => !!this.selectedSchedule || 'Pflichtfeld',
-      },
+      selectedPath: undefined,
+      selectedSemester: undefined,
     };
   },
   computed: {
@@ -101,7 +94,7 @@ export default {
       if (this.semesters.length == 1) {
         this.selectedSemester = this.semesters[0];
       } else {
-        this.selectedSemester = '';
+        this.selectedSemester = undefined;
       }
     },
     selectedSemester() {
