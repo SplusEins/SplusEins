@@ -49,6 +49,7 @@ export const state = () => ({
   /**
    * Map of { week: lectures[] }
    */
+  favoriteSchedules: [],
   lectures: {},
   /**
    * Currently viewed week.
@@ -189,6 +190,9 @@ export const mutations = {
     }
 
     Vue.set(state.customSchedules, label, customSchedule);
+  },
+  addFavoriteSchedule(state, favoriteSchedule){
+    state.favoriteSchedules.push(favoriteSchedule);
   },
   setError(state, error) {
     state.error = error;
