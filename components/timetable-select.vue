@@ -38,6 +38,8 @@
         xs2
         md1>
         <v-btn
+          :disabled="loading"
+          :loading="loading"
           icon
           flat
           large
@@ -55,6 +57,12 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'TimetableSelect',
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       valid: false,
