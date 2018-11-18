@@ -152,6 +152,9 @@ export const getters = {
 
     return tree;
   },
+  scheduleIds: (state) => {
+    return state.schedules.map(({ id }) => id);
+  },
   customSchedulesAsRoutes: (state, getters) => {
     return Object.values(state.customSchedules)
       .map(customScheduleToRoute);
