@@ -215,7 +215,8 @@ export const actions = {
       state.schedule.id : [state.schedule.id];
 
     commit('clearLectures', { week: state.week });
-    
+
+    let allLectures = [];
     await Promise.all(ids.map(async (id) => {
       try {
         const response = await this.$axios.get(`/api/splus/${id}/${state.week}`);
@@ -227,12 +228,14 @@ export const actions = {
             (lecture1) => whitelist.includes(lecture1.titleId));
         }
 
-        commit('addLectures', { lectures, week: state.week });
+        allLectures = allLectures.concat(lectures);
       } catch (error) {
         commit('setError', 'API-Verbindung fehlgeschlagen');
         console.error('error during API call', error.message);
       }
     }));
+
+    commit('addLectures', { lectures: allLectures, week: state.week });
   },
   /**
    * Import schedule from route and set as current schedule.
