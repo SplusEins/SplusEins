@@ -22,11 +22,14 @@ describe('Cookie snackbar', () => {
     };
 
     store = new Vuex.Store({
-      modules: { privacy: {
-        state: { allowCookies },
-        mutations: PrivacyModule.mutations,
-        namespaced: true,
-      } }
+      modules: {
+        browserStateReady: true,
+        privacy: {
+          state: { allowCookies, },
+          mutations: PrivacyModule.mutations,
+          namespaced: true,
+        }
+      }
     });
 
     return mount(SpluseinsCookieSnackbar, { store });
