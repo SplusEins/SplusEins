@@ -8,10 +8,8 @@
       hide-details />
     <v-data-table
       v-model="selectedCourses"
-      :headers="headers"
       :items="courses"
       :search="search"
-      :loading="loading"
       hide-headers
       hide-actions
       item-key="titleId">
@@ -19,12 +17,7 @@
         <v-layout
           row
           justify-center>
-          <v-progress-circular
-            v-show="loading"
-            slot="progress"
-            :indeterminate="true"
-            color="secondary" />
-          <p v-show="!loading">
+          <p>
             Keine Vorlesungen.
           </p>
         </v-layout>
@@ -63,18 +56,9 @@ export default {
       type: Array,
       default: () => []
     },
-    loading: {
-      type: Boolean,
-      default: false
-    },
   },
   data() {
     return {
-      headers: [
-        { text: 'Titel', value: 'title' },
-        { text: 'Dozent', value: 'lecturer' },
-        { text: 'Raum', value: 'room' },
-      ],
       search: '',
     };
   },
