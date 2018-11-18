@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.4",
+    "@nuxtjs/pwa": "^2.6.0",
     "aws-serverless-express": "^3.3.5",
     "cache-manager": "^2.9.0",
     "cache-manager-fs-hash": "0.0.6",

@@ -5,7 +5,7 @@
     right>
     Einstellungen im Browser speichern?
     <v-layout
-      justify-space-between
+      justify-end
       fluid
       row>
       <v-btn
