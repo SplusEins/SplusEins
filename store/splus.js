@@ -194,6 +194,9 @@ export const mutations = {
   addFavoriteSchedule(state, favoriteSchedule){
     state.favoriteSchedules.push(favoriteSchedule);
   },
+  removeFavoriteSchedule(state, favoriteSchedule){
+    state.favoriteSchedules = state.favoriteSchedules.filter(schedule => schedule.id != favoriteSchedule.id);
+  },
   setError(state, error) {
     state.error = error;
   },

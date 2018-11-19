@@ -20,6 +20,7 @@ export default ({ store }) => {
       theme: state.theme,
       splus: {
         customSchedules: state.splus.customSchedules,
+        favoriteSchedules: state.splus.favoriteSchedules,
       },
       privacy: {
         allowCookies: state.privacy.allowCookies,

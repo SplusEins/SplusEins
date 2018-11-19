@@ -4,26 +4,25 @@
 
     <v-subheader>
       Favoriten
-    </v-subheader>
-
-    <v-list-tile
-      @click="favoriteTimetableDialogOpen = true">
-      <favorite-timetable-dialog v-model="favoriteTimetableDialogOpen" />
-      <v-list-tile-action>
+      <v-btn
+        icon
+        flat
+        @click="favoriteTimetableDialogOpen = true">
         <v-icon>add</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Favoriten hinzufügen</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-
+      </v-btn>
+    </v-subheader>
+    
+    <favorite-timetable-dialog v-model="favoriteTimetableDialogOpen" />
+  
     <v-list-tile
       v-for="schedule in favoriteSchedules"
-      :to="scheduleToRoute(schedule)"
       :key="schedule.id"
+      :to="scheduleToRoute(schedule)"
       nuxt>
       <v-list-tile-content>
-        <v-list-tile-title>{{ schedule.label }}</v-list-tile-title>
+        <v-list-tile-title :to="scheduleToRoute(schedule)">
+          {{ schedule.degree }} - {{ schedule.label }}
+        </v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
   
@@ -50,9 +49,6 @@
         favoriteSchedules: (state) => state.splus.favoriteSchedules,
       }),
     },
-    mounted() {
-
-    },
     methods: {
       scheduleToRoute(schedule) {
         return {
@@ -63,9 +59,3 @@
     }
 }
 </script>
-
-<style scoped lang="scss">
-  .favorite-timetable-component {
-
-  }
-</style>
