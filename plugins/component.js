@@ -13,9 +13,9 @@ export default {
       
     getStyleNow()
     {
-      let millisPerDay = 86400000;
-      let sixHoursToMillis = 21600000;
-      let multiplicator = 1.125;
+      const millisPerDay = 86400000;
+      const sixHoursToMillis = 21600000;
+      const multiplicator = 1.125;
       let now = Math.floor((this.now.asTime().toMilliseconds() - sixHoursToMillis) * multiplicator);
       let delta = now / millisPerDay;
       let top = delta * this.dayHeight;
@@ -31,9 +31,12 @@ export default {
 
     getStyleTimed(details, calendarEvent)
     {
-      let sixHoursToMillis = 21600000;
-      let multiplicator = 1.125;  
-      let past = calendarEvent.time.end.isBefore( Math.floor((this.now.asTime().toMilliseconds() - sixHoursToMillis) * multiplicator));
+      const sixHoursToMillis = 21600000;
+      const multiplicator = 1.125;
+      const isToday = calendarEvent.end.dayOfWeek == this.now.dayOfWeek;
+      const isAfter = calendarEvent.time.end.asTime().toMilliseconds() < Math.floor((this.now.asTime().toMilliseconds() - sixHoursToMillis) * multiplicator);
+      let past = isToday && isAfter;
+
       let cancelled = calendarEvent.cancelled;
       let bounds = calendarEvent.getTimeBounds( this.dayHeight, 1, this.columnOffset );
 
