@@ -25,9 +25,10 @@ export default {
     {
       const sixHoursToMillis = 21600000;
       const multiplicator = 1.125;
-      const isToday = calendarEvent.end.dayOfWeek == this.now.dayOfWeek;
-      const isAfter = calendarEvent.time.end.asTime().toMilliseconds() < Math.floor((this.now.asTime().toMilliseconds() - sixHoursToMillis) * multiplicator);
-      let past = isToday && isAfter;
+      const isBefore =  calendarEvent.end.year <= this.now.year && calendarEvent.end.dayOfYear < this.now.dayOfYear;
+      const isToday = calendarEvent.end.year == this.now.year && calendarEvent.end.dayOfYear == this.now.dayOfYear;
+      const isAfterEnd = calendarEvent.time.end.asTime().toMilliseconds() < Math.floor((this.now.asTime().toMilliseconds() - sixHoursToMillis) * multiplicator);
+      let past = isBefore || (isToday && isAfterEnd);
 
       let cancelled = calendarEvent.cancelled;
       let bounds = calendarEvent.getTimeBounds( this.dayHeight, 1, this.columnOffset );
