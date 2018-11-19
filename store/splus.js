@@ -61,14 +61,6 @@ export const state = () => ({
    * true if frontend is a static build.
    */
   lazyLoad: false,
-
-  /**
-   * constants for dayspan
-   * - multiplicator: standard ds-hour height: 40px, now 45px
-   * - 7 am is now 1 am
-   */
-  multiplicator: 1.125,
-  shiftingHours: 6,
 });
 
 export const getters = {
@@ -101,11 +93,16 @@ export const getters = {
       const start = moment(lecture.start);
       const color = colorScale[uniqueIds.indexOf(lecture.lecturerId)];
 
-      const adjustedMinutes = (lecture.begin - state.shiftingHours) * 60;
-      const adjustedMinutesWithMultiplicator = adjustedMinutes * state.multiplicator;
+      // standard ds-hour height: 40px, now 45px
+      const multiplicator = 1.125;
+      // 7 am is now 1 am
+      const shiftingHours = 6;
+
+      const adjustedMinutes = (lecture.begin - shiftingHours) * 60;
+      const adjustedMinutesWithMultiplicator = adjustedMinutes * multiplicator;
       const hours = Math.floor(adjustedMinutesWithMultiplicator / 60);
       const minutes = adjustedMinutesWithMultiplicator - (hours * 60) -1;
-      const durationWithMultiplicator = lecture.duration * state.multiplicator;
+      const durationWithMultiplicator = lecture.duration * multiplicator;
 
       const shiftedStart = start.clone()
         .hours(hours)
