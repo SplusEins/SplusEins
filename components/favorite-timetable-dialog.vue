@@ -6,7 +6,7 @@
     hide-overlay
     transition="dialog-bottom-transition">
     <v-card>
-      
+
       <v-toolbar
         dark
         color="primary">
@@ -22,7 +22,7 @@
       <v-form>
         <v-container 
           grid-list-md
-          pb-0>
+          pb-1>
           <v-layout
             row
             wrap>
