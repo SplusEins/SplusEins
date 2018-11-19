@@ -6,12 +6,21 @@
       fixed 
       app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
-      <img 
-        src="../assets/img/mainLogo.png" 
-        width="40px"
-      >
-      <v-toolbar-title>spluseins</v-toolbar-title>
-      <v-spacer />
+      <v-flex class="text-xs-center">
+        <v-toolbar-title>  
+          <v-layout 
+            align-center 
+            justify-center 
+            row 
+            fill-height> 
+            <img 
+              src="../assets/img/mainLogo.png" 
+              height="40px"
+            >
+          <!-- SPLUSEINS -->
+          </v-layout>
+        </v-toolbar-title>
+      </v-flex>
       <v-btn 
         icon
         flat
