@@ -1,39 +1,52 @@
 <template>
-  <v-layout
-    row
-    wrap>
-    <v-flex
-      md5
-      xs9>
-      <v-select
-        :items="paths"
-        v-model="selectedPath"
-        label="Studiengang"
-        required />
-    </v-flex>
-    <v-flex
-      md2
-      xs3>
-      <v-select
-        :items="semesters"
-        :rules="[rules.required]"
-        v-model="selectedSemester"
-        label="Semester"
-        required />
-    </v-flex>
-    <v-flex
-      v-show="!($vuetify.breakpoint.smAndDown && !hasMultipleSchedules)"
-      md5>
-      <v-select
-        :items="schedules"
-        :rules="[rules.resolvesToSchedule]"
-        v-model="selectedSchedule"
-        label="Vertiefung"
-        item-text="label"
-        required
-        return-object />
-    </v-flex>
-  </v-layout>
+  <v-form v-model="valid">
+    <v-layout
+      row
+      wrap>
+      <v-flex
+        xs12
+        md5>
+        <v-select
+          :items="paths"
+          v-model="selectedPath"
+          label="Studiengang" />
+      </v-flex>
+      <v-flex
+        xs4
+        md2>
+        <v-select
+          :items="semesters"
+          :disabled="selectedPath == undefined"
+          v-model="selectedSemester"
+          label="Semester" />
+      </v-flex>
+      <v-flex
+        xs6
+        md4>
+        <v-select
+          :items="schedules"
+          :disabled="selectedSemester == undefined"
+          v-model="selectedSchedule"
+          label="Vertiefung"
+          item-text="label"
+          return-object />
+      </v-flex>
+      <v-flex
+        xs2
+        md1>
+        <v-btn
+          :disabled="loading || selectedSchedule == undefined"
+          :loading="loading"
+          icon
+          flat
+          large
+          color="secondary"
+          @click.native="submit()">
+          <v-icon>add</v-icon>
+        </v-btn>
+      </v-flex>
+    </v-layout>
+  </v-form>
 </template>
 
 <script>
@@ -42,26 +55,20 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TimetableSelect',
   props: {
-    value: {
-      type: Object,
-      default: () => undefined
-    },
+    loading: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
-      selectedPath: '',
-      selectedSemester: '',
-      rules: {
-        required: (value) => !!value || 'Pflichtfeld',
-        resolvesToSchedule: () => !!this.selectedSchedule || 'Pflichtfeld',
-      }
+      valid: false,
+      selectedSchedule: undefined,
+      selectedPath: undefined,
+      selectedSemester: undefined,
     };
   },
   computed: {
-    selectedSchedule: {
-      get() { return this.value; },
-      set(value) { this.$emit('input', value); }
-    },
     paths() {
       return Object.keys(this.schedulesTree);
     },
@@ -87,7 +94,7 @@ export default {
       if (this.semesters.length == 1) {
         this.selectedSemester = this.semesters[0];
       } else {
-        this.selectedSemester = '';
+        this.selectedSemester = undefined;
       }
     },
     selectedSemester() {
@@ -95,6 +102,13 @@ export default {
         this.selectedSchedule = this.schedules[0];
       } else {
         this.selectedSchedule = undefined;
+      }
+    },
+  },
+  methods: {
+    submit() {
+      if (this.valid) {
+        this.$emit('input', this.selectedSchedule);
       }
     },
   },

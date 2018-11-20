@@ -8,7 +8,7 @@
         icon
         flat
         @click="favoriteTimetableDialogOpen = true">
-        <v-icon>add</v-icon>
+        <v-icon>menu</v-icon>
       </v-btn>
     </v-subheader>
     
@@ -20,9 +20,7 @@
       :to="scheduleToRoute(schedule)"
       nuxt>
       <v-list-tile-content>
-        <v-list-tile-title :to="scheduleToRoute(schedule)">
-          {{ schedule.degree }} - {{ schedule.label }}
-        </v-list-tile-title>
+        {{ shortenDegree(schedule) }} {{ schedule.label }} - {{ schedule.semester }}. Sem.
       </v-list-tile-content>
     </v-list-tile>
   
@@ -32,7 +30,8 @@
 
 <script lang="js">
   import { mapState } from 'vuex';
-  import FavoriteTimetableDialog from "./favorite-timetable-dialog.vue";
+  import FavoriteTimetableDialog from './favorite-timetable-dialog.vue';
+  import { shortenScheduleDegree } from '../store/splus';
   
   export default  {
     name: 'FavoriteTimetablesList',
@@ -55,6 +54,9 @@
           name: 'schedule',
           params: { schedule: schedule.id },
         };
+      },
+      shortenDegree(schedule) {
+        return shortenScheduleDegree(schedule);
       },
     }
 }
