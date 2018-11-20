@@ -6,12 +6,16 @@
         fluid
         fill-height>
         <spluseins-calendar v-if="!!schedule" />
-
         <v-layout
           v-else
           row
           align-center
           justify-center>
+          <div class="background-div">
+            <img 
+              src="../assets/img/calendarLogo.png"
+              class="background-image">
+          </div>
           <v-flex
             class="text-xs-center"
             xs12>
@@ -69,6 +73,21 @@ export default {
 .container {
   padding: 16px 16px 25px 16px;
 }
+
+.background-div{
+  position: absolute;
+  opacity: 0.2; 
+  filter: alpha(opacity=20);
+}
+
+.background-image{
+  max-width: 65%;
+  height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
 
 </style>
 

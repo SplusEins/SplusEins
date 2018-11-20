@@ -13,7 +13,7 @@
           fill-height
           row> 
           <img 
-            src="../assets/img/mainLogo.png" 
+            src="../assets/img/headerLogo.png" 
             height="35px"
           >
           <v-toolbar-title class="header-text">SPLUSEINS</v-toolbar-title>
@@ -63,9 +63,9 @@ export default {
   }
   .header-text{
     font-family:Schluber; 
-    font-size:170%; 
+    font-size: 170%; 
     position: relative;
-    transform: translateY(10%);  
+    transform: translateY(6%); 
   }
   .header-component {
 
