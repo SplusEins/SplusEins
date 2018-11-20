@@ -1,5 +1,9 @@
 export default {
 
+  data: {
+    inactiveBlendAmount: 0.6,
+  },
+
   methods:
   {
       
