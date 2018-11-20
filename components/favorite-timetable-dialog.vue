@@ -26,34 +26,24 @@
           <v-layout
             row
             wrap>
-            <v-flex xs11>
-              <timetable-select v-model="selectedSchedule"/>
-            </v-flex>
-            <v-flex xs1>
-              <v-btn
-                :disabled="invalidAdd()"
-                icon
-                large
-                flat
-                @click.native="addFavoriteSchedule(selectedSchedule)">
-                <v-icon>add</v-icon>
-              </v-btn>
+            <v-flex xs12>
+              <timetable-select @input="addSchedule"/>
             </v-flex>
           </v-layout>
         </v-container>
       </v-form>
 
-      <v-list v-if="favoriteSchedules.length != 0"> 
+      <v-list> 
         <v-list-tile
           v-for="schedule in favoriteSchedules"
           :key="schedule.id"
           nuxt>
           <v-list-tile-content>
             <v-list-tile-title>
-              {{ schedule.degree }} - {{ schedule.label }} {{ schedule.semester }}. Semester
               <v-icon @click = "removeFavoriteSchedule(schedule)">
                 delete
               </v-icon>
+              {{ shortenDegree(schedule) }} {{ schedule.label }} - {{ schedule.semester }}. Sem.
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
@@ -66,6 +56,7 @@
 <script lang="js">
 import { mapState, mapMutations } from 'vuex';
 import TimetableSelect from './timetable-select.vue';
+import { shortenScheduleDegree } from '../store/splus';
 
 export default {
   name: 'FavoriteTimetableDialog',
@@ -97,8 +88,13 @@ export default {
       addFavoriteSchedule: 'splus/addFavoriteSchedule',
       removeFavoriteSchedule: 'splus/removeFavoriteSchedule',
     }),
-    invalidAdd() {
-      return this.selectedSchedule == undefined || this.favoriteSchedules.filter(schedule => schedule.id == this.selectedSchedule.id).length > 0;
+    addSchedule(schedule){
+      if(this.favoriteSchedules.filter(favorite => favorite.id == schedule.id).length == 0){
+        this.addFavoriteSchedule(schedule);
+      }
+    },
+    shortenDegree(schedule) {
+      return shortenScheduleDegree(schedule);
     },
   },
 };

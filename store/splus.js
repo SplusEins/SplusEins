@@ -31,6 +31,18 @@ export function customScheduleToRoute(customSchedule) {
   return { name: 'schedule', params, query };
 }
 
+export function shortenScheduleDegree(schedule) {
+  let shortenedDegree
+  switch(schedule.degree){
+    case "Bachelor of Science": shortenedDegree = "B.Sc."; break;
+    case "Master of Science": shortenedDegree = "M.Sc."; break;
+    case "Bachelor of Arts": shortenedDegree = "B.A."; break;
+    case "Master of Arts": shortenedDegree = "M.A."; break;
+    default: shortenedDegree = schedule.degree;
+  }
+  return shortenedDegree;
+}
+
 export const state = () => ({
   schedule: undefined,
   schedules: SCHEDULES.map(
