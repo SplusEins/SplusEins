@@ -44,7 +44,7 @@ export function shortenScheduleDegree(schedule) {
 export const state = () => ({
   schedule: undefined,
   schedules: SCHEDULES.map(
-    (schedule) => ({ ...schedule, path: `${schedule.faculty} ${schedule.degree}` })),
+    (schedule) => ({ ...schedule, path: `${schedule.faculty} ${schedule.degree}`, degreeShort: shortenScheduleDegree(schedule)})),
   /**
    * Map of created or visited custom schedules.
    * Key: label

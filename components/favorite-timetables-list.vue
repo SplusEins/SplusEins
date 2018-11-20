@@ -20,7 +20,7 @@
       :to="scheduleToRoute(schedule)"
       nuxt>
       <v-list-tile-content>
-        {{ shortenDegree(schedule) }} {{ schedule.label }} - {{ schedule.semester }}. Sem.
+        {{ schedule.degreeShort }} {{ schedule.label }} - {{ schedule.semester }}. Sem.
       </v-list-tile-content>
     </v-list-tile>
   
@@ -31,7 +31,6 @@
 <script lang="js">
   import { mapState } from 'vuex';
   import FavoriteTimetableDialog from './favorite-timetable-dialog.vue';
-  import { shortenScheduleDegree } from '../store/splus';
   
   export default  {
     name: 'FavoriteTimetablesList',
@@ -54,9 +53,6 @@
           name: 'schedule',
           params: { schedule: schedule.id },
         };
-      },
-      shortenDegree(schedule) {
-        return shortenScheduleDegree(schedule);
       },
     }
 }
