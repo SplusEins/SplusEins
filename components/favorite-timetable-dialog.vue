@@ -43,7 +43,7 @@
               <v-icon @click = "removeFavoriteSchedule(schedule)">
                 delete
               </v-icon>
-              {{ shortenDegree(schedule) }} {{ schedule.label }} - {{ schedule.semester }}. Sem.
+              {{ schedule.degreeShort }} {{ schedule.label }} - {{ schedule.semester }}. Sem.
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
@@ -56,7 +56,6 @@
 <script lang="js">
 import { mapState, mapMutations } from 'vuex';
 import TimetableSelect from './timetable-select.vue';
-import { shortenScheduleDegree } from '../store/splus';
 
 export default {
   name: 'FavoriteTimetableDialog',
@@ -92,9 +91,6 @@ export default {
       if(this.favoriteSchedules.filter(favorite => favorite.id == schedule.id).length == 0){
         this.addFavoriteSchedule(schedule);
       }
-    },
-    shortenDegree(schedule) {
-      return shortenScheduleDegree(schedule);
     },
   },
 };
