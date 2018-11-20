@@ -16,11 +16,11 @@
   
     <v-list-tile
       v-for="schedule in favoriteSchedules"
-      :key="schedule.id"
       :to="scheduleToRoute(schedule)"
+      :key="schedule.id"
       nuxt>
       <v-list-tile-content>
-        {{ schedule.degreeShort }} {{ schedule.label }} - {{ schedule.semester }}. Sem.
+        <v-list-tile-title>{{ schedule.degreeShort }} {{ schedule.label }} - {{ schedule.semester }}. Sem.</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
   
