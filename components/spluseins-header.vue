@@ -9,15 +9,14 @@
       <v-flex class="text-xs-center">
         <v-toolbar-title>  
           <v-layout 
-            align-center 
+            align-start-between 
             justify-center 
-            row 
-            fill-height> 
+            row> 
             <img 
               src="../assets/img/mainLogo.png" 
-              height="40px"
+              height="35px"
             >
-          <!-- SPLUSEINS -->
+            <span style="font-family:Schluber; font-size:140%; vertical-align: middle; line-height: 45px;">spluseins</span>
           </v-layout>
         </v-toolbar-title>
       </v-flex>
@@ -59,6 +58,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @font-face {
+    font-family: Schluber;
+    src: url(../assets/fonts/Schluber.otf);
+  }
   .header-component {
 
   }
