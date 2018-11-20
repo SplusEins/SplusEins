@@ -33,7 +33,7 @@
             <v-flex xs12>
               <v-text-field
                 v-model="selectedName"
-                :rules="[rules.required, rules.uniqueCustomScheduleLabel]"
+                :rules="[rules.required, rules.uniqueScheduleLabel]"
                 label="Plan benennen"
                 single-line
                 required
@@ -41,12 +41,26 @@
             </v-flex>
 
             <v-flex xs12>
-              <timetable-select v-model="selectedSchedule"/>
+              <timetable-select
+                v-show="selectedSchedules.length <= maxSchedules"
+                :loading="loading"
+                @input="addSchedule" />
+            </v-flex>
+
+            <v-flex xs12>
+              <v-chip
+                v-for="schedule in selectedSchedules"
+                :key="schedule.id"
+                close
+                @input="removeSchedule(schedule)">
+                {{ schedule.label }}
+              </v-chip>
             </v-flex>
 
             <v-flex xs12>
               <course-multiselect
                 v-model="selectedCourses"
+                :max-courses="maxCourses"
                 :courses="courses"
                 :loading="loading" />
             </v-flex>
@@ -58,7 +72,7 @@
 </template>
 
 <script lang="js">
-import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
+import { mapMutations, mapState, mapGetters } from 'vuex';
 import * as moment from 'moment';
 import { uniq, customScheduleToRoute } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
@@ -80,16 +94,21 @@ export default {
     return {
       loading: false,
       selectedName: '',
-      selectedSchedule: undefined,
+      selectedSchedules: [],
       selectedCourses: [],
-      lectures: [],
+      lectures: {},
       valid: false,
       rules: {
         required: (value) => !!value || 'Pflichtfeld',
-        uniqueCustomScheduleLabel:
-          (value) => !this.customScheduleLabels.includes(value)
+        uniqueScheduleLabel:
+          (value) => (!this.customScheduleLabels.includes(value)
+                      && !this.scheduleIds.includes(value))
                      || 'Bereits vergeben',
       },
+      // reasonable limits to ensure good performance
+      // and a usable UI
+      maxSchedules: 5,
+      maxCourses: 20,
     };
   },
   computed: {
@@ -98,10 +117,6 @@ export default {
       set(value) { this.$emit('input', value); }
     },
     courses() {
-      if (!this.selectedSchedule) {
-        return [];
-      }
-
       const allLectures = [].concat(...Object.values(this.lectures));
       const uniqueLectures = new Map();
       allLectures.forEach(
@@ -114,34 +129,39 @@ export default {
     ...mapGetters({
       schedulesTree: 'splus/getSchedulesAsTree',
       customScheduleLabels: 'splus/customScheduleLabels',
+      scheduleIds: 'splus/scheduleIds',
     }),
   },
-  watch: {
-    async selectedSchedule(newSchedule, oldSchedule) {
-      if (newSchedule != oldSchedule) {
-        this.lectures = [];
-      }
-      if (!newSchedule) {
+  methods: {
+    addSchedule(schedule) {
+      if (this.selectedSchedules.includes(schedule)) {
         return;
       }
 
-      this.loading = true;
-      await this.loadLectures(newSchedule);
-      this.loading = false;
-    }
-  },
-  methods: {
+      this.selectedSchedules.push(schedule);
+      this.loadLectures(schedule);
+    },
+    removeSchedule(schedule) {
+      const index = this.selectedSchedules.indexOf(schedule);
+      this.selectedSchedules.splice(index, 1);
+      this.$set(this.lectures, schedule.id, []);
+      this.selectedCourses = this.selectedCourses.filter(
+        (course) => course.id == schedule.id);
+    },
     async loadLectures(schedule) {
+      this.loading = true;
+
       const week = moment().isoWeek();
 
       try {
         const response = await this.$axios.get(`/api/splus/${schedule.id}/${week}`);
-        // select all courses by default
-        this.selectedCourses = this.lectures = response.data;
+        this.$set(this.lectures, schedule.id, response.data);
       } catch (error) {
         this.setError('API-Verbindung fehlgeschlagen');
         console.error('error during API call', error.message);
       }
+
+      this.loading = false;
     },
     save() {
       this.dialogOpen = false;
@@ -149,11 +169,8 @@ export default {
       // Set the base schedule and filters matching the given courses.
       const titleIds = uniq(this.selectedCourses.map(({ titleId }) => titleId));
 
-      const schedule = this.selectedSchedule;
       const customSchedule = {
-        id: schedule.id,
-        faculty: schedule.faculty,
-        semester: schedule.semester,
+        id: this.selectedSchedules.map(({ id }) => id ),
         label: this.selectedName,
         whitelist: titleIds,
       };
