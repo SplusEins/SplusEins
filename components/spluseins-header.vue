@@ -6,7 +6,7 @@
       fixed 
       app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
-      <v-flex class="text-xs-center pa-4">
+      <v-flex class="text-xs-center">
         <v-layout 
           align-start 
           justify-center 
@@ -64,9 +64,8 @@ export default {
   .header-text{
     font-family:Schluber; 
     font-size:170%; 
-    line-height: 35px;
     position: relative;
-    transform: translateY(13%);  
+    transform: translateY(10%);  
   }
   .header-component {
 
