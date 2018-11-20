@@ -178,12 +178,17 @@ export const getters = {
 };
 
 export const mutations = {
-  addLectures(state, { lectures, week }) {
+  /**
+   * Add given lectures to the state,
+   * paying respect to currently active whitelist.
+   */
+  setLectures(state, { lectures, week }) {
+    const whitelist = state.schedule.whitelist;
+    const filteredLectures = !!whitelist ? lectures.filter(
+      (lecture1) => whitelist.includes(lecture1.titleId)) : lectures;
+
     // reactive variant of state.lectures[week].push(lectures)
-    Vue.set(state.lectures, week, lectures.concat(state.lectures[week] || []));
-  },
-  clearLectures(state, { week }) {
-    Vue.set(state.lectures, week, []);
+    Vue.set(state.lectures, week, filteredLectures);
   },
   setWeek(state, week) {
     state.week = week;
@@ -229,32 +234,49 @@ export const mutations = {
 };
 
 export const actions = {
-  async load({ state, commit }) {
+  /**
+   * Request data from the given week from the API and write it to the store.
+   */
+  async loadWeek({ state, commit }, week) {
+    if (!!state.lectures[week]) {
+      return; // cached, noop
+    }
+
     const ids = Array.isArray(state.schedule.id) ?
       state.schedule.id : [state.schedule.id];
 
-    commit('clearLectures', { week: state.week });
+    const response = await this.$axios.get(
+      `/api/splus/${state.schedule.id}/${week}`);
 
-    let allLectures = [];
+    let lectures = [];
     await Promise.all(ids.map(async (id) => {
       try {
-        const response = await this.$axios.get(`/api/splus/${id}/${state.week}`);
-
-        let lectures = response.data;
-        const whitelist = state.schedule.whitelist;
-        if (!!whitelist) {
-          lectures = lectures.filter(
-            (lecture1) => whitelist.includes(lecture1.titleId));
-        }
-
-        allLectures = allLectures.concat(lectures);
+        const response = await this.$axios.get(`/api/splus/${id}/${week}`);
+        lectures = lectures.concat(response.data);
       } catch (error) {
         commit('setError', 'API-Verbindung fehlgeschlagen');
         console.error('error during API call', error.message);
       }
     }));
 
-    commit('addLectures', { lectures: allLectures, week: state.week });
+    commit('setLectures', { week, lectures });
+  },
+  /**
+   * Request data for the given week.
+   */
+  async load({ state, dispatch }, doPrefetch) {
+    await dispatch('loadWeek', state.week);
+  },
+  /**
+   * Request data for the given and the next week.
+   */
+  async loadPrefetching({ state, dispatch }) {
+    await Promise.all([
+      dispatch('load'),
+      // prefetch the next week as well
+      // +1 is safe because it's not actually week of year
+      dispatch('loadWeek', state.week + 1)
+    ]);
   },
   /**
    * Import schedule from route and set as current schedule.
