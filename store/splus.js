@@ -86,7 +86,7 @@ export const getters = {
       .sort();
 
     const colorScale = chroma
-      .scale([colors.amber.darken1, colors.green.lighten1])
+      .scale([colors.lightBlue.darken4, colors.cyan.darken4])
       .colors(uniqueIds.length);
 
     return state.lectures[state.week].map((lecture) => {
