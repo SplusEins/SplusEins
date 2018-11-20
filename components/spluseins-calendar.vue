@@ -78,7 +78,7 @@ export default {
       setWeek: 'splus/setWeek',
     }),
     ...mapActions({
-      loadLectures: 'splus/load',
+      loadLectures: 'splus/loadPrefetching',
     }),
   },
 }
