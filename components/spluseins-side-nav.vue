@@ -5,6 +5,8 @@
     fixed
     app
     width="350">
+    <home-button-list />
+    <v-divider />
     <custom-timetables-list />
     <v-divider />
     <favorite-timetables-list />
@@ -21,6 +23,7 @@ import GeneralTimetablesList from './general-timetables-list.vue';
 import FavoriteTimetablesList from './favorite-timetables-list.vue';
 import CustomTimetablesList from './custom-timetables-list.vue';
 import InstallButtonList from './install-button-list.vue';
+import HomeButtonList from './home-button-list.vue';
 
 export default {
   name: 'SpluseinsSideNav',
@@ -29,6 +32,7 @@ export default {
     FavoriteTimetablesList,
     CustomTimetablesList,
     InstallButtonList,
+    HomeButtonList,
   },
   props: {
     drawer: {
