@@ -11,7 +11,11 @@
         src="../assets/img/headerLogo.png"
         height="35px"
       >
-      <v-toolbar-title class="header-text">SPLUSEINS</v-toolbar-title>
+      <v-toolbar-title class="header-text">
+        <nuxt-link
+          tag="span"
+          to="/">SPLUSEINS</nuxt-link>
+      </v-toolbar-title>
       <v-spacer />
       <v-toolbar-items>
         <v-btn
@@ -77,8 +81,5 @@ export default {
     font-size: 170%;
     position: relative;
     transform: translateY(6%);
-  }
-  .header-component {
-
   }
 </style>
