@@ -1,65 +1,79 @@
 <template>
   <v-layout column>
-    <v-flex pb-3>
-      <v-tooltip
-        v-bind="{setToday, todayDate, calendar}" 
-        name="today" 
-        bottom>
-        <v-btn 
-          slot="activator"
-          :icon="$vuetify.breakpoint.xs"
-          depressed
-          outline
-          @click="setToday">
-          <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
-          <v-icon v-show="!$vuetify.breakpoint.smAndUp">{{ labels.todayIcon }}</v-icon>
-        </v-btn>
-        <span>{{ todayDate }}</span>
-      </v-tooltip>
+    <v-flex
+      fluid
+      pb-3>
+      <v-layout
+        justify-space-between
+        row>
+        <v-flex>
+          <v-tooltip
+            v-bind="{setToday, todayDate, calendar}"
+            name="today"
+            bottom>
+            <v-btn
+              slot="activator"
+              :small="$vuetify.breakpoint.xs"
+              :icon="$vuetify.breakpoint.xs"
+              :outline="!$vuetify.breakpoint.xs"
+              depressed
+              @click="setToday">
+              <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
+              <v-icon v-show="!$vuetify.breakpoint.smAndUp">{{ labels.todayIcon }}</v-icon>
+            </v-btn>
+            <span>{{ todayDate }}</span>
+          </v-tooltip>
 
-      <v-tooltip 
-        v-bind="{setToday, todayDate, calendar}" 
-        name="today"
-        bottom>
-        <v-btn 
-          slot="activator"
-          icon 
-          depressed
-          @click="prev" >
-          <v-icon>keyboard_arrow_left</v-icon>
-        </v-btn>
-        <span>{{ prevLabel }}</span>
-      </v-tooltip>
+          <v-tooltip
+            v-bind="{setToday, todayDate, calendar}"
+            name="today"
+            bottom>
+            <v-btn
+              slot="activator"
+              :small="$vuetify.breakpoint.xs"
+              icon
+              depressed
+              @click="prev" >
+              <v-icon>keyboard_arrow_left</v-icon>
+            </v-btn>
+            <span>{{ prevLabel }}</span>
+          </v-tooltip>
 
-      <v-tooltip  
-        v-bind="{next, nextLabel, calendar}"
-        name="next" 
-        bottom>
-        <v-btn 
-          slot="activator"
-          icon 
-          depressed
-          @click="next">
-          <v-icon>keyboard_arrow_right</v-icon>
-        </v-btn>
-        <span>{{ nextLabel }}</span>
-      </v-tooltip>
+          <v-tooltip
+            v-bind="{next, nextLabel, calendar}"
+            name="next"
+            bottom>
+            <v-btn
+              slot="activator"
+              :small="$vuetify.breakpoint.xs"
+              icon
+              depressed
+              @click="next">
+              <v-icon>keyboard_arrow_right</v-icon>
+            </v-btn>
+            <span>{{ nextLabel }}</span>
+          </v-tooltip>
 
-      <span
-        v-show="$vuetify.breakpoint.smAndUp"
-        v-bind="{summary, calendar}"
-        name="extendedDateSummary"
-        class = "ds-summary-text">
-        {{ summary(false) }}
-      </span>
-      <span
-        v-show="!$vuetify.breakpoint.smAndUp"
-        v-bind="{summary, calendar}"
-        name="shortDateSummary"
-        class = "ds-summary-text">
-        {{ summary(true) }}
-      </span>
-    
+          <span
+            v-show="$vuetify.breakpoint.smAndUp"
+            v-bind="{summary, calendar}"
+            name="extendedDateSummary"
+            class = "ds-summary-text">
+            {{ summary(false) }}
+          </span>
+          <span
+            v-show="!$vuetify.breakpoint.smAndUp"
+            v-bind="{summary, calendar}"
+            name="shortDateSummary"
+            class = "ds-summary-text">
+            {{ summary(true) }}
+          </span>
+        </v-flex>
+
+        <v-flex shrink>
+          <slot name="actions" />
+        </v-flex>
+      </v-layout>
     </v-flex>
 
     <v-flex
@@ -89,7 +103,7 @@
         v-bind="{$scopedSlots, $listeners, calendar, eventFinish}"
         name="calendarAppEventDialog" >
 
-        <ds-event-dialog 
+        <ds-event-dialog
           ref="eventDialog"
           :calendar="calendar"
           :read-only="readOnly"
@@ -105,15 +119,15 @@
         v-bind="{optionsVisible, optionsDialog, options, chooseOption}"
         name="calendarAppOptions" >
 
-        <v-dialog 
+        <v-dialog
           ref="optionsDialog"
           v-model="optionsVisible"
           v-bind="optionsDialog"
           :fullscreen="$dayspan.fullscreenDialogs">
           <v-list>
             <template v-for="option in options">
-              <v-list-tile 
-                :key="option.text" 
+              <v-list-tile
+                :key="option.text"
                 @click="chooseOption( option )">
                 {{ option.text }}
               </v-list-tile>
@@ -127,21 +141,21 @@
         v-bind="{promptVisible, promptDialog, promptQuestion, choosePrompt}"
         name="calendarAppPrompt" >
 
-        <v-dialog 
+        <v-dialog
           ref="promptDialog"
           v-model="promptVisible"
           v-bind="promptDialog">
           <v-card>
             <v-card-title>{{ promptQuestion }}</v-card-title>
             <v-card-actions>
-              <v-btn 
-                color="primary" 
-                flat 
+              <v-btn
+                color="primary"
+                flat
                 @click="choosePrompt( true )">
                 {{ labels.promptConfirm }}
               </v-btn>
               <v-spacer/>
-              <v-btn 
+              <v-btn
                 color="secondary"
                 flat
                 @click="choosePrompt( false )">
@@ -208,7 +222,7 @@ export default {
       type: Object,
       default() {
         return {today: 0,
-                xs: 0} 
+                xs: 0}
       }
     },
     labels:
@@ -285,11 +299,11 @@ export default {
 
       if(dd<10) {
           dd = '0'+dd
-      } 
+      }
 
       if(mm<10) {
           mm = '0'+mm
-      } 
+      }
 
       today = dd + '.'+mm +'.' + yyyy;
       return today
@@ -713,8 +727,8 @@ export default {
 
 <style lang="scss">
 
-.v-menu__activator *{
-  cursor: text !important;
+.ds-calendar-event .v-menu__activator * {
+  cursor: text;
 }
 
 .ds-calendar-event{
@@ -756,15 +770,13 @@ export default {
 
 @media screen and (max-width: 350px) {
   .ds-summary-text{
-    font-size: 17px;
-    top: 2px;
+    font-size: 16px;
   }
 }
 
 @media screen and (min-width: 350px) {
   .ds-summary-text{
     font-size: 20px;
-    top: 3px;
   }
 }
 
@@ -793,8 +805,7 @@ export default {
 }
 
 .ds-summary-text{
-  position: relative;
-  left: 4px;
+  vertical-align: middle;
 }
 
 .v-btn--floating.ds-add-event-today {

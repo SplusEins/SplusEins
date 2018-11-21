@@ -5,7 +5,7 @@ import SCHEDULES from '~/assets/schedules.json';
 import * as chroma from 'chroma-js';
 
 export const uniq = (iterable) => [...new Set(iterable)];
-const flatten = (iterable) => [].concat(...iterable);
+export const flatten = (iterable) => [].concat(...iterable);
 const scalarArraysEqual = (array1, array2) =>
   array1.length === array2.length &&
   array1.every((value, index) => value === array2[index]);
@@ -168,12 +168,18 @@ export const getters = {
   scheduleIds: (state) => {
     return state.schedules.map(({ id }) => id);
   },
+  getScheduleById: (state) => (scheduleId) => {
+    return state.schedules.find(({ id }) => id == scheduleId);
+  },
   customSchedulesAsRoutes: (state, getters) => {
     return Object.values(state.customSchedules)
       .map(customScheduleToRoute);
   },
   customScheduleLabels: (state) => {
     return Object.keys(state.customSchedules);
+  },
+  isCustomSchedule: (state) => {
+    return !!state.schedule.whitelist;
   },
 };
 
@@ -215,6 +221,9 @@ export const mutations = {
     }
 
     Vue.set(state.customSchedules, label, customSchedule);
+  },
+  deleteCustomSchedule(state, customSchedule) {
+    Vue.delete(state.customSchedules, customSchedule.label);
   },
   addFavoriteSchedule(state, favoriteSchedule){
     state.favoriteSchedules.push(favoriteSchedule);
