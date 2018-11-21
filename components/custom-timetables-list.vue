@@ -7,12 +7,12 @@
     </v-subheader>
 
     <v-list-tile
-      v-for="route in customSchedulesAsRoutes"
-      :key="route.params.schedule"
+      v-for="route in customTimetablesAsRoutes"
+      :key="route.params.timetable"
       :to="route"
       nuxt>
       <v-list-tile-content>
-        <v-list-tile-title>{{ route.params.schedule }}</v-list-tile-title>
+        <v-list-tile-title>{{ route.params.timetable }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
 
@@ -47,10 +47,10 @@ export default {
   },
   computed: {
     ...mapState({
-      customSchedule: (state) => state.splus.customSchedule,
+      customTimetable: (state) => state.splus.customTimetable,
     }),
     ...mapGetters({
-      customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
+      customTimetablesAsRoutes: 'splus/customTimetablesAsRoutes',
     }),
   },
 };

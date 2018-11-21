@@ -5,7 +5,7 @@
     :read-only="true"
     @change="calendarChanged">
     <template
-      v-if="isCustomSchedule"
+      v-if="isCustomTimetable"
       slot="actions">
       <v-menu
         v-show="isMobile"
@@ -48,10 +48,10 @@
 
       <custom-timetable-dialog
         v-model="editTimetableDialogOpen"
-        :custom-schedule="currentSchedule" />
+        :custom-timetable="currentTimetable" />
       <custom-timetable-delete-dialog
         v-model="deleteTimetableDialogOpen"
-        :custom-schedule="currentSchedule"
+        :custom-timetable="currentTimetable"
         @on-delete="routeToRoot()" />
     </template>
 
@@ -113,7 +113,7 @@ export default {
       repeat: true,
       listTimes: true,
       updateRows: true,
-      schedule: false
+      timetable: false
     };
    const calendar = Calendar.days(7, startOfWeek, 0);
 
@@ -135,14 +135,14 @@ export default {
       return this.favoriteSchedules.filter(favorite => favorite.id == this.currentSchedule.id).length != 0;
     },
     ...mapState({
-      currentSchedule: (state) => state.splus.schedule,
+      currentTimetable: (state) => state.splus.timetable,
       currentWeek: (state) => state.splus.week,
       lazyLoad: (state) => state.splus.lazyLoad,
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
     }),
     ...mapGetters({
       events: 'splus/getLecturesAsEvents',
-      isCustomSchedule: 'splus/isCustomSchedule',
+      isCustomTimetable: 'splus/isCustomTimetable',
     }),
   },
   watch: {

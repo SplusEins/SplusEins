@@ -33,7 +33,7 @@
             <v-flex xs12>
               <v-text-field
                 v-model="selectedName"
-                :rules="[rules.required, rules.uniqueScheduleLabel, isNew ? rules.uniqueCustomScheduleLabel : true]"
+                :rules="[rules.required, rules.uniqueTimetableLabel, isNew ? rules.uniqueCustomTimetableLabel : true]"
                 label="Plan benennen"
                 single-line
                 required
@@ -42,18 +42,18 @@
 
             <v-flex xs12>
               <timetable-select
-                v-show="selectedSchedules.length <= maxSchedules"
+                v-show="selectedTimetables.length <= maxTimetables"
                 :loading="loading"
-                @input="addSchedule" />
+                @input="addTimetable" />
             </v-flex>
 
             <v-flex xs12>
               <v-chip
-                v-for="schedule in selectedSchedules"
-                :key="schedule.id"
+                v-for="timetable in selectedTimetables"
+                :key="timetable.id"
                 close
-                @input="removeSchedule(schedule)">
-                {{ schedule.label }}
+                @input="removeTimetable(timetable)">
+                {{ timetable.label }}
               </v-chip>
             </v-flex>
 
@@ -74,7 +74,7 @@
 <script lang="js">
 import { mapMutations, mapGetters } from 'vuex';
 import * as moment from 'moment';
-import { uniq, flatten, customScheduleToRoute } from '../store/splus';
+import { uniq, flatten, customTimetableToRoute } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
 
@@ -89,7 +89,7 @@ export default {
       type: Boolean,
       default: false
     },
-    customSchedule: {
+    customTimetable: {
       type: Object,
       default: () => undefined
     },
@@ -98,7 +98,7 @@ export default {
     return {
       /* user data */
       selectedName: '',
-      selectedSchedules: [],
+      selectedTimetables: [],
       selectedCourses: [],
       lectures: {},
       /* state */
@@ -107,16 +107,16 @@ export default {
       /* constants */
       rules: {
         required: (value) => !!value || 'Pflichtfeld',
-        uniqueScheduleLabel:
-          (value) => !this.scheduleIds.includes(value)
+        uniqueTimetableLabel:
+          (value) => !this.timetableIds.includes(value)
                      || 'Bereits vergeben',
-        uniqueCustomScheduleLabel:
-          (value) => !this.customScheduleLabels.includes(value)
+        uniqueCustomTimetableLabel:
+          (value) => !this.customTimetableLabels.includes(value)
                      || 'Bereits vergeben',
       },
       // reasonable limits to ensure good performance
       // and a usable UI
-      maxSchedules: 5,
+      maxTimetables: 5,
       maxCourses: 20,
     };
   },
@@ -126,7 +126,7 @@ export default {
       set(value) { this.$emit('input', value); }
     },
     isNew() {
-      return !this.customSchedule;
+      return !this.customTimetable;
     },
     courses() {
       const allLectures = [].concat(...Object.values(this.lectures));
@@ -136,10 +136,10 @@ export default {
       return [...uniqueLectures.values()].sort();
     },
     ...mapGetters({
-      schedulesTree: 'splus/getSchedulesAsTree',
-      customScheduleLabels: 'splus/customScheduleLabels',
-      scheduleIds: 'splus/scheduleIds',
-      getScheduleById: 'splus/getScheduleById',
+      timetablesTree: 'splus/getTimetablesAsTree',
+      customTimetableLabels: 'splus/customTimetableLabels',
+      timetableIds: 'splus/timetableIds',
+      getTimetableById: 'splus/getTimetableById',
     }),
   },
   mounted() {
@@ -148,29 +148,29 @@ export default {
     }
   },
   methods: {
-    async addSchedule(schedule) {
-      if (this.selectedSchedules.includes(schedule)) {
+    async addTimetable(timetable) {
+      if (this.selectedTimetables.includes(timetable)) {
         return;
       }
 
-      this.selectedSchedules.push(schedule);
-      await this.loadLectures(schedule);
+      this.selectedTimetables.push(timetable);
+      await this.loadLectures(timetable);
     },
-    removeSchedule(schedule) {
-      const index = this.selectedSchedules.indexOf(schedule);
-      this.selectedSchedules.splice(index, 1);
-      this.$set(this.lectures, schedule.id, []);
+    removeTimetable(timetable) {
+      const index = this.selectedTimetables.indexOf(timetable);
+      this.selectedTimetables.splice(index, 1);
+      this.$set(this.lectures, timetable.id, []);
       this.selectedCourses = this.selectedCourses.filter(
-        (course) => course.id == schedule.id);
+        (course) => course.id == timetable.id);
     },
-    async loadLectures(schedule) {
+    async loadLectures(timetable) {
       this.loading = true;
 
       const week = moment().isoWeek();
 
       try {
-        const response = await this.$axios.get(`/api/splus/${schedule.id}/${week}`);
-        this.$set(this.lectures, schedule.id, response.data);
+        const response = await this.$axios.get(`/api/splus/${timetable.id}/${week}`);
+        this.$set(this.lectures, timetable.id, response.data);
       } catch (error) {
         this.setError('API-Verbindung fehlgeschlagen');
         console.error('error during API call', error.message);
@@ -179,43 +179,43 @@ export default {
       this.loading = false;
     },
     /**
-     * Store the edited schedule.
+     * Store the edited timetable.
      */
     save() {
       this.dialogOpen = false;
 
-      // Set the base schedule and filters matching the given courses.
+      // Set the base timetable and filters matching the given courses.
       const titleIds = uniq(this.selectedCourses.map(({ titleId }) => titleId));
 
-      const customSchedule = {
-        id: this.selectedSchedules.map(({ id }) => id ),
+      const customTimetable = {
+        id: this.selectedTimetables.map(({ id }) => id ),
         label: this.selectedName,
         whitelist: titleIds,
       };
 
       if (!this.isNew) {
-        this.deleteCustomSchedule(this.customSchedule);
+        this.deleteCustomTimetable(this.customTimetable);
       }
 
-      this.$router.push(customScheduleToRoute(customSchedule));
+      this.$router.push(customTimetableToRoute(customTimetable));
     },
     /**
-     * Load the state from a passed schedule.
+     * Load the state from a passed timetable.
      */
     async load() {
-      this.selectedName = this.customSchedule.label;
+      this.selectedName = this.customTimetable.label;
 
-      await Promise.all(this.customSchedule.id.map(async (id) =>
-        await this.addSchedule(this.getScheduleById(id)))
+      await Promise.all(this.customTimetable.id.map(async (id) =>
+        await this.addTimetable(this.getTimetableById(id)))
       );
 
       const getCourseById = (id) => flatten(Object.values(this.lectures)).find(
         ({ titleId }) => titleId == id);
-      this.selectedCourses = this.customSchedule.whitelist.map(getCourseById);
+      this.selectedCourses = this.customTimetable.whitelist.map(getCourseById);
     },
     ...mapMutations({
       setError: 'splus/setError',
-      deleteCustomSchedule: 'splus/deleteCustomSchedule',
+      deleteCustomTimetable: 'splus/deleteCustomTimetable',
     }),
   },
 };

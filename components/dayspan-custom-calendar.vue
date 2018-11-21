@@ -595,7 +595,7 @@ export default {
     //   let target = moveEvent.target;
     //   let targetStart = target.start;
     //   let sourceStart = calendarEvent.time.start;
-    //   let schedule = calendarEvent.schedule;
+    //   let timetable = calendarEvent.timetable;
     //   let options = [];
 
     //   moveEvent.handled = true;
@@ -619,14 +619,14 @@ export default {
     //       this.$emit('event-update', calendarEvent.event);
     //     },
     //     duplicate: () => {
-    //       schedule.setExcluded( targetStart, false );
+    //       timetable.setExcluded( targetStart, false );
     //       this.eventsRefresh();
     //       moveEvent.clearPlaceholder();
 
     //       this.$emit('event-update', calendarEvent.event);
     //     },
     //     all: () => {
-    //       schedule.moveTime( sourceStart.asTime(), targetStart.asTime() );
+    //       timetable.moveTime( sourceStart.asTime(), targetStart.asTime() );
     //       this.eventsRefresh();
     //       moveEvent.clearPlaceholder();
 
@@ -639,7 +639,7 @@ export default {
     //     callback: callbacks.cancel
     //   });
 
-    //   if (schedule.isSingleEvent())
+    //   if (timetable.isSingleEvent())
     //   {
     //     options.push({
     //       text: this.labels.moveSingleEvent,
@@ -673,7 +673,7 @@ export default {
     //     }
 
     //     if (this.$dayspan.features.moveAll &&
-    //         !schedule.isFullDay() &&
+    //         !timetable.isFullDay() &&
     //         targetStart.sameDay(sourceStart))
     //     {
     //       options.push({

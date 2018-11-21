@@ -23,9 +23,9 @@
       xs6
       md4>
       <v-select
-        :items="schedules"
+        :items="timetables"
         :disabled="selectedSemester == undefined"
-        v-model="selectedSchedule"
+        v-model="selectedTimetable"
         label="Vertiefung"
         item-text="label"
         return-object />
@@ -34,7 +34,7 @@
       xs2
       md1>
       <v-btn
-        :disabled="loading || selectedSchedule == undefined"
+        :disabled="loading || selectedTimetable == undefined"
         :loading="loading"
         icon
         flat
@@ -60,30 +60,30 @@ export default {
   },
   data() {
     return {
-      selectedSchedule: undefined,
+      selectedTimetable: undefined,
       selectedPath: undefined,
       selectedSemester: undefined,
     };
   },
   computed: {
     paths() {
-      return Object.keys(this.schedulesTree);
+      return Object.keys(this.timetablesTree);
     },
     semesters() {
-      return this.schedulesTree[this.selectedPath] != undefined ?
-        Object.keys(this.schedulesTree[this.selectedPath])
+      return this.timetablesTree[this.selectedPath] != undefined ?
+        Object.keys(this.timetablesTree[this.selectedPath])
         : [];
     },
-    schedules() {
-      return this.schedulesTree[this.selectedPath] != undefined ?
-        this.schedulesTree[this.selectedPath][this.selectedSemester] || []
+    timetables() {
+      return this.timetablesTree[this.selectedPath] != undefined ?
+        this.timetablesTree[this.selectedPath][this.selectedSemester] || []
         : [];
     },
-    hasMultipleSchedules() {
-      return this.schedules && this.schedules.length > 1;
+    hasMultipleTimetables() {
+      return this.timetables && this.timetables.length > 1;
     },
     ...mapGetters({
-      schedulesTree: 'splus/getSchedulesAsTree',
+      timetablesTree: 'splus/getTimetablesAsTree',
     }),
   },
   watch: {
@@ -95,16 +95,16 @@ export default {
       }
     },
     selectedSemester() {
-      if (this.schedules.length == 1) {
-        this.selectedSchedule = this.schedules[0];
+      if (this.timetables.length == 1) {
+        this.selectedTimetable = this.timetables[0];
       } else {
-        this.selectedSchedule = undefined;
+        this.selectedTimetable = undefined;
       }
     },
   },
   methods: {
     submit() {
-      this.$emit('input', this.selectedSchedule);
+      this.$emit('input', this.selectedTimetable);
     },
   },
 };

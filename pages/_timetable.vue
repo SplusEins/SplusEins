@@ -10,12 +10,12 @@
 import SpluseinsCalendar from '../components/spluseins-calendar.vue';
 
 export default {
-  name: 'SchedulePage',
+  name: 'TimetablePage',
   components: {
     SpluseinsCalendar,
   },
   async fetch({ store, params, query }) {
-    store.dispatch('splus/importSchedule', { params, query });
+    store.dispatch('splus/importTimetable', { params, query });
 
     if (process.static) {
       store.commit('splus/enableLazyLoad');

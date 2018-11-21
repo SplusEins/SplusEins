@@ -19,8 +19,8 @@ export default ({ store }) => {
       version: state.version,
       theme: state.theme,
       splus: {
-        customSchedules: state.splus.customSchedules,
-        favoriteSchedules: state.splus.favoriteSchedules,
+        customTimetables: state.splus.customTimetables,
+        favoriteTimetables: state.splus.favoriteTimetables,
       },
       privacy: {
         allowCookies: state.privacy.allowCookies,

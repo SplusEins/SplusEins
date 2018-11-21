@@ -3,7 +3,7 @@
     v-model="dialogOpen"
     max-width="400">
     <v-card>
-      <v-card-title class="headline">{{ customSchedule.label }} löschen?</v-card-title>
+      <v-card-title class="headline">{{ customTimetable.label }} löschen?</v-card-title>
       <v-card-actions>
         <v-spacer />
 
@@ -29,7 +29,7 @@ export default {
       type: Boolean,
       default: false
     },
-    customSchedule: {
+    customTimetable: {
       type: Object,
       required: true
     },
@@ -43,11 +43,11 @@ export default {
   methods: {
     confirmDelete() {
       this.dialogOpen = false;
-      this.deleteCustomSchedule(this.customSchedule);
+      this.deleteCustomTimetable(this.customTimetable);
       this.$emit('on-delete');
     },
     ...mapMutations({
-      deleteCustomSchedule: 'splus/deleteCustomSchedule',
+      deleteCustomTimetable: 'splus/deleteCustomTimetable',
     }),
   },
 };

@@ -7,12 +7,12 @@
     </v-subheader>
       
     <v-list-tile
-      v-for="schedule in favoriteSchedules"
-      :to="scheduleToRoute(schedule)"
-      :key="schedule.id"
+      v-for="timetable in favoriteTimetables"
+      :to="timetableToRoute(timetable)"
+      :key="timetable.id"
       nuxt>
       <v-list-tile-content>
-        <v-list-tile-title>{{ schedule.degreeShort }} {{ schedule.label }} - {{ schedule.semester }}. Sem.</v-list-tile-title>
+        <v-list-tile-title>{{ timetable.degreeShort }} {{ timetable.label }} - {{ timetable.semester }}. Sem.</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
   
@@ -27,14 +27,14 @@
     name: 'FavoriteTimetablesList',
     computed: {
       ...mapState({
-        favoriteSchedules: (state) => state.splus.favoriteSchedules,
+        favoriteTimetables: (state) => state.splus.favoriteTimetables,
       }),
     },
     methods: {
-      scheduleToRoute(schedule) {
+      timetableToRoute(timetable) {
         return {
-          name: 'schedule',
-          params: { schedule: schedule.id },
+          name: 'timetable',
+          params: { timetable: timetable.id },
         };
       },
     }
