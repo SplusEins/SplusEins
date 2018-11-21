@@ -10,6 +10,9 @@
     <favorite-timetables-list />
     <v-divider />
     <general-timetables-list />
+    <no-ssr>
+      <install-button-list class="stick-bottom white--background" />
+    </no-ssr>
   </v-navigation-drawer>
 </template>
 
@@ -17,6 +20,7 @@
 import GeneralTimetablesList from './general-timetables-list.vue';
 import FavoriteTimetablesList from './favorite-timetables-list.vue';
 import CustomTimetablesList from './custom-timetables-list.vue';
+import InstallButtonList from './install-button-list.vue';
 
 export default {
   name: 'SpluseinsSideNav',
@@ -24,6 +28,7 @@ export default {
     GeneralTimetablesList,
     FavoriteTimetablesList,
     CustomTimetablesList,
+    InstallButtonList,
   },
   props: {
     drawer: {
@@ -39,3 +44,14 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.stick-bottom {
+  position: sticky;
+  bottom: 0;
+}
+
+.white--background {
+  background: #fff;
+}
+</style>
