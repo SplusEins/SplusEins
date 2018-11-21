@@ -133,7 +133,7 @@ export default {
       const uniqueLectures = new Map();
       allLectures.forEach(
         (lecture) => uniqueLectures.set(lecture.titleId, lecture));
-      return [...uniqueLectures.values()];
+      return [...uniqueLectures.values()].sort();
     },
     ...mapGetters({
       schedulesTree: 'splus/getSchedulesAsTree',
