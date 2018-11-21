@@ -60,6 +60,7 @@
       slot="actions">
       <v-btn
         v-if="!isFavorite"
+        :small="$vuetify.breakpoint.xs"
         icon
         flat
         @click="addFavoriteSchedule(currentSchedule)">
@@ -67,6 +68,7 @@
       </v-btn>
       <v-btn
         v-else
+        :small="$vuetify.breakpoint.xs"
         icon
         flat
         @click="removeFavoriteSchedule(currentSchedule)">
