@@ -19,19 +19,11 @@
         <v-toolbar-title>Favoriten bearbeiten</v-toolbar-title>
       </v-toolbar>
 
-      <v-form>
-        <v-container 
-          grid-list-md
-          pb-1>
-          <v-layout
-            row
-            wrap>
-            <v-flex xs12>
-              <timetable-select @input="addSchedule"/>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-form>
+      <v-container 
+        grid-list-md
+        pb-1>
+        <timetable-select @input="addSchedule"/>
+      </v-container>
 
       <v-list> 
         <v-list-tile
