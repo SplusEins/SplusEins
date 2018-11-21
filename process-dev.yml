@@ -4,7 +4,7 @@ apps:
       script: ./dist/server/server.js
       instances: 1
       watch: true
-      ignore_watch: ./api-cache/
+      ignore_watch: ['./api-cache/**', './node_modules/**']
       exec_mode: cluster
       env:
         NODE_ENV: production
@@ -15,7 +15,7 @@ apps:
       cwd: ./
       instances: 1
       watch: true
-      ignore_watch: ./api-cache/
+      ignore_watch: ['./api-cache/**', './node_modules/**']
       exec_mode: cluster
       env:
         NODE_ENV: production
