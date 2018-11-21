@@ -179,7 +179,7 @@ export const getters = {
     return Object.keys(state.customSchedules);
   },
   isCustomSchedule: (state) => {
-    return !!state.schedule.whitelist;
+    return !!state.schedule && !!state.schedule.whitelist;
   },
 };
 
@@ -195,6 +195,9 @@ export const mutations = {
 
     // reactive variant of state.lectures[week].push(lectures)
     Vue.set(state.lectures, week, filteredLectures);
+  },
+  clearLectures(state) {
+    state.lectures = {};
   },
   setWeek(state, week) {
     state.week = week;
@@ -256,9 +259,6 @@ export const actions = {
     const ids = Array.isArray(state.schedule.id) ?
       state.schedule.id : [state.schedule.id];
 
-    const response = await this.$axios.get(
-      `/api/splus/${state.schedule.id}/${week}`);
-
     let lectures = [];
     await Promise.all(ids.map(async (id) => {
       try {
@@ -293,6 +293,8 @@ export const actions = {
    * Import schedule from route and set as current schedule.
    */
   importSchedule({ state, commit }, { params, query }) {
+    commit('clearLectures');
+
     switch (parseFloat(query.v)) {
       case 1:
         const courses = Array.isArray(query.course || []) ?
