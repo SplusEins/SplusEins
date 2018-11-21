@@ -18,7 +18,6 @@
 
     <v-list-tile
       @click="customTimetableDialogOpen = true">
-      <custom-timetable-dialog v-model="customTimetableDialogOpen" />
       <v-list-tile-action>
         <v-icon>add</v-icon>
       </v-list-tile-action>
@@ -27,6 +26,7 @@
       </v-list-tile-content>
     </v-list-tile>
 
+    <custom-timetable-dialog v-model="customTimetableDialogOpen" />
   </v-list>
 
 </template>
