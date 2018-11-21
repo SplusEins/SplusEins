@@ -11,7 +11,7 @@
         src="../assets/img/headerLogo.png"
         height="35px"
       >
-      <v-toolbar-title class="header-text">
+      <v-toolbar-title class="header-text cursor-pointer">
         <nuxt-link
           tag="span"
           to="/">SPLUSEINS</nuxt-link>
@@ -81,5 +81,8 @@ export default {
     font-size: 170%;
     position: relative;
     transform: translateY(6%);
+  }
+  .cursor-pointer {
+    cursor: pointer;
   }
 </style>
