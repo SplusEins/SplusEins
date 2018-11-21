@@ -17,9 +17,7 @@
         <v-layout
           row
           justify-center>
-          <p>
-            Keine Vorlesungen.
-          </p>
+          <p>Keine der geladenen Kurse passen zur Suche.</p>
         </v-layout>
       </template>
       <template
