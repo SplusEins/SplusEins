@@ -2,11 +2,12 @@
 
   <v-list :subheader="hasCustomTimetables">
 
-    <v-subheader>
+    <v-subheader class="subheader-block">
       Eigene Pläne
       <v-btn
         icon
         flat
+        class="btn-right"
         @click="customTimetableDialogOpen = true">
         <v-icon>add</v-icon>
       </v-btn>
@@ -54,3 +55,13 @@ export default {
   },
 };
 </script>
+<style scoped lang="scss">
+  .subheader-block{
+    display: block;
+    line-height: 48px;
+    padding-right: 0px;
+  }
+  .btn-right{
+    float: right;
+  }
+</style>
