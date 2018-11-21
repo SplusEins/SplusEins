@@ -33,7 +33,7 @@
             <v-flex xs12>
               <v-text-field
                 v-model="selectedName"
-                :rules="[rules.required, rules.uniqueScheduleLabel]"
+                :rules="[rules.required, rules.uniqueScheduleLabel, isNew ? rules.uniqueCustomScheduleLabel : true]"
                 label="Plan benennen"
                 single-line
                 required
@@ -72,9 +72,9 @@
 </template>
 
 <script lang="js">
-import { mapMutations, mapState, mapGetters } from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 import * as moment from 'moment';
-import { uniq, customScheduleToRoute } from '../store/splus';
+import { uniq, flatten, customScheduleToRoute } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
 
@@ -88,21 +88,30 @@ export default {
     value: {
       type: Boolean,
       default: false
-    }
+    },
+    customSchedule: {
+      type: Object,
+      default: () => undefined
+    },
   },
   data() {
     return {
-      loading: false,
+      /* user data */
       selectedName: '',
       selectedSchedules: [],
       selectedCourses: [],
       lectures: {},
+      /* state */
+      loading: false,
       valid: false,
+      /* constants */
       rules: {
         required: (value) => !!value || 'Pflichtfeld',
         uniqueScheduleLabel:
-          (value) => (!this.customScheduleLabels.includes(value)
-                      && !this.scheduleIds.includes(value))
+          (value) => !this.scheduleIds.includes(value)
+                     || 'Bereits vergeben',
+        uniqueCustomScheduleLabel:
+          (value) => !this.customScheduleLabels.includes(value)
                      || 'Bereits vergeben',
       },
       // reasonable limits to ensure good performance
@@ -116,6 +125,9 @@ export default {
       get() { return this.value; },
       set(value) { this.$emit('input', value); }
     },
+    isNew() {
+      return !this.customSchedule;
+    },
     courses() {
       const allLectures = [].concat(...Object.values(this.lectures));
       const uniqueLectures = new Map();
@@ -123,23 +135,26 @@ export default {
         (lecture) => uniqueLectures.set(lecture.titleId, lecture));
       return [...uniqueLectures.values()];
     },
-    ...mapState({
-      customSchedule: (state) => state.splus.customSchedule,
-    }),
     ...mapGetters({
       schedulesTree: 'splus/getSchedulesAsTree',
       customScheduleLabels: 'splus/customScheduleLabels',
       scheduleIds: 'splus/scheduleIds',
+      getScheduleById: 'splus/getScheduleById',
     }),
   },
+  mounted() {
+    if (!this.isNew) {
+      this.load();
+    }
+  },
   methods: {
-    addSchedule(schedule) {
+    async addSchedule(schedule) {
       if (this.selectedSchedules.includes(schedule)) {
         return;
       }
 
       this.selectedSchedules.push(schedule);
-      this.loadLectures(schedule);
+      await this.loadLectures(schedule);
     },
     removeSchedule(schedule) {
       const index = this.selectedSchedules.indexOf(schedule);
@@ -163,6 +178,9 @@ export default {
 
       this.loading = false;
     },
+    /**
+     * Store the edited schedule.
+     */
     save() {
       this.dialogOpen = false;
 
@@ -175,10 +193,29 @@ export default {
         whitelist: titleIds,
       };
 
+      if (!this.isNew) {
+        this.deleteCustomSchedule(this.customSchedule);
+      }
+
       this.$router.push(customScheduleToRoute(customSchedule));
+    },
+    /**
+     * Load the state from a passed schedule.
+     */
+    async load() {
+      this.selectedName = this.customSchedule.label;
+
+      await Promise.all(this.customSchedule.id.map(async (id) =>
+        await this.addSchedule(this.getScheduleById(id)))
+      );
+
+      const getCourseById = (id) => flatten(Object.values(this.lectures)).find(
+        ({ titleId }) => titleId == id);
+      this.selectedCourses = this.customSchedule.whitelist.map(getCourseById);
     },
     ...mapMutations({
       setError: 'splus/setError',
+      deleteCustomSchedule: 'splus/deleteCustomSchedule',
     }),
   },
 };
