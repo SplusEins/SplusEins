@@ -9,7 +9,7 @@
         flat
         class="btn-right"
         @click="customTimetableDialogOpen = true">
-        <v-icon>add</v-icon>
+        <v-icon color="grey darken-1">add</v-icon>
       </v-btn>
     </v-subheader>
 
@@ -55,6 +55,7 @@ export default {
   },
 };
 </script>
+
 <style scoped lang="scss">
   .subheader-block{
     display: block;
