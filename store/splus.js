@@ -226,7 +226,9 @@ export const mutations = {
     Vue.delete(state.customSchedules, customSchedule.label);
   },
   addFavoriteSchedule(state, favoriteSchedule){
-    state.favoriteSchedules.push(favoriteSchedule);
+    if(state.favoriteSchedules.filter(favorite => favorite.id == favoriteSchedule.id).length == 0){
+      state.favoriteSchedules.push(favoriteSchedule);
+    }
   },
   removeFavoriteSchedule(state, favoriteSchedule){
     state.favoriteSchedules = state.favoriteSchedules.filter(schedule => schedule.id != favoriteSchedule.id);
