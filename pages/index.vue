@@ -6,6 +6,11 @@
       row
       align-center
       justify-center>
+      <div class="background-div">
+        <img 
+          src="../assets/img/calendarLogo.png"
+          class="background-image">
+      </div>
       <v-flex
         class="text-xs-center"
         xs12>
@@ -21,3 +26,22 @@ export default {
   name: 'IndexPage',
 };
 </script>
+
+<style scoped lang="scss">
+
+.background-div{
+  position: absolute;
+  opacity: 0.2; 
+  filter: alpha(opacity=20);
+}
+
+.background-image{
+  max-height: 80vh;
+  max-width: 80%;
+  height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+</style>
+

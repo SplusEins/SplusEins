@@ -6,8 +6,19 @@
       fixed 
       app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
-      <v-toolbar-title>SPLUSEINS</v-toolbar-title>
-      <v-spacer />
+      <v-flex class="text-xs-center">
+        <v-layout 
+          align-start 
+          justify-center 
+          fill-height
+          row> 
+          <img 
+            src="../assets/img/headerLogo.png" 
+            height="35px"
+          >
+          <v-toolbar-title class="header-text">SPLUSEINS</v-toolbar-title>
+        </v-layout>
+      </v-flex>
       <v-btn 
         icon
         flat
@@ -46,6 +57,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @font-face {
+    font-family: Schluber;
+    src: url(../assets/fonts/Schluber.otf);
+  }
+  .header-text{
+    font-family:Schluber; 
+    font-size: 170%; 
+    position: relative;
+    transform: translateY(6%); 
+  }
   .header-component {
 
   }
