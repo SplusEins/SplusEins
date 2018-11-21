@@ -1,9 +1,15 @@
 <template lang="html">
 
-  <v-list subheader>
+  <v-list :subheader="hasCustomTimetables">
 
     <v-subheader>
       Eigene Pläne
+      <v-btn
+        icon
+        flat
+        @click="customTimetableDialogOpen = true">
+        <v-icon>add</v-icon>
+      </v-btn>
     </v-subheader>
 
     <v-list-tile
@@ -13,16 +19,6 @@
       nuxt>
       <v-list-tile-content>
         <v-list-tile-title>{{ route.params.schedule }}</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-
-    <v-list-tile
-      @click="customTimetableDialogOpen = true">
-      <v-list-tile-action>
-        <v-icon>add</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Plan erstellen</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
 
@@ -46,8 +42,11 @@ export default {
     };
   },
   computed: {
+    hasCustomTimetables() {
+      return JSON.stringify(this.customSchedules) != '{}';
+    },
     ...mapState({
-      customSchedule: (state) => state.splus.customSchedule,
+      customSchedules: (state) => state.splus.customSchedules,
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
