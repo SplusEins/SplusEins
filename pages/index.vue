@@ -81,7 +81,8 @@ export default {
 }
 
 .background-image{
-  max-width: 65%;
+  max-height: 80vh;
+  max-width: 80%;
   height: auto;
 	margin-left: auto;
 	margin-right: auto;
