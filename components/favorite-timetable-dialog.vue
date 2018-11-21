@@ -68,11 +68,6 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      selectedSchedule: undefined,
-    };
-  },
   computed: {
     dialogOpen: {
       get() { return this.value; },
