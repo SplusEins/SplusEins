@@ -3,17 +3,19 @@ apps:
       port: 3004
       script: ./dist/server/server.js
       instances: 1
-      watch: dist/
+      watch: true
+      ignore_watch: ./api-cache/
       exec_mode: cluster
       env:
         NODE_ENV: production
-        CACHE_PATH: /home/concourse/build-result-dev/api-cache
+        CACHE_PATH: ./api-cache/
     - name: web-dev
       port: 3003
       script: ./node_modules/nuxt/bin/nuxt-start
       cwd: ./
       instances: 1
-      watch: .nuxt/
+      watch: true
+      ignore_watch: ./api-cache/
       exec_mode: cluster
       env:
         NODE_ENV: production
