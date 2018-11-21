@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <v-list>
+  <v-list subheader>
 
     <v-subheader>
       Favoriten
