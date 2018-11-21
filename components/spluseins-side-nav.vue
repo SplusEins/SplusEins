@@ -8,8 +8,8 @@
     <home-button-list />
     <v-divider />
     <custom-timetables-list />
-    <v-divider />
-    <favorite-timetables-list />
+    <v-divider v-if="favoriteSchedules.length != 0"/>
+    <favorite-timetables-list v-if="favoriteSchedules.length != 0"/>
     <v-divider />
     <general-timetables-list />
     <no-ssr>
@@ -19,6 +19,7 @@
 </template>
 
 <script lang="js">
+import { mapState } from 'vuex';
 import GeneralTimetablesList from './general-timetables-list.vue';
 import FavoriteTimetablesList from './favorite-timetables-list.vue';
 import CustomTimetablesList from './custom-timetables-list.vue';
@@ -45,6 +46,9 @@ export default {
       get() { return this.drawer; },
       set(val) { this.$emit('update:drawer', val); }
     },
+    ...mapState({
+      favoriteSchedules: (state) => state.splus.favoriteSchedules,
+    }),
   },
 };
 </script>
