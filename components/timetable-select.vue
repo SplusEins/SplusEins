@@ -60,7 +60,6 @@ export default {
   },
   data() {
     return {
-      valid: false,
       selectedSchedule: undefined,
       selectedPath: undefined,
       selectedSemester: undefined,
@@ -105,9 +104,7 @@ export default {
   },
   methods: {
     submit() {
-      if (this.valid) {
-        this.$emit('input', this.selectedSchedule);
-      }
+      this.$emit('input', this.selectedSchedule);
     },
   },
 };
