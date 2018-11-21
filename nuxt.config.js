@@ -1,6 +1,7 @@
 const pkg = require('./package');
+const schedules = require('./assets/schedules.json');
 
-module.exports = {
+export default {
   mode: 'universal',
 
   /*
@@ -70,5 +71,13 @@ module.exports = {
         })
       }
     }
-  }
+  },
+
+  /*
+  ** Generate configuration
+  */
+  generate: {
+    fallback: true,
+    routes: schedules.map(({ id }) => `/${id}`),
+  },
 }

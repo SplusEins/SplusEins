@@ -7,18 +7,16 @@
     </v-subheader>
 
     <v-list-tile
-      v-if="!!customSchedule"
-      @click="setCurrentSchedule(customSchedule)">
+      v-for="route in customSchedulesAsRoutes"
+      :key="route.params.schedule"
+      :to="route"
+      nuxt>
       <v-list-tile-content>
-        <v-list-tile-title>{{ customSchedule.label }}</v-list-tile-title>
+        <v-list-tile-title>{{ route.params.schedule }}</v-list-tile-title>
       </v-list-tile-content>
-      <v-list-tile-action v-if="currentSchedule == customSchedule">
-        <v-icon>check</v-icon>
-      </v-list-tile-action>
     </v-list-tile>
 
     <v-list-tile
-      v-else
       @click="customTimetableDialogOpen = true">
       <custom-timetable-dialog v-model="customTimetableDialogOpen" />
       <v-list-tile-action>
@@ -34,7 +32,7 @@
 </template>
 
 <script lang="js">
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 
 export default {
@@ -49,14 +47,11 @@ export default {
   },
   computed: {
     ...mapState({
-      currentSchedule: (state) => state.splus.schedule,
       customSchedule: (state) => state.splus.customSchedule,
     }),
-  },
-  methods: {
-    ...mapMutations({
-      setCurrentSchedule: 'splus/setSchedule',
+    ...mapGetters({
+      customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
     }),
-  }
+  },
 };
 </script>

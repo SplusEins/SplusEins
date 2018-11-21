@@ -8,10 +8,8 @@
       hide-details />
     <v-data-table
       v-model="selectedCourses"
-      :headers="headers"
       :items="courses"
       :search="search"
-      :loading="loading"
       hide-headers
       hide-actions
       item-key="titleId">
@@ -19,11 +17,7 @@
         <v-layout
           row
           justify-center>
-          <v-progress-circular
-            v-show="loading"
-            :indeterminate="true"
-            color="secondary" />
-          <p v-show="!loading">
+          <p>
             Keine Vorlesungen.
           </p>
         </v-layout>
@@ -34,6 +28,7 @@
         <td>
           <v-checkbox
             v-model="props.selected"
+            :disabled="!props.selected && selectedCourses.length > maxCourses"
             primary
             hide-details />
         </td>
@@ -46,14 +41,13 @@
 </template>
 
 <script lang="js">
-import TimetableSelect from './timetable-select.vue';
-
 export default {
-  name: 'CustomTimetableDialog',
-  components: {
-    TimetableSelect,
-  },
+  name: 'CourseMultiselect',
   props: {
+    maxCourses: {
+      type: Number,
+      default: () => Infinity,
+    },
     courses: {
       type: Array,
       default: () => []
@@ -62,18 +56,9 @@ export default {
       type: Array,
       default: () => []
     },
-    loading: {
-      type: Boolean,
-      default: false
-    },
   },
   data() {
     return {
-      headers: [
-        { text: 'Titel', value: 'title' },
-        { text: 'Dozent', value: 'lecturer' },
-        { text: 'Raum', value: 'room' },
-      ],
       search: '',
     };
   },

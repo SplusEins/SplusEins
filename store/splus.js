@@ -4,6 +4,12 @@ import * as moment from 'moment';
 import SCHEDULES from '~/assets/schedules.json';
 import * as chroma from 'chroma-js';
 
+export const uniq = (iterable) => [...new Set(iterable)];
+const flatten = (iterable) => [].concat(...iterable);
+const scalarArraysEqual = (array1, array2) =>
+  array1.length === array2.length &&
+  array1.every((value, index) => value === array2[index]);
+
 // update this in SS19
 const isoWeek0 = moment()
   .year(2018)
@@ -11,18 +17,37 @@ const isoWeek0 = moment()
   .startOf('isoWeek') // start of week 1
   .subtract(1, 'weeks'); // start of week 0
 
+
+export function customScheduleToRoute(customSchedule) {
+  const params = {
+    schedule: customSchedule.label,
+  };
+  const query = {
+    id: customSchedule.id,
+    course: customSchedule.whitelist,
+    v: 1
+  };
+
+  return { name: 'schedule', params, query };
+}
+
 export const state = () => ({
   schedule: undefined,
   schedules: SCHEDULES.map(
     (schedule) => ({ ...schedule, path: `${schedule.faculty} ${schedule.degree}` })),
   /**
+   * Map of created or visited custom schedules.
+   * Key: label
+   *
+   * Values: custom schedule like this:
+   * { ...schedule, label, whitelist: [ titleId ] }
+   *
+   * where
    * schedule: Base schedule.
    * label: Custom name.
-   * filters: Whitelist array of composite keys.
-   *
-   * { ...schedule, label, filters: [ { title, lecturer } ] }
+   * filters: Whitelist array of keys.
    */
-  customSchedule: undefined,
+  customSchedules: {},
   /**
    * Map of { week: lectures[] }
    */
@@ -33,6 +58,11 @@ export const state = () => ({
    */
   week: moment().diff(isoWeek0, 'week'),
   error: undefined,
+  /**
+   * If true, do not load lectures on the server.
+   * true if frontend is a static build.
+   */
+  lazyLoad: false,
 });
 
 export const getters = {
@@ -53,14 +83,12 @@ export const getters = {
       return [];
     }
 
-    const uniq = (iterable) => [...new Set(iterable)];
-    const flatten = (iterable) => [].concat(...iterable);
     const uniqueIds = uniq(flatten(Object.values(state.lectures))
       .map(({ lecturerId }) => lecturerId))
       .sort();
 
     const colorScale = chroma
-      .scale([colors.amber.darken1, colors.green.lighten1])
+      .scale([colors.lightBlue.darken4, colors.cyan.darken4])
       .colors(uniqueIds.length);
 
     return state.lectures[state.week].map((lecture) => {
@@ -124,34 +152,51 @@ export const getters = {
 
     return tree;
   },
+  scheduleIds: (state) => {
+    return state.schedules.map(({ id }) => id);
+  },
+  customSchedulesAsRoutes: (state, getters) => {
+    return Object.values(state.customSchedules)
+      .map(customScheduleToRoute);
+  },
+  customScheduleLabels: (state) => {
+    return Object.keys(state.customSchedules);
+  },
 };
 
 export const mutations = {
   addLectures(state, { lectures, week }) {
-    // reactive variant of state.lectures[week] = lectures
-    Vue.set(state.lectures, week, lectures);
+    // reactive variant of state.lectures[week].push(lectures)
+    Vue.set(state.lectures, week, lectures.concat(state.lectures[week] || []));
+  },
+  clearLectures(state, { week }) {
+    Vue.set(state.lectures, week, []);
   },
   setWeek(state, week) {
     state.week = week;
   },
-  /**
-   * Set the schedule and clear the cache.
-   */
   setSchedule(state, schedule) {
-    state.lectures = {};
     state.schedule = schedule;
   },
-  /**
-   * Set the base schedule and filters matching the given courses.
-   */
-  setCustomSchedule(state, { schedule, courses, name }) {
-    state.customSchedule = {
-      id: schedule.id,
-      faculty: schedule.faculty,
-      semester: schedule.semester,
-      label: name,
-      whitelist: courses.map(({ titleId }) => titleId),
-    };
+  addCustomSchedule(state, customSchedule) {
+    const label = customSchedule.label;
+    const customScheduleStored = state.customSchedules[label];
+
+    // detect conflicts - never overwrite
+    if (customScheduleStored != undefined) {
+      const coursesGiven = customSchedule.whitelist;
+      const coursesStored = customScheduleStored.whitelist;
+
+      if (customSchedule.id != customScheduleStored.id ||
+          !scalarArraysEqual(coursesGiven, coursesStored)) {
+        console.log('not overwriting local custom schedule' +
+          'with different configuration');
+      }
+
+      return;
+    }
+
+    Vue.set(state.customSchedules, label, customSchedule);
   },
   setError(state, error) {
     state.error = error;
@@ -159,22 +204,68 @@ export const mutations = {
   clearError(state) {
     state.error = undefined;
   },
+  enableLazyLoad(state) {
+    state.lazyLoad = true;
+  },
 };
 
 export const actions = {
   async load({ state, commit }) {
-    try {
-      const response = await this.$axios.get(`/api/splus/${state.schedule.id}/${state.week}`);
-      let lectures = response.data;
-      const whitelist = state.schedule.whitelist;
-      if (!!whitelist) {
-        lectures = lectures.filter(
-          (lecture1) => whitelist.includes(lecture1.titleId));
+    const ids = Array.isArray(state.schedule.id) ?
+      state.schedule.id : [state.schedule.id];
+
+    commit('clearLectures', { week: state.week });
+
+    let allLectures = [];
+    await Promise.all(ids.map(async (id) => {
+      try {
+        const response = await this.$axios.get(`/api/splus/${id}/${state.week}`);
+
+        let lectures = response.data;
+        const whitelist = state.schedule.whitelist;
+        if (!!whitelist) {
+          lectures = lectures.filter(
+            (lecture1) => whitelist.includes(lecture1.titleId));
+        }
+
+        allLectures = allLectures.concat(lectures);
+      } catch (error) {
+        commit('setError', 'API-Verbindung fehlgeschlagen');
+        console.error('error during API call', error.message);
       }
-      commit('addLectures', { lectures, week: state.week });
-    } catch (error) {
-      commit('setError', 'API-Verbindung fehlgeschlagen');
-      console.error('error during API call', error.message);
+    }));
+
+    commit('addLectures', { lectures: allLectures, week: state.week });
+  },
+  /**
+   * Import schedule from route and set as current schedule.
+   */
+  importSchedule({ state, commit }, { params, query }) {
+    switch (parseFloat(query.v)) {
+      case 1:
+        const courses = Array.isArray(query.course || []) ?
+          query.course : [query.course];
+        const ids = Array.isArray(query.id || []) ?
+          query.id : [query.id];
+        const customSchedule = {
+          id: ids,
+          label: params.schedule,
+          whitelist: courses,
+        };
+
+        commit('addCustomSchedule', customSchedule);
+        commit('setSchedule', customSchedule);
+        break;
+      default:
+        if (!isNaN(query.v)) {
+          console.log('unsupported custom schedule query version', query);
+        }
+
+        const schedule = state.schedules
+          .find((schedule) => schedule.id == params.schedule);
+
+        // standard, no filters
+        commit('setSchedule', schedule);
     }
   },
 };
