@@ -35,14 +35,14 @@
         v-show="!isMobile"
         outline
         @click="deleteTimetableDialogOpen = true">
-        <v-icon>delete</v-icon>
+        <v-icon left>delete</v-icon>
         Löschen
       </v-btn>
       <v-btn
         v-show="!isMobile"
         outline
         @click="editTimetableDialogOpen = true">
-        <v-icon>edit</v-icon>
+        <v-icon left>edit</v-icon>
         Bearbeiten
       </v-btn>
 
