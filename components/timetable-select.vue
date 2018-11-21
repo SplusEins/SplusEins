@@ -1,52 +1,50 @@
 <template>
-  <v-form v-model="valid">
-    <v-layout
-      row
-      wrap>
-      <v-flex
-        xs12
-        md5>
-        <v-select
-          :items="paths"
-          v-model="selectedPath"
-          label="Studiengang" />
-      </v-flex>
-      <v-flex
-        xs4
-        md2>
-        <v-select
-          :items="semesters"
-          :disabled="selectedPath == undefined"
-          v-model="selectedSemester"
-          label="Semester" />
-      </v-flex>
-      <v-flex
-        xs6
-        md4>
-        <v-select
-          :items="schedules"
-          :disabled="selectedSemester == undefined"
-          v-model="selectedSchedule"
-          label="Vertiefung"
-          item-text="label"
-          return-object />
-      </v-flex>
-      <v-flex
-        xs2
-        md1>
-        <v-btn
-          :disabled="loading || selectedSchedule == undefined"
-          :loading="loading"
-          icon
-          flat
-          large
-          color="secondary"
-          @click.native="submit()">
-          <v-icon>add</v-icon>
-        </v-btn>
-      </v-flex>
-    </v-layout>
-  </v-form>
+  <v-layout
+    row
+    wrap>
+    <v-flex
+      xs12
+      md5>
+      <v-select
+        :items="paths"
+        v-model="selectedPath"
+        label="Studiengang" />
+    </v-flex>
+    <v-flex
+      xs4
+      md2>
+      <v-select
+        :items="semesters"
+        :disabled="selectedPath == undefined"
+        v-model="selectedSemester"
+        label="Semester" />
+    </v-flex>
+    <v-flex
+      xs6
+      md4>
+      <v-select
+        :items="schedules"
+        :disabled="selectedSemester == undefined"
+        v-model="selectedSchedule"
+        label="Vertiefung"
+        item-text="label"
+        return-object />
+    </v-flex>
+    <v-flex
+      xs2
+      md1>
+      <v-btn
+        :disabled="loading || selectedSchedule == undefined"
+        :loading="loading"
+        icon
+        flat
+        large
+        color="secondary"
+        @click.native="submit()">
+        <v-icon>add</v-icon>
+      </v-btn>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
