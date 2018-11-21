@@ -35,14 +35,14 @@
         v-show="!isMobile"
         outline
         @click="deleteTimetableDialogOpen = true">
-        <v-icon>delete</v-icon>
+        <v-icon left>delete</v-icon>
         Löschen
       </v-btn>
       <v-btn
         v-show="!isMobile"
         outline
         @click="editTimetableDialogOpen = true">
-        <v-icon>edit</v-icon>
+        <v-icon left>edit</v-icon>
         Bearbeiten
       </v-btn>
 
@@ -54,11 +54,34 @@
         :custom-schedule="currentSchedule"
         @on-delete="routeToRoot()" />
     </template>
+
+    <template 
+      v-else
+      slot="actions">
+      <v-btn
+        v-if="!isFavorite"
+        :small="$vuetify.breakpoint.xs"
+        icon
+        flat
+        @click="addFavoriteSchedule(currentSchedule)">
+        <v-icon>favorite_border</v-icon>
+      </v-btn>
+      <v-btn
+        v-else
+        :small="$vuetify.breakpoint.xs"
+        icon
+        flat
+        @click="removeFavoriteSchedule(currentSchedule)">
+        <v-icon>favorite</v-icon>
+      </v-btn>
+    </template>
+
     <template slot="containerInside">
       <span class="overlay">
         Quelle: splus.ostfalia.de
       </span>
     </template>
+
   </dayspan-custom-calendar>
 </template>
 
@@ -108,10 +131,14 @@ export default {
     isMobile() {
       return !this.$vuetify.breakpoint.mdAndUp;
     },
+    isFavorite() {
+      return this.favoriteSchedules.filter(favorite => favorite.id == this.currentSchedule.id).length != 0;
+    },
     ...mapState({
       currentSchedule: (state) => state.splus.schedule,
       currentWeek: (state) => state.splus.week,
       lazyLoad: (state) => state.splus.lazyLoad,
+      favoriteSchedules: (state) => state.splus.favoriteSchedules,
     }),
     ...mapGetters({
       events: 'splus/getLecturesAsEvents',
@@ -139,6 +166,8 @@ export default {
     },
     ...mapMutations({
       setWeek: 'splus/setWeek',
+      addFavoriteSchedule: 'splus/addFavoriteSchedule',
+      removeFavoriteSchedule: 'splus/removeFavoriteSchedule',
     }),
     ...mapActions({
       loadLectures: 'splus/loadPrefetching',
