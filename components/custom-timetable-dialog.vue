@@ -187,17 +187,18 @@ export default {
       // Set the base schedule and filters matching the given courses.
       const titleIds = uniq(this.selectedCourses.map(({ titleId }) => titleId));
 
-      const customSchedule = {
+      const customScheduleRoute = customScheduleToRoute({
         id: this.selectedSchedules.map(({ id }) => id ),
         label: this.selectedName,
         whitelist: titleIds,
-      };
+      });
 
       if (!this.isNew) {
         this.deleteCustomSchedule(this.customSchedule);
+        this.$router.replace(customScheduleRoute);
+      } else {
+        this.$router.push(customScheduleRoute);
       }
-
-      this.$router.push(customScheduleToRoute(customSchedule));
     },
     /**
      * Load the state from a passed schedule.
