@@ -60,7 +60,7 @@ export default {
   .subheader-block{
     display: block;
     line-height: 48px;
-    padding-right: 0px;
+    padding-right: 2px;
   }
   .btn-right{
     float: right;
