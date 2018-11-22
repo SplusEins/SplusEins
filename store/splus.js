@@ -127,7 +127,7 @@ export const getters = {
         data: {
           title: lecture.title,
           color, // needs to be a hex string
-          description: `${lecture.lecturer} ${lecture.room} ${lecture.info}`,
+          description: `\n${lecture.lecturer}\n${lecture.room} ${lecture.info}`,
           location: lecture.room,
         },
         schedule: {
