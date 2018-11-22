@@ -462,6 +462,7 @@ export default {
 
     setToday()
     {
+      this.$matomo.trackEvent('Buttons', 'Click', 'setToday -- pressed',10);
       const around = Day.fromMoment(moment().startOf('isoWeek'));
       this.rebuild(around);
     },
