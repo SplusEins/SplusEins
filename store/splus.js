@@ -104,6 +104,13 @@ export const getters = {
       .scale([colors.lightBlue.darken4, colors.cyan.darken4])
       .colors(uniqueIds.length);
 
+    const lecturesByStart = new Map();
+    const lectureStartKey = (lecture) => `${lecture.day} ${lecture.begin}`;
+    state.lectures[state.week].forEach((lecture) =>
+      lecturesByStart.set(lectureStartKey(lecture), [...
+        (lecturesByStart.get(lectureStartKey(lecture)) || []),
+        lecture]));
+
     return state.lectures[state.week].map((lecture) => {
       const start = moment(lecture.start);
       const color = colorScale[uniqueIds.indexOf(lecture.lecturerId)];
@@ -129,6 +136,10 @@ export const getters = {
           color, // needs to be a hex string
           description: `\n${lecture.lecturer}\n${lecture.room} ${lecture.info}`,
           location: lecture.room,
+          concurrentCount: lecturesByStart.get(lectureStartKey(lecture))
+            .length,
+          concurrentOffset: lecturesByStart.get(lectureStartKey(lecture))
+            .indexOf(lecture),
         },
         schedule: {
           on: shiftedStart,
