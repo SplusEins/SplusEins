@@ -4,7 +4,7 @@
     <v-list-tile
       to="/"
       nuxt
-      @click="trackMatomoEvent('Menu','goToStartseite')">
+      @click="trackMatomoEvent('Menu','goToHomepage')">
       <v-list-tile-action>
         <v-icon>home</v-icon>
       </v-list-tile-action>
