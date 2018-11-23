@@ -1,12 +1,13 @@
-export default {
+// see: https://github.com/ClickerMonkey/dayspan-vuetify/blob/master/src/component.js
 
+export default {
   data: {
     inactiveBlendAmount: 0.6,
   },
 
   methods:
   {
-      
+
     getStyleNow()
     {
       const millisPerDay = 86400000;
@@ -43,8 +44,8 @@ export default {
       return {
         top: bounds.top + 'px',
         height: bounds.height + 'px',
-        left: bounds.left + '%',
-        width: (100 - bounds.left) + '%',
+        left: 100 / details.concurrentCount * details.concurrentOffset + '%',
+        width: 100 / details.concurrentCount + '%',
         backgroundColor: stateColor,
         marginLeft: calendarEvent.starting ? 0 : '-5px',
         marginRight: calendarEvent.ending ? 0 : '-5px',
