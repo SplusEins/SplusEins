@@ -21,7 +21,7 @@ export default {
       store.commit('splus/enableLazyLoad');
     }
 
-    if (!store.state.splus.lazyLoad) {
+    if (process.client || !store.state.splus.lazyLoad) {
       await store.dispatch('splus/load');
     } else {
       console.log('lazy loading is enabled: not fetching any lectures');
