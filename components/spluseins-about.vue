@@ -6,7 +6,8 @@
     >
       <a
         slot="activator"
-        class="white--text">
+        class="white--text"
+        @click="trackMatomoEvent('Footer', 'openAbout')">
         Über
       </a>
       <v-card>
@@ -66,6 +67,11 @@ export default {
       gitHubIcon: gitHubIcon,
     };
   },
+  methods:{
+    trackMatomoEvent (category, action , name) {
+      this.$matomo.trackEvent(category, action, name);
+    }
+  }
 };
 </script>
 

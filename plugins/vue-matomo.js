@@ -1,17 +1,19 @@
 import Vue from 'vue'
 import VueMatomo from 'vue-matomo'
 
-Vue.use(VueMatomo, {
-  host: 'https://analytics.spluseins.de',
-  siteId: 1,
+export default ({app}, inject) =>{
+    Vue.use(VueMatomo, {
+        host: 'https://analytics.spluseins.de',
+        siteId: 1,
 
-  router: router,
+        router: app.$router,
 
-  enableLinkTracking: true,
+        enableLinkTracking: true,
 
-  requireConsent: false,
+        requireConsent: false,
 
-  trackInitialView: true,
+        trackInitialView: true,
 
-  trackerFileName: 'piwik'
-});
+        trackerFileName: 'piwik',
+    });
+};
