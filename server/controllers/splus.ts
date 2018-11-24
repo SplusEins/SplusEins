@@ -37,20 +37,23 @@ router.options('/:schedule/:week', cors());
  * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
  * @return RichLecture[]
  */
-router.get('/:schedule/:week', cors(), async (req, res) => {
+router.get('/:schedule/:week', cors(), async (req, res, next) => {
   const schedule = req.params.schedule;
   const week = parseInt(req.params.week);
   const key = `${schedule}-${week}`;
 
-  const data = await cache.wrap(key, async () => {
-    console.log(`cache miss for key ${key}`);
-    const lectures = await SplusApi.getData('#' + schedule, week);
+  try {
+    const data = await cache.wrap(key, async () => {
+      console.log(`cache miss for key ${key}`);
+      const lectures = await SplusApi.getData('#' + schedule, week);
+      return lectures.map((ilecture) => new RichLecture(ilecture, week));
+    }, { ttl: SCHEDULE_CACHE_SECONDS });
 
-    return lectures.map((ilecture) => new RichLecture(ilecture, week));
-  }, { ttl: SCHEDULE_CACHE_SECONDS });
-
-  res.set('Cache-Control', `public, max-age=${SCHEDULE_CACHE_SECONDS}`);
-  res.json(data);
+    res.set('Cache-Control', `public, max-age=${SCHEDULE_CACHE_SECONDS}`);
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
 });
 
 export default router;
