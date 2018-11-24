@@ -63,7 +63,7 @@
         :small="$vuetify.breakpoint.xs"
         icon
         flat
-        @click="addFavoriteSchedule(currentSchedule) + trackMatomoEvent('Calendar','addToFavorites')">
+        @click="addFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','addToFavorites')">
         <v-icon>favorite_border</v-icon>
       </v-btn>
       <v-btn
@@ -71,7 +71,7 @@
         :small="$vuetify.breakpoint.xs"
         icon
         flat
-        @click="removeFavoriteSchedule(currentSchedule) + trackMatomoEvent('Calendar','removeFromFavorites')">
+        @click="removeFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','removeFavorites')">
         <v-icon>favorite</v-icon>
       </v-btn>
     </template>

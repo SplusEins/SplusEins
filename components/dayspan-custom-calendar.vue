@@ -17,7 +17,7 @@
               :icon="$vuetify.breakpoint.xs"
               :outline="!$vuetify.breakpoint.xs"
               depressed
-              @click="setToday() + trackMatomoEvent('Calendar', 'setToday', 'clicked')">
+              @click="setToday(); trackMatomoEvent('Calendar', 'setToday', 'clicked')">
               <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
               <v-icon v-show="!$vuetify.breakpoint.smAndUp">{{ labels.todayIcon }}</v-icon>
             </v-btn>
@@ -33,7 +33,7 @@
               :small="$vuetify.breakpoint.xs"
               icon
               depressed
-              @click="prev() + trackMatomoEvent('Calendar', 'prevWeek', 'clicked')" >
+              @click="prev(); trackMatomoEvent('Calendar', 'prevWeek', 'clicked')" >
               <v-icon>keyboard_arrow_left</v-icon>
             </v-btn>
             <span>{{ prevLabel }}</span>
@@ -48,7 +48,7 @@
               :small="$vuetify.breakpoint.xs"
               icon
               depressed
-              @click="next + trackMatomoEvent('Calendar', 'nextWeek', 'clicked')">
+              @click="next(); trackMatomoEvent('Calendar', 'nextWeek', 'clicked')">
               <v-icon>keyboard_arrow_right</v-icon>
             </v-btn>
             <span>{{ nextLabel }}</span>
