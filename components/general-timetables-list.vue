@@ -11,7 +11,8 @@
       :key="path"
       no-action>
       <v-list-tile slot="activator">
-        <v-list-tile-content>
+        <v-list-tile-content
+          @click="trackMatomoEvent('Menu','normal plan used', path)">
           <v-list-tile-title>{{ path }}</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
@@ -70,6 +71,9 @@ export default {
     }),
   },
   methods: {
+    trackMatomoEvent(category, action, name) {
+      this.$matomo.trackEvent(category, action, name);
+    },
     scheduleToRoute(schedule) {
       return {
         name: 'schedule',

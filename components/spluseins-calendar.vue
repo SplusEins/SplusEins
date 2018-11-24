@@ -158,7 +158,7 @@ export default {
     }
   },
   methods: {
-    trackMatomoEvent (category, action) {
+    trackMatomoEvent(category, action) {
       this.$matomo.trackEvent(category, action);
     },
     calendarChanged({ calendar }) {

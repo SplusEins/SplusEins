@@ -17,7 +17,7 @@
               :icon="$vuetify.breakpoint.xs"
               :outline="!$vuetify.breakpoint.xs"
               depressed
-              @click="setToday(); trackMatomoEvent('Calendar', 'setToday', 'clicked')">
+              @click="setToday(); trackMatomoEvent('Calendar', 'setToday')">
               <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
               <v-icon v-show="!$vuetify.breakpoint.smAndUp">{{ labels.todayIcon }}</v-icon>
             </v-btn>
@@ -78,8 +78,8 @@
 
     <v-flex
       v-touch="{
-        left: next,
-        right: prev,
+        left: () => { trackMatomoEvent('Calendar','nextWeek', 'swiped'); next()},
+        right: () => { trackMatomoEvent('Calendar','prevWeek', 'swiped'); prev()},
       }"
       fill-height>
 
