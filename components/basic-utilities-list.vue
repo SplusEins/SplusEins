@@ -27,11 +27,11 @@
 
     <v-list-tile @click="mensaPlanDialogOpen = true">
       <v-list-tile-action>
-        <v-icon>add</v-icon>
+        <v-icon>fastfood</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
-          Mensa Plan
+          Mensa Wolfenbüttel
         </v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
