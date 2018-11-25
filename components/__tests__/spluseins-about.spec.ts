@@ -14,7 +14,11 @@ describe('About Dialog', () => {
 
   beforeEach(() => {
     // shallowMount is faster but doesn't render child components
-    wrapper = mount(SpluseinsAbout);
+    wrapper = mount(SpluseinsAbout, {
+      mocks: {
+        $matomo: { trackEvent: jest.fn() },
+      },
+    });
   });
 
   it('should render no dialog by default', () => {
