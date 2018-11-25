@@ -362,7 +362,7 @@ export default {
 
   methods:
   {
-    trackMatomoEvent (category, action , name) {
+    trackMatomoEvent(category, action , name) {
       this.$matomo.trackEvent(category, action, name);
     },
     summary(short)

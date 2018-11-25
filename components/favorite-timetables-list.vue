@@ -12,7 +12,7 @@
       :key="schedule.id"
       nuxt>
       <v-list-tile-content
-        @click="trackMatomoEvent('Menu','favorite plan used', schedule.degreeShort + schedule.label + schedule.semester + '. Sem.')">
+        @click="trackMatomoEvent('Menu','favorite plan used', schedule.degreeShort + ' ' + schedule.label + ' ' + schedule.semester + '. Sem.')">
         <v-list-tile-title>{{ schedule.degreeShort }} {{ schedule.label }} - {{ schedule.semester }}. Sem.</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>

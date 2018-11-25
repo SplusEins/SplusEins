@@ -15,7 +15,7 @@
       </v-list-tile-content>
     </v-list-tile>
 
-    <v-list-tile @click="(customTimetableDialogOpen = true); trackMatomoEvent('Menu','openCustomTimeTableDialog')">
+    <v-list-tile @click="customTimetableDialogOpen = true; trackMatomoEvent('Menu','openCustomTimeTableDialog')">
       <v-list-tile-action>
         <v-icon>add</v-icon>
       </v-list-tile-action>
@@ -42,7 +42,7 @@ export default {
     };
   },
   methods:{
-    trackMatomoEvent (category, action , name) {
+    trackMatomoEvent(category, action , name) {
       this.$matomo.trackEvent(category, action, name);
     }
   }

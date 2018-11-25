@@ -11,8 +11,7 @@
       :key="path"
       no-action>
       <v-list-tile slot="activator">
-        <v-list-tile-content
-          @click="trackMatomoEvent('Menu','normal plan used', path)">
+        <v-list-tile-content>
           <v-list-tile-title>{{ path }}</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
@@ -36,7 +35,9 @@
             :to="scheduleToRoute(schedule)"
             :key="schedule.id"
             nuxt>
-            <v-list-tile-content value="true">
+            <v-list-tile-content 
+              value="true"
+              @click="trackMatomoEvent('Menu','normal plan used', schedule.degreeShort + ' ' + schedule.label + ' ' + schedule.semester + '. Sem.')">
               <v-list-tile-title value="true">{{ schedule.label }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
