@@ -63,7 +63,7 @@
         :small="$vuetify.breakpoint.xs"
         icon
         flat
-        @click="addFavoriteSchedule(currentSchedule)">
+        @click="addFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','addToFavorites')">
         <v-icon>favorite_border</v-icon>
       </v-btn>
       <v-btn
@@ -71,7 +71,7 @@
         :small="$vuetify.breakpoint.xs"
         icon
         flat
-        @click="removeFavoriteSchedule(currentSchedule)">
+        @click="removeFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','removeFavorites')">
         <v-icon>favorite</v-icon>
       </v-btn>
     </template>
@@ -158,6 +158,9 @@ export default {
     }
   },
   methods: {
+    trackMatomoEvent(category, action) {
+      this.$matomo.trackEvent(category, action);
+    },
     calendarChanged({ calendar }) {
       this.setWeek(calendar.start.date.isoWeek());
     },
