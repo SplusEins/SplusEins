@@ -41,6 +41,7 @@ export default {
   plugins: [
     '@/plugins/vuetify',
     { src: '@/plugins/vuex-persist', ssr: false },
+    { src: '@/plugins/vue-matomo', ssr: false }
   ],
 
   /*
