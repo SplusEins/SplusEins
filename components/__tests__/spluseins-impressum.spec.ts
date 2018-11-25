@@ -12,7 +12,11 @@ describe('Impressum Dialog', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(SpluseinsImpressum);
+    wrapper = mount(SpluseinsImpressum, {
+      mocks: {
+        $matomo: { trackEvent: jest.fn() },
+      },
+    });
   });
 
   it('should render no dialog by default', () => {
