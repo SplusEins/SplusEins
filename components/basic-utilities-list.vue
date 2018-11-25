@@ -3,7 +3,8 @@
     
     <v-list-tile
       to="/"
-      nuxt>
+      nuxt
+      @click="trackMatomoEvent('Menu','goToHomepage', 'sideMenu')">
       <v-list-tile-action>
         <v-icon>home</v-icon>
       </v-list-tile-action>
@@ -14,7 +15,7 @@
       </v-list-tile-content>
     </v-list-tile>
 
-    <v-list-tile @click="customTimetableDialogOpen = true">
+    <v-list-tile @click="customTimetableDialogOpen = true; trackMatomoEvent('Menu','openCustomTimeTableDialog')">
       <v-list-tile-action>
         <v-icon>add</v-icon>
       </v-list-tile-action>
@@ -56,5 +57,10 @@ export default {
       mensaPlanDialogOpen: false,
     };
   },
+  methods:{
+    trackMatomoEvent(category, action , name) {
+      this.$matomo.trackEvent(category, action, name);
+    }
+  }
  };
 </script>

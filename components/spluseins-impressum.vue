@@ -6,7 +6,8 @@
     >
       <a
         slot="activator"
-        class="white--text">
+        class="white--text"
+        @click="trackMatomoEvent('Footer', 'openImpressum')">
         Impressum
       </a>
       <v-card>
@@ -92,12 +93,11 @@ export default {
       active: false
     }
   },
-  // methods:{
-  //   resetScroll(){
-  //     document.getElementsByClassName('dialog dialog--active')[0].scrollTop = 0
-  //   }
-  // }
-  //@click="resetScroll"
+  methods:{
+    trackMatomoEvent (category, action , name) {
+      this.$matomo.trackEvent(category, action, name);
+    }
+  }
 }
 </script>
 
