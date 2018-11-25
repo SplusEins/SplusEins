@@ -198,14 +198,22 @@ export const mutations = {
   /**
    * Add given lectures to the state,
    * paying respect to currently active whitelist.
+   * Deduplicate using the title ID.
    */
   setLectures(state, { lectures, week }) {
+    // filter based on whitelist
     const whitelist = state.schedule.whitelist;
     const filteredLectures = !!whitelist ? lectures.filter(
       (lecture1) => whitelist.includes(lecture1.titleId)) : lectures;
 
+    // filter duplicates
+    const lecturesByTitle = new Map();
+    filteredLectures.forEach(
+      (lecture) => lecturesByTitle.set(lecture.titleId, lecture));
+    const uniqueLectures = [...lecturesByTitle.values()];
+
     // reactive variant of state.lectures[week].push(lectures)
-    Vue.set(state.lectures, week, filteredLectures);
+    Vue.set(state.lectures, week, uniqueLectures);
   },
   clearLectures(state) {
     state.lectures = {};
