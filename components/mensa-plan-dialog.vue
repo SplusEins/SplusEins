@@ -65,11 +65,6 @@ export default {
       default: false
     },
   },
-  data() {
-    return {
-      weekdays : ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag']
-    }
-  },
   computed: {
      dialogOpen: {
       get() { return this.value; },
@@ -87,7 +82,7 @@ export default {
       loadWeek: 'mensa/loadWeek',
     }),
     getDayHeader(date){
-      return this.weekdays[date.day()-1] + " - " + date.format('DD.MM.YYYY');
+      return date.format('dddd') + " - " + date.format('DD.MM.YYYY');
     },
     getPriceLabel(price){
       const euros = Math.floor(price);
