@@ -169,8 +169,15 @@ export default {
       const week = moment().isoWeek();
 
       try {
-        const response = await this.$axios.get(`/api/splus/${schedule.id}/${week}`);
-        this.$set(this.lectures, schedule.id, response.data);
+        const responses = [
+          await this.$axios.get(`/api/splus/${schedule.id}/${week}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${week+1}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${week+2}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${week+3}`),
+        ];
+        const uniqueLectures = flatten(responses.map(({ data }) => data))
+          .filter((lecture, index, self) => self.indexOf(lecture) == index);
+        this.$set(this.lectures, schedule.id, uniqueLectures);
       } catch (error) {
         this.setError('API-Verbindung fehlgeschlagen');
         console.error('error during API call', error.message);
