@@ -26,7 +26,7 @@
       </v-list-tile-content>
     </v-list-tile>
 
-    <v-list-tile @click="mensaPlanDialogOpen = true">
+    <v-list-tile @click="mensaPlanDialogOpen = true; trackMatomoEvent('Menu', 'openMensaPlanDialog')">
       <v-list-tile-action>
         <v-icon>fastfood</v-icon>
       </v-list-tile-action>
