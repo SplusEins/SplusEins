@@ -40,7 +40,7 @@
                 dense
                 two-line>
                 <v-list-tile>
-                  <v-list-tile-content>
+                  <v-list-tile-content class="content">
                     <span class="category">{{ item.category }}:</span>
                     <span>{{ item.name }} ({{ getPriceLabel(item.prices.students) }})</span>
                   </v-list-tile-content>
@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      loadWeek: 'mensa/load',
+      loadWeek: 'mensa/loadWeek',
     }),
     getDayHeader(date){
       return this.weekdays[date.day()-1] + " - " + date.format('DD.MM.YYYY');
@@ -103,6 +103,10 @@ export default {
 
 .category {
   font-weight: bold;
+}
+
+.content {
+  justify-content: normal;
 }
 
 </style>

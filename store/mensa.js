@@ -11,7 +11,7 @@ export const mutations = {
 }
 
 export const actions = {
-    async load({ state, commit }) {
+    async loadWeek({ state, commit }) {
         let weekdays = [];
         let result = [];
 
