@@ -207,10 +207,13 @@ export const mutations = {
       (lecture1) => whitelist.includes(lecture1.titleId)) : lectures;
 
     // filter duplicates
-    const lecturesByTitle = new Map();
+    const key = (lecture) =>
+      `${lecture.lecturerId} ${lecture.titleId} ${lecture.room} ` +
+      `${lecture.day} ${lecture.begin} ${lecture.duration}`;
+    const lecturesByKey = new Map();
     filteredLectures.forEach(
-      (lecture) => lecturesByTitle.set(lecture.titleId, lecture));
-    const uniqueLectures = [...lecturesByTitle.values()];
+      (lecture) => lecturesByKey.set(key(lecture), lecture));
+    const uniqueLectures = [...lecturesByKey.values()];
 
     // reactive variant of state.lectures[week].push(lectures)
     Vue.set(state.lectures, week, uniqueLectures);
