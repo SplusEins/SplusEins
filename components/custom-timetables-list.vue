@@ -11,7 +11,8 @@
       :key="route.params.schedule"
       :to="route"
       nuxt>
-      <v-list-tile-content>
+      <v-list-tile-content
+        @click="trackMatomoEvent('Menu','custom plan used', route.params.schedule)">
         <v-list-tile-title>{{ route.params.schedule }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
@@ -30,5 +31,10 @@ export default {
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
     }),
   },
+  methods: {
+    trackMatomoEvent(category, action, name) {
+      this.$matomo.trackEvent(category, action, name);
+    },
+  }
 };
 </script>
