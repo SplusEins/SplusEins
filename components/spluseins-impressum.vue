@@ -19,14 +19,8 @@
         </v-card-title>
 
         <v-card-text>
-          <p>Angaben gemäß § 5 TMG</p>
-
-          <p>SplusEins Team</p>
-
-          <p>Am Exer 2</p>
-
-          <p>38302 Wolfenbüttel</p>
-
+          <h2>SplusEins Team</h2>
+          <br>
           <p><b>Vertreten durch:</b></p>
 
           <p class="Teammitglied1">$Teammitglied1</p>
@@ -40,6 +34,10 @@
           <p><b>Kontakt:</b></p>
 
           <p>E-Mail: team (at) spluseins (Punkt) de </p>
+
+          <br>
+
+          <p>Angaben gemäß § 5 TMG</p>
           
           <p><b>Haftungsausschluss: Haftung für Inhalte</b></p>
 
