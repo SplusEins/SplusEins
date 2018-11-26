@@ -53,8 +53,11 @@
 
           <p>Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
           
-          <p>Website Impressum von impressum-generator.de </p>
-
+          <p>
+            <em>Website Impressum von impressum-generator.de</em>
+          </p>
+          
+          <i>Stand 26.11.2018</i>
         </v-card-text>
 
         <v-divider/>

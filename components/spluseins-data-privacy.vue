@@ -117,13 +117,8 @@
           <p>Um die Sicherheit Ihrer Daten bei der Übertragung zu schützen, verwenden wir dem aktuellen Stand der Technik entsprechende Verschlüsselungsverfahren (z. B. SSL) über HTTPS.</p>
           <h2>Änderung unserer Datenschutzbestimmungen</h2>
           <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen, z.B. bei der Einführung neuer Services. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
-          <p><em>Die Datenschutzerklärung wurde mit dem </em>
-            <a 
-              href="https://www.activemind.de/datenschutz/datenschutzhinweis-generator/" 
-              target="_blank" 
-              rel="noopener">
-              Datenschutzerklärungs-Generator der activeMind AG erstellt.
-            </a>
+          <p>
+            <em>Die Datenschutzerklärung wurde mit Hilfe des Datenschutzerklärungs-Generators der activeMind AG erstellt. Die Inhalte wurden auf spluseins.de angepasst.</em>
           </p>
           <i>Stand 26.11.2018</i>
 
