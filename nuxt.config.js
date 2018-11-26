@@ -1,4 +1,3 @@
-const pkg = require('./package');
 const schedules = require('./assets/schedules.json');
 
 export default {
@@ -8,10 +7,9 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    titleTemplate: '%s - SplusEins',
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
     ]
   },
 
@@ -21,12 +19,19 @@ export default {
   meta: {
     nativeUI: true,
     lang: 'de',
+    name: 'SplusEins',
+    author: 'SplusEins-Team',
+    description: 'Stundenplan Plus Mehr für Studenten der Ostfalia.',
+    ogHost: 'https://spluseins.de',
+    ogImage: '/logo.png',
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: {
+    color: '#ffc107', // amber.base
+  },
 
   /*
   ** Global CSS
@@ -74,7 +79,7 @@ export default {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
-        })
+        });
       }
     }
   },
@@ -86,4 +91,4 @@ export default {
     fallback: true,
     routes: schedules.map(({ id }) => `/${id}`),
   },
-}
+};
