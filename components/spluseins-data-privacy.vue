@@ -113,6 +113,18 @@
           <p>Die Bereitstellung der personenbezogenen Daten ist weder gesetzlich, noch vertraglich vorgeschrieben. Allerdings kann ohne die korrekte Darstellung der Inhalte von Standardschriften nicht ermöglicht werden.</p>
           <h3>Widerruf der Einwilligung:</h3>
           <p>Zur Darstellung der Inhalte wird regelmäßig die Programmiersprache JavaScript verwendet. Sie können der Datenverarbeitung daher widersprechen, indem Sie die Ausführung von JavaScript in Ihrem Browser deaktivieren oder einen Einbindung JavaScript-Blocker installieren. Bitte beachten Sie, dass es hierdurch zu Funktionseinschränkungen auf der Website kommen kann.</p>
+          <h2>Zugriffsdaten</h2>
+          <p>Der Websitebetreiber bzw. Seitenprovider erhebt Daten über Zugriffe auf die Seite und speichert diese als „Server-Logfiles“ ab. Folgende Daten werden so protokolliert:</p>
+          <ul>
+            <li>Besuchte Website</li>
+            <li>Uhrzeit zum Zeitpunkt des Zugriffes</li>
+            <li>Menge der gesendeten Daten in Byte</li>
+            <li>Verwendeter Browser</li>
+            <li>Verwendetes Betriebssystem</li>
+            <li>Verwendete IP-Adresse</li>
+          </ul>
+          <br>
+          <p>Die erhobenen Daten dienen lediglich zur Verbesserung der Website. Der Websitebetreiber behält sich allerdings vor, die Server-Logfiles nachträglich zu überprüfen, sollten konkrete Anhaltspunkte auf eine rechtswidrige Nutzung hinweisen.</p>
           <h2>SSL-Verschlüsselung</h2>
           <p>Um die Sicherheit Ihrer Daten bei der Übertragung zu schützen, verwenden wir dem aktuellen Stand der Technik entsprechende Verschlüsselungsverfahren (z. B. SSL) über HTTPS.</p>
           <h2>Änderung unserer Datenschutzbestimmungen</h2>
