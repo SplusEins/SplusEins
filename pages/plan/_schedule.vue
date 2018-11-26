@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import SpluseinsCalendar from '../components/spluseins-calendar.vue';
+import { mapState, mapGetters } from 'vuex';
+import SpluseinsCalendar from '../../components/spluseins-calendar.vue';
 
 export default {
   name: 'SchedulePage',
@@ -21,6 +21,9 @@ export default {
     SpluseinsCalendar,
   },
   computed: {
+    ...mapGetters({
+      isCustomSchedule: 'splus/isCustomSchedule',
+    }),
     ...mapState({
       currentSchedule: (state) => state.splus.schedule,
     })
@@ -38,6 +41,6 @@ export default {
       console.log('lazy loading is enabled: not fetching any lectures');
     }
   },
-  watchQuery: ['id', 'course'], // rerender page when query params change
+  watchQuery: ['id', 'name', 'course'], // rerender page when query params change
 };
 </script>
