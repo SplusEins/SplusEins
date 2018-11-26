@@ -15,17 +15,21 @@ Vue.use(Vuex);
 describe('Cookie snackbar', () => {
   let store;
 
-  function mountWithState(allowCookies) {
+  function mountWithState(allowAllCookies, allowNecessaryCookies) {
     const mutations = {
-      setCookiesAllowed: jest.fn(),
-      setCookiesDenied: jest.fn(),
+      setNecessaryCookiesAllowed: jest.fn(),
+      setAllCookiesAllowed: jest.fn(),
+      setAllCookiesDenied: jest.fn(),
     };
 
     store = new Vuex.Store({
       modules: {
         browserStateReady: true,
         privacy: {
-          state: { allowCookies, },
+          state: {
+            allowAllCookies,
+            allowNecessaryCookies,
+          },
           mutations: PrivacyModule.mutations,
           namespaced: true,
         }
@@ -36,24 +40,31 @@ describe('Cookie snackbar', () => {
   }
 
   it('should render a snackbar by default', () => {
-    const wrapper = mountWithState(undefined);
+    const wrapper = mountWithState(undefined, undefined);
     expect(wrapper.contains('.v-snack')).toBeTruthy();
   });
 
   it('should not render a snackbar when consent was given or denied', () => {
-    let wrapper = mountWithState(true);
+    let wrapper = mountWithState(true, true);
     expect(wrapper.contains('.v-snack')).toBeFalsy();
-    wrapper = mountWithState(false);
+    wrapper = mountWithState(false, false);
     expect(wrapper.contains('.v-snack')).toBeFalsy();
   });
 
   it('should mutate state after giving or denying consent', async () => {
-    let wrapper = mountWithState(undefined);
-    wrapper.find({ ref: 'btn-allow' }).trigger('click');
-    expect(store.state.privacy.allowCookies).toBe(true);
+    let wrapper = mountWithState(undefined, undefined);
+    wrapper.find({ ref: 'btn-allow-all' }).trigger('click');
+    expect(store.state.privacy.allowNecessaryCookies).toBe(true);
+    expect(store.state.privacy.allowAllCookies).toBe(true);
 
-    wrapper = mountWithState(undefined);
+    wrapper = mountWithState(undefined, undefined);
+    wrapper.find({ ref: 'btn-allow-necessary' }).trigger('click');
+    expect(store.state.privacy.allowNecessaryCookies).toBe(true);
+    expect(store.state.privacy.allowAllCookies).toBe(false);
+
+    wrapper = mountWithState(undefined, undefined);
     wrapper.find({ ref: 'btn-deny' }).trigger('click');
-    expect(store.state.privacy.allowCookies).toBe(false);
+    expect(store.state.privacy.allowNecessaryCookies).toBe(false);
+    expect(store.state.privacy.allowAllCookies).toBe(false);
   });
 });
