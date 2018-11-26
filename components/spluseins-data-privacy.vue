@@ -51,7 +51,7 @@
           <br>
           <p>Sofern Sie uns eine Einwilligung erteilt haben, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
 
-          <h2>Cookies & Browser Speicher</h2>
+          <h2>Cookies &#38; Browser Speicher</h2>
           <h3>Art und Zweck der Verarbeitung:</h3>
           <p>Wie viele andere Webseiten verwenden auch wir so genannte Cookies oder andere Speichermöglichkeiten des Browsers. Hierbei handelt es sich um kleine Datenpakete, die auf Ihrem Endgerät (Laptop, Tablet, Smartphone o.ä.) gespeichert werden, wenn Sie unsere Webseite besuchen. </p>
           <p>Cookies oder der Browserspeicher können nicht verwendet werden, um Programme zu starten oder Viren auf einen Computer zu übertragen. Anhand der gespeicherten Informationen können wir Ihnen die Navigation erleichtern und die korrekte Anzeige unserer Webseiten ermöglichen.</p>
