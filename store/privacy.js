@@ -3,14 +3,21 @@ export const state = () => ({
    * May store cookies.
    * 3 state boolean™.
    */
-  allowCookies: undefined,
+  allowAllCookies: undefined,
+  allowNecessaryCookies: undefined,
 });
 
 export const mutations = {
-  setCookiesAllowed(state) {
-    state.allowCookies = true;
+  setAllCookiesAllowed(state) {
+    state.allowAllCookies = true;
+    state.allowNecessaryCookies = true;
   },
-  setCookiesDenied(state) {
-    state.allowCookies = false;
+  setNecessaryCookiesAllowed(state) {
+    state.allowAllCookies = false;
+    state.allowNecessaryCookies = true;
+  },
+  setAllCookiesDenied(state) {
+    state.allowAllCookies = false;
+    state.allowNecessaryCookies = false;
   },
 };
