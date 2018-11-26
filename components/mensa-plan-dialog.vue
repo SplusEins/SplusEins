@@ -19,7 +19,8 @@
       </v-toolbar>
       <v-container 
         fluid 
-        grid-list-md>
+        grid-list-md
+        class="container-padding">
         <v-layout 
           :wrap="$vuetify.breakpoint.smAndDown"
           row>
@@ -49,6 +50,9 @@
             </v-card>
           </v-flex>
         </v-layout> 
+        <span class="disclaimer">
+          Quelle: openmensa.org
+        </span>
       </v-container>
     </v-card>
   </v-dialog>
@@ -104,4 +108,15 @@ export default {
   justify-content: normal;
 }
 
+.disclaimer {
+  padding-top: 2px;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0.5;
+  font-size: 12px;
+}
+
+.container-padding{
+  padding-bottom: 3px;
+}
 </style>

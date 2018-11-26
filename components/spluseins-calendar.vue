@@ -182,6 +182,8 @@ export default {
 <style scoped lang="scss">
 
 .overlay {
+  line-height: 100%;
+  padding-top: 3px;
   display: flex;
   justify-content: flex-end;
   opacity: 0.5;
