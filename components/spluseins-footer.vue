@@ -11,7 +11,8 @@
         lighten-2
         py-3
         text-xs-center
-        xs12>
+        xs12
+        class="font-size">
         2018 — 
         <strong> 
           SplusEins
@@ -20,6 +21,8 @@
         <spluseins-about/>
         — 
         <spluseins-impressum/>
+        — 
+        <spluseins-data-privacy/>
       </v-flex>
     </v-layout>
   </v-footer>
@@ -29,9 +32,15 @@
 <script lang="js">
 import SpluseinsImpressum from './spluseins-impressum.vue'
 import SpluseinsAbout from './spluseins-about.vue'
+import SpluseinsDataPrivacy from './spluseins-data-privacy.vue'
+
   export default  {
     name: 'SplusEinsFooter',
-    components: {SpluseinsImpressum,SpluseinsAbout},
+    components: {
+      SpluseinsImpressum,
+      SpluseinsAbout,
+      SpluseinsDataPrivacy
+    },
     data() {
       return {
       }
@@ -49,4 +58,10 @@ import SpluseinsAbout from './spluseins-about.vue'
 </script>
 
 <style scoped lang="scss">
+
+@media screen and (max-width: 350px) {
+  .font-size{
+    font-size: 12px;
+  }
+}
 </style>
