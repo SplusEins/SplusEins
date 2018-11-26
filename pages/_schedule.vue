@@ -7,12 +7,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import SpluseinsCalendar from '../components/spluseins-calendar.vue';
 
 export default {
   name: 'SchedulePage',
+  head() {
+    return {
+      title: this.currentSchedule.label,
+    };
+  },
   components: {
     SpluseinsCalendar,
+  },
+  computed: {
+    ...mapState({
+      currentSchedule: (state) => state.splus.schedule,
+    })
   },
   async fetch({ store, params, query }) {
     store.dispatch('splus/importSchedule', { params, query });
