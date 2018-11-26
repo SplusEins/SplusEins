@@ -89,6 +89,6 @@ export default {
   */
   generate: {
     fallback: true,
-    routes: schedules.map(({ id }) => `/${id}`),
+    routes: schedules.map(({ id }) => `/plan/${id}`),
   },
 };
