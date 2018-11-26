@@ -2,6 +2,7 @@
 
   <v-footer
     dark
+    class = "no-min-height"
     app>
     <v-layout
       justify-center
@@ -63,5 +64,9 @@ import SpluseinsDataPrivacy from './spluseins-data-privacy.vue'
   .font-size{
     font-size: 12px;
   }
+}
+
+.no-min-height{
+  min-height: unset;
 }
 </style>

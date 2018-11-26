@@ -7,7 +7,7 @@
       align-center
       justify-center>
       <div class="background-div">
-        <img 
+        <img
           src="../assets/img/calendarLogo.png"
           class="background-image">
       </div>
@@ -17,7 +17,12 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  head() {
+    return {
+      title: 'Startseite',
+    };
+  },
 };
 </script>
 
@@ -25,7 +30,7 @@ export default {
 
 .background-div{
   position: absolute;
-  opacity: 0.2; 
+  opacity: 0.2;
   filter: alpha(opacity=20);
 }
 
