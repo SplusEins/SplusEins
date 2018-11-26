@@ -8,12 +8,12 @@
 
     <v-list-tile
       v-for="route in customSchedulesAsRoutes"
-      :key="route.params.schedule"
+      :key="route.query.name"
       :to="route"
       nuxt>
       <v-list-tile-content
         @click="trackMatomoEvent('Menu','custom plan used')">
-        <v-list-tile-title>{{ route.params.schedule }}</v-list-tile-title>
+        <v-list-tile-title>{{ route.query.name }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
 
