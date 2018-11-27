@@ -12,7 +12,7 @@
       :to="route"
       nuxt>
       <v-list-tile-content
-        @click="trackMatomoEvent('Menu','custom plan used', route.params.schedule)">
+        @click="trackMatomoEvent('Menu','custom plan used')">
         <v-list-tile-title>{{ route.params.schedule }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
