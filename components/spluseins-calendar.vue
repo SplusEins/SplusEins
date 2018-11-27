@@ -7,7 +7,7 @@
 
     <template slot="actions">
       <v-btn
-        v-if="!isFavorite"
+        v-if="!isCustomSchedule && !isFavorite"
         v-show="!isTinyMobile"
         :small="$vuetify.breakpoint.xs"
         icon
@@ -16,7 +16,7 @@
         <v-icon>favorite_border</v-icon>
       </v-btn>
       <v-btn
-        v-else
+        v-if="!isCustomSchedule && isFavorite"
         v-show="!isTinyMobile"
         :small="$vuetify.breakpoint.xs"
         icon
@@ -40,14 +40,16 @@
         <v-list>
           <v-list-tile
             v-show="isTinyMobile"
+            v-if="!isCustomSchedule"
             @click="isFavorite? removeFavoriteSchedule(currentSchedule) : addFavoriteSchedule(currentSchedule);
                     isFavorite? trackMatomoEvent('Calendar','removeFavorites') : trackMatomoEvent('Calendar','addToFavorites')">
             <v-list-tile-content>
-              <v-list-tile-title v-if="isFavorite">Favorisieren</v-list-tile-title>
+              <v-list-tile-title v-if="!isFavorite">Favorisieren</v-list-tile-title>
               <v-list-tile-title v-else>Favorit entfernen</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
+          <v-list-tile
+            @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
             <v-list-tile-content>
               <v-list-tile-title v-if="isCustomSchedule">Bearbeiten</v-list-tile-title>
               <v-list-tile-title v-else>Personalisieren</v-list-tile-title>
@@ -62,6 +64,7 @@
       </v-menu>
 
       <v-btn
+        v-if="isCustomSchedule"
         v-show="!isMobile"
         outline
         @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')">
