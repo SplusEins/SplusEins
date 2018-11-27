@@ -59,6 +59,7 @@
 
             <v-flex xs12>
               <course-multiselect
+                v-show="selectedSchedules.length > 0"
                 v-model="selectedCourses"
                 :max-courses="maxCourses"
                 :courses="courses"
