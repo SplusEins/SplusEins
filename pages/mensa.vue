@@ -13,7 +13,7 @@
       :wrap="$vuetify.breakpoint.smAndDown"
       row>
       <v-flex
-        v-for="dayPlan in $store.state.mensa.weekPlan"
+        v-for="dayPlan in weekPlan"
         :key="dayPlan.id"
         xs12>
         <v-card 
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 import * as moment from 'moment';
 
 export default {
@@ -54,9 +55,32 @@ export default {
     };
   },
   async fetch({ store, params }) {
-    await store.dispatch('mensa/loadWeek');
+    if (process.static) {
+      store.commit('enableLazyLoad');
+    }
+
+    if (process.client || !store.state.lazyLoad) {
+      await store.dispatch('mensa/loadWeek');
+    } else {
+      console.log('lazy loading is enabled: not fetching mensa plan');
+    }
+  },
+  computed: {
+    ...mapState({
+      weekPlan: (state) => state.mensa.weekPlan,
+      lazyLoad: (state) => state.lazyLoad,
+    }),
+  },
+  mounted(){
+    if (this.lazyLoad) {
+      // static build -> no mensa plan is in the store
+      this.loadWeek();
+    }
   },
   methods: {
+    ...mapActions({
+      loadWeek: 'mensa/loadWeek',
+    }),
     getDayHeader(dayPlan){
       const day = moment(dayPlan.date);
       return day.format('dddd') + " - " + day.format('DD.MM.YYYY');

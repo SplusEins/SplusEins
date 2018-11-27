@@ -9,4 +9,16 @@ export const state = () => ({
    * Set to true by vuex-persist during restoration.
    */
   browserStateReady: false,
+    /**
+   * If true, do not load lectures on the server.
+   * true if frontend is a static build.
+   */
+  lazyLoad: false,
 });
+
+
+export const mutations = {
+  enableLazyLoad(state) {
+    state.lazyLoad = true;
+  },
+}
