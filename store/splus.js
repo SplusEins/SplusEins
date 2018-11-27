@@ -104,6 +104,13 @@ export const getters = {
       .scale([colors.lightBlue.darken4, colors.cyan.darken4])
       .colors(uniqueIds.length);
 
+    const lecturesByStart = new Map();
+    const lectureStartKey = (lecture) => `${lecture.day} ${lecture.begin}`;
+    state.lectures[state.week].forEach((lecture) =>
+      lecturesByStart.set(lectureStartKey(lecture), [...
+        (lecturesByStart.get(lectureStartKey(lecture)) || []),
+        lecture]));
+
     return state.lectures[state.week].map((lecture) => {
       const start = moment(lecture.start);
       const color = colorScale[uniqueIds.indexOf(lecture.lecturerId)];
@@ -127,8 +134,12 @@ export const getters = {
         data: {
           title: lecture.title,
           color, // needs to be a hex string
-          description: `${lecture.lecturer} ${lecture.room} ${lecture.info}`,
+          description: `\n${lecture.lecturer}\n${lecture.room} ${lecture.info}`,
           location: lecture.room,
+          concurrentCount: lecturesByStart.get(lectureStartKey(lecture))
+            .length,
+          concurrentOffset: lecturesByStart.get(lectureStartKey(lecture))
+            .indexOf(lecture),
         },
         schedule: {
           on: shiftedStart,
@@ -179,7 +190,7 @@ export const getters = {
     return Object.keys(state.customSchedules);
   },
   isCustomSchedule: (state) => {
-    return !!state.schedule.whitelist;
+    return !!state.schedule && !!state.schedule.whitelist;
   },
 };
 
@@ -187,14 +198,28 @@ export const mutations = {
   /**
    * Add given lectures to the state,
    * paying respect to currently active whitelist.
+   * Deduplicate using the title ID.
    */
   setLectures(state, { lectures, week }) {
+    // filter based on whitelist
     const whitelist = state.schedule.whitelist;
     const filteredLectures = !!whitelist ? lectures.filter(
       (lecture1) => whitelist.includes(lecture1.titleId)) : lectures;
 
+    // filter duplicates
+    const key = (lecture) =>
+      `${lecture.lecturerId} ${lecture.titleId} ${lecture.room} ` +
+      `${lecture.day} ${lecture.begin} ${lecture.duration}`;
+    const lecturesByKey = new Map();
+    filteredLectures.forEach(
+      (lecture) => lecturesByKey.set(key(lecture), lecture));
+    const uniqueLectures = [...lecturesByKey.values()];
+
     // reactive variant of state.lectures[week].push(lectures)
-    Vue.set(state.lectures, week, filteredLectures);
+    Vue.set(state.lectures, week, uniqueLectures);
+  },
+  clearLectures(state) {
+    state.lectures = {};
   },
   setWeek(state, week) {
     state.week = week;
@@ -226,7 +251,9 @@ export const mutations = {
     Vue.delete(state.customSchedules, customSchedule.label);
   },
   addFavoriteSchedule(state, favoriteSchedule){
-    state.favoriteSchedules.push(favoriteSchedule);
+    if(state.favoriteSchedules.filter(favorite => favorite.id == favoriteSchedule.id).length == 0){
+      state.favoriteSchedules.push(favoriteSchedule);
+    }
   },
   removeFavoriteSchedule(state, favoriteSchedule){
     state.favoriteSchedules = state.favoriteSchedules.filter(schedule => schedule.id != favoriteSchedule.id);
@@ -253,9 +280,6 @@ export const actions = {
 
     const ids = Array.isArray(state.schedule.id) ?
       state.schedule.id : [state.schedule.id];
-
-    const response = await this.$axios.get(
-      `/api/splus/${state.schedule.id}/${week}`);
 
     let lectures = [];
     await Promise.all(ids.map(async (id) => {
@@ -291,6 +315,8 @@ export const actions = {
    * Import schedule from route and set as current schedule.
    */
   importSchedule({ state, commit }, { params, query }) {
+    commit('clearLectures');
+
     switch (parseFloat(query.v)) {
       case 1:
         const courses = Array.isArray(query.course || []) ?

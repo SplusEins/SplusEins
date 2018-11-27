@@ -1,7 +1,9 @@
 <template>
   <div v-show="visible">
     <v-divider />
-    <v-list dense>
+    <v-list
+      subheader
+      dense>
       <v-list-tile @click="install()">
         <v-list-tile-action>
           <v-icon>get_app</v-icon>
@@ -44,6 +46,7 @@ export default {
       // Wait for the user to respond to the prompt
       const choice = await this.deferredPrompt.userChoice;
       console.log('User response to A2HS prompt: ', choice.outcome);
+      this.$matomo.trackEvent('Application','installed', choice.outcome);
       this.deferredPrompt = undefined;
     },
   },

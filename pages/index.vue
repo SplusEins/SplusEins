@@ -7,16 +7,10 @@
       align-center
       justify-center>
       <div class="background-div">
-        <img 
+        <img
           src="../assets/img/calendarLogo.png"
           class="background-image">
       </div>
-      <v-flex
-        class="text-xs-center"
-        xs12>
-        <v-icon>settings</v-icon>
-        <p>Leer. Wähle einen Plan aus dem Menü aus.</p>
-      </v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -24,6 +18,11 @@
 <script>
 export default {
   name: 'IndexPage',
+  head() {
+    return {
+      title: 'Startseite',
+    };
+  },
 };
 </script>
 
@@ -31,7 +30,7 @@ export default {
 
 .background-div{
   position: absolute;
-  opacity: 0.2; 
+  opacity: 0.2;
   filter: alpha(opacity=20);
 }
 

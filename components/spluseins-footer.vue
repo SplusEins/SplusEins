@@ -2,6 +2,7 @@
 
   <v-footer
     dark
+    class = "no-min-height"
     app>
     <v-layout
       justify-center
@@ -49,4 +50,8 @@ import SpluseinsAbout from './spluseins-about.vue'
 </script>
 
 <style scoped lang="scss">
+
+.no-min-height{
+  min-height: unset;
+}
 </style>

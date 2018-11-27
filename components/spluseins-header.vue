@@ -11,7 +11,15 @@
         src="../assets/img/headerLogo.png"
         height="35px"
       >
-      <v-toolbar-title class="header-text">SPLUSEINS</v-toolbar-title>
+      <v-toolbar-title 
+        class="header-text cursor-pointer"
+        @click="trackMatomoEvent('Menu', 'goToHomepage', 'toolbar title')"
+      >
+        <nuxt-link
+          tag="span"
+          to="/"
+        >SPLUSEINS</nuxt-link>
+      </v-toolbar-title>
       <v-spacer />
       <v-toolbar-items>
         <v-btn
@@ -25,7 +33,7 @@
         <v-btn
           icon
           flat
-          @click="toggleDark()">
+          @click="toggleDark(); trackMatomoEvent('Menu', 'setDark', isDark)">
           <v-icon v-if="isDark">brightness_2</v-icon>
           <v-icon v-else>wb_sunny</v-icon>
         </v-btn>
@@ -59,6 +67,9 @@ export default {
     window.addEventListener('online', () => this.isOffline = false);
   },
   methods: {
+    trackMatomoEvent (category, action, name) {
+      this.$matomo.trackEvent(category, action, name);
+    },
     ...mapMutations({
       toggleDark: 'theme/toggleDark',
       setError: 'splus/setError',
@@ -78,7 +89,7 @@ export default {
     position: relative;
     transform: translateY(6%);
   }
-  .header-component {
-
+  .cursor-pointer {
+    cursor: pointer;
   }
 </style>

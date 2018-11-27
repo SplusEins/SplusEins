@@ -5,9 +5,11 @@
     fixed
     app
     width="350">
-    <custom-timetables-list />
-    <v-divider />
-    <favorite-timetables-list />
+    <basic-utilities-list />
+    <v-divider v-if="hasCustomTimetables" />
+    <custom-timetables-list v-if="hasCustomTimetables" />
+    <v-divider v-if="hasFavoriteTimetables"/>
+    <favorite-timetables-list v-if="hasFavoriteTimetables"/>
     <v-divider />
     <general-timetables-list />
     <no-ssr>
@@ -17,10 +19,12 @@
 </template>
 
 <script lang="js">
+import { mapState } from 'vuex';
 import GeneralTimetablesList from './general-timetables-list.vue';
 import FavoriteTimetablesList from './favorite-timetables-list.vue';
 import CustomTimetablesList from './custom-timetables-list.vue';
 import InstallButtonList from './install-button-list.vue';
+import BasicUtilitiesList from './basic-utilities-list.vue';
 
 export default {
   name: 'SpluseinsSideNav',
@@ -29,6 +33,7 @@ export default {
     FavoriteTimetablesList,
     CustomTimetablesList,
     InstallButtonList,
+    BasicUtilitiesList,
   },
   props: {
     drawer: {
@@ -41,6 +46,16 @@ export default {
       get() { return this.drawer; },
       set(val) { this.$emit('update:drawer', val); }
     },
+    hasCustomTimetables() {
+      return JSON.stringify(this.customSchedules) != '{}';
+    },
+    hasFavoriteTimetables() {
+      return this.favoriteSchedules.length > 0;
+    },
+    ...mapState({
+      customSchedules: (state) => state.splus.customSchedules,
+      favoriteSchedules: (state) => state.splus.favoriteSchedules,
+    }),
   },
 };
 </script>

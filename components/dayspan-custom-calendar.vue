@@ -17,7 +17,7 @@
               :icon="$vuetify.breakpoint.xs"
               :outline="!$vuetify.breakpoint.xs"
               depressed
-              @click="setToday">
+              @click="setToday(); trackMatomoEvent('Calendar', 'setToday')">
               <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
               <v-icon v-show="!$vuetify.breakpoint.smAndUp">{{ labels.todayIcon }}</v-icon>
             </v-btn>
@@ -33,7 +33,7 @@
               :small="$vuetify.breakpoint.xs"
               icon
               depressed
-              @click="prev" >
+              @click="prev(); trackMatomoEvent('Calendar', 'prevWeek', 'clicked')" >
               <v-icon>keyboard_arrow_left</v-icon>
             </v-btn>
             <span>{{ prevLabel }}</span>
@@ -48,7 +48,7 @@
               :small="$vuetify.breakpoint.xs"
               icon
               depressed
-              @click="next">
+              @click="next(); trackMatomoEvent('Calendar', 'nextWeek', 'clicked')">
               <v-icon>keyboard_arrow_right</v-icon>
             </v-btn>
             <span>{{ nextLabel }}</span>
@@ -78,8 +78,8 @@
 
     <v-flex
       v-touch="{
-        left: next,
-        right: prev,
+        left: () => { trackMatomoEvent('Calendar','nextWeek', 'swiped'); next()},
+        right: () => { trackMatomoEvent('Calendar','prevWeek', 'swiped'); prev()},
       }"
       fill-height>
 
@@ -362,6 +362,9 @@ export default {
 
   methods:
   {
+    trackMatomoEvent(category, action , name) {
+      this.$matomo.trackEvent(category, action, name);
+    },
     summary(short)
     {
       var monthNames = [
@@ -839,4 +842,8 @@ export default {
 .ds-week .ds-day-today > div:not(.ds-hour):not(.v-menu) {
   border-top: 3px solid var(--v-primary-base) !important;
 }
+.ds-ev-description{
+  white-space: pre-wrap;
+}
+
 </style>

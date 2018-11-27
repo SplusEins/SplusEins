@@ -133,7 +133,7 @@ export default {
       const uniqueLectures = new Map();
       allLectures.forEach(
         (lecture) => uniqueLectures.set(lecture.titleId, lecture));
-      return [...uniqueLectures.values()];
+      return [...uniqueLectures.values()].sort();
     },
     ...mapGetters({
       schedulesTree: 'splus/getSchedulesAsTree',
@@ -169,8 +169,15 @@ export default {
       const week = moment().isoWeek();
 
       try {
-        const response = await this.$axios.get(`/api/splus/${schedule.id}/${week}`);
-        this.$set(this.lectures, schedule.id, response.data);
+        const responses = [
+          await this.$axios.get(`/api/splus/${schedule.id}/${week}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${week+1}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${week+2}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${week+3}`),
+        ];
+        const uniqueLectures = flatten(responses.map(({ data }) => data))
+          .filter((lecture, index, self) => self.indexOf(lecture) == index);
+        this.$set(this.lectures, schedule.id, uniqueLectures);
       } catch (error) {
         this.setError('API-Verbindung fehlgeschlagen');
         console.error('error during API call', error.message);
@@ -187,17 +194,18 @@ export default {
       // Set the base schedule and filters matching the given courses.
       const titleIds = uniq(this.selectedCourses.map(({ titleId }) => titleId));
 
-      const customSchedule = {
+      const customScheduleRoute = customScheduleToRoute({
         id: this.selectedSchedules.map(({ id }) => id ),
         label: this.selectedName,
         whitelist: titleIds,
-      };
+      });
 
       if (!this.isNew) {
         this.deleteCustomSchedule(this.customSchedule);
+        this.$router.replace(customScheduleRoute);
+      } else {
+        this.$router.push(customScheduleRoute);
       }
-
-      this.$router.push(customScheduleToRoute(customSchedule));
     },
     /**
      * Load the state from a passed schedule.
