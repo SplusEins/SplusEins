@@ -7,7 +7,7 @@ export default ({app}, inject) =>{
     siteId: 1,
     router: app.$router,
     enableLinkTracking: true,
-    requireConsent: false,
+    requireConsent: true,
     trackInitialView: true,
     trackerFileName: 'piwik',
   });
