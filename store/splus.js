@@ -29,6 +29,13 @@ export function customScheduleToRoute(customSchedule) {
   return { name: 'plan-schedule', params: {}, query };
 }
 
+export function scheduleToRoute(schedule) {
+  return {
+    name: 'plan-schedule',
+    params: { schedule: schedule.id },
+  };
+}
+    
 export function shortenScheduleDegree(schedule) {
   let shortenedDegree
   switch(schedule.degree){
