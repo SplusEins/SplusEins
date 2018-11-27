@@ -59,7 +59,14 @@ router.get('/:schedule/:week', cors(), async (req, res, next) => {
   }
 });
 
-
+/**
+ * Request OpenMensa API
+ * - first fetch open days
+ * - then select first 3 open days
+ * - then fetch plan for selected days
+ *
+ * @return {id: number, date: string, data: {}}
+ */
 router.get('/mensa', cors(), async (req, res, next) => {
   const key = (new Date()).toString();
   let openDays = [];
