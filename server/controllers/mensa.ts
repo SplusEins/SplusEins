@@ -4,7 +4,7 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 
-const MENSA_CACHE_SECONDS = 3600;
+const MENSA_CACHE_SECONDS = 1800;
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
