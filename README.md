@@ -2,6 +2,11 @@
 
 > Spluseins
 
+## Issue Management
+
+Planned features and bugs are tracked in [Trello](https://trello.com/b/8L18rOVd).
+Please send us a mail if you have any questions or suggestions.
+
 ## Build Setup (Frontend)
 
 ``` bash
