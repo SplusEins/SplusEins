@@ -19,16 +19,14 @@ const isoWeek0 = moment()
 
 
 export function customScheduleToRoute(customSchedule) {
-  const params = {
-    schedule: customSchedule.label,
-  };
   const query = {
     id: customSchedule.id,
     course: customSchedule.whitelist,
+    name: customSchedule.label,
     v: 1
   };
 
-  return { name: 'schedule', params, query };
+  return { name: 'plan-schedule', params: {}, query };
 }
 
 export function shortenScheduleDegree(schedule) {
@@ -325,7 +323,7 @@ export const actions = {
           query.id : [query.id];
         const customSchedule = {
           id: ids,
-          label: params.schedule,
+          label: query.name,
           whitelist: courses,
         };
 
