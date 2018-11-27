@@ -43,6 +43,8 @@ export function shortenScheduleDegree(schedule) {
     case "Master of Science": shortenedDegree = "M.Sc."; break;
     case "Bachelor of Arts": shortenedDegree = "B.A."; break;
     case "Master of Arts": shortenedDegree = "M.A."; break;
+    case "Bachelor of Engineering": shortenedDegree = "B.Eng."; break;
+    case "Master of Engineering": shortenedDegree = "M.Eng."; break;
     default: shortenedDegree = schedule.degree;
   }
   return shortenedDegree;
