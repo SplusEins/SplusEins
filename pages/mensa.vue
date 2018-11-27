@@ -44,7 +44,6 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
 import * as moment from 'moment';
 
 export default {
