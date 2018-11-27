@@ -5,7 +5,7 @@
     <v-subheader>
       Favoriten
     </v-subheader>
-      
+
     <v-list-tile
       v-for="schedule in favoriteSchedules"
       :to="scheduleToRoute(schedule)"
@@ -16,14 +16,15 @@
         <v-list-tile-title>{{ schedule.degreeShort }} {{ schedule.label }} - {{ schedule.semester }}. Sem.</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
-  
+
   </v-list>
 
 </template>
 
 <script lang="js">
   import { mapState } from 'vuex';
-  
+  import { scheduleToRoute } from '../store/splus';
+
   export default  {
     name: 'FavoriteTimetablesList',
     computed: {
@@ -35,12 +36,7 @@
       trackMatomoEvent(category, action, name) {
         this.$matomo.trackEvent(category, action, name);
       },
-      scheduleToRoute(schedule) {
-        return {
-          name: 'schedule',
-          params: { schedule: schedule.id },
-        };
-      },
+      scheduleToRoute,
     }
-}
+};
 </script>
