@@ -50,9 +50,15 @@ export default {
   },
   watch: {
     allowAllCookies() {
-      if (this.browserStateReady && this.allowAllCookies == false) {
-        this.$matomo.disableCookies();
-        this.$matomo.deleteCookies();
+      if (this.browserStateReady) {
+        if (this.allowAllCookies == false) {
+          this.$matomo.disableCookies();
+          this.$matomo.deleteCookies();
+          this.$matomo.setConsentGiven();
+        }
+        if (this.allowAllCookies == true) {
+          this.$matomo.rememberConsentGiven();
+        }
       }
     },
   },
