@@ -4,9 +4,27 @@
     :types="types"
     :read-only="true"
     @change="calendarChanged">
-    <template
-      v-if="isCustomSchedule"
-      slot="actions">
+
+    <template slot="actions">
+      <v-btn
+        v-if="!isFavorite"
+        v-show="!isTinyMobile"
+        :small="$vuetify.breakpoint.xs"
+        icon
+        flat
+        @click="addFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','addToFavorites')">
+        <v-icon>favorite_border</v-icon>
+      </v-btn>
+      <v-btn
+        v-else
+        v-show="!isTinyMobile"
+        :small="$vuetify.breakpoint.xs"
+        icon
+        flat
+        @click="removeFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','removeFavorites')">
+        <v-icon>favorite</v-icon>
+      </v-btn>
+
       <v-menu
         v-show="isMobile"
         bottom
@@ -20,12 +38,24 @@
         </v-btn>
 
         <v-list>
-          <v-list-tile @click="editTimetableDialogOpen = true">
+          <v-list-tile
+            v-show="isTinyMobile"
+            @click="isFavorite? removeFavoriteSchedule(currentSchedule) : addFavoriteSchedule(currentSchedule);
+                    isFavorite? trackMatomoEvent('Calendar','removeFavorites') : trackMatomoEvent('Calendar','addToFavorites')">
             <v-list-tile-content>
-              <v-list-tile-title>Bearbeiten</v-list-tile-title>
+              <v-list-tile-title v-if="isFavorite">Favorisieren</v-list-tile-title>
+              <v-list-tile-title v-else>Favorit entfernen</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile @click="deleteTimetableDialogOpen = true">
+          <v-list-tile @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
+            <v-list-tile-content>
+              <v-list-tile-title v-if="isCustomSchedule">Bearbeiten</v-list-tile-title>
+              <v-list-tile-title v-else>Personalisieren</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile
+            v-if="isCustomSchedule"
+            @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')">
             <v-list-tile-title>Löschen</v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -34,46 +64,26 @@
       <v-btn
         v-show="!isMobile"
         outline
-        @click="deleteTimetableDialogOpen = true">
+        @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')">
         <v-icon left>delete</v-icon>
         Löschen
       </v-btn>
       <v-btn
         v-show="!isMobile"
         outline
-        @click="editTimetableDialogOpen = true">
+        @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
         <v-icon left>edit</v-icon>
-        Bearbeiten
+        <template v-if="isCustomSchedule">Bearbeiten</template>
+        <template v-else>Personalisieren</template>
       </v-btn>
 
-      <custom-timetable-dialog
-        v-model="editTimetableDialogOpen"
-        :custom-schedule="currentSchedule" />
       <custom-timetable-delete-dialog
         v-model="deleteTimetableDialogOpen"
         :custom-schedule="currentSchedule"
         @on-delete="routeToRoot()" />
-    </template>
-
-    <template 
-      v-else
-      slot="actions">
-      <v-btn
-        v-if="!isFavorite"
-        :small="$vuetify.breakpoint.xs"
-        icon
-        flat
-        @click="addFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','addToFavorites')">
-        <v-icon>favorite_border</v-icon>
-      </v-btn>
-      <v-btn
-        v-else
-        :small="$vuetify.breakpoint.xs"
-        icon
-        flat
-        @click="removeFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','removeFavorites')">
-        <v-icon>favorite</v-icon>
-      </v-btn>
+      <custom-timetable-dialog
+        v-model="editTimetableDialogOpen"
+        :custom-schedule="currentAsCustomSchedule" />
     </template>
 
     <template slot="containerInside">
@@ -124,15 +134,30 @@ export default {
       calendar,
       editTimetableDialogOpen: false,
       deleteTimetableDialogOpen: false,
-      types: [ weeklyCalendar ]
+      types: [ weeklyCalendar ],
     };
   },
   computed: {
     isMobile() {
       return !this.$vuetify.breakpoint.mdAndUp;
     },
+    isTinyMobile() {
+      return this.$vuetify.breakpoint.width <= 400;
+    },
     isFavorite() {
       return this.favoriteSchedules.filter(favorite => favorite.id == this.currentSchedule.id).length != 0;
+    },
+    currentAsCustomSchedule() {
+      if (this.isCustomSchedule) {
+        return this.currentSchedule;
+      } else {
+        // new custom schedule with the regular as its base
+        return {
+          label: '',
+          id: [this.currentSchedule.id],
+          whitelist: [],
+        };
+      }
     },
     ...mapState({
       currentSchedule: (state) => state.splus.schedule,

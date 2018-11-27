@@ -6,7 +6,7 @@
       <v-layout
         justify-space-between
         row>
-        <v-flex>
+        <v-flex shrink>
           <v-tooltip
             v-bind="{setToday, todayDate, calendar}"
             name="today"
