@@ -2,7 +2,6 @@ import * as express from 'express';
 import * as cors from 'cors';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
-import * as moment from 'moment';
 
 import { SplusApi } from '../lib/SplusApi';
 import { RichLecture } from '../model/RichLecture';
@@ -44,7 +43,7 @@ router.get('/:schedule/:week', cors(), async (req, res, next) => {
 
   try {
     const data = await cache.wrap(key, async () => {
-      console.log(`cache miss for key ${key}`);
+      console.log(`timetable cache miss for key ${key}`);
       const lectures = await SplusApi.getData('#' + schedule, week);
       return lectures.map((ilecture) => new RichLecture(ilecture, week));
     }, { ttl: SCHEDULE_CACHE_SECONDS });
