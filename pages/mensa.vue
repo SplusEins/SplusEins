@@ -14,12 +14,12 @@
       row>
       <v-flex
         v-for="dayPlan in $store.state.mensa.weekPlan"
-        :key="getIdentifier(dayPlan.date)"
+        :key="dayPlan.id"
         xs12>
         <v-card 
           height="100%">
           <v-card-title> 
-            <h4>{{ getDayHeader(dayPlan.date) }}</h4>
+            <h4>{{ getDayHeader(dayPlan) }}</h4>
           </v-card-title>
           <v-divider />
           <v-list 
@@ -57,11 +57,9 @@ export default {
     await store.dispatch('mensa/loadWeek');
   },
   methods: {
-    getIdentifier(date){
-      return moment(date).day();
-    },
-    getDayHeader(date){
-      return moment(date).format('dddd') + " - " + moment(date).format('DD.MM.YYYY');
+    getDayHeader(dayPlan){
+      const day = moment(dayPlan.date);
+      return day.format('dddd') + " - " + day.format('DD.MM.YYYY');
     },
     getPriceLabel(price){
       const euros = Math.floor(price);
