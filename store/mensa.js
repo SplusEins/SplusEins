@@ -13,7 +13,7 @@ export const actions = {
     let result = [];
 
     try {
-      const response = await this.$axios.get(`/api/splus/mensa`);
+      const response = await this.$axios.get(`/api/mensa`);
       result = response.data;
     } catch (error) {
         commit('setError', 'API-Verbindung fehlgeschlagen');
