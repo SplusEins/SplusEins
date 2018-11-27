@@ -32,10 +32,10 @@ export default {
     store.dispatch('splus/importSchedule', { params, query });
 
     if (process.static) {
-      store.commit('splus/enableLazyLoad');
+      store.commit('enableLazyLoad');
     }
 
-    if (process.client || !store.state.splus.lazyLoad) {
+    if (process.client || !store.state.lazyLoad) {
       await store.dispatch('splus/load');
     } else {
       console.log('lazy loading is enabled: not fetching any lectures');

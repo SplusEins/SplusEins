@@ -137,7 +137,7 @@ export default {
     ...mapState({
       currentSchedule: (state) => state.splus.schedule,
       currentWeek: (state) => state.splus.week,
-      lazyLoad: (state) => state.splus.lazyLoad,
+      lazyLoad: (state) => state.lazyLoad,
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
     }),
     ...mapGetters({
