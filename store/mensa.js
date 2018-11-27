@@ -7,7 +7,7 @@ export const state = () => ({
 export const mutations = {
   setWeekPlan(state, data){
     state.weekPlan = data;
-  }
+  },
 }
 
 export const actions = {
@@ -30,11 +30,13 @@ export const actions = {
     await Promise.all(weekdays.map(async (day) => {
         try {
             const response = await this.$axios.get(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`);
-            result[day.day()-1] = {date: day, data: {...response.data}};
+            result.push({date: day, data: {...response.data}});
         } catch (error) {
             console.error('error during Mensa API call', error.message);
         }
     }));
+
+    result = result.sort((a,b) => a.date.day() > b.date.day());
 
     commit('setWeekPlan', result);
   }

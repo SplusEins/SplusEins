@@ -53,15 +53,21 @@ export default {
       title: 'Mensa Plan',
     };
   },
-  async fetch({ store }) {
-    store.dispatch('mensa/loadWeek');
-  },
+  // async fetch({ store }) {
+  //   store.dispatch('mensa/loadWeek');
+  // },
   computed: {
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
     })
   },
+  mounted() {
+      this.loadWeek();
+  },
   methods: {
+    ...mapActions({
+      loadWeek: 'mensa/loadWeek',
+    }),
     getDayHeader(date){
       return date.format('dddd') + " - " + date.format('DD.MM.YYYY');
     },
