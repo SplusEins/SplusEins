@@ -57,6 +57,7 @@ export default {
     '@nuxtjs/axios',
     // https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
+    'nuxt-material-design-icons',
   ],
   /*
   ** Axios module configuration
