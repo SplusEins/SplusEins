@@ -10,13 +10,28 @@
         <v-card
           pa-2
           ma-2
-          max-width="60%"
+          width="50%"
         >
           <v-card-media
-            src="/error.jpeg"
+            v-if="error.statusCode == 404"
+            class="Error404Img"
+            src="/404.png"
+            width="80%"
+            position="right"
           />
           <v-card-text>
-            <div>OOPSIE WOOPSIE!! UwU We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquaters are working VEWY HAWD to fix this.</div>
+            <div 
+              v-if="error.statusCode != 404" 
+              class="text-xs-center"
+            >
+              OOPSIE WOOPSIE!! UwU We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquaters are working VEWY HAWD to fix this.
+            </div>
+            <div 
+              v-else 
+              class="text-xs-center"
+            >
+              Diese Seite gibt es leider nicht...
+            </div>
           </v-card-text>
 
           <v-card-actions>
@@ -65,3 +80,12 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="scss">
+.Error404Img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+</style>
