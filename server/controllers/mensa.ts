@@ -55,10 +55,10 @@ router.get('/', cors(), async (req, res, next) => {
   
       await Promise.all(weekdays.map(async (day) => {
         const response = await axios.get(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`);
-        result.push({id: day.month() + day.day(), date: day.format('YYYY-MM-DD'), data: {...response.data}});
+        result.push({date: parseInt(day.format('YYYYMMDD')), data: {...response.data}});
       }));
 
-      return result.sort((a,b) => a.id - b.id);
+      return result.sort((a,b) => a.date - b.date);
     }, { ttl: MENSA_CACHE_SECONDS });
 
     res.set('Cache-Control', `public, max-age=${MENSA_CACHE_SECONDS}`);
