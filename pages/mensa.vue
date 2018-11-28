@@ -26,8 +26,7 @@
           <v-list 
             v-for="item in dayPlan.data"
             :key="item.id"
-            dense
-            two-line>
+            dense>
             <div class="list-tile">
               <span class="category">{{ item.category }}:</span>
               <br>
@@ -111,9 +110,6 @@ export default {
 .price{
   font-size: 12px;
   opacity: 0.5;
-}
-.content {
-  justify-content: normal;
 }
 
 .disclaimer {
