@@ -5,7 +5,8 @@
     hide-overlay
     class="container-padding">
 
-    <h2>Mensa Plan</h2>
+    <h2>Mensa Wolfenbüttel</h2>
+    <span>Montag bis Freitag 11:15 - 14:15 Uhr</span>
 
     <v-divider class="divider"/>
 
@@ -14,25 +15,26 @@
       row>
       <v-flex
         v-for="dayPlan in weekPlan"
-        :key="dayPlan.id"
+        :key="dayPlan.date"
         xs12>
         <v-card 
           height="100%">
           <v-card-title> 
-            <h4>{{ getDayHeader(dayPlan) }}</h4>
+            <h3>{{ getDayHeader(dayPlan) }}</h3>
           </v-card-title>
-          <v-divider />
+          <v-divider/>
           <v-list 
             v-for="item in dayPlan.data"
             :key="item.id"
             dense
             two-line>
-            <v-list-tile>
-              <v-list-tile-content class="content">
-                <span class="category">{{ item.category }}:</span>
-                <span>{{ item.name }} ({{ getPriceLabel(item.prices.students) }})</span>
-              </v-list-tile-content>
-            </v-list-tile>
+            <div class="list-tile">
+              <span class="category">{{ item.category }}:</span>
+              <br>
+              <span>{{ item.name }}</span>
+              <br>
+              <span class="price">Studenten: {{ getPriceLabel(item.prices.students) }} - Angestellte: {{ getPriceLabel(item.prices.employees) }}</span>
+            </div>
           </v-list>
         </v-card>
       </v-flex>
@@ -82,8 +84,8 @@ export default {
       loadWeek: 'mensa/loadWeek',
     }),
     getDayHeader(dayPlan){
-      const day = moment(dayPlan.date);
-      return day.format('dddd') + " - " + day.format('DD.MM.YYYY');
+      const day = moment(dayPlan.date.toString());
+      return (day.isSame(moment(), 'day')? 'Heute' : day.format('dddd')) + " - " + day.format('DD.MM.YYYY');
     },
     getPriceLabel(price){
       const euros = Math.floor(price);
@@ -98,10 +100,18 @@ export default {
 
 <style scoped lang="scss">
 
+.list-tile{
+  padding: 5px 0 5px 15px;
+}
+
 .category {
   font-weight: bold;
 }
 
+.price{
+  font-size: 12px;
+  opacity: 0.5;
+}
 .content {
   justify-content: normal;
 }
