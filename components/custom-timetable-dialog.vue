@@ -22,7 +22,7 @@
             :disabled="!valid"
             dark
             flat
-            @click.native="save(); trackMatomoEvent('Menu','saveCustomTimetable',' Anzahl Pläne: ' + selectedSchedules.length + '; Anzahl Kurse: ' + selectedCourses.length)">Speichern</v-btn>
+            @click.native="save(); trackMatomoEvent('Menu','saveCustomTimetable',' Anzahl Pläne:',selectedSchedules.length ); trackMatomoEvent('Menu','saveCustomTimetable','Anzahl Kurse:', selectedCourses.length)">Speichern</v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <v-form v-model="valid">
@@ -148,8 +148,8 @@ export default {
     }
   },
   methods: {
-    trackMatomoEvent (category, action , name) {
-      this.$matomo.trackEvent(category, action, name);
+    trackMatomoEvent (category, action , name, value) {
+      this.$matomo.trackEvent(category, action, name,value);
     },
     async addSchedule(schedule) {
       if (this.selectedSchedules.includes(schedule)) {
