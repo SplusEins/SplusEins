@@ -273,7 +273,6 @@ export const actions = {
    * Request data from the given week from the API and write it to the store.
    */
   async loadWeek({ state, commit }, week) {
-    console.log(week);
     if (!!state.lectures[week]) {
       return; // cached, noop
     }
