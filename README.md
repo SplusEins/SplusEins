@@ -1,6 +1,4 @@
-# spluseins
-
-> Spluseins
+# SplusEins
 
 ## Issue Management
 
@@ -61,5 +59,3 @@ $ fly -t <targetname> set-pipeline -p spluseins -c pipeline.yml -l credentials.y
 # fly destroy pipeline
 $ fly -t <targetname> destroy-pipeline -p spluseins
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
