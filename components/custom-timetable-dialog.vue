@@ -142,9 +142,13 @@ export default {
       getScheduleById: 'splus/getScheduleById',
     }),
   },
-  mounted() {
-    if (!this.isNew) {
-      this.load();
+  watch: {
+    dialogOpen() {
+      if(this.dialogOpen){
+        if (!this.isNew) {
+          this.load();
+        }
+      }
     }
   },
   methods: {
