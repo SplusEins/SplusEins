@@ -49,6 +49,12 @@
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile
+            @click="share()">
+            <v-list-tile-content>
+              <v-list-tile-title>Teilen</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile
             @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
             <v-list-tile-content>
               <v-list-tile-title v-if="isCustomSchedule">Bearbeiten</v-list-tile-title>
@@ -73,6 +79,15 @@
       </v-btn>
       <v-btn
         v-show="!isMobile"
+        :outline="$vuetify.breakpoint.xl"
+        :icon="!$vuetify.breakpoint.xl"
+        :flat="!$vuetify.breakpoint.xl"
+        @click="share()">
+        <v-icon left>share</v-icon>
+        <span v-show="$vuetify.breakpoint.xl">Teilen</span>
+      </v-btn>
+      <v-btn
+        v-show="!isMobile"
         outline
         @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
         <v-icon left>edit</v-icon>
@@ -87,6 +102,9 @@
       <custom-timetable-dialog
         v-model="editTimetableDialogOpen"
         :custom-schedule="currentAsCustomSchedule" />
+      <copy-text-dialog
+        v-model="shareDialogOpen"
+        :text-to-copy="currentUrl" />
     </template>
 
     <template slot="containerInside">
@@ -102,6 +120,7 @@
 import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
+import CopyTextDialog from './copy-text-dialog.vue';
 import DayspanCustomCalendar from './dayspan-custom-calendar.vue';
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
@@ -109,6 +128,7 @@ import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
 export default {
   name: 'SpluseinsCalendar',
   components: {
+    CopyTextDialog,
     DayspanCustomCalendar,
     CustomTimetableDialog,
     CustomTimetableDeleteDialog,
@@ -128,7 +148,7 @@ export default {
       updateRows: true,
       schedule: false
     };
-   const calendar = Calendar.days(7, startOfWeek, 0);
+    const calendar = Calendar.days(7, startOfWeek, 0);
 
     // computed properties are not available during client rendering yet, access the getter directly
     calendar.setEvents(this.$store.getters['splus/getLecturesAsEvents']);
@@ -137,6 +157,7 @@ export default {
       calendar,
       editTimetableDialogOpen: false,
       deleteTimetableDialogOpen: false,
+      shareDialogOpen: false,
       types: [ weeklyCalendar ],
     };
   },
@@ -160,6 +181,13 @@ export default {
           id: [this.currentSchedule.id],
           whitelist: [],
         };
+      }
+    },
+    currentUrl() {
+      if (window) {
+        return window.location.href;
+      } else {
+        return '';
       }
     },
     ...mapState({
@@ -194,6 +222,15 @@ export default {
     },
     routeToRoot() {
       this.$router.replace('/');
+    },
+    async share() {
+      if (navigator.share) {
+        await navigator.share({
+          url: this.currentUrl,
+        });
+      } else {
+        this.shareDialogOpen = true;
+      }
     },
     ...mapMutations({
       setWeek: 'splus/setWeek',
