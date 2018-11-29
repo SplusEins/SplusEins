@@ -34,7 +34,7 @@ router.options('/', cors());
  * - then select first 3 open days
  * - then fetch plan for selected days
  *
- * @return {date: number (acts also id), data: {}}
+ * @return {date: number (acts also as id), data: {}}
  */
 router.get('/', cors(), async (req, res, next) => {
   const key = moment().format('YYYY-MM-DD');
