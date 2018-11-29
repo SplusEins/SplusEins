@@ -76,7 +76,7 @@ export const state = () => ({
    * Currently viewed week.
    * Week 53 of year 2018 equals week 1 of year 2019.
    */
-  week: moment().diff(isoWeek0, 'week'),
+  week: moment().day() > 5 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week'),
   error: undefined,
 });
 
@@ -273,6 +273,7 @@ export const actions = {
    * Request data from the given week from the API and write it to the store.
    */
   async loadWeek({ state, commit }, week) {
+    console.log(week);
     if (!!state.lectures[week]) {
       return; // cached, noop
     }

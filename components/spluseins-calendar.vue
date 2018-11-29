@@ -114,7 +114,8 @@ export default {
     CustomTimetableDeleteDialog,
   },
   data() {
-    const startOfWeek = Day.fromMoment(moment().startOf('isoWeek'));
+    const currentWeek = Day.fromMoment(moment().startOf('isoWeek'));
+    const startOfWeek = moment().day() > 5 ? currentWeek.add(1, 'weeks') : currentWeek;
     const weeklyCalendar = {
       id: 'W',
       label: 'Woche',
