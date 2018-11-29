@@ -14,20 +14,21 @@
         >
           <v-card-media
             v-if="error.statusCode == 404"
-            class="Error404Img"
+            class="ErrorImg"
             src="/404.png"
+            width="80%"
+            position="right"
+          />
+          <v-card-media
+            v-else-if="error.statusCode == 403 || 401"
+            class="ErrorImg"
+            src="/403_401.png"
             width="80%"
             position="right"
           />
           <v-card-text>
             <div 
-              v-if="error.statusCode != 404" 
-              class="text-xs-center"
-            >
-              OOPSIE WOOPSIE!! UwU We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquaters are working VEWY HAWD to fix this.
-            </div>
-            <div 
-              v-else 
+              v-if="error.statusCode == 404"
               class="text-xs-center"
             >
               Diese Seite gibt es leider nicht...
@@ -82,7 +83,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.Error404Img{
+.ErrorImg{
     display: block;
     margin-left: auto;
     margin-right: auto;
