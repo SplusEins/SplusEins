@@ -142,9 +142,13 @@ export default {
       getScheduleById: 'splus/getScheduleById',
     }),
   },
-  mounted() {
-    if (!this.isNew) {
-      this.load();
+  watch: {
+    dialogOpen() {
+      if(this.dialogOpen){
+        if (!this.isNew) {
+          this.load();
+        }
+      }
     }
   },
   methods: {
@@ -169,6 +173,7 @@ export default {
       const week = moment().isoWeek();
 
       try {
+        console.log('im here loading shit')
         const responses = [
           await this.$axios.get(`/api/splus/${schedule.id}/${week}`),
           await this.$axios.get(`/api/splus/${schedule.id}/${week+1}`),
