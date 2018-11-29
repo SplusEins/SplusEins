@@ -173,7 +173,6 @@ export default {
       const week = moment().isoWeek();
 
       try {
-        console.log('im here loading shit')
         const responses = [
           await this.$axios.get(`/api/splus/${schedule.id}/${week}`),
           await this.$axios.get(`/api/splus/${schedule.id}/${week+1}`),
