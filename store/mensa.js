@@ -12,31 +12,19 @@ export const mutations = {
 
 export const actions = {
   async loadWeek({ state, commit }) {
-    let openDays = [];
-    let weekdays = [];
+    if(state.weekPlan[0] != undefined && state.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'))) {
+        return; // if weekPlan is not empty and data is up-to-date don't fetch
+    }
+      
     let result = [];
 
     try {
-      const response = await this.$axios.get(`https://openmensa.org/api/v2/canteens/166/days`);
-      openDays = response.data;
+      const response = await this.$axios.get(`/api/mensa`);
+      result = response.data;
     } catch (error) {
+        commit('setError', 'API-Verbindung fehlgeschlagen');
         console.error('error during Mensa API call', error.message);
     }
-
-    for(let i=0; i<3; i++) {
-        weekdays.push(moment(openDays[i].date));
-    }
-
-    await Promise.all(weekdays.map(async (day) => {
-        try {
-            const response = await this.$axios.get(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`);
-            result.push({date: day, data: {...response.data}});
-        } catch (error) {
-            console.error('error during Mensa API call', error.message);
-        }
-    }));
-
-    result = result.sort((a,b) => a.date.day() > b.date.day());
 
     commit('setWeekPlan', result);
   }

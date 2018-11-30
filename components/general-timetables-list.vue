@@ -63,6 +63,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { scheduleToRoute } from '../store/splus';
 
 export default {
   name: 'GeneralTimetablesList',
@@ -75,12 +76,7 @@ export default {
     trackMatomoEvent(category, action, name) {
       this.$matomo.trackEvent(category, action, name);
     },
-    scheduleToRoute(schedule) {
-      return {
-        name: 'plan-schedule',
-        params: { schedule: schedule.id },
-      };
-    },
+    scheduleToRoute,
   }
 };
 </script>

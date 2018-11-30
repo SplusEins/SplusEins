@@ -29,6 +29,13 @@ export function customScheduleToRoute(customSchedule) {
   return { name: 'plan-schedule', params: {}, query };
 }
 
+export function scheduleToRoute(schedule) {
+  return {
+    name: 'plan-schedule',
+    params: { schedule: schedule.id },
+  };
+}
+    
 export function shortenScheduleDegree(schedule) {
   let shortenedDegree
   switch(schedule.degree){
@@ -36,6 +43,8 @@ export function shortenScheduleDegree(schedule) {
     case "Master of Science": shortenedDegree = "M.Sc."; break;
     case "Bachelor of Arts": shortenedDegree = "B.A."; break;
     case "Master of Arts": shortenedDegree = "M.A."; break;
+    case "Bachelor of Engineering": shortenedDegree = "B.Eng."; break;
+    case "Master of Engineering": shortenedDegree = "M.Eng."; break;
     default: shortenedDegree = schedule.degree;
   }
   return shortenedDegree;
@@ -69,11 +78,6 @@ export const state = () => ({
    */
   week: moment().diff(isoWeek0, 'week'),
   error: undefined,
-  /**
-   * If true, do not load lectures on the server.
-   * true if frontend is a static build.
-   */
-  lazyLoad: false,
 });
 
 export const getters = {
@@ -261,9 +265,6 @@ export const mutations = {
   },
   clearError(state) {
     state.error = undefined;
-  },
-  enableLazyLoad(state) {
-    state.lazyLoad = true;
   },
 };
 
