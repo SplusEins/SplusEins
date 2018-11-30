@@ -34,19 +34,16 @@
 
         <v-card-actions>
           <v-spacer/>
-          <GithubBox
-            :fillColor="purple"
-            title="GitHub Repository" 
-            class="test123"/>
           <v-btn
-            flat
             icon
+            medium
+            outline
             color="primary"
             target="_blank"
             href="https://github.com/spluseins/spluseins">
-            <img
-              :src="gitHubIcon"
-              class="githubIcon">
+            <v-icon
+              medium
+              color="black">mdi-github-circle</v-icon>
           </v-btn>
           <v-btn
             flat
