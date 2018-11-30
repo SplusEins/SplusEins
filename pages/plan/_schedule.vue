@@ -14,7 +14,7 @@ export default {
   name: 'SchedulePage',
   head() {
     return {
-      title: this.currentSchedule.label,
+      title: 'Personlisierter Plan',
     };
   },
   components: {
