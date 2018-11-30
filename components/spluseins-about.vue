@@ -36,7 +36,6 @@
           <v-spacer/>
           <v-btn
             icon
-            medium
             outline
             color="primary"
             target="_blank"
@@ -61,18 +60,12 @@
 
 
 <script>
-import GithubBox from '../node_modules/vue-material-design-icons/GithubBox.vue';
-import gitHubIcon from '../assets/img/gitHub.svg';
 
 export default {
   name: 'SpluseinsAbout',
-  components:{
-    GithubBox: GithubBox
-  },
   data: function() {
     return {
       active: false,
-      gitHubIcon: gitHubIcon,
     };
   },
   methods:{
@@ -82,17 +75,3 @@ export default {
   }
 };
 </script>
-
-
-<style scoped lang="scss">
-.githubIcon{
-  height: 2em;
-}
-
-.test123:hover{
-  cursor: pointer;
-}
-.test123{
-  fill: palegreen !important;
-}
-</style>
