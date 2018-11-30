@@ -48,8 +48,7 @@
               <v-list-tile-title v-else>Favorit entfernen</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile
-            @click="share()">
+          <v-list-tile @click="share()">
             <v-list-tile-content>
               <v-list-tile-title>Teilen</v-list-tile-title>
             </v-list-tile-content>
@@ -70,21 +69,21 @@
       </v-menu>
 
       <v-btn
+        v-show="!isMobile"
+        :outline="$vuetify.breakpoint.xl"
+        :icon="!$vuetify.breakpoint.xl"
+        :flat="!$vuetify.breakpoint.xl"
+        @click="share()">
+        <v-icon :left="$vuetify.breakpoint.xl">share</v-icon>
+        <span v-show="$vuetify.breakpoint.xl">Teilen</span>
+      </v-btn>
+      <v-btn
         v-if="isCustomSchedule"
         v-show="!isMobile"
         outline
         @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')">
         <v-icon left>delete</v-icon>
         Löschen
-      </v-btn>
-      <v-btn
-        v-show="!isMobile"
-        :outline="$vuetify.breakpoint.xl"
-        :icon="!$vuetify.breakpoint.xl"
-        :flat="!$vuetify.breakpoint.xl"
-        @click="share()">
-        <v-icon left>share</v-icon>
-        <span v-show="$vuetify.breakpoint.xl">Teilen</span>
       </v-btn>
       <v-btn
         v-show="!isMobile"
@@ -184,7 +183,7 @@ export default {
       }
     },
     currentUrl() {
-      if (window) {
+      if (global.window) {
         return window.location.href;
       } else {
         return '';

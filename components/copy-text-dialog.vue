@@ -25,6 +25,7 @@
         <v-spacer />
         <v-btn
           flat
+          primary
           @click="dialogOpen = false">
           Schließen
         </v-btn>
@@ -61,7 +62,6 @@ export default {
   methods: {
     onTextFieldCopySuccess() {
       this.textFieldCopySuccessMessage = 'Kopiert.';
-      setTimeout(() => this.textFieldCopySuccessMessage = undefined, 5000);
     },
   },
 };
