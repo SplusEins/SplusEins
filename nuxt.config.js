@@ -44,9 +44,13 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    // https://vuetifyjs.com
     '@/plugins/vuetify',
+    // https://github.com/championswimmer/vuex-persist
     { src: '@/plugins/vuex-persist', ssr: false },
+    // https://github.com/AmazingDreams/vue-matomo
     { src: '@/plugins/vue-matomo', ssr: false },
+    // https://github.com/Inndy/vue-clipboard2
     '@/plugins/vue-clipboard2',
   ],
 
@@ -54,7 +58,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
+    // https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',

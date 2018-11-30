@@ -224,6 +224,7 @@ export default {
       this.$router.replace('/');
     },
     async share() {
+      // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
       if (navigator.share) {
         await navigator.share({
           url: this.currentUrl,
