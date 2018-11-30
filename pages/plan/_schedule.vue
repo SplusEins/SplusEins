@@ -14,7 +14,7 @@ export default {
   name: 'SchedulePage',
   head() {
     return {
-      title: "Personlisierter Plan",
+      title: 'Personlisierter Plan',
     };
   },
   components: {
