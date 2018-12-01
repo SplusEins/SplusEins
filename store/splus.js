@@ -226,6 +226,9 @@ export const mutations = {
   setWeek(state, week) {
     state.week = week;
   },
+  updateWeek(state) {
+    state.week = moment().day() > 5 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
+  },
   setSchedule(state, schedule) {
     state.schedule = schedule;
   },
