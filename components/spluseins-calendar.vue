@@ -118,7 +118,8 @@ export default {
     CustomTimetableDeleteDialog,
   },
   data() {
-    const startOfWeek = Day.fromMoment(moment().startOf('isoWeek'));
+    const currentWeek = Day.fromMoment(moment().startOf('isoWeek'));
+    const startOfWeek = moment().day() > 5 ? currentWeek.add(1, 'weeks') : currentWeek;
     const weeklyCalendar = {
       id: 'W',
       label: 'Woche',
@@ -193,7 +194,8 @@ export default {
   },
   mounted() {
     if (this.lazyLoad) {
-      // static build -> no lectures are in the store
+      // static build -> splus.week is possibly wrong and no lectures are in the store
+      this.updateWeek();
       this.loadLectures();
     }
   },
@@ -228,6 +230,7 @@ export default {
     },
     ...mapMutations({
       setWeek: 'splus/setWeek',
+      updateWeek: 'splus/updateWeek',
       addFavoriteSchedule: 'splus/addFavoriteSchedule',
       removeFavoriteSchedule: 'splus/removeFavoriteSchedule',
     }),

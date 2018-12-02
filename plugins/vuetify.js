@@ -14,6 +14,7 @@ Vue.$dayspan.addLocale('de', LocaleDe);
 Vue.$dayspan.setLocale('de', true);
 
 Vue.use(Vuetify, {
+  iconfont: 'mdi',
   options: {
     customProperties: true,
   },

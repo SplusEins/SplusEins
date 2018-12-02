@@ -15,7 +15,8 @@ apps:
         CACHE_PATH: ./api-cache/
     - name: web-prod
       port: 3001
-      script: ./node_modules/.bin/nuxt start
+      script: ./node_modules/nuxt/bin/nuxt.js
+      args: start
       cwd: ./
       instances: 'max'
       watch: true

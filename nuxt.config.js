@@ -8,8 +8,8 @@ export default {
   */
   head: {
     titleTemplate: '%s - SplusEins',
-    link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
+    link: [		
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700ç' },
     ]
   },
 
@@ -62,6 +62,7 @@ export default {
     '@nuxtjs/axios',
     // https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
+    'nuxt-material-design-icons',
   ],
   /*
   ** Axios module configuration
