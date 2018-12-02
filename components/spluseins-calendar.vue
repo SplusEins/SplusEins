@@ -6,25 +6,41 @@
     @change="calendarChanged">
 
     <template slot="actions">
-      <v-btn
-        v-if="!isCustomSchedule && !isFavorite"
-        v-show="!isTinyMobile"
-        :small="$vuetify.breakpoint.xs"
-        icon
-        flat
-        @click="addFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','addToFavorites')">
-        <v-icon>favorite_border</v-icon>
-      </v-btn>
-      <v-btn
-        v-if="!isCustomSchedule && isFavorite"
-        v-show="!isTinyMobile"
-        :small="$vuetify.breakpoint.xs"
-        icon
-        flat
-        @click="removeFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','removeFavorites')">
-        <v-icon>favorite</v-icon>
-      </v-btn>
 
+      <v-tooltip
+        v-if="!isCustomSchedule"
+        v-show="!isTinyMobile"
+        :disabled="$vuetify.breakpoint.xl"
+        bottom>
+        <v-btn
+          v-if="!isFavorite"
+          slot="activator"
+          :small="$vuetify.breakpoint.xs"
+          :outline="$vuetify.breakpoint.xl"
+          :icon="!$vuetify.breakpoint.xl"
+          :flat="!$vuetify.breakpoint.xl"
+          @click="addFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','addToFavorites')">
+          <v-icon :left="$vuetify.breakpoint.xl">favorite_border</v-icon>
+          <span v-show="$vuetify.breakpoint.xl">Favorisieren</span>
+        </v-btn>
+        <v-btn
+          v-else
+          slot="activator"
+          :small="$vuetify.breakpoint.xs"
+          :outline="$vuetify.breakpoint.xl"
+          :icon="!$vuetify.breakpoint.xl"
+          :flat="!$vuetify.breakpoint.xl"
+          @click="removeFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','removeFavorites')">
+          <v-icon :left="$vuetify.breakpoint.xl">favorite</v-icon>
+          <span v-show="$vuetify.breakpoint.xl">Favorit entfernen</span>
+        </v-btn>
+        <span>
+          <template v-if="!isFavorite">Favorisieren</template>
+          <template v-else>Favorit entfernen</template>
+        </span>
+      </v-tooltip>
+
+      <!-- mobile action bar -->
       <v-menu
         v-show="isMobile"
         bottom
@@ -68,31 +84,61 @@
         </v-list>
       </v-menu>
 
-      <v-btn
+      <!-- desktop action bar -->
+      <v-tooltip
         v-show="!isMobile"
-        :outline="$vuetify.breakpoint.xl"
-        :icon="!$vuetify.breakpoint.xl"
-        :flat="!$vuetify.breakpoint.xl"
-        @click="share()">
-        <v-icon :left="$vuetify.breakpoint.xl">share</v-icon>
-        <span v-show="$vuetify.breakpoint.xl">Teilen</span>
-      </v-btn>
-      <v-btn
+        :disabled="$vuetify.breakpoint.xl"
+        bottom>
+        <v-btn
+          slot="activator"
+          :outline="$vuetify.breakpoint.xl"
+          :icon="!$vuetify.breakpoint.xl"
+          :flat="!$vuetify.breakpoint.xl"
+          @click="share()">
+          <v-icon :left="$vuetify.breakpoint.xl">share</v-icon>
+          <span v-show="$vuetify.breakpoint.xl">Teilen</span>
+        </v-btn>
+        <span>Teilen</span>
+      </v-tooltip>
+
+      <v-tooltip
         v-if="isCustomSchedule"
         v-show="!isMobile"
-        outline
-        @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')">
-        <v-icon left>delete</v-icon>
-        Löschen
-      </v-btn>
-      <v-btn
+        :disabled="$vuetify.breakpoint.xl"
+        bottom>
+        <v-btn
+          slot="activator"
+          :outline="$vuetify.breakpoint.xl"
+          :icon="!$vuetify.breakpoint.xl"
+          :flat="!$vuetify.breakpoint.xl"
+          @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')">
+          <v-icon :left="$vuetify.breakpoint.xl">delete</v-icon>
+          <span v-show="$vuetify.breakpoint.xl">Löschen</span>
+        </v-btn>
+        <span>Löschen</span>
+      </v-tooltip>
+
+      <v-tooltip
         v-show="!isMobile"
-        outline
-        @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
-        <v-icon left>edit</v-icon>
-        <template v-if="isCustomSchedule">Bearbeiten</template>
-        <template v-else>Personalisieren</template>
-      </v-btn>
+        :disabled="$vuetify.breakpoint.xl"
+        bottom>
+        <v-btn
+          slot="activator"
+          :outline="$vuetify.breakpoint.xl"
+          :icon="!$vuetify.breakpoint.xl"
+          :flat="!$vuetify.breakpoint.xl"
+          @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
+          <v-icon :left="$vuetify.breakpoint.xl">edit</v-icon>
+          <span v-show="$vuetify.breakpoint.xl">
+            <template v-if="isCustomSchedule">Bearbeiten</template>
+            <template v-else>Personalisieren</template>
+          </span>
+        </v-btn>
+        <span>
+          <template v-if="isCustomSchedule">Bearbeiten</template>
+          <template v-else>Personalisieren</template>
+        </span>
+      </v-tooltip>
 
       <custom-timetable-delete-dialog
         v-model="deleteTimetableDialogOpen"
