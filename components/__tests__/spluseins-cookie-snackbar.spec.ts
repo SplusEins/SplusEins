@@ -36,7 +36,18 @@ describe('Cookie snackbar', () => {
       }
     });
 
-    return mount(SpluseinsCookieSnackbar, { store });
+    return mount(SpluseinsCookieSnackbar, 
+      { 
+        store,  
+        mocks: { $matomo: { 
+                            rememberConsentGiven: jest.fn(), 
+                            disableCookies: jest.fn(),
+                            deleteCookies: jest.fn(),
+                            setConsentGiven: jest.fn(),
+                          },
+               },
+      }
+    );
   }
 
   it('should render a snackbar by default', () => {
