@@ -26,12 +26,30 @@
             width="80%"
             position="right"
           />
+
+          <v-card-media
+            v-else-if="error.statusCode == 500"
+            class="ErrorImg"
+            src="/500.png"
+            width="80%"
+            position="right"
+          />
+
           <v-card-text>
             <div 
               v-if="error.statusCode == 404"
               class="text-xs-center"
             >
               Diese Seite gibt es leider nicht...
+            </div>
+          </v-card-text>
+          
+          <v-card-text>
+            <div 
+              v-if="error.statusCode == 500"
+              class="text-xs-center"
+            >
+              Internal Server Error  
             </div>
           </v-card-text>
 
