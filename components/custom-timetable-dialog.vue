@@ -53,7 +53,7 @@
                 :key="schedule.id"
                 close
                 @input="removeSchedule(schedule)">
-                {{ schedule.label }}
+                {{ schedule.label + ' (' +schedule.semester + '. Sem)' }}
               </v-chip>
             </v-flex>
 
