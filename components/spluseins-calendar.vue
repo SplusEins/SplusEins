@@ -6,13 +6,14 @@
     @change="calendarChanged">
 
     <template slot="actions">
-      <responsive-icon-button
-        v-if="!isCustomSchedule"
-        v-show="!isTinyMobile"
-        :breakpoint="$vuetify.breakpoint.xl"
-        :icon="isFavorite ? 'favorite' : 'favorite_border'"
-        :text="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
-        @click="toggleFavorite" />
+      <span v-show="!isTinyMobile">
+        <responsive-icon-button
+          v-if="!isCustomSchedule"
+          :breakpoint="$vuetify.breakpoint.xl"
+          :icon="isFavorite ? 'favorite' : 'favorite_border'"
+          :text="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
+          @click="toggleFavorite" />
+      </span>
 
       <!-- mobile action bar -->
       <v-menu
