@@ -95,6 +95,14 @@
       </span>
     </template>
 
+    <template 
+      slot="eventPopover" 
+      slot-scope="slotData">
+      <ds-calendar-event-popover
+        v-bind="slotData"
+        :read-only="true"/>
+    </template>
+
   </dayspan-custom-calendar>
 </template>
 
