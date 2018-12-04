@@ -730,10 +730,6 @@ export default {
 
 <style lang="scss">
 
-.ds-calendar-event .v-menu__activator * {
-  cursor: text;
-}
-
 .ds-calendar-event{
   user-select: auto !important;
 }
