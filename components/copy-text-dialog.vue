@@ -3,13 +3,21 @@
     v-model="dialogOpen"
     max-width="400">
     <v-card>
-      <v-card-title
-        class="headline"
-        primary-title>
-        Kopieren
-      </v-card-title>
 
-      <v-card-text>
+      <v-toolbar
+        dark
+        color="primary">
+        <v-toolbar-title>Teilen</v-toolbar-title>
+        <v-spacer />
+        <v-btn
+          icon
+          dark
+          @click.native="dialogOpen = false">
+          <v-icon>close</v-icon>
+        </v-btn>
+      </v-toolbar>
+
+      <v-card-text class="card-text">
         <v-text-field
           v-clipboard:copy="textToCopy"
           v-clipboard:success="onTextFieldCopySuccess"
@@ -22,15 +30,6 @@
           readonly />
       </v-card-text>
 
-      <v-card-actions>
-        <v-spacer />
-        <v-btn
-          flat
-          primary
-          @click="dialogOpen = false">
-          Schließen
-        </v-btn>
-      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
@@ -67,3 +66,13 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.card-text{
+  padding-bottom: 0; 
+}
+
+.card-action{
+  padding-top: 0;
+}
+</style> 
