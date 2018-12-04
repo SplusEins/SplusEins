@@ -1,7 +1,7 @@
 <template>
   <v-dialog
     v-model="dialogOpen"
-    width="400">
+    max-width="400">
     <v-card>
       <v-card-title
         class="headline"
@@ -18,6 +18,7 @@
           append-icon="file_copy"
           autofocus
           solo
+          full-width
           readonly />
       </v-card-text>
 
