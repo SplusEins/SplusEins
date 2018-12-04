@@ -183,7 +183,7 @@ export default {
   mounted() {
     if (this.lazyLoad) {
       // static build -> splus.week is possibly wrong and no lectures are in the store
-      this.updateWeek();
+      this.resetWeek();
       this.loadLectures();
     }
   },
@@ -199,7 +199,7 @@ export default {
     },
     ...mapMutations({
       setWeek: 'splus/setWeek',
-      updateWeek: 'splus/updateWeek',
+      resetWeek: 'splus/resetWeek',
       addFavoriteSchedule: 'splus/addFavoriteSchedule',
       removeFavoriteSchedule: 'splus/removeFavoriteSchedule',
     }),
