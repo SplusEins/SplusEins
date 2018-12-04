@@ -53,7 +53,7 @@
                 :key="schedule.id"
                 close
                 @input="removeSchedule(schedule)">
-                {{ schedule.label }}
+                {{ getFormattedName(schedule) }}
               </v-chip>
             </v-flex>
 
@@ -153,6 +153,14 @@ export default {
     }
   },
   methods: {
+    getFormattedName(schedule){
+      for (const element of this.selectedSchedules) {
+        if ((schedule.label == element.label) && (schedule.semester != element.semester)) {
+          return schedule.label + ' (' + schedule.semester + '. Sem)';
+        }
+      }
+      return schedule.label;
+    },
     trackMatomoEvent (category, action , name, value) {
       this.$matomo.trackEvent(category, action, name,value);
     },
