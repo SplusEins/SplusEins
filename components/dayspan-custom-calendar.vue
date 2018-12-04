@@ -730,8 +730,8 @@ export default {
 
 <style lang="scss">
 
-.ds-calendar-event .v-menu__activator * {
-  cursor: text;
+.ds-ev-description{
+  display: none;
 }
 
 .ds-calendar-event{
@@ -841,9 +841,6 @@ export default {
 
 .ds-week .ds-day-today > div:not(.ds-hour):not(.v-menu) {
   border-top: 3px solid var(--v-primary-base) !important;
-}
-.ds-ev-description{
-  white-space: pre-wrap;
 }
 
 </style>

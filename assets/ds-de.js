@@ -123,9 +123,10 @@ export default {
       }
     },
     dsCalendarEventPopover: {
+      allowEditOnReadOnly: false,
       formats: {
-        start:    'dddd, MMMM D',
-        time:     'h:mm a'
+        start:    'dddd, D. MMMM',
+        time:     'hh:mm'
       },
       labels: {
         allDay:   'All day',
