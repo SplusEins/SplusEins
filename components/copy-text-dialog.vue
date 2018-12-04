@@ -7,14 +7,13 @@
       <v-toolbar
         dark
         color="primary">
-        <v-toolbar-title>Teilen</v-toolbar-title>
-        <v-spacer />
         <v-btn
           icon
           dark
           @click.native="dialogOpen = false">
           <v-icon>close</v-icon>
         </v-btn>
+        <v-toolbar-title>Link Teilen</v-toolbar-title>
       </v-toolbar>
 
       <v-card-text class="card-text">
@@ -68,11 +67,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .card-text{
   padding-bottom: 0; 
 }
 
-.card-action{
-  padding-top: 0;
-}
 </style> 
