@@ -136,7 +136,7 @@ export const getters = {
         data: {
           title: lecture.title,
           color, // needs to be a hex string
-          description: `\n${lecture.lecturer}\n${lecture.room} ${lecture.info}`,
+          description: lecture.info ? `\n${lecture.lecturer}, \n${lecture.info}` : `\n${lecture.lecturer}`,
           location: lecture.room,
           concurrentCount: lecturesByStart.get(lectureStartKey(lecture))
             .length,
