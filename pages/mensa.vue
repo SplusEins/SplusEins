@@ -7,7 +7,26 @@
 
     <h2>Mensa Wolfenbüttel</h2>
     <span>Montag bis Freitag 11:15 - 14:15 Uhr</span>
-
+    <br>
+    <span class="explanation">
+      <span>
+        Vegetarisch
+        <v-icon
+          :color="getIconColor()"
+          small>
+          mdi-leaf
+        </v-icon>
+      </span>
+      &nbsp;
+      <span>
+        Vegan
+        <v-icon
+          color="green"
+          small>
+          mdi-leaf
+        </v-icon>
+      </span>
+    </span>
     <v-divider class="divider"/>
 
     <v-layout 
@@ -46,27 +65,7 @@
       </v-flex>
     </v-layout> 
     <span class="disclaimer">
-      <span>
-        Vegetarisch
-        <v-icon
-          :color="getIconColor()"
-          small>
-          mdi-leaf
-        </v-icon>
-      </span>
-      &nbsp;&nbsp;
-      <span>
-        Vegan
-        <v-icon
-          color="green"
-          small>
-          mdi-leaf
-        </v-icon>
-      </span>
-      &nbsp;&nbsp;
-      <span>
-        Quelle: openmensa.org
-      </span>
+      Quelle: openmensa.org
     </span>
   </v-container>
 </template>
@@ -136,6 +135,10 @@ export default {
 
 
 <style scoped lang="scss">
+
+.explanation{
+  opacity: 0.5;
+}
 
 .icon{
   opacity: 0.7;
