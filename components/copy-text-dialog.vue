@@ -15,7 +15,7 @@
           v-clipboard:success="onTextFieldCopySuccess"
           :value="textToCopy"
           :success-messages="textFieldCopySuccessMessage"
-          append-icon="file_copy"
+          append-icon="mdi-content-copy"
           autofocus
           solo
           full-width
