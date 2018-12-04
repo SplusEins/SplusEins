@@ -10,6 +10,7 @@
       v-for="route in customSchedulesAsRoutes"
       :key="route.query.name"
       :to="route"
+      exact
       nuxt>
       <v-list-tile-content
         @click="trackMatomoEvent('Menu','custom plan used')">
