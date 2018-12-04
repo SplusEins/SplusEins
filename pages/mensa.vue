@@ -29,6 +29,13 @@
             dense>
             <div class="list-tile">
               <span class="category">{{ item.category }}:</span>
+              <v-icon
+                v-if="displayIcon(item)"
+                :color="getIconColor(item)"
+                class="icon"
+                small>
+                mdi-leaf
+              </v-icon>
               <br>
               <span>{{ item.name }}</span>
               <br>
@@ -39,7 +46,27 @@
       </v-flex>
     </v-layout> 
     <span class="disclaimer">
-      Quelle: openmensa.org
+      <span>
+        Vegetarisch
+        <v-icon
+          :color="getIconColor()"
+          small>
+          mdi-leaf
+        </v-icon>
+      </span>
+      &nbsp;&nbsp;
+      <span>
+        Vegan
+        <v-icon
+          color="green"
+          small>
+          mdi-leaf
+        </v-icon>
+      </span>
+      &nbsp;&nbsp;
+      <span>
+        Quelle: openmensa.org
+      </span>
     </span>
   </v-container>
 </template>
@@ -70,9 +97,10 @@ export default {
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
       lazyLoad: (state) => state.lazyLoad,
+      isDark: (state) => state.theme.isDark,
     }),
   },
-  mounted(){
+  mounted() {
     if (this.lazyLoad) {
       // static build -> no mensa plan is in the store
       this.loadWeek();
@@ -82,15 +110,25 @@ export default {
     ...mapActions({
       loadWeek: 'mensa/loadWeek',
     }),
-    getDayHeader(dayPlan){
+    getDayHeader(dayPlan) {
       const day = moment(dayPlan.date.toString());
       return (day.isSame(moment(), 'day')? 'Heute' : day.format('dddd')) + " - " + day.format('DD.MM.YYYY');
     },
-    getPriceLabel(price){
+    getPriceLabel(price) {
       const euros = Math.floor(price);
       let cents = Math.round((price - euros) * 100);
       cents = cents != 0 ? cents : '00';
       return euros + ',' + cents + '€';
+    },
+    getIconColor(item) {
+      if(item == undefined || item.notes.includes('vegetarisch')){
+        return this.isDark? 'white' : 'black';
+      }else if(item.notes.includes('vegan')){
+        return 'green';
+      }
+    },
+    displayIcon(item) {
+      return item.notes.includes('vegetarisch') || item.notes.includes('vegan');
     },
   },
 };
@@ -98,6 +136,10 @@ export default {
 
 
 <style scoped lang="scss">
+
+.icon{
+  opacity: 0.7;
+}
 
 .list-tile{
   padding: 5px 0 5px 15px;
