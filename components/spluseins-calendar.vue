@@ -10,7 +10,7 @@
         <responsive-icon-button
           v-if="!isCustomSchedule"
           :breakpoint="$vuetify.breakpoint.xl"
-          :icon="isFavorite ? 'favorite' : 'favorite_border'"
+          :icon="isFavorite ? 'mdi-heart' : 'mdi-heart-outline'"
           :text="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
           @click="toggleFavorite" />
       </span>
@@ -25,7 +25,7 @@
           :small="$vuetify.breakpoint.xs"
           class="cursor-pointer"
           icon>
-          <v-icon>more_vert</v-icon>
+          <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
 
         <v-list>
@@ -62,19 +62,19 @@
       <span v-show="!isMobile">
         <responsive-icon-button
           :breakpoint="$vuetify.breakpoint.xl"
-          icon="share"
+          icon="mdi-share-variant"
           text="Teilen"
           @click="share" />
         <responsive-icon-button
           v-if="isCustomSchedule"
           :breakpoint="$vuetify.breakpoint.xl"
-          icon="delete"
+          icon="mdi-delete"
           text="Löschen"
           @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')" />
         <responsive-icon-button
           :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
           :breakpoint="$vuetify.breakpoint.xl"
-          icon="edit"
+          icon="mdi-pencil"
           @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')" />
       </span>
 
@@ -96,8 +96,8 @@
       </span>
     </template>
 
-    <template 
-      slot="eventPopover" 
+    <template
+      slot="eventPopover"
       slot-scope="slotData">
       <ds-calendar-event-popover
         v-bind="slotData"

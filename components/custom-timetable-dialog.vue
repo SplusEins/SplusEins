@@ -13,7 +13,7 @@
           icon
           dark
           @click.native="dialogOpen = false">
-          <v-icon>close</v-icon>
+          <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-toolbar-title>Neuer Stundenplan</v-toolbar-title>
         <v-spacer />
