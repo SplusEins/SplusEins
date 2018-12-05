@@ -1,8 +1,9 @@
-import Vue from 'vue';
 import colors from 'vuetify/es5/util/colors';
 import * as moment from 'moment';
-import SCHEDULES from '~/assets/schedules.json';
+import * as SCHEDULES from '~/assets/schedules.json';
 import * as chroma from 'chroma-js';
+import TimetableConfiguration from '~/model/TimetableConfiguration';
+import { Route } from 'vue-router';
 
 export const uniq = (iterable) => [...new Set(iterable)];
 export const flatten = (iterable) => [].concat(...iterable);
@@ -18,25 +19,25 @@ const isoWeek0 = moment()
   .subtract(1, 'weeks'); // start of week 0
 
 
-export function customScheduleToRoute(customSchedule) {
+export function customScheduleToRoute(customSchedule): Partial<Route> {
   const query = {
     id: customSchedule.id,
     course: customSchedule.whitelist,
     name: customSchedule.label,
-    v: 1
+    v: '1',
   };
 
   return { name: 'plan-schedule', params: {}, query };
 }
 
-export function scheduleToRoute(schedule) {
+export function scheduleToRoute(schedule): Partial<Route> {
   return {
     name: 'plan-schedule',
     params: { schedule: schedule.id },
   };
 }
-    
-export function shortenScheduleDegree(schedule) {
+
+export function shortenScheduleDegree(schedule): string {
   let shortenedDegree
   switch(schedule.degree){
     case "Bachelor of Science": shortenedDegree = "B.Sc."; break;
@@ -47,6 +48,7 @@ export function shortenScheduleDegree(schedule) {
     case "Master of Engineering": shortenedDegree = "M.Eng."; break;
     default: shortenedDegree = schedule.degree;
   }
+
   return shortenedDegree;
 }
 
@@ -76,7 +78,7 @@ export const state = () => ({
    * Currently viewed week.
    * Week 53 of year 2018 equals week 1 of year 2019.
    */
-  week: moment().day() > 5 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week'),
+  week: undefined,
   error: undefined,
 });
 
@@ -136,7 +138,7 @@ export const getters = {
         data: {
           title: lecture.title,
           color, // needs to be a hex string
-          description: `\n${lecture.lecturer}\n${lecture.room} ${lecture.info}`,
+          description: lecture.info ? `\n${lecture.lecturer}, \n${lecture.info}` : `\n${lecture.lecturer}`,
           location: lecture.room,
           concurrentCount: lecturesByStart.get(lectureStartKey(lecture))
             .length,
@@ -218,7 +220,7 @@ export const mutations = {
     const uniqueLectures = [...lecturesByKey.values()];
 
     // reactive variant of state.lectures[week].push(lectures)
-    Vue.set(state.lectures, week, uniqueLectures);
+    this._vm.$set(state.lectures, week, uniqueLectures);
   },
   clearLectures(state) {
     state.lectures = {};
@@ -226,7 +228,7 @@ export const mutations = {
   setWeek(state, week) {
     state.week = week;
   },
-  updateWeek(state) {
+  resetWeek(state) {
     state.week = moment().day() > 5 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
   },
   setSchedule(state, schedule) {
@@ -250,10 +252,10 @@ export const mutations = {
       return;
     }
 
-    Vue.set(state.customSchedules, label, customSchedule);
+    this._vm.$set(state.customSchedules, label, customSchedule);
   },
   deleteCustomSchedule(state, customSchedule) {
-    Vue.delete(state.customSchedules, customSchedule.label);
+    this._vm.$delete(state.customSchedules, customSchedule.label);
   },
   addFavoriteSchedule(state, favoriteSchedule){
     if(state.favoriteSchedules.filter(favorite => favorite.id == favoriteSchedule.id).length == 0){
@@ -318,18 +320,16 @@ export const actions = {
    */
   importSchedule({ state, commit }, { params, query }) {
     commit('clearLectures');
+    commit('resetWeek');
 
     switch (parseFloat(query.v)) {
       case 1:
-        const courses = Array.isArray(query.course || []) ?
+        const whitelist: string[] = Array.isArray(query.course || []) ?
           query.course : [query.course];
-        const ids = Array.isArray(query.id || []) ?
+        const id: string[] = Array.isArray(query.id || []) ?
           query.id : [query.id];
-        const customSchedule = {
-          id: ids,
-          label: query.name,
-          whitelist: courses,
-        };
+        const label: string = query.name;
+        const customSchedule = { id, label, whitelist } as TimetableConfiguration;
 
         commit('addCustomSchedule', customSchedule);
         commit('setSchedule', customSchedule);
