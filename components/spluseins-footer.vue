@@ -39,16 +39,12 @@
 </template>
 
 <script lang="js">
-import SpluseinsImpressum from './spluseins-impressum.vue'
 import SpluseinsAbout from './spluseins-about.vue'
-import SpluseinsDataPrivacy from './spluseins-data-privacy.vue'
 
   export default  {
     name: 'SplusEinsFooter',
     components: {
-      SpluseinsImpressum,
       SpluseinsAbout,
-      SpluseinsDataPrivacy
     },
     data() {
       return {
