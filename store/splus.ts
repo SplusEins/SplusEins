@@ -40,12 +40,14 @@ export function scheduleToRoute(schedule): Partial<Route> {
 export function shortenScheduleDegree(schedule): string {
   let shortenedDegree
   switch(schedule.degree){
-    case "Bachelor of Science": shortenedDegree = "B.Sc."; break;
-    case "Master of Science": shortenedDegree = "M.Sc."; break;
-    case "Bachelor of Arts": shortenedDegree = "B.A."; break;
-    case "Master of Arts": shortenedDegree = "M.A."; break;
-    case "Bachelor of Engineering": shortenedDegree = "B.Eng."; break;
-    case "Master of Engineering": shortenedDegree = "M.Eng."; break;
+    case 'Bachelor of Science': shortenedDegree = 'B.Sc.'; break;
+    case 'Master of Science': shortenedDegree = 'M.Sc.'; break;
+    case 'Bachelor of Arts': shortenedDegree = 'B.A.'; break;
+    case 'Master of Arts': shortenedDegree = 'M.A.'; break;
+    case 'Bachelor of Engineering': shortenedDegree = 'B.Eng.'; break;
+    case 'Master of Engineering': shortenedDegree = 'M.Eng.'; break;
+    case 'Bachelor of Laws': shortenedDegree = 'LL.B.'; break;
+    case 'Master of Laws': shortenedDegree = 'LL.M.'; break;
     default: shortenedDegree = schedule.degree;
   }
 
