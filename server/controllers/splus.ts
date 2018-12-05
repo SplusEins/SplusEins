@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as cors from 'cors';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
+import * as TIMETABLES from '../../assets/schedules.json';
 
 import { SplusApi } from '../lib/SplusApi';
 import { RichLecture } from '../../model/RichLecture';
@@ -36,15 +37,20 @@ router.options('/:schedule/:week', cors());
  * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
  * @return RichLecture[]
  */
-router.get('/:schedule/:week', cors(), async (req, res, next) => {
-  const schedule = req.params.schedule;
+router.get('/:timetable/:week', cors(), async (req, res, next) => {
+  const timetableId = req.params.timetable;
+  const timetable = TIMETABLES.find(({ id }) => id == timetableId);
+  if (!timetable) {
+    res.send(404);
+  }
+
   const week = parseInt(req.params.week);
-  const key = `${schedule}-${week}`;
+  const key = `${timetableId}-${week}`;
 
   try {
     const data = await cache.wrap(key, async () => {
       console.log(`timetable cache miss for key ${key}`);
-      const lectures = await SplusApi.getData('#' + schedule, week);
+      const lectures = await SplusApi.getData('#' + timetableId, week, timetable.setplan);
       return lectures.map((ilecture) => new RichLecture(ilecture, week));
     }, { ttl: SCHEDULE_CACHE_SECONDS });
 
