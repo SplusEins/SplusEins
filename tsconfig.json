@@ -1,11 +1,24 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "sourceMap": true,
-        "lib": ["es2015"]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "lib": ["es2015", "es2016", "es2017", "es2018"],
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
     },
-    "exclude": [
-      "node_modules"
-    ]
+    "strict": true,
+    // TODO remove these
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false,
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

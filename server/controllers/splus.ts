@@ -4,7 +4,7 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusApi } from '../lib/SplusApi';
-import { RichLecture } from '../model/RichLecture';
+import { RichLecture } from '../../model/RichLecture';
 
 const SCHEDULE_CACHE_SECONDS = 600;
 

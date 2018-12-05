@@ -58,6 +58,8 @@ export default {
     // https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
     'nuxt-material-design-icons',
+    // https://github.com/nuxt-community/typescript-template
+    '~/modules/typescript',
   ],
   /*
   ** Axios module configuration
