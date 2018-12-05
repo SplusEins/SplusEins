@@ -657,11 +657,131 @@
   "degree": "Master of Engineering",
   "semester": 1
 }, {
+  "id": "SPLUS1DECE5",
+  "slug": "R RFS 1",
+  "label": "Recht, Finanzmanagement und Steuern",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECE4",
+  "slug": "R RFS 2",
+  "label": "Recht, Finanzmanagement und Steuern",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECE3",
+  "slug": "R RFS 3",
+  "label": "Recht, Finanzmanagement und Steuern",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECE2",
+  "slug": "R RFS 4",
+  "label": "Recht, Finanzmanagement und Steuern",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECE0",
+  "slug": "R RFS 6",
+  "label": "Recht, Finanzmanagement und Steuern",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECDA",
+  "slug": "R RPP 1",
+  "label": "Recht, Personalmanagement und -psychologie",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECDB",
+  "slug": "R RPP 2",
+  "label": "Recht, Personalmanagement und -psychologie",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECDC",
+  "slug": "R RPP 3",
+  "label": "Recht, Personalmanagement und -psychologie",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECDD",
+  "slug": "R RPP 4",
+  "label": "Recht, Personalmanagement und -psychologie",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECDF",
+  "slug": "R RPP 6",
+  "label": "Recht, Personalmanagement und -psychologie",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 6,
+  "setplan": true
+}, {
   "id": "SPLUS5A5760",
   "slug": "R WR 1",
   "label": "Wirtschaftsrecht",
   "faculty": "Recht",
   "degree": "Bachelor of Laws",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS5A575F",
+  "slug": "R WR 2",
+  "label": "Wirtschaftsrecht",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUSD271FC",
+  "slug": "R WR 3",
+  "label": "Wirtschaftsrecht",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUSD271FB",
+  "slug": "R WR 4",
+  "label": "Wirtschaftsrecht",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS1DECD9",
+  "slug": "R WR 6",
+  "label": "Wirtschaftsrecht",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUSF9BEF2",
+  "slug": "R Master 1",
+  "label": "International Law and Business",
+  "faculty": "Recht",
+  "degree": "Master of Laws",
   "semester": 1,
   "setplan": true
 } ]
