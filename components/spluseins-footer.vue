@@ -21,9 +21,17 @@
         — 
         <spluseins-about/>
         — 
-        <spluseins-impressum/>
+        <span
+          class="link"
+          @click="openImpressum()">
+          Impressum
+        </span>
         — 
-        <spluseins-data-privacy/>
+        <span
+          class="link"
+          @click="openDataPrivacy()">
+          Datenschutz
+        </span>
       </v-flex>
     </v-layout>
   </v-footer>
@@ -50,15 +58,23 @@ import SpluseinsDataPrivacy from './spluseins-data-privacy.vue'
 
   },
   mounted() {
-
   },
   methods: {
-
+    openImpressum() {
+      this.$router.replace('/impressum');
+    },
+    openDataPrivacy() {
+      this.$router.replace('/datenschutz');
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
+
+.link{
+  cursor: pointer;
+}
 
 @media screen and (max-width: 350px) {
   .font-size{
