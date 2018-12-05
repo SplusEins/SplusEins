@@ -347,7 +347,10 @@ export default {
       .v-list__tile {
         padding: 0px !important;
         height: auto;
-        .v-list__tile__sub-title {
+        .v-list__tile__title{
+          white-space: pre-wrap;
+          height: auto;
+          line-height: normal;
         }
       }
     }
