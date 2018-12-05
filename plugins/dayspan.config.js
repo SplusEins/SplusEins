@@ -53,5 +53,10 @@ export default {
         textDecorationColor: cancelled ? stateColor : 'inherit'
       };
     },
+
+    getEventOccurrence()
+    {    
+      return "";
+    },
   },
 };

@@ -78,7 +78,7 @@ export const state = () => ({
    * Currently viewed week.
    * Week 53 of year 2018 equals week 1 of year 2019.
    */
-  week: moment().day() > 5 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week'),
+  week: undefined,
   error: undefined,
 });
 
@@ -138,7 +138,7 @@ export const getters = {
         data: {
           title: lecture.title,
           color, // needs to be a hex string
-          description: `\n${lecture.lecturer}\n${lecture.room} ${lecture.info}`,
+          description: lecture.info ? `\n${lecture.lecturer}, \n${lecture.info}` : `\n${lecture.lecturer}`,
           location: lecture.room,
           concurrentCount: lecturesByStart.get(lectureStartKey(lecture))
             .length,
@@ -228,7 +228,7 @@ export const mutations = {
   setWeek(state, week) {
     state.week = week;
   },
-  updateWeek(state) {
+  resetWeek(state) {
     state.week = moment().day() > 5 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
   },
   setSchedule(state, schedule) {
@@ -320,6 +320,7 @@ export const actions = {
    */
   importSchedule({ state, commit }, { params, query }) {
     commit('clearLectures');
+    commit('resetWeek');
 
     switch (parseFloat(query.v)) {
       case 1:
