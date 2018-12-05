@@ -98,7 +98,7 @@
     <template 
       slot="eventPopover" 
       slot-scope="slotData">
-      <ds-calendar-event-popover
+      <custom-event-popover
         v-bind="slotData"
         :read-only="true"/>
     </template>
@@ -113,6 +113,7 @@ import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import DayspanCustomCalendar from './dayspan-custom-calendar.vue';
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
+import CustomEventPopover from './custom-event-popover.vue';
 
 export default {
   name: 'SpluseinsCalendar',
@@ -120,6 +121,7 @@ export default {
     DayspanCustomCalendar,
     CustomTimetableDialog,
     CustomTimetableDeleteDialog,
+    CustomEventPopover,
   },
   data() {
     const currentWeek = Day.fromMoment(moment().startOf('isoWeek'));
@@ -227,6 +229,13 @@ export default {
   justify-content: flex-end;
   opacity: 0.5;
   font-size: 12px;
+}
+
+.whitePopup .v-toolbar__title{
+  color: white !important;
+}
+.whitePopup {
+  color: purple;
 }
 
 </style>
