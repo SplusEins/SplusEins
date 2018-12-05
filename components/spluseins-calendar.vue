@@ -230,12 +230,4 @@ export default {
   opacity: 0.5;
   font-size: 12px;
 }
-
-.whitePopup .v-toolbar__title{
-  color: white !important;
-}
-.whitePopup {
-  color: purple;
-}
-
 </style>
