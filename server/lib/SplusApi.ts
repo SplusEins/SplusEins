@@ -3,12 +3,13 @@ import {SplusParser} from './SplusParser';
 import {ILecture} from './ILecture';
 
 export class SplusApi {
-    private static _base_uri = 'http://splus.ostfalia.de/semesterplan123.php';
+    private static _plan_base_uri = 'http://splus.ostfalia.de/semesterplan123.php';
+    private static _set_base_uri  = 'http://splus.ostfalia.de/studentensetplan123.php';
 
-    private static splusRequest(identifier: string, weekOfYear: number): PromiseLike<string> {
+    private static splusPlanRequest(identifier: string, weekOfYear: number): PromiseLike<string> {
         return request({
             method: 'POST',
-            uri: this._base_uri,
+            uri: this._plan_base_uri,
             qs: { identifier, },
             formData: {
                 weeks: weekOfYear.toString(),
@@ -16,8 +17,19 @@ export class SplusApi {
         });
     }
 
-    static async getData(identifier: string, weekOfYear: number): Promise<ILecture[]> {
-        const data = await this.splusRequest(identifier, weekOfYear);
+    private static splusSetRequest(identifier: string, weekOfYear: number): PromiseLike<string> {
+        return request({
+            method: 'POST',
+            uri: this._set_base_uri,
+            formData: {
+                'identifier[]': identifier,
+                weeks: weekOfYear.toString(),
+            },
+        });
+    }
+
+    static async getData(identifier: string, weekOfYear: number, isSet: boolean): Promise<ILecture[]> {
+        const data = isSet? await this.splusSetRequest(identifier, weekOfYear) : await this.splusPlanRequest(identifier, weekOfYear);
         const lectures = new SplusParser(data).getLectures();
         return lectures;
     }
