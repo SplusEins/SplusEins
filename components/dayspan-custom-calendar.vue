@@ -34,7 +34,7 @@
               icon
               depressed
               @click="prev(); trackMatomoEvent('Calendar', 'prevWeek', 'clicked')" >
-              <v-icon>keyboard_arrow_left</v-icon>
+              <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
             <span>{{ prevLabel }}</span>
           </v-tooltip>
@@ -49,7 +49,7 @@
               icon
               depressed
               @click="next(); trackMatomoEvent('Calendar', 'nextWeek', 'clicked')">
-              <v-icon>keyboard_arrow_right</v-icon>
+              <v-icon>mdi-chevron-right</v-icon>
             </v-btn>
             <span>{{ nextLabel }}</span>
           </v-tooltip>
@@ -240,7 +240,7 @@ export default {
           promptConfirm: 0,
           promptCancel: 0,
           today: 'Heute',
-          todayIcon: 'today'
+          todayIcon: 'mdi-calendar-today'
         }
       }
     },

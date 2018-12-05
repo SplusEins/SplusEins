@@ -1,12 +1,12 @@
 <template>
   <v-list>
-    
+
     <v-list-tile
       to="/"
       nuxt
       @click="trackMatomoEvent('Menu','goToHomepage', 'sideMenu')">
       <v-list-tile-action>
-        <v-icon>home</v-icon>
+        <v-icon>mdi-home</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
@@ -17,7 +17,7 @@
 
     <v-list-tile @click="customTimetableDialogOpen = true; trackMatomoEvent('Menu','openCustomTimeTableDialog')">
       <v-list-tile-action>
-        <v-icon>add</v-icon>
+        <v-icon>mdi-plus</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
@@ -26,7 +26,7 @@
       </v-list-tile-content>
     </v-list-tile>
 
-    <v-list-tile 
+    <v-list-tile
       to="/mensa"
       nuxt
       @click="trackMatomoEvent('Menu', 'openMensaPlanDialog')">

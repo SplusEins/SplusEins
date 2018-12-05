@@ -11,7 +11,7 @@
         src="../assets/img/headerLogo.png"
         height="35px"
       >
-      <v-toolbar-title 
+      <v-toolbar-title
         class="header-text cursor-pointer"
         @click="trackMatomoEvent('Menu', 'goToHomepage', 'toolbar title')"
       >
@@ -28,14 +28,13 @@
           icon
           flat
           @click="setError('Keine Internetverbindung')">
-          <v-icon>wifi_off</v-icon>
+          <v-icon>mdi-wifi-off</v-icon>
         </v-btn>
         <v-btn
           icon
           flat
           @click="toggleDark(); trackMatomoEvent('Menu', 'setDark', isDark)">
-          <v-icon v-if="isDark">brightness_2</v-icon>
-          <v-icon v-else>wb_sunny</v-icon>
+          <v-icon>mdi-theme-light-dark</v-icon>
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>

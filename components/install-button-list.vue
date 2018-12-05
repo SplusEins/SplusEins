@@ -6,7 +6,7 @@
       dense>
       <v-list-tile @click="install()">
         <v-list-tile-action>
-          <v-icon>get_app</v-icon>
+          <v-icon>mdi-download</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>Als App installieren</v-list-tile-title>
