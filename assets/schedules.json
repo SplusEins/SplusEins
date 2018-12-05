@@ -656,4 +656,12 @@
   "faculty": "Elektrotechnik",
   "degree": "Master of Engineering",
   "semester": 1
+}, {
+  "id": "SPLUS5A5760",
+  "slug": "R WR 1",
+  "label": "Wirtschaftsrecht",
+  "faculty": "Recht",
+  "degree": "Bachelor of Laws",
+  "semester": 1,
+  "setplan": true
 } ]
