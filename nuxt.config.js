@@ -35,7 +35,10 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/style/app.scss'
+    '~/assets/style/app.scss',
+    'vuetify/dist/vuetify.min.css',
+    'dayspan-vuetify/dist/lib/dayspan-vuetify.min.css',
+    '@mdi/font/css/materialdesignicons.min.css'
   ],
 
   /*
