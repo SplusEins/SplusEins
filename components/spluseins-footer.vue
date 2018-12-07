@@ -14,24 +14,25 @@
         text-xs-center
         xs12
         class="font-size">
-        2018 — 
+        2018 
+        —
         <strong> 
           SplusEins
         </strong>
         — 
         <spluseins-about/>
         — 
-        <span
-          class="link"
-          @click="openImpressum()">
+        <nuxt-link 
+          to="/impressum"
+          class="link">
           Impressum
-        </span>
+        </nuxt-link>
         — 
-        <span
-          class="link"
-          @click="openDataPrivacy()">
+        <nuxt-link 
+          to="/datenschutz"
+          class="link">
           Datenschutz
-        </span>
+        </nuxt-link>
       </v-flex>
     </v-layout>
   </v-footer>
@@ -41,41 +42,25 @@
 <script lang="js">
 import SpluseinsAbout from './spluseins-about.vue'
 
-  export default  {
-    name: 'SplusEinsFooter',
-    components: {
-      SpluseinsAbout,
-    },
-    data() {
-      return {
-      }
-    },
-    computed: {
-
-  },
-  mounted() {
-  },
-  methods: {
-    openImpressum() {
-      this.$router.replace('/impressum');
-    },
-    openDataPrivacy() {
-      this.$router.replace('/datenschutz');
-    }
+export default  {
+  name: 'SplusEinsFooter',
+  components: {
+    SpluseinsAbout,
   }
 }
 </script>
 
 <style scoped lang="scss">
 
-.link{
-  cursor: pointer;
-}
-
 @media screen and (max-width: 350px) {
   .font-size{
     font-size: 12px;
   }
+}
+
+.link{
+  color: white;
+  text-decoration: none;
 }
 
 .no-min-height{
