@@ -60,6 +60,6 @@ export default {
 <style scoped lang="scss">
 .container{
   margin: auto;
-  width: 95%;
+  max-width: 1100px;
 }
 </style> 
