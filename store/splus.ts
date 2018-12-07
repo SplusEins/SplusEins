@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors';
 import * as moment from 'moment';
-import * as SCHEDULES from '~/assets/schedules.json';
+import * as TIMETABLES from '~/assets/timetables.json';
 import * as chroma from 'chroma-js';
 import TimetableConfiguration from '~/model/TimetableConfiguration';
 import { Route } from 'vue-router';
@@ -19,27 +19,28 @@ const isoWeek0 = moment()
   .subtract(1, 'weeks'); // start of week 0
 
 
-export function customScheduleToRoute(customSchedule): Partial<Route> {
+export function customScheduleToRoute(customTimetable): Partial<Route> {
   const query = {
-    id: customSchedule.id,
-    course: customSchedule.whitelist,
-    name: customSchedule.label,
+    id: customTimetable.id,
+    course: customTimetable.whitelist,
+    name: customTimetable.label,
     v: '1',
   };
 
   return { name: 'plan-schedule', params: {}, query };
 }
 
-export function scheduleToRoute(schedule): Partial<Route> {
+export function scheduleToRoute(timetable): Partial<Route> {
   return {
     name: 'plan-schedule',
-    params: { schedule: schedule.id },
+    params: { schedule: timetable.id },
   };
 }
 
-export function shortenScheduleDegree(schedule): string {
-  let shortenedDegree
-  switch(schedule.degree){
+export function shortenTimetableDegree(timetable): string {
+  let shortenedDegree;
+
+  switch(timetable.degree){
     case 'Bachelor of Science': shortenedDegree = 'B.Sc.'; break;
     case 'Master of Science': shortenedDegree = 'M.Sc.'; break;
     case 'Bachelor of Arts': shortenedDegree = 'B.A.'; break;
@@ -48,7 +49,7 @@ export function shortenScheduleDegree(schedule): string {
     case 'Master of Engineering': shortenedDegree = 'M.Eng.'; break;
     case 'Bachelor of Laws': shortenedDegree = 'LL.B.'; break;
     case 'Master of Laws': shortenedDegree = 'LL.M.'; break;
-    default: shortenedDegree = schedule.degree;
+    default: shortenedDegree = timetable.degree;
   }
 
   return shortenedDegree;
@@ -56,17 +57,17 @@ export function shortenScheduleDegree(schedule): string {
 
 export const state = () => ({
   schedule: undefined,
-  schedules: SCHEDULES.map(
-    (schedule) => ({ ...schedule, path: `${schedule.faculty} ${schedule.degree}`, degreeShort: shortenScheduleDegree(schedule)})),
+  schedules: TIMETABLES.map(
+    (timetable) => ({ ...timetable, path: `${timetable.faculty} ${timetable.degree}`, degreeShort: shortenTimetableDegree(timetable)})),
   /**
-   * Map of created or visited custom schedules.
+   * Map of created or visited custom timetables.
    * Key: label
    *
-   * Values: custom schedule like this:
-   * { ...schedule, label, whitelist: [ titleId ] }
+   * Values: custom timetable like this:
+   * { ...timetable, label, whitelist: [ titleId ] }
    *
    * where
-   * schedule: Base schedule.
+   * timetable: Base timetable.
    * label: Custom name.
    * filters: Whitelist array of keys.
    */
@@ -160,24 +161,24 @@ export const getters = {
     });
   },
   /**
-   * Convert the state's star schema: { faculty, degree, semester, ...schedule }
-   * into a hierarchy: { (faculty, degree): { semester: schedules } }
+   * Convert the state's star schema: { faculty, degree, semester, ...timetable }
+   * into a hierarchy: { (faculty, degree): { semester: timetables } }
    */
   getSchedulesAsTree: (state) => {
     const tree = {};
-    state.schedules.forEach((schedule) => {
-      const path = schedule.path;
+    state.schedules.forEach((timetable) => {
+      const path = timetable.path;
       if (tree[path] == undefined) {
         tree[path] = {};
       }
 
       const leaf1 = tree[path];
-      if (leaf1[schedule.semester] == undefined) {
-        leaf1[schedule.semester] = [];
+      if (leaf1[timetable.semester] == undefined) {
+        leaf1[timetable.semester] = [];
       }
 
-      const leaf2 = leaf1[schedule.semester];
-      leaf2.push(schedule);
+      const leaf2 = leaf1[timetable.semester];
+      leaf2.push(timetable);
     });
 
     return tree;
@@ -185,8 +186,8 @@ export const getters = {
   scheduleIds: (state) => {
     return state.schedules.map(({ id }) => id);
   },
-  getScheduleById: (state) => (scheduleId) => {
-    return state.schedules.find(({ id }) => id == scheduleId);
+  getScheduleById: (state) => (timetableId) => {
+    return state.schedules.find(({ id }) => id == timetableId);
   },
   customSchedulesAsRoutes: (state, getters) => {
     return Object.values(state.customSchedules)
@@ -233,39 +234,40 @@ export const mutations = {
   resetWeek(state) {
     state.week = moment().day() > 5 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
   },
-  setSchedule(state, schedule) {
-    state.schedule = schedule;
+  setSchedule(state, timetable) {
+    state.schedule = timetable;
   },
-  addCustomSchedule(state, customSchedule) {
-    const label = customSchedule.label;
-    const customScheduleStored = state.customSchedules[label];
+  addCustomSchedule(state, customTimetable) {
+    const label = customTimetable.label;
+    const customTimetableStored = state.customSchedules[label];
 
     // detect conflicts - never overwrite
-    if (customScheduleStored != undefined) {
-      const coursesGiven = customSchedule.whitelist;
-      const coursesStored = customScheduleStored.whitelist;
+    if (customTimetableStored != undefined) {
+      const coursesGiven = customTimetable.whitelist;
+      const coursesStored = customTimetableStored.whitelist;
 
-      if (customSchedule.id != customScheduleStored.id ||
+      if (customTimetable.id != customTimetableStored.id ||
           !scalarArraysEqual(coursesGiven, coursesStored)) {
-        console.log('not overwriting local custom schedule' +
+        console.log('not overwriting local custom timetable ' +
           'with different configuration');
       }
 
       return;
     }
 
-    this._vm.$set(state.customSchedules, label, customSchedule);
+    this._vm.$set(state.customSchedules, label, customTimetable);
   },
-  deleteCustomSchedule(state, customSchedule) {
-    this._vm.$delete(state.customSchedules, customSchedule.label);
+  deleteCustomSchedule(state, customTimetable) {
+    this._vm.$delete(state.customSchedules, customTimetable.label);
   },
-  addFavoriteSchedule(state, favoriteSchedule){
-    if(state.favoriteSchedules.filter(favorite => favorite.id == favoriteSchedule.id).length == 0){
-      state.favoriteSchedules.push(favoriteSchedule);
+  addFavoriteSchedule(state, favoriteTimetable){
+    if(state.favoriteSchedules.filter(favorite => favorite.id == favoriteTimetable.id).length == 0){
+      state.favoriteSchedules.push(favoriteTimetable);
     }
   },
-  removeFavoriteSchedule(state, favoriteSchedule){
-    state.favoriteSchedules = state.favoriteSchedules.filter(schedule => schedule.id != favoriteSchedule.id);
+  removeFavoriteSchedule(state, favoriteTimetable){
+    state.favoriteSchedules = state.favoriteSchedules
+      .filter((timetable) => timetable.id != favoriteTimetable.id);
   },
   setError(state, error) {
     state.error = error;
@@ -318,7 +320,7 @@ export const actions = {
     ]);
   },
   /**
-   * Import schedule from route and set as current schedule.
+   * Import timetable from route and set as current timetable.
    */
   importSchedule({ state, commit }, { params, query }) {
     commit('clearLectures');
@@ -331,21 +333,21 @@ export const actions = {
         const id: string[] = Array.isArray(query.id || []) ?
           query.id : [query.id];
         const label: string = query.name;
-        const customSchedule = { id, label, whitelist } as TimetableConfiguration;
+        const customTimetable = { id, label, whitelist } as TimetableConfiguration;
 
-        commit('addCustomSchedule', customSchedule);
-        commit('setSchedule', customSchedule);
+        commit('addCustomSchedule', customTimetable);
+        commit('setSchedule', customTimetable);
         break;
       default:
         if (!isNaN(query.v)) {
-          console.log('unsupported custom schedule query version', query);
+          console.log('unsupported custom timetable query version', query);
         }
 
-        const schedule = state.schedules
-          .find((schedule) => schedule.id == params.schedule);
+        const timetable = state.schedules
+          .find((timetable) => timetable.id == params.schedule);
 
         // standard, no filters
-        commit('setSchedule', schedule);
+        commit('setSchedule', timetable);
     }
   },
 };
