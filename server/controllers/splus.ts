@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as cors from 'cors';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
-import * as TIMETABLES from '../../assets/schedules.json';
+import * as TIMETABLES from '../../assets/timetables.json';
 
 import { SplusApi } from '../lib/SplusApi';
 import { RichLecture } from '../../model/RichLecture';
@@ -28,12 +28,12 @@ const cache = CACHE_DISABLE ?
 /**
  * Accept CORS preflight requests.
  */
-router.options('/:schedule/:week', cors());
+router.options('/:timetable/:week', cors());
 
 /**
- * Get all lectures for the given schedule and week.
+ * Get all lectures for the given timetable and week.
  *
- * @param schedule The splus "identifier" query param without "#" prefix.
+ * @param timetable The splus "identifier" query param without "#" prefix.
  * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
  * @return RichLecture[]
  */
