@@ -1,5 +1,3 @@
-const schedules = require('./assets/schedules.json');
-
 export default {
   mode: 'universal',
 
@@ -97,6 +95,6 @@ export default {
   */
   generate: {
     fallback: true,
-    routes: schedules.map(({ id }) => `/plan/${id}`),
+    routes: [],
   },
 };
