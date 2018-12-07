@@ -1,4 +1,3 @@
-const timetables = require('./assets/timetables.json');
 
 export default {
   mode: 'universal',
@@ -8,8 +7,8 @@ export default {
   */
   head: {
     titleTemplate: '%s - SplusEins',
-    link: [		
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700ç' },
+    link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' },
     ]
   },
 
@@ -76,6 +75,8 @@ export default {
   ** Build configuration
   */
   build: {
+    parallel: true,
+    cache: true,
     /*
     ** You can extend webpack config here
     */
@@ -97,6 +98,6 @@ export default {
   */
   generate: {
     fallback: true,
-    routes: timetables.map(({ id }) => `/plan/${id}`),
+    routes: [],
   },
 };
