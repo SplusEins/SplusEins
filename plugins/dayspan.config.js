@@ -54,9 +54,25 @@ export default {
       };
     },
 
-    getEventOccurrence()
+    getEventOccurrence(schedule, start, labels, formats)
     {    
-      return "";
+      const multiplicator = 1.125;
+      const shiftingHours = 6;
+
+      const momentStart = start.date;
+      const shiftedMinutes = momentStart.minutes() + momentStart.hours() * 60 + 1;
+      const minutesWithoutMultiplicator = Math.ceil(shiftedMinutes / multiplicator);
+
+      let hours = Math.floor(minutesWithoutMultiplicator / 60);
+      const minutes = minutesWithoutMultiplicator - (hours * 60);
+      
+      hours += shiftingHours;
+
+      const exactTime = momentStart.clone()
+                       .hours(hours)
+                       .minutes(minutes);
+
+      return exactTime.format("HH:mm") + " Uhr";
     },
   },
 };
