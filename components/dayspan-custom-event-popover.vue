@@ -308,10 +308,8 @@ export default {
     occurs()
     {
       return this.$dayspan.getEventOccurrence(
-        this.calendarEvent.schedule,
         this.calendarEvent.start,
-        this.labels,
-        this.formats
+        this.calendarEvent.end,
       );
     },
     details()

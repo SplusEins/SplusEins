@@ -54,25 +54,30 @@ export default {
       };
     },
 
-    getEventOccurrence(schedule, start, labels, formats)
+    getEventOccurrence(start, end)
     {    
       const multiplicator = 1.125;
       const shiftingHours = 6;
 
-      const momentStart = start.date;
-      const shiftedMinutes = momentStart.minutes() + momentStart.hours() * 60 + 1;
-      const minutesWithoutMultiplicator = Math.ceil(shiftedMinutes / multiplicator);
+      const calculateExaxtTime = function(moment) {
+        const shiftedMinutes = moment.minutes() + moment.hours() * 60;
+        const minutesWithoutMultiplicator = Math.ceil(shiftedMinutes / multiplicator);
+  
+        let hours = Math.floor(minutesWithoutMultiplicator / 60);
+        let minutes = minutesWithoutMultiplicator - (hours * 60);
 
-      let hours = Math.floor(minutesWithoutMultiplicator / 60);
-      const minutes = minutesWithoutMultiplicator - (hours * 60);
-      
-      hours += shiftingHours;
+        //round minutes to closest min % 5 == 0
+        minutes = minutes%5<3 ? (minutes%5===0 ? minutes : Math.floor(minutes/5)*5) : Math.ceil(minutes/5)*5
+        hours += shiftingHours;
+  
+        const exactTime = moment.clone()
+                         .hours(hours)
+                         .minutes(minutes);
 
-      const exactTime = momentStart.clone()
-                       .hours(hours)
-                       .minutes(minutes);
+        return  exactTime.format("HH:mm");
+      }
 
-      return exactTime.format("HH:mm") + " Uhr";
+      return calculateExaxtTime(start.date) + " Uhr bis " + calculateExaxtTime(end.date) + " Uhr";
     },
   },
 };
