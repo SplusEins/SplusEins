@@ -31,7 +31,7 @@
       nuxt
       @click="trackMatomoEvent('Menu', 'openMensaPlanDialog')">
       <v-list-tile-action>
-        <v-icon>mdi-food</v-icon>
+        <v-icon>mdi-food-fork-drink</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
