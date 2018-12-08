@@ -10,7 +10,7 @@
 
       <v-toolbar-title 
         slot="extension"
-        class="toolbarBtmPadding">
+        class="toolbar-padding">
         {{ details.title }}
         <v-icon 
           v-if="details.icon"
@@ -364,7 +364,7 @@ export default {
   }
 }
 
-.toolbarBtmPadding{
+.toolbar-padding {
   padding: 0px 16px 20px 0px !important;
 }
 </style>
