@@ -8,12 +8,12 @@
 
     <v-list-tile
       v-for="schedule in favoriteSchedules"
-      :to="scheduleToRoute(schedule)"
+      :to="schedule.route"
       :key="schedule.id"
       nuxt>
       <v-list-tile-content
-        @click="trackMatomoEvent('Menu','favorite plan used', schedule.degreeShort + ' ' + schedule.label + ' ' + schedule.semester + '. Sem.')">
-        <v-list-tile-title>{{ schedule.degreeShort }} {{ schedule.label }} - {{ schedule.semester }}. Sem.</v-list-tile-title>
+        @click="trackMatomoEvent('Menu', 'favorite plan used', schedule.description)">
+        <v-list-tile-title>{{ schedule.description }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
 
@@ -21,22 +21,20 @@
 
 </template>
 
-<script lang="js">
-  import { mapState } from 'vuex';
-  import { scheduleToRoute } from '../store/splus';
+<script>
+import { mapState } from 'vuex';
 
-  export default  {
-    name: 'FavoriteTimetablesList',
-    computed: {
-      ...mapState({
-        favoriteSchedules: (state) => state.splus.favoriteSchedules,
-      }),
+export default  {
+  name: 'FavoriteTimetablesList',
+  computed: {
+    ...mapState({
+      favoriteSchedules: (state) => state.splus.favoriteSchedules,
+    }),
+  },
+  methods: {
+    trackMatomoEvent(category, action, name) {
+      this.$matomo.trackEvent(category, action, name);
     },
-    methods: {
-      trackMatomoEvent(category, action, name) {
-        this.$matomo.trackEvent(category, action, name);
-      },
-      scheduleToRoute,
-    }
+  }
 };
 </script>

@@ -30,14 +30,7 @@ export function customScheduleToRoute(customTimetable): Partial<Route> {
   return { name: 'plan-schedule', params: {}, query };
 }
 
-export function scheduleToRoute(timetable): Partial<Route> {
-  return {
-    name: 'plan-schedule',
-    params: { schedule: timetable.id },
-  };
-}
-
-export function shortenTimetableDegree(timetable): string {
+function shortenTimetableDegree(timetable): string {
   let shortenedDegree;
 
   switch(timetable.degree){
@@ -58,7 +51,15 @@ export function shortenTimetableDegree(timetable): string {
 export const state = () => ({
   schedule: undefined,
   schedules: TIMETABLES.map(
-    (timetable) => ({ ...timetable, path: `${timetable.faculty} ${timetable.degree}`, degreeShort: shortenTimetableDegree(timetable)})),
+    (timetable) => ({
+      ...timetable,
+      path: `${timetable.faculty} ${timetable.degree}`,
+      route: {
+        name: 'plan-schedule',
+        params: { schedule: timetable.id },
+      },
+      description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
+    })),
   /**
    * Map of created or visited custom timetables.
    * Key: label
