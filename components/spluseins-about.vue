@@ -21,8 +21,8 @@
         <v-card-text>
           <p>
             Ein inoffizieller Stundenplan von Studenten für Studenten der Ostfalia-Hochschule.<br>
-            Gebaut mit <a href="https://nuxtjs.org">Nuxt</a>, <a href="https://vuetifyjs.com">Vuetify</a> und <a href="https://github.com/ClickerMonkey/dayspan-vuetify">Dayspan-Vuetify</a>.<br>
-            Das <a href="https://github.com/spluseins/spluseins">Repository</a> sowie das <a href="https://trello.com/b/8L18rOVd/spluseins-öffentlich">Trello Board</a> sind öffentlich einsehbar. 
+            Gebaut mit <a href="https://nuxtjs.org">Nuxt</a>, <a href="https://vuetifyjs.com">Vuetify</a>, <a href="https://github.com/ClickerMonkey/dayspan-vuetify">Dayspan-Vuetify</a>, Icons von <a href="https://materialdesignicons.com/">Material Design Icons</a> und der Schriftart <a href="https://fonts.google.com/specimen/Roboto">Roboto</a>.<br>
+            Das <a href="https://github.com/SplusEins/SplusEins">Repository</a> sowie das <a href="https://trello.com/b/8L18rOVd">Trello Board</a> sind öffentlich einsehbar.
             Besonderer Dank geht an Tim für den <a href="https://github.com/xThunderbolt/splus">Splus Parser</a>.<br>
             Alle Studenpläne basieren auf den Inhalten der öffentlich einsehbaren Website <a href="http://splus.ostfalia.de/">splus.ostfalia.de</a>.<br>
             Die Mensapläne basieren auf den Inhalten von <a href="https://openmensa.org">OpenMensa</a>.<br>
@@ -39,7 +39,7 @@
             outline
             color="primary"
             target="_blank"
-            href="https://github.com/spluseins/spluseins">
+            href="https://github.com/SplusEins/SplusEins">
             <v-icon
               medium
               color="black">mdi-github-circle</v-icon>

@@ -1,5 +1,3 @@
-const schedules = require('./assets/schedules.json');
-
 export default {
   mode: 'universal',
 
@@ -8,8 +6,8 @@ export default {
   */
   head: {
     titleTemplate: '%s - SplusEins',
-    link: [		
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700ç' },
+    link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' },
     ]
   },
 
@@ -44,20 +42,24 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    // https://vuetifyjs.com
     '@/plugins/vuetify',
+    // https://github.com/championswimmer/vuex-persist
     { src: '@/plugins/vuex-persist', ssr: false },
-    { src: '@/plugins/vue-matomo', ssr: false }
+    // https://github.com/AmazingDreams/vue-matomo
+    { src: '@/plugins/vue-matomo', ssr: false },
+    // https://github.com/Inndy/vue-clipboard2
+    '@/plugins/vue-clipboard2',
   ],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
+    // https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
-    'nuxt-material-design-icons',
     // https://github.com/nuxt-community/typescript-template
     '~/modules/typescript',
   ],
@@ -71,6 +73,8 @@ export default {
   ** Build configuration
   */
   build: {
+    parallel: true,
+    cache: true,
     /*
     ** You can extend webpack config here
     */
@@ -92,6 +96,6 @@ export default {
   */
   generate: {
     fallback: true,
-    routes: schedules.map(({ id }) => `/plan/${id}`),
+    routes: [],
   },
 };

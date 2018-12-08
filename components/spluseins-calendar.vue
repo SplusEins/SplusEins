@@ -6,25 +6,16 @@
     @change="calendarChanged">
 
     <template slot="actions">
-      <v-btn
-        v-if="!isCustomSchedule && !isFavorite"
-        v-show="!isTinyMobile"
-        :small="$vuetify.breakpoint.xs"
-        icon
-        flat
-        @click="addFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','addToFavorites')">
-        <v-icon>favorite_border</v-icon>
-      </v-btn>
-      <v-btn
-        v-if="!isCustomSchedule && isFavorite"
-        v-show="!isTinyMobile"
-        :small="$vuetify.breakpoint.xs"
-        icon
-        flat
-        @click="removeFavoriteSchedule(currentSchedule); trackMatomoEvent('Calendar','removeFavorites')">
-        <v-icon>favorite</v-icon>
-      </v-btn>
+      <span v-show="!isTinyMobile">
+        <responsive-icon-button
+          v-if="!isCustomSchedule"
+          :breakpoint="$vuetify.breakpoint.xl"
+          :icon="isFavorite ? 'mdi-heart' : 'mdi-heart-outline'"
+          :text="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
+          @click="toggleFavorite" />
+      </span>
 
+      <!-- mobile action bar -->
       <v-menu
         v-show="isMobile"
         bottom
@@ -34,18 +25,22 @@
           :small="$vuetify.breakpoint.xs"
           class="cursor-pointer"
           icon>
-          <v-icon>more_vert</v-icon>
+          <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
 
         <v-list>
           <v-list-tile
             v-show="isTinyMobile"
             v-if="!isCustomSchedule"
-            @click="isFavorite? removeFavoriteSchedule(currentSchedule) : addFavoriteSchedule(currentSchedule);
-                    isFavorite? trackMatomoEvent('Calendar','removeFavorites') : trackMatomoEvent('Calendar','addToFavorites')">
+            @click="toggleFavorite">
             <v-list-tile-content>
               <v-list-tile-title v-if="!isFavorite">Favorisieren</v-list-tile-title>
               <v-list-tile-title v-else>Favorit entfernen</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile @click="share()">
+            <v-list-tile-content>
+              <v-list-tile-title>Teilen</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile
@@ -63,22 +58,25 @@
         </v-list>
       </v-menu>
 
-      <v-btn
-        v-if="isCustomSchedule"
-        v-show="!isMobile"
-        outline
-        @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')">
-        <v-icon left>delete</v-icon>
-        Löschen
-      </v-btn>
-      <v-btn
-        v-show="!isMobile"
-        outline
-        @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
-        <v-icon left>edit</v-icon>
-        <template v-if="isCustomSchedule">Bearbeiten</template>
-        <template v-else>Personalisieren</template>
-      </v-btn>
+      <!-- desktop action bar -->
+      <span v-show="!isMobile">
+        <responsive-icon-button
+          :breakpoint="$vuetify.breakpoint.xl"
+          icon="mdi-share-variant"
+          text="Teilen"
+          @click="share" />
+        <responsive-icon-button
+          v-if="isCustomSchedule"
+          :breakpoint="$vuetify.breakpoint.xl"
+          icon="mdi-delete"
+          text="Löschen"
+          @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')" />
+        <responsive-icon-button
+          :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
+          :breakpoint="$vuetify.breakpoint.xl"
+          icon="mdi-pencil"
+          @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')" />
+      </span>
 
       <custom-timetable-delete-dialog
         v-model="deleteTimetableDialogOpen"
@@ -87,6 +85,9 @@
       <custom-timetable-dialog
         v-model="editTimetableDialogOpen"
         :custom-schedule="currentAsCustomSchedule" />
+      <copy-text-dialog
+        v-model="shareDialogOpen"
+        :text-to-copy="currentUrl" />
     </template>
 
     <template slot="containerInside">
@@ -95,8 +96,8 @@
       </span>
     </template>
 
-    <template 
-      slot="eventPopover" 
+    <template
+      slot="eventPopover"
       slot-scope="slotData">
       <dayspan-custom-event-popover
         v-bind="slotData"
@@ -110,6 +111,8 @@
 import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
+import CopyTextDialog from './copy-text-dialog.vue';
+import ResponsiveIconButton from './responsive-icon-button.vue';
 import DayspanCustomCalendar from './dayspan-custom-calendar.vue';
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
@@ -118,6 +121,8 @@ import DayspanCustomEventPopover from './dayspan-custom-event-popover.vue';
 export default {
   name: 'SpluseinsCalendar',
   components: {
+    CopyTextDialog,
+    ResponsiveIconButton,
     DayspanCustomCalendar,
     CustomTimetableDialog,
     CustomTimetableDeleteDialog,
@@ -139,7 +144,7 @@ export default {
       updateRows: true,
       schedule: false
     };
-   const calendar = Calendar.days(7, startOfWeek, 0);
+    const calendar = Calendar.days(7, startOfWeek, 0);
 
     // computed properties are not available during client rendering yet, access the getter directly
     calendar.setEvents(this.$store.getters['splus/getLecturesAsEvents']);
@@ -148,6 +153,7 @@ export default {
       calendar,
       editTimetableDialogOpen: false,
       deleteTimetableDialogOpen: false,
+      shareDialogOpen: false,
       types: [ weeklyCalendar ],
     };
   },
@@ -171,6 +177,13 @@ export default {
           id: [this.currentSchedule.id],
           whitelist: [],
         };
+      }
+    },
+    currentUrl() {
+      if (global.window) {
+        return window.location.href;
+      } else {
+        return '';
       }
     },
     ...mapState({
@@ -206,6 +219,25 @@ export default {
     },
     routeToRoot() {
       this.$router.replace('/');
+    },
+    toggleFavorite() {
+      if (this.isFavorite) {
+        this.removeFavoriteSchedule(this.currentSchedule);
+        this.trackMatomoEvent('Calendar', 'removeFavorites');
+      } else {
+        this.addFavoriteSchedule(this.currentSchedule);
+        this.trackMatomoEvent('Calendar', 'addToFavorites');
+      }
+    },
+    async share() {
+      // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
+      if (navigator.share) {
+        await navigator.share({
+          url: this.currentUrl,
+        });
+      } else {
+        this.shareDialogOpen = true;
+      }
     },
     ...mapMutations({
       setWeek: 'splus/setWeek',
