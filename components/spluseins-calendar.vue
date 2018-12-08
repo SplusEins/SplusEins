@@ -99,7 +99,7 @@
     <template 
       slot="eventPopover" 
       slot-scope="slotData">
-      <ds-calendar-event-popover
+      <dayspan-custom-event-popover
         v-bind="slotData"
         :read-only="true"/>
     </template>
@@ -116,6 +116,7 @@ import ResponsiveIconButton from './responsive-icon-button.vue';
 import DayspanCustomCalendar from './dayspan-custom-calendar.vue';
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
+import DayspanCustomEventPopover from './dayspan-custom-event-popover.vue';
 
 export default {
   name: 'SpluseinsCalendar',
@@ -125,6 +126,7 @@ export default {
     DayspanCustomCalendar,
     CustomTimetableDialog,
     CustomTimetableDeleteDialog,
+    DayspanCustomEventPopover,
   },
   data() {
     const currentWeek = Day.fromMoment(moment().startOf('isoWeek'));
@@ -260,5 +262,4 @@ export default {
   opacity: 0.5;
   font-size: 12px;
 }
-
 </style>
