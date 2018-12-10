@@ -130,7 +130,7 @@ export default {
   },
   data() {
     const currentWeek = Day.fromMoment(moment().startOf('isoWeek'));
-    const startOfWeek = moment().day() > 5 ? currentWeek.add(1, 'weeks') : currentWeek;
+    const startOfWeek = moment().day() == 6 || moment().day() == 0 ? currentWeek.add(1, 'weeks') : currentWeek;
     const weeklyCalendar = {
       id: 'W',
       label: 'Woche',
