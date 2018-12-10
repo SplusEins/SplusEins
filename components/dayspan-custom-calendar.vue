@@ -738,22 +738,6 @@ export default {
   user-select: auto !important;
 }
 
-.ds-hour{
-  // changing this means you have to change the 'multiplicator' attribute in the store aswell
-  height: 45px !important;
-}
-
-.ds-week-view,
-.ds-week-view-container{
-  max-height: 751px !important;
-}
-
-.ds-week-view-pane,
-.ds-week-view-scrollable,
-.ds-week-view-bottom{
-  height: 675px !important;
-}
-
 .ds-hour:nth-child(n+22),
 .ds-hour:nth-child(-n+6){
   display: none;

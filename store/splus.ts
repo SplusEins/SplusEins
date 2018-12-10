@@ -119,23 +119,9 @@ export const getters = {
         lecture]));
 
     return state.lectures[state.week].map((lecture) => {
-      const start = moment(lecture.start);
+      const start = moment(lecture.start)
+        .add(lecture.begin, 'hours');
       const color = colorScale[uniqueIds.indexOf(lecture.lecturerId)];
-
-      // standard ds-hour height: 40px, now 45px
-      const multiplicator = 1.125;
-      // 7 am is now 1 am
-      const shiftingHours = 6;
-
-      const adjustedMinutes = (lecture.begin - shiftingHours) * 60;
-      const adjustedMinutesWithMultiplicator = adjustedMinutes * multiplicator;
-      const hours = Math.floor(adjustedMinutesWithMultiplicator / 60);
-      const minutes = adjustedMinutesWithMultiplicator - (hours * 60) -1;
-      const durationWithMultiplicator = lecture.duration * multiplicator;
-
-      const shiftedStart = start.clone()
-        .hours(hours)
-        .minutes(minutes);
 
       return {
         data: {
@@ -149,12 +135,12 @@ export const getters = {
             .indexOf(lecture),
         },
         schedule: {
-          on: shiftedStart,
+          on: start,
           times: [ {
-            hour: shiftedStart.hours(),
-            minute: shiftedStart.minutes(),
+            hour: start.hours(),
+            minute: start.minutes(),
           } ],
-          duration: durationWithMultiplicator,
+          duration: lecture.duration,
           durationUnit: 'hours',
         }
       };
