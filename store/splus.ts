@@ -232,7 +232,11 @@ export const mutations = {
     state.week = week;
   },
   resetWeek(state) {
+<<<<<<< HEAD:store/splus.ts
     state.week = moment().day() > 5 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
+=======
+    state.week = moment().day() == 6 || moment().day() == 0 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
+>>>>>>> 5b6b165c83ed5ea209bad4a0fe6e41d70695f7e2:store/splus.ts
   },
   setSchedule(state, timetable) {
     state.schedule = timetable;
