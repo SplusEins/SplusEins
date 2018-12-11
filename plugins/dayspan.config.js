@@ -1,8 +1,17 @@
+import { Constants } from 'dayspan';
+
+/* recalculate time offsets for adjusted dayspan-custom-calendar layout */
+const dayspanOffsetHoursPre = 6; // schedule starts at 6 (instead of 0)
+const dayspanOffsetHoursPost = 3; // schedule ends at 21 (instead of 24)
+const dayspanScalingFactor = Constants.HOURS_IN_DAY /
+  (Constants.HOURS_IN_DAY - dayspanOffsetHoursPre - dayspanOffsetHoursPost);
+
 // see: https://github.com/ClickerMonkey/dayspan-vuetify/blob/master/src/component.js
 
 export default {
   data: {
     inactiveBlendAmount: 0.6,
+    dayHeight: 960 / dayspanScalingFactor,
   },
 
   methods:
@@ -10,12 +19,11 @@ export default {
 
     getStyleNow()
     {
-      const millisPerDay = 86400000;
-      const sixHoursToMillis = 21600000;
-      const multiplicator = 1.125;
-      let now = Math.floor((this.now.asTime().toMilliseconds() - sixHoursToMillis) * multiplicator);
-      let delta = now / millisPerDay;
-      let top = delta * this.dayHeight;
+      const nowMillis = this.now.asTime().toMilliseconds();
+      const dayspanOffsetMillis = dayspanOffsetHoursPre * Constants.MILLIS_IN_HOUR;
+      const delta = (nowMillis - dayspanOffsetMillis)
+        / (Constants.MILLIS_IN_DAY / dayspanScalingFactor);
+      const top = delta * this.dayHeight;
 
       return {
         position: 'absolute',
@@ -28,18 +36,13 @@ export default {
 
     getStyleTimed(details, calendarEvent)
     {
-      const sixHoursToMillis = 21600000;
-      const multiplicator = 1.125;
-      const isBefore =  calendarEvent.end.year <= this.now.year && calendarEvent.end.dayOfYear < this.now.dayOfYear;
-      const isToday = calendarEvent.end.year == this.now.year && calendarEvent.end.dayOfYear == this.now.dayOfYear;
-      const isAfterEnd = calendarEvent.time.end.asTime().toMilliseconds() < Math.floor((this.now.asTime().toMilliseconds() - sixHoursToMillis) * multiplicator);
-      let past = isBefore || (isToday && isAfterEnd);
+      const past = calendarEvent.time.end.isBefore(this.now);
+      const bounds = calendarEvent.getTimeBounds(
+        this.dayHeight * dayspanScalingFactor,
+        1, this.columnOffset, true, 0,
+        -(dayspanOffsetHoursPre + 1) * this.dayHeight * dayspanScalingFactor / Constants.HOURS_IN_DAY);
 
-      let cancelled = calendarEvent.cancelled;
-      let bounds = calendarEvent.getTimeBounds( this.dayHeight, 1, this.columnOffset );
-
-      let color = this.getStyleColor( details, calendarEvent );
-      let stateColor = this.getStyleColor( details, calendarEvent, past, cancelled );
+      const stateColor = this.getStyleColor(details, calendarEvent, past, false);
 
       return {
         top: bounds.top + 'px',
@@ -49,8 +52,8 @@ export default {
         backgroundColor: stateColor,
         marginLeft: calendarEvent.starting ? 0 : '-5px',
         marginRight: calendarEvent.ending ? 0 : '-5px',
-        textDecoration: cancelled ? 'line-through' : 'inherit',
-        textDecorationColor: cancelled ? stateColor : 'inherit'
+        textDecoration: 'inherit',
+        textDecorationColor: 'inherit'
       };
     },
 
