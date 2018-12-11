@@ -1,15 +1,17 @@
 import { Constants } from 'dayspan';
 
 /* recalculate time offsets for adjusted dayspan-custom-calendar layout */
-const dayspanOffsetHours = 6; // schedule starts at 6
-const dayspanFactorHours = 24 / (24 - 6 - 3); // 0-24 -> 6-21
+const dayspanOffsetHoursPre = 6; // schedule starts at 6 (instead of 0)
+const dayspanOffsetHoursPost = 3; // schedule ends at 21 (instead of 24)
+const dayspanScalingFactor = Constants.HOURS_IN_DAY /
+  (Constants.HOURS_IN_DAY - dayspanOffsetHoursPre - dayspanOffsetHoursPost);
 
 // see: https://github.com/ClickerMonkey/dayspan-vuetify/blob/master/src/component.js
 
 export default {
   data: {
     inactiveBlendAmount: 0.6,
-    dayHeight: 960 / dayspanFactorHours,
+    dayHeight: 960 / dayspanScalingFactor,
   },
 
   methods:
@@ -18,9 +20,9 @@ export default {
     getStyleNow()
     {
       const nowMillis = this.now.asTime().toMilliseconds();
-      const dayspanOffsetMillis = dayspanOffsetHours * 60 * 60 * 1000;
+      const dayspanOffsetMillis = dayspanOffsetHoursPre * Constants.MILLIS_IN_HOUR;
       const delta = (nowMillis - dayspanOffsetMillis)
-        / (Constants.MILLIS_IN_DAY / dayspanFactorHours);
+        / (Constants.MILLIS_IN_DAY / dayspanScalingFactor);
       const top = delta * this.dayHeight;
 
       return {
@@ -36,9 +38,9 @@ export default {
     {
       const past = calendarEvent.time.end.isBefore(this.now);
       const bounds = calendarEvent.getTimeBounds(
-        this.dayHeight * dayspanFactorHours,
+        this.dayHeight * dayspanScalingFactor,
         1, this.columnOffset, true, 0,
-        -(dayspanOffsetHours + 1) * this.dayHeight * dayspanFactorHours / 24);
+        -(dayspanOffsetHoursPre + 1) * this.dayHeight * dayspanScalingFactor / Constants.HOURS_IN_DAY);
 
       const stateColor = this.getStyleColor(details, calendarEvent, past, false);
 
