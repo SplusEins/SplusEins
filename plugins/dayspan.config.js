@@ -54,7 +54,6 @@ export default {
       };
     },
 
-<<<<<<< HEAD
     getEventOccurrence(start, end)
     {    
       const multiplicator = 1.125;
@@ -79,11 +78,6 @@ export default {
       }
 
       return calculateExaxtTime(start.date) + " Uhr bis " + calculateExaxtTime(end.date) + " Uhr";
-=======
-    getEventOccurrence()
-    {    
-      return "";
->>>>>>> 5b6b165c83ed5ea209bad4a0fe6e41d70695f7e2
     },
   },
 };
