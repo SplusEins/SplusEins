@@ -830,4 +830,9 @@ export default {
 .ds-hour-list :nth-child(8) .ds-hour-text {
   display: none !important; /* hide 07:00 because it would be cut off */
 }
+
+.ds-hour {
+  /* same as plugins/dayspan.config.js */
+  height: 50px !important;
+}
 </style>

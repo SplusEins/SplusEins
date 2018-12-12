@@ -5,7 +5,9 @@ const dayspanOffsetHoursPre = 7; // schedule starts at 7 (instead of 0)
 const dayspanOffsetHoursPost = 4; // schedule ends at 20 (instead of 24)
 const dayspanDayLengthHours = Constants.HOURS_IN_DAY - dayspanOffsetHoursPre - dayspanOffsetHoursPost;
 const dayspanScalingFactor = Constants.HOURS_IN_DAY / dayspanDayLengthHours;
-const hourHeight = 40;
+// 13*50px = 650px, +300px for toolbars and footer, +100px for browser = a bit less than 1080px total
+// same as components/dayspan-custom-calendar .ds-hour styles
+const hourHeight = 50;
 
 // see: https://github.com/ClickerMonkey/dayspan-vuetify/blob/master/src/component.js
 
