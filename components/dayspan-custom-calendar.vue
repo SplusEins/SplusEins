@@ -738,8 +738,8 @@ export default {
   user-select: auto !important;
 }
 
-.ds-hour:nth-child(n+22),
-.ds-hour:nth-child(-n+6){
+.ds-hour:nth-child(n+21),
+.ds-hour:nth-child(-n+7){
   display: none;
 }
 .ds-day:nth-child(8),
@@ -827,4 +827,7 @@ export default {
   border-top: 3px solid var(--v-primary-base) !important;
 }
 
+.ds-hour-list :nth-child(8) .ds-hour-text {
+  display: none !important; /* hide 07:00 because it would be cut off */
+}
 </style>
