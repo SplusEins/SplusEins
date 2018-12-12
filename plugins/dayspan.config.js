@@ -59,28 +59,7 @@ export default {
 
     getEventOccurrence(start, end)
     {    
-      const multiplicator = 1.125;
-      const shiftingHours = 6;
-
-      const calculateExaxtTime = function(moment) {
-        const shiftedMinutes = moment.minutes() + moment.hours() * 60;
-        const minutesWithoutMultiplicator = Math.ceil(shiftedMinutes / multiplicator);
-  
-        let hours = Math.floor(minutesWithoutMultiplicator / 60);
-        let minutes = minutesWithoutMultiplicator - (hours * 60);
-
-        //round minutes to closest min % 5 == 0
-        minutes = minutes%5<3 ? (minutes%5===0 ? minutes : Math.floor(minutes/5)*5) : Math.ceil(minutes/5)*5
-        hours += shiftingHours;
-  
-        const exactTime = moment.clone()
-                         .hours(hours)
-                         .minutes(minutes);
-
-        return  exactTime.format("HH:mm");
-      }
-
-      return calculateExaxtTime(start.date) + " Uhr bis " + calculateExaxtTime(end.date) + " Uhr";
+      return start.date.utc().format("HH:mm") + " Uhr bis " + end.date.utc().format("HH:mm") + " Uhr";
     },
   },
 };
