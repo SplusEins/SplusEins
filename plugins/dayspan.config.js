@@ -40,7 +40,7 @@ export default {
       const bounds = calendarEvent.getTimeBounds(
         this.dayHeight * dayspanScalingFactor,
         1, this.columnOffset, true, 0,
-        -(dayspanOffsetHoursPre + 1) * this.dayHeight * dayspanScalingFactor / Constants.HOURS_IN_DAY);
+        -(dayspanOffsetHoursPre) * this.dayHeight * dayspanScalingFactor / Constants.HOURS_IN_DAY);
 
       const stateColor = this.getStyleColor(details, calendarEvent, past, false);
 
@@ -59,7 +59,7 @@ export default {
 
     getEventOccurrence(start, end)
     {    
-      return start.date.utc().format('HH:mm') + ' Uhr bis ' + end.date.utc().format('HH:mm') + ' Uhr';
+      return start.date.format('HH:mm') + ' Uhr bis ' + end.date.format('HH:mm') + ' Uhr';
     },
   },
 };
