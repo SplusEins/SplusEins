@@ -79,7 +79,7 @@
           :style="styleButton"
           icon
           @click="close" >
-          <v-icon>close</v-icon>
+          <v-icon>mdi-close</v-icon>
         </v-btn>
 
       </slot>
@@ -95,7 +95,7 @@
 
         <v-list-tile>
           <v-list-tile-avatar>
-            <v-icon>access_time</v-icon>
+            <v-icon>mdi-clock-outline</v-icon>
           </v-list-tile-avatar>
           <v-list-tile-content>
             <slot 
@@ -109,7 +109,7 @@
 
         <v-list-tile v-if="details.location">
           <v-list-tile-avatar>
-            <v-icon>location_on</v-icon>
+            <v-icon>mdi-map-marker</v-icon>
           </v-list-tile-avatar>
           <v-list-tile-content>
             <slot 
@@ -126,7 +126,7 @@
         <v-list-tile 
           v-if="details.description">
           <v-list-tile-avatar>
-            <v-icon>subject</v-icon>
+            <v-icon>mdi-text-subject</v-icon>
           </v-list-tile-avatar>
           <v-list-tile-content>
             <slot 
@@ -308,10 +308,8 @@ export default {
     occurs()
     {
       return this.$dayspan.getEventOccurrence(
-        this.calendarEvent.schedule,
         this.calendarEvent.start,
-        this.labels,
-        this.formats
+        this.calendarEvent.end,
       );
     },
     details()

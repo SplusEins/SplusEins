@@ -57,9 +57,9 @@ export default {
       };
     },
 
-    getEventOccurrence()
+    getEventOccurrence(start, end)
     {    
-      return "";
+      return start.date.utc().format('HH:mm') + ' Uhr bis ' + end.date.utc().format('HH:mm') + ' Uhr';
     },
   },
 };

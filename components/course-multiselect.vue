@@ -7,7 +7,7 @@
     </v-alert>
     <v-text-field
       v-model="search"
-      append-icon="search"
+      append-icon="mdi-magnify"
       label="Kurs suchen"
       single-line
       hide-details />
