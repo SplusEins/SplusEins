@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'MensaCard',
@@ -39,7 +39,19 @@ export default {
         .filter(({ category }) => category.startsWith('Essen '));
     },
     ...mapState({
+      lazyLoad: (state) => state.lazyLoad,
       weekPlan: (state) => state.mensa.weekPlan,
+    }),
+  },
+  mounted() {
+    if (this.lazyLoad) {
+      // static build -> no mensa plan is in the store
+      this.loadMensaWeek();
+    }
+  },
+  methods: {
+    ...mapActions({
+      loadMensaWeek: 'mensa/loadWeek',
     }),
   },
 };

@@ -81,12 +81,6 @@ export default {
       favorites: (state) => state.splus.favoriteSchedules,
     }),
   },
-  mounted() {
-    if (this.lazyLoad) {
-      // static build -> no mensa plan is in the store
-      //this.loadWeek();
-    }
-  },
 };
 </script>
 
