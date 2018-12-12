@@ -36,7 +36,7 @@ export default {
 
     getStyleTimed(details, calendarEvent)
     {
-      const past = calendarEvent.time.end.utc().isBefore(this.now.utc().add(1,'hours'));
+      const past = calendarEvent.time.end.isBefore(this.now);
       const bounds = calendarEvent.getTimeBounds(
         this.dayHeight * dayspanScalingFactor,
         1, this.columnOffset, true, 0,

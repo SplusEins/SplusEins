@@ -32,7 +32,6 @@ export class RichLecture {
 
   private lectureToDate(lecture: ILecture, week: number): Date {
     return moment()
-      .utc()
       .startOf('date')
       .isoWeek(week)
       .isoWeekday(lecture.day + 1)
