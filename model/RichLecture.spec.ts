@@ -21,7 +21,7 @@ describe('Test RichLecture', () => {
     expect(lecture.titleId).toBeDefined();
     expect(lecture.lecturerId).toBeDefined();
     expect(lecture.duration).toBeDefined();
-    expect(lecture.start.valueOf()).toBe(Date.parse('2017-12-26T00:00:00.0000Z'));
+    expect(lecture.start.valueOf()).toBe(Date.parse('2017-12-25T23:00:00.0000Z'));
   });
 
   it('should generate a unique title id', () => {
