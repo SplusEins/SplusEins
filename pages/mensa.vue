@@ -116,7 +116,7 @@ export default {
     getPriceLabel(price) {
       const euros = Math.floor(price);
       let cents = Math.round((price - euros) * 100);
-      cents = cents != 0 ? cents : '00';
+      cents = cents >= 10 ? cents : '0' + cents;
       return euros + ',' + cents + '€';
     },
     getIconColor(item) {
