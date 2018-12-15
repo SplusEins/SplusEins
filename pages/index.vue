@@ -1,50 +1,48 @@
 <template>
-  <v-card>
-    <v-container
-      fluid
-      grid-list-md>
-      <v-layout
-        row
-        wrap>
-        <v-flex
-          xs12
-          md6
-          lg3>
-          <last-changes-card />
-        </v-flex>
+  <v-container
+    fluid
+    grid-list-md>
+    <v-layout
+      row
+      wrap>
+      <v-flex
+        xs12
+        md6
+        lg3>
+        <last-changes-card />
+      </v-flex>
 
-        <v-flex
-          xs12
-          md6
-          lg3>
-          <news-card />
-        </v-flex>
+      <v-flex
+        xs12
+        md6
+        lg3>
+        <news-card />
+      </v-flex>
 
-        <v-flex
-          v-show="favorites.length > 0"
-          xs12
-          md6
-          lg3>
-          <favorites-card />
-        </v-flex>
+      <v-flex
+        v-show="favorites.length > 0"
+        xs12
+        md6
+        lg3>
+        <favorites-card />
+      </v-flex>
 
-        <v-flex
-          xs12
-          md6
-          lg3>
-          <upcoming-lectures-card />
-        </v-flex>
+      <v-flex
+        xs12
+        md6
+        lg3>
+        <upcoming-lectures-card />
+      </v-flex>
 
-        <v-flex
-          v-show="mensaIsOpen"
-          xs12
-          md6
-          lg3>
-          <mensa-card />
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-card>
+      <v-flex
+        v-show="mensaIsOpen"
+        xs12
+        md6
+        lg3>
+        <mensa-card />
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
