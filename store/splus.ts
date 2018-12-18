@@ -27,10 +27,17 @@ export function customScheduleToRoute(customTimetable): Partial<Route> {
     v: '1',
   };
 
-  return { name: 'plan-schedule', params: {}, query };
+  return { name: 'plan-timetable', params: {}, query };
 }
 
-function shortenTimetableDegree(timetable): string {
+export function scheduleToRoute(timetable): Partial<Route> {
+  return {
+    name: 'plan-timetable',
+    params: { timetable: timetable.id },
+  };
+}
+
+export function shortenTimetableDegree(timetable): string {
   let shortenedDegree;
 
   switch(timetable.degree){
@@ -331,7 +338,7 @@ export const actions = {
         }
 
         const timetable = state.schedules
-          .find((timetable) => timetable.id == params.schedule);
+          .find((timetable) => timetable.id == params.timetable);
 
         // standard, no filters
         commit('setSchedule', timetable);

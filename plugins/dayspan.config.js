@@ -1,17 +1,19 @@
 import { Constants } from 'dayspan';
 
 /* recalculate time offsets for adjusted dayspan-custom-calendar layout */
-const dayspanOffsetHoursPre = 6; // schedule starts at 6 (instead of 0)
-const dayspanOffsetHoursPost = 3; // schedule ends at 21 (instead of 24)
-const dayspanScalingFactor = Constants.HOURS_IN_DAY /
-  (Constants.HOURS_IN_DAY - dayspanOffsetHoursPre - dayspanOffsetHoursPost);
+const dayspanOffsetHoursPre = 7; // schedule starts at 7 (instead of 0)
+const dayspanOffsetHoursPost = 4; // schedule ends at 20 (instead of 24)
+const dayspanDayLengthHours = Constants.HOURS_IN_DAY - dayspanOffsetHoursPre - dayspanOffsetHoursPost;
+const dayspanScalingFactor = Constants.HOURS_IN_DAY / dayspanDayLengthHours;
+const hourHeight = 40;
 
 // see: https://github.com/ClickerMonkey/dayspan-vuetify/blob/master/src/component.js
 
 export default {
   data: {
     inactiveBlendAmount: 0.6,
-    dayHeight: 960 / dayspanScalingFactor,
+    dayHeight: hourHeight * dayspanDayLengthHours,
+    hourHeight: hourHeight,
   },
 
   methods:
@@ -40,7 +42,7 @@ export default {
       const bounds = calendarEvent.getTimeBounds(
         this.dayHeight * dayspanScalingFactor,
         1, this.columnOffset, true, 0,
-        -(dayspanOffsetHoursPre + 1) * this.dayHeight * dayspanScalingFactor / Constants.HOURS_IN_DAY);
+        -(dayspanOffsetHoursPre) * this.dayHeight * dayspanScalingFactor / Constants.HOURS_IN_DAY);
 
       const stateColor = this.getStyleColor(details, calendarEvent, past, false);
 
@@ -59,7 +61,7 @@ export default {
 
     getEventOccurrence(start, end)
     {    
-      return start.date.utc().format('HH:mm') + ' Uhr bis ' + end.date.utc().format('HH:mm') + ' Uhr';
+      return start.date.format('HH:mm') + ' Uhr bis ' + end.date.format('HH:mm') + ' Uhr';
     },
   },
 };
