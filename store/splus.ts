@@ -58,7 +58,15 @@ export function shortenTimetableDegree(timetable): string {
 export const state = () => ({
   schedule: undefined,
   schedules: TIMETABLES.map(
-    (timetable) => ({ ...timetable, path: `${timetable.faculty} ${timetable.degree}`, degreeShort: shortenTimetableDegree(timetable)})),
+    (timetable) => ({
+      ...timetable,
+      path: `${timetable.faculty} ${timetable.degree}`,
+      route: {
+        name: 'plan-schedule',
+        params: { schedule: timetable.id },
+      },
+      description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
+    })),
   /**
    * Map of created or visited custom timetables.
    * Key: label

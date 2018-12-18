@@ -32,7 +32,7 @@
 
           <v-list-tile
             v-for="schedule in schedules"
-            :to="scheduleToRoute(schedule)"
+            :to="schedule.route"
             :key="schedule.id"
             nuxt>
             <v-list-tile-content
@@ -45,7 +45,7 @@
 
         <v-list-tile
           v-else
-          :to="scheduleToRoute(schedules[0])"
+          :to="schedules[0].route"
           :key="semester"
           nuxt>
           <v-list-tile-content>
@@ -63,7 +63,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { scheduleToRoute } from '../store/splus';
 
 export default {
   name: 'GeneralTimetablesList',
@@ -76,7 +75,6 @@ export default {
     trackMatomoEvent(category, action, name) {
       this.$matomo.trackEvent(category, action, name);
     },
-    scheduleToRoute,
   }
 };
 </script>

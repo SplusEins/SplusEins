@@ -1,27 +1,96 @@
 <template>
   <v-container
     fluid
-    fill-height>
+    grid-list-md>
     <v-layout
       row
-      align-center
-      justify-center>
-      <div class="background-div">
-        <img
-          src="../assets/img/calendarLogo.png"
-          class="background-image">
-      </div>
+      wrap>
+      <v-flex
+        xs12
+        md6
+        lg3>
+        <last-changes-card />
+      </v-flex>
+
+      <v-flex
+        xs12
+        md6
+        lg3>
+        <news-card />
+      </v-flex>
+
+      <v-flex
+        v-show="favorites.length > 0"
+        xs12
+        md6
+        lg3>
+        <favorites-card />
+      </v-flex>
+
+      <v-flex
+        xs12
+        md6
+        lg3>
+        <upcoming-lectures-card />
+      </v-flex>
+
+      <v-flex
+        v-show="mensaIsOpen"
+        xs12
+        md6
+        lg3>
+        <mensa-card />
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import * as moment from 'moment';
+import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
+import LastChangesCard from '../components/last-changes-card.vue';
+import FavoritesCard from '../components/favorites-card.vue';
+import MensaCard from '../components/mensa-card.vue';
+import NewsCard from '../components/news-card.vue';
+
 export default {
   name: 'IndexPage',
+  components: {
+    UpcomingLecturesCard,
+    LastChangesCard,
+    FavoritesCard,
+    MensaCard,
+    NewsCard,
+  },
+  async fetch({ store, params }) {
+    if (process.static) {
+      store.commit('enableLazyLoad');
+    }
+
+    if (process.client || !store.state.lazyLoad) {
+      await store.dispatch('mensa/loadWeek');
+    } else {
+      console.log('lazy loading is enabled: not fetching mensa plan and timetable');
+    }
+  },
   head() {
     return {
       title: 'Startseite',
     };
+  },
+  computed: {
+    mensaIsOpen() {
+      if (this.weekPlan.length == 0) {
+        return false;
+      }
+
+      return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
+    },
+    ...mapState({
+      weekPlan: (state) => state.mensa.weekPlan,
+      favorites: (state) => state.splus.favoriteSchedules,
+    }),
   },
 };
 </script>
