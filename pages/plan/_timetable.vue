@@ -11,7 +11,7 @@ import { mapState, mapGetters } from 'vuex';
 import SpluseinsCalendar from '../../components/spluseins-calendar.vue';
 
 export default {
-  name: 'SchedulePage',
+  name: 'TimetablePage',
   head() {
     return {
       title: 'Personalisierter Plan',

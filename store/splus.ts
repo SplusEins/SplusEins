@@ -27,13 +27,13 @@ export function customScheduleToRoute(customTimetable): Partial<Route> {
     v: '1',
   };
 
-  return { name: 'plan-schedule', params: {}, query };
+  return { name: 'plan-timetable', params: {}, query };
 }
 
 export function scheduleToRoute(timetable): Partial<Route> {
   return {
-    name: 'plan-schedule',
-    params: { schedule: timetable.id },
+    name: 'plan-timetable',
+    params: { timetable: timetable.id },
   };
 }
 
@@ -330,7 +330,7 @@ export const actions = {
         }
 
         const timetable = state.schedules
-          .find((timetable) => timetable.id == params.schedule);
+          .find((timetable) => timetable.id == params.timetable);
 
         // standard, no filters
         commit('setSchedule', timetable);
