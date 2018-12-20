@@ -62,8 +62,8 @@ export const state = () => ({
       ...timetable,
       path: `${timetable.faculty} ${timetable.degree}`,
       route: {
-        name: 'plan-schedule',
-        params: { schedule: timetable.id },
+        name: 'plan-timetable',
+        params: { timetable: timetable.id },
       },
       description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
     })),
