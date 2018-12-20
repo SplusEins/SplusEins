@@ -835,4 +835,8 @@ export default {
   /* same as plugins/dayspan.config.js */
   height: 50px !important;
 }
+
+.ds-week-view-scrollable {
+  height: 650px !important; /* TODO magic number */
+}
 </style>
