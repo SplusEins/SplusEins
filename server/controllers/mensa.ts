@@ -38,21 +38,19 @@ router.options('/', cors());
  */
 router.get('/', cors(), async (req, res, next) => {
   const key = moment().format('YYYY-MM-DD');
-  let openDays = [];
-  let weekdays = [];
-  let result = [];
 
   try {
     const data = await cache.wrap(key, async () => {
       console.log(`mensa cache miss for key ${key}`);
 
       const response = await axios.get(`https://openmensa.org/api/v2/canteens/166/days`);
-      openDays = response.data;
+      const openDays = response.data;
 
-      for(let i=0; i<3; i++) {
-        weekdays.push(moment(openDays[i].date));
-      }
+      const weekdays = openDays
+        .slice(0, 3)
+        .map(({ date }) => moment(date));
   
+      const result = [];
       await Promise.all(weekdays.map(async (day) => {
         const response = await axios.get(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`);
         result.push({date: parseInt(day.format('YYYYMMDD')), data: {...response.data}});
