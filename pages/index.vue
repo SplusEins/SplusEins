@@ -8,14 +8,14 @@
       <v-flex
         xs12
         md6
-        lg3>
+        lg4>
         <last-changes-card />
       </v-flex>
 
       <v-flex
         xs12
         md6
-        lg3>
+        lg4>
         <news-card />
       </v-flex>
 
@@ -23,14 +23,14 @@
         v-show="favorites.length > 0"
         xs12
         md6
-        lg3>
+        lg4>
         <favorites-card />
       </v-flex>
 
       <v-flex
         xs12
         md6
-        lg3>
+        lg4>
         <upcoming-lectures-card />
       </v-flex>
 
@@ -38,7 +38,7 @@
         v-show="mensaIsOpen"
         xs12
         md6
-        lg3>
+        lg4>
         <mensa-card />
       </v-flex>
     </v-layout>

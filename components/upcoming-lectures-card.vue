@@ -1,9 +1,11 @@
 <template>
+
   <v-card>
     <v-card-title 
       primary-title>
       <span class="headline">Nächste Vorlesungen</span>
       <v-btn
+        :disabled="!hasSubscribableTimetables"
         icon
         @click="subscribeDialogOpen = true">
         <v-icon>mdi-settings</v-icon>
@@ -17,6 +19,13 @@
       <br>
       Raum: {{ nextEvent.data.location }}
     </v-card-text>
+    <v-card-text v-else-if="hasSubscribableTimetables && nextEvent == undefined">
+      <i>Keine weiteren Vorlesungen in dieser Woche!</i>
+    </v-card-text>
+    <v-card-text v-else>
+      <i>Markieren Sie bitte Favoriten oder erstellen Sie personalisierte Pläne um diese Option nutzen zu können!</i>
+    </v-card-text>
+    
     <subscribe-dialog 
       v-model="subscribeDialogOpen"/>
   </v-card>
@@ -50,7 +59,11 @@ export default {
     }),
     ...mapGetters({
       getLecturesAsEvents: 'splus/getLecturesAsEvents',
+      subscribableTimetables: 'splus/subscribableTimetables',
     }),
+    hasSubscribableTimetables() {
+      return this.subscribableTimetables.length > 0;
+    }
   },
   watch: {
     subscribedTimetable() {
@@ -81,6 +94,5 @@ export default {
       return possibleEvents[0] != undefined? possibleEvents[0] : undefined;
     }
   }
-
 };
 </script>

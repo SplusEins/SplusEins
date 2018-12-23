@@ -84,7 +84,7 @@ export const state = () => ({
    * Map of { week: lectures[] }
    */
   favoriteSchedules: [],
-  subscribedTimetable: {},
+  subscribedTimetable: undefined,
   lectures: {},
   /**
    * Currently viewed week.
@@ -254,18 +254,30 @@ export const mutations = {
     }
 
     this._vm.$set(state.customSchedules, label, customTimetable);
+    if(state.subscribedTimetable == undefined) {
+      state.subscribedTimetable = state.customSchedules[label];
+    }
   },
   deleteCustomSchedule(state, customTimetable) {
+    if(state.subscribedTimetable.label == customTimetable.label) {
+      state.subscribedTimetable = undefined;
+    }
     this._vm.$delete(state.customSchedules, customTimetable.label);
   },
   addFavoriteSchedule(state, favoriteTimetable){
     if(state.favoriteSchedules.filter(favorite => favorite.id == favoriteTimetable.id).length == 0){
       state.favoriteSchedules.push(favoriteTimetable);
+      if(state.subscribedTimetable == undefined) {
+        state.subscribedTimetable = favoriteTimetable;
+      }
     }
   },
   removeFavoriteSchedule(state, favoriteTimetable){
     state.favoriteSchedules = state.favoriteSchedules
       .filter((timetable) => timetable.id != favoriteTimetable.id);
+    if(state.subscribedTimetable == favoriteTimetable) {
+      state.subscribedTimetable = undefined;
+    }
   },
   setError(state, error) {
     state.error = error;
