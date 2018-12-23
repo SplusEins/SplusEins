@@ -1,8 +1,7 @@
 <template>
   <v-card>
     <v-card-title 
-      primary-title
-      pb-0>
+      primary-title>
       <span class="headline">Nächste Vorlesungen</span>
       <v-btn
         icon
@@ -28,7 +27,6 @@
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import * as moment from 'moment';
 import SubscribeDialog from './subscribe-dialog.vue'
-import { constants } from 'zlib';
 
 export default {
   name: 'UpcomingLecturesCard',
@@ -78,9 +76,8 @@ export default {
       loadLectures: 'splus/load',
     }),
     findNextEvent(){
-      // let possibleEvents = this.events.filter(event => moment(event.schedule.on).valueOf() - moment().valueOf() > 0)
-      //                                 .sort((a,b) => moment(a.schedule.on).valueOf() - moment(b.schedule.on).valueOf())
-      let possibleEvents = this.events.sort((a,b) => moment(a.schedule.on).valueOf() - moment(b.schedule.on).valueOf());
+      let possibleEvents = this.events.filter(event => moment(event.schedule.on).valueOf() - moment().valueOf() > 0)
+                                      .sort((a,b) => moment(a.schedule.on).valueOf() - moment(b.schedule.on).valueOf())
       return possibleEvents[0] != undefined? possibleEvents[0] : undefined;
     }
   }

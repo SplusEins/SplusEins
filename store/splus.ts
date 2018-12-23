@@ -231,7 +231,6 @@ export const mutations = {
   },
   resetWeek(state) {
     state.week = moment().day() == 6 || moment().day() == 0 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
-    state.week -=5;
   },
   setSchedule(state, timetable) {
     state.schedule = timetable;
