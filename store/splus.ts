@@ -84,6 +84,7 @@ export const state = () => ({
    * Map of { week: lectures[] }
    */
   favoriteSchedules: [],
+  subscribedTimetable: {},
   lectures: {},
   /**
    * Currently viewed week.
@@ -193,6 +194,9 @@ export const getters = {
   isCustomSchedule: (state) => {
     return !!state.schedule && !!state.schedule.whitelist;
   },
+  subscribableTimetables: (state) => {
+    return [...Object.values(state.customSchedules), ...state.favoriteSchedules];
+  }
 };
 
 export const mutations = {
@@ -227,6 +231,7 @@ export const mutations = {
   },
   resetWeek(state) {
     state.week = moment().day() == 6 || moment().day() == 0 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
+    state.week -=5;
   },
   setSchedule(state, timetable) {
     state.schedule = timetable;
@@ -269,6 +274,9 @@ export const mutations = {
   clearError(state) {
     state.error = undefined;
   },
+  setSubscribedTimetable(state, timetable) {
+    state.subscribedTimetable = timetable;
+  },
 };
 
 export const actions = {
@@ -276,6 +284,7 @@ export const actions = {
    * Request data from the given week from the API and write it to the store.
    */
   async loadWeek({ state, commit }, week) {
+
     if (!!state.lectures[week]) {
       return; // cached, noop
     }
