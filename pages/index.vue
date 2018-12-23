@@ -8,37 +8,42 @@
       <v-flex
         xs12
         md6
-        lg4>
+        lg4
+        d-flex>
         <last-changes-card />
       </v-flex>
 
       <v-flex
         xs12
         md6
-        lg4>
+        lg4
+        d-flex>
         <news-card />
       </v-flex>
 
       <v-flex
-        v-show="favorites.length > 0"
         xs12
         md6
-        lg4>
-        <favorites-card />
-      </v-flex>
-
-      <v-flex
-        xs12
-        md6
-        lg4>
+        lg4
+        d-flex>
         <upcoming-lectures-card />
       </v-flex>
 
       <v-flex
-        v-show="mensaIsOpen"
+        v-if="favorites.length > 0"
         xs12
         md6
-        lg4>
+        lg4
+        d-flex>
+        <favorites-card />
+      </v-flex>
+      
+      <v-flex
+        v-if="mensaIsOpen"
+        xs12
+        md6
+        lg4
+        d-flex>
         <mensa-card />
       </v-flex>
     </v-layout>

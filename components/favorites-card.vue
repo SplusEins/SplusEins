@@ -3,24 +3,27 @@
     <v-card-title primary-title>
       <div>
         <div class="headline">Favoriten</div>
-        <ul>
-          <v-btn
+        <v-list>
+          <v-list-tile
             v-for="route in customSchedulesAsRoutes"
             :key="route.query.name"
             :to="route"
             flat
             nuxt>
             {{ route.query.name }}
-          </v-btn>
-          <v-btn
+          </v-list-tile>
+        </v-list>
+        <v-divider v-if="display" />
+        <v-list>
+          <v-list-tile
             v-for="favorite in favorites"
             :key="favorite.id"
             :to="favorite.route"
             flat
             nuxt>
             {{ favorite.description }}
-          </v-btn>
-        </ul>
+          </v-list-tile>
+        </v-list>
       </div>
     </v-card-title>
   </v-card>
@@ -44,6 +47,9 @@ export default {
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
     }),
+    displayDivider() {
+      return this.favorites.length != 0 && this.customSchedulesAsRoutes.length != 0;
+    }
   },
 };
 </script>
