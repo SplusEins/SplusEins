@@ -1,24 +1,29 @@
 <template>
   <v-card>
-    <v-card-title primary-title>
-      <div>
-        <div class="headline">Mensa Wolfenbüttel Heute</div>
-        <ul>
-          <li
-            v-for="menu in mensaMenus"
-            :key="menu.id">
-            {{ menu.name }}
-          </li>
-        </ul>
-      </div>
+    <v-card-title> 
+      <div class="headline">Mensa Wolfenbüttel Heute</div>
     </v-card-title>
+    <v-card-text class="card-text-padding">
+      <v-list 
+        v-for="item in mensaMenus"
+        :key="item.id"
+        dense>
+        <div class="list-tile">
+          <span class="category">{{ item.category }}:</span>
+          <br>
+          <span>{{ item.name }}</span>
+          <br>
+        </div>
+      </v-list>
+    </v-card-text>
     <v-card-actions>
       <v-spacer />
       <v-btn
         to="/mensa"
         flat
+        color="primary"
         nuxt>
-        Öffnen
+        Mehr
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -56,3 +61,19 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+
+.list-tile{
+  padding: 5px 0 5px 0px;
+}
+
+.category {
+  font-weight: bold;
+}
+
+.card-text-padding{
+  padding-top: 0px;
+}
+
+</style>

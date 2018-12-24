@@ -30,12 +30,12 @@
       </v-flex>
 
       <v-flex
-        v-if="favorites.length > 0"
+        v-if="displayQuickAcessCard"
         xs12
         md6
         lg4
         d-flex>
-        <favorites-card />
+        <quick-access-card />
       </v-flex>
       
       <v-flex
@@ -51,11 +51,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import * as moment from 'moment';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import LastChangesCard from '../components/last-changes-card.vue';
-import FavoritesCard from '../components/favorites-card.vue';
+import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import NewsCard from '../components/news-card.vue';
 
@@ -64,7 +64,7 @@ export default {
   components: {
     UpcomingLecturesCard,
     LastChangesCard,
-    FavoritesCard,
+    QuickAccessCard,
     MensaCard,
     NewsCard,
   },
@@ -96,6 +96,12 @@ export default {
       weekPlan: (state) => state.mensa.weekPlan,
       favorites: (state) => state.splus.favoriteSchedules,
     }),
+    ...mapGetters({
+      customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
+    }),
+    displayQuickAcessCard() {
+      return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
+    }
   },
 };
 </script>

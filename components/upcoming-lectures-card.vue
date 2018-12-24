@@ -1,8 +1,7 @@
 <template>
 
   <v-card>
-    <v-card-title 
-      primary-title>
+    <v-card-title>
       <span class="headline">Nächste Vorlesungen</span>
       <v-btn
         :disabled="!hasSubscribableTimetables"
@@ -33,8 +32,8 @@
 </template>
 
 <script>
-import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import * as moment from 'moment';
+import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import SubscribeDialog from './subscribe-dialog.vue'
 
 export default {
@@ -52,8 +51,6 @@ export default {
   computed: {
     ...mapState({
       lectures: (state) => state.splus.lectures,
-      customSchedules: (state) => state.splus.customSchedules,
-      favoriteSchedules: (state) => state.splus.favoriteSchedules,
       subscribedTimetable: (state) => state.splus.subscribedTimetable,
       browserStateReady: (state) => state.browserStateReady,
     }),
@@ -96,3 +93,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+
+.v-card__text{
+  padding-top: 0px;
+}
+
+</style>
+

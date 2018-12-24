@@ -16,7 +16,7 @@
         <v-toolbar-title>Plan abbonieren</v-toolbar-title>
       </v-toolbar>
 
-      <v-card-text>
+      <v-card-text class="card-text-padding">
         <v-list>
           <v-list-tile
             v-for="schedule in subscribableTimetables"
@@ -70,4 +70,10 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style> 
+<style scoped lang="scss">
+
+.card-text-padding{
+  padding: 0px 5px;
+}
+
+</style> 
