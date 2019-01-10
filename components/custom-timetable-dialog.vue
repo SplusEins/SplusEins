@@ -73,7 +73,7 @@
 </template>
 
 <script lang="js">
-import { mapMutations, mapGetters } from 'vuex';
+import { mapMutations, mapGetters, mapState } from 'vuex';
 import * as moment from 'moment';
 import { uniq, flatten, customScheduleToRoute } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
@@ -142,6 +142,9 @@ export default {
       scheduleIds: 'splus/scheduleIds',
       getScheduleById: 'splus/getScheduleById',
     }),
+    ...mapState({
+      week: (state) => state.splus.week,
+    }),
   },
   watch: {
     dialogOpen() {
@@ -182,14 +185,12 @@ export default {
     async loadLectures(schedule) {
       this.loading = true;
 
-      const week = moment().isoWeek();
-
       try {
         const responses = [
-          await this.$axios.get(`/api/splus/${schedule.id}/${week}`),
-          await this.$axios.get(`/api/splus/${schedule.id}/${week+1}`),
-          await this.$axios.get(`/api/splus/${schedule.id}/${week+2}`),
-          await this.$axios.get(`/api/splus/${schedule.id}/${week+3}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${this.week}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${this.week+1}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${this.week+2}`),
+          await this.$axios.get(`/api/splus/${schedule.id}/${this.week+3}`),
         ];
         const uniqueLectures = flatten(responses.map(({ data }) => data))
           .filter((lecture, index, self) => self.indexOf(lecture) == index);
