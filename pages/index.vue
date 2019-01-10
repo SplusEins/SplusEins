@@ -14,6 +14,7 @@
       </v-flex>
 
       <v-flex
+        v-if="false"
         xs12
         md6
         lg4
