@@ -33,8 +33,9 @@ export class RichLecture {
   private lectureToDate(lecture: ILecture, week: number): Date {
     return moment()
       .utcOffset('+0100')
+      .year(2018) // TODO update this in SS19
       .startOf('date')
-      .isoWeek(week % 52)
+      .isoWeek(week)
       .isoWeekday(lecture.day + 1)
       .toDate();
   }
