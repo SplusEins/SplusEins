@@ -31,7 +31,7 @@
       </v-flex>
 
       <v-flex
-        v-if="displayQuickAcessCard"
+        v-if="displayQuickAccessCard"
         xs12
         md6
         lg4
@@ -100,7 +100,7 @@ export default {
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
     }),
-    displayQuickAcessCard() {
+    displayQuickAccessCard() {
       return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
     }
   },

@@ -34,7 +34,7 @@ import { mapState, mapGetters } from 'vuex';
 import { customTimetableToRoute } from '../store/splus';
 
 export default {
-  name: 'QuickAcessCard',
+  name: 'QuickAccessCard',
   data() {
     return {
       customTimetableToRoute,

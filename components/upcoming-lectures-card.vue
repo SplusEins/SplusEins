@@ -14,6 +14,8 @@
     <v-card-text v-if="nextEvent != undefined">
       {{ nextEvent.data.title }} {{ nextEvent.data.description }}
       <br>
+      Datum: {{ nextEvent.schedule.on.format('DD.MM.YYYY') }}
+      <br>
       Uhrzeit: {{ nextEvent.schedule.on.hour() }}:{{ nextEvent.schedule.on.minute() == 0? "00" : nextEvent.schedule.on.minute() }} Uhr
       <br>
       Raum: {{ nextEvent.data.location }}
@@ -22,7 +24,7 @@
       <i>Keine weiteren Vorlesungen in dieser Woche!</i>
     </v-card-text>
     <v-card-text v-else>
-      <i>Markieren Sie bitte Favoriten oder erstellen Sie personalisierte Pläne um diese Option nutzen zu können!</i>
+      <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne um diese Option nutzen zu können!</i>
     </v-card-text>
     
     <subscribe-dialog 
