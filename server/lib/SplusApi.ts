@@ -10,7 +10,10 @@ export class SplusApi {
         return request({
             method: 'POST',
             uri: this._plan_base_uri,
-            qs: { identifier, },
+            qs: {
+                semester: 'ss', // TODO change this in WS19/20
+                identifier,
+            },
             formData: {
                 weeks: weekOfYear.toString(),
             },
@@ -21,6 +24,9 @@ export class SplusApi {
         return request({
             method: 'POST',
             uri: this._set_base_uri,
+            qs: {
+                semester: 'ss', // TODO change this in WS19/20
+            },
             formData: {
                 'identifier[]': identifier,
                 weeks: weekOfYear.toString(),
