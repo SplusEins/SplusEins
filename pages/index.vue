@@ -40,7 +40,7 @@
       </v-flex>
       
       <v-flex
-        v-if="mensaIsOpen"
+        v-show="mensaIsOpen"
         xs12
         md6
         lg4
