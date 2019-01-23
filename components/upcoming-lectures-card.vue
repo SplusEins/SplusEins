@@ -14,7 +14,7 @@
     <v-card-text v-if="nextEvent != undefined">
       {{ nextEvent.data.title }} {{ nextEvent.data.description }}
       <br>
-      Datum: {{ nextEvent.schedule.on.format('DD.MM.YYYY') }}
+      Datum: {{ nextEvent.schedule.on.format('dddd, DD.MM.YYYY') }}
       <br>
       Uhrzeit: {{ nextEvent.schedule.on.hour() }}:{{ nextEvent.schedule.on.minute() == 0? "00" : nextEvent.schedule.on.minute() }} Uhr
       <br>
