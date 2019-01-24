@@ -8,37 +8,43 @@
       <v-flex
         xs12
         md6
-        lg3>
+        lg4
+        d-flex>
         <last-changes-card />
       </v-flex>
 
       <v-flex
+        v-if="false"
         xs12
         md6
-        lg3>
+        lg4
+        d-flex>
         <news-card />
       </v-flex>
 
       <v-flex
-        v-show="favorites.length > 0"
         xs12
         md6
-        lg3>
-        <favorites-card />
-      </v-flex>
-
-      <v-flex
-        xs12
-        md6
-        lg3>
+        lg4
+        d-flex>
         <upcoming-lectures-card />
       </v-flex>
 
       <v-flex
+        v-if="displayQuickAccessCard"
+        xs12
+        md6
+        lg4
+        d-flex>
+        <quick-access-card />
+      </v-flex>
+      
+      <v-flex
         v-show="mensaIsOpen"
         xs12
         md6
-        lg3>
+        lg4
+        d-flex>
         <mensa-card />
       </v-flex>
     </v-layout>
@@ -46,11 +52,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import * as moment from 'moment';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import LastChangesCard from '../components/last-changes-card.vue';
-import FavoritesCard from '../components/favorites-card.vue';
+import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import NewsCard from '../components/news-card.vue';
 
@@ -59,7 +65,7 @@ export default {
   components: {
     UpcomingLecturesCard,
     LastChangesCard,
-    FavoritesCard,
+    QuickAccessCard,
     MensaCard,
     NewsCard,
   },
@@ -91,6 +97,12 @@ export default {
       weekPlan: (state) => state.mensa.weekPlan,
       favorites: (state) => state.splus.favoriteSchedules,
     }),
+    ...mapGetters({
+      customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
+    }),
+    displayQuickAccessCard() {
+      return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
+    }
   },
 };
 </script>

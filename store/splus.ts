@@ -84,6 +84,7 @@ export const state = () => ({
    * Map of { week: lectures[] }
    */
   favoriteSchedules: [],
+  subscribedTimetable: {},
   lectures: {},
   /**
    * Currently viewed week.
@@ -193,6 +194,9 @@ export const getters = {
   isCustomSchedule: (state) => {
     return !!state.schedule && !!state.schedule.whitelist;
   },
+  subscribableTimetables: (state) => {
+    return [...Object.values(state.customSchedules), ...state.favoriteSchedules];
+  }
 };
 
 export const mutations = {
@@ -250,24 +254,41 @@ export const mutations = {
     }
 
     this._vm.$set(state.customSchedules, label, customTimetable);
+    if(Object.keys(state.subscribedTimetable).length === 0) {
+      state.subscribedTimetable = state.customSchedules[label];
+    }
   },
   deleteCustomSchedule(state, customTimetable) {
     this._vm.$delete(state.customSchedules, customTimetable.label);
+    if(state.subscribedTimetable.label == customTimetable.label) {
+      const subscribables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
+      state.subscribedTimetable = subscribables.length == 0? {} : subscribables[0];
+    }
   },
   addFavoriteSchedule(state, favoriteTimetable){
     if(state.favoriteSchedules.filter(favorite => favorite.id == favoriteTimetable.id).length == 0){
       state.favoriteSchedules.push(favoriteTimetable);
+      if(Object.keys(state.subscribedTimetable).length === 0) {
+        state.subscribedTimetable = favoriteTimetable;
+      }
     }
   },
   removeFavoriteSchedule(state, favoriteTimetable){
     state.favoriteSchedules = state.favoriteSchedules
       .filter((timetable) => timetable.id != favoriteTimetable.id);
+    if(state.subscribedTimetable.id == favoriteTimetable.id) {
+      const subscribables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
+      state.subscribedTimetable = subscribables.length == 0? {} : subscribables[0];
+    }
   },
   setError(state, error) {
     state.error = error;
   },
   clearError(state) {
     state.error = undefined;
+  },
+  setSubscribedTimetable(state, timetable) {
+    state.subscribedTimetable = timetable;
   },
 };
 
@@ -276,6 +297,7 @@ export const actions = {
    * Request data from the given week from the API and write it to the store.
    */
   async loadWeek({ state, commit }, week) {
+
     if (!!state.lectures[week]) {
       return; // cached, noop
     }
