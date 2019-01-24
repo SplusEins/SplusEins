@@ -71,7 +71,7 @@ export default {
       }
     },
     lectures() {
-      if(!!this.schedule && !!this.subscribedTimetable.id && this.schedule.id == this.subscribedTimetable.id)  {
+      if(!!this.schedule && !!this.subscribedTimetable.id && this.schedule.id == this.subscribedTimetable.id) {
         const possibleNext = this.findNextEvent();
         if(possibleNext.ready){
           if(this.nextEvent && possibleNext.event && this.nextEvent.data.title == possibleNext.event.data.title) return;
@@ -81,7 +81,7 @@ export default {
     }
   },
   mounted() {
-    if(!!this.schedule && !!this.subscribedTimetable.id && this.schedule.id != this.subscribedTimetable.id){
+    if(!!this.subscribedTimetable.id) {
        this.load();
     }
     this.nextEvent = this.findNextEvent().event;
