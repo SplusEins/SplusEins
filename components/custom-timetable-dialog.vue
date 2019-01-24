@@ -185,12 +185,9 @@ export default {
       const week = moment().isoWeek();
 
       try {
-        const responses = [
-          await this.$axios.get(`/api/splus/${schedule.id}/${week}`),
-          await this.$axios.get(`/api/splus/${schedule.id}/${week+1}`),
-          await this.$axios.get(`/api/splus/${schedule.id}/${week+2}`),
-          await this.$axios.get(`/api/splus/${schedule.id}/${week+3}`),
-        ];
+        // TODO update this in WS19/20 or at start of SS19
+        const responses = await Promise.all([10, 11, 12, 13, 14].map((week) =>
+          this.$axios.get(`/api/splus/${schedule.id}/${week}`)));
         const uniqueLectures = flatten(responses.map(({ data }) => data))
           .filter((lecture, index, self) => self.indexOf(lecture) == index);
         this.$set(this.lectures, schedule.id, uniqueLectures);
