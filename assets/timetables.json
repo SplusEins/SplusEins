@@ -292,7 +292,7 @@
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": "WPF"
-},{
+}, {
   "id": "SPLUS82CCB6",
   "slug": "I-M-WPF-SCE PO18",
   "label": "Wahlpflichtfächer SCE PO18",
@@ -369,7 +369,7 @@
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 3
-},{
+}, {
   "id": "SPLUS23E37C",
   "slug": "I-VFH-MI4",
   "label": "Medieninformatik VFH",
@@ -833,12 +833,36 @@
   "semester": 6,
   "setplan": true
 }, {
-  "id": "SPLUSF9BEF2",
-  "slug": "R Master 1",
-  "label": "International Law and Business",
+  "id": "SPLUS05A69C",
+  "slug": "R-Master 1",
+  "label": "Master 1",
   "faculty": "Recht",
   "degree": "Master of Laws",
   "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS87BE29",
+  "slug": "R-Master 2 RFS",
+  "label": "Vertiefung Recht, Finanzmanagement und Steuern",
+  "faculty": "Recht",
+  "degree": "Master of Laws",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS87BE28",
+  "slug": "R-Master 2 RPP",
+  "label": "Vertiefung Recht, Personalmanagement und -psychologie",
+  "faculty": "Recht",
+  "degree": "Master of Laws",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS06B2A8",
+  "slug": "R-Master 2 WR",
+  "label": "Vertiefung Wirtschaftsrecht",
+  "faculty": "Recht",
+  "degree": "Master of Laws",
+  "semester": 2,
   "setplan": true
 }, {
   "id": "SPLUSF431CC",
@@ -873,33 +897,17 @@
   "semester": 7,
   "setplan": true
 }, {
-  "id": "SPLUS3E7205",
-  "slug": "M-BM1a",
-  "label": "Maschinenbau a",
+  "id": "SPLUS6F4F02",
+  "slug": "M-BM1",
+  "label": "BM1",
   "faculty": "Maschinenbau",
   "degree": "Bachelor of Engineering",
   "semester": 1,
   "setplan": true
 }, {
-  "id": "SPLUS701B16",
-  "slug": "M-BM1aLIFT (A)",
-  "label": "Maschinenbau a LIFT(A)",
-  "faculty": "Maschinenbau",
-  "degree": "Bachelor of Engineering",
-  "semester": 1,
-  "setplan": true
-}, {
-  "id": "SPLUSBF0E2A",
-  "slug": "M-BM1b",
-  "label": "Maschinenbau b",
-  "faculty": "Maschinenbau",
-  "degree": "Bachelor of Engineering",
-  "semester": 1,
-  "setplan": true
-}, {
-  "id": "SPLUSBF0E2B",
-  "slug": "M-BM1c",
-  "label": "Maschinenbau c",
+  "id": "#SPLUS571BEA",
+  "slug": "M-BM1Plus",
+  "label": "BM1Plus",
   "faculty": "Maschinenbau",
   "degree": "Bachelor of Engineering",
   "semester": 1,
@@ -907,7 +915,7 @@
 }, {
   "id": "SPLUS3E7207",
   "slug": "M-BM2a",
-  "label": "Maschinenbau a",
+  "label": "BM2-A",
   "faculty": "Maschinenbau",
   "degree": "Bachelor of Engineering",
   "semester": 2,
@@ -915,23 +923,39 @@
 }, {
   "id": "SPLUS3E7208",
   "slug": "M-BM2b",
-  "label": "Maschinenbau b",
+  "label": "BM2-B",
   "faculty": "Maschinenbau",
   "degree": "Bachelor of Engineering",
   "semester": 2,
   "setplan": true
 }, {
   "id": "SPLUS10F16F",
-  "slug": "M-BM3",
-  "label": "Maschinenbau",
+  "slug": "M-BM3a",
+  "label": "BM3-A",
+  "faculty": "Maschinenbau",
+  "degree": "Bachelor of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS6F4F00",
+  "slug": "M-BM3b",
+  "label": "BM3-B",
   "faculty": "Maschinenbau",
   "degree": "Bachelor of Engineering",
   "semester": 3,
   "setplan": true
 }, {
   "id": "SPLUS10F172",
-  "slug": "M-BM4",
-  "label": "Maschinenbau",
+  "slug": "M-BM4a",
+  "label": "BM4-A",
+  "faculty": "Maschinenbau",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS6F4F01",
+  "slug": "M-BM4b",
+  "label": "BM4-B",
   "faculty": "Maschinenbau",
   "degree": "Bachelor of Engineering",
   "semester": 4,
@@ -969,63 +993,55 @@
   "semester": 7,
   "setplan": true
 }, {
-  "id": "SPLUS3116C7",
-  "slug": "M-BWi1a",
-  "label": "Wirtschaftsingenieurwesen a",
-  "faculty": "Maschinenbau",
-  "degree": "Bachelor of Engineering",
-  "semester": 1,
-  "setplan": true
-}, {
-  "id": "SPLUS6652A7",
-  "slug": "M-BWi1b",
-  "label": "Wirtschaftsingenieurwesen b",
-  "faculty": "Maschinenbau",
-  "degree": "Bachelor of Engineering",
-  "semester": 1,
-  "setplan": true
-}, {
-  "id": "SPLUS6652A8",
-  "slug": "M-BWi1c",
-  "label": "Wirtschaftsingenieurwesen c",
-  "faculty": "Maschinenbau",
-  "degree": "Bachelor of Engineering",
-  "semester": 1,
-  "setplan": true
-}, {
-  "id": "SPLUS701B37",
-  "slug": "M-BWi1LIFT (A)",
-  "label": "Wirtschaftsingenieurwesen LIFT(A)",
-  "faculty": "Maschinenbau",
-  "degree": "Bachelor of Engineering",
-  "semester": 1,
-  "setplan": true
-}, {
-  "id": "SPLUS3AB7F3",
-  "slug": "M-BWi2a",
-  "label": "Wirtschaftsingenieurwesen a",
-  "faculty": "Maschinenbau",
-  "degree": "Bachelor of Engineering",
-  "semester": 2,
-  "setplan": true
-}, {
-  "id": "SPLUS20EB52",
-  "slug": "M-BWi2b",
-  "label": "Wirtschaftsingenieurwesen b",
-  "faculty": "Maschinenbau",
-  "degree": "Bachelor of Engineering",
-  "semester": 2,
-  "setplan": true
-}, {
-  "id": "SPLUS3116D0",
-  "slug": "M-BWi3",
+  "id": "SPLUSB80041",
+  "slug": "M-BWi1",
   "label": "Wirtschaftsingenieurwesen",
+  "faculty": "Maschinenbau",
+  "degree": "Bachelor of Engineering",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS571BEB",
+  "slug": "M-BWi1Plus",
+  "label": "Wirtschaftsingenieurwesen Plus",
+  "faculty": "Maschinenbau",
+  "degree": "Bachelor of Engineering",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS4C4CDB",
+  "slug": "M-BWi2a",
+  "label": "Wirtschaftsingenieurwesen A",
+  "faculty": "Maschinenbau",
+  "degree": "Bachelor of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUSB80042",
+  "slug": "M-BWi2b",
+  "label": "Wirtschaftsingenieurwesen B",
+  "faculty": "Maschinenbau",
+  "degree": "Bachelor of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUSB80043",
+  "slug": "M-BWi3a",
+  "label": "Wirtschaftsingenieurwesen A",
   "faculty": "Maschinenbau",
   "degree": "Bachelor of Engineering",
   "semester": 3,
   "setplan": true
 }, {
-  "id": "SPLUS3116D2",
+  "id": "SPLUS1ED814",
+  "slug": "M-BWi3b",
+  "label": "Wirtschaftsingenieurwesen B",
+  "faculty": "Maschinenbau",
+  "degree": "Bachelor of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUSB80044",
   "slug": "M-BWi4",
   "label": "Wirtschaftsingenieurwesen",
   "faculty": "Maschinenbau",
@@ -1033,7 +1049,7 @@
   "semester": 4,
   "setplan": true
 }, {
-  "id": "SPLUS3116D4",
+  "id": "SPLUS0A9BEC",
   "slug": "M-BWi6",
   "label": "Wirtschaftsingenieurwesen",
   "faculty": "Maschinenbau",
@@ -1041,7 +1057,7 @@
   "semester": 6,
   "setplan": true
 }, {
-  "id": "SPLUS3116D3",
+  "id": "SPLUSB2369F",
   "slug": "M-BWi7",
   "label": "Wirtschaftsingenieurwesen",
   "faculty": "Maschinenbau",
@@ -1049,7 +1065,7 @@
   "semester": 7,
   "setplan": true
 }, {
-  "id": "SPLUS286589",
+  "id": "SPLUS6F4EFB",
   "slug": "M-MSE1",
   "label": "Systems Engineering",
   "faculty": "Maschinenbau",
@@ -1057,11 +1073,779 @@
   "semester": 1,
   "setplan": true
 }, {
-  "id": "SPLUS86D702",
+  "id": "SPLUS8CAA11",
   "slug": "M-MSE2",
   "label": "Systems Engineering",
   "faculty": "Maschinenbau",
   "degree": "Master of Engineering",
   "semester": 2,
   "setplan": true
+}, {
+  "id": "SPLUS7FED08",
+  "slug": "M-WPF1",
+  "label": "WPF1",
+  "faculty": "Maschinenbau",
+  "degree": "Master of Engineering",
+  "semester": "WPF",
+  "setplan": true
+}, {
+  "id": "SPLUS114152",
+  "slug": "M-WPF2",
+  "label": "WPF2",
+  "faculty": "Maschinenbau",
+  "degree": "Master of Engineering",
+  "semester": "WPF",
+  "setplan": true
+}, {
+  "id": "SPLUS71E808",
+  "slug": "V_BA_BEE_Sem1",
+  "label": "Bio- und Umwelttechnik",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS71E809",
+  "slug": "V_BA_BEE_Sem2",
+  "label": "Bio- und Umwelttechnik",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS71E80A",
+  "slug": "V_BA_BEE_Sem3",
+  "label": "Bio- und Umwelttechnik",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS71E80B",
+  "slug": "V_BA_BEE_Sem4_a",
+  "label": "Bio- und Umwelttechnik A",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS71E80C",
+  "slug": "V_BA_BEE_Sem4_b",
+  "label": "Bio- und Umwelttechnik B",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS71E80D",
+  "slug": "V_BA_BEE_Sem4_c",
+  "label": "Bio- und Umwelttechnik C",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS71E80E",
+  "slug": "V_BA_BEE_Sem5_a",
+  "label": "Bio- und Umwelttechnik A",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 5,
+  "setplan": true
+}, {
+  "id": "SPLUS71E80F",
+  "slug": "V_BA_BEE_Sem5_b",
+  "label": "Bio- und Umwelttechnik B",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 5,
+  "setplan": true
+}, {
+  "id": "SPLUS71E810",
+  "slug": "V_BA_BEE_Sem5_c",
+  "label": "Bio- und Umwelttechnik C",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 5,
+  "setplan": true
+}, {
+  "id": "SPLUS9747BB",
+  "slug": "V_BA_BEE_Sem6_incomer",
+  "label": "Bio- und Umwelttechnik Incomer",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS71E811",
+  "slug": "V_BA_BEE_Sem6_a",
+  "label": "Bio- und Umwelttechnik A",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS71E812",
+  "slug": "V_BA_BEE_Sem6_b",
+  "label": "Bio- und Umwelttechnik B",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS71E813",
+  "slug": "V_BA_BEE_Sem6_c",
+  "label": "Bio- und Umwelttechnik C",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS71E817",
+  "slug": "V_BA_EGT_Sem1",
+  "label": "Energie- und Gebäudetechnik",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS71E814",
+  "slug": "V_BA_EGTiP_Sem1",
+  "label": "Energie- und Gebäudetechnik iP",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS71E818",
+  "slug": "V_BA_EGT_Sem2_1",
+  "label": "Energie- und Gebäudetechnik 1",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUSA4F3E9",
+  "slug": "V_BA_EGT_Sem2_2",
+  "label": "Energie- und Gebäudetechnik 2",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUSF96443",
+  "slug": "V_BA_EGTiP_Sem2",
+  "label": "Energie- und Gebäudetechnik iP",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS71E819",
+  "slug": "V_BA_EGT_Sem3_1",
+  "label": "Energie- und Gebäudetechnik 1",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS9E22E3",
+  "slug": "V_BA_EGT_Sem3_2",
+  "label": "Energie- und Gebäudetechnik 2",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS71E815",
+  "slug": "V_BA_EGTiP_Sem3",
+  "label": "Energie- und Gebäudetechnik iP",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUSF96444",
+  "slug": "V_BA_EGTiP_Sem4",
+  "label": "Energie- und Gebäudetechnik iP",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS0324B0",
+  "slug": "V_BA_EGT_Sem4",
+  "label": "Energie- und Gebäudetechnik",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS71E81C",
+  "slug": "V_BA_EGT(ÖIV)_Sem4",
+  "label": "Energie- und Gebäudetechnik ÖIV",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS71E81A",
+  "slug": "V_BA_EGT(RET)_Sem4",
+  "label": "Energie- und Gebäudetechnik RET",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS71E81B",
+  "slug": "V_BA_EGT(TGA)_Sem4",
+  "label": "Energie- und Gebäudetechnik TGA",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS71E81F",
+  "slug": "V_BA_EGT(ÖIV)_Sem5",
+  "label": "Energie- und Gebäudetechnik ÖIV",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 5,
+  "setplan": true
+}, {
+  "id": "SPLUS71E81E",
+  "slug": "V_BA_EGT(TGA)_Sem5",
+  "label": "Energie- und Gebäudetechnik TGA",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 5,
+  "setplan": true
+}, {
+  "id": "SPLUS71E81F",
+  "slug": "V_BA_EGTiP_Sem5",
+  "label": "Energie- und Gebäudetechnik iP",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 5,
+  "setplan": true
+}, {
+  "id": "SPLUS71E81E",
+  "slug": "V_BA_EGTiP_Sem6",
+  "label": "Energie- und Gebäudetechnik iP",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS0324AF",
+  "slug": "V_BA_EGT(HKRG)_Sem6",
+  "label": "Energie- und Gebäudetechnik HKRG",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS0324AE",
+  "slug": "V_BA_EGT(RETEW)_Sem6",
+  "label": "Energie- und Gebäudetechnik RETEW",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS71E822",
+  "slug": "V_BA_EGT(ÖIV)_Sem6",
+  "label": "Energie- und Gebäudetechnik ÖIV",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS71E821",
+  "slug": "V_BA_EGT(TGA)_Sem6",
+  "label": "Energie- und Gebäudetechnik TGA",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS71E81D",
+  "slug": "V_BA_RET_Sem5",
+  "label": "RET",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 5,
+  "setplan": true
+}, {
+  "id": "SPLUS71E820",
+  "slug": "V_BA_RET_Sem6",
+  "label": "RET",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1B8",
+  "slug": "V_BA_EWING_Sem1",
+  "label": "Wirtschaftsingenieurwesen Energie",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1BF",
+  "slug": "V_BA_UWING_Sem1",
+  "label": "Wirtschaftsingenieurwesen Umwelt",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1BA",
+  "slug": "V_BA_EWING_Sem2",
+  "label": "Wirtschaftsingenieurwesen Energie",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1C0",
+  "slug": "V_BA_UWING_Sem2",
+  "label": "Wirtschaftsingenieurwesen Umwelt",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1BB",
+  "slug": "V_BA_EWING_Sem3",
+  "label": "Wirtschaftsingenieurwesen Energie",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1C1",
+  "slug": "V_BA_UWING_Sem3",
+  "label": "Wirtschaftsingenieurwesen Umwelt",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1BC",
+  "slug": "V_BA_EWING_Sem4",
+  "label": "Wirtschaftsingenieurwesen Energie",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1C2",
+  "slug": "V_BA_UWING_Sem4",
+  "label": "Wirtschaftsingenieurwesen Umwelt",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1BD",
+  "slug": "V_BA_EWING_Sem5",
+  "label": "Wirtschaftsingenieurwesen Energie",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 5,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1C3",
+  "slug": "V_BA_UWING_Sem5",
+  "label": "Wirtschaftsingenieurwesen Umwelt",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 5,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1BE",
+  "slug": "V_BA_EWING_Sem6",
+  "label": "Wirtschaftsingenieurwesen Energie",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS8CA1C4",
+  "slug": "V_BA_UWING_Sem6",
+  "label": "Wirtschaftsingenieurwesen Umwelt",
+  "faculty": "Versorgungstechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 6,
+  "setplan": true
+}, {
+  "id": "SPLUS79487C",
+  "slug": "V_MA_EST_Sem1",
+  "label": "Energiesystemtechnik",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 1,
+  "setplan": true
+}, {
+  "id": "SPLUS794881",
+  "slug": "V_MA_EST(BEE)_Sem2",
+  "label": "Energiesystemtechnik BEE",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS794880",
+  "slug": "V_MA_EST(ÖIV)_Sem2",
+  "label": "Energiesystemtechnik ÖIV",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS79487D",
+  "slug": "V_MA_EST(TGA)_Sem2",
+  "label": "Energiesystemtechnik TGA",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 2,
+  "setplan": true
+}, {
+  "id": "SPLUS794882",
+  "slug": "V_MA_EST(BEE)_Sem3",
+  "label": "Energiesystemtechnik BEE",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS794884",
+  "slug": "V_MA_EST(ÖIV)_Sem3",
+  "label": "Energiesystemtechnik ÖIV",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS794883",
+  "slug": "V_MA_EST(TGA)_Sem3",
+  "label": "Energiesystemtechnik TGA",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 3,
+  "setplan": true
+}, {
+  "id": "SPLUS794885",
+  "slug": "V_MA_EST(BEE)_Sem4",
+  "label": "Energiesystemtechnik BEE",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS794887",
+  "slug": "V_MA_EST(ÖIV)_Sem4",
+  "label": "Energiesystemtechnik ÖIV",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS794886",
+  "slug": "V_MA_EST(TGA)_Sem4",
+  "label": "Energiesystemtechnik TGA",
+  "faculty": "Versorgungstechnik",
+  "degree": "Master of Engineering",
+  "semester": 4,
+  "setplan": true
+}, {
+  "id": "SPLUS1C5045",
+  "slug": "K-LIM-2",
+  "label": "Logistik und Informationsmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Science",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5046",
+  "slug": "K-LIM-4",
+  "label": "Logistik und Informationsmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Science",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5047",
+  "slug": "K-LIM-6",
+  "label": "Logistik und Informationsmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Science",
+  "semester": 6,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5049",
+  "slug": "K-LIP-2",
+  "label": "Logistik im Praxisverbund",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C504B",
+  "slug": "K-LIP-6",
+  "label": "Logistik im Praxisverbund",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 6,
+  "setplan": false
+}, {
+  "id": "SPLUS5B58E3",
+  "slug": "K-LIP-8",
+  "label": "Logistik im Praxisverbund",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 8,
+  "setplan": false
+}, {
+  "id": "SPLUS1C504C",
+  "slug": "K-MD-2",
+  "label": "Mediendesign",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C504D",
+  "slug": "K-MD-4",
+  "label": "Mediendesign",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUS1C504E",
+  "slug": "K-MD-6",
+  "label": "Mediendesign",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 6,
+  "setplan": false
+}, {
+  "id": "SPLUSBFBF3B",
+  "slug": "K-MK-2",
+  "label": "Medienkommunikation",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS557CCC",
+  "slug": "K-MK-4",
+  "label": "Medienkommunikation",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUS1C504F",
+  "slug": "K-MM-2",
+  "label": "Medienmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5050",
+  "slug": "K-MM-4",
+  "label": "Medienmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUSC012B9",
+  "slug": "K-MM-6",
+  "label": "Medienmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 6,
+  "setplan": false
+}, {
+  "id": "SPLUSB09275",
+  "slug": "K-MVL-1",
+  "label": "Verkehr und Logistik",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Master of Arts",
+  "semester": 1,
+  "setplan": false
+}, {
+  "id": "SPLUS1C505F",
+  "slug": "K-PVM-2",
+  "label": "Personenverkehrsmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5060",
+  "slug": "K-PVM-4",
+  "label": "Personenverkehrsmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUS7AF3C9",
+  "slug": "K-PVM-6",
+  "label": "Personenverkehrsmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 6,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5051",
+  "slug": "K-SPM-2",
+  "label": "Sportmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5052",
+  "slug": "K-SPM-4",
+  "label": "Sportmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5054",
+  "slug": "K-SRM-2",
+  "label": "Stadt- und Regionalmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5055",
+  "slug": "K-SRM-4",
+  "label": "Stadt- und Regionalmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5056",
+  "slug": "K-TLM-2",
+  "label": "Transport- und Logistikmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5057",
+  "slug": "K-TLM-4",
+  "label": "Transport- und Logistikmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5058",
+  "slug": "K-TLM-6",
+  "label": "Transport- und Logistikmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 6,
+  "setplan": false
+}, {
+  "id": "SPLUS1C5059",
+  "slug": "K-TM-2",
+  "label": "Tourismusmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C505A",
+  "slug": "K-TM-4",
+  "label": "Tourismusmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUS5BF81B",
+  "slug": "K-WPF",
+  "label": "Wahlfächer",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": "WPF",
+  "setplan": false
+}, {
+  "id": "SPLUSF3807B",
+  "slug": "K-WPF",
+  "label": "Wahlpflichtfächer",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Arts",
+  "semester": "WPF",
+  "setplan": false
+}, {
+  "id": "SPLUS1C505C",
+  "slug": "K-WIV-2",
+  "label": "Wirtschaftsingenieurwesen Verkehr",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Science",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS1C505D",
+  "slug": "K-WIV-4",
+  "label": "Wirtschaftsingenieurwesen Verkehr",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Science",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUS1C505E",
+  "slug": "K-WIV-6",
+  "label": "Wirtschaftsingenieurwesen Verkehr",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Bachelor of Science",
+  "semester": 6,
+  "setplan": false
+}, {
+  "id": "SPLUS7AF3C1",
+  "slug": "K-FDU-2",
+  "label": "Führung in Dienstleistungsunternehmen",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Master of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUS0E9B6D",
+  "slug": "K-FDU-4",
+  "label": "Führung in Dienstleistungsunternehmen",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Master of Arts",
+  "semester": 4,
+  "setplan": false
+}, {
+  "id": "SPLUSBFBF37",
+  "slug": "K-KM-2",
+  "label": "Kommunikationsmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Master of Arts",
+  "semester": 2,
+  "setplan": false
+}, {
+  "id": "SPLUSE750DB",
+  "slug": "K-KM-4",
+  "label": "Kommunikationsmanagement",
+  "faculty": "Karl Scharfenberg",
+  "degree": "Master of Arts",
+  "semester": 4,
+  "setplan": false
 } ]
