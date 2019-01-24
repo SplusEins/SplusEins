@@ -447,84 +447,91 @@
   "degree": "Bachelor of Science",
   "semester": "WPF"
 }, {
-  "id": "SPLUS477D4B",
+  "id": "SPLUS252184",
   "slug": "S-BA-1",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",
   "degree": "Bachelor of Arts",
   "semester": 1
 }, {
-  "id": "SPLUS0ACEC2",
+  "id": "SPLUS0CB702",
   "slug": "S-BA-2",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",
   "degree": "Bachelor of Arts",
   "semester": 2
 }, {
-  "id": "SPLUS0ACEC3",
+  "id": "SPLUS0CB703",
   "slug": "S-BA-3",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",
   "degree": "Bachelor of Arts",
   "semester": 3
 }, {
-  "id": "SPLUS0ACEC4",
+  "id": "SPLUS0CB704",
   "slug": "S-BA-4",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",
   "degree": "Bachelor of Arts",
   "semester": 4
 }, {
-  "id": "SPLUS01DA64",
+  "id": "SPLUS25219A",
   "slug": "S-BA-4/5",
   "label": "Soziale Arbeit 4/5",
   "faculty": "Soziale Arbeit",
   "degree": "Bachelor of Arts",
   "semester": 4
 }, {
-  "id": "SPLUS0ACEC5",
+  "id": "SPLUS0CB705",
   "slug": "S-BA-5",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",
   "degree": "Bachelor of Arts",
   "semester": 5
 }, {
-  "id": "SPLUS0ACEC6",
+  "id": "SPLUS0CB706",
   "slug": "S-BA-6",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",
   "degree": "Bachelor of Arts",
   "semester": 6
 }, {
-  "id": "SPLUS0ACEC5",
+  "id": "SPLUSDDEF5D",
   "slug": "S-BP",
-  "label": "Soziale Arbeit Projekt (TODO?)",
+  "label": "Soziale Arbeit BP",
   "faculty": "Soziale Arbeit",
   "degree": "Bachelor of Arts",
-  "semester": 7
+  "semester": "OTHER"
 }, {
-  "id": "SPLUS213C5F",
+  "id": "SPLUSC029B0",
+  "slug": "S-Klausur",
+  "label": "Soziale Arbeit Klausur",
+  "faculty": "Soziale Arbeit",
+  "degree": "Bachelor of Arts",
+  "semester": "OTHER"
+}, {
+  "id": "SPLUSDA388F",
   "slug": "S-MA-PSA-1",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",
   "degree": "Master of Arts",
   "semester": 1
 }, {
-  "id": "SPLUS213C60",
+  "id": "SPLUSDA3890",
   "slug": "S-MA-PSA-2",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",
   "degree": "Master of Arts",
   "semester": 2
 }, {
-  "id": "SPLUS213C61",
+  "id": "SPLUSDA3891",
   "slug": "S-MA-PSA-3",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",
   "degree": "Master of Arts",
   "semester": 3
 }, {
-  "id": "SPLUS213C62",
+  "id": "SPLUSDA3892",
   "slug": "S-MA-PSA-4",
   "label": "Soziale Arbeit",
   "faculty": "Soziale Arbeit",

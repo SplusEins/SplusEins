@@ -26,6 +26,7 @@
           <v-list-tile slot="activator">
             <v-list-tile-content>
               <v-list-tile-title v-if="semester == 'WPF'">Wahlpflichtfächer</v-list-tile-title>
+              <v-list-tile-title v-else-if="semester == 'OTHER'">Sonstiges</v-list-tile-title>
               <v-list-tile-title v-else>{{ semester }}. Semester</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
