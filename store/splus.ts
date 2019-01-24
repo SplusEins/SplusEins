@@ -84,7 +84,7 @@ export const state = () => ({
    * Map of { week: lectures[] }
    */
   favoriteSchedules: [],
-  subscribedTimetable: undefined,
+  subscribedTimetable: {},
   lectures: {},
   /**
    * Currently viewed week.
@@ -254,20 +254,21 @@ export const mutations = {
     }
 
     this._vm.$set(state.customSchedules, label, customTimetable);
-    if(state.subscribedTimetable == undefined) {
+    if(Object.keys(state.subscribedTimetable).length === 0) {
       state.subscribedTimetable = state.customSchedules[label];
     }
   },
   deleteCustomSchedule(state, customTimetable) {
-    if(state.subscribedTimetable.label == customTimetable.label) {
-      state.subscribedTimetable = undefined;
-    }
     this._vm.$delete(state.customSchedules, customTimetable.label);
+    if(state.subscribedTimetable.label == customTimetable.label) {
+      const subscribeables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
+      state.subscribedTimetable = subscribeables.length == 0? {} : subscribeables[0];
+    }
   },
   addFavoriteSchedule(state, favoriteTimetable){
     if(state.favoriteSchedules.filter(favorite => favorite.id == favoriteTimetable.id).length == 0){
       state.favoriteSchedules.push(favoriteTimetable);
-      if(state.subscribedTimetable == undefined) {
+      if(Object.keys(state.subscribedTimetable).length === 0) {
         state.subscribedTimetable = favoriteTimetable;
       }
     }
@@ -275,8 +276,9 @@ export const mutations = {
   removeFavoriteSchedule(state, favoriteTimetable){
     state.favoriteSchedules = state.favoriteSchedules
       .filter((timetable) => timetable.id != favoriteTimetable.id);
-    if(state.subscribedTimetable == favoriteTimetable) {
-      state.subscribedTimetable = undefined;
+    if(state.subscribedTimetable.id == favoriteTimetable.id) {
+      const subscribeables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
+      state.subscribedTimetable = subscribeables.length == 0? {} : subscribeables[0];
     }
   },
   setError(state, error) {

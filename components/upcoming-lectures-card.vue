@@ -7,7 +7,7 @@
         :disabled="!hasSubscribableTimetables"
         icon
         @click="subscribeDialogOpen = true">
-        <v-icon>mdi-settings</v-icon>
+        <v-icon>mdi-bookmark</v-icon>
       </v-btn>
     </v-card-title>
 
@@ -66,12 +66,12 @@ export default {
   },
   watch: {
     subscribedTimetable() {
-      if(this.browserStateReady){
+      if(this.browserStateReady && !!this.subscribedTimetable.id){
         this.load();
       }
     },
     lectures() {
-      if(this.schedule.id == this.subscribedTimetable.id)  {
+      if(!!this.schedule && !!this.subscribedTimetable.id && this.schedule.id == this.subscribedTimetable.id)  {
         const possibleNext = this.findNextEvent();
         if(possibleNext.ready){
           if(this.nextEvent && possibleNext.event && this.nextEvent.data.title == possibleNext.event.data.title) return;
@@ -81,7 +81,7 @@ export default {
     }
   },
   mounted() {
-    if(!!this.schedule && this.schedule.id != this.subscribedTimetable.id){
+    if(!!this.schedule && !!this.subscribedTimetable.id && this.schedule.id != this.subscribedTimetable.id){
        this.load();
     }
     this.nextEvent = this.findNextEvent().event;
