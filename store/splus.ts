@@ -261,8 +261,8 @@ export const mutations = {
   deleteCustomSchedule(state, customTimetable) {
     this._vm.$delete(state.customSchedules, customTimetable.label);
     if(state.subscribedTimetable.label == customTimetable.label) {
-      const subscribeables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
-      state.subscribedTimetable = subscribeables.length == 0? {} : subscribeables[0];
+      const subscribables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
+      state.subscribedTimetable = subscribables.length == 0? {} : subscribables[0];
     }
   },
   addFavoriteSchedule(state, favoriteTimetable){
@@ -277,8 +277,8 @@ export const mutations = {
     state.favoriteSchedules = state.favoriteSchedules
       .filter((timetable) => timetable.id != favoriteTimetable.id);
     if(state.subscribedTimetable.id == favoriteTimetable.id) {
-      const subscribeables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
-      state.subscribedTimetable = subscribeables.length == 0? {} : subscribeables[0];
+      const subscribables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
+      state.subscribedTimetable = subscribables.length == 0? {} : subscribables[0];
     }
   },
   setError(state, error) {
