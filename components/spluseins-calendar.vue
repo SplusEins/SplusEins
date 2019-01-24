@@ -215,12 +215,7 @@ export default {
       this.$matomo.trackEvent(category, action);
     },
     calendarChanged({ calendar }) {
-      if (calendar.start.date.year() == 2019) {
-        // TODO FIXME
-        this.setWeek(calendar.start.date.isoWeek() + 52);
-      } else {
-        this.setWeek(calendar.start.date.isoWeek());
-      }
+      this.setWeek(calendar.start.date.isoWeek());
     },
     routeToRoot() {
       this.$router.replace('/');

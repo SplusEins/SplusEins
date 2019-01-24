@@ -11,9 +11,9 @@ const scalarArraysEqual = (array1, array2) =>
   array1.length === array2.length &&
   array1.every((value, index) => value === array2[index]);
 
-// update this in SS19
+// update this in WS19/20
 const isoWeek0 = moment()
-  .year(2018)
+  .year(2019)
   .startOf('year') // week 1
   .startOf('isoWeek') // start of week 1
   .subtract(1, 'weeks'); // start of week 0

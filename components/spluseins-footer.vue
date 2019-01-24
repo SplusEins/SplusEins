@@ -14,7 +14,7 @@
         text-xs-center
         xs12
         class="font-size">
-        2018 
+        2019 
         —
         <strong> 
           SplusEins
