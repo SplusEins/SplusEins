@@ -129,22 +129,34 @@ export default {
     DayspanCustomEventPopover,
   },
   data() {
-    const currentWeek = Day.fromMoment(moment().startOf('isoWeek'));
-    const startOfWeek = moment().day() == 6 || moment().day() == 0 ? currentWeek.add(1, 'weeks') : currentWeek;
+    const stateWeek = this.$store.state.splus.week;
+    const isStateWeekSet = stateWeek != undefined;
+    const startOfWeek = moment().startOf('isoWeek');
+
+    if (isStateWeekSet) {
+      startOfWeek.isoWeek(stateWeek);
+    } else {
+      // if the user is looking at today and is on Sat/Sun, peek to the next week
+      if (moment().day() == 6 || moment().day() == 0) {
+        startOfWeek.add(1, 'weeks');
+      }
+    }
+
+    const around = Day.fromMoment(startOfWeek);
     const weeklyCalendar = {
       id: 'W',
       label: 'Woche',
       shortcut: 'W',
       type: Units.DAY,
       size: 7,
-      around: startOfWeek,
+      around,
       focus: 0,
       repeat: true,
       listTimes: true,
       updateRows: true,
       schedule: false
     };
-    const calendar = Calendar.days(7, startOfWeek, 0);
+    const calendar = Calendar.days(7, around, 0);
 
     // computed properties are not available during client rendering yet, access the getter directly
     calendar.setEvents(this.$store.getters['splus/getLecturesAsEvents']);
@@ -205,8 +217,7 @@ export default {
   },
   mounted() {
     if (this.lazyLoad) {
-      // static build -> splus.week is possibly wrong and no lectures are in the store
-      this.resetWeek();
+      // static build -> no lectures are in the store
       this.loadLectures();
     }
   },
@@ -241,7 +252,6 @@ export default {
     },
     ...mapMutations({
       setWeek: 'splus/setWeek',
-      resetWeek: 'splus/resetWeek',
       addFavoriteSchedule: 'splus/addFavoriteSchedule',
       removeFavoriteSchedule: 'splus/removeFavoriteSchedule',
     }),

@@ -73,7 +73,7 @@
 </template>
 
 <script lang="js">
-import { mapMutations, mapGetters } from 'vuex';
+import { mapMutations, mapGetters, mapState } from 'vuex';
 import * as moment from 'moment';
 import { uniq, flatten, customScheduleToRoute } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
@@ -142,6 +142,9 @@ export default {
       scheduleIds: 'splus/scheduleIds',
       getScheduleById: 'splus/getScheduleById',
     }),
+    ...mapState({
+      week: (state) => state.splus.week,
+    }),
   },
   watch: {
     dialogOpen() {
@@ -181,8 +184,6 @@ export default {
     },
     async loadLectures(schedule) {
       this.loading = true;
-
-      const week = moment().isoWeek();
 
       try {
         // TODO update this in WS19/20 or at start of SS19

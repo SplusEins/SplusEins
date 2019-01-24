@@ -24,9 +24,6 @@ export default {
     ...mapGetters({
       isCustomSchedule: 'splus/isCustomSchedule',
     }),
-    ...mapState({
-      currentSchedule: (state) => state.splus.schedule,
-    })
   },
   async fetch({ store, params, query }) {
     store.dispatch('splus/importSchedule', { params, query });

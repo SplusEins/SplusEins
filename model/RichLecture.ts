@@ -34,7 +34,7 @@ export class RichLecture {
     return moment()
       .utcOffset('+0100')
       .startOf('date')
-      .isoWeek(week)
+      .isoWeek(week % 52)
       .isoWeekday(lecture.day + 1)
       .toDate();
   }

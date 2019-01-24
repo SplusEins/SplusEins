@@ -21,6 +21,7 @@ export default ({ store }) => {
       splus: {
         customSchedules: state.splus.customSchedules,
         favoriteSchedules: state.splus.favoriteSchedules,
+        subscribedTimetable: state.splus.subscribedTimetable,
       },
       privacy: {
         allowAllCookies: state.privacy.allowAllCookies,
