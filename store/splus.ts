@@ -340,7 +340,6 @@ export const actions = {
    */
   importSchedule({ state, commit }, { params, query }) {
     commit('clearLectures');
-    commit('resetWeek');
 
     switch (parseFloat(query.v)) {
       case 1:
