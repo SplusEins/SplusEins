@@ -538,177 +538,177 @@
   "degree": "Master of Arts",
   "semester": 4
 }, {
-  "id": "SPLUS3BF4F1",
+  "id": "SPLUS4F00F7",
   "slug": "E-B WPF",
   "label": "Wahlpflichtfächer Bachelor",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": "WPF"
 }, {
-  "id": "SPLUS3BF4EF",
+  "id": "SPLUS7A1732",
   "slug": "E-B1 EIT MathePLUS",
   "label": "EIT MathePLUS",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 1
 }, {
-  "id": "SPLUS3BF4F0",
-  "slug": "E-B1 EIT MatheSTAND A",
-  "label": "EIT MatheSTAND Gruppe A",
+  "id": "SPLUS06BD85",
+  "slug": "E-B1 EIT MatheSTAND",
+  "label": "EIT MatheSTAND Gruppe",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 1
 }, {
-  "id": "SPLUS4F841A",
-  "slug": "E-B1 EITiP MatheSTAND B",
-  "label": "EITiP MatheSTAND Gruppe B",
-  "faculty": "Elektrotechnik",
-  "degree": "Bachelor of Engineering",
-  "semester": 1
-}, {
-  "id": "SPLUS642471",
+  "id": "SPLUSE57308",
   "slug": "E-B1 WEIT MathePLUS",
   "label": "WEIT MathePLUS",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 1
 }, {
-  "id": "SPLUSD18F0F",
-  "slug": "E-B1 WEIT MatheSTAND A",
-  "label": "WEIT MatheSTAND Gruppe A",
+  "id": "SPLUSE572FF",
+  "slug": "E-B1 WEIT MatheSTAND",
+  "label": "WEIT MatheSTAND",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 1
 }, {
-  "id": "SPLUSF60FA9",
-  "slug": "E-B1 WEITiP MatheSTAND B",
-  "label": "WEITiP MatheSTAND Gruppe B",
-  "faculty": "Elektrotechnik",
-  "degree": "Bachelor of Engineering",
-  "semester": 1
-}, {
-  "id": "SPLUS4F841B",
-  "slug": "E-B2 EIT/EITiP",
-  "label": "EIT(iP)",
+  "id": "SPLUS06BD86",
+  "slug": "E-B2 EIT Gruppe A",
+  "label": "EIT Gruppe A",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 2
 }, {
-  "id": "SPLUSBD6A7C",
-  "slug": "E-B2 WEIT/WEITiP",
-  "label": "WEIT(iP)",
+  "id": "SPLUS44E22B",
+  "slug": "E-B2 EITiP Gruppe B",
+  "label": "EITiP Gruppe B",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 2
 }, {
-  "id": "SPLUS4F841C",
-  "slug": "E-B3 EIT/EITiP",
+  "id": "SPLUSDE03DC",
+  "slug": "E-B2 WEIT",
+  "label": "WEIT",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 2
+}, {
+  "id": "SPLUS6E4698",
+  "slug": "E-B2 WEITiP",
+  "label": "WEITiP",
+  "faculty": "Elektrotechnik",
+  "degree": "Bachelor of Engineering",
+  "semester": 2
+},  {
+  "id": "SPLUS44E22C",
+  "slug": "E-B3 EIT(iP)",
   "label": "EIT(iP)",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 3
 }, {
-  "id": "SPLUSF60FAB",
+  "id": "SPLUS8BCC75",
   "slug": "E-B3 WEIT/WEITiP",
   "label": "WEIT(iP)",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 3
 }, {
-  "id": "SPLUSD18F08",
-  "slug": "E-B4 EIT/EITiP-AT",
+  "id": "SPLUS3C839E",
+  "slug": "E-B4 EIT(iP)-AT",
   "label": "EIT(iP)-AT",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 4
 }, {
-  "id": "SPLUSD18F09",
-  "slug": "E-B4 EIT/EITiP-EE",
+  "id": "SPLUS3C839F",
+  "slug": "E-B4 EIT(iP)-EE",
   "label": "EIT(iP)-EE",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 4
 }, {
-  "id": "SPLUSD18F0A",
-  "slug": "E-B4 EIT/EITiP-IT",
+  "id": "SPLUS3C83A0",
+  "slug": "E-B4 EIT(iP)-IT",
   "label": "EIT(iP)-IT",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 4
 }, {
-  "id": "SPLUS3579EA",
-  "slug": "E-B4 WEIT/WEITiP",
+  "id": "SPLUS8BCC76",
+  "slug": "E-B4 WEIT(iP)",
   "label": "WEIT(iP)",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 4
 }, {
-  "id": "SPLUSD18F0B",
-  "slug": "E-B5 EIT/EITiP-AT",
+  "id": "SPLUS6E46A0",
+  "slug": "E-B5 EIT(iP)-AT",
   "label": "EIT(iP)-AT",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 5
 }, {
-  "id": "SPLUSD18F0C",
-  "slug": "E-B5 EIT/EITiP-EE",
+  "id": "SPLUS6E46A1",
+  "slug": "E-B5 EIT(iP)-EE",
   "label": "EIT(iP)-EE",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 5
 }, {
-  "id": "SPLUSD18F0D",
-  "slug": "E-B5 EIT/EITiP-IT",
+  "id": "SPLUS6E46A2",
+  "slug": "E-B5 EIT(iP)-IT",
   "label": "EIT(iP)-IT",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 5
 }, {
-  "id": "SPLUS3579EC",
-  "slug": "E-B5 WEIT/WEITiP",
+  "id": "SPLUSE57309",
+  "slug": "E-B5 WEIT(iP)",
   "label": "WEIT(iP)",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 5
 }, {
-  "id": "SPLUSF60FAC",
-  "slug": "E-B6 EIT/EITiP-AT",
+  "id": "SPLUS6E46A4",
+  "slug": "E-B6 EIT(iP)-AT",
   "label": "EIT(iP)-AT",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 6
 }, {
-  "id": "SPLUSF60FAD",
-  "slug": "E-B6 EIT/EITiP-EE",
+  "id": "SPLUS6E46A5",
+  "slug": "E-B6 EIT(iP)-EE",
   "label": "EIT(iP)-EE",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 6
 }, {
-  "id": "SPLUSF60FAE",
-  "slug": "E-B6 EIT/EITiP-IT",
+  "id": "SPLUS6E46A7",
+  "slug": "E-B6 EIT(iP)-IT",
   "label": "EIT(iP)-IT",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 6
 }, {
-  "id": "SPLUSBD6A7D",
-  "slug": "E-B6 WEIT/WEITiP",
+  "id": "SPLUSE5730A",
+  "slug": "E-B6 WEIT(iP)",
   "label": "WEIT(iP)",
   "faculty": "Elektrotechnik",
   "degree": "Bachelor of Engineering",
   "semester": 6
 }, {
-  "id": "SPLUS4F842C",
-  "slug": "IMES Teil WS-B",
-  "label": "Teilzeit IMES",
+  "id": "SPLUS14DDF8",
+  "slug": "E-M Teilz IMES",
+  "label": "IMES Teilzeit SS-A",
   "faculty": "Elektrotechnik",
   "degree": "Master of Engineering",
   "semester": 1
 }, {
-  "id": "SPLUS4F842D",
-  "slug": "IMES Vollzeit",
-  "label": "Vollzeit IMES",
+  "id": "23SPLUS14DDF9",
+  "slug": "E-M Vollz IMES",
+  "label": "IMES Vollzeit",
   "faculty": "Elektrotechnik",
   "degree": "Master of Engineering",
   "semester": 1
