@@ -4,7 +4,7 @@
     <v-card-title>
       <span class="headline">Nächste Vorlesungen</span>
       <v-btn
-        :disabled="!hasSubscribableTimetables"
+        v-show="hasSubscribableTimetables"
         icon
         @click="subscribeDialogOpen = true">
         <v-icon>mdi-bookmark</v-icon>
