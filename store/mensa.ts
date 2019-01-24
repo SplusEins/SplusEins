@@ -22,7 +22,7 @@ export const actions = {
       const response = await this.$axios.get(`/api/mensa`);
       result = response.data;
     } catch (error) {
-        commit('setError', 'API-Verbindung fehlgeschlagen');
+        commit('enqueueError', 'Mensa: API-Verbindung fehlgeschlagen', {root:true});
         console.error('error during Mensa API call', error.message);
     }
 

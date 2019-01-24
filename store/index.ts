@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 export const state = () => ({
   /**
    * State schema version.
@@ -14,6 +16,7 @@ export const state = () => ({
    * true if frontend is a static build.
    */
   lazyLoad: false,
+  errorQueue: [],
 });
 
 
@@ -21,4 +24,10 @@ export const mutations = {
   enableLazyLoad(state) {
     state.lazyLoad = true;
   },
+  enqueueError(state, message:string) {
+    state.errorQueue.push(message);
+  },
+  dequeueError(state){
+    state.errorQueue.shift();
+  }
 }

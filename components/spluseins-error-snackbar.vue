@@ -1,13 +1,14 @@
 <template>
   <v-snackbar
     v-model="snackbarOpen"
+    :timeout="0"
     color="error"
     right>
-    {{ message }}
+    {{ next }}
     <v-btn
       dark
       flat
-      @click="clearError()">
+      @click="dequeueError()">
       Schließen
     </v-btn>
   </v-snackbar>
@@ -21,19 +22,22 @@ export default {
   computed: {
     snackbarOpen: {
         get() {
-            return !!this.message;
+            return this.errorQueue.length != 0;
         },
         set() {
-            this.clearError();
+          this.dequeueError();
         }
     },
     ...mapState({
-      message: state => state.splus.error,
+      errorQueue: state => state.errorQueue
     }),
+    next(){
+      return this.errorQueue[0];
+    }
   },
   methods: {
     ...mapMutations({
-      clearError: 'splus/clearError',
+      dequeueError: 'dequeueError',
     }),
   },
 };
