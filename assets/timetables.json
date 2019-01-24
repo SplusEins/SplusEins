@@ -1,402 +1,451 @@
 [ {
-  "id": "SPLUS63AE59",
+  "id": "SPLUS7A3292",
   "slug": "I-B-I1",
   "label": "Informatik",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 1
 }, {
-  "id": "SPLUSB3BC21",
+  "id": "SPLUS7A3280",
   "slug": "I-B-I2-CE",
   "label": "Computer Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 2
 }, {
-  "id": "SPLUSB3BC22",
+  "id": "SPLUSD05645",
   "slug": "I-B-I2-MI",
   "label": "Medieninformatik",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 2
 }, {
-  "id": "SPLUSB3BC20",
+  "id": "SPLUS7A3281",
   "slug": "I-B-I2-SE",
   "label": "Software Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 2
 }, {
-  "id": "SPLUSB3BC1F",
+  "id": "SPLUS7EEB0C",
   "slug": "I-B-I2-SysE",
   "label": "System Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 2
 }, {
-  "id": "SPLUS63AE5A",
+  "id": "SPLUS7A327F",
   "slug": "I-B-I2-IE",
   "label": "Information Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 2
 }, {
-  "id": "SPLUSB3BC29",
+  "id": "SPLUS7A3283",
   "slug": "I-B-I3-IE",
   "label": "Information Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 3
 }, {
-  "id": "SPLUS63AE5B",
+  "id": "SPLUS7A3282",
   "slug": "I-B-I3-CE",
   "label": "Computer Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 3
 }, {
-  "id": "SPLUSB3BC2A",
+  "id": "SPLUSD05646",
   "slug": "I-B-I3-MI",
   "label": "Medieninformatik",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 3
 }, {
-  "id": "SPLUSB3BC2B",
+  "id": "SPLUS7A3284",
   "slug": "I-B-I3-SE",
   "label": "Software Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 3
 }, {
-  "id": "SPLUSB3BC2C",
+  "id": "SPLUS7EEB0A",
   "slug": "I-B-I3-SysE",
   "label": "System Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 3
 }, {
-  "id": "SPLUSB3BC2D",
+  "id": "SPLUS48FCE9",
   "slug": "I-B-I4-CE",
   "label": "Computer Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 4
 }, {
-  "id": "SPLUS8677CD",
+  "id": "SPLUS7A3285",
   "slug": "I-B-I4-IE",
   "label": "Information Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 4
 }, {
-  "id": "SPLUS73FFC6",
+  "id": "SPLUS48FCE7",
   "slug": "I-B-I4-MI",
   "label": "Medieninformatik",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 4
 }, {
-  "id": "SPLUS659BF0",
+  "id": "SPLUS48FCE8",
   "slug": "I-B-I4-SE",
   "label": "Software Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 4
 }, {
-  "id": "SPLUS69C0D0",
+  "id": "SPLUS7EEB0B",
   "slug": "I-B-I4-SysE",
   "label": "System Engineering",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 4
 }, {
-  "id": "SPLUS63AE5D",
+  "id": "SPLUS38FDAE",
   "slug": "I-B-I5",
   "label": "Informatik",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 5
 }, {
-  "id": "SPLUS63AE5E",
-  "slug": "I-B-ITM1",
+  "id": "SPLUS2EF0F4",
+  "slug": "I-B-ITM2",
   "label": "IT-Management",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
-  "semester": 1
+  "semester": 2
 }, {
-  "id": "SPLUS63AE60",
-  "slug": "I-B-ITM3",
+  "id": "SPLUS38FDB4",
+  "slug": "I-B-ITM4",
   "label": "IT-Management",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
-  "semester": 3
+  "semester": 4
 }, {
-  "id": "SPLUS63AE62",
-  "slug": "I-B-ITM5",
-  "label": "IT-Management",
+  "id": "SPLUSAF5336",
+  "slug": "I-B-WI2",
+  "label": "Wirtschaftsinformatik",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
-  "semester": 5
+  "semester": 2
 }, {
-  "id": "SPLUSA2822B",
-  "slug": "I-M-1 PO13",
-  "label": "Informatik PO13",
+  "id": "SPLUSAF5336",
+  "slug": "I-B-WI4",
+  "label": "Wirtschaftsinformatik",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 4
+}, {
+  "id": "SPLUS82CCA0",
+  "slug": "I-M 1-IE PO18",
+  "label": "Information Engineering PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 1
 }, {
-  "id": "SPLUSA2822D",
-  "slug": "I-M-2 PO13",
-  "label": "Informatik PO13",
+  "id": "SPLUS82CCA8",
+  "slug": "I-M 1-SCE PO18",
+  "label": "Systems & Computer Engineering PO18",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 1
+}, {
+  "id": "SPLUS82CCA4",
+  "slug": "I-M 1-SOE PO18",
+  "label": "Software Engineering PO18",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 1
+}, {
+  "id": "SPLUS82CCA3",
+  "slug": "I-M 2-IE PO18",
+  "label": "Information Engineering PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 2
 }, {
-  "id": "SPLUSA2822E",
-  "slug": "I-M-3 PO13",
-  "label": "Informatik PO13",
+  "id": "SPLUS82CCAC",
+  "slug": "I-M 2-SCE PO18",
+  "label": "Systems & Computer Engineering PO18",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 2
+}, {
+  "id": "SPLUS82CCA5",
+  "slug": "I-M 2-SOE PO18",
+  "label": "Software Engineering PO18",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 2
+}, {
+  "id": "SPLUS82CCA2",
+  "slug": "I-M 3-IE PO18",
+  "label": "Information Engineering PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 3
 }, {
-  "id": "SPLUSA2822F",
-  "slug": "I-M-4 PO13",
-  "label": "Informatik PO13",
+  "id": "SPLUS82CCAD",
+  "slug": "I-M 3-SCE PO18",
+  "label": "Systems & Computer Engineering PO18",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 3
+}, {
+  "id": "SPLUS82CCA7",
+  "slug": "I-M 3-SOE PO18",
+  "label": "Software Engineering PO18",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 3
+}, {
+  "id": "SPLUS82CCA1",
+  "slug": "I-M 4-IE PO18",
+  "label": "Information Engineering PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 4
 }, {
-  "id": "SPLUS6EE71E",
+  "id": "SPLUS82CCAE",
+  "slug": "I-M 4-SCE PO18",
+  "label": "Systems & Computer Engineering PO18",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 4
+}, {
+  "id": "SPLUS82CCA6",
+  "slug": "I-M 4-SOE PO18",
+  "label": "Software Engineering PO18",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 4
+}, {
+  "id": "SPLUS707BC4",
+  "slug": "I-M1-IE PO13",
+  "label": "Information Engineering PO13",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 1
+}, {
+  "id": "SPLUSC78341",
+  "slug": "I-M1-SYE PO13",
+  "label": "Mobile Sytem Engineering PO13",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 1
+}, {
+  "id": "SPLUS38FDB7",
+  "slug": "I-M2-IE PO13",
+  "label": "Information Engineering PO13",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSC78342",
+  "slug": "I-M2-SYE PO13",
+  "label": "Mobile Sytem Engineering PO13",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSDE2F6F",
+  "slug": "I-M3-IE PO13",
+  "label": "Information Engineering PO13",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 3
+}, {
+  "id": "SPLUSC78343",
+  "slug": "I-M3-SYE PO13",
+  "label": "Mobile Sytem Engineering PO13",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 3
+}, {
+  "id": "SPLUS38FDB9",
+  "slug": "I-M4-IE PO13",
+  "label": "Information Engineering PO13",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 4
+}, {
+  "id": "SPLUSC78344",
+  "slug": "I-M4-SYE PO13",
+  "label": "Mobile Sytem Engineering PO13",
+  "faculty": "Informatik",
+  "degree": "Master of Science",
+  "semester": 4
+}, {
+  "id": "SPLUS82CCB4",
   "slug": "I-M-WPF-IE PO18",
   "label": "Wahlpflichtfächer IE PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": "WPF"
-}, {
-  "id": "SPLUS6EE71F",
+},{
+  "id": "SPLUS82CCB6",
   "slug": "I-M-WPF-SCE PO18",
   "label": "Wahlpflichtfächer SCE PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": "WPF"
 }, {
-  "id": "SPLUS6EE720",
+  "id": "SPLUS82CCB5",
   "slug": "I-M-WPF-SOE PO18",
   "label": "Wahlpflichtfächer SOE PO18",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": "WPF"
 }, {
-  "id": "SPLUSEBD6F8",
-  "slug": "I-M-I1-IE PO18",
-  "label": "Information Engineering PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 1
-}, {
-  "id": "SPLUSB3BC3B",
-  "slug": "I-M-I1-SCE PO18",
-  "label": "Systems & Computer Engineering PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 1
-}, {
-  "id": "SPLUS6A9870",
-  "slug": "I-M-I1-SOE PO18",
-  "label": "Software Engineering PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 1
-}, {
-  "id": "SPLUSEBD6F7",
-  "slug": "I-M-I2-IE PO18",
-  "label": "Information Engineering PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 2
-}, {
-  "id": "SPLUS29B06F",
-  "slug": "I-M-I2-SCE PO18",
-  "label": "Systems & Computer Engineering PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 2
-}, {
-  "id": "SPLUS6A9878",
-  "slug": "I-M-I2-SOE PO18",
-  "label": "Software Engineering PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 2
-}, {
-  "id": "SPLUS63AE6F",
-  "slug": "I-M-I3-IE PO18",
-  "label": "Information Engineering PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 3
-}, {
-  "id": "SPLUS13B7F1",
-  "slug": "I-M-I3-SCE PO18",
-  "label": "Systems & Computer Engineering PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 3
-}, {
-  "id": "SPLUS6A987A",
-  "slug": "I-M-I3-SOE PO18",
-  "label": "Software Engineering PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 3
-}, {
-  "id": "SPLUS63C666",
-  "slug": "I-M-I4 PO18",
-  "label": "Informatik PO18",
-  "faculty": "Informatik",
-  "degree": "Master of Science",
-  "semester": 4
-}, {
-  "id": "SPLUS925F6A",
+  "id": "SPLUSF4F4F9",
   "slug": "I-VFH-MA-MI1",
   "label": "Medieninformatik VFH",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 1
 }, {
-  "id": "SPLUS2EA0A2",
+  "id": "SPLUSF4F4F8",
   "slug": "I-VFH-MA-MI2",
   "label": "Medieninformatik VFH",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 2
 }, {
-  "id": "SPLUS925F6B",
+  "id": "SPLUS19351E",
   "slug": "I-VFH-MA-MI3",
   "label": "Medieninformatik VFH",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 3
 }, {
-  "id": "SPLUSC6A347",
+  "id": "SPLUSF4F4FB",
   "slug": "I-VFH-MA-WI1",
   "label": "Wirtschaftsinformatik VFH",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 1
 }, {
-  "id": "SPLUS8D0BC9",
+  "id": "SPLUS129E72",
   "slug": "I-VFH-MA-WI2",
   "label": "Wirtschaftsinformatik VFH",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 2
 }, {
-  "id": "SPLUSC6A348",
+  "id": "SPLUSF4F4FA",
   "slug": "I-VFH-MA-WI3",
   "label": "Wirtschaftsinformatik VFH",
   "faculty": "Informatik",
   "degree": "Master of Science",
   "semester": 3
-}, {
-  "id": "SPLUS2F75B9",
+},  {
+  "id": "SPLUSF0BA74",
   "slug": "I-VFH-MI1",
   "label": "Medieninformatik VFH",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 1
 }, {
-  "id": "SPLUS2F75BA",
+  "id": "SPLUSF37515",
+  "slug": "I-VFH-MI2",
+  "label": "Medieninformatik VFH",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSF0BA75",
   "slug": "I-VFH-MI3",
   "label": "Medieninformatik VFH",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 3
+},{
+  "id": "SPLUS23E37C",
+  "slug": "I-VFH-MI4",
+  "label": "Medieninformatik VFH",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 4
 }, {
-  "id": "SPLUS2F75BB",
+  "id": "SPLUSF0BA79",
   "slug": "I-VFH-MI5",
   "label": "Medieninformatik VFH",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 5
 }, {
-  "id": "SPLUSC2C4BC",
+  "id": "SPLUS23E37B",
   "slug": "I-VFH-MI6",
   "label": "Medieninformatik VFH",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 6
 }, {
-  "id": "SPLUS2F75BD",
+  "id": "SPLUSF0BA77",
   "slug": "I-VFH-WI1",
   "label": "Wirtschaftsinformatik VFH",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 1
 }, {
-  "id": "SPLUS2F75BE",
+  "id": "SPLUSF37516",
+  "slug": "I-VFH-WI2",
+  "label": "Wirtschaftsinformatik VFH",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 2
+}, {
+  "id": "SPLUSF0BA76",
   "slug": "I-VFH-WI3",
   "label": "Wirtschaftsinformatik VFH",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 3
 }, {
-  "id": "SPLUS2F75BF",
+  "id": "SPLUS23E37D",
+  "slug": "I-VFH-WI4",
+  "label": "Wirtschaftsinformatik VFH",
+  "faculty": "Informatik",
+  "degree": "Bachelor of Science",
+  "semester": 4
+}, {
+  "id": "SPLUSF0BA78",
   "slug": "I-VFH-WI5",
   "label": "Wirtschaftsinformatik VFH",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 5
 }, {
-  "id": "SPLUSC2C4BD",
+  "id": "SPLUS34F1A5",
   "slug": "I-VFH-WI6",
   "label": "Wirtschaftsinformatik VFH",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": 6
 }, {
-  "id": "SPLUSCB568F",
+  "id": "SPLUS087146",
   "slug": "I-UWPF-B",
   "label": "Überfachliche Wahlpflichtfächer Bachelor",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": "WPF"
 }, {
-  "id": "SPLUSD49B48",
+  "id": "SPLUS087145",
   "slug": "I-WPF-B",
   "label": "Wahlpflichtfächer Bachelor",
   "faculty": "Informatik",
   "degree": "Bachelor of Science",
   "semester": "WPF"
-}, {
-  "id": "SPLUSB3BC3C",
-  "slug": "I-WI-S1",
-  "label": "Wirtschaftsinformatik",
-  "faculty": "Informatik",
-  "degree": "Bachelor of Science",
-  "semester": 1
-}, {
-  "id": "SPLUS2A876A",
-  "slug": "I-WI-S3",
-  "label": "Wirtschaftsinformatik",
-  "faculty": "Informatik",
-  "degree": "Bachelor of Science",
-  "semester": 3
-}, {
-  "id": "SPLUSCB568E",
-  "slug": "I-WI-S5",
-  "label": "Wirtschaftsinformatik",
-  "faculty": "Informatik",
-  "degree": "Bachelor of Science",
-  "semester": 5
-}, {
-  "id": "SPLUSC2C4BB",
-  "slug": "I-WI-S6",
-  "label": "Wirtschaftsinformatik",
-  "faculty": "Informatik",
-  "degree": "Bachelor of Science",
-  "semester": 6
 }, {
   "id": "SPLUS477D4B",
   "slug": "S-BA-1",
