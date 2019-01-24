@@ -280,9 +280,6 @@ export const mutations = {
   setSubscribedTimetable(state, timetable) {
     state.subscribedTimetable = timetable;
   },
-  setSubscribedTimetable(state, timetable) {
-    state.subscribedTimetable = timetable;
-  },
 };
 
 export const actions = {
