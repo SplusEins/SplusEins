@@ -193,7 +193,7 @@ export default {
           .filter((lecture, index, self) => self.indexOf(lecture) == index);
         this.$set(this.lectures, schedule.id, uniqueLectures);
       } catch (error) {
-        this.setError('API-Verbindung fehlgeschlagen');
+        this.enqueueError('Stundenplan: API-Verbindung fehlgeschlagen');
         console.error('error during API call', error.message);
       }
 
@@ -236,7 +236,7 @@ export default {
       this.selectedCourses = this.customSchedule.whitelist.map(getCourseById);
     },
     ...mapMutations({
-      setError: 'splus/setError',
+      enqueueError: 'enqueueError',
       deleteCustomSchedule: 'splus/deleteCustomSchedule',
     }),
   },

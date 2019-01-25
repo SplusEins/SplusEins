@@ -91,7 +91,6 @@ export const state = () => ({
    * Week 53 of year 2018 equals week 1 of year 2019.
    */
   week: undefined,
-  error: undefined,
 });
 
 export const getters = {
@@ -229,6 +228,9 @@ export const mutations = {
   setWeek(state, week) {
     state.week = week;
   },
+  resetWeek(state) {
+    state.week = moment().day() == 6 || moment().day() == 0 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
+  },
   setSchedule(state, timetable) {
     state.schedule = timetable;
   },
@@ -278,12 +280,6 @@ export const mutations = {
       state.subscribedTimetable = subscribables.length == 0? {} : subscribables[0];
     }
   },
-  setError(state, error) {
-    state.error = error;
-  },
-  clearError(state) {
-    state.error = undefined;
-  },
   setSubscribedTimetable(state, timetable) {
     state.subscribedTimetable = timetable;
   },
@@ -308,7 +304,7 @@ export const actions = {
         const response = await this.$axios.get(`/api/splus/${id}/${week}`);
         lectures = lectures.concat(response.data);
       } catch (error) {
-        commit('setError', 'API-Verbindung fehlgeschlagen');
+        commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
         console.error('error during API call', error.message);
       }
     }));

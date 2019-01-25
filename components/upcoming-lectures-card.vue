@@ -83,8 +83,8 @@ export default {
   mounted() {
     if(!!this.subscribedTimetable.id) {
        this.load();
+       this.nextEvent = this.findNextEvent().event;
     }
-    this.nextEvent = this.findNextEvent().event;
   },
   methods: {
     ...mapMutations({
@@ -102,6 +102,7 @@ export default {
       return {event: possibleEvents[0] != undefined? possibleEvents[0] : undefined, ready: events.length != 0 };
     },
     load(){
+      console.log("load")
       this.setSchedule(this.subscribedTimetable);
       this.resetWeek();
       this.clearLectures();

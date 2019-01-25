@@ -27,7 +27,7 @@
           color="warning"
           icon
           flat
-          @click="setError('Keine Internetverbindung')">
+          @click="enqueueError('Internetverbindung: Nicht verfügbar')">
           <v-icon>mdi-wifi-off</v-icon>
         </v-btn>
         <v-btn
@@ -71,7 +71,7 @@ export default {
     },
     ...mapMutations({
       toggleDark: 'theme/toggleDark',
-      setError: 'splus/setError',
+      enqueueError: 'enqueueError',
     }),
   },
 };

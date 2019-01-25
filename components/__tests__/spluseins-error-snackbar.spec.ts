@@ -14,18 +14,18 @@ Vue.use(Vuex);
 describe('Error snackbar', () => {
   function mountWithState(state) {
     const store = new Vuex.Store({
-      modules: { splus: { state } }
+      state: state 
     });
     return mount(SpluseinsErrorSnackbar, { store });
   }
 
   it('should render no snackbar by default', () => {
-    const wrapper = mountWithState({ error: undefined });
+    const wrapper = mountWithState({ errorQueue: [] });
     expect(wrapper.contains('.v-snack')).toBeFalsy();
   });
 
   it('should render a snackbar with an error', () => {
-    const wrapper = mountWithState({ error: 'Error' });
+    const wrapper = mountWithState({ errorQueue: ['Error'] });
     expect(wrapper.contains('.v-snack')).toBeTruthy();
     expect(wrapper.text()).toMatch('Error');
   });
