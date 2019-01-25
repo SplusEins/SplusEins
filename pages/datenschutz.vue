@@ -1,5 +1,9 @@
 <template>
-  <v-container class="container">
+  <v-container 
+    v-touch="{
+      right: () => setSidenav(true)
+    }"
+    class="container">
     <div>
       <h1>Datenschutzerklärung</h1>
       <br>
@@ -122,12 +126,19 @@
 </template>		
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'SpluseinsDataPrivacy',
   head() {
     return {
       title: 'Datenschutz',
     };
+  },
+  methods: {
+    ...mapMutations({
+      setSidenav: 'ui/setSidenav',
+    }),
   },
 }
 </script>
