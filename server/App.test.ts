@@ -22,7 +22,7 @@ describe('Test backend', () => {
   it('should return parsed lectures', async () => {
     SplusApi.getData = jest.fn().mockImplementationOnce(splusMock);
     const response = await request(app).get(
-      '/api/splus/SPLUS63AE59/40');
+      '/api/splus/SPLUS7A3292/10');
     expect(response.body).toMatchSnapshot();
   });
 });

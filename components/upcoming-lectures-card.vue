@@ -83,8 +83,8 @@ export default {
   mounted() {
     if(!!this.subscribedTimetable.id) {
        this.load();
+       this.nextEvent = this.findNextEvent().event;
     }
-    this.nextEvent = this.findNextEvent().event;
   },
   methods: {
     ...mapMutations({
