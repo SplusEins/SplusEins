@@ -4,7 +4,7 @@
     :timeout="0"
     color="error"
     right>
-    {{ next }}
+    [{{ errorQueue.length }}] {{ next }}
     <v-btn
       dark
       flat
