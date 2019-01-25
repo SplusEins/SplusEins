@@ -44,6 +44,8 @@
 </template>
 
 <script lang="js">
+import * as moment from 'moment';
+
 export default {
   name: 'CourseMultiselect',
   props: {
@@ -51,7 +53,7 @@ export default {
       type: Number,
       default: () => Infinity,
     },
-    courses: {
+    lectures: {
       type: Array,
       default: () => []
     },
@@ -66,6 +68,11 @@ export default {
     };
   },
   computed: {
+    courses() {
+      const lecturesById = new Map();
+      this.lectures.forEach((lecture) => lecturesById.set(lecture.titleId, lecture));
+      return [...lecturesById.values()];
+    },
     selectedCourses: {
       get() { return this.value; },
       set(value) { this.$emit('input', value); }
@@ -73,19 +80,35 @@ export default {
     overlappingCourses() {
       const withoutAt = (list, at) =>
         list.filter((el, index) => index != at);
-      const overlapsWith = ({ begin: thisBegin, duration: thisDuration, day: thisDay }) =>
-        ({ begin: otherBegin, duration: otherDuration, day: otherDay }) =>
-          thisDay == otherDay && (
+      const overlapsWith = ({
+        begin: thisBegin,
+        duration: thisDuration,
+        day: thisDay,
+        start: thisStart
+      }) => ({
+        begin: otherBegin,
+        duration: otherDuration,
+        day: otherDay,
+        start: otherStart
+        }) => thisDay == otherDay &&
+          moment(thisStart).week() == moment(otherStart).week() && (
             (thisBegin >= otherBegin
               && thisBegin <= otherBegin + otherDuration)
             || (thisBegin + thisDuration >= otherBegin
               && thisBegin + thisDuration <= otherBegin + otherDuration));
 
-      const courses = this.selectedCourses.filter((oneCourse, index, self) =>
-        withoutAt(self, index).some(overlapsWith(oneCourse))
-      );
+      const selectedLectures = this.lectures.filter(
+        (lecture) => this.selectedCourses.some(
+          (course) => course.titleId == lecture.titleId));
+      
+      const overlapLectures = selectedLectures.filter(
+        (oneLecture, index, self) =>
+          withoutAt(self, index).some(overlapsWith(oneLecture)));
+      const overlapTitles = new Map();
+      overlapLectures.forEach(
+        (lecture) => overlapTitles.set(lecture.titleId, lecture.title));
 
-      return courses.map(({ title }) => title).join(', ');
+      return [...overlapTitles.values()].join(', ');
     },
   },
 };
