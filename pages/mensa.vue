@@ -96,7 +96,7 @@ export default {
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
       lazyLoad: (state) => state.lazyLoad,
-      isDark: (state) => state.theme.isDark,
+      isDark: (state) => state.ui.isDark,
     }),
   },
   mounted() {

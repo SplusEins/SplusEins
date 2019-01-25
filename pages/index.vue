@@ -3,6 +3,9 @@
     fluid
     grid-list-md>
     <v-layout
+      v-touch="{
+        right: () => setSidenav(true)
+      }"
       row
       wrap>
       <v-flex
@@ -52,7 +55,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 import * as moment from 'moment';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import LastChangesCard from '../components/last-changes-card.vue';
@@ -104,6 +107,11 @@ export default {
       return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
     }
   },
+  methods: {
+    ...mapMutations({
+      setSidenav: 'ui/setSidenav',
+    }),
+  }
 };
 </script>
 

@@ -5,7 +5,7 @@
       dark
       fixed
       app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
+      <v-toolbar-side-icon @click.stop="toggleSidenav()"/>
       <v-spacer />
       <img
         src="../assets/img/headerLogo.png"
@@ -38,7 +38,7 @@
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <spluseins-side-nav :drawer.sync="drawer"/>
+    <spluseins-side-nav/>
   </div>
 </template>
 
@@ -51,14 +51,13 @@ export default {
   components: {SpluseinsSideNav},
   data () {
     return {
-      drawer: false,
       isOffline: false,
       offlineNoticeOpen: false,
     };
   },
   computed: {
     ...mapState({
-      isDark: state => state.theme.isDark,
+      isDark: state => state.ui.isDark,
     }),
   },
   mounted() {
@@ -70,7 +69,8 @@ export default {
       this.$matomo.trackEvent(category, action, name);
     },
     ...mapMutations({
-      toggleDark: 'theme/toggleDark',
+      toggleDark: 'ui/toggleDark',
+      toggleSidenav: 'ui/toggleSidenav',
       setError: 'splus/setError',
     }),
   },

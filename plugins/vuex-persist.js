@@ -17,7 +17,9 @@ export default ({ store }) => {
     reducer: (state) => ({
       /* select items to be persisted - must not change the structure! */
       version: state.version,
-      theme: state.theme,
+      ui: {
+        isDark: state.ui.isDark,
+      },
       splus: {
         customSchedules: state.splus.customSchedules,
         favoriteSchedules: state.splus.favoriteSchedules,

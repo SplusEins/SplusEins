@@ -1,7 +1,7 @@
 <template lang="html">
   <v-navigation-drawer
     v-touch="{
-      left: () => drawerProp = false
+      right: () => drawerProp = false
     }"
     :clipped="true"
     v-model="drawerProp"
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="js">
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import GeneralTimetablesList from './general-timetables-list.vue';
 import FavoriteTimetablesList from './favorite-timetables-list.vue';
 import CustomTimetablesList from './custom-timetables-list.vue';
@@ -38,16 +38,10 @@ export default {
     InstallButtonList,
     BasicUtilitiesList,
   },
-  props: {
-    drawer: {
-      type: Boolean,
-      default: false
-    }
-  },
   computed: {
     drawerProp: {
-      get() { return this.drawer; },
-      set(val) { this.$emit('update:drawer', val); }
+      get() { return this.sidenavIsOpen; },
+      set(val) { this.setSidenav(val) }
     },
     hasCustomTimetables() {
       return JSON.stringify(this.customSchedules) != '{}';
@@ -58,8 +52,14 @@ export default {
     ...mapState({
       customSchedules: (state) => state.splus.customSchedules,
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
+      sidenavIsOpen: (state) => state.ui.sidenavIsOpen,
     }),
   },
+  methods: {
+    ...mapMutations({
+      setSidenav: 'ui/setSidenav',
+    }),
+  }
 };
 </script>
 
