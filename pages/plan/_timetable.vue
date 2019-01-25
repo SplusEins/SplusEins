@@ -14,7 +14,7 @@ export default {
   name: 'TimetablePage',
   head() {
     return {
-      title: 'Personalisierter Plan',
+      title: 'Stundenplan',
     };
   },
   components: {
