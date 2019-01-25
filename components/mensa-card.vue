@@ -9,7 +9,7 @@
         :key="item.id"
         dense>
         <div class="list-tile">
-          <span class="category">{{ item.category }}:</span>
+          <b>{{ item.category }}:</b>
           <br>
           <span>{{ item.name }}</span>
           <br>
@@ -66,10 +66,6 @@ export default {
 
 .list-tile{
   padding: 5px 0 5px 0px;
-}
-
-.category {
-  font-weight: bold;
 }
 
 .card-text-padding{

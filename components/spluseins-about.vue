@@ -18,7 +18,7 @@
           SplusEins
         </v-card-title>
 
-        <v-card-text>
+        <v-card-text class="text-padding">
           <p>
             Ein inoffizieller Stundenplan von Studenten für Studenten der Ostfalia-Hochschule.<br>
             Gebaut mit <a href="https://nuxtjs.org">Nuxt</a>, <a href="https://vuetifyjs.com">Vuetify</a>, <a href="https://github.com/ClickerMonkey/dayspan-vuetify">Dayspan-Vuetify</a>, Icons von <a href="https://materialdesignicons.com/">Material Design Icons</a> und der Schriftart <a href="https://fonts.google.com/specimen/Roboto">Roboto</a>.<br>
@@ -41,8 +41,8 @@
             target="_blank"
             href="https://github.com/SplusEins/SplusEins">
             <v-icon
-              medium
-              color="black">mdi-github-circle</v-icon>
+              :color="isDark? 'white': 'black'"
+              medium>mdi-github-circle</v-icon>
           </v-btn>
           <v-btn
             flat
@@ -60,6 +60,7 @@
 
 
 <script>
+import { mapState } from 'vuex';
 
 export default {
   name: 'SpluseinsAbout',
@@ -68,6 +69,11 @@ export default {
       active: false,
     };
   },
+  computed: {
+    ...mapState({
+      isDark: (state) => state.ui.isDark,
+    }),
+  },
   methods:{
     trackMatomoEvent (category, action , name) {
       this.$matomo.trackEvent(category, action, name);
@@ -75,3 +81,9 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+.text-padding{
+  padding: 10px 16px 0px 16px;
+}
+</style>
