@@ -1,5 +1,8 @@
 <template lang="html">
   <v-navigation-drawer
+    v-touch="{
+      left: () => drawerProp = false
+    }"
     :clipped="true"
     v-model="drawerProp"
     fixed
