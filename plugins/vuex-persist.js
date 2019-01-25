@@ -7,10 +7,31 @@ export default ({ store }) => {
       // pass through (https://github.com/championswimmer/vuex-persist/blob/master/src/index.ts#L211)
       storage.setItem(key, JSON.stringify(state)),
     restoreState: (key, storage) => {
+      
       // pass through (https://github.com/championswimmer/vuex-persist/blob/master/src/index.ts#L189)
-      const value = (storage).getItem(key);
+      let value = (storage).getItem(key);
+      value = typeof value === 'string' ? JSON.parse(value || '{}') : (value || {});
+   
+      //version migration
+      if (!!value.version) {
+
+        //version 2: new semester -> new timetable ids + theme property -> ui property
+        if (value.version < 2) {
+          value.splus.customSchedules = {};
+          value.splus.favoriteSchedules = [];
+          value.splus.subscribedTimetable = {};
+          if (Object.getOwnPropertyDescriptor(value, 'theme') != undefined) {
+            Object.defineProperty(value, 'ui', Object.getOwnPropertyDescriptor(value, 'theme'));
+            delete value.theme;
+          }else {
+            Object.defineProperty(value, 'ui', {isDark: false});
+          }
+        }
+        value.version = 2;
+      }
+
       return {
-        ...typeof value === 'string' ? JSON.parse(value || '{}') : (value || {}),
+        ...value,
         browserStateReady: true,
       };
     },
