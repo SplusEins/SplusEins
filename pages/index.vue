@@ -17,20 +17,21 @@
       </v-flex>
 
       <v-flex
+        v-show="mensaIsOpen"
+        xs12
+        md6
+        lg4
+        d-flex>
+        <mensa-card />
+      </v-flex>
+
+      <v-flex
         v-if="false"
         xs12
         md6
         lg4
         d-flex>
         <news-card />
-      </v-flex>
-
-      <v-flex
-        xs12
-        md6
-        lg4
-        d-flex>
-        <upcoming-lectures-card />
       </v-flex>
 
       <v-flex
@@ -41,15 +42,15 @@
         d-flex>
         <quick-access-card />
       </v-flex>
-      
+
       <v-flex
-        v-show="mensaIsOpen"
         xs12
         md6
         lg4
         d-flex>
-        <mensa-card />
+        <upcoming-lectures-card />
       </v-flex>
+      
     </v-layout>
   </v-container>
 </template>

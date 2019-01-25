@@ -5,8 +5,11 @@
     </v-card-title>
     <v-card-text class="card-text-padding">
       <ul>
-        <li>Auf der Startseite werden die wichtigsten Informationen in einem Dashboard zusammengefasst.</li>
-        <li>Der Essensplan der Mensa Wolfenbüttel wird angezeigt.</li>
+        <li>Der (vorläufige) Stundenplan für das Sommersemester 2019 kann abgerufen werden.</li>
+        <li>Auf der Startseite wird die nächste Vorlesung eines abbonierten Planes angzeigt.</li>
+        <li>Jeder Benutzer kann sich personalisierte Pläne aus verschiedenen Stundenplänen zusammenstellen und teilen.</li>
+        <li>Durch Anklicken der Veranstaltungen in einem Stundenplan können weitere Informationen abgerufen werden.</li>
+        <li>Der Mensaplan für Wolfenbüttel kann abgerufen werden.</li>
         <li>SplusEins kann auf Smartphones mit einem modernen Browser als App installiert werden.</li>
       </ul>
     </v-card-text>

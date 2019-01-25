@@ -69,7 +69,7 @@ export default {
 <style scoped lang="scss">
 
 .card-text{
-  padding-bottom: 0; 
+  padding: 10px 10px 0px 10px; 
 }
 
 </style> 

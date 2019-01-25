@@ -1,18 +1,18 @@
 <template>
 
   <v-card>
-    <v-card-title>
+    <v-card-title class="title-padding">
       <span class="headline">Nächste Vorlesungen</span>
       <v-btn
         v-show="hasSubscribableTimetables"
         icon
         @click="subscribeDialogOpen = true">
-        <v-icon>mdi-bookmark</v-icon>
+        <v-icon>mdi-bookmark-outline</v-icon>
       </v-btn>
     </v-card-title>
 
     <v-card-text v-if="nextEvent != undefined">
-      {{ nextEvent.data.title }} {{ nextEvent.data.description }}
+      <b>{{ nextEvent.data.title }} {{ nextEvent.data.description }}</b>
       <br>
       Datum: {{ nextEvent.schedule.on.format('dddd, DD.MM.YYYY') }}
       <br>
