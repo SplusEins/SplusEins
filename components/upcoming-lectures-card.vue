@@ -102,7 +102,6 @@ export default {
       return {event: possibleEvents[0] != undefined? possibleEvents[0] : undefined, ready: events.length != 0 };
     },
     load(){
-      console.log("load")
       this.setSchedule(this.subscribedTimetable);
       this.resetWeek(true);
       this.clearLectures();
