@@ -89,7 +89,7 @@ export default {
   },
   computed: {
     ...mapState({
-      isDark: state => state.theme.isDark,
+      isDark: state => state.ui.isDark,
     }),
   },  
   methods: {

@@ -1,5 +1,9 @@
 <template>
-  <v-container class="container">
+  <v-container
+    v-touch="{
+      right: () => setSidenav(true)
+    }" 
+    class="container">
     <div>
       <h1>Impressum</h1>
       <br>
@@ -47,12 +51,19 @@
 </template>		
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'SpluseinsImpressum',
   head() {
     return {
       title: 'Impressum',
     };
+  },
+  methods: {
+    ...mapMutations({
+      setSidenav: 'ui/setSidenav',
+    }),
   },
 }
 </script>
