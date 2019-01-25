@@ -129,20 +129,10 @@ export default {
     DayspanCustomEventPopover,
   },
   data() {
-    const stateWeek = this.$store.state.splus.week;
-    const isStateWeekSet = stateWeek != undefined;
-    const startOfWeek = moment().startOf('isoWeek');
-
-    if (isStateWeekSet) {
-      startOfWeek.isoWeek(stateWeek);
-    } else {
-      // if the user is looking at today and is on Sat/Sun, peek to the next week
-      if (moment().day() == 6 || moment().day() == 0) {
-        startOfWeek.add(1, 'weeks');
-      }
-    }
-
-    const around = Day.fromMoment(startOfWeek);
+    const week = moment()
+      .isoWeek(this.$store.getters['splus/weekOrDefault'])
+      .startOf('isoWeek');
+    const around = Day.fromMoment(week);
     const weeklyCalendar = {
       id: 'W',
       label: 'Woche',
