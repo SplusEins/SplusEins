@@ -77,7 +77,7 @@ export default {
   */
   build: {
     parallel: true,
-    cache: true,
+    cache: false,
     /*
     ** You can extend webpack config here
     */
