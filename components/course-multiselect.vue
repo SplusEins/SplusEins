@@ -13,6 +13,7 @@
       hide-details />
     <v-data-table
       v-model="selectedCourses"
+      :headers="headers"
       :items="courses"
       :search="search"
       hide-headers
@@ -65,6 +66,11 @@ export default {
   data() {
     return {
       search: '',
+      headers: [
+        { value: 'title' },
+        { value: 'lecturer' },
+        { value: 'room' },
+      ],
     };
   },
   computed: {
