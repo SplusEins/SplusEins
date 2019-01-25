@@ -1,10 +1,10 @@
 <template lang="html">
   <v-navigation-drawer
     v-touch="{
-      left: () => drawerProp = false
+      left: () => drawer = false
     }"
     :clipped="true"
-    v-model="drawerProp"
+    v-model="drawer"
     fixed
     app
     width="350">
@@ -39,7 +39,7 @@ export default {
     BasicUtilitiesList,
   },
   computed: {
-    drawerProp: {
+    drawer: {
       get() { return this.sidenavIsOpen; },
       set(val) { this.setSidenav(val) }
     },
