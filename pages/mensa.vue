@@ -1,5 +1,8 @@
 <template>
   <v-container 
+    v-touch="{
+      right: () => setSidenav(true)
+    }"
     fluid 
     grid-list-md
     hide-overlay
@@ -71,7 +74,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 import * as moment from 'moment';
 
 export default {
@@ -108,6 +111,9 @@ export default {
   methods: {
     ...mapActions({
       loadWeek: 'mensa/loadWeek',
+    }),
+    ...mapMutations({
+      setSidenav: 'ui/setSidenav',
     }),
     getDayHeader(dayPlan) {
       const day = moment(dayPlan.date.toString());

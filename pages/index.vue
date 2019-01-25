@@ -1,11 +1,11 @@
 <template>
   <v-container
+    v-touch="{
+      right: () => setSidenav(true)
+    }"
     fluid
     grid-list-md>
     <v-layout
-      v-touch="{
-        right: () => setSidenav(true)
-      }"
       row
       wrap>
       <v-flex
