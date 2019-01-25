@@ -62,7 +62,7 @@
                 v-show="selectedSchedules.length > 0"
                 v-model="selectedCourses"
                 :max-courses="maxCourses"
-                :courses="courses"
+                :lectures="allLectures"
                 :loading="loading" />
             </v-flex>
           </v-layout>
@@ -129,12 +129,8 @@ export default {
     isNew() {
       return !this.customSchedule;
     },
-    courses() {
-      const allLectures = [].concat(...Object.values(this.lectures));
-      const uniqueLectures = new Map();
-      allLectures.forEach(
-        (lecture) => uniqueLectures.set(lecture.titleId, lecture));
-      return [...uniqueLectures.values()].sort();
+    allLectures() {
+      return flatten(Object.values(this.lectures));
     },
     ...mapGetters({
       schedulesTree: 'splus/getSchedulesAsTree',
