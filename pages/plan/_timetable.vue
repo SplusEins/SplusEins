@@ -30,6 +30,9 @@ export default {
 
     if (process.static) {
       store.commit('enableLazyLoad');
+      store.commit('splus/resetWeek', true);
+    } else {
+      store.commit('splus/resetWeek', false);
     }
 
     if (process.client || !store.state.lazyLoad) {

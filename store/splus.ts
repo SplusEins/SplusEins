@@ -11,13 +11,6 @@ const scalarArraysEqual = (array1, array2) =>
   array1.length === array2.length &&
   array1.every((value, index) => value === array2[index]);
 
-// update this in WS19/20
-const isoWeek0 = moment()
-  .year(2019)
-  .startOf('year') // week 1
-  .startOf('isoWeek') // start of week 1
-  .subtract(1, 'weeks'); // start of week 0
-
 
 export function customScheduleToRoute(customTimetable): Partial<Route> {
   const query = {
@@ -53,6 +46,20 @@ export function shortenTimetableDegree(timetable): string {
   }
 
   return shortenedDegree;
+}
+
+function defaultWeek() {
+  if (moment().isoWeek() < 10) {
+    // default to start of SS19
+    return 10;
+  }
+
+  // if the user is looking at today and is on Sat/Sun, peek to the next week
+  if (moment().day() == 6 || moment().day() == 0) {
+    return moment().isoWeek() + 1;
+  } else {
+    return moment().isoWeek();
+  }
 }
 
 export const state = () => ({
@@ -94,6 +101,9 @@ export const state = () => ({
 });
 
 export const getters = {
+  weekOrDefault: (state) => {
+    return state.week || defaultWeek();
+  },
   getHasLecturesOnWeekend: (state) => {
     if (state.lectures[state.week] == undefined) {
       return false;
@@ -228,8 +238,12 @@ export const mutations = {
   setWeek(state, week) {
     state.week = week;
   },
-  resetWeek(state) {
-    state.week = moment().day() == 6 || moment().day() == 0 ? moment().diff(isoWeek0, 'week') + 1: moment().diff(isoWeek0, 'week');
+  resetWeek(state, forceDefault) {
+    if (forceDefault) {
+      state.week = defaultWeek();
+    } else {
+      state.week = state.week || defaultWeek();
+    }
   },
   setSchedule(state, timetable) {
     state.schedule = timetable;
@@ -290,7 +304,6 @@ export const actions = {
    * Request data from the given week from the API and write it to the store.
    */
   async loadWeek({ state, commit }, week) {
-
     if (!!state.lectures[week]) {
       return; // cached, noop
     }
@@ -314,7 +327,7 @@ export const actions = {
   /**
    * Request data for the given week.
    */
-  async load({ state, dispatch }, doPrefetch) {
+  async load({ state, dispatch }) {
     await dispatch('loadWeek', state.week);
   },
   /**

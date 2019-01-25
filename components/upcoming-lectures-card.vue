@@ -104,7 +104,7 @@ export default {
     load(){
       console.log("load")
       this.setSchedule(this.subscribedTimetable);
-      this.resetWeek();
+      this.resetWeek(true);
       this.clearLectures();
       this.loadLectures();
     }
