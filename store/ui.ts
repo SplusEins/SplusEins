@@ -12,10 +12,8 @@ export const mutations = {
   },
   toggleSidenav(state) {
     state.sidenavIsOpen = !state.sidenavIsOpen;
-    console.log("sidenavstatus", state.sidenavIsOpen);
   },
   setSidenav(state, value) {
     state.sidenavIsOpen = value;
-    console.log("SET-sidenavstatus", state.sidenavIsOpen);
   },
 };
