@@ -57,4 +57,32 @@ router.get('/ostfalia', cors(), async (req, res, next) => {
   }
 });
 
+/**
+ * Get Campus38 news
+ */
+router.get('/campus38', cors(), async (req, res, next) => {
+  const key = 'campus38-news-' + moment().format('YYYY-MM-DD');
+
+  try {
+    const data = await cache.wrap(key, async () => {
+      console.log(`campus38 news cache miss for key ${key}`);
+
+      const response = await axios.get('https://www.campus38.de');
+      const $ = cheerio.load(response.data);
+      return $('.article').map(function(i, article) {
+        return {
+          title: $('a', this).attr('title').trim(),
+          link: 'https://www.campus38.de' + $('a', this).attr('href'),
+          text: $('p', this).text().trim(),
+        };
+      }).get();
+    }, { ttl: NEWS_CACHE_SECONDS });
+
+    res.set('Cache-Control', `public, max-age=${NEWS_CACHE_SECONDS}`);
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default router;
