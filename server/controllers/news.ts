@@ -62,28 +62,28 @@ router.get('/ostfalia', cors(), async (req, res, next) => {
  */
 router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
   const faculty = req.params.faculty;
-  if (!['i', 'r', 'e'].includes(faculty)) {
-    // Informatik, Recht, Elektrotechnik
+  if (!['i', 'r', 'e', 'sz', 'wf', 'wob', 'sud'].includes(faculty)) {
+    // Informatik, Recht, Elektrotechnik,
+    // Salzgitter, Wolfenbüttel, Wolfsburg, Suderburg
     res.send(404);
     return;
   }
   const key = 'ostfalia-news-' + faculty + '-' + moment().format('YYYY-MM-DD');
 
   try {
+    let url;
+    if (faculty.length == 1) {
+      url = 'https://www.ostfalia.de/cms/de/' + faculty;
+    } else {
+      url = 'https://www.ostfalia.de/cms/de/campus/' + faculty;
+    }
+
     const data = await cache.wrap(key, async () => {
       console.log(`ostfalia faculty news cache miss for key ${key}`);
 
-      const response = await axios.get('https://www.ostfalia.de/cms/de/' + faculty);
+      const response = await axios.get(url);
       const $ = cheerio.load(response.data);
-      if (['i', 'r'].includes(faculty)) {
-        return $('article.news-campus').map(function(i, article) {
-          return {
-            title: $('a', this).text().trim(),
-            link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
-            text: $('p', this).last().text().trim(),
-          };
-        }).get();
-      }
+
       if (faculty == 'e') {
         return $('article').eq(1).find('.ostfalia-content div').map(function(i, paragraph) {
           const p = $('p', this).last();
@@ -96,6 +96,14 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
           }
         }).get();
       }
+
+      return $('article.news-campus').map(function(i, article) {
+        return {
+          title: $('a', this).text().trim(),
+          link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
+          text: $('p', this).last().text().trim(),
+        };
+      }).get();
     }, { ttl: NEWS_CACHE_SECONDS });
 
     res.set('Cache-Control', `public, max-age=${NEWS_CACHE_SECONDS}`);
