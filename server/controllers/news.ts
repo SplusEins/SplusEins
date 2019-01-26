@@ -102,6 +102,9 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
           title: $('a', this).text().trim(),
           link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
           text: $('p', this).last().text().trim(),
+          date: moment(
+            $('p', this).first().text().trim(),
+            'DD.MM.YY').format('YYYY-MM-DD'),
         };
       }).get();
     }, { ttl: NEWS_CACHE_SECONDS });
@@ -130,6 +133,7 @@ router.get('/campus38', cors(), async (req, res, next) => {
           title: $('a', this).attr('title').trim(),
           link: 'https://www.campus38.de' + $('a', this).attr('href'),
           text: $('p', this).text().trim(),
+          date: $('time').attr('datetime'),
         };
       }).get();
     }, { ttl: NEWS_CACHE_SECONDS });
