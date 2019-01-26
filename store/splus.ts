@@ -218,6 +218,8 @@ export const mutations = {
    * Add given lectures to the state,
    * paying respect to currently active whitelist.
    * Deduplicate using the title ID.
+   * 
+   * upcoming -> set upcomingLectures, otherwise normal lectures
    */
   setLectures(state, { lectures, week, upcoming }) {
     // filter based on whitelist
@@ -336,7 +338,9 @@ export const actions = {
 
     commit('setLectures', { week, lectures, upcoming: false });
   },
-
+  /**
+   * Request lectures of upcomingLecturesTimetable for defaultWeek
+   */
   async loadUpcomingLectures({ state, commit }) {
 
     let lectures = [];
