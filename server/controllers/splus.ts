@@ -42,6 +42,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
   const timetable = TIMETABLES.find(({ id }) => id == timetableId);
   if (!timetable) {
     res.send(404);
+    return;
   }
 
   const week = parseInt(req.params.week);
