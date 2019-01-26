@@ -98,6 +98,11 @@ export const state = () => ({
    * Week 53 of year 2018 equals week 1 of year 2019.
    */
   week: undefined,
+  /**
+   * state for upcoming-lectures-card
+   */
+  upcomingLecturesTimetable: undefined,
+  upcomingLectures: [],
 });
 
 export const getters = {
@@ -214,9 +219,9 @@ export const mutations = {
    * paying respect to currently active whitelist.
    * Deduplicate using the title ID.
    */
-  setLectures(state, { lectures, week }) {
+  setLectures(state, { lectures, week, upcoming }) {
     // filter based on whitelist
-    const whitelist = state.schedule.whitelist;
+    const whitelist = upcoming ? state.upcomingLecturesTimetable.whitelist : state.schedule.whitelist;
     const filteredLectures = !!whitelist ? lectures.filter(
       (lecture1) => whitelist.includes(lecture1.titleId)) : lectures;
 
@@ -230,7 +235,11 @@ export const mutations = {
     const uniqueLectures = [...lecturesByKey.values()];
 
     // reactive variant of state.lectures[week].push(lectures)
-    this._vm.$set(state.lectures, week, uniqueLectures);
+    if (upcoming) {
+      state.upcomingLectures = uniqueLectures;
+    }else {
+      this._vm.$set(state.lectures, week, uniqueLectures);
+    }
   },
   clearLectures(state) {
     state.lectures = {};
@@ -247,6 +256,9 @@ export const mutations = {
   },
   setSchedule(state, timetable) {
     state.schedule = timetable;
+  },
+  setUpcomingLecturesTimetable(state, timetable) {
+    state.upcomingLecturesTimetable = timetable;
   },
   addCustomSchedule(state, customTimetable) {
     const label = customTimetable.label;
@@ -322,7 +334,27 @@ export const actions = {
       }
     }));
 
-    commit('setLectures', { week, lectures });
+    commit('setLectures', { week, lectures, upcoming: false });
+  },
+
+  async loadUpcomingLectures({ state, commit }) {
+
+    let lectures = [];
+    const week = defaultWeek();
+    const ids = Array.isArray(state.upcomingLecturesTimetable.id) ?
+      state.upcomingLecturesTimetable.id : [state.upcomingLecturesTimetable.id];
+      
+    await Promise.all(ids.map(async (id) => {
+      try {
+        const response = await this.$axios.get(`/api/splus/${id}/${week}`);
+        lectures = lectures.concat(response.data);
+      } catch (error) {
+        commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
+        console.error('error during API call', error.message);
+      }
+    }));
+
+    commit('setLectures', { week, lectures, upcoming: true });
   },
   /**
    * Request data for the given week.

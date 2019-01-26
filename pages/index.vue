@@ -17,19 +17,20 @@
       </v-flex>
 
       <v-flex
-        v-if="mensaIsOpen"
+        v-show="mensaIsOpen"
+        :d-flex="mensaIsOpen"
         xs12
         md6
-        lg4
-        d-flex>
+        lg4>
         <mensa-card />
       </v-flex>
 
       <v-flex
+        v-show="displayGeneralNewsCard"
+        :d-flex="displayGeneralNewsCard"
         xs12
         md6
-        lg4
-        d-flex>
+        lg4>
         <news-card />
       </v-flex>
 
@@ -98,6 +99,9 @@ export default {
     },
     displayQuickAccessCard() {
       return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
+    },
+    displayGeneralNewsCard() {
+      return this.generalNews.length > 0;
     },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,

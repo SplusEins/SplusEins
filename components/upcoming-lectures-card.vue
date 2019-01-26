@@ -12,13 +12,13 @@
     </v-card-title>
 
     <v-card-text v-if="nextEvent != undefined">
-      <b>{{ nextEvent.data.title }} {{ nextEvent.data.description }}</b>
+      <b>{{ nextEvent.title }} {{ nextEvent.lecturer }}</b>
       <br>
-      Datum: {{ nextEvent.schedule.on.format('dddd, DD.MM.YYYY') }}
+      Datum: {{ nextEvent.start.format('dddd, DD.MM.YYYY') }}
       <br>
-      Uhrzeit: {{ nextEvent.schedule.on.hour() }}:{{ nextEvent.schedule.on.minute() == 0? "00" : nextEvent.schedule.on.minute() }} Uhr
+      Uhrzeit: {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() == 0? "00" : nextEvent.start.minute() }} Uhr
       <br>
-      Raum: {{ nextEvent.data.location }}
+      Raum: {{ nextEvent.room }}
     </v-card-text>
     <v-card-text v-else-if="hasSubscribableTimetables && nextEvent == undefined">
       <i>Keine weiteren Vorlesungen in dieser Woche!</i>
@@ -58,8 +58,8 @@ export default {
       set(value){ this.setSubscribedTimetable(value);}
     },
     ...mapState({
-      lectures: (state) => state.splus.lectures,
-      schedule: (state) => state.splus.schedule,
+      upcomingLectures: (state) => state.splus.upcomingLectures,
+      upcomingLecturesTimetable: (state) => state.splus.upcomingLecturesTimetable,
       subscribedTimetable: (state) => state.splus.subscribedTimetable,
       browserStateReady: (state) => state.browserStateReady,
     }),
@@ -77,42 +77,38 @@ export default {
         this.load();
       }
     },
-    lectures() {
-      if(!!this.schedule && !!this.subscribedTimetable.id && this.schedule.id == this.subscribedTimetable.id) {
-        const possibleNext = this.findNextEvent();
-        if(possibleNext.ready){
-          if(this.nextEvent && possibleNext.event && this.nextEvent.data.title == possibleNext.event.data.title) return;
-          this.nextEvent = possibleNext.event;
-        }
-      }
+    upcomingLectures() {
+      const res = this.findNextEvent();
+      this.nextEvent = res != undefined? {title: res.title,
+                                          room: res.room,
+                                          lecturer: res.lecturer, 
+                                          start: moment(res.start).hour(parseInt(res.begin / 1)).minute(res.begin % 1 * 60)
+                                          }: undefined;
     }
   },
   mounted() {
     if(!!this.subscribedTimetable.id) {
        this.load();
-       this.nextEvent = this.findNextEvent().event;
     }
   },
   methods: {
     ...mapMutations({
       setSubscribedTimetable: 'splus/setSubscribedTimetable',
-      setSchedule: 'splus/setSchedule',
+      setUpcomingLecturesTimetable: 'splus/setUpcomingLecturesTimetable',
       resetWeek: 'splus/resetWeek',
       clearLectures: 'splus/clearLectures',
     }),
     ...mapActions({
-      loadLectures: 'splus/load',
+      loadLectures: 'splus/loadUpcomingLectures',
     }),
     findNextEvent() {
-      const events = this.$store.getters['splus/getLecturesAsEvents']
-      const possibleEvents = events.filter(event => moment(event.schedule.on).valueOf() - moment().valueOf() > 0)
-                                      .sort((a,b) => moment(a.schedule.on).valueOf() - moment(b.schedule.on).valueOf())
-      return {event: possibleEvents[0] != undefined? possibleEvents[0] : undefined, ready: events.length != 0 };
+      const possibleEvents = this.upcomingLectures
+                                .filter(event => moment(event.start).valueOf() - moment().valueOf() > 0)
+                                .sort((a,b) => moment(a.start).valueOf() - moment(b.start).valueOf());                              
+       return possibleEvents[0] != undefined? possibleEvents[0] : undefined;
     },
     load(){
-      this.setSchedule(this.subscribedTimetable);
-      this.resetWeek(true);
-      this.clearLectures();
+      this.setUpcomingLecturesTimetable(this.subscribedTimetable);
       this.loadLectures();
     }
   }

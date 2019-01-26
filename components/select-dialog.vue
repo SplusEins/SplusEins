@@ -20,7 +20,7 @@
         <v-list>
           <v-list-tile
             v-for="item in items"
-            :key="JSON.stringify(item)"
+            :key="item.description"
             @click="selectedItem = item">
             <v-list-tile-action>
               <v-icon
