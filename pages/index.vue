@@ -26,7 +26,6 @@
       </v-flex>
 
       <v-flex
-        v-if="false"
         xs12
         md6
         lg4
@@ -97,16 +96,17 @@ export default {
 
       return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
     },
+    displayQuickAccessCard() {
+      return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
+    },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
       favorites: (state) => state.splus.favoriteSchedules,
+      generalNews: (state) => state.news.generalNews,
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
     }),
-    displayQuickAccessCard() {
-      return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
-    }
   },
   methods: {
     ...mapMutations({
@@ -115,22 +115,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="scss">
-
-.background-div{
-  position: absolute;
-  opacity: 0.2;
-  filter: alpha(opacity=20);
-}
-
-.background-image{
-  max-height: 80vh;
-  max-width: 80%;
-  height: auto;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-}
-</style>
-

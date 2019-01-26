@@ -1,12 +1,12 @@
 <template>
 
   <v-card>
-    <v-card-title class="title-padding">
+    <v-card-title>
       <span class="headline">Nächste Vorlesung</span>
       <v-btn
         v-show="hasSubscribableTimetables"
         icon
-        @click="subscribeDialogOpen = true">
+        @click="dialogOpen = true">
         <v-icon>mdi-bookmark-outline</v-icon>
       </v-btn>
     </v-card-title>
@@ -27,8 +27,11 @@
       <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne um diese Option nutzen zu können!</i>
     </v-card-text>
     
-    <subscribe-dialog 
-      v-model="subscribeDialogOpen"/>
+    <select-dialog
+      :open.sync="dialogOpen"
+      :items="subscribableTimetables"
+      :selected.sync="selectedItem"
+      title="Plan abbonieren"/>
   </v-card>
 
 </template>
@@ -36,20 +39,24 @@
 <script>
 import * as moment from 'moment';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
-import SubscribeDialog from './subscribe-dialog.vue'
+import SelectDialog from './select-dialog.vue'
 
 export default {
   name: 'UpcomingLecturesCard',
   components: {
-    SubscribeDialog,
+    SelectDialog,
   },
   data() {
     return {
       nextEvent: undefined,
-      subscribeDialogOpen: false
+      dialogOpen: false,
     }
   },
   computed: {
+    selectedItem: {
+      get(){ return this.subscribedTimetable;},
+      set(value){ this.setSubscribedTimetable(value);}
+    },
     ...mapState({
       lectures: (state) => state.splus.lectures,
       schedule: (state) => state.splus.schedule,
@@ -88,6 +95,7 @@ export default {
   },
   methods: {
     ...mapMutations({
+      setSubscribedTimetable: 'splus/setSubscribedTimetable',
       setSchedule: 'splus/setSchedule',
       resetWeek: 'splus/resetWeek',
       clearLectures: 'splus/clearLectures',
