@@ -37,7 +37,7 @@ router.options('/', cors());
  * @return {date: number (acts also as id), data: {}}
  */
 router.get('/', cors(), async (req, res, next) => {
-  const key = moment().format('YYYY-MM-DD');
+  const key = 'mensa-' + moment().format('YYYY-MM-DD');
 
   try {
     const data = await cache.wrap(key, async () => {
