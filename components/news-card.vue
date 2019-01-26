@@ -61,16 +61,20 @@ export default {
     }),
     selectedItem: {
       get(){ return {description: this.generalNewsSource};},
-      set(value){ 
-        this.setGeneralNewsSource(value.description);
-        this.loadGeneralNews();
-      }
+      set(value){ this.setGeneralNewsSource(value.description);}
     },
   },
   watch: {
-    browserStateReady() {
+    generalNewsSource() {
+      if (this.browserStateReady){
        this.loadGeneralNews();
+      }
     },
+  },
+  mounted() {
+    if(this.generalNews.length == 0) {
+      this.loadGeneralNews();
+    }
   },
   methods: {
     ...mapActions({
