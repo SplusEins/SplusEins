@@ -2,7 +2,7 @@
 
   <v-card>
     <v-card-title class="title-padding">
-      <span class="headline">Nächste Vorlesungen</span>
+      <span class="headline">Nächste Vorlesung</span>
       <v-btn
         v-show="hasSubscribableTimetables"
         icon
