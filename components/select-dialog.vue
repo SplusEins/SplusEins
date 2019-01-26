@@ -20,16 +20,16 @@
         <v-list>
           <v-list-tile
             v-for="item in items"
-            :key="item.description"
+            :key="!!item.description? item.description: item.label"
             @click="selectedItem = item">
             <v-list-tile-action>
               <v-icon
-                v-if="!!selectedItem && item.description == selectedItem.description">
+                v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label">
                 mdi-check
               </v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>{{ item.description }}</v-list-tile-title>
+              <v-list-tile-title>{{ !!item.description? item.description: item.label }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>

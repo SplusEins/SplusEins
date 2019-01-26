@@ -64,7 +64,6 @@ export default {
       browserStateReady: (state) => state.browserStateReady,
     }),
     ...mapGetters({
-      getLecturesAsEvents: 'splus/getLecturesAsEvents',
       subscribableTimetables: 'splus/subscribableTimetables',
     }),
     hasSubscribableTimetables() {
@@ -95,8 +94,6 @@ export default {
     ...mapMutations({
       setSubscribedTimetable: 'splus/setSubscribedTimetable',
       setUpcomingLecturesTimetable: 'splus/setUpcomingLecturesTimetable',
-      resetWeek: 'splus/resetWeek',
-      clearLectures: 'splus/clearLectures',
     }),
     ...mapActions({
       loadLectures: 'splus/loadUpcomingLectures',
