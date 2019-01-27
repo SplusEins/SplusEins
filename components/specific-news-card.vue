@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title class="title-padding">
-      <div class="headline">Neues von {{ generalNewsSource == 'Ostfalia'? 'der Ostfalia': 'Campus38' }}</div>
+      <div class="headline">Neues {{ selectedItem.title }}</div>
       <v-btn
         icon
         @click="dialogOpen = true">
@@ -12,7 +12,7 @@
       <v-list 
         dense>
         <div 
-          v-for="item in generalNews.slice(0,4)"
+          v-for="item in specificNews.slice(0,2)"
           :key="item.link"
           class="list-tile">
           <a 
@@ -41,12 +41,18 @@ import { mapState, mapActions, mapMutations } from 'vuex';
 import SelectDialog from './select-dialog.vue'
 
 export default {
-  name: 'NewsCard',
+  name: 'SpecificNewsCard',
   components: {
     SelectDialog,
   },
   data() {
-    const availableSoures = [{description: 'Ostfalia'}, {description: 'Campus38'}];
+    const availableSoures = [{description: 'Fakultät Informatik', title: 'aus der Informatik', path: 'Ostfalia/i'},
+                             {description: 'Fakultät Elektrotechnik', title: 'aus der E-Technik', path: 'Ostfalia/e'},
+                             {description: 'Fakultät Recht', title: 'aus dem Recht', path: 'Ostfalia/r'},
+                             {description: 'Standort Wolfenbüttel', title: 'aus Wolfenbüttel', path: 'Ostfalia/wf'},
+                             {description: 'Standort Wolfsburg', title: 'aus Wolfsburg', path: 'Ostfalia/wob'},
+                             {description: 'Standort Salzgitter', title: 'aus Salzgitter', path: 'Ostfalia/sz'},
+                             {description: 'Standort Suderburg', title: 'aus Suderburg', path: 'Ostfalia/sud'},];
 
     return {
       dialogOpen: false,
@@ -55,25 +61,25 @@ export default {
   },
   computed: {
     ...mapState({
-      generalNews: (state) => state.news.generalNews,
-      generalNewsSource: (state) => state.news.generalNewsSource,
+      specificNews: (state) => state.news.specificNews,
+      specificNewsSource: (state) => state.news.specificNewsSource,
       browserStateReady: (state) => state.browserStateReady,
     }),
     selectedItem: {
-      get(){ return {description: this.generalNewsSource};},
-      set(value){ this.setNewsSource({ source: value.description, generalNews: true});}
+      get(){ return this.availableSoures.filter(source => source.path == this.specificNewsSource)[0];},
+      set(value){ this.setNewsSource({ source: value.path, generalNews: false });}
     },
   },
   watch: {
-    generalNewsSource() {
+    specificNewsSource() {
       if (this.browserStateReady){
-       this.loadNews(true);
+       this.loadNews(false);
       }
     },
   },
   mounted() {
-    if(this.generalNews.length == 0) {
-      this.loadNews(true);
+    if(this.specificNews.length == 0) {
+      this.loadNews(false);
     }
   },
   methods: {

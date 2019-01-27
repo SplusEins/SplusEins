@@ -48,6 +48,7 @@ export default ({ store }) => {
       },
       news: {
         generalNewsSource: state.news.generalNewsSource,
+        specificNewsSource: state.news.specificNewsSource,
       },
       privacy: {
         allowAllCookies: state.privacy.allowAllCookies,

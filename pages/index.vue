@@ -8,21 +8,13 @@
     <v-layout
       row
       wrap>
+      
       <v-flex
-        xs12
-        md6
-        lg4
-        d-flex>
-        <last-changes-card />
-      </v-flex>
-
-      <v-flex
-        v-show="mensaIsOpen"
-        :d-flex="mensaIsOpen"
+        d-flex
         xs12
         md6
         lg4>
-        <mensa-card />
+        <last-changes-card />
       </v-flex>
 
       <v-flex
@@ -35,6 +27,34 @@
       </v-flex>
 
       <v-flex
+        xs12
+        md6
+        lg4
+        d-flex>
+        <v-layout
+          row
+          wrap>
+          <v-flex d-flex>
+            <upcoming-lectures-card />
+          </v-flex>
+          <v-flex 
+            v-show="displaySpecificNewsCard"
+            :d-flex="displaySpecificNewsCard">
+            <specific-news-card />
+          </v-flex>
+        </v-layout>
+      </v-flex>
+
+      <v-flex
+        v-show="mensaIsOpen"
+        :d-flex="mensaIsOpen"
+        xs12
+        md6
+        lg4>
+        <mensa-card />
+      </v-flex>
+
+      <v-flex
         v-if="displayQuickAccessCard"
         xs12
         md6
@@ -43,14 +63,6 @@
         <quick-access-card />
       </v-flex>
 
-      <v-flex
-        xs12
-        md6
-        lg4
-        d-flex>
-        <upcoming-lectures-card />
-      </v-flex>
-      
     </v-layout>
   </v-container>
 </template>
@@ -63,6 +75,7 @@ import LastChangesCard from '../components/last-changes-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import NewsCard from '../components/news-card.vue';
+import SpecificNewsCard from '../components/specific-news-card.vue';
 
 export default {
   name: 'IndexPage',
@@ -72,6 +85,7 @@ export default {
     QuickAccessCard,
     MensaCard,
     NewsCard,
+    SpecificNewsCard,
   },
   async fetch({ store, params }) {
     if (process.static) {
@@ -103,10 +117,14 @@ export default {
     displayGeneralNewsCard() {
       return this.generalNews.length > 0;
     },
+    displaySpecificNewsCard() {
+      return this.specificNews.length > 0;
+    },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
       favorites: (state) => state.splus.favoriteSchedules,
       generalNews: (state) => state.news.generalNews,
+      specificNews: (state) => state.news.specificNews,
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
