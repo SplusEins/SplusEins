@@ -23,7 +23,7 @@
         xs12
         md6
         lg4>
-        <news-card />
+        <general-news-card />
       </v-flex>
 
       <v-flex
@@ -74,7 +74,7 @@ import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import LastChangesCard from '../components/last-changes-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
-import NewsCard from '../components/news-card.vue';
+import GeneralNewsCard from '../components/general-news-card.vue';
 import SpecificNewsCard from '../components/specific-news-card.vue';
 
 export default {
@@ -84,7 +84,7 @@ export default {
     LastChangesCard,
     QuickAccessCard,
     MensaCard,
-    NewsCard,
+    GeneralNewsCard,
     SpecificNewsCard,
   },
   async fetch({ store, params }) {

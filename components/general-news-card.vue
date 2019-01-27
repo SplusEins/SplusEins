@@ -41,7 +41,7 @@ import { mapState, mapActions, mapMutations } from 'vuex';
 import SelectDialog from './select-dialog.vue'
 
 export default {
-  name: 'NewsCard',
+  name: 'GeneralNewsCard',
   components: {
     SelectDialog,
   },
