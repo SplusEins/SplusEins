@@ -1,29 +1,33 @@
 
 export const state = () => ({
   generalNewsSource: 'Ostfalia',
+  specificNewsSource: 'Ostfalia/wf',
   generalNews: [],
+  specificNews: [],
 });
 
 export const mutations = {
-  setGeneralNews(state, data) {
-    state.generalNews = data;
+  setNews(state, { data, generalNews }) {
+    console.log('set news', generalNews)
+    generalNews? state.generalNews = data: state.specificNews = data;
   },
-  setGeneralNewsSource(state, source:string) {
-      state.generalNewsSource = source;
+  setNewsSource(state, {source, generalNews }) {
+    generalNews? state.generalNewsSource = source : state.specificNewsSource = source;
   }
 }
 
 export const actions = {
-  async loadGeneralNews({ state, commit }) {
+  async loadNews({ state, commit }, generalNews: Boolean) {
     let result = [];
+    const source = generalNews? state.generalNewsSource : state.specificNewsSource;
     try {
-      const response = await this.$axios.get(`/api/news/${state.generalNewsSource}`);
+      const response = await this.$axios.get(`/api/news/${source}`);
       result = response.data;
     } catch (error) {
-        commit('enqueueError', `News: API-Verbindung fehlgeschlagen (${state.generalNewsSource})`, {root:true});
-        console.error(`error during News API call (${state.generalNewsSource})`, error.message);
+      commit('enqueueError', `News: API-Verbindung fehlgeschlagen (${source})`, {root:true});
+      console.error(`error during News API call (${source})`, error.message);
     }
 
-    commit('setGeneralNews', result);
-  }
+    generalNews? commit('setNews', { data: result, generalNews: true }) : commit('setNews', { data: result, generalNews: false });
+  },
 };
