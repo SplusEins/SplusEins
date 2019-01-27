@@ -13,23 +13,23 @@
           @click.native="dialogOpen = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-toolbar-title>Plan abbonieren</v-toolbar-title>
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
 
       <v-card-text class="card-text-padding">
         <v-list>
           <v-list-tile
-            v-for="schedule in subscribableTimetables"
-            :key="schedule.label"
-            @click="setSubscribedTimetable(schedule)">
+            v-for="item in items"
+            :key="!!item.description? item.description: item.label"
+            @click="selectedItem = item">
             <v-list-tile-action>
               <v-icon
-                v-if="schedule.label == subscribedTimetable.label">
+                v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label">
                 mdi-check
               </v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>{{ schedule.description ? schedule.description : schedule.label }}</v-list-tile-title>
+              <v-list-tile-title>{{ !!item.description? item.description: item.label }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -40,32 +40,36 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapState } from 'vuex';
 
 export default {
-  name: 'SubscribeDialog',
+  name: 'SelectDialog',
    props: {
-    value: {
+    open: {
       type: Boolean,
       default: false
+    },
+    title:{
+      type: String,
+      default: 'Titel',
+    },
+    items: {
+      type: Array,
+      default: () => [], 
+    },
+    selected: {
+      type: Object,
+      default: () => {},
     },
   },
   computed: {
     dialogOpen: {
-      get() { return this.value; },
-      set(value) { this.$emit('input', value); }
+      get() { return this.open; },
+      set(value) { this.$emit('update:open', value); }
     },
-    ...mapState({
-      subscribedTimetable: (state) => state.splus.subscribedTimetable,
-    }),
-    ...mapGetters({
-      subscribableTimetables: 'splus/subscribableTimetables',
-    }),
-  },
-  methods: {
-    ...mapMutations({
-      setSubscribedTimetable: 'splus/setSubscribedTimetable',
-    }),
+    selectedItem: {
+      get() { return this.selected; },
+      set(value) { this.$emit('update:selected', value); }
+    }
   },
 };
 </script>

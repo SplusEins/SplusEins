@@ -1,34 +1,37 @@
 <template>
 
   <v-card>
-    <v-card-title class="title-padding">
+    <v-card-title>
       <span class="headline">Nächste Vorlesung</span>
       <v-btn
         v-show="hasSubscribableTimetables"
         icon
-        @click="subscribeDialogOpen = true">
+        @click="dialogOpen = true">
         <v-icon>mdi-bookmark-outline</v-icon>
       </v-btn>
     </v-card-title>
 
     <v-card-text v-if="nextEvent != undefined">
-      <b>{{ nextEvent.data.title }} {{ nextEvent.data.description }}</b>
+      <b>{{ nextEvent.title }} {{ nextEvent.lecturer }}</b>
       <br>
-      Datum: {{ nextEvent.schedule.on.format('dddd, DD.MM.YYYY') }}
+      Datum: {{ nextEvent.start.format('dddd, DD.MM.YYYY') }}
       <br>
-      Uhrzeit: {{ nextEvent.schedule.on.hour() }}:{{ nextEvent.schedule.on.minute() == 0? "00" : nextEvent.schedule.on.minute() }} Uhr
+      Uhrzeit: {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() == 0? "00" : nextEvent.start.minute() }} Uhr
       <br>
-      Raum: {{ nextEvent.data.location }}
+      Raum: {{ nextEvent.room }}
     </v-card-text>
     <v-card-text v-else-if="hasSubscribableTimetables && nextEvent == undefined">
       <i>Keine weiteren Vorlesungen in dieser Woche!</i>
     </v-card-text>
     <v-card-text v-else>
-      <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne um diese Option nutzen zu können!</i>
+      <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne, um diese Option nutzen zu können!</i>
     </v-card-text>
     
-    <subscribe-dialog 
-      v-model="subscribeDialogOpen"/>
+    <select-dialog
+      :open.sync="dialogOpen"
+      :items="subscribableTimetables"
+      :selected.sync="selectedItem"
+      title="Plan abbonieren"/>
   </v-card>
 
 </template>
@@ -36,33 +39,36 @@
 <script>
 import * as moment from 'moment';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
-import SubscribeDialog from './subscribe-dialog.vue'
+import SelectDialog from './select-dialog.vue'
 
 export default {
   name: 'UpcomingLecturesCard',
   components: {
-    SubscribeDialog,
+    SelectDialog,
   },
   data() {
     return {
       nextEvent: undefined,
-      subscribeDialogOpen: false
+      dialogOpen: false,
     }
   },
   computed: {
+    selectedItem: {
+      get(){ return this.subscribedTimetable;},
+      set(value){ this.setSubscribedTimetable(value);}
+    },
+    hasSubscribableTimetables() {
+      return this.subscribableTimetables.length > 0;
+    },
     ...mapState({
-      lectures: (state) => state.splus.lectures,
-      schedule: (state) => state.splus.schedule,
+      upcomingLectures: (state) => state.splus.upcomingLectures,
+      upcomingLecturesTimetable: (state) => state.splus.upcomingLecturesTimetable,
       subscribedTimetable: (state) => state.splus.subscribedTimetable,
       browserStateReady: (state) => state.browserStateReady,
     }),
     ...mapGetters({
-      getLecturesAsEvents: 'splus/getLecturesAsEvents',
       subscribableTimetables: 'splus/subscribableTimetables',
     }),
-    hasSubscribableTimetables() {
-      return this.subscribableTimetables.length > 0;
-    },
   },
   watch: {
     subscribedTimetable() {
@@ -70,41 +76,35 @@ export default {
         this.load();
       }
     },
-    lectures() {
-      if(!!this.schedule && !!this.subscribedTimetable.id && this.schedule.id == this.subscribedTimetable.id) {
-        const possibleNext = this.findNextEvent();
-        if(possibleNext.ready){
-          if(this.nextEvent && possibleNext.event && this.nextEvent.data.title == possibleNext.event.data.title) return;
-          this.nextEvent = possibleNext.event;
-        }
-      }
-    }
+    upcomingLectures() {
+      this.nextEvent = this.findNextEvent();
+    },
   },
   mounted() {
     if(!!this.subscribedTimetable.id) {
        this.load();
-       this.nextEvent = this.findNextEvent().event;
     }
   },
   methods: {
     ...mapMutations({
-      setSchedule: 'splus/setSchedule',
-      resetWeek: 'splus/resetWeek',
-      clearLectures: 'splus/clearLectures',
+      setSubscribedTimetable: 'splus/setSubscribedTimetable',
+      setUpcomingLecturesTimetable: 'splus/setUpcomingLecturesTimetable',
     }),
     ...mapActions({
-      loadLectures: 'splus/load',
+      loadLectures: 'splus/loadUpcomingLectures',
     }),
     findNextEvent() {
-      const events = this.$store.getters['splus/getLecturesAsEvents']
-      const possibleEvents = events.filter(event => moment(event.schedule.on).valueOf() - moment().valueOf() > 0)
-                                      .sort((a,b) => moment(a.schedule.on).valueOf() - moment(b.schedule.on).valueOf())
-      return {event: possibleEvents[0] != undefined? possibleEvents[0] : undefined, ready: events.length != 0 };
+      const possibleEvents = this.upcomingLectures
+                             .map(event => {return {title: event.title,
+                                                    room: event.room,
+                                                    lecturer: event.lecturer,
+                                                    start: moment(event.start).hour(parseInt(event.begin / 1)).minute(event.begin % 1 * 60)}})
+                             .filter(event => event.start.valueOf() - moment().valueOf() > 0)
+                             .sort((a,b) => a.start.valueOf() - b.start.valueOf());                              
+      return possibleEvents[0] != undefined? possibleEvents[0] : undefined;
     },
     load(){
-      this.setSchedule(this.subscribedTimetable);
-      this.resetWeek(true);
-      this.clearLectures();
+      this.setUpcomingLecturesTimetable(this.subscribedTimetable);
       this.loadLectures();
     }
   }

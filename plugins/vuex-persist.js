@@ -46,6 +46,9 @@ export default ({ store }) => {
         favoriteSchedules: state.splus.favoriteSchedules,
         subscribedTimetable: state.splus.subscribedTimetable,
       },
+      news: {
+        generalNewsSource: state.news.generalNewsSource,
+      },
       privacy: {
         allowAllCookies: state.privacy.allowAllCookies,
         allowNecessaryCookies: state.privacy.allowNecessaryCookies,

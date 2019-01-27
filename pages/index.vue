@@ -17,20 +17,20 @@
       </v-flex>
 
       <v-flex
-        v-if="mensaIsOpen"
+        v-show="mensaIsOpen"
+        :d-flex="mensaIsOpen"
         xs12
         md6
-        lg4
-        d-flex>
+        lg4>
         <mensa-card />
       </v-flex>
 
       <v-flex
-        v-if="false"
+        v-show="displayGeneralNewsCard"
+        :d-flex="displayGeneralNewsCard"
         xs12
         md6
-        lg4
-        d-flex>
+        lg4>
         <news-card />
       </v-flex>
 
@@ -97,16 +97,20 @@ export default {
 
       return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
     },
+    displayQuickAccessCard() {
+      return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
+    },
+    displayGeneralNewsCard() {
+      return this.generalNews.length > 0;
+    },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
       favorites: (state) => state.splus.favoriteSchedules,
+      generalNews: (state) => state.news.generalNews,
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
     }),
-    displayQuickAccessCard() {
-      return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
-    }
   },
   methods: {
     ...mapMutations({
@@ -115,22 +119,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="scss">
-
-.background-div{
-  position: absolute;
-  opacity: 0.2;
-  filter: alpha(opacity=20);
-}
-
-.background-image{
-  max-height: 80vh;
-  max-width: 80%;
-  height: auto;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-}
-</style>
-

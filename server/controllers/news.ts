@@ -27,7 +27,8 @@ const cache = CACHE_DISABLE ?
 /**
  * Accept CORS preflight requests.
  */
-router.options('/', cors());
+router.options('/ostfalia', cors());
+router.options('/campus38', cors());
 
 /**
  * Get Ostfalia news
