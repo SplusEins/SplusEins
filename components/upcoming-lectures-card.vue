@@ -24,7 +24,7 @@
       <i>Keine weiteren Vorlesungen in dieser Woche!</i>
     </v-card-text>
     <v-card-text v-else>
-      <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne um diese Option nutzen zu können!</i>
+      <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne, um diese Option nutzen zu können!</i>
     </v-card-text>
     
     <select-dialog
@@ -57,6 +57,9 @@ export default {
       get(){ return this.subscribedTimetable;},
       set(value){ this.setSubscribedTimetable(value);}
     },
+    hasSubscribableTimetables() {
+      return this.subscribableTimetables.length > 0;
+    },
     ...mapState({
       upcomingLectures: (state) => state.splus.upcomingLectures,
       upcomingLecturesTimetable: (state) => state.splus.upcomingLecturesTimetable,
@@ -66,9 +69,6 @@ export default {
     ...mapGetters({
       subscribableTimetables: 'splus/subscribableTimetables',
     }),
-    hasSubscribableTimetables() {
-      return this.subscribableTimetables.length > 0;
-    },
   },
   watch: {
     subscribedTimetable() {
@@ -77,13 +77,8 @@ export default {
       }
     },
     upcomingLectures() {
-      const res = this.findNextEvent();
-      this.nextEvent = res != undefined? {title: res.title,
-                                          room: res.room,
-                                          lecturer: res.lecturer, 
-                                          start: moment(res.start).hour(parseInt(res.begin / 1)).minute(res.begin % 1 * 60)
-                                          }: undefined;
-    }
+      this.nextEvent = this.findNextEvent();
+    },
   },
   mounted() {
     if(!!this.subscribedTimetable.id) {
@@ -100,9 +95,13 @@ export default {
     }),
     findNextEvent() {
       const possibleEvents = this.upcomingLectures
-                                .filter(event => moment(event.start).valueOf() - moment().valueOf() > 0)
-                                .sort((a,b) => moment(a.start).valueOf() - moment(b.start).valueOf());                              
-       return possibleEvents[0] != undefined? possibleEvents[0] : undefined;
+                             .map(event => {return {title: event.title,
+                                                    room: event.room,
+                                                    lecturer: event.lecturer,
+                                                    start: moment(event.start).hour(parseInt(event.begin / 1)).minute(event.begin % 1 * 60)}})
+                             .filter(event => event.start.valueOf() - moment().valueOf() > 0)
+                             .sort((a,b) => a.start.valueOf() - b.start.valueOf());                              
+      return possibleEvents[0] != undefined? possibleEvents[0] : undefined;
     },
     load(){
       this.setUpcomingLecturesTimetable(this.subscribedTimetable);
