@@ -12,14 +12,12 @@
       <v-btn
         ref="btn-deny"
         flat
-        icon
         @click="setAllCookiesDenied()">
         Nichts
       </v-btn>
       <v-btn
         ref="btn-allow-necessary"
         flat
-        icon
         @click="setNecessaryCookiesAllowed()">
         Einstellungen
       </v-btn>
