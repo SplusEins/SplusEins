@@ -22,7 +22,10 @@
             :disabled="!valid"
             dark
             flat
-            @click.native="save(); trackMatomoEvent('Menu','saveCustomTimetable',' Anzahl Pläne:',selectedSchedules.length ); trackMatomoEvent('Menu','saveCustomTimetable','Anzahl Kurse:', selectedCourses.length)">Speichern</v-btn>
+            @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true; 
+                           trackMatomoEvent('Menu','saveCustomTimetable',' Anzahl Pläne:',selectedSchedules.length ); 
+                           trackMatomoEvent('Menu','saveCustomTimetable','Anzahl Kurse:', selectedCourses.length)">
+            Speichern</v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <v-form v-model="valid">
@@ -69,6 +72,11 @@
         </v-container>
       </v-form>
     </v-card>
+
+    <custom-timetable-cookie-reminder 
+      v-model="cookieReminderDialogOpen"
+      @continue="save()"/>
+
   </v-dialog>
 </template>
 
@@ -78,12 +86,14 @@ import * as moment from 'moment';
 import { uniq, flatten, customScheduleToRoute } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
+import CustomTimetableCookieReminder from './custom-timetable-cookie-reminder.vue'
 
 export default {
   name: 'CustomTimetableDialog',
   components: {
     TimetableSelect,
     CourseMultiselect,
+    CustomTimetableCookieReminder,
   },
   props: {
     value: {
@@ -119,6 +129,7 @@ export default {
       // and a usable UI
       maxSchedules: 5,
       maxCourses: 20,
+      cookieReminderDialogOpen: false,
     };
   },
   computed: {
@@ -140,6 +151,7 @@ export default {
     }),
     ...mapState({
       week: (state) => state.splus.week,
+      allowNecessaryCookies: (state) => state.privacy.allowNecessaryCookies,
     }),
   },
   watch: {
