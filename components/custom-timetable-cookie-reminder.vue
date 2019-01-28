@@ -1,7 +1,7 @@
 <template>
   <v-dialog
     v-model="dialogOpen"
-    max-width="450">
+    max-width="400">
     <v-card>
 
       <v-toolbar
@@ -25,13 +25,13 @@
           <v-btn
             flat
             @click="dialogOpen=false; $emit('continue');">
-            Trotzdem fortfahren
+            Fortfahren
           </v-btn>
           <v-btn
             flat
             color="success"
             @click="setNecessaryCookiesAllowed(); dialogOpen=false; $emit('continue');">
-            Cookies aktivieren
+            Aktivieren
           </v-btn>
         </v-layout>
       </v-card-text>
