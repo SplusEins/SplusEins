@@ -8,7 +8,6 @@ export const state = () => ({
 
 export const mutations = {
   setNews(state, { data, generalNews }) {
-    console.log('set news', generalNews)
     generalNews? state.generalNews = data: state.specificNews = data;
   },
   setNewsSource(state, {source, generalNews }) {
