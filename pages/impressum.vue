@@ -11,13 +11,13 @@
       <br>
       <p><b>Vertreten durch:</b></p>
 
-      <p class="Teammitglied1">$Teammitglied1</p>
+      <p>{{ team.member1 }}</p>
 
-      <p class="Teammitglied2">$Teammitglied2</p>
+      <p>{{ team.member2 }}</p>
 
-      <p class="Teammitglied3">$Teammitglied3</p>
+      <p>{{ team.member3 }}</p>
 
-      <p class="Teammitglied4">$Teammitglied4</p>
+      <p>{{ team.member4 }}</p>
 
       <p><b>Kontakt:</b></p>
 
@@ -52,6 +52,7 @@
 
 <script>
 import { mapMutations } from 'vuex';
+import PROTECTED_INFORMATION from '~/assets/protected-information.json';
 
 export default {
   name: 'SpluseinsImpressum',
@@ -59,6 +60,11 @@ export default {
     return {
       title: 'Impressum',
     };
+  },
+  data() {
+    return {
+      team: PROTECTED_INFORMATION.team
+    }
   },
   methods: {
     ...mapMutations({
