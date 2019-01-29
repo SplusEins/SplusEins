@@ -1,0 +1,16 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source: {repository: node}
+
+inputs:
+  - name: build-result
+outputs:
+  - name: build-result-prod
+run:
+  path: build-result/concourse/insert-information.sh
+params:
+  TEAM_MEMBER1: ((TEAM_MEMBER1))
+  TEAM_MEMBER2: ((TEAM_MEMBER2))
+  TEAM_MEMBER3: ((TEAM_MEMBER3))
+  TEAM_MEMBER4: ((TEAM_MEMBER4))
