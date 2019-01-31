@@ -99,77 +99,7 @@
 
       </slot>
 
-      <slot
-        v-bind="{$scopedSlots, $listeners, calendar, eventFinish}"
-        name="calendarAppEventDialog" >
-
-        <ds-event-dialog
-          ref="eventDialog"
-          :calendar="calendar"
-          :read-only="readOnly"
-          v-bind="{$scopedSlots}"
-          v-on="$listeners"
-          @saved="eventFinish"
-          @actioned="eventFinish"
-        />
-
-      </slot>
-
-      <slot
-        v-bind="{optionsVisible, optionsDialog, options, chooseOption}"
-        name="calendarAppOptions" >
-
-        <v-dialog
-          ref="optionsDialog"
-          v-model="optionsVisible"
-          v-bind="optionsDialog"
-          :fullscreen="$dayspan.fullscreenDialogs">
-          <v-list>
-            <template v-for="option in options">
-              <v-list-tile
-                :key="option.text"
-                @click="chooseOption( option )">
-                {{ option.text }}
-              </v-list-tile>
-            </template>
-          </v-list>
-        </v-dialog>
-
-      </slot>
-
-      <slot
-        v-bind="{promptVisible, promptDialog, promptQuestion, choosePrompt}"
-        name="calendarAppPrompt" >
-
-        <v-dialog
-          ref="promptDialog"
-          v-model="promptVisible"
-          v-bind="promptDialog">
-          <v-card>
-            <v-card-title>{{ promptQuestion }}</v-card-title>
-            <v-card-actions>
-              <v-btn
-                color="primary"
-                flat
-                @click="choosePrompt( true )">
-                {{ labels.promptConfirm }}
-              </v-btn>
-              <v-spacer/>
-              <v-btn
-                color="secondary"
-                flat
-                @click="choosePrompt( false )">
-                {{ labels.promptCancel }}
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-
-      </slot>
-
-      <slot
-        v-bind="{events, calendar}"
-        name="containerInside" />
+      <slot name="containerInside" />
 
     </v-flex>
   </v-layout>
@@ -177,7 +107,7 @@
 
 <script>
 import * as moment from 'moment';
-import { Constants, Sorts, Calendar, Day, Units, Weekday, Month, DaySpan, PatternMap, Time, Op } from 'dayspan';
+import { Sorts, Calendar, Day } from 'dayspan';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -186,13 +116,6 @@ export default {
 
   props:
   {
-    events:
-    {
-      type: Array,
-      default() {
-        return []
-      }
-    },
     calendar:
     {
       type: Calendar,
@@ -212,19 +135,6 @@ export default {
         return {}
       }
     },
-    allowsAddToday:
-    {
-      type: Boolean,
-      default: true
-    },
-    formats:
-    {
-      type: Object,
-      default() {
-        return {today: 0,
-                xs: 0}
-      }
-    },
     labels:
     {
       type: Object,
@@ -232,47 +142,12 @@ export default {
         return {
           next: 'Nächste Woche',
           prev: 'Vorherige Woche',
-          moveCancel: 0,
-          moveSingleEvent: 0,
-          moveOccurrence: 0,
-          moveAll: 0,
-          moveDuplicate: 0,
-          promptConfirm: 0,
-          promptCancel: 0,
           today: 'Heute',
           todayIcon: 'mdi-calendar-today'
         }
       }
     },
-    optionsDialog:
-    {
-      type: Object,
-      default() {
-        return  {
-        maxWidth: '300px',
-        persistent: true}
-      }
-    },
-    promptDialog:
-    {
-      type: Object,
-      default() {
-        return {
-          maxWidth: '300px',
-          persistent: true
-        }
-      }
-    }
   },
-
-  data: vm => ({
-    drawer: null,
-    optionsVisible: false,
-    options: [],
-    promptVisible: false,
-    promptQuestion: '',
-    promptCallback: null
-  }),
   computed:
   {
     currentType:
@@ -319,21 +194,6 @@ export default {
       return this.labels.prev
     },
 
-    hasCreatePopover()
-    {
-      return true
-    },
-
-    canAddDay()
-    {
-      return !this.readOnly
-    },
-
-    canAddTime()
-    {
-      return !this.readOnly
-    },
-
     ...mapGetters({
       hasLecturesOnWeekend: 'splus/getHasLecturesOnWeekend',
     }),
@@ -342,53 +202,18 @@ export default {
       return this.hasLecturesOnWeekend ? '' : 'no-weekend'
     }
   },
-  watch:
-  {
-    'events': 'applyEvents',
-    'calendar': 'applyEvents'
-  },
-  mounted()
-  {
-    // if (!this.$dayspan.promptOpen)
-    // {
-    //   this.$dayspan.promptOpen = (question, callback) => {
-    //     this.promptVisible = false;
-    //     this.promptQuestion = question;
-    //     this.promptCallback = callback;
-    //     this.promptVisible = true;
-    //   };
-    // }
-  },
 
   methods:
   {
     trackMatomoEvent(category, action , name) {
       this.$matomo.trackEvent(category, action, name);
     },
+
     summary(short)
     {
-      var monthNames = [
-        "Januar", "Februar", "März",
-        "April", "Mai", "Juni", "Juli",
-        "August", "September", "Oktober",
-        "November", "Dezember"
-      ];
-      let firstDayOfWeekString = JSON.stringify(this.calendar.days[0])
-      let lastDayOfWeekString =  JSON.stringify(this.calendar.days[6])
-      let firstDayOfWeekSplitted = firstDayOfWeekString.split('-')
-      let lastDayOfWeekSplitted = lastDayOfWeekString.split('-')
-      let firstDayYear = parseInt(firstDayOfWeekSplitted[0].split('"')[1])
-      let firstDayMonth = parseInt(firstDayOfWeekSplitted[1])
-      let firstDayDay = parseInt(firstDayOfWeekSplitted[2].split('T')[0])+1
-      let lastDayYear = parseInt(lastDayOfWeekSplitted[0].split('"')[1])
-      let lastDayMonth = parseInt(lastDayOfWeekSplitted[1])
-      let lastDayDay = parseInt(lastDayOfWeekSplitted[2].split('T')[0])+1
-      if(short){
-        return this.minTwoDigits(firstDayDay) + '.' + this.minTwoDigits(firstDayMonth) + '. - '
-        + this.minTwoDigits(lastDayDay) + '.' + this.minTwoDigits(lastDayMonth) + '.'
-      }else{
-        return this.minTwoDigits(firstDayDay) + '. ' + monthNames[firstDayMonth-1] + ' – ' + this.minTwoDigits(lastDayDay)  + '. ' + monthNames[lastDayMonth-1]
-      }
+      const firstDay = moment(JSON.stringify(this.calendar.days[0]), 'YYYY-MM-DD').add('day', 1);
+      const lastDay = moment(JSON.stringify(this.calendar.days[6]), 'YYYY-MM-DD').add('day', 1);
+      return short? firstDay.format('DD.MM.') + ' - ' + lastDay.format('DD.MM.') : firstDay.format('DD. MMMM') + ' – ' + lastDay.format('DD. MMMM');
     },
 
     minTwoDigits(n) {
@@ -404,15 +229,6 @@ export default {
       this.calendar.set( state );
 
       this.triggerChange();
-    },
-
-    applyEvents()
-    {
-      if (this.events)
-      {
-        this.calendar.removeEvents();
-        this.calendar.addEvents(this.events);
-      }
     },
 
     isType(type, aroundDay)
@@ -472,243 +288,6 @@ export default {
     viewDay(day)
     {
       this.rebuild( day, false, this.types[ 0 ] );
-    },
-
-    // edit(calendarEvent)
-    // {
-    //   let eventDialog = this.$refs.eventDialog;
-
-    //   eventDialog.edit(calendarEvent);
-    // },
-
-    // editPlaceholder(createEdit)
-    // {
-    //   let placeholder = createEdit.calendarEvent;
-    //   let details = createEdit.details;
-    //   let eventDialog = this.$refs.eventDialog;
-    //   let calendar = this.$refs.calendar;
-
-    //   eventDialog.addPlaceholder( placeholder, details );
-    //   eventDialog.$once('close', calendar.clearPlaceholder);
-    // },
-
-    // add(day)
-    // {
-    //   if (!this.canAddDay)
-    //   {
-    //     return;
-    //   }
-
-    //   let eventDialog = this.$refs.eventDialog;
-    //   let calendar = this.$refs.calendar;
-    //   let useDialog = !this.hasCreatePopover;
-
-    //   calendar.addPlaceholder( day, true, useDialog );
-
-    //   if (useDialog)
-    //   {
-    //     eventDialog.add(day);
-    //     eventDialog.$once('close', calendar.clearPlaceholder);
-    //   }
-    // },
-
-    // addAt(dayHour)
-    // {
-    //   if (!this.canAddTime)
-    //   {
-    //     return;
-    //   }
-
-    //   let eventDialog = this.$refs.eventDialog;
-    //   let calendar = this.$refs.calendar;
-    //   let useDialog = !this.hasCreatePopover;
-    //   let at = dayHour.day.withHour( dayHour.hour );
-
-    //   calendar.addPlaceholder( at, false, useDialog );
-
-    //   if (useDialog)
-    //   {
-    //     eventDialog.addAt(dayHour.day, dayHour.hour);
-    //     eventDialog.$once('close', calendar.clearPlaceholder);
-    //   }
-    // },
-
-    // addToday()
-    // {
-    //   if (!this.canAddDay)
-    //   {
-    //     return;
-    //   }
-
-    //   let eventDialog = this.$refs.eventDialog;
-    //   let calendar = this.$refs.calendar;
-    //   let useDialog = !this.hasCreatePopover || !calendar;
-
-    //   let day = this.$dayspan.today;
-
-    //   if (!this.calendar.filled.matchesDay( day ))
-    //   {
-    //     let first = this.calendar.days[ 0 ];
-    //     let last = this.calendar.days[ this.calendar.days.length - 1 ];
-    //     let firstDistance = Math.abs( first.currentOffset );
-    //     let lastDistance = Math.abs( last.currentOffset );
-
-    //     day = firstDistance < lastDistance ? first: last;
-    //   }
-
-    //   calendar && calendar.addPlaceholder( day, true, useDialog );
-
-    //   if (useDialog)
-    //   {
-    //     eventDialog.add( day );
-
-    //     calendar && eventDialog.$once('close', calendar.clearPlaceholder);
-    //   }
-    // },
-
-    // handleAdd(addEvent)
-    // {
-    //   let eventDialog = this.$refs.eventDialog;
-    //   let calendar = this.$refs.calendar;
-
-    //   addEvent.handled = true;
-
-    //   if (!this.hasCreatePopover)
-    //   {
-    //     if (addEvent.placeholder.fullDay)
-    //     {
-    //       eventDialog.add(addEvent.span.start, addEvent.span.days(Op.UP));
-    //     }
-    //     else
-    //     {
-    //       eventDialog.addSpan(addEvent.span);
-    //     }
-
-    //     eventDialog.$once('close', addEvent.clearPlaceholder);
-    //   }
-    //   else
-    //   {
-    //     calendar.placeholderForCreate = true;
-    //   }
-    // },
-
-    // handleMove(moveEvent)
-    // {
-    //   let calendarEvent = moveEvent.calendarEvent;
-    //   let target = moveEvent.target;
-    //   let targetStart = target.start;
-    //   let sourceStart = calendarEvent.time.start;
-    //   let schedule = calendarEvent.schedule;
-    //   let options = [];
-
-    //   moveEvent.handled = true;
-
-    //   let callbacks = {
-    //     cancel: () => {
-    //       moveEvent.clearPlaceholder()
-    //     },
-    //     single: () => {
-    //       calendarEvent.move( targetStart );
-    //       this.eventsRefresh();
-    //       moveEvent.clearPlaceholder();
-
-    //       this.$emit('event-update', calendarEvent.event);
-    //     },
-    //     instance: () => {
-    //       calendarEvent.move( targetStart );
-    //       this.eventsRefresh();
-    //       moveEvent.clearPlaceholder();
-
-    //       this.$emit('event-update', calendarEvent.event);
-    //     },
-    //     duplicate: () => {
-    //       schedule.setExcluded( targetStart, false );
-    //       this.eventsRefresh();
-    //       moveEvent.clearPlaceholder();
-
-    //       this.$emit('event-update', calendarEvent.event);
-    //     },
-    //     all: () => {
-    //       schedule.moveTime( sourceStart.asTime(), targetStart.asTime() );
-    //       this.eventsRefresh();
-    //       moveEvent.clearPlaceholder();
-
-    //       this.$emit('event-update', calendarEvent.event);
-    //     }
-    //   };
-
-    //   options.push({
-    //     text: this.labels.moveCancel,
-    //     callback: callbacks.cancel
-    //   });
-
-    //   if (schedule.isSingleEvent())
-    //   {
-    //     options.push({
-    //       text: this.labels.moveSingleEvent,
-    //       callback: callbacks.single
-    //     });
-
-    //     if (this.$dayspan.features.moveDuplicate)
-    //     {
-    //       options.push({
-    //         text: this.labels.moveDuplicate,
-    //         callback: callbacks.duplicate
-    //       });
-    //     }
-    //   }
-    //   else
-    //   {
-    //     if (this.$dayspan.features.moveInstance)
-    //     {
-    //       options.push({
-    //         text: this.labels.moveOccurrence,
-    //         callback: callbacks.instance
-    //       });
-    //     }
-
-    //     if (this.$dayspan.features.moveDuplicate)
-    //     {
-    //       options.push({
-    //         text: this.labels.moveDuplicate,
-    //         callback: callbacks.duplicate
-    //       });
-    //     }
-
-    //     if (this.$dayspan.features.moveAll &&
-    //         !schedule.isFullDay() &&
-    //         targetStart.sameDay(sourceStart))
-    //     {
-    //       options.push({
-    //         text: this.labels.moveAll,
-    //         callback: callbacks.all
-    //       });
-    //     }
-    //   }
-
-    //   this.options = options;
-    //   this.optionsVisible = true;
-    // },
-
-    chooseOption(option)
-    {
-      if (option)
-      {
-        option.callback();
-      }
-
-      this.optionsVisible = false;
-    },
-
-    choosePrompt(yes)
-    {
-      this.promptCallback( yes );
-      this.promptVisible = false;
-    },
-
-    eventFinish(ev)
-    {
-      this.triggerChange();
     },
 
     eventsRefresh()

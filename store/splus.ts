@@ -142,8 +142,7 @@ export const getters = {
         lecture]));
 
     return state.lectures[state.week].map((lecture) => {
-      const start = moment(lecture.start)
-        .add(lecture.begin, 'hours');
+      const start = moment(lecture.start);
       const color = colorScale[uniqueIds.indexOf(lecture.lecturerId)];
 
       return {
@@ -160,8 +159,8 @@ export const getters = {
         schedule: {
           on: start,
           times: [ {
-            hour: start.hours(),
-            minute: start.minutes(),
+            hour: parseInt(lecture.begin),
+            minute: lecture.begin % 1 * 60,
           } ],
           duration: lecture.duration,
           durationUnit: 'hours',
