@@ -3,6 +3,7 @@
     <v-card-title class="title-padding">
       <div class="headline">Neues {{ selectedItem.title }}</div>
       <v-btn
+        :loading="specificNewsLoading"
         icon
         @click="dialogOpen = true">
         <v-icon>mdi-newspaper</v-icon>
@@ -63,6 +64,7 @@ export default {
     ...mapState({
       specificNews: (state) => state.news.specificNews,
       specificNewsSource: (state) => state.news.specificNewsSource,
+      specificNewsLoading: (state) => state.news.loadingSpecific,
       browserStateReady: (state) => state.browserStateReady,
     }),
     selectedItem: {
@@ -78,9 +80,7 @@ export default {
     },
   },
   mounted() {
-    if(this.specificNews.length == 0) {
-      this.loadNews(false);
-    }
+    this.loadNews(false);
   },
   methods: {
     ...mapActions({

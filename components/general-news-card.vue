@@ -3,6 +3,7 @@
     <v-card-title class="title-padding">
       <div class="headline">Neues von {{ generalNewsSource == 'Ostfalia'? 'der Ostfalia': 'Campus38' }}</div>
       <v-btn
+        :loading="generalNewsLoading"
         icon
         @click="dialogOpen = true">
         <v-icon>mdi-newspaper</v-icon>
@@ -57,6 +58,7 @@ export default {
     ...mapState({
       generalNews: (state) => state.news.generalNews,
       generalNewsSource: (state) => state.news.generalNewsSource,
+      generalNewsLoading: (state) => state.news.loadingGeneral,
       browserStateReady: (state) => state.browserStateReady,
     }),
     selectedItem: {
@@ -72,9 +74,7 @@ export default {
     },
   },
   mounted() {
-    if(this.generalNews.length == 0) {
-      this.loadNews(true);
-    }
+    this.loadNews(true);
   },
   methods: {
     ...mapActions({
