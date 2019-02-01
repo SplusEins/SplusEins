@@ -21,7 +21,7 @@
           <v-list-tile
             v-for="item in items"
             :key="!!item.description? item.description: item.label"
-            @click="selectedItem = item">
+            @click="selectedItem = item, dialogOpen = false">
             <v-list-tile-action>
               <v-icon
                 v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label">
