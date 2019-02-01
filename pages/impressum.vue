@@ -21,7 +21,7 @@
 
       <p><b>Kontakt:</b></p>
 
-      <p>E-Mail: team (at) spluseins (Punkt) de </p>
+      <p>E-Mail: team@spluseins.de </p>
 
       <br>
 
