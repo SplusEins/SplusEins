@@ -99,6 +99,21 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
         }).get();
       }
 
+      if (faculty == 'i') {
+        return $('article .ostfalia-content table tbody td').map(function(i, td) {
+          let link = $('a', this).first().attr('href');
+          if (!link.startsWith('http')) {
+            link = 'https://www.ostfalia.de' + link;
+          }
+
+          return {
+            title: $(this).text().trim(),
+            link,
+            text: '',
+          }
+        }).get();
+      }
+
       return $('article.news-campus').map(function(i, article) {
         return {
           title: $('a', this).text().trim(),
