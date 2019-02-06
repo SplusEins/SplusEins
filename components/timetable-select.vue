@@ -20,8 +20,8 @@
         label="Semester" />
     </v-flex>
     <v-flex
-      xs6
-      md4>
+      xs4
+      md3>
       <v-select
         :items="schedules"
         :disabled="selectedSemester == undefined"
@@ -30,18 +30,14 @@
         item-text="label"
         return-object />
     </v-flex>
-    <v-flex
-      xs2
-      md1>
+    <v-flex align-self-center>
       <v-btn
         :disabled="loading || selectedSchedule == undefined"
         :loading="loading"
-        icon
-        flat
-        large
+        small
         color="secondary"
         @click.native="submit()">
-        <v-icon>mdi-plus</v-icon>
+        laden
       </v-btn>
     </v-flex>
   </v-layout>
