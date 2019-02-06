@@ -5,17 +5,10 @@
       type="warning">
       Kurse überschneiden sich: {{ overlappingCourses }}
     </v-alert>
-    <v-text-field
-      v-model="search"
-      append-icon="mdi-magnify"
-      label="Kurs suchen"
-      single-line
-      hide-details />
     <v-data-table
       v-model="selectedCourses"
       :headers="headers"
       :items="courses"
-      :search="search"
       hide-headers
       hide-actions
       item-key="titleId">
@@ -23,7 +16,7 @@
         <v-layout
           row
           justify-center>
-          <p>Keine der geladenen Kurse passen zur Suche.</p>
+          <p>Keine Kurse sind geladen.</p>
         </v-layout>
       </template>
       <template
@@ -65,7 +58,6 @@ export default {
   },
   data() {
     return {
-      search: '',
       headers: [
         { value: 'title' },
         { value: 'lecturer' },
