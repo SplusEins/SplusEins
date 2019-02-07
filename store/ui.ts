@@ -3,7 +3,7 @@ export const state = () => ({
    * Dark theme active.
    */
   isDark: false,
-  sidenavIsOpen: false,
+  sidenavIsOpen: undefined,
 });
 
 export const mutations = {
