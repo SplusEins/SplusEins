@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <v-toolbar
-      :clipped-left="true"
+      clipped-left
       dark
       fixed
       app>
