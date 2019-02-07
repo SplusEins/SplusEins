@@ -3,8 +3,8 @@
     v-touch="{
       left: () => drawer = false
     }"
-    :clipped="true"
     v-model="drawer"
+    clipped
     fixed
     app
     width="350">
@@ -53,7 +53,13 @@ export default {
       customSchedules: (state) => state.splus.customSchedules,
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
       sidenavIsOpen: (state) => state.ui.sidenavIsOpen,
+      browserStateReady: (state) => state.browserStateReady,
     }),
+  },
+  watch: {
+    browserStateReady() {
+      this.setSidenav(this.$vuetify.breakpoint.mdAndUp);
+    }
   },
   methods: {
     ...mapMutations({
