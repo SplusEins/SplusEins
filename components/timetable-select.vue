@@ -35,6 +35,8 @@
         :disabled="loading || selectedSchedule == undefined"
         :loading="loading"
         small
+        round
+        depressed
         color="secondary"
         @click.native="submit()">
         laden
