@@ -59,11 +59,17 @@ jobs:
       - task: build-api
         file: repository/concourse/build-api.yml
 
-      - task: run-tests
-        file: repository/concourse/tests.yml
+      - task: insert-information
+        file: repository/concourse/insert-information.yml
+        params: {
+                 "TEAM_MEMBER1": {{team-member1}},
+                 "TEAM_MEMBER2": {{team-member2}},
+                 "TEAM_MEMBER3": {{team-member3}},
+                 "TEAM_MEMBER4": {{team-member4}}
+                }
 
       - put: server-deploy-dev
-        params: {"sync_dir" : "build-result",
+        params: {"sync_dir" : "build-result-prod",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
 
     on_success:
