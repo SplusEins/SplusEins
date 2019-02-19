@@ -16,7 +16,7 @@ resources:
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
-      branch: ci/fix
+      branch: master
 
   - name: server-deploy-dev
     type: rsync-resource
@@ -67,6 +67,9 @@ jobs:
 
       - task: build-api
         file: repository/concourse/build-api.yml
+
+      - task: run-tests
+        file: repository/concourse/tests.yml
 
       - put: server-deploy-dev
         params: {"sync_dir" : "build-result",
