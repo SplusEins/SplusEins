@@ -1,5 +1,5 @@
 #!/bin/sh
-cd npm-install-result
+cd inserted-information-result
 npm run build
 cd ..
-cp -R npm-install-result/. frontend-build-result/
+cp -R inserted-information-result/. frontend-build-result/

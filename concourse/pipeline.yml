@@ -52,6 +52,15 @@ jobs:
       - task: install-dependencies
         file: repository/concourse/install.yml
 
+      - task: insert-information
+        file: repository/concourse/insert-information.yml
+        params: {
+                 "TEAM_MEMBER1": Mitglied-1,
+                 "TEAM_MEMBER2": Mitglied-2,
+                 "TEAM_MEMBER3": Mitglied-3,
+                 "TEAM_MEMBER4": Mitglied-4
+                }
+
       - task: build-frontend
         file: repository/concourse/build-frontend.yml
         params: {"API_URL": "https://master.spluseins.de/"}
@@ -59,17 +68,8 @@ jobs:
       - task: build-api
         file: repository/concourse/build-api.yml
 
-      - task: insert-information
-        file: repository/concourse/insert-information.yml
-        params: {
-                 "TEAM_MEMBER1": {{team-member1}},
-                 "TEAM_MEMBER2": {{team-member2}},
-                 "TEAM_MEMBER3": {{team-member3}},
-                 "TEAM_MEMBER4": {{team-member4}}
-                }
-
       - put: server-deploy-dev
-        params: {"sync_dir" : "build-result-prod",
+        params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
 
     on_success:
@@ -102,13 +102,6 @@ jobs:
       - task: install-dependencies
         file: repository/concourse/install.yml
 
-      - task: build-frontend
-        file: repository/concourse/build-frontend.yml
-        params: {"API_URL": "https://spluseins.de/"}
-
-      - task: build-api
-        file: repository/concourse/build-api.yml
-      
       - task: insert-information
         file: repository/concourse/insert-information.yml
         params: {
@@ -118,8 +111,15 @@ jobs:
                  "TEAM_MEMBER4": {{team-member4}}
                 }
 
+      - task: build-frontend
+        file: repository/concourse/build-frontend.yml
+        params: {"API_URL": "https://spluseins.de/"}
+
+      - task: build-api
+        file: repository/concourse/build-api.yml
+      
       - put: server-deploy-prod
-        params: {"sync_dir" : "build-result-prod",
+        params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
 
     on_success:
