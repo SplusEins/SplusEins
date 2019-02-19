@@ -4,11 +4,11 @@ image_resource:
   source: {repository: node}
 
 inputs:
-  - name: build-result
+  - name: npm-install-result
 outputs:
-  - name: build-result-prod
+  - name: inserted-information-result
 run:
-  path: build-result/concourse/insert-information.sh
+  path: npm-install-result/concourse/insert-information.sh
 params:
   TEAM_MEMBER1: ((TEAM_MEMBER1))
   TEAM_MEMBER2: ((TEAM_MEMBER2))
