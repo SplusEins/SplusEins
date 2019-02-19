@@ -1,11 +1,15 @@
 resource_types:
   - name: rsync-resource
     type: docker-image
-    source: {repository: mrsixw/concourse-rsync-resource}
+    source:
+      repository: mrsixw/concourse-rsync-resource
+      tag: latest
 
   - name: telegram-notification
     type: docker-image
-    source: {repository: w32blaster/concourse-telegram-notifier, tag: latest}
+    source:
+      repository: w32blaster/concourse-telegram-notifier
+      tag: latest
 
 resources:
   - name: repository
