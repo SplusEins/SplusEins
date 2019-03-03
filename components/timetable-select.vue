@@ -34,7 +34,6 @@
       <v-btn
         :disabled="disableLoad"
         :loading="loading"
-        small
         round
         depressed
         color="secondary"

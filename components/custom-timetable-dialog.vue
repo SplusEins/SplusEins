@@ -22,8 +22,8 @@
             :disabled="!valid"
             dark
             flat
-            @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true; 
-                           trackMatomoEvent('Menu','saveCustomTimetable',' Anzahl Pläne:',selectedSchedules.length ); 
+            @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true;
+                           trackMatomoEvent('Menu','saveCustomTimetable',' Anzahl Pläne:',selectedSchedules.length );
                            trackMatomoEvent('Menu','saveCustomTimetable','Anzahl Kurse:', selectedCourses.length)">
             Speichern</v-btn>
         </v-toolbar-items>
@@ -66,15 +66,14 @@
                 v-show="selectedSchedules.length > 0"
                 v-model="selectedCourses"
                 :max-courses="maxCourses"
-                :lectures="allLectures"
-                :loading="loading" />
+                :lectures="allLectures"/>
             </v-flex>
           </v-layout>
         </v-container>
       </v-form>
     </v-card>
 
-    <custom-timetable-cookie-reminder 
+    <custom-timetable-cookie-reminder
       v-model="cookieReminderDialogOpen"
       @continue="save()"/>
 
@@ -187,9 +186,10 @@ export default {
     removeSchedule(schedule) {
       const index = this.selectedSchedules.indexOf(schedule);
       this.selectedSchedules.splice(index, 1);
+      const titles = this.lectures[schedule.id].map(lecture => lecture.title)
       this.$set(this.lectures, schedule.id, []);
       this.selectedCourses = this.selectedCourses.filter(
-        (course) => course.id == schedule.id);
+         (course) => !titles.includes(course.title));
     },
     async loadLectures(schedule) {
       this.loading = true;
