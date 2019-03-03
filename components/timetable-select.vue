@@ -32,7 +32,7 @@
     </v-flex>
     <v-flex align-self-center>
       <v-btn
-        :disabled="loading || selectedSchedule == undefined"
+        :disabled="disableLoad"
         :loading="loading"
         small
         round
@@ -54,6 +54,10 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    selectedSchedules: {
+      type: Array,
+      default: () => []
     }
   },
   data() {
@@ -79,6 +83,9 @@ export default {
     },
     hasMultipleSchedules() {
       return this.schedules && this.schedules.length > 1;
+    },
+    disableLoad() {
+      return this.loading || this.selectedSchedule == undefined || this.selectedSchedules.includes(this.selectedSchedule);
     },
     ...mapGetters({
       schedulesTree: 'splus/getSchedulesAsTree',
