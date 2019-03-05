@@ -25,4 +25,29 @@ describe('Test backend', () => {
       '/api/splus/SPLUS7A3292/10');
     expect(response.body).toMatchSnapshot();
   });
+
+  it('should create an ICS for multiple parameters', async () => {
+    SplusApi.getData = jest.fn().mockImplementation(splusMock);
+    const response = await request(app).get(
+      '/api/ics/SPLUS7A3292,SPLUS7A3293/GdPL,DSB');
+    expect(response.statusCode).toBe(200);
+    expect(response.header['content-type']).toBe('text/plain; charset=utf-8');
+    expect(response.text).toContain('BEGIN:VCALENDAR');
+    expect(response.text).toContain('BEGIN:VEVENT');
+    expect(response.text).toContain('Diskrete Strukturen');
+    expect(response.text).toContain('Grundlagen des Programmierens - Labor');
+    expect(response.text).not.toContain('Technische Grundlagen der Informatik');
+  });
+
+  it('should create an ICS for one parameter', async () => {
+    SplusApi.getData = jest.fn().mockImplementation(splusMock);
+    const response = await request(app).get(
+      '/api/ics/SPLUS7A3292/GdPL');
+    expect(response.statusCode).toBe(200);
+    expect(response.header['content-type']).toBe('text/plain; charset=utf-8');
+    expect(response.text).toContain('BEGIN:VCALENDAR');
+    expect(response.text).toContain('BEGIN:VEVENT');
+    expect(response.text).toContain('Grundlagen des Programmierens - Labor');
+    expect(response.text).not.toContain('Technische Grundlagen der Informatik');
+  })
 });
