@@ -59,7 +59,7 @@
               to="/"
               nuxt
               color="amber"
-              @click="trackMatomoEvent('Error', 'goBackToMainPage', 'error status', error.statusCode)">
+              @click="$track('Error', 'goBackToMainPage', 'error status', error.statusCode)">
               Main Page
             </v-btn>
           </v-card-actions>
@@ -91,11 +91,6 @@ export default {
     ...mapState({
       isDark: state => state.ui.isDark,
     }),
-  },
-  methods: {
-    trackMatomoEvent(category, action, name, value) {
-      this.$matomo.trackEvent(category, action, name, value);
-    },
   },
 }
 </script>

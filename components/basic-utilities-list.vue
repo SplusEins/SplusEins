@@ -4,7 +4,7 @@
     <v-list-tile
       to="/"
       nuxt
-      @click="trackMatomoEvent('Menu', 'goToHomepage', 'sideMenu')">
+      @click="$track('Menu', 'goToHomepage', 'sideMenu')">
       <v-list-tile-action>
         <v-icon>mdi-home</v-icon>
       </v-list-tile-action>
@@ -15,7 +15,7 @@
       </v-list-tile-content>
     </v-list-tile>
 
-    <v-list-tile @click="customTimetableDialogOpen = true; trackMatomoEvent('Menu', 'openCustomTimeTableDialog')">
+    <v-list-tile @click="customTimetableDialogOpen = true; $track('Menu', 'openCustomTimeTableDialog')">
       <v-list-tile-action>
         <v-icon>mdi-plus</v-icon>
       </v-list-tile-action>
@@ -29,7 +29,7 @@
     <v-list-tile
       to="/mensa"
       nuxt
-      @click="trackMatomoEvent('Menu', 'openMensaPlanDialog')">
+      @click="$track('Menu', 'openMensaPlanDialog')">
       <v-list-tile-action>
         <v-icon>mdi-food-fork-drink</v-icon>
       </v-list-tile-action>
@@ -56,10 +56,5 @@ export default {
       customTimetableDialogOpen: false,
     };
   },
-  methods:{
-    trackMatomoEvent(category, action, name) {
-      this.$matomo.trackEvent(category, action, name);
-    }
-  }
  };
 </script>

@@ -44,7 +44,7 @@
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile
-            @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
+            @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
             <v-list-tile-content>
               <v-list-tile-title v-if="isCustomSchedule">Bearbeiten</v-list-tile-title>
               <v-list-tile-title v-else>Personalisieren</v-list-tile-title>
@@ -52,7 +52,7 @@
           </v-list-tile>
           <v-list-tile
             v-if="isCustomSchedule"
-            @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')">
+            @click="deleteTimetableDialogOpen = true; $track('Calendar', 'clickDeleteCustomSchedule')">
             <v-list-tile-title>Löschen</v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -70,12 +70,12 @@
           :breakpoint="$vuetify.breakpoint.xl"
           icon="mdi-delete"
           text="Löschen"
-          @click="deleteTimetableDialogOpen = true; trackMatomoEvent('Calendar', 'clickDeleteCustomSchedule')" />
+          @click="deleteTimetableDialogOpen = true; $track('Calendar', 'clickDeleteCustomSchedule')" />
         <responsive-icon-button
           :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
           :breakpoint="$vuetify.breakpoint.xl"
           icon="mdi-pencil"
-          @click="editTimetableDialogOpen = true; trackMatomoEvent('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')" />
+          @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')" />
       </span>
 
       <custom-timetable-delete-dialog
@@ -212,9 +212,6 @@ export default {
     }
   },
   methods: {
-    trackMatomoEvent(category, action) {
-      this.$matomo.trackEvent(category, action);
-    },
     calendarChanged({ calendar }) {
       this.setWeek(calendar.start.date.isoWeek());
     },
@@ -224,10 +221,10 @@ export default {
     toggleFavorite() {
       if (this.isFavorite) {
         this.removeFavoriteSchedule(this.currentSchedule);
-        this.trackMatomoEvent('Calendar', 'removeFavorites');
+        this.$track('Calendar', 'removeFavorites');
       } else {
         this.addFavoriteSchedule(this.currentSchedule);
-        this.trackMatomoEvent('Calendar', 'addToFavorites');
+        this.$track('Calendar', 'addToFavorites');
       }
     },
     async share() {

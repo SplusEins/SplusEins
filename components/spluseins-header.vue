@@ -13,7 +13,7 @@
       >
       <v-toolbar-title
         class="header-text cursor-pointer"
-        @click="trackMatomoEvent('Menu', 'goToHomepage', 'toolbar title')"
+        @click="$track('Menu', 'goToHomepage', 'toolbar title')"
       >
         <nuxt-link
           tag="span"
@@ -33,7 +33,7 @@
         <v-btn
           icon
           flat
-          @click="toggleDark(); trackMatomoEvent('Menu', 'setDark', isDark)">
+          @click="toggleDark(); $track('Menu', 'setDark', isDark)">
           <v-icon>mdi-theme-light-dark</v-icon>
         </v-btn>
       </v-toolbar-items>
@@ -65,9 +65,6 @@ export default {
     window.addEventListener('online', () => this.isOffline = false);
   },
   methods: {
-    trackMatomoEvent(category, action, name) {
-      this.$matomo.trackEvent(category, action, name);
-    },
     ...mapMutations({
       toggleDark: 'ui/toggleDark',
       toggleSidenav: 'ui/toggleSidenav',
