@@ -1,12 +1,13 @@
 import * as moment from 'moment';
 import * as express from 'express';
+import * as cacheManager from 'cache-manager';
+import * as fsStore from 'cache-manager-fs-hash';
 import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
 import { RichLecture } from '../../model/RichLecture';
 import { SplusApi } from '../lib/SplusApi';
-import { eventNames } from 'cluster';
 
 const router = express.Router();
 
@@ -19,9 +20,32 @@ interface Timetable {
   setplan: boolean;
 }
 
-function lecturesForTimetableAndWeek(timetable: Timetable, week: number) {
-  return SplusApi.getData('#' + timetable.id, week, timetable.setplan)
-    .then((lectures) => lectures.map((lecture) => new RichLecture(lecture, week)));
+const SCHEDULE_CACHE_SECONDS = 600;
+const WEEKS = 4;
+
+// default must be in /tmp because the rest is RO on AWS Lambda
+const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
+const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
+
+const cache = CACHE_DISABLE ?
+  cacheManager.caching({ store: 'memory', max: 0 }) :
+  cacheManager.caching({
+    store: fsStore,
+    options: {
+      path: CACHE_PATH,
+      ttl: 60,
+      subdirs: true,
+    },
+  });
+
+function lecturesForTimetableAndWeek(timetable: Timetable, week: number): Promise<RichLecture[]> {
+  const key = `${timetable.id}-${week}`;
+
+  return cache.wrap(key, async () => {
+    console.log(`timetable cache miss for key ${key}`);
+    const lectures = await SplusApi.getData('#' + timetable.id, week, timetable.setplan);
+    return lectures.map((lecture) => new RichLecture(lecture, week));
+  }, { ttl: SCHEDULE_CACHE_SECONDS });
 }
 
 function lecturesForTimetablesAndWeek(timetables: Timetable[], week: number) {
@@ -57,14 +81,16 @@ router.get('/:timetables/:lectures', async (req, res, next) => {
     .filter((timetable) => timetable != undefined);
 
   const thisWeek = moment().week();
-  const weeks = range(thisWeek, thisWeek + 4);
+  const weeks = range(thisWeek, thisWeek + WEEKS);
 
   const allLectures = await lecturesForTimetablesAndWeeks(timetables, weeks);
   const lectures = allLectures.filter(({ titleId }) => titleIds.includes(titleId));
   const events = lectures.map(lectureToEvent);
 
   const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });
+
   res.set('Content-Type', 'text/plain');
+  res.set('Cache-Control', `public, max-age=${SCHEDULE_CACHE_SECONDS}`);
   res.send(cal.toString());
 });
 
