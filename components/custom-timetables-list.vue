@@ -13,7 +13,7 @@
       exact
       nuxt>
       <v-list-tile-content
-        @click="trackMatomoEvent('Menu','custom plan used')">
+        @click="trackMatomoEvent('Menu', 'custom plan used')">
         <v-list-tile-title>{{ route.query.name }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>

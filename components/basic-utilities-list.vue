@@ -4,7 +4,7 @@
     <v-list-tile
       to="/"
       nuxt
-      @click="trackMatomoEvent('Menu','goToHomepage', 'sideMenu')">
+      @click="trackMatomoEvent('Menu', 'goToHomepage', 'sideMenu')">
       <v-list-tile-action>
         <v-icon>mdi-home</v-icon>
       </v-list-tile-action>
@@ -15,7 +15,7 @@
       </v-list-tile-content>
     </v-list-tile>
 
-    <v-list-tile @click="customTimetableDialogOpen = true; trackMatomoEvent('Menu','openCustomTimeTableDialog')">
+    <v-list-tile @click="customTimetableDialogOpen = true; trackMatomoEvent('Menu', 'openCustomTimeTableDialog')">
       <v-list-tile-action>
         <v-icon>mdi-plus</v-icon>
       </v-list-tile-action>
@@ -57,7 +57,7 @@ export default {
     };
   },
   methods:{
-    trackMatomoEvent(category, action , name) {
+    trackMatomoEvent(category, action, name) {
       this.$matomo.trackEvent(category, action, name);
     }
   }

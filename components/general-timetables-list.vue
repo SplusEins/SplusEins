@@ -38,7 +38,7 @@
             nuxt>
             <v-list-tile-content
               value="true"
-              @click="trackMatomoEvent('Menu','normal plan used', schedule.description)">
+              @click="trackMatomoEvent('Menu', 'normal plan used', schedule.description)">
               <v-list-tile-title value="true">{{ schedule.label }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>

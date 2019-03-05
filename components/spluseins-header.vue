@@ -65,7 +65,7 @@ export default {
     window.addEventListener('online', () => this.isOffline = false);
   },
   methods: {
-    trackMatomoEvent (category, action, name) {
+    trackMatomoEvent(category, action, name) {
       this.$matomo.trackEvent(category, action, name);
     },
     ...mapMutations({

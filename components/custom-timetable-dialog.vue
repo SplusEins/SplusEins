@@ -23,8 +23,8 @@
             dark
             flat
             @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true;
-                           trackMatomoEvent('Menu','saveCustomTimetable',' Anzahl Pläne:',selectedSchedules.length );
-                           trackMatomoEvent('Menu','saveCustomTimetable','Anzahl Kurse:', selectedCourses.length)">
+                           trackMatomoEvent('Menu', 'saveCustomTimetable', 'Anzahl Pläne', selectedSchedules.length);
+                           trackMatomoEvent('Menu', 'saveCustomTimetable', 'Anzahl Kurse', selectedCourses.length)">
             Speichern</v-btn>
         </v-toolbar-items>
       </v-toolbar>
@@ -172,8 +172,8 @@ export default {
       }
       return schedule.label;
     },
-    trackMatomoEvent (category, action , name, value) {
-      this.$matomo.trackEvent(category, action, name,value);
+    trackMatomoEvent(category, action, name, value) {
+      this.$matomo.trackEvent(category, action, name, value);
     },
     async addSchedule(schedule) {
       if (this.selectedSchedules.includes(schedule)) {

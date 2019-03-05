@@ -78,8 +78,8 @@
 
     <v-flex
       v-touch="{
-        left: () => { trackMatomoEvent('Calendar','nextWeek', 'swiped'); next()},
-        right: () => { trackMatomoEvent('Calendar','prevWeek', 'swiped'); prev()},
+        left: () => { trackMatomoEvent('Calendar', 'nextWeek', 'swiped'); next(); },
+        right: () => { trackMatomoEvent('Calendar', 'prevWeek', 'swiped'); prev(); },
       }"
       fill-height>
 
