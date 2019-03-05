@@ -29,7 +29,7 @@ describe('Test backend', () => {
   it('should create an ICS for multiple parameters', async () => {
     SplusApi.getData = jest.fn().mockImplementation(splusMock);
     const response = await request(app).get(
-      '/api/ics/SPLUS7A3292,SPLUS7A3293/GdPL,DSB');
+      '/api/ics/v1/SPLUS7A3292,SPLUS7A3293/GdPL,DSB');
     expect(response.statusCode).toBe(200);
     expect(response.header['content-type']).toBe('text/plain; charset=utf-8');
     expect(response.text).toContain('BEGIN:VCALENDAR');
@@ -42,7 +42,7 @@ describe('Test backend', () => {
   it('should create an ICS for one parameter', async () => {
     SplusApi.getData = jest.fn().mockImplementation(splusMock);
     const response = await request(app).get(
-      '/api/ics/SPLUS7A3292/GdPL');
+      '/api/ics/v1/SPLUS7A3292/GdPL');
     expect(response.statusCode).toBe(200);
     expect(response.header['content-type']).toBe('text/plain; charset=utf-8');
     expect(response.text).toContain('BEGIN:VCALENDAR');

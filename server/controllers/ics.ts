@@ -72,7 +72,7 @@ function lectureToEvent(lecture: RichLecture) {
   };
 }
 
-router.get('/:timetables/:lectures', async (req, res, next) => {
+router.get('/:version/:timetables/:lectures', async (req, res, next) => {
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>req.params.lectures.split(',');
 
