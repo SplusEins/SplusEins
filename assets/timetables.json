@@ -905,9 +905,9 @@
   "semester": 1,
   "setplan": true
 }, {
-  "id": "#SPLUS571BEA",
-  "slug": "M-BM1Plus",
-  "label": "BM1Plus",
+  "id": "SPLUS571BEA",
+  "slug": "M-BM1Lift",
+  "label": "BM1Lift",
   "faculty": "Maschinenbau",
   "degree": "Bachelor of Engineering",
   "semester": 1,
