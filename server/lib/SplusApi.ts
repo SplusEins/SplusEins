@@ -24,6 +24,8 @@ const cache = CACHE_DISABLE ?
     },
   });
 
+const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
+
 function splusPlanRequest(identifier: string, weekOfYear: number): PromiseLike<string> {
   return request({
     method: 'POST',
@@ -52,14 +54,29 @@ function splusSetRequest(identifier: string, weekOfYear: number): PromiseLike<st
   });
 }
 
-export default function getLectures(identifier: string, weekOfYear: number, isSet: boolean) {
-  const key = `splus-${identifier}-${weekOfYear}`;
+export interface Timetable {
+  id: string;
+  setplan?: boolean;
+}
+
+export default function getLectures(timetable: Timetable, weekOfYear: number) {
+  const key = `splus-${timetable.id}-${weekOfYear}`;
 
   return cache.wrap(key, async () => {
     console.log(`timetable cache miss for key ${key}`);
-    const id = '#' + identifier;
-    const data = isSet? await splusSetRequest(id, weekOfYear) : await splusPlanRequest(id, weekOfYear);
+    const id = '#' + timetable.id;
+    const data = timetable.setplan? await splusSetRequest(id, weekOfYear) : await splusPlanRequest(id, weekOfYear);
     const lectures = new SplusParser(data).getLectures();
     return lectures.map((lecture) => new RichLecture(lecture, weekOfYear));
   }, { ttl: CACHE_SECONDS }) as Promise<RichLecture[]>;
+}
+
+function lecturesForTimetablesAndWeek(timetables: Timetable[], week: number) {
+  return Promise.all(timetables.map((timetable) => getLectures(timetable, week)))
+    .then(flatten);
+}
+
+export function getLecturesForTimetablesAndWeeks(timetables: Timetable[], weeks: number[]) {
+  return Promise.all(weeks.map((week) => lecturesForTimetablesAndWeek(timetables, week)))
+    .then(flatten);
 }
