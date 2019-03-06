@@ -21,7 +21,7 @@ interface Timetable {
 }
 
 const SCHEDULE_CACHE_SECONDS = 600;
-const WEEKS = 4;
+const ICS_PRELOAD_WEEKS = parseInt(process.env.ICS_PRELOAD_WEEKS || '2');
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -81,7 +81,7 @@ router.get('/:version/:timetables/:lectures', async (req, res, next) => {
     .filter((timetable) => timetable != undefined);
 
   const thisWeek = moment().week();
-  const weeks = range(thisWeek, thisWeek + WEEKS);
+  const weeks = range(thisWeek, thisWeek + ICS_PRELOAD_WEEKS);
 
   const allLectures = await lecturesForTimetablesAndWeeks(timetables, weeks);
   const lectures = allLectures.filter(({ titleId }) => titleIds.includes(titleId));
