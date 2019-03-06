@@ -13,7 +13,7 @@
       exact
       nuxt>
       <v-list-tile-content
-        @click="trackMatomoEvent('Menu','custom plan used')">
+        @click="$track('Menu', 'custom plan used')">
         <v-list-tile-title>{{ route.query.name }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
@@ -32,10 +32,5 @@ export default {
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
     }),
   },
-  methods: {
-    trackMatomoEvent(category, action, name) {
-      this.$matomo.trackEvent(category, action, name);
-    },
-  }
 };
 </script>

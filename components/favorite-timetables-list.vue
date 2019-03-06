@@ -12,7 +12,7 @@
       :key="schedule.id"
       nuxt>
       <v-list-tile-content
-        @click="trackMatomoEvent('Menu', 'favorite plan used', schedule.description)">
+        @click="$track('Menu', 'favorite plan used', schedule.description)">
         <v-list-tile-title>{{ schedule.description }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
@@ -31,10 +31,5 @@ export default  {
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
     }),
   },
-  methods: {
-    trackMatomoEvent(category, action, name) {
-      this.$matomo.trackEvent(category, action, name);
-    },
-  }
 };
 </script>

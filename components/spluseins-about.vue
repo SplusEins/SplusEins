@@ -7,7 +7,7 @@
       <a
         slot="activator"
         class="white--text"
-        @click="trackMatomoEvent('Footer', 'openAbout')">
+        @click="$track('Footer', 'openAbout')">
         Über
       </a>
       <v-card>
@@ -74,11 +74,6 @@ export default {
       isDark: (state) => state.ui.isDark,
     }),
   },
-  methods:{
-    trackMatomoEvent (category, action , name) {
-      this.$matomo.trackEvent(category, action, name);
-    }
-  }
 };
 </script>
 
