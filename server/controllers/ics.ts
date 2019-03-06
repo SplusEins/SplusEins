@@ -13,7 +13,7 @@ const router = express.Router();
 
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
-const range = (lower: number, upper: number) => Array.from(Array(upper), (x, i) => lower + i);
+const range = (lower: number, upper: number) => Array.from(Array(upper - lower), (x, i) => lower + i);
 
 interface Timetable {
   id: string;
