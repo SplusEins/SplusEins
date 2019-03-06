@@ -10,6 +10,9 @@ export const flatten = (iterable) => [].concat(...iterable);
 const scalarArraysEqual = (array1, array2) =>
   array1.length === array2.length &&
   array1.every((value, index) => value === array2[index]);
+export const range = (lower, upper) => Array.from(Array(upper - lower), (x, i) => lower + i);
+
+export const SEMESTER_WEEK_1 = parseInt(process.env.SEMESTER_WEEK_1 || '10');
 
 
 export function customScheduleToRoute(customTimetable): Partial<Route> {
@@ -49,9 +52,8 @@ export function shortenTimetableDegree(timetable): string {
 }
 
 function defaultWeek() {
-  if (moment().isoWeek() < 10) {
-    // default to start of SS19
-    return 10;
+  if (moment().isoWeek() < SEMESTER_WEEK_1) {
+    return SEMESTER_WEEK_1;
   }
 
   // if the user is looking at today and is on Sat/Sun, peek to the next week
@@ -217,7 +219,7 @@ export const mutations = {
    * Add given lectures to the state,
    * paying respect to currently active whitelist.
    * Deduplicate using the title ID.
-   * 
+   *
    * upcoming -> set upcomingLectures, otherwise normal lectures
    */
   setLectures(state, { lectures, week, upcoming }) {
@@ -346,7 +348,7 @@ export const actions = {
     const week = defaultWeek();
     const ids = Array.isArray(state.upcomingLecturesTimetable.id) ?
       state.upcomingLecturesTimetable.id : [state.upcomingLecturesTimetable.id];
-      
+
     await Promise.all(ids.map(async (id) => {
       try {
         const response = await this.$axios.get(`/api/splus/${id}/${week}`);

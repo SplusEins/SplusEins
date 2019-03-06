@@ -83,7 +83,7 @@
 <script lang="js">
 import { mapMutations, mapGetters, mapState } from 'vuex';
 import * as moment from 'moment';
-import { uniq, flatten, customScheduleToRoute } from '../store/splus';
+import { SEMESTER_WEEK_1, range, uniq, flatten, customScheduleToRoute } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
 import CustomTimetableCookieReminder from './custom-timetable-cookie-reminder.vue'
@@ -195,8 +195,8 @@ export default {
       this.loading = true;
 
       try {
-        // TODO update this in WS19/20 or at start of SS19
-        const responses = await Promise.all([10, 11, 12, 13, 14].map((week) =>
+        const weeks = range(SEMESTER_WEEK_1, SEMESTER_WEEK_1 + 5);
+        const responses = await Promise.all(weeks.map((week) =>
           this.$axios.get(`/api/splus/${schedule.id}/${week}`)));
         const uniqueLectures = flatten(responses.map(({ data }) => data))
           .filter((lecture, index, self) => self.indexOf(lecture) == index);
