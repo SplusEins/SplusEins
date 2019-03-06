@@ -1,13 +1,11 @@
 import * as moment from 'moment';
 import * as express from 'express';
-import * as cacheManager from 'cache-manager';
-import * as fsStore from 'cache-manager-fs-hash';
 import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
 import { RichLecture } from '../../model/RichLecture';
-import { SplusApi } from '../lib/SplusApi';
+import getLectures from '../lib/SplusApi';
 
 const router = express.Router();
 
@@ -20,36 +18,11 @@ interface Timetable {
   setplan: boolean;
 }
 
-const SCHEDULE_CACHE_SECONDS = 600;
 const ICS_PRELOAD_WEEKS = parseInt(process.env.ICS_PRELOAD_WEEKS || '2');
-
-// default must be in /tmp because the rest is RO on AWS Lambda
-const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
-const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
-
-const cache = CACHE_DISABLE ?
-  cacheManager.caching({ store: 'memory', max: 0 }) :
-  cacheManager.caching({
-    store: fsStore,
-    options: {
-      path: CACHE_PATH,
-      ttl: 60,
-      subdirs: true,
-    },
-  });
-
-function lecturesForTimetableAndWeek(timetable: Timetable, week: number): Promise<RichLecture[]> {
-  const key = `${timetable.id}-${week}`;
-
-  return cache.wrap(key, async () => {
-    console.log(`timetable cache miss for key ${key}`);
-    const lectures = await SplusApi.getData('#' + timetable.id, week, timetable.setplan);
-    return lectures.map((lecture) => new RichLecture(lecture, week));
-  }, { ttl: SCHEDULE_CACHE_SECONDS });
-}
+const ICS_CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
 
 function lecturesForTimetablesAndWeek(timetables: Timetable[], week: number) {
-  return Promise.all(timetables.map((timetable) => lecturesForTimetableAndWeek(timetable, week)))
+  return Promise.all(timetables.map((timetable) => getLectures(timetable.id, week, timetable.setplan)))
     .then(flatten);
 }
 
@@ -90,7 +63,7 @@ router.get('/:version/:timetables/:lectures', async (req, res, next) => {
   const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });
 
   res.set('Content-Type', 'text/plain');
-  res.set('Cache-Control', `public, max-age=${SCHEDULE_CACHE_SECONDS}`);
+  res.set('Cache-Control', `public, max-age=${ICS_CACHE_SECONDS}`);
   res.send(cal.toString());
 });
 
