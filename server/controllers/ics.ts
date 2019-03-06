@@ -5,31 +5,15 @@ import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
 import { RichLecture } from '../../model/RichLecture';
-import getLectures from '../lib/SplusApi';
+import { Timetable, getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
 
 const router = express.Router();
 
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
-const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 const range = (lower: number, upper: number) => Array.from(Array(upper - lower), (x, i) => lower + i);
-
-interface Timetable {
-  id: string;
-  setplan: boolean;
-}
 
 const ICS_PRELOAD_WEEKS = parseInt(process.env.ICS_PRELOAD_WEEKS || '2');
 const ICS_CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
-
-function lecturesForTimetablesAndWeek(timetables: Timetable[], week: number) {
-  return Promise.all(timetables.map((timetable) => getLectures(timetable.id, week, timetable.setplan)))
-    .then(flatten);
-}
-
-function lecturesForTimetablesAndWeeks(timetables: Timetable[], weeks: number[]) {
-  return Promise.all(weeks.map((week) => lecturesForTimetablesAndWeek(timetables, week)))
-    .then(flatten);
-}
 
 function lectureToEvent(lecture: RichLecture) {
   const uid = sha256(JSON.stringify(lecture)).substr(0, 16);
@@ -56,7 +40,7 @@ router.get('/:version/:timetables/:lectures', async (req, res, next) => {
   const thisWeek = moment().week();
   const weeks = range(thisWeek, thisWeek + ICS_PRELOAD_WEEKS);
 
-  const allLectures = await lecturesForTimetablesAndWeeks(timetables, weeks);
+  const allLectures = await getLecturesForTimetablesAndWeeks(timetables, weeks);
   const lectures = allLectures.filter(({ titleId }) => titleIds.includes(titleId));
   const events = lectures.map(lectureToEvent);
 

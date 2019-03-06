@@ -31,7 +31,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
   const week = parseInt(req.params.week);
 
   try {
-    const data = await getLectures(timetable.id, week, timetable.setplan);
+    const data = await getLectures(timetable, week);
     res.set('Cache-Control', `public, max-age=${SPLUS_CACHE_SECONDS}`);
     res.json(data);
   } catch (error) {
