@@ -40,15 +40,19 @@ router.get('/:version/:timetables/:lectures', async (req, res, next) => {
   const thisWeek = moment().week();
   const weeks = range(thisWeek, thisWeek + ICS_PRELOAD_WEEKS);
 
-  const allLectures = await getLecturesForTimetablesAndWeeks(timetables, weeks);
-  const lectures = allLectures.filter(({ titleId }) => titleIds.includes(titleId));
-  const events = lectures.map(lectureToEvent);
+  try {
+    const allLectures = await getLecturesForTimetablesAndWeeks(timetables, weeks);
+    const lectures = allLectures.filter(({ titleId }) => titleIds.includes(titleId));
+    const events = lectures.map(lectureToEvent);
 
-  const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });
+    const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });
 
-  res.set('Content-Type', 'text/plain');
-  res.set('Cache-Control', `public, max-age=${ICS_CACHE_SECONDS}`);
-  res.send(cal.toString());
+    res.set('Content-Type', 'text/plain');
+    res.set('Cache-Control', `public, max-age=${ICS_CACHE_SECONDS}`);
+    res.send(cal.toString());
+  } catch (error) {
+    next(error);
+  }
 });
 
 export default router;
