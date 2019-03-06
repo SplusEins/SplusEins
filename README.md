@@ -59,3 +59,14 @@ $ fly -t <targetname> set-pipeline -p spluseins -c pipeline.yml -l credentials.y
 # fly destroy pipeline
 $ fly -t <targetname> destroy-pipeline -p spluseins
 ```
+
+## Configuration
+
+Environment variables:
+
+  * `CACHE_PATH` (backend)
+  * `CACHE_DISABLE` (backend)
+  * `HOST` (backend)
+  * `PORT` (backend)
+  * `API_PREFIX` (backend)
+  * `SEMESTER_WEEK_1` (frontend): first week with lectures
