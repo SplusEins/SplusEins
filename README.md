@@ -70,3 +70,5 @@ Environment variables:
   * `PORT` (backend)
   * `API_PREFIX` (backend)
   * `SEMESTER_WEEK_1` (frontend): first week with lectures
+  * `ICS_PRELOAD_WEEKS` (backend): number of weeks to fetch for ICS
+  * `ICS_CACHE_SECONDS` (backend): timetable and ICS cache duration
