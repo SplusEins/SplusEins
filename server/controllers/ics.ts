@@ -15,6 +15,10 @@ const range = (lower: number, upper: number) => Array.from(Array(upper - lower),
 const ICS_PRELOAD_WEEKS = parseInt(process.env.ICS_PRELOAD_WEEKS || '2');
 const ICS_CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
 
+/**
+ * @param lecture lecture
+ * @returns ical event
+ */
 function lectureToEvent(lecture: RichLecture) {
   const uid = sha256(JSON.stringify(lecture)).substr(0, 16);
   return {
@@ -29,6 +33,15 @@ function lectureToEvent(lecture: RichLecture) {
   };
 }
 
+/**
+ * Get all lectures for the given timetables in the
+ * upcoming weeks, then filter for the given titles.
+ *
+ * @param version Reserved for later use, should be 'v1'
+ * @param timetables Comma-separated list of timetable IDs
+ * @param lectures Comma-separated list of lecture title IDs
+ * @return An ICS calendar
+ */
 router.get('/:version/:timetables/:lectures', async (req, res, next) => {
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>req.params.lectures.split(',');
