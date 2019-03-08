@@ -87,7 +87,7 @@
         :custom-schedule="currentAsCustomSchedule" />
       <copy-text-dialog
         v-model="shareDialogOpen"
-        :text-to-copy="currentUrl" />
+        :text-to-copy="currentUrl()" />
     </template>
 
     <template slot="containerInside">
@@ -181,13 +181,6 @@ export default {
         };
       }
     },
-    currentUrl() {
-      if (global.window) {
-        return window.location.href;
-      } else {
-        return '';
-      }
-    },
     ...mapState({
       currentSchedule: (state) => state.splus.schedule,
       currentWeek: (state) => state.splus.week,
@@ -227,11 +220,14 @@ export default {
         this.$track('Calendar', 'addToFavorites');
       }
     },
+    currentUrl(){
+      return !!global.window ? window.location.href : '';
+    },
     async share() {
       // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
       if (navigator.share) {
         await navigator.share({
-          url: this.currentUrl,
+          url: this.currentUrl(),
         });
       } else {
         this.shareDialogOpen = true;
