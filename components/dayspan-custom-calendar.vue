@@ -207,8 +207,8 @@ export default {
   {
     summary(short)
     {
-      const firstDay = moment(JSON.stringify(this.calendar.days[0]), 'YYYY-MM-DD').add(1, 'day');
-      const lastDay = moment(JSON.stringify(this.calendar.days[6]), 'YYYY-MM-DD').add(1, 'day');
+      const firstDay = this.calendar.days[0].date.clone().add(1, 'day');
+      const lastDay = this.calendar.days[6].date.clone().add(1, 'day');
       return short? firstDay.format('DD.MM.') + ' - ' + lastDay.format('DD.MM.') : firstDay.format('DD. MMMM') + ' – ' + lastDay.format('DD. MMMM');
     },
 
