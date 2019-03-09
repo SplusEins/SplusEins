@@ -68,4 +68,11 @@ describe('Test backend', () => {
       '/api/ics/v1/DOESNOTEXIST');
     expect(response.statusCode).toBe(404);
   });
+
+  it('should return an ICS matching the snapshot', async () => {
+    const response = await request(app).get(
+      '/api/ics/v1/SPLUS7A3292,SPLUS7A3293/GdPL,DSB');
+    const deterministicText = response.text.replace(/^DTSTAMP:.*$/gm, '');
+    expect(deterministicText).toMatchSnapshot();
+  });
 });
