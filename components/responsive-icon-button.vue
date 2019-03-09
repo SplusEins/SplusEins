@@ -7,6 +7,7 @@
       :outline="props.breakpoint"
       :icon="!props.breakpoint"
       :flat="!props.breakpoint"
+      :href="props.href"
       @click="listeners.click">
       <v-icon :left="props.breakpoint">{{ props.icon }}</v-icon>
       <span v-show="props.breakpoint">{{ props.text }}</span>
@@ -29,6 +30,11 @@ export default {
     },
     text: {
       required: true,
+      type: String
+    },
+    href: {
+      required: false,
+      default: undefined,
       type: String
     },
   },

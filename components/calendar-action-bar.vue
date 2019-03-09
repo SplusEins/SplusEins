@@ -37,6 +37,11 @@
             <v-list-tile-title>Teilen</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile :href="icsLink">
+          <v-list-tile-content>
+            <v-list-tile-title>Extern öffnen</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
         <v-list-tile
           @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
           <v-list-tile-content>
@@ -70,6 +75,12 @@
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-pencil"
         @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')" />
+      <responsive-icon-button
+        :breakpoint="$vuetify.breakpoint.xl"
+        :href="icsLink"
+        icon="mdi-calendar"
+        text="Extern öffnen"
+        @click="() => undefined" />
     </span>
 
     <custom-timetable-delete-dialog
@@ -117,6 +128,28 @@ export default {
     },
     isFavorite() {
       return this.favoriteSchedules.filter(favorite => favorite.id == this.currentSchedule.id).length != 0;
+    },
+    icsLink() {
+      let base = this.$axios.defaults.baseURL;
+      if (!base.startsWith('http')) {
+        base = window.location.origin + base;
+      }
+      base = base.replace(/^https?/i, 'webcal');
+
+      const path = 'api/ics/v1/';;
+      const timetable = this.currentSchedule;
+
+      let timetables;
+      let titleIds;
+      if (this.isCustomSchedule) {
+        timetables = this.currentSchedule.id.join(',');
+        titleIds = this.currentSchedule.whitelist.join(',');
+      } else {
+        timetables = this.currentSchedule.id;
+        titleIds = '';
+      }
+
+      return base + path + timetables + '/' + titleIds;
     },
     currentAsCustomSchedule() {
       if (this.isCustomSchedule) {

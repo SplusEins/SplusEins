@@ -65,6 +65,9 @@ function defaultWeek() {
 }
 
 export const state = () => ({
+  /**
+   * Current schedule, either one of TIMETABLES or customSchedules.
+   */
   schedule: undefined,
   schedules: TIMETABLES.map(
     (timetable) => ({
