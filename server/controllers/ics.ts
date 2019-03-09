@@ -52,6 +52,11 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     .map((timetableId) => (<Timetable[]>TIMETABLES).find(({ id }) => id == timetableId))
     .filter((timetable) => timetable != undefined);
 
+  if (timetables.length == 0) {
+    res.send(404);
+    return;
+  }
+
   const thisWeek = moment().week();
   const weeks = range(thisWeek, thisWeek + ICS_PRELOAD_WEEKS);
 

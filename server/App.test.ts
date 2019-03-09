@@ -61,5 +61,11 @@ describe('Test backend', () => {
     expect(response.text).toContain('BEGIN:VEVENT');
     expect(response.text).toContain('Grundlagen des Programmierens - Labor');
     expect(response.text).toContain('Technische Grundlagen der Informatik');
-  })
+  });
+
+  it('should not find an ICS for a timetable that does not exist', async () => {
+    const response = await request(app).get(
+      '/api/ics/v1/DOESNOTEXIST');
+    expect(response.statusCode).toBe(404);
+  });
 });
