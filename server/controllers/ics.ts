@@ -42,9 +42,11 @@ function lectureToEvent(lecture: RichLecture) {
  * @param lectures Comma-separated list of lecture title IDs
  * @return An ICS calendar
  */
-router.get('/:version/:timetables/:lectures', async (req, res, next) => {
+router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
   const timetableIds = <string[]>req.params.timetables.split(',');
-  const titleIds = <string[]>req.params.lectures.split(',');
+  const titleIds = <string[]>(req.params.lectures || '')
+    .split(',')
+    .filter((titleId) => titleId.length > 0);
 
   const timetables = timetableIds
     .map((timetableId) => (<Timetable[]>TIMETABLES).find(({ id }) => id == timetableId))
@@ -55,7 +57,9 @@ router.get('/:version/:timetables/:lectures', async (req, res, next) => {
 
   try {
     const allLectures = await getLecturesForTimetablesAndWeeks(timetables, weeks);
-    const lectures = allLectures.filter(({ titleId }) => titleIds.includes(titleId));
+    const lectures = titleIds.length > 0 ?
+      allLectures.filter(({ titleId }) => titleIds.includes(titleId))
+      : allLectures;
     const events = lectures.map(lectureToEvent);
 
     const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });

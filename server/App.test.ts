@@ -29,7 +29,7 @@ describe('Test backend', () => {
     expect(response.body).toMatchSnapshot();
   });
 
-  it('should create an ICS for multiple parameters', async () => {
+  it('should create a ICS for multiple timetables and filters', async () => {
     const response = await request(app).get(
       '/api/ics/v1/SPLUS7A3292,SPLUS7A3293/GdPL,DSB');
     expect(response.statusCode).toBe(200);
@@ -41,7 +41,7 @@ describe('Test backend', () => {
     expect(response.text).not.toContain('Technische Grundlagen der Informatik');
   });
 
-  it('should create an ICS for one parameter', async () => {
+  it('should create an ICS for one timetable and one filter', async () => {
     const response = await request(app).get(
       '/api/ics/v1/SPLUS7A3292/GdPL');
     expect(response.statusCode).toBe(200);
@@ -50,5 +50,16 @@ describe('Test backend', () => {
     expect(response.text).toContain('BEGIN:VEVENT');
     expect(response.text).toContain('Grundlagen des Programmierens - Labor');
     expect(response.text).not.toContain('Technische Grundlagen der Informatik');
+  });
+
+  it('should create an ICS for one timetable and no filter', async () => {
+    const response = await request(app).get(
+      '/api/ics/v1/SPLUS7A3292');
+    expect(response.statusCode).toBe(200);
+    expect(response.header['content-type']).toBe('text/plain; charset=utf-8');
+    expect(response.text).toContain('BEGIN:VCALENDAR');
+    expect(response.text).toContain('BEGIN:VEVENT');
+    expect(response.text).toContain('Grundlagen des Programmierens - Labor');
+    expect(response.text).toContain('Technische Grundlagen der Informatik');
   })
 });
