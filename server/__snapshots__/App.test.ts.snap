@@ -1,5 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test backend should return an ICS matching the snapshot 1`] = `
+"BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//sebbo.net//ical-generator//EN
+TIMEZONE-ID:Europe/Berlin
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:f353819423f6824f@spluseins.de
+SEQUENCE:0
+
+DTSTART;TZID=Europe/Berlin:20190319T081500
+DTEND;TZID=Europe/Berlin:20190319T094500
+SUMMARY:Grundlagen des Programmierens - Labor
+LOCATION:P1\\\\, P4\\\\, P3\\\\, P2
+DESCRIPTION:Prof. Dr. F. Höppner\\\\, M.Sc. F. Morgenstern
+END:VEVENT
+BEGIN:VEVENT
+UID:65d823c2d9b34004@spluseins.de
+SEQUENCE:0
+
+DTSTART;TZID=Europe/Berlin:20190319T100000
+DTEND;TZID=Europe/Berlin:20190319T113000
+SUMMARY:Grundlagen des Programmierens - Labor
+LOCATION:P1\\\\, P4\\\\, P3\\\\, P2
+DESCRIPTION:Prof. Dr. F. Höppner\\\\, M.Sc. F. Morgenstern
+END:VEVENT
+BEGIN:VEVENT
+UID:fdb8b183f6fcec07@spluseins.de
+SEQUENCE:0
+
+DTSTART;TZID=Europe/Berlin:20190322T100000
+DTEND;TZID=Europe/Berlin:20190322T113000
+SUMMARY:Diskrete Strukturen-Bainf
+LOCATION:Scale-Up-Room 201\\\\, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)
+DESCRIPTION:Prof. Dr. P. Riegler
+END:VEVENT
+BEGIN:VEVENT
+UID:1aaaec99769323e9@spluseins.de
+SEQUENCE:0
+
+DTSTART;TZID=Europe/Berlin:20190319T120000
+DTEND;TZID=Europe/Berlin:20190319T133000
+SUMMARY:Diskrete Strukturen-Bainf
+LOCATION:Scale-Up-Room 201\\\\, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)
+DESCRIPTION:Prof. Dr. P. Riegler - Die VL findet in 7/? statt.
+END:VEVENT
+END:VCALENDAR"
+`;
+
 exports[`Test backend should return parsed lectures 1`] = `
 Array [
   Object {
