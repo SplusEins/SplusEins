@@ -16,7 +16,7 @@ resources:
     type: git
     source:
       uri: https://github.com/spluseins/spluseins.git
-      branch: master
+      branch: ci/node-v
 
   - name: server-deploy-dev
     type: rsync-resource
