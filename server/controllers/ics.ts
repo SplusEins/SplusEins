@@ -52,6 +52,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     .filter((timetable) => timetable != undefined);
 
   if (timetables.length == 0) {
+    res.set('Cache-Control', `public, max-age=${ICS_CACHE_SECONDS}`);
     res.send(404);
     return;
   }
