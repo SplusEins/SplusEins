@@ -6,88 +6,7 @@
     @change="calendarChanged">
 
     <template slot="actions">
-      <span v-show="!isTinyMobile">
-        <responsive-icon-button
-          v-if="!isCustomSchedule"
-          :breakpoint="$vuetify.breakpoint.xl"
-          :icon="isFavorite ? 'mdi-heart' : 'mdi-heart-outline'"
-          :text="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
-          @click="toggleFavorite" />
-      </span>
-
-      <!-- mobile action bar -->
-      <v-menu
-        v-show="isMobile"
-        bottom
-        left>
-        <v-btn
-          slot="activator"
-          :small="$vuetify.breakpoint.xs"
-          class="cursor-pointer"
-          icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-
-        <v-list>
-          <v-list-tile
-            v-show="isTinyMobile"
-            v-if="!isCustomSchedule"
-            @click="toggleFavorite">
-            <v-list-tile-content>
-              <v-list-tile-title v-if="!isFavorite">Favorisieren</v-list-tile-title>
-              <v-list-tile-title v-else>Favorit entfernen</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile @click="share()">
-            <v-list-tile-content>
-              <v-list-tile-title>Teilen</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile
-            @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
-            <v-list-tile-content>
-              <v-list-tile-title v-if="isCustomSchedule">Bearbeiten</v-list-tile-title>
-              <v-list-tile-title v-else>Personalisieren</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile
-            v-if="isCustomSchedule"
-            @click="deleteTimetableDialogOpen = true; $track('Calendar', 'clickDeleteCustomSchedule')">
-            <v-list-tile-title>Löschen</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
-
-      <!-- desktop action bar -->
-      <span v-show="!isMobile">
-        <responsive-icon-button
-          :breakpoint="$vuetify.breakpoint.xl"
-          icon="mdi-share-variant"
-          text="Teilen"
-          @click="share" />
-        <responsive-icon-button
-          v-if="isCustomSchedule"
-          :breakpoint="$vuetify.breakpoint.xl"
-          icon="mdi-delete"
-          text="Löschen"
-          @click="deleteTimetableDialogOpen = true; $track('Calendar', 'clickDeleteCustomSchedule')" />
-        <responsive-icon-button
-          :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
-          :breakpoint="$vuetify.breakpoint.xl"
-          icon="mdi-pencil"
-          @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')" />
-      </span>
-
-      <custom-timetable-delete-dialog
-        v-model="deleteTimetableDialogOpen"
-        :custom-schedule="currentSchedule"
-        @on-delete="routeToRoot()" />
-      <custom-timetable-dialog
-        v-model="editTimetableDialogOpen"
-        :custom-schedule="currentAsCustomSchedule" />
-      <copy-text-dialog
-        v-model="shareDialogOpen"
-        :text-to-copy="currentUrl()" />
+      <calendar-action-bar />
     </template>
 
     <template slot="containerInside">
@@ -111,21 +30,15 @@
 import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
-import CopyTextDialog from './copy-text-dialog.vue';
-import ResponsiveIconButton from './responsive-icon-button.vue';
+import CalendarActionBar from './calendar-action-bar.vue';
 import DayspanCustomCalendar from './dayspan-custom-calendar.vue';
-import CustomTimetableDialog from './custom-timetable-dialog.vue';
-import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
 import DayspanCustomEventPopover from './dayspan-custom-event-popover.vue';
 
 export default {
   name: 'SpluseinsCalendar',
   components: {
-    CopyTextDialog,
-    ResponsiveIconButton,
+    CalendarActionBar,
     DayspanCustomCalendar,
-    CustomTimetableDialog,
-    CustomTimetableDeleteDialog,
     DayspanCustomEventPopover,
   },
   data() {
@@ -153,43 +66,16 @@ export default {
 
     return {
       calendar,
-      editTimetableDialogOpen: false,
-      deleteTimetableDialogOpen: false,
-      shareDialogOpen: false,
       types: [ weeklyCalendar ],
     };
   },
   computed: {
-    isMobile() {
-      return !this.$vuetify.breakpoint.mdAndUp;
-    },
-    isTinyMobile() {
-      return this.$vuetify.breakpoint.width <= 400;
-    },
-    isFavorite() {
-      return this.favoriteSchedules.filter(favorite => favorite.id == this.currentSchedule.id).length != 0;
-    },
-    currentAsCustomSchedule() {
-      if (this.isCustomSchedule) {
-        return this.currentSchedule;
-      } else {
-        // new custom schedule with the regular as its base
-        return {
-          label: '',
-          id: [this.currentSchedule.id],
-          whitelist: [],
-        };
-      }
-    },
     ...mapState({
-      currentSchedule: (state) => state.splus.schedule,
       currentWeek: (state) => state.splus.week,
       lazyLoad: (state) => state.lazyLoad,
-      favoriteSchedules: (state) => state.splus.favoriteSchedules,
     }),
     ...mapGetters({
       events: 'splus/getLecturesAsEvents',
-      isCustomSchedule: 'splus/isCustomSchedule',
     }),
   },
   watch: {
@@ -208,35 +94,8 @@ export default {
     calendarChanged({ calendar }) {
       this.setWeek(calendar.start.date.isoWeek());
     },
-    routeToRoot() {
-      this.$router.replace('/');
-    },
-    toggleFavorite() {
-      if (this.isFavorite) {
-        this.removeFavoriteSchedule(this.currentSchedule);
-        this.$track('Calendar', 'removeFavorites');
-      } else {
-        this.addFavoriteSchedule(this.currentSchedule);
-        this.$track('Calendar', 'addToFavorites');
-      }
-    },
-    currentUrl(){
-      return !!global.window ? window.location.href : '';
-    },
-    async share() {
-      // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
-      if (navigator.share) {
-        await navigator.share({
-          url: this.currentUrl(),
-        });
-      } else {
-        this.shareDialogOpen = true;
-      }
-    },
     ...mapMutations({
       setWeek: 'splus/setWeek',
-      addFavoriteSchedule: 'splus/addFavoriteSchedule',
-      removeFavoriteSchedule: 'splus/removeFavoriteSchedule',
     }),
     ...mapActions({
       loadLectures: 'splus/loadPrefetching',
