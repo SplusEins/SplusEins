@@ -25,7 +25,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
   const timetable = TIMETABLES.find(({ id }) => id == timetableId);
   if (!timetable) {
     res.set('Cache-Control', `public, max-age=${SPLUS_CACHE_SECONDS}`);
-    res.send(404);
+    res.sendStatus(404);
     return;
   }
 

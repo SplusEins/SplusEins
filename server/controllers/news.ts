@@ -68,7 +68,7 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
     // Informatik, Recht, Elektrotechnik,
     // Salzgitter, Wolfenbüttel, Wolfsburg, Suderburg
     res.set('Cache-Control', `public, max-age=${NEWS_CACHE_SECONDS}`);
-    res.send(404);
+    res.sendStatus(404);
     return;
   }
   const key = 'ostfalia-news-' + faculty + '-' + moment().format('YYYY-MM-DD');
