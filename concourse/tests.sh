@@ -1,3 +1,3 @@
 #!/bin/sh
 cd build-result
-npm run test
+npm run test -u
