@@ -53,7 +53,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
 
   if (timetables.length == 0) {
     res.set('Cache-Control', `public, max-age=${ICS_CACHE_SECONDS}`);
-    res.send(404);
+    res.sendStatus(404);
     return;
   }
 
