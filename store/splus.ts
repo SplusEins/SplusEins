@@ -214,6 +214,9 @@ export const getters = {
   },
   subscribableTimetables: (state) => {
     return [...Object.values(state.customSchedules), ...state.favoriteSchedules];
+  },
+  hasSubscribableTimetables: (state, getters) => {
+    return getters.subscribableTimetables.length > 0;
   }
 };
 

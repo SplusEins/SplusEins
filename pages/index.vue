@@ -63,6 +63,15 @@
         <quick-access-card />
       </v-flex>
 
+      <v-flex
+        v-if="hasSubscribableTimetables"
+        xs12
+        md6
+        lg4
+        d-flex>
+        <stats-card />
+      </v-flex>
+
     </v-layout>
   </v-container>
 </template>
@@ -76,6 +85,7 @@ import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import GeneralNewsCard from '../components/general-news-card.vue';
 import SpecificNewsCard from '../components/specific-news-card.vue';
+import StatsCard from '../components/stats-card.vue';
 
 export default {
   name: 'IndexPage',
@@ -86,6 +96,7 @@ export default {
     MensaCard,
     GeneralNewsCard,
     SpecificNewsCard,
+    StatsCard,
   },
   async fetch({ store, params }) {
     if (process.static) {
@@ -128,6 +139,7 @@ export default {
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
+      hasSubscribableTimetables: 'splus/hasSubscribableTimetables',
     }),
   },
   methods: {

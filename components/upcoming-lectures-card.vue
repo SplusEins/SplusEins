@@ -57,9 +57,6 @@ export default {
       get(){ return this.subscribedTimetable;},
       set(value){ this.setSubscribedTimetable(value);}
     },
-    hasSubscribableTimetables() {
-      return this.subscribableTimetables.length > 0;
-    },
     ...mapState({
       upcomingLectures: (state) => state.splus.upcomingLectures,
       upcomingLecturesTimetable: (state) => state.splus.upcomingLecturesTimetable,
@@ -68,6 +65,7 @@ export default {
     }),
     ...mapGetters({
       subscribableTimetables: 'splus/subscribableTimetables',
+      hasSubscribableTimetables: 'splus/hasSubscribableTimetables',
     }),
   },
   watch: {
