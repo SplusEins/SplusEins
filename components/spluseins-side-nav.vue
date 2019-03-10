@@ -16,7 +16,10 @@
     <v-divider />
     <general-timetables-list />
     <no-ssr>
-      <install-button-list class="stick-bottom white--background" />
+      <install-button-list
+        :class="['stick-bottom', {
+          'light--background': !isDark,
+          'dark--background': isDark }]" />
     </no-ssr>
   </v-navigation-drawer>
 </template>
@@ -54,6 +57,7 @@ export default {
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
       sidenavIsOpen: (state) => state.ui.sidenavIsOpen,
       browserStateReady: (state) => state.browserStateReady,
+      isDark: state => state.ui.isDark,
     }),
   },
   watch: {
@@ -75,7 +79,11 @@ export default {
   bottom: 0;
 }
 
-.white--background {
+.light--background {
   background: #fff;
+}
+
+.dark--background {
+  background: #424242;
 }
 </style>
