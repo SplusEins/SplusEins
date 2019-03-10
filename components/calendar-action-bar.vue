@@ -37,7 +37,7 @@
             <v-list-tile-title>Teilen</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile :href="icsLink">
+        <v-list-tile @click="routeToIcsLink()">
           <v-list-tile-content>
             <v-list-tile-title>Extern öffnen</v-list-tile-title>
           </v-list-tile-content>
@@ -77,10 +77,9 @@
         @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')" />
       <responsive-icon-button
         :breakpoint="$vuetify.breakpoint.xl"
-        :href="icsLink"
         icon="mdi-calendar"
         text="Extern öffnen"
-        @click="() => undefined" />
+        @click="routeToIcsLink" />
     </span>
 
     <custom-timetable-delete-dialog
@@ -129,28 +128,6 @@ export default {
     isFavorite() {
       return this.favoriteSchedules.filter(favorite => favorite.id == this.currentSchedule.id).length != 0;
     },
-    icsLink() {
-      let base = this.$axios.defaults.baseURL;
-      if (!base.startsWith('http')) {
-        base = window.location.origin + base;
-      }
-      base = base.replace(/^https?/i, 'webcal');
-
-      const path = 'api/ics/v1/';;
-      const timetable = this.currentSchedule;
-
-      let timetables;
-      let titleIds;
-      if (this.isCustomSchedule) {
-        timetables = this.currentSchedule.id.join(',');
-        titleIds = this.currentSchedule.whitelist.join(',');
-      } else {
-        timetables = this.currentSchedule.id;
-        titleIds = '';
-      }
-
-      return base + path + timetables + '/' + titleIds;
-    },
     currentAsCustomSchedule() {
       if (this.isCustomSchedule) {
         return this.currentSchedule;
@@ -174,6 +151,30 @@ export default {
   methods: {
     routeToRoot() {
       this.$router.replace('/');
+    },
+    routeToIcsLink() {
+      const base = this.$axios.defaults.baseURL;
+      const absoluteBase = base.startsWith('http') ? base : window.location.origin + base;
+      const webcalBase = absoluteBase.replace(/^https?/i, 'webcal');
+
+      const timetableIds = this.isCustomSchedule ? this.currentSchedule.id.join(',') : this.currentSchedule.id;
+      const titleIds = this.isCustomSchedule ? this.currentSchedule.whitelist.join(',') : '';
+
+      const endpoint = 'api/ics/v1/';
+      const path = endpoint + timetableIds + '/' + titleIds;
+
+      const webcalUrl = webcalBase + path;
+      const httpUrl = base + path;
+
+      window.location = webcalUrl;
+      setTimeout(() => {
+        if(document.hasFocus()) {
+          window.open(httpUrl);
+          this.$track('Webcal', 'download');
+        } else {
+          this.$track('Webcal', 'open');
+        }
+      }, 300);
     },
     toggleFavorite() {
       if (this.isFavorite) {
