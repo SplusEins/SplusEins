@@ -70,6 +70,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });
 
     res.set('Content-Type', 'text/plain');
+    res.set('Content-Disposition', 'attachment;filename="spluseins.ics"');
     res.set('Cache-Control', `public, max-age=${ICS_CACHE_SECONDS}`);
     res.send(cal.toString());
   } catch (error) {
