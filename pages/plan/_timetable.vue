@@ -25,7 +25,7 @@ export default {
       isCustomSchedule: 'splus/isCustomSchedule',
     }),
   },
-  async fetch({ store, params, query }) {
+  async fetch({ store, params, query, error }) {
     store.dispatch('splus/importSchedule', { params, query });
 
     if (process.static) {
@@ -33,6 +33,11 @@ export default {
       store.commit('splus/resetWeek', true);
     } else {
       store.commit('splus/resetWeek', false);
+    }
+
+    if (store.state.splus.schedule == undefined) {
+      error({ statusCode: 404, message: 'Plan existiert nicht' });
+      return;
     }
 
     if (process.client || !store.state.lazyLoad) {
