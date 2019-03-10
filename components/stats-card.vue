@@ -9,17 +9,19 @@
       :thickness="30"
       :background="isDark ? '#424242' : 'white'"
       unit="px">
-      <h1>{{ totalHours }}h</h1>pro Woche
+      <h1>{{ totalHours }}h</h1>diese Woche
     </vc-donut>
     <v-card-text class="card-text">
       <h3>{{ subscribedTimetable.description || subscribedTimetable.label }}</h3>
-      <div>{{ sections.length }} Module</div>
+      <span>{{ sections.length }} {{ sections.length > 1 ? 'Module' : 'Modul' }} an </span>
+      <span>{{ totalWeekdays }} {{ totalWeekdays > 1 ? 'Wochentagen' : 'Wochentag' }}</span>
     </v-card-text> 
   </v-card>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex';
+import * as moment from 'moment';
 
 export default {
   name: 'StatsCard',
@@ -27,6 +29,7 @@ export default {
       return {
         dialogOpen: false,
         totalHours: 0,
+        totalWeekdays: 0,
         sections: [],
       };
   },
@@ -45,6 +48,7 @@ export default {
   methods: {
     updateSections() {
        let uniqueLectures = new Map();
+       let weekdays = [];
        this.sections = [];
        this.totalHours = 0;
 
@@ -54,7 +58,11 @@ export default {
          } else {
            uniqueLectures.set(element.title, element.duration)
          }
+         if(!weekdays.includes(moment(element.start).day())) weekdays.push(moment(element.start).day())
        });
+
+       this.totalWeekdays = weekdays.length;
+
        uniqueLectures.forEach((value) => {
           this.totalHours += value
        });
