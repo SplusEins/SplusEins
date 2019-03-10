@@ -53,6 +53,8 @@ export default {
     { src: '@/plugins/vue-matomo', ssr: false },
     // https://github.com/Inndy/vue-clipboard2
     '@/plugins/vue-clipboard2',
+    // https://github.com/dumptyd/vue-css-donut-chart
+    '@/plugins/vue-css-donut-chart',
   ],
 
   /*
