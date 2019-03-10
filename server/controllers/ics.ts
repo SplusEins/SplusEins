@@ -29,7 +29,6 @@ function lectureToEvent(lecture: RichLecture) {
     summary: lecture.title,
     description: lecture.lecturer + (lecture.info != '' ? ' - ' : '') + lecture.info,
     location: lecture.room,
-    timezone: 'Europe/Berlin',
   };
 }
 
