@@ -8,6 +8,7 @@
       :size="250"
       :thickness="30"
       :background="isDark ? '#424242' : 'white'"
+      :total="totalHours"
       unit="px">
       <h1>{{ totalHours }}h</h1>diese Woche
     </vc-donut>
@@ -45,6 +46,9 @@ export default {
       this.updateSections();
     },
   },
+  mounted() {
+    this.updateSections(); 
+  },
   methods: {
     updateSections() {
        let uniqueLectures = new Map();
@@ -66,8 +70,9 @@ export default {
        uniqueLectures.forEach((value) => {
           this.totalHours += value
        });
+
        uniqueLectures.forEach((value, key) => {
-          this.sections.push({label: key + ' - ' + value + ' Stunden', value: value / this.totalHours *100});
+          this.sections.push({label: key + ' - ' + value + ' Stunden', value: value});
        });
     },
   },
