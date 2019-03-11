@@ -5,9 +5,10 @@
     </v-card-title>
     <v-card-text class="card-text-padding">
       <ul>
-        <li>Auf der Startseite werden Neuigkeiten aus konfigurierbaren Quellen der Ostfalia angezeigt.</li>
-        <li>Auf der Startseite wird die nächste Vorlesung eines abbonierten Planes angzeigt.</li>
+        <li>Ein Stundenplan kann in externen Kalender-Anwendungen importiert und abonniert werden.</li>
+        <li>Auf der Startseite werden Statistiken zum abonnierten Plan angezeigt.</li>
         <li>Jeder Benutzer kann sich personalisierte Pläne aus verschiedenen Stundenplänen zusammenstellen und teilen.</li>
+        <li>Auf der Startseite werden Neuigkeiten aus konfigurierbaren Quellen der Ostfalia angezeigt.</li>
         <li>SplusEins kann auf Smartphones mit einem modernen Browser als App installiert werden.</li>
       </ul>
     </v-card-text>
