@@ -4,7 +4,7 @@
       <span class="headline">Statistik</span>
     </v-card-title>
     <vc-donut 
-      :sections="sections" 
+      :sections="sections"
       :size="250"
       :thickness="30"
       :background="isDark ? '#424242' : 'white'"
@@ -54,7 +54,7 @@ export default {
        let uniqueLectures = new Map();
        let weekdays = [];
        this.sections = [];
-       this.totalHours = 0; 
+       this.totalHours = 0;
 
        this.upcomingLectures.forEach(element => {
          if(uniqueLectures.has(element.title)){
