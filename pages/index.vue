@@ -8,70 +8,36 @@
     <v-layout
       row
       wrap>
-      
+      <upcoming-lectures-card />
+      <v-flex>
+        <mensa-card
+          v-show="mensaIsOpen" />
+      </v-flex>
+      <v-flex>
+        <quick-access-card
+          v-if="displayQuickAccessCard" />
+      </v-flex>
+      <v-flex>
+        <stats-card
+          v-if="hasSubscribableTimetables" />
+      </v-flex>
       <v-flex
-        d-flex
         xs12
-        md6
-        lg4>
+        md4>
+        <specific-news-card
+          v-show="displaySpecificNewsCard" />
+      </v-flex>
+      <v-flex
+        xs12
+        md4>
+        <general-news-card
+          v-show="displayGeneralNewsCard" />
+      </v-flex>
+      <v-flex
+        xs12
+        md4>
         <last-changes-card />
       </v-flex>
-
-      <v-flex
-        v-show="displayGeneralNewsCard"
-        :d-flex="displayGeneralNewsCard"
-        xs12
-        md6
-        lg4>
-        <general-news-card />
-      </v-flex>
-
-      <v-flex
-        xs12
-        md6
-        lg4
-        d-flex>
-        <v-layout
-          row
-          wrap>
-          <v-flex d-flex>
-            <upcoming-lectures-card />
-          </v-flex>
-          <v-flex 
-            v-show="displaySpecificNewsCard"
-            :d-flex="displaySpecificNewsCard">
-            <specific-news-card />
-          </v-flex>
-        </v-layout>
-      </v-flex>
-
-      <v-flex
-        v-show="mensaIsOpen"
-        :d-flex="mensaIsOpen"
-        xs12
-        md6
-        lg4>
-        <mensa-card />
-      </v-flex>
-
-      <v-flex
-        v-if="displayQuickAccessCard"
-        xs12
-        md6
-        lg4
-        d-flex>
-        <quick-access-card />
-      </v-flex>
-
-      <v-flex
-        v-if="hasSubscribableTimetables"
-        xs12
-        md6
-        lg4
-        d-flex>
-        <stats-card />
-      </v-flex>
-
     </v-layout>
   </v-container>
 </template>
