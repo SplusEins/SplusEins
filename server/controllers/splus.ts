@@ -4,7 +4,7 @@ import * as TIMETABLES from '../../assets/timetables.json';
 
 import getLectures from '../lib/SplusApi';
 
-const SPLUS_CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '600');
+const SPLUS_CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
 const router = express.Router();
 
