@@ -32,18 +32,18 @@
             <v-list-tile-title v-else>Favorit entfernen</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="share()">
+        <v-list-tile @click="share(); $track('Calendar', 'share', 'desktop')">
           <v-list-tile-content>
             <v-list-tile-title>Teilen</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="routeToIcsLink()">
+        <v-list-tile @click="routeToIcsLink(); $track('Calendar', 'ICS', 'dektop')">
           <v-list-tile-content>
             <v-list-tile-title>Extern öffnen</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile
-          @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')">
+          @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'desktop')">
           <v-list-tile-content>
             <v-list-tile-title v-if="isCustomSchedule">Bearbeiten</v-list-tile-title>
             <v-list-tile-title v-else>Personalisieren</v-list-tile-title>
@@ -51,7 +51,7 @@
         </v-list-tile>
         <v-list-tile
           v-if="isCustomSchedule"
-          @click="deleteTimetableDialogOpen = true; $track('Calendar', 'clickDeleteCustomSchedule')">
+          @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'desktop')">
           <v-list-tile-title>Löschen</v-list-tile-title>
         </v-list-tile>
       </v-list>
@@ -63,23 +63,23 @@
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-share-variant"
         text="Teilen"
-        @click="share" />
+        @click="share; $track('Calendar', 'share', 'desktop')" />
       <responsive-icon-button
         v-if="isCustomSchedule"
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-delete"
         text="Löschen"
-        @click="deleteTimetableDialogOpen = true; $track('Calendar', 'clickDeleteCustomSchedule')" />
+        @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'mobile')" />
       <responsive-icon-button
         :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-pencil"
-        @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'clickEditCustomSchedule' : 'clickEditSchedule')" />
+        @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'mobile')" />
       <responsive-icon-button
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-calendar"
         text="Extern öffnen"
-        @click="routeToIcsLink" />
+        @click="routeToIcsLink; $track('Calendar', 'ICS','mobile')" />
     </span>
 
     <custom-timetable-delete-dialog
@@ -170,19 +170,19 @@ export default {
       setTimeout(() => {
         if(document.hasFocus()) {
           window.open(httpUrl);
-          this.$track('Webcal', 'download');
+          this.$track('ICS', 'download');
         } else {
-          this.$track('Webcal', 'open');
+          this.$track('ICS', 'open');
         }
       }, 300);
     },
     toggleFavorite() {
       if (this.isFavorite) {
         this.removeFavoriteSchedule(this.currentSchedule);
-        this.$track('Calendar', 'removeFavorites');
+        this.$track('Calendar', 'favorite', 'removed');
       } else {
         this.addFavoriteSchedule(this.currentSchedule);
-        this.$track('Calendar', 'addToFavorites');
+        this.$track('Calendar', 'favorite', 'added');
       }
     },
     currentUrl(){

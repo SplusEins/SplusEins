@@ -59,7 +59,7 @@
               to="/"
               nuxt
               color="amber"
-              @click="$track('Error', 'goBackToMainPage', 'error status', error.statusCode)">
+              @click="$track('Error', 'backToMain', 'error status', error.statusCode)">
               Main Page
             </v-btn>
           </v-card-actions>

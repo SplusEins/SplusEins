@@ -13,7 +13,7 @@
       exact
       nuxt>
       <v-list-tile-content
-        @click="$track('Menu', 'custom plan used')">
+        @click="$track('Calendar', 'plan used', 'custom')">
         <v-list-tile-title>{{ route.query.name }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>

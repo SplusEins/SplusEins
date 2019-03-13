@@ -15,7 +15,7 @@
       </v-list-tile-content>
     </v-list-tile>
 
-    <v-list-tile @click="customTimetableDialogOpen = true; $track('Menu', 'openCustomTimeTableDialog')">
+    <v-list-tile @click="customTimetableDialogOpen = true; $track('CustomTimeTableDialog', 'opened', 'sideMenu')">
       <v-list-tile-action>
         <v-icon>mdi-plus</v-icon>
       </v-list-tile-action>
@@ -29,7 +29,7 @@
     <v-list-tile
       to="/mensa"
       nuxt
-      @click="$track('Menu', 'openMensaPlanDialog')">
+      @click="$track('MensaPlan', 'opened','sideMenu')">
       <v-list-tile-action>
         <v-icon>mdi-food-fork-drink</v-icon>
       </v-list-tile-action>
