@@ -22,6 +22,7 @@
         to="/mensa"
         flat
         color="primary"
+        @click="$track('MensaPlan', 'opened', 'dashboard')"
         nuxt>
         Mehr
       </v-btn>

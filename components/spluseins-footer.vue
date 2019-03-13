@@ -24,13 +24,15 @@
         — 
         <nuxt-link 
           to="/impressum"
-          class="link">
+          class="link"
+          @click="$track('Footer', 'openImpressum')">
           Impressum
         </nuxt-link>
         — 
         <nuxt-link 
           to="/datenschutz"
-          class="link">
+          class="link"
+          @click="$track('Footer', 'openDatenschutz')">
           Datenschutz
         </nuxt-link>
       </v-flex>

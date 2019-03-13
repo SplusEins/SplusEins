@@ -23,8 +23,8 @@
             dark
             flat
             @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true;
-                           $track('Menu', 'saveCustomTimetable', 'Anzahl Pläne', selectedSchedules.length);
-                           $track('Menu', 'saveCustomTimetable', 'Anzahl Kurse', selectedCourses.length)">
+                           $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Pläne', selectedSchedules.length);
+                           $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Kurse', selectedCourses.length)">
             Speichern</v-btn>
         </v-toolbar-items>
       </v-toolbar>

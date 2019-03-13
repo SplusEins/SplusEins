@@ -38,7 +38,7 @@
             nuxt>
             <v-list-tile-content
               value="true"
-              @click="$track('Menu', 'normal plan used', schedule.description)">
+              @click="$track('Calendar', 'sideMenu plan used', 'normal')">
               <v-list-tile-title value="true">{{ schedule.label }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>

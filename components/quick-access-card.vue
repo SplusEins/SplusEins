@@ -10,7 +10,8 @@
           :key="route.query.name"
           :to="route"
           flat
-          nuxt>
+          nuxt
+          @click="$track('Calendar', 'dashboard plan used', 'custom')">
           {{ route.query.name }}
         </v-list-tile>
       </v-list>
@@ -21,7 +22,8 @@
           :key="favorite.id"
           :to="favorite.route"
           flat
-          nuxt>
+          nuxt
+          @click="$track('Calendar', 'dashboard plan used', 'favorite')">
           {{ favorite.description }}
         </v-list-tile>
       </v-list>

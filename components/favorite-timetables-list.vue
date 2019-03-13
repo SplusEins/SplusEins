@@ -12,7 +12,7 @@
       :key="schedule.id"
       nuxt>
       <v-list-tile-content
-        @click="$track('Menu', 'favorite plan used', schedule.description)">
+        @click="$track('Calendar', 'sideMenu plan used', 'favorite')">
         <v-list-tile-title>{{ schedule.description }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
