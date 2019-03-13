@@ -11,7 +11,7 @@ const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
 const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
-const CACHE_SECONDS = 600;
+const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
 const cache = CACHE_DISABLE ?
   cacheManager.caching({ store: 'memory', max: 0 }) :
