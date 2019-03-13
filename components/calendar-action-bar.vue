@@ -79,7 +79,7 @@
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-calendar"
         text="Extern öffnen"
-        @click="routeToIcsLink; $track('Calendar', 'ICS','mobile')" />
+        @click="routeToIcsLink(); $track('Calendar', 'ICS','mobile')" />
     </span>
 
     <custom-timetable-delete-dialog
