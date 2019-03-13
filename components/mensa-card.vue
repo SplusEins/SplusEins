@@ -19,11 +19,11 @@
     <v-card-actions>
       <v-spacer />
       <v-btn
+        nuxt
         to="/mensa"
         flat
         color="primary"
-        @click="$track('MensaPlan', 'opened', 'dashboard')"
-        nuxt>
+        @click="$track('MensaPlan', 'opened', 'dashboard')">
         Mehr
       </v-btn>
     </v-card-actions>
