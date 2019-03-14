@@ -29,7 +29,7 @@ export default {
   data() {
       return {
         dialogOpen: false,
-        totalHours: 0,
+        totalHours: 1,
         totalWeekdays: 0,
         sections: [],
       };
@@ -53,8 +53,8 @@ export default {
     updateSections() {
        let uniqueLectures = new Map();
        let weekdays = [];
+       let totalHoursCalc = 0;
        this.sections = [];
-       this.totalHours = 0;
 
        this.upcomingLectures.forEach(element => {
          if(uniqueLectures.has(element.title)){
@@ -68,8 +68,10 @@ export default {
        this.totalWeekdays = weekdays.length;
 
        uniqueLectures.forEach((value) => {
-          this.totalHours += value
+          totalHoursCalc += value
        });
+
+       this.totalHours = totalHoursCalc > 0 ? totalHoursCalc : 1;
 
        uniqueLectures.forEach((value, key) => {
           this.sections.push({label: key + ' - ' + value + ' Stunden', value: value});
