@@ -63,7 +63,7 @@
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-share-variant"
         text="Teilen"
-        @click="share; $track('Calendar', 'share', 'desktop')" />
+        @click="share(); $track('Calendar', 'share', 'desktop')" />
       <responsive-icon-button
         v-if="isCustomSchedule"
         :breakpoint="$vuetify.breakpoint.xl"
