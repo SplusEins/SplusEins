@@ -10,21 +10,22 @@
       </v-btn>
     </v-card-title>
     <v-card-text class="card-text-padding">
-      <v-list 
+      <v-list
         dense>
-        <div 
-          v-for="item in generalNews.slice(0,4)"
+        <div
+          v-for="item in generalNews.slice(0, 2)"
           :key="item.link"
           class="list-tile">
-          <a 
-            :href="item.link"
-            target="_blank"
-            class="link">
-            {{ item.title }}
-          </a>
-          <br>
-          <span>{{ item.text }}</span>
-          <br>
+          <p>
+            <a
+              :href="item.link"
+              target="_blank"
+              class="link">
+              {{ item.title }}
+            </a>
+            <br>
+            {{ item.text }}
+          </p>
         </div>
       </v-list>
     </v-card-text>
