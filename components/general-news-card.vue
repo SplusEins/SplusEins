@@ -13,7 +13,7 @@
       <v-list
         dense>
         <div
-          v-for="item in generalNews.slice(0, 2)"
+          v-for="item in generalNews.slice(0, 3)"
           :key="item.link"
           class="list-tile">
           <p>

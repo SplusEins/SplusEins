@@ -8,35 +8,82 @@
     <v-layout
       row
       wrap>
-      <upcoming-lectures-card />
-      <v-flex>
-        <mensa-card
-          v-show="mensaIsOpen" />
-      </v-flex>
-      <v-flex>
-        <quick-access-card
-          v-if="displayQuickAccessCard" />
-      </v-flex>
-      <v-flex>
-        <stats-card
-          v-if="hasSubscribableTimetables" />
-      </v-flex>
+
       <v-flex
         xs12
-        md4>
-        <specific-news-card
-          v-show="displaySpecificNewsCard" />
+        md5
+        lg3
+        d-flex>
+        <v-layout
+          row
+          wrap>
+          <v-flex
+            d-flex>
+            <upcoming-lectures-card />
+          </v-flex>
+          <v-flex
+            d-flex>
+            <quick-access-card
+              v-if="displayQuickAccessCard" />
+          </v-flex>
+        </v-layout>
       </v-flex>
+
       <v-flex
         xs12
-        md4>
-        <general-news-card
-          v-show="displayGeneralNewsCard" />
+        md7
+        lg4
+        d-flex>
+        <v-layout
+          row
+          wrap>
+          <v-flex
+            xs12
+            d-flex>
+            <stats-card
+              v-if="hasSubscribableTimetables" />
+          </v-flex>
+
+          <v-flex
+            xs12
+            d-flex>
+            <mensa-card
+              v-show="mensaIsOpen" />
+          </v-flex>
+        </v-layout>
       </v-flex>
+
       <v-flex
         xs12
-        md4>
-        <last-changes-card />
+        md12
+        lg5
+        d-flex>
+        <v-layout
+          row
+          wrap>
+          <v-flex
+            md4
+            lg12
+            d-flex>
+            <specific-news-card
+              v-show="displaySpecificNewsCard" />
+          </v-flex>
+
+          <v-flex
+            md4
+            lg12
+            d-flex>
+            <general-news-card
+              v-show="displayGeneralNewsCard" />
+          </v-flex>
+
+          <v-flex
+            md4
+            lg12
+            d-flex>
+            <last-changes-card />
+          </v-flex>
+        </v-layout>
       </v-flex>
     </v-layout>
   </v-container>
