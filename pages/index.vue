@@ -13,7 +13,7 @@
       <v-flex
         xs12
         md6
-        lg4
+        lg3
         d-flex
       >
         <v-layout column>
@@ -33,7 +33,7 @@
       <v-flex
         xs12
         md6
-        lg4
+        lg3
         d-flex
       >
         <v-layout column>
@@ -55,33 +55,40 @@
 
       <v-flex
         xs12
-        md6
-        lg4
+        md12
+        lg6
         d-flex
       >
-        <v-layout column>
+        <v-layout
+          row
+          wrap
+        >
           <v-flex
             v-show="displayGeneralNewsCard"
             :d-flex="displayGeneralNewsCard"
-          >
+            xs12
+            md4
+            lg12>
             <general-news-card />
           </v-flex>
           <v-flex
             v-show="displaySpecificNewsCard"
             :d-flex="displaySpecificNewsCard"
+            xs12
+            md4
+            lg6
           >
             <specific-news-card />
           </v-flex>
+          <v-flex
+            d-flex
+            xs12
+            md4
+            lg6
+          >
+            <last-changes-card />
+          </v-flex>
         </v-layout>
-      </v-flex>
-
-      <v-flex
-        d-flex
-        xs12
-        md6
-        lg4
-      >
-        <last-changes-card />
       </v-flex>
     </v-layout>
   </v-container>
