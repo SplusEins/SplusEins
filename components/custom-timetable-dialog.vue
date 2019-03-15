@@ -4,15 +4,18 @@
     :fullscreen="$vuetify.breakpoint.smAndDown"
     max-width="800px"
     hide-overlay
-    transition="dialog-bottom-transition">
+    transition="dialog-bottom-transition"
+  >
     <v-card>
       <v-toolbar
         dark
-        color="primary">
+        color="primary"
+      >
         <v-btn
           icon
           dark
-          @click.native="dialogOpen = false">
+          @click.native="dialogOpen = false"
+        >
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-toolbar-title>Neuer Stundenplan</v-toolbar-title>
@@ -24,15 +27,18 @@
             flat
             @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true;
                            $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Pläne', selectedSchedules.length);
-                           $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Kurse', selectedCourses.length)">
-            Speichern</v-btn>
+                           $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Kurse', selectedCourses.length)"
+          >
+            Speichern
+          </v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <v-form v-model="valid">
         <v-container grid-list-md>
           <v-layout
             row
-            wrap>
+            wrap
+          >
             <v-flex xs12>
               <v-text-field
                 v-model="selectedName"
@@ -40,7 +46,8 @@
                 label="Plan benennen"
                 single-line
                 required
-                autofocus />
+                autofocus
+              />
             </v-flex>
 
             <v-flex xs12>
@@ -48,7 +55,8 @@
                 v-show="selectedSchedules.length <= maxSchedules"
                 :selected-schedules="selectedSchedules"
                 :loading="loading"
-                @input="addSchedule" />
+                @input="addSchedule"
+              />
             </v-flex>
 
             <v-flex xs12>
@@ -56,7 +64,8 @@
                 v-for="schedule in selectedSchedules"
                 :key="schedule.id"
                 close
-                @input="removeSchedule(schedule)">
+                @input="removeSchedule(schedule)"
+              >
                 {{ getFormattedName(schedule) }}
               </v-chip>
             </v-flex>
@@ -66,7 +75,8 @@
                 v-show="selectedSchedules.length > 0"
                 v-model="selectedCourses"
                 :max-courses="maxCourses"
-                :lectures="allLectures"/>
+                :lectures="allLectures"
+              />
             </v-flex>
           </v-layout>
         </v-container>
@@ -75,8 +85,8 @@
 
     <custom-timetable-cookie-reminder
       v-model="cookieReminderDialogOpen"
-      @continue="save()"/>
-
+      @continue="save()"
+    />
   </v-dialog>
 </template>
 

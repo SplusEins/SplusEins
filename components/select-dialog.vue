@@ -1,16 +1,18 @@
 <template>
   <v-dialog
     v-model="dialogOpen"
-    max-width="400">
+    max-width="400"
+  >
     <v-card>
-
       <v-toolbar
         dark
-        color="primary">
+        color="primary"
+      >
         <v-btn
           icon
           dark
-          @click.native="dialogOpen = false">
+          @click.native="dialogOpen = false"
+        >
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-toolbar-title>{{ title }}</v-toolbar-title>
@@ -21,10 +23,12 @@
           <v-list-tile
             v-for="item in items"
             :key="!!item.description? item.description: item.label"
-            @click="selectedItem = item, dialogOpen = false">
+            @click="selectedItem = item, dialogOpen = false"
+          >
             <v-list-tile-action>
               <v-icon
-                v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label">
+                v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label"
+              >
                 mdi-check
               </v-icon>
             </v-list-tile-action>
@@ -34,7 +38,6 @@
           </v-list-tile>
         </v-list>
       </v-card-text>
-
     </v-card>
   </v-dialog>
 </template>
@@ -54,7 +57,7 @@ export default {
     },
     items: {
       type: Array,
-      default: () => [], 
+      default: () => [],
     },
     selected: {
       type: Object,
@@ -80,4 +83,4 @@ export default {
   padding: 0px 5px;
 }
 
-</style> 
+</style>

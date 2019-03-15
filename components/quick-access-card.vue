@@ -1,7 +1,9 @@
 <template>
   <v-card>
     <v-card-title>
-      <div class="headline">Schnellzugriff</div>
+      <div class="headline">
+        Schnellzugriff
+      </div>
     </v-card-title>
     <v-card-text class="card-text-padding">
       <v-list v-if="customSchedulesAsRoutes.length != 0">
@@ -11,7 +13,8 @@
           :to="route"
           flat
           nuxt
-          @click="$track('Calendar', 'dashboard plan used', 'custom')">
+          @click="$track('Calendar', 'dashboard plan used', 'custom')"
+        >
           {{ route.query.name }}
         </v-list-tile>
       </v-list>
@@ -23,7 +26,8 @@
           :to="favorite.route"
           flat
           nuxt
-          @click="$track('Calendar', 'dashboard plan used', 'favorite')">
+          @click="$track('Calendar', 'dashboard plan used', 'favorite')"
+        >
           {{ favorite.description }}
         </v-list-tile>
       </v-list>
@@ -33,15 +37,9 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
-import { customTimetableToRoute } from '../store/splus';
 
 export default {
   name: 'QuickAccessCard',
-  data() {
-    return {
-      customTimetableToRoute,
-    };
-  },
   computed: {
     ...mapState({
       favorites: (state) => state.splus.favoriteSchedules,

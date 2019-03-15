@@ -1,7 +1,9 @@
 <template>
   <v-card>
     <v-card-title>
-      <div class="headline">Letzte Änderungen</div>
+      <div class="headline">
+        Letzte Änderungen
+      </div>
     </v-card-title>
     <v-card-text class="card-text-padding">
       <ul>

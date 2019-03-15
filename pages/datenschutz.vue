@@ -1,9 +1,10 @@
 <template>
-  <v-container 
+  <v-container
     v-touch="{
       right: () => setSidenav(true)
     }"
-    class="container">
+    class="container"
+  >
     <div>
       <h1>Datenschutzerklärung</h1>
       <br>
@@ -44,11 +45,11 @@
       <p>Cookies oder der Browserspeicher können nicht verwendet werden, um Programme zu starten oder Viren auf einen Computer zu übertragen. Anhand der gespeicherten Informationen können wir Ihnen die Navigation erleichtern und die korrekte Anzeige unserer Webseiten ermöglichen.</p>
       <p>In keinem Fall werden die von uns erfassten Daten an Dritte weitergegeben oder ohne Ihre Einwilligung eine Verknüpfung mit personenbezogenen Daten hergestellt.</p>
       <p>Natürlich können Sie unsere Website grundsätzlich auch ohne Cookies bzw. ohne Verwendung des Browserspeichers betrachten.</p>
-      
+
       <h3>Zustimmung:</h3>
       <p>Um diese Technologie verwenden zu dürfen müssen Sie uns die Erlaubnis erteilen, indem Sie beispielsweise beim erstmaligen Aufrufen der Seite der Speicherung von Daten im Browser zustimmen.</p>
       <p>Im Allgemeinen können Sie die Verwendung von Cookies jederzeit über die Einstellungen Ihres Browsers deaktivieren. Bitte verwenden Sie die Hilfefunktionen Ihres Internetbrowsers, um zu erfahren, wie Sie diese Einstellungen ändern können. Bitte beachten Sie, dass einzelne Funktionen unserer Website möglicherweise nicht funktionieren, wenn Sie die Verwendung von Cookies deaktiviert haben.</p>
-      
+
       <h3>Gespeicherte Informationen:</h3>
       <p>Soweit Sie uns durch Ihre Zustimmung die Speicherung von Daten im Browser erlauben, können folgende Informationen durch unseren Webseiten gespeichert werden:</p>
       <ul>
@@ -73,7 +74,7 @@
         <li>Seitenaufrufe</li>
         <li>Nutzung von Navigationselementen</li>
       </ul>
-      <br>          
+      <br>
       <h3>Zustimmung:</h3>
       <p>Die Verarbeitung der Daten erfolgt auf Grundlage einer Einwilligung des Nutzers (Art. 6 Abs. 1 lit. a DSGVO).</p>
       <p>Sie willigen ein, indem sie in einem Dialogfenster der Seite, welches überlicherweise beim ersten Aufruf angezeit wird, die Analyse von Daten akzeptieren.</p>
@@ -120,10 +121,9 @@
         <em>Die Datenschutzerklärung wurde mit Hilfe des Datenschutzerklärungs-Generators der activeMind AG erstellt. Die Inhalte wurden auf spluseins.de angepasst.</em>
       </p>
       <i>Stand 26.11.2018</i>
-
     </div>
   </v-container>
-</template>		
+</template>
 
 <script>
 import { mapMutations } from 'vuex';
@@ -159,4 +159,4 @@ export default {
   margin: auto;
   max-width: 1100px;
 }
-</style> 
+</style>

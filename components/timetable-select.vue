@@ -1,34 +1,41 @@
 <template>
   <v-layout
     row
-    wrap>
+    wrap
+  >
     <v-flex
       xs12
-      md5>
+      md5
+    >
       <v-select
-        :items="paths"
         v-model="selectedPath"
-        label="Studiengang" />
+        :items="paths"
+        label="Studiengang"
+      />
     </v-flex>
     <v-flex
       xs4
-      md2>
+      md2
+    >
       <v-select
+        v-model="selectedSemester"
         :items="semesters"
         :disabled="selectedPath == undefined"
-        v-model="selectedSemester"
-        label="Semester" />
+        label="Semester"
+      />
     </v-flex>
     <v-flex
       xs4
-      md3>
+      md3
+    >
       <v-select
+        v-model="selectedSchedule"
         :items="schedules"
         :disabled="selectedSemester == undefined"
-        v-model="selectedSchedule"
         label="Vertiefung"
         item-text="label"
-        return-object />
+        return-object
+      />
     </v-flex>
     <v-flex align-self-center>
       <v-btn
@@ -37,7 +44,8 @@
         round
         depressed
         color="secondary"
-        @click.native="submit()">
+        @click.native="submit()"
+      >
         laden
       </v-btn>
     </v-flex>

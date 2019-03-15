@@ -7,7 +7,8 @@
       <a
         slot="activator"
         class="white--text"
-        @click="$track('Footer', 'openAbout')">
+        @click="$track('Footer', 'openAbout')"
+      >
         Über
       </a>
       <v-card>
@@ -30,19 +31,23 @@
           </p>
         </v-card-text>
 
-        <v-divider/>
+        <v-divider />
 
         <v-card-actions>
-          <v-spacer/>
+          <v-spacer />
           <v-btn
             icon
             outline
             color="primary"
             target="_blank"
-            href="https://github.com/SplusEins/SplusEins">
+            href="https://github.com/SplusEins/SplusEins"
+          >
             <v-icon
               :color="isDark? 'white': 'black'"
-              medium>mdi-github-circle</v-icon>
+              medium
+            >
+              mdi-github-circle
+            </v-icon>
           </v-btn>
           <v-btn
             flat

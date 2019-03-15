@@ -1,12 +1,13 @@
 <template>
   <v-app :dark="isDark">
-    <spluseins-header/>
+    <spluseins-header />
     <v-content fill-height>
       <v-layout
         align-center
         justify-center
         column
-        fill-height>
+        fill-height
+      >
         <v-card
           pa-2
           ma-2
@@ -59,14 +60,15 @@
               to="/"
               nuxt
               color="amber"
-              @click="$track('Error', 'backToMain', 'error status', error.statusCode)">
+              @click="$track('Error', 'backToMain', 'error status', error.statusCode)"
+            >
               Main Page
             </v-btn>
           </v-card-actions>
         </v-card>
       </v-layout>
     </v-content>
-    <spluseins-footer/>
+    <spluseins-footer />
   </v-app>
 </template>
 

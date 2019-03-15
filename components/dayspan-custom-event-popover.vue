@@ -1,20 +1,21 @@
 <template>
-
-  <v-card 
+  <v-card
     :class="classes"
-    class="ds-calendar-event-popover-card">
-
-    <v-toolbar 
-      :style="styleHeader" 
-      flat>
-
-      <v-toolbar-title 
+    class="ds-calendar-event-popover-card"
+  >
+    <v-toolbar
+      :style="styleHeader"
+      flat
+    >
+      <v-toolbar-title
         slot="extension"
-        class="toolbar-padding">
+        class="toolbar-padding"
+      >
         {{ details.title }}
-        <v-icon 
+        <v-icon
           v-if="details.icon"
-          :style="styleButton">
+          :style="styleButton"
+        >
           {{ details.icon }}
         </v-icon>
       </v-toolbar-title>
@@ -22,85 +23,86 @@
       <v-btn
         v-if="allowEdit"
         color="secondary"
-        small 
-        absolute 
-        bottom 
-        left 
-        fab 
+        small
+        absolute
+        bottom
+        left
+        fab
         icon
-        @click="edit">
+        @click="edit"
+      >
         <v-icon>edit</v-icon>
       </v-btn>
 
-      <slot 
+      <slot
         v-bind="slotData"
-        name="eventPopoverToolbarLeft"/>
+        name="eventPopoverToolbarLeft"
+      />
 
-      <v-spacer/>
+      <v-spacer />
 
-      <slot 
+      <slot
         v-bind="slotData"
-        name="eventPopoverToolbarRight"/>
+        name="eventPopoverToolbarRight"
+      />
 
-      <slot 
+      <slot
         v-bind="slotData"
-        name="eventPopoverToolbarActions">
-        <v-tooltip 
+        name="eventPopoverToolbarActions"
+      >
+        <v-tooltip
           v-if="!isReadOnly"
-          bottom>
-
+          bottom
+        >
           <ds-schedule-actions
             slot="activator"
             v-bind="{$scopedSlots}"
             :calendar="calendar"
             :calendar-event="calendarEvent"
             :schedule="calendarEvent.schedule"
-            v-on="$listeners">
-
-            <v-btn 
+            v-on="$listeners"
+          >
+            <v-btn
               :style="styleButton"
-              icon>
+              icon
+            >
               <v-icon>more_vert</v-icon>
             </v-btn>
-
           </ds-schedule-actions>
 
           <span>{{ labels.options }}</span>
-
         </v-tooltip>
-
       </slot>
 
-      <slot 
+      <slot
         v-bind="slotData"
-        name="eventPopoverToolbarClose">
-
-        <v-btn 
+        name="eventPopoverToolbarClose"
+      >
+        <v-btn
           :style="styleButton"
           icon
-          @click="close" >
+          @click="close"
+        >
           <v-icon>mdi-close</v-icon>
         </v-btn>
-
       </slot>
-
     </v-toolbar>
     <v-card-text>
-
-      <slot 
+      <slot
         v-bind="slotData"
-        name="eventPopoverBodyTop"/>
+        name="eventPopoverBodyTop"
+      />
 
       <v-list dense>
-
         <v-list-tile>
           <v-list-tile-avatar>
             <v-icon>mdi-clock-outline</v-icon>
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <slot 
+            <slot
               v-bind="slotData"
-              name="eventPopoverOccurs">
+              name="eventPopoverOccurs"
+            >
               <v-list-tile-title>{{ startDate }}</v-list-tile-title>
               <v-list-tile-sub-title>{{ occurs }}</v-list-tile-sub-title>
             </slot>
@@ -112,45 +114,42 @@
             <v-icon>mdi-map-marker</v-icon>
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <slot 
+            <slot
               v-bind="slotData"
-              name="eventPopoverLocation">
+              name="eventPopoverLocation"
+            >
               <v-list-tile-title>
-                <span 
-                  v-html="details.location"/>
+                <span v-html="details.location" />
               </v-list-tile-title>
             </slot>
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile 
-          v-if="details.description">
+        <v-list-tile v-if="details.description">
           <v-list-tile-avatar>
             <v-icon>mdi-text-subject</v-icon>
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <slot 
+            <slot
               v-bind="slotData"
-              name="eventPopoverDescription">
+              name="eventPopoverDescription"
+            >
               <v-list-tile-title>
-                <span 
-                  v-html="details.description"/>
+                <span v-html="details.description" />
               </v-list-tile-title>
             </slot>
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile 
-          v-if="details.notify">
+        <v-list-tile v-if="details.notify">
           <v-list-tile-avatar>
             <v-icon>notifications</v-icon>
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <slot 
-              v-bind="slotData">
-              name="eventPopoverNotifications" 
+            <slot v-bind="slotData">
+              name="eventPopoverNotifications"
               <v-list-tile-title>
-                <span v-html="details.notify"/>
+                <span v-html="details.notify" />
               </v-list-tile-title>
             </slot>
           </v-list-tile-content>
@@ -161,45 +160,41 @@
             <v-icon>event</v-icon>
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <slot 
+            <slot
               v-bind="slotData"
-              name="eventPopoverCalendar">
+              name="eventPopoverCalendar"
+            >
               <v-list-tile-title>
-                <span 
-                  v-html="details.calendar"/>
+                <span v-html="details.calendar" />
               </v-list-tile-title>
             </slot>
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile 
-          v-if="hasBusy">
+        <v-list-tile v-if="hasBusy">
           <v-list-tile-avatar>
             <v-icon>work</v-icon>
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <slot 
+            <slot
               v-bind="slotData"
-              name="eventPopoverBusy">
+              name="eventPopoverBusy"
+            >
               <v-list-tile-title>{{ busyness }}</v-list-tile-title>
             </slot>
           </v-list-tile-content>
         </v-list-tile>
-
       </v-list>
-
-      <slot 
+      <slot
         v-bind="slotData"
-        name="eventPopoverBodyBottom"/> 
-
+        name="eventPopoverBodyBottom"
+      />
     </v-card-text>
-
-    <slot 
+    <slot
       v-bind="slotData"
-      name="eventPopoverActions"/>
-
+      name="eventPopoverActions"
+    />
   </v-card>
-
 </template>
 
 <script>

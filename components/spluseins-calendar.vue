@@ -3,8 +3,8 @@
     :calendar="calendar"
     :types="types"
     :read-only="true"
-    @change="calendarChanged">
-
+    @change="calendarChanged"
+  >
     <template slot="actions">
       <calendar-action-bar />
     </template>
@@ -17,12 +17,13 @@
 
     <template
       slot="eventPopover"
-      slot-scope="slotData">
+      slot-scope="slotData"
+    >
       <dayspan-custom-event-popover
         v-bind="slotData"
-        :read-only="true"/>
+        :read-only="true"
+      />
     </template>
-
   </dayspan-custom-calendar>
 </template>
 

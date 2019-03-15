@@ -1,8 +1,7 @@
 <template>
   <v-app :dark="isDark">
-    <spluseins-header/>
+    <spluseins-header />
     <v-content fill-height>
-
       <nuxt />
 
       <spluseins-error-snackbar />
@@ -11,7 +10,7 @@
         <spluseins-cookie-snackbar />
       </no-ssr>
     </v-content>
-    <spluseins-footer/>
+    <spluseins-footer />
   </v-app>
 </template>
 

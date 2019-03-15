@@ -1,12 +1,12 @@
 <template>
-
   <v-card>
     <v-card-title>
       <span class="headline">Nächste Vorlesung</span>
       <v-btn
         v-show="hasSubscribableTimetables"
         icon
-        @click="dialogOpen = true">
+        @click="dialogOpen = true"
+      >
         <v-icon>mdi-bookmark-outline</v-icon>
       </v-btn>
     </v-card-title>
@@ -26,14 +26,14 @@
     <v-card-text v-else>
       <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne, um diese Option nutzen zu können!</i>
     </v-card-text>
-    
+
     <select-dialog
       :open.sync="dialogOpen"
       :items="subscribableTimetables"
       :selected.sync="selectedItem"
-      title="Plan abbonieren"/>
+      title="Plan abbonieren"
+    />
   </v-card>
-
 </template>
 
 <script>
@@ -98,7 +98,7 @@ export default {
                                                     lecturer: event.lecturer,
                                                     start: moment(event.start).hour(parseInt(event.begin / 1)).minute(event.begin % 1 * 60)}})
                              .filter(event => event.start.valueOf() - moment().valueOf() > 0)
-                             .sort((a,b) => a.start.valueOf() - b.start.valueOf());                              
+                             .sort((a,b) => a.start.valueOf() - b.start.valueOf());
       return possibleEvents[0] != undefined? possibleEvents[0] : undefined;
     },
     load(){

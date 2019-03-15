@@ -1,16 +1,18 @@
 <template>
   <v-dialog
     v-model="dialogOpen"
-    max-width="400">
+    max-width="400"
+  >
     <v-card>
-
       <v-toolbar
         dark
-        color="red">
+        color="red"
+      >
         <v-btn
           icon
           dark
-          @click.native="dialogOpen = false">
+          @click.native="dialogOpen = false"
+        >
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-toolbar-title>Cookies sind deaktiviert</v-toolbar-title>
@@ -21,21 +23,23 @@
         <v-layout
           justify-space-between
           row
-          class="layout">
+          class="layout"
+        >
           <v-btn
             flat
-            @click="dialogOpen=false; $emit('continue');">
+            @click="dialogOpen=false; $emit('continue');"
+          >
             Fortfahren
           </v-btn>
           <v-btn
             flat
             color="success"
-            @click="setNecessaryCookiesAllowed(); dialogOpen=false; $emit('continue');">
+            @click="setNecessaryCookiesAllowed(); dialogOpen=false; $emit('continue');"
+          >
             Aktivieren
           </v-btn>
         </v-layout>
       </v-card-text>
-
     </v-card>
   </v-dialog>
 </template>
@@ -75,4 +79,4 @@ export default {
   padding-top: 10px;
 }
 
-</style> 
+</style>

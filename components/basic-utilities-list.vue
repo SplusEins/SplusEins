@@ -1,10 +1,10 @@
 <template>
   <v-list>
-
     <v-list-tile
       to="/"
       nuxt
-      @click="$track('Menu', 'goToHomepage', 'sideMenu')">
+      @click="$track('Menu', 'goToHomepage', 'sideMenu')"
+    >
       <v-list-tile-action>
         <v-icon>mdi-home</v-icon>
       </v-list-tile-action>
@@ -29,7 +29,8 @@
     <v-list-tile
       to="/mensa"
       nuxt
-      @click="$track('MensaPlan', 'opened','sideMenu')">
+      @click="$track('MensaPlan', 'opened','sideMenu')"
+    >
       <v-list-tile-action>
         <v-icon>mdi-food-fork-drink</v-icon>
       </v-list-tile-action>
@@ -44,7 +45,7 @@
   </v-list>
 </template>
 
-<script>
+<script lang="js">
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 
 export default {

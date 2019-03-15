@@ -1,44 +1,47 @@
-<template lang="html">
-
+<template>
   <v-footer
     dark
-    class = "no-min-height"
-    app>
+    class="no-min-height"
+    app
+  >
     <v-layout
       justify-center
       row
-      wrap>
+      wrap
+    >
       <v-flex
         lighten-2
         py-3
         text-xs-center
         xs12
-        class="font-size">
-        2019 
+        class="font-size"
+      >
+        2019
         —
-        <strong> 
+        <strong>
           SplusEins
         </strong>
-        — 
-        <spluseins-about/>
-        — 
-        <nuxt-link 
+        —
+        <spluseins-about />
+        —
+        <nuxt-link
           to="/impressum"
           class="link"
-          @click="$track('Footer', 'openImpressum')">
+          @click="$track('Footer', 'openImpressum')"
+        >
           Impressum
         </nuxt-link>
-        — 
-        <nuxt-link 
+        —
+        <nuxt-link
           to="/datenschutz"
           class="link"
-          @click="$track('Footer', 'openDatenschutz')">
+          @click="$track('Footer', 'openDatenschutz')"
+        >
           Datenschutz
         </nuxt-link>
       </v-flex>
     </v-layout>
   </v-footer>
-
 </template>
 
 <script lang="js">

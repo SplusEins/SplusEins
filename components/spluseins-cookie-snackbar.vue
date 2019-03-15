@@ -3,29 +3,34 @@
     :value="snackbarOpen"
     :timeout="0"
     vertical
-    right>
+    right
+  >
     Cookies für Einstellungen und Analytics erlauben?
     <v-layout
       justify-space-between
       fluid
-      row>
+      row
+    >
       <v-btn
         ref="btn-deny"
         flat
-        @click="setAllCookiesDenied()">
+        @click="setAllCookiesDenied()"
+      >
         Nichts
       </v-btn>
       <v-btn
         ref="btn-allow-necessary"
         flat
-        @click="setNecessaryCookiesAllowed()">
+        @click="setNecessaryCookiesAllowed()"
+      >
         Einstellungen
       </v-btn>
       <v-btn
         ref="btn-allow-all"
         color="success"
         flat
-        @click="setAllCookiesAllowed()">
+        @click="setAllCookiesAllowed()"
+      >
         Einverstanden
       </v-btn>
     </v-layout>

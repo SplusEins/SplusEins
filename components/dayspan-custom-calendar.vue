@@ -2,24 +2,30 @@
   <v-layout column>
     <v-flex
       fluid
-      pb-3>
+      pb-3
+    >
       <v-layout
         justify-space-between
-        row>
+        row
+      >
         <v-flex shrink>
           <v-tooltip
             v-bind="{setToday, todayDate, calendar}"
             name="today"
-            bottom>
+            bottom
+          >
             <v-btn
               slot="activator"
               :small="$vuetify.breakpoint.xs"
               :icon="$vuetify.breakpoint.xs"
               :outline="!$vuetify.breakpoint.xs"
               depressed
-              @click="setToday(); $track('Calendar', 'setToday')">
+              @click="setToday(); $track('Calendar', 'setToday')"
+            >
               <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
-              <v-icon v-show="!$vuetify.breakpoint.smAndUp">{{ labels.todayIcon }}</v-icon>
+              <v-icon v-show="!$vuetify.breakpoint.smAndUp">
+                {{ labels.todayIcon }}
+              </v-icon>
             </v-btn>
             <span>{{ todayDate }}</span>
           </v-tooltip>
@@ -27,13 +33,15 @@
           <v-tooltip
             v-bind="{setToday, todayDate, calendar}"
             name="today"
-            bottom>
+            bottom
+          >
             <v-btn
               slot="activator"
               :small="$vuetify.breakpoint.xs"
               icon
               depressed
-              @click="prev(); $track('Calendar', 'prevWeek', 'clicked')" >
+              @click="prev(); $track('Calendar', 'prevWeek', 'clicked')"
+            >
               <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
             <span>{{ prevLabel }}</span>
@@ -42,13 +50,15 @@
           <v-tooltip
             v-bind="{next, nextLabel, calendar}"
             name="next"
-            bottom>
+            bottom
+          >
             <v-btn
               slot="activator"
               :small="$vuetify.breakpoint.xs"
               icon
               depressed
-              @click="next(); $track('Calendar', 'nextWeek', 'clicked')">
+              @click="next(); $track('Calendar', 'nextWeek', 'clicked')"
+            >
               <v-icon>mdi-chevron-right</v-icon>
             </v-btn>
             <span>{{ nextLabel }}</span>
@@ -58,14 +68,16 @@
             v-show="$vuetify.breakpoint.smAndUp"
             v-bind="{summary, calendar}"
             name="extendedDateSummary"
-            class = "ds-summary-text">
+            class="ds-summary-text"
+          >
             {{ summary(false) }}
           </span>
           <span
             v-show="!$vuetify.breakpoint.smAndUp"
             v-bind="{summary, calendar}"
             name="shortDateSummary"
-            class = "ds-summary-text">
+            class="ds-summary-text"
+          >
             {{ summary(true) }}
           </span>
         </v-flex>
@@ -81,12 +93,12 @@
         left: () => { $track('Calendar', 'nextWeek', 'swiped'); next(); },
         right: () => { $track('Calendar', 'prevWeek', 'swiped'); prev(); },
       }"
-      fill-height>
-
+      fill-height
+    >
       <slot
         v-bind="{$scopedSlots, $listeners, calendar, viewDay}"
-        name="calendarAppCalendar" >
-
+        name="calendarAppCalendar"
+      >
         <ds-calendar
           ref="calendar"
           :calendar="calendar"
@@ -96,11 +108,9 @@
           v-on="$listeners"
           @view-day="viewDay"
         />
-
       </slot>
 
       <slot name="containerInside" />
-
     </v-flex>
   </v-layout>
 </template>

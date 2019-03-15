@@ -1,13 +1,16 @@
 <template>
   <v-card>
-    <v-card-title> 
-      <div class="headline">Mensa Wolfenbüttel Heute</div>
+    <v-card-title>
+      <div class="headline">
+        Mensa Wolfenbüttel Heute
+      </div>
     </v-card-title>
     <v-card-text class="card-text-padding">
-      <v-list 
+      <v-list
         v-for="item in mensaMenus"
         :key="item.id"
-        dense>
+        dense
+      >
         <div class="list-tile">
           <b>{{ item.category }}:</b>
           <br>
@@ -23,7 +26,8 @@
         to="/mensa"
         flat
         color="primary"
-        @click="$track('MensaPlan', 'opened', 'dashboard')">
+        @click="$track('MensaPlan', 'opened', 'dashboard')"
+      >
         Mehr
       </v-btn>
     </v-card-actions>
