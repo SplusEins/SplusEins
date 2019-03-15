@@ -3,7 +3,8 @@
     <v-divider />
     <v-list
       subheader
-      dense>
+      dense
+    >
       <v-list-tile @click="install()">
         <v-list-tile-action>
           <v-icon>mdi-download</v-icon>

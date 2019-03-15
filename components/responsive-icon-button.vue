@@ -1,15 +1,21 @@
 <template functional>
   <v-tooltip
     :disabled="props.breakpoint"
-    bottom>
+    bottom
+  >
     <v-btn
       slot="activator"
       :outline="props.breakpoint"
       :icon="!props.breakpoint"
       :flat="!props.breakpoint"
-      @click="listeners.click">
-      <v-icon :left="props.breakpoint">{{ props.icon }}</v-icon>
-      <span v-show="props.breakpoint">{{ props.text }}</span>
+      @click="listeners.click"
+    >
+      <v-icon :left="props.breakpoint">
+        {{ props.icon }}
+      </v-icon>
+      <span v-show="props.breakpoint">
+        {{ props.text }}
+      </span>
     </v-btn>
     <span>{{ props.text }}</span>
   </v-tooltip>

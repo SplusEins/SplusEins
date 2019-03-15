@@ -4,8 +4,9 @@
       clipped-left
       dark
       fixed
-      app>
-      <v-toolbar-side-icon @click.stop="toggleSidenav()"/>
+      app
+    >
+      <v-toolbar-side-icon @click.stop="toggleSidenav()" />
       <v-spacer />
       <img
         src="../assets/img/headerLogo.png"
@@ -18,7 +19,9 @@
         <nuxt-link
           tag="span"
           to="/"
-        >SPLUSEINS</nuxt-link>
+        >
+          SPLUSEINS
+        </nuxt-link>
       </v-toolbar-title>
       <v-spacer />
       <v-toolbar-items>
@@ -27,18 +30,20 @@
           color="warning"
           icon
           flat
-          @click="enqueueError('Internetverbindung: Nicht verfügbar')">
+          @click="enqueueError('Internetverbindung: Nicht verfügbar')"
+        >
           <v-icon>mdi-wifi-off</v-icon>
         </v-btn>
         <v-btn
           icon
           flat
-          @click="toggleDark(); $track('Menu', 'toggleDark', 'isDark: ' + isDark)">
+          @click="toggleDark(); $track('Menu', 'toggleDark', 'isDark: ' + isDark)"
+        >
           <v-icon>mdi-theme-light-dark</v-icon>
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <spluseins-side-nav/>
+    <spluseins-side-nav />
   </div>
 </template>
 

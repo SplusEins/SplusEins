@@ -3,12 +3,14 @@
     v-model="snackbarOpen"
     :timeout="0"
     color="error"
-    right>
+    right
+  >
     [{{ errorQueue.length }}] {{ next }}
     <v-btn
       dark
       flat
-      @click="dequeueError()">
+      @click="dequeueError()"
+    >
       Schließen
     </v-btn>
   </v-snackbar>

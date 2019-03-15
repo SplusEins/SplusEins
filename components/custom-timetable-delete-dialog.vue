@@ -1,19 +1,28 @@
 <template>
   <v-dialog
     v-model="dialogOpen"
-    max-width="400">
+    max-width="400"
+  >
     <v-card>
-      <v-card-title class="headline">{{ customSchedule.label }} löschen?</v-card-title>
+      <v-card-title class="headline">
+        {{ customSchedule.label }} löschen?
+      </v-card-title>
       <v-card-actions>
         <v-spacer />
 
         <v-btn
           flat
-          @click="dialogOpen = false">Abbrechen</v-btn>
+          @click="dialogOpen = false"
+        >
+          Abbrechen
+        </v-btn>
         <v-btn
           flat
           color="error"
-          @click="confirmDelete()">Löschen</v-btn>
+          @click="confirmDelete()"
+        >
+          Löschen
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

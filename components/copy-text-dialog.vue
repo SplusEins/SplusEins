@@ -1,16 +1,18 @@
 <template>
   <v-dialog
     v-model="dialogOpen"
-    max-width="400">
+    max-width="400"
+  >
     <v-card>
-
       <v-toolbar
         dark
-        color="primary">
+        color="primary"
+      >
         <v-btn
           icon
           dark
-          @click.native="dialogOpen = false">
+          @click.native="dialogOpen = false"
+        >
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-toolbar-title>Link Teilen</v-toolbar-title>
@@ -26,9 +28,9 @@
           autofocus
           solo
           full-width
-          readonly />
+          readonly
+        />
       </v-card-text>
-
     </v-card>
   </v-dialog>
 </template>
@@ -69,7 +71,7 @@ export default {
 <style scoped lang="scss">
 
 .card-text{
-  padding: 10px 10px 0px 10px; 
+  padding: 10px 10px 0px 10px;
 }
 
-</style> 
+</style>

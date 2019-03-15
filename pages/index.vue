@@ -4,16 +4,18 @@
       right: () => setSidenav(true)
     }"
     fluid
-    grid-list-md>
+    grid-list-md
+  >
     <v-layout
       row
-      wrap>
-      
+      wrap
+    >
       <v-flex
         d-flex
         xs12
         md6
-        lg4>
+        lg4
+      >
         <last-changes-card />
       </v-flex>
 
@@ -22,7 +24,8 @@
         :d-flex="displayGeneralNewsCard"
         xs12
         md6
-        lg4>
+        lg4
+      >
         <general-news-card />
       </v-flex>
 
@@ -30,16 +33,19 @@
         xs12
         md6
         lg4
-        d-flex>
+        d-flex
+      >
         <v-layout
           row
-          wrap>
+          wrap
+        >
           <v-flex d-flex>
             <upcoming-lectures-card />
           </v-flex>
-          <v-flex 
+          <v-flex
             v-show="displaySpecificNewsCard"
-            :d-flex="displaySpecificNewsCard">
+            :d-flex="displaySpecificNewsCard"
+          >
             <specific-news-card />
           </v-flex>
         </v-layout>
@@ -50,7 +56,8 @@
         :d-flex="mensaIsOpen"
         xs12
         md6
-        lg4>
+        lg4
+      >
         <mensa-card />
       </v-flex>
 
@@ -59,7 +66,8 @@
         xs12
         md6
         lg4
-        d-flex>
+        d-flex
+      >
         <quick-access-card />
       </v-flex>
 
@@ -68,10 +76,10 @@
         xs12
         md6
         lg4
-        d-flex>
+        d-flex
+      >
         <stats-card />
       </v-flex>
-
     </v-layout>
   </v-container>
 </template>
@@ -97,22 +105,6 @@ export default {
     GeneralNewsCard,
     SpecificNewsCard,
     StatsCard,
-  },
-  async fetch({ store, params }) {
-    if (process.static) {
-      store.commit('enableLazyLoad');
-    }
-
-    if (process.client || !store.state.lazyLoad) {
-      await store.dispatch('mensa/loadWeek');
-    } else {
-      console.log('lazy loading is enabled: not fetching mensa plan and timetable');
-    }
-  },
-  head() {
-    return {
-      title: 'Startseite',
-    };
   },
   computed: {
     mensaIsOpen() {
@@ -141,6 +133,22 @@ export default {
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
       hasSubscribableTimetables: 'splus/hasSubscribableTimetables',
     }),
+  },
+  async fetch({ store, params }) {
+    if (process.static) {
+      store.commit('enableLazyLoad');
+    }
+
+    if (process.client || !store.state.lazyLoad) {
+      await store.dispatch('mensa/loadWeek');
+    } else {
+      console.log('lazy loading is enabled: not fetching mensa plan and timetable');
+    }
+  },
+  head() {
+    return {
+      title: 'Startseite',
+    };
   },
   methods: {
     ...mapMutations({

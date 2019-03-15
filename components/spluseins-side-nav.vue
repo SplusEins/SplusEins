@@ -1,25 +1,27 @@
 <template lang="html">
   <v-navigation-drawer
+    v-model="drawer"
     v-touch="{
       left: () => drawer = false
     }"
-    v-model="drawer"
     clipped
     fixed
     app
-    width="350">
+    width="350"
+  >
     <basic-utilities-list />
     <v-divider v-if="hasCustomTimetables" />
     <custom-timetables-list v-if="hasCustomTimetables" />
-    <v-divider v-if="hasFavoriteTimetables"/>
-    <favorite-timetables-list v-if="hasFavoriteTimetables"/>
+    <v-divider v-if="hasFavoriteTimetables" />
+    <favorite-timetables-list v-if="hasFavoriteTimetables" />
     <v-divider />
     <general-timetables-list />
     <no-ssr>
       <install-button-list
         :class="['stick-bottom', {
           'light--background': !isDark,
-          'dark--background': isDark }]" />
+          'dark--background': isDark }]"
+      />
     </no-ssr>
   </v-navigation-drawer>
 </template>

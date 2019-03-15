@@ -1,7 +1,8 @@
 <template>
   <v-container
     fluid
-    fill-height>
+    fill-height
+  >
     <spluseins-calendar />
   </v-container>
 </template>

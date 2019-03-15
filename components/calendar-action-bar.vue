@@ -6,19 +6,22 @@
         :breakpoint="$vuetify.breakpoint.xl"
         :icon="isFavorite ? 'mdi-heart' : 'mdi-heart-outline'"
         :text="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
-        @click="toggleFavorite" />
+        @click="toggleFavorite"
+      />
     </span>
 
     <!-- mobile action bar -->
     <v-menu
       v-show="isMobile"
       bottom
-      left>
+      left
+    >
       <v-btn
         slot="activator"
         :small="$vuetify.breakpoint.xs"
         class="cursor-pointer"
-        icon>
+        icon
+      >
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
 
@@ -26,10 +29,15 @@
         <v-list-tile
           v-show="isTinyMobile"
           v-if="!isCustomSchedule"
-          @click="toggleFavorite">
+          @click="toggleFavorite"
+        >
           <v-list-tile-content>
-            <v-list-tile-title v-if="!isFavorite">Favorisieren</v-list-tile-title>
-            <v-list-tile-title v-else>Favorit entfernen</v-list-tile-title>
+            <v-list-tile-title v-if="!isFavorite">
+              Favorisieren
+            </v-list-tile-title>
+            <v-list-tile-title v-else>
+              Favorit entfernen
+            </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile @click="share(); $track('Calendar', 'share', 'desktop')">
@@ -42,16 +50,20 @@
             <v-list-tile-title>Extern öffnen</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile
-          @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'desktop')">
+        <v-list-tile @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'desktop')">
           <v-list-tile-content>
-            <v-list-tile-title v-if="isCustomSchedule">Bearbeiten</v-list-tile-title>
-            <v-list-tile-title v-else>Personalisieren</v-list-tile-title>
+            <v-list-tile-title v-if="isCustomSchedule">
+              Bearbeiten
+            </v-list-tile-title>
+            <v-list-tile-title v-else>
+              Personalisieren
+            </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile
           v-if="isCustomSchedule"
-          @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'desktop')">
+          @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'desktop')"
+        >
           <v-list-tile-title>Löschen</v-list-tile-title>
         </v-list-tile>
       </v-list>
@@ -63,36 +75,42 @@
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-share-variant"
         text="Teilen"
-        @click="share(); $track('Calendar', 'share', 'desktop')" />
+        @click="share(); $track('Calendar', 'share', 'desktop')"
+      />
       <responsive-icon-button
         v-if="isCustomSchedule"
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-delete"
         text="Löschen"
-        @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'mobile')" />
+        @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'mobile')"
+      />
       <responsive-icon-button
         :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-pencil"
-        @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'mobile')" />
+        @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'mobile')"
+      />
       <responsive-icon-button
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-calendar"
         text="Extern öffnen"
-        @click="routeToIcsLink(); $track('Calendar', 'ICS','mobile')" />
+        @click="routeToIcsLink(); $track('Calendar', 'ICS','mobile')"
+      />
     </span>
 
     <custom-timetable-delete-dialog
       v-model="deleteTimetableDialogOpen"
       :custom-schedule="currentSchedule"
-      @on-delete="routeToRoot()" />
+      @on-delete="routeToRoot()"
+    />
     <custom-timetable-dialog
       v-model="editTimetableDialogOpen"
-      :custom-schedule="currentAsCustomSchedule" />
+      :custom-schedule="currentAsCustomSchedule"
+    />
     <copy-text-dialog
       v-model="shareDialogOpen"
-      :text-to-copy="currentUrl()" />
-
+      :text-to-copy="currentUrl()"
+    />
   </div>
 </template>
 

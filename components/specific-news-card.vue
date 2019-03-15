@@ -1,25 +1,29 @@
 <template>
   <v-card>
     <v-card-title class="title-padding">
-      <div class="headline">Neues {{ selectedItem.title }}</div>
+      <div class="headline">
+        Neues {{ selectedItem.title }}
+      </div>
       <v-btn
         :loading="specificNewsLoading"
         icon
-        @click="dialogOpen = true">
+        @click="dialogOpen = true"
+      >
         <v-icon>mdi-newspaper</v-icon>
       </v-btn>
     </v-card-title>
     <v-card-text class="card-text-padding">
-      <v-list 
-        dense>
-        <div 
+      <v-list dense>
+        <div
           v-for="item in specificNews.slice(0,2)"
           :key="item.link"
-          class="list-tile">
-          <a 
+          class="list-tile"
+        >
+          <a
             :href="item.link"
             target="_blank"
-            class="link">
+            class="link"
+          >
             {{ item.title }}
           </a>
           <br>
@@ -33,7 +37,8 @@
       :open.sync="dialogOpen"
       :items="availableSoures"
       :selected.sync="selectedItem"
-      title="Quelle auswählen"/>
+      title="Quelle auswählen"
+    />
   </v-card>
 </template>
 

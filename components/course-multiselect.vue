@@ -2,7 +2,8 @@
   <div>
     <v-alert
       :value="overlappingCourses.length > 0"
-      type="warning">
+      type="warning"
+    >
       Kurse überschneiden sich: {{ overlappingCourses }}
     </v-alert>
     <v-data-table
@@ -11,27 +12,33 @@
       :items="courses"
       hide-headers
       hide-actions
-      item-key="titleId">
+      item-key="titleId"
+    >
       <template slot="no-data">
         <v-layout
           row
-          justify-center>
+          justify-center
+        >
           <p>Keine Kurse sind geladen.</p>
         </v-layout>
       </template>
       <template
         slot="items"
-        slot-scope="props">
+        slot-scope="props"
+      >
         <td>
           <v-checkbox
             v-model="props.selected"
             :disabled="!props.selected && selectedCourses.length > maxCourses"
             primary
-            hide-details />
+            hide-details
+          />
         </td>
         <td>{{ props.item.title }}</td>
         <td>{{ props.item.lecturer }}</td>
-        <td v-show="$vuetify.breakpoint.smAndUp">{{ props.item.room }}</td>
+        <td v-show="$vuetify.breakpoint.smAndUp">
+          {{ props.item.room }}
+        </td>
       </template>
     </v-data-table>
   </div>
@@ -98,7 +105,7 @@ export default {
       const selectedLectures = this.lectures.filter(
         (lecture) => this.selectedCourses.some(
           (course) => course.titleId == lecture.titleId));
-      
+
       const overlapLectures = selectedLectures.filter(
         (oneLecture, index, self) =>
           withoutAt(self, index).some(overlapsWith(oneLecture)));

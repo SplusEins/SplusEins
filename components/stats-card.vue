@@ -3,20 +3,21 @@
     <v-card-title>
       <span class="headline">Statistik</span>
     </v-card-title>
-    <vc-donut 
+    <vc-donut
       :sections="sections"
       :size="250"
       :thickness="30"
       :background="isDark ? '#424242' : 'white'"
       :total="totalHours"
-      unit="px">
+      unit="px"
+    >
       <h1>{{ totalHours }}h</h1>diese Woche
     </vc-donut>
     <v-card-text class="card-text">
       <h3>{{ subscribedTimetable.description || subscribedTimetable.label }}</h3>
       <span>{{ sections.length }} {{ sections.length > 1 ? 'Module' : 'Modul' }} an </span>
       <span>{{ totalWeekdays }} {{ totalWeekdays > 1 ? 'Wochentagen' : 'Wochentag' }}</span>
-    </v-card-text> 
+    </v-card-text>
   </v-card>
 </template>
 
@@ -47,7 +48,7 @@ export default {
     },
   },
   mounted() {
-    this.updateSections(); 
+    this.updateSections();
   },
   methods: {
     updateSections() {

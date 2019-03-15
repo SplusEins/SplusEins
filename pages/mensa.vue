@@ -1,13 +1,13 @@
 <template>
-  <v-container 
+  <v-container
     v-touch="{
       right: () => setSidenav(true)
     }"
-    fluid 
+    fluid
     grid-list-md
     hide-overlay
-    class="container-padding">
-
+    class="container-padding"
+  >
     <h2>Mensa Wolfenbüttel</h2>
     <span>Montag bis Freitag 11:15 - 14:15 Uhr</span>
     <br>
@@ -16,7 +16,8 @@
         Vegetarisch
         <v-icon
           :color="getIconColor()"
-          small>
+          small
+        >
           mdi-leaf
         </v-icon>
       </span>
@@ -25,37 +26,41 @@
         Vegan
         <v-icon
           color="green"
-          small>
+          small
+        >
           mdi-leaf
         </v-icon>
       </span>
     </span>
-    <v-divider class="divider"/>
+    <v-divider class="divider" />
 
-    <v-layout 
+    <v-layout
       :wrap="$vuetify.breakpoint.smAndDown"
-      row>
+      row
+    >
       <v-flex
         v-for="dayPlan in weekPlan"
         :key="dayPlan.date"
-        xs12>
-        <v-card 
-          height="100%">
-          <v-card-title> 
+        xs12
+      >
+        <v-card height="100%">
+          <v-card-title>
             <h3>{{ getDayHeader(dayPlan) }}</h3>
           </v-card-title>
-          <v-divider/>
-          <v-list 
+          <v-divider />
+          <v-list
             v-for="item in dayPlan.data"
             :key="item.id"
-            dense>
+            dense
+          >
             <div class="list-tile">
               <span class="category">{{ item.category }}:</span>
               <v-icon
                 v-if="displayIcon(item)"
                 :color="getIconColor(item)"
                 class="icon"
-                small>
+                small
+              >
                 mdi-leaf
               </v-icon>
               <br>
@@ -66,7 +71,7 @@
           </v-list>
         </v-card>
       </v-flex>
-    </v-layout> 
+    </v-layout>
     <span class="disclaimer">
       Quelle: openmensa.org
     </span>
@@ -89,6 +94,13 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapState({
+      weekPlan: (state) => state.mensa.weekPlan,
+      lazyLoad: (state) => state.lazyLoad,
+      isDark: (state) => state.ui.isDark,
+    }),
+  },
   async fetch({ store, params }) {
     if (process.static) {
       store.commit('enableLazyLoad');
@@ -99,13 +111,6 @@ export default {
     } else {
       console.log('lazy loading is enabled: not fetching mensa plan');
     }
-  },
-  computed: {
-    ...mapState({
-      weekPlan: (state) => state.mensa.weekPlan,
-      lazyLoad: (state) => state.lazyLoad,
-      isDark: (state) => state.ui.isDark,
-    }),
   },
   mounted() {
     if (this.lazyLoad) {
