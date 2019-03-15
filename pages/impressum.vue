@@ -61,8 +61,8 @@ export default {
     return {
       title: 'Impressum',
       meta: [
-        { hid: 'description', name: 'description', content: 'Impressum –' + META_INFORMATION.description },
-        { hid: 'og:description', name: 'og:description', content: 'Impressum –' + META_INFORMATION.description }
+        { hid: 'description', name: 'description', content: 'Impressum – ' + META_INFORMATION.description },
+        { hid: 'og:description', name: 'og:description', content: 'Impressum – ' + META_INFORMATION.description }
       ],
     };
   },

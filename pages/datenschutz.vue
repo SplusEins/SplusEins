@@ -136,8 +136,8 @@ export default {
     return {
       title: 'Datenschutz',
       meta: [
-        { hid: 'description', name: 'description', content: 'Datenschutz –' + META_INFORMATION.description },
-        { hid: 'og:description', name: 'og:description', content: 'Datenschutz –' + META_INFORMATION.description }
+        { hid: 'description', name: 'description', content: 'Datenschutz – ' + META_INFORMATION.description },
+        { hid: 'og:description', name: 'og:description', content: 'Datenschutz – ' + META_INFORMATION.description }
       ],
     };
   },

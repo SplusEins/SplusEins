@@ -84,8 +84,8 @@ export default {
     return {
       title: 'Mensaplan',
       meta: [
-        { hid: 'description', name: 'description', content: 'Mensaplan –' + META_INFORMATION.description },
-        { hid: 'og:description', name: 'og:description', content: 'Mensaplan –' + META_INFORMATION.description }
+        { hid: 'description', name: 'description', content: 'Mensaplan – ' + META_INFORMATION.description },
+        { hid: 'og:description', name: 'og:description', content: 'Mensaplan – ' + META_INFORMATION.description }
       ],
     };
   },
