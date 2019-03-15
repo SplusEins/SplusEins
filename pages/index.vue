@@ -8,26 +8,7 @@
   >
     <v-layout
       row
-      wrap
-    >
-      <v-flex
-        d-flex
-        xs12
-        md6
-        lg4
-      >
-        <last-changes-card />
-      </v-flex>
-
-      <v-flex
-        v-show="displayGeneralNewsCard"
-        :d-flex="displayGeneralNewsCard"
-        xs12
-        md6
-        lg4
-      >
-        <general-news-card />
-      </v-flex>
+      wrap>
 
       <v-flex
         xs12
@@ -35,12 +16,55 @@
         lg4
         d-flex
       >
-        <v-layout
-          row
-          wrap
-        >
+        <v-layout column>
           <v-flex d-flex>
             <upcoming-lectures-card />
+          </v-flex>
+
+          <v-flex
+            v-show="mensaIsOpen"
+            :d-flex="mensaIsOpen"
+          >
+            <mensa-card />
+          </v-flex>
+        </v-layout>
+      </v-flex>
+
+      <v-flex
+        xs12
+        md6
+        lg4
+        d-flex
+      >
+        <v-layout column>
+          <v-flex
+            v-if="displayQuickAccessCard"
+            d-flex
+          >
+            <quick-access-card />
+          </v-flex>
+
+          <v-flex
+            v-if="hasSubscribableTimetables"
+            d-flex
+          >
+            <stats-card />
+          </v-flex>
+        </v-layout>
+      </v-flex>
+
+      <v-flex
+        xs12
+        md6
+        lg4
+        d-flex
+      >
+        <v-layout column>
+          <v-flex
+            v-show="displayGeneralNewsCard"
+            :d-flex="displayGeneralNewsCard"
+          >
+            <general-news-card />
           </v-flex>
           <v-flex
             v-show="displaySpecificNewsCard"
@@ -52,33 +76,12 @@
       </v-flex>
 
       <v-flex
-        v-show="mensaIsOpen"
-        :d-flex="mensaIsOpen"
-        xs12
-        md6
-        lg4
-      >
-        <mensa-card />
-      </v-flex>
-
-      <v-flex
-        v-if="displayQuickAccessCard"
-        xs12
-        md6
-        lg4
         d-flex
-      >
-        <quick-access-card />
-      </v-flex>
-
-      <v-flex
-        v-if="hasSubscribableTimetables"
         xs12
         md6
         lg4
-        d-flex
       >
-        <stats-card />
+        <last-changes-card />
       </v-flex>
     </v-layout>
   </v-container>
