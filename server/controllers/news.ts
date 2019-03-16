@@ -147,16 +147,16 @@ router.get('/campus38', cors(), async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`campus38 news cache miss for key ${key}`);
 
-      const response = await axios.get('https://www.campus38.de');
-      const $ = cheerio.load(response.data);
-      return $('.article').map(function(i, article) {
+      const response = await axios.get('https://www.campus38.de/newsfeed.xml');
+      const $ = cheerio.load(response.data, {xmlMode: true});
+      return($('entry').map(function(i, article) {
         return {
-          title: $('a', this).attr('title').trim(),
-          link: 'https://www.campus38.de' + $('a', this).attr('href'),
-          text: $('p', this).text().trim(),
-          date: $('time').attr('datetime'),
+          title: $('title', this).text().trim(),
+          link: $('link', this).attr('href'),
+          text: $('summary', this).text().trim(),
+          date: $('published', this).text().trim().split('T')[0]
         };
-      }).get();
+      }).slice(0, 10).get());
     }, { ttl: NEWS_CACHE_SECONDS });
 
     res.set('Cache-Control', `public, max-age=${NEWS_CACHE_SECONDS}`);
