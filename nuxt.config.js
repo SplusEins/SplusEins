@@ -54,9 +54,9 @@ export default {
     // https://vuetifyjs.com
     '@/plugins/vuetify',
     // https://github.com/championswimmer/vuex-persist
-    { src: '@/plugins/vuex-persist', ssr: false },
+    { src: '@/plugins/vuex-persist', mode: 'client' },
     // https://github.com/AmazingDreams/vue-matomo
-    { src: '@/plugins/vue-matomo', ssr: false },
+    { src: '@/plugins/vue-matomo', mode: 'client' },
     // https://github.com/Inndy/vue-clipboard2
     '@/plugins/vue-clipboard2',
     // https://github.com/dumptyd/vue-css-donut-chart
