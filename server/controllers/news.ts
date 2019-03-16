@@ -149,14 +149,14 @@ router.get('/campus38', cors(), async (req, res, next) => {
 
       const response = await axios.get('https://www.campus38.de/newsfeed.xml');
       const $ = cheerio.load(response.data, {xmlMode: true});
-      return($('entry').map(function(i, article) {
+      return $('entry').map(function(i, article) {
         return {
           title: $('title', this).text().trim(),
           link: $('link', this).attr('href'),
           text: $('summary', this).text().trim(),
           date: $('published', this).text().trim().split('T')[0]
         };
-      }).slice(0, 10).get());
+      }).slice(0, 10).get();
     }, { ttl: NEWS_CACHE_SECONDS });
 
     res.set('Cache-Control', `public, max-age=${NEWS_CACHE_SECONDS}`);
