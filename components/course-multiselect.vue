@@ -44,7 +44,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script>
 import * as moment from 'moment';
 
 export default {

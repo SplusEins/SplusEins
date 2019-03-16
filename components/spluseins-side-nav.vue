@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <v-navigation-drawer
     v-model="drawer"
     v-touch="{
@@ -26,7 +26,7 @@
   </v-navigation-drawer>
 </template>
 
-<script lang="js">
+<script>
 import { mapState, mapMutations } from 'vuex';
 import GeneralTimetablesList from './general-timetables-list.vue';
 import FavoriteTimetablesList from './favorite-timetables-list.vue';
