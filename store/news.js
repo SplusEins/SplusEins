@@ -21,8 +21,8 @@ export const mutations = {
 }
 
 export const actions = {
-  async loadNews({ state, commit }, generalNews: Boolean) {
-    let source: String;
+  async loadNews({ state, commit }, generalNews) {
+    let source;
     let result = [];
 
     if(generalNews) {
@@ -32,7 +32,7 @@ export const actions = {
       source = state.specificNewsSource;
       commit('setLoading', { loading: true, generalNews: false });
     }
-   
+
     try {
       const response = await this.$axios.get(`/api/news/${source}`);
       result = response.data.length != 0? response.data : [{text: 'Keine Daten verfügbar!'}];

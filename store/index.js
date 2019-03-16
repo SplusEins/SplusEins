@@ -22,7 +22,7 @@ export const mutations = {
   enableLazyLoad(state) {
     state.lazyLoad = true;
   },
-  enqueueError(state, message:string) {
+  enqueueError(state, message) {
     state.errorQueue.push(message);
   },
   dequeueError(state){

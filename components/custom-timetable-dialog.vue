@@ -93,7 +93,7 @@
 <script lang="js">
 import { mapMutations, mapGetters, mapState } from 'vuex';
 import * as moment from 'moment';
-import { SEMESTER_WEEK_1, range, uniq, flatten, customScheduleToRoute } from '../store/splus';
+import { SEMESTER_WEEK_1, range, uniq, flatten, customScheduleToRoute } from '../lib/util';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
 import CustomTimetableCookieReminder from './custom-timetable-cookie-reminder.vue'
