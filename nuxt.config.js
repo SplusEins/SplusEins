@@ -1,3 +1,5 @@
+import * as META_INFORMATION from './assets/meta-information.json';
+
 export default {
   mode: 'universal',
 
@@ -8,7 +10,12 @@ export default {
     titleTemplate: '%s - SplusEins',
     link: [
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' },
-    ]
+    ],
+    meta: [
+      { hid: 'description', name: 'description', content: META_INFORMATION.description },
+      { hid: 'og:description', name: 'og:description', content: META_INFORMATION.description },
+      { hid: 'keywords', name: 'keywords', content: META_INFORMATION.keywords },
+    ],
   },
 
   /*
@@ -19,7 +26,6 @@ export default {
     lang: 'de',
     name: 'SplusEins',
     author: 'SplusEins-Team',
-    description: 'Stundenplan Plus Mehr für Studenten der Ostfalia.',
     ogHost: 'https://spluseins.de',
     ogImage: '/logo.png',
   },
