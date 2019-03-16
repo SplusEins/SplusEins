@@ -2,54 +2,7 @@ import colors from 'vuetify/es5/util/colors';
 import * as moment from 'moment';
 import * as TIMETABLES from '~/assets/timetables.json';
 import * as chroma from 'chroma-js';
-import TimetableConfiguration from '~/model/TimetableConfiguration';
-import { Route } from 'vue-router';
-
-export const uniq = (iterable) => [...new Set(iterable)];
-export const flatten = (iterable) => [].concat(...iterable);
-const scalarArraysEqual = (array1, array2) =>
-  array1.length === array2.length &&
-  array1.every((value, index) => value === array2[index]);
-export const range = (lower, upper) => Array.from(Array(upper - lower), (x, i) => lower + i);
-
-export const SEMESTER_WEEK_1 = parseInt(process.env.SEMESTER_WEEK_1 || '10');
-
-
-export function customScheduleToRoute(customTimetable): Partial<Route> {
-  const query = {
-    id: customTimetable.id,
-    course: customTimetable.whitelist,
-    name: customTimetable.label,
-    v: '1',
-  };
-
-  return { name: 'plan-timetable', params: {}, query };
-}
-
-export function scheduleToRoute(timetable): Partial<Route> {
-  return {
-    name: 'plan-timetable',
-    params: { timetable: timetable.id },
-  };
-}
-
-export function shortenTimetableDegree(timetable): string {
-  let shortenedDegree;
-
-  switch(timetable.degree){
-    case 'Bachelor of Science': shortenedDegree = 'B.Sc.'; break;
-    case 'Master of Science': shortenedDegree = 'M.Sc.'; break;
-    case 'Bachelor of Arts': shortenedDegree = 'B.A.'; break;
-    case 'Master of Arts': shortenedDegree = 'M.A.'; break;
-    case 'Bachelor of Engineering': shortenedDegree = 'B.Eng.'; break;
-    case 'Master of Engineering': shortenedDegree = 'M.Eng.'; break;
-    case 'Bachelor of Laws': shortenedDegree = 'LL.B.'; break;
-    case 'Master of Laws': shortenedDegree = 'LL.M.'; break;
-    default: shortenedDegree = timetable.degree;
-  }
-
-  return shortenedDegree;
-}
+import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, flatten, customScheduleToRoute, scalarArraysEqual } from '~/lib/util';
 
 function defaultWeek() {
   if (moment().isoWeek() < SEMESTER_WEEK_1) {
@@ -202,7 +155,7 @@ export const getters = {
   getScheduleById: (state) => (timetableId) => {
     return state.schedules.find(({ id }) => id == timetableId);
   },
-  customSchedulesAsRoutes: (state, getters) => {
+  customSchedulesAsRoutes: (state) => {
     return Object.values(state.customSchedules)
       .map(customScheduleToRoute);
   },
@@ -392,12 +345,12 @@ export const actions = {
 
     switch (parseFloat(query.v)) {
       case 1:
-        const whitelist: string[] = Array.isArray(query.course || []) ?
+        const whitelist = Array.isArray(query.course || []) ?
           query.course : [query.course];
-        const id: string[] = Array.isArray(query.id || []) ?
+        const id = Array.isArray(query.id || []) ?
           query.id : [query.id];
-        const label: string = query.name;
-        const customTimetable = { id, label, whitelist } as TimetableConfiguration;
+        const label = query.name;
+        const customTimetable = { id, label, whitelist };
 
         commit('addCustomSchedule', customTimetable);
         commit('setSchedule', customTimetable);

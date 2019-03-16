@@ -71,8 +71,6 @@ export default {
     '@nuxtjs/axios',
     // https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
-    // https://github.com/nuxt-community/typescript-template
-    '~/modules/typescript',
   ],
   /*
   ** Axios module configuration
