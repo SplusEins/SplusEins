@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div>
     <v-toolbar
       clipped-left
@@ -47,7 +47,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script>
 import SpluseinsSideNav from './spluseins-side-nav';
 import { mapMutations, mapState } from 'vuex';
 

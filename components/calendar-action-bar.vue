@@ -114,7 +114,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script>
 import { mapMutations, mapState, mapGetters } from 'vuex';
 import CopyTextDialog from './copy-text-dialog.vue';
 import ResponsiveIconButton from './responsive-icon-button.vue';

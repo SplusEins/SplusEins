@@ -45,7 +45,7 @@
   </v-list>
 </template>
 
-<script lang="js">
+<script>
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 
 export default {

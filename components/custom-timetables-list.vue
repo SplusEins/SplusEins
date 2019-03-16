@@ -18,7 +18,7 @@
   </v-list>
 </template>
 
-<script lang="js">
+<script>
 import { mapGetters } from 'vuex';
 
 export default {

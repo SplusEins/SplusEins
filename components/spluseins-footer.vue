@@ -44,7 +44,7 @@
   </v-footer>
 </template>
 
-<script lang="js">
+<script>
 import SpluseinsAbout from './spluseins-about.vue'
 
 export default  {

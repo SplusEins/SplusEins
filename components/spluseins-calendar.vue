@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <dayspan-custom-calendar
     :calendar="calendar"
     :types="types"
@@ -27,7 +27,7 @@
   </dayspan-custom-calendar>
 </template>
 
-<script lang="js">
+<script>
 import * as moment from 'moment';
 import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
