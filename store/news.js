@@ -40,16 +40,25 @@ export const actions = {
     commit('setLoading', { loading: false });
   },
   async loadCampusNews({ state, commit }) {
-    let result = [];
-
     try {
       const ostfaliaNews = await this.$axios.$get('/api/news/ostfalia');
       const campus38News = await this.$axios.$get('/api/news/campus38');
 
-      result = [].concat(
+      const truncateArticle = (article) => {
+        const sentences = article.text.split('.');
+        console.log(sentences);
+        const text = sentences.length > 1 ? `${sentences[0]}.` : article.text;
+        return {
+          ...article,
+          text,
+        };
+      };
+
+      const articles = [].concat(
         ostfaliaNews.map((article) => ({ ...article, source: 'Ostfalia' })),
         campus38News.map((article) => ({ ...article, source: 'Campus 38' }))
-      );
+      ).map(truncateArticle);
+      console.log(articles);
 
       const scoreArticle = (article) => {
         const date = new Date(article.date).getTime();
@@ -59,12 +68,12 @@ export const actions = {
         return age / boost;
       };
 
-      result.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
+      articles.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
+
+      commit('setCampusNews', { data: articles });
     } catch (error) {
       commit('enqueueError', `News: API-Verbindung fehlgeschlagen (Ostfalia-News)`, {root: true});
       console.error(`error during News API call (Ostfalia-News)`, error.message);
     }
-
-    commit('setCampusNews', { data: result });
   },
 };
