@@ -41,13 +41,31 @@ router.get('/ostfalia', cors(), async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`ostfalia news cache miss for key ${key}`);
 
-      const response = await axios.get('https://www.ostfalia.de/cms/de');
+      let query = '';
+      query += 'itemsPerPage=10';
+      query += '&collectorParam=' + encodeURIComponent(
+        'fq=type:of-news' +
+        '&fq=parent-folders:"/sites/default/de/campus/.content/newsentries10/"' +
+        '&sort=newsdate_de_dt desc' +
+        '|createPath=/sites/default/de/campus/.content/newsentries10/news_%(number).xml');
+      query += '&showDate=true';
+      query += '&currPage=1';
+
+      const response = await axios.post(
+        'https://www.ostfalia.de/cms/system/modules/de.ostfalia.module.template/elements/renderNewsList.jsp',
+        query, {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        });
+
       const $ = cheerio.load(response.data);
-      return $('article.news-box').map(function(i, article) {
+      return $('article').map(function(i, article) {
         return {
           title: $('a', this).text().trim(),
           link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
-          text: $('p', this).text().trim(),
+          text: $('p', this).last().text().trim(),
+          date: moment(
+            $('p', this).first().text().trim(),
+            'DD.MM.YY').format('YYYY-MM-DD'),
         };
       }).get();
     }, { ttl: NEWS_CACHE_SECONDS });
