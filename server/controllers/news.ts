@@ -35,7 +35,7 @@ router.options('/campus38', cors());
  * Get Ostfalia news
  */
 router.get('/ostfalia', cors(), async (req, res, next) => {
-  const key = 'ostfalia-news-' + moment().format('YYYY-MM-DD');
+  const key = 'ostfalia-news';
 
   try {
     const data = await cache.wrap(key, async () => {
@@ -71,7 +71,7 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
     res.sendStatus(404);
     return;
   }
-  const key = 'ostfalia-news-' + faculty + '-' + moment().format('YYYY-MM-DD');
+  const key = 'ostfalia-news-' + faculty;
 
   try {
     let url;
@@ -141,7 +141,7 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
  * Get Campus38 news
  */
 router.get('/campus38', cors(), async (req, res, next) => {
-  const key = 'campus38-news-' + moment().format('YYYY-MM-DD');
+  const key = 'campus38-news';
 
   try {
     const data = await cache.wrap(key, async () => {
