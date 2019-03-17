@@ -3,7 +3,7 @@ apps:
       port: 3002
       script: ./dist/server/server.js
       instances: 'max'
-      watch: true
+      watch: false
       ignore_watch: ['./api-cache/**', './node_modules/**']
       watch_options:
         usePolling: true
@@ -19,7 +19,7 @@ apps:
       args: start
       cwd: ./
       instances: 'max'
-      watch: true
+      watch: false
       ignore_watch: ['./api-cache/**', './node_modules/**']
       watch_options:
         usePolling: true

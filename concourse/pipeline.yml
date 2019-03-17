@@ -11,6 +11,12 @@ resource_types:
       repository: w32blaster/concourse-telegram-notifier
       tag: latest
 
+  - name: concourse-ssh-resource
+    type: docker-image
+    source:
+      repository: edtan1/concourse-ssh-resource
+      tag: latest
+
 resources:
   - name: repository
     type: git
@@ -40,6 +46,13 @@ resources:
     type: telegram-notification
     source:
       bot_token: {{telegram-bot-token}}
+
+  - name: restart-pm2
+    type: concourse-ssh-resource
+    source:
+      hostname: spluseins.de
+      username: concourse
+      private_key: {{server-key}}
 
 jobs:
 
@@ -74,6 +87,10 @@ jobs:
       - put: server-deploy-dev
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
+             
+      - put: restart-pm2
+        params:
+          command: pm2 restart all
 
     on_success:
       do:
@@ -124,6 +141,10 @@ jobs:
       - put: server-deploy-prod
         params: {"sync_dir" : "build-result",
                  "rsync_opts" : ["--delete-after", "--recursive"]}
+                 
+      - put: restart-pm2
+        params:
+          command: pm2 restart all
 
     on_success:
       do:
