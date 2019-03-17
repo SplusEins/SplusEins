@@ -3,7 +3,7 @@ apps:
       port: 3004
       script: ./dist/server/server.js
       instances: 1
-      watch: true
+      watch: false
       ignore_watch: ['./api-cache/**', './node_modules/**']
       watch_options:
         usePolling: true
@@ -19,7 +19,7 @@ apps:
       args: start
       cwd: ./
       instances: 1
-      watch: true
+      watch: false
       ignore_watch: ['./api-cache/**', './node_modules/**']
       watch_options:
         usePolling: true
