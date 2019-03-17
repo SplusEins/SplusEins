@@ -1,37 +1,32 @@
 
 export const state = () => ({
-  loadingGeneral: false,
   loadingSpecific: false,
-  generalNewsSource: 'Ostfalia',
   specificNewsSource: 'Ostfalia/wf',
-  generalNews: [],
+  campusNews: [],
   specificNews: [],
 });
 
 export const mutations = {
-  setNews(state, { data, generalNews }) {
-    generalNews? state.generalNews = data: state.specificNews = data;
+  setCampusNews(state, { data }) {
+    state.campusNews = data;
   },
-  setNewsSource(state, {source, generalNews }) {
-    generalNews? state.generalNewsSource = source : state.specificNewsSource = source;
+  setSpecificNews(state, { data }) {
+    state.specificNews = data;
   },
-  setLoading(state, { loading, generalNews }) {
-    generalNews? state.loadingGeneral = loading : state.loadingSpecific = loading;
+  setNewsSource(state, { source }) {
+    state.specificNewsSource = source;
+  },
+  setLoading(state, { loading }) {
+    state.loadingSpecific = loading;
   },
 }
 
 export const actions = {
-  async loadNews({ state, commit }, generalNews) {
-    let source;
+  async loadSpecificNews({ state, commit }) {
     let result = [];
 
-    if(generalNews) {
-      source = state.generalNewsSource;
-      commit('setLoading', { loading: true, generalNews: true });
-    } else {
-      source = state.specificNewsSource;
-      commit('setLoading', { loading: true, generalNews: false });
-    }
+    const source = state.specificNewsSource;
+    commit('setLoading', { loading: true });
 
     try {
       const response = await this.$axios.get(`/api/news/${source}`);
@@ -41,12 +36,35 @@ export const actions = {
       console.error(`error during News API call (${source})`, error.message);
     }
 
-    if(generalNews) {
-      commit('setNews', { data: result, generalNews: true });
-      commit('setLoading', { loading: false, generalNews: true });
-    } else {
-      commit('setNews', { data: result, generalNews: false });
-      commit('setLoading', { loading: false, generalNews: false });
+    commit('setSpecificNews', { data: result });
+    commit('setLoading', { loading: false });
+  },
+  async loadCampusNews({ state, commit }) {
+    let result = [];
+
+    try {
+      const ostfaliaNews = await this.$axios.$get('/api/news/ostfalia');
+      const campus38News = await this.$axios.$get('/api/news/campus38');
+
+      result = [].concat(
+        ostfaliaNews.map((article) => ({ ...article, source: 'Ostfalia' })),
+        campus38News.map((article) => ({ ...article, source: 'Campus 38' }))
+      );
+
+      const scoreArticle = (article) => {
+        const date = new Date(article.date).getTime();
+        const now = new Date().getTime();
+        const age = now - date;
+        const boost = article.source == 'Ostfalia' ? 3.0 : 1.0;
+        return age / boost;
+      };
+
+      result.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
+    } catch (error) {
+      commit('enqueueError', `News: API-Verbindung fehlgeschlagen (Ostfalia-News)`, {root: true});
+      console.error(`error during News API call (Ostfalia-News)`, error.message);
     }
+
+    commit('setCampusNews', { data: result });
   },
 };

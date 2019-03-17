@@ -80,16 +80,16 @@ export default {
   watch: {
     specificNewsSource() {
       if (this.browserStateReady){
-       this.loadNews(false);
+       this.loadNews();
       }
     },
   },
   mounted() {
-    this.loadNews(false);
+    this.loadNews();
   },
   methods: {
     ...mapActions({
-      loadNews: 'news/loadNews',
+      loadNews: 'news/loadSpecificNews',
     }),
     ...mapMutations({
       setNewsSource: 'news/setNewsSource',
