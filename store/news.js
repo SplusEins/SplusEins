@@ -1,43 +1,41 @@
+import { flatten } from "../lib/util";
 
 export const state = () => ({
-  loadingSpecific: false,
-  specificNewsSource: 'Ostfalia/wf',
+  faculty: 'wf',
   campusNews: [],
-  specificNews: [],
+  facultyNews: {},
 });
 
 export const mutations = {
-  setCampusNews(state, { data }) {
+  setCampusNews(state, data) {
     state.campusNews = data;
   },
-  setSpecificNews(state, { data }) {
-    state.specificNews = data;
+  setFacultyNews(state, data) {
+    state.facultyNews = data;
   },
-  setNewsSource(state, { source }) {
-    state.specificNewsSource = source;
-  },
-  setLoading(state, { loading }) {
-    state.loadingSpecific = loading;
+  setFaculty(state, faculty) {
+    state.faculty = faculty;
   },
 }
 
 export const actions = {
-  async loadSpecificNews({ state, commit }) {
-    let result = [];
-
-    const source = state.specificNewsSource;
-    commit('setLoading', { loading: true });
-
+  async loadFacultyNews({ state, commit }) {
+    const faculties = ['i', 'e', 'r', 'wf', 'wob', 'sz', 'sud'];
     try {
-      const response = await this.$axios.get(`/api/news/${source}`);
-      result = response.data.length != 0? response.data : [{text: 'Keine Daten verfügbar!'}];
-    } catch (error) {
-      commit('enqueueError', `News: API-Verbindung fehlgeschlagen (${source})`, {root:true});
-      console.error(`error during News API call (${source})`, error.message);
-    }
+      const news = await Promise.all(
+        faculties.map(async (faculty) => ({
+          faculty,
+          articles: (await this.$axios.$get('/api/news/ostfalia/' + faculty)),
+        }))
+      );
+      const newsMap = {};
+      news.forEach(({ faculty, articles }) => newsMap[faculty] = articles);
 
-    commit('setSpecificNews', { data: result });
-    commit('setLoading', { loading: false });
+      commit('setFacultyNews', newsMap);
+    } catch (error) {
+      commit('enqueueError', `News: API-Verbindung fehlgeschlagen (Fakultät-News)`, {root:true});
+      console.error(`error during News API call (Fakultät-News)`, error.message);
+    }
   },
   async loadCampusNews({ state, commit }) {
     try {
@@ -68,7 +66,7 @@ export const actions = {
 
       articles.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
 
-      commit('setCampusNews', { data: articles });
+      commit('setCampusNews', articles);
     } catch (error) {
       commit('enqueueError', `News: API-Verbindung fehlgeschlagen (Ostfalia-News)`, {root: true});
       console.error(`error during News API call (Ostfalia-News)`, error.message);

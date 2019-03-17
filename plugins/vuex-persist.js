@@ -7,11 +7,11 @@ export default ({ store }) => {
       // pass through (https://github.com/championswimmer/vuex-persist/blob/master/src/index.ts#L211)
       storage.setItem(key, JSON.stringify(state)),
     restoreState: (key, storage) => {
-      
+
       // pass through (https://github.com/championswimmer/vuex-persist/blob/master/src/index.ts#L189)
       let value = (storage).getItem(key);
       value = typeof value === 'string' ? JSON.parse(value || '{}') : (value || {});
-   
+
       //version migration
       if (!!value.version) {
 
@@ -47,8 +47,7 @@ export default ({ store }) => {
         subscribedTimetable: state.splus.subscribedTimetable,
       },
       news: {
-        generalNewsSource: state.news.generalNewsSource,
-        specificNewsSource: state.news.specificNewsSource,
+        faculty: state.news.faculty,
       },
       privacy: {
         allowAllCookies: state.privacy.allowAllCookies,
