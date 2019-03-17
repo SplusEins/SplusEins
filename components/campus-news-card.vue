@@ -20,7 +20,9 @@
             {{ item.title }}
           </a>
           <br>
-          <span class="grey--text text--darken-1">{{ item.source }}.</span>
+          <span :class="['grey--text', {'text--darken-1': !isDark, 'text--lighten-1': isDark }]">
+            {{ item.source }}.
+          </span>
           <span>{{ item.text }}</span>
           <br>
         </div>
@@ -38,6 +40,7 @@ export default {
     ...mapState({
       campusNews: (state) => state.news.campusNews,
       lazyLoad: (state) => state.lazyLoad,
+      isDark: state => state.ui.isDark,
     }),
   },
   mounted() {
