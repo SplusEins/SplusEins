@@ -1,7 +1,8 @@
 import colors from 'vuetify/es5/util/colors';
 import * as moment from 'moment';
-import * as TIMETABLES from '~/assets/timetables.json';
 import * as chroma from 'chroma-js';
+
+import TIMETABLES from '~/assets/timetables.json';
 import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, flatten, customScheduleToRoute, scalarArraysEqual } from '~/lib/util';
 
 function defaultWeek() {
