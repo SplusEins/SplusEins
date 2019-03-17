@@ -46,7 +46,7 @@ export const actions = {
 
       const truncateArticle = (article) => {
         const sentences = article.text.split('.');
-        const text = sentences.length > 1 ? `${sentences[0]}.` : article.text;
+        const text = sentences.reduce((text, sentence) => text.length < 50 ? text + sentence + '.' : text, '');
         return {
           ...article,
           text,
