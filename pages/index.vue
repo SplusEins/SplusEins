@@ -124,7 +124,6 @@ export default {
       return this.specificNews.length > 0;
     },
     displayStatsCard() {
-      console.log(this.upcomingLectures)
       return this.$store.getters['splus/hasSubscribableTimetables'] && this.upcomingLectures.length != 0;
     },
     ...mapState({
