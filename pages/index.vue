@@ -71,13 +71,13 @@
             <campus-news-card />
           </v-flex>
           <v-flex
-            v-show="displaySpecificNewsCard"
-            :d-flex="displaySpecificNewsCard"
+            v-show="displayFacultyNewsCard"
+            :d-flex="displayFacultyNewsCard"
             xs12
             md4
             lg6
           >
-            <specific-news-card />
+            <faculty-news-card />
           </v-flex>
           <v-flex
             d-flex
@@ -101,7 +101,7 @@ import LastChangesCard from '../components/last-changes-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import CampusNewsCard from '../components/campus-news-card.vue';
-import SpecificNewsCard from '../components/specific-news-card.vue';
+import FacultyNewsCard from '../components/faculty-news-card.vue';
 import StatsCard from '../components/stats-card.vue';
 
 export default {
@@ -112,7 +112,7 @@ export default {
     QuickAccessCard,
     MensaCard,
     CampusNewsCard,
-    SpecificNewsCard,
+    FacultyNewsCard,
     StatsCard,
   },
   computed: {
@@ -126,8 +126,8 @@ export default {
     displayCampusNewsCard() {
       return this.campusNews.length > 0;
     },
-    displaySpecificNewsCard() {
-      return this.specificNews.length > 0;
+    displayFacultyNewsCard() {
+      return Object.keys(this.facultyNews).length > 0;
     },
     displayStatsCard() {
       return this.upcomingLectures.length != 0;
@@ -136,7 +136,7 @@ export default {
       weekPlan: (state) => state.mensa.weekPlan,
       favorites: (state) => state.splus.favoriteSchedules,
       campusNews: (state) => state.news.campusNews,
-      specificNews: (state) => state.news.specificNews,
+      facultyNews: (state) => state.news.facultyNews,
       upcomingLectures: (state) => state.splus.upcomingLectures,
     }),
     ...mapGetters({
@@ -152,6 +152,7 @@ export default {
     if (process.client || !store.state.lazyLoad) {
       await store.dispatch('mensa/loadWeek');
       await store.dispatch('news/loadCampusNews');
+      await store.dispatch('news/loadFacultyNews');
     } else {
       console.log('lazy loading is enabled: not fetching mensa plan and timetable');
     }
