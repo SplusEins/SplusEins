@@ -61,12 +61,12 @@
           wrap
         >
           <v-flex
-            v-show="displayGeneralNewsCard"
-            :d-flex="displayGeneralNewsCard"
+            v-show="displayCampusNewsCard"
+            :d-flex="displayCampusNewsCard"
             xs12
             md4
             lg12>
-            <general-news-card />
+            <campus-news-card />
           </v-flex>
           <v-flex
             v-show="displaySpecificNewsCard"
@@ -98,7 +98,7 @@ import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import LastChangesCard from '../components/last-changes-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
-import GeneralNewsCard from '../components/general-news-card.vue';
+import CampusNewsCard from '../components/campus-news-card.vue';
 import SpecificNewsCard from '../components/specific-news-card.vue';
 import StatsCard from '../components/stats-card.vue';
 
@@ -109,7 +109,7 @@ export default {
     LastChangesCard,
     QuickAccessCard,
     MensaCard,
-    GeneralNewsCard,
+    CampusNewsCard,
     SpecificNewsCard,
     StatsCard,
   },
@@ -121,8 +121,8 @@ export default {
 
       return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
     },
-    displayGeneralNewsCard() {
-      return this.generalNews.length > 0;
+    displayCampusNewsCard() {
+      return this.campusNews.length > 0;
     },
     displaySpecificNewsCard() {
       return this.specificNews.length > 0;
@@ -130,7 +130,7 @@ export default {
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
       favorites: (state) => state.splus.favoriteSchedules,
-      generalNews: (state) => state.news.generalNews,
+      campusNews: (state) => state.news.campusNews,
       specificNews: (state) => state.news.specificNews,
     }),
     ...mapGetters({
