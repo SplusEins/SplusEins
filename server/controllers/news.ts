@@ -121,12 +121,11 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
       if (faculty == 'i') {
         return $('article .ostfalia-content table tbody td').map(function(i, td) {
           let link = $('a', this).first().attr('href');
-          if(!!link && !link.startsWith('http')){
+          if (!!link && !link.startsWith('http')) {
             link = 'https://www.ostfalia.de' + link;
-          }else{
+          } else {
             link = '';
           }
-        
 
           return {
             title: $(this).text().trim(),
