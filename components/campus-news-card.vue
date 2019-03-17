@@ -20,7 +20,7 @@
             {{ item.title }}
           </a>
           <br>
-          <span class="grey--text">{{ item.source }}.</span>
+          <span class="grey--text text--darken-1">{{ item.source }}.</span>
           <span>{{ item.text }}</span>
           <br>
         </div>
