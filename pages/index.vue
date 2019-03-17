@@ -12,7 +12,8 @@
 
       <v-flex
         xs12
-        md6
+        :md6="hasSubscribableTimetables"
+        :md12="!hasSubscribableTimetables"
         lg3
         d-flex
       >
@@ -31,23 +32,18 @@
       </v-flex>
 
       <v-flex
+        v-if="hasSubscribableTimetables"
         xs12
         md6
         lg3
         d-flex
       >
         <v-layout column>
-          <v-flex
-            v-if="displayQuickAccessCard"
-            d-flex
-          >
+          <v-flex d-flex>
             <quick-access-card />
           </v-flex>
 
-          <v-flex
-            v-if="hasSubscribableTimetables"
-            d-flex
-          >
+          <v-flex d-flex>
             <stats-card />
           </v-flex>
         </v-layout>
@@ -56,7 +52,8 @@
       <v-flex
         xs12
         md12
-        lg6
+        :lg6="hasSubscribableTimetables"
+        :lg9="!hasSubscribableTimetables"
         d-flex
       >
         <v-layout
@@ -123,9 +120,6 @@ export default {
       }
 
       return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
-    },
-    displayQuickAccessCard() {
-      return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
     },
     displayGeneralNewsCard() {
       return this.generalNews.length > 0;
