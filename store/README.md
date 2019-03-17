@@ -1,10 +1,15 @@
 # STORE
 
-**This directory is not required, you can delete it if you don't want to use it.**
-
-This directory contains your Vuex Store files.
+This directory contains the Vuex Store files.
 Vuex Store option is implemented in the Nuxt.js framework.
 
-Creating a file in this directory activate the option in the framework automatically.
-
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/vuex-store).
+
+**Implemented Stores**:
+
+  * index: *basic application state*
+  * mensa: *fetch and organise mensa data*
+  * news: *fetch and organise news data*
+  * privacy: *user cookie settings*
+  * splus: *fetch and organise timetable data*
+  * ui: *global user interface settings*
