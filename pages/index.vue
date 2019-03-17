@@ -8,77 +8,86 @@
   >
     <v-layout
       row
-      wrap
-    >
+      wrap>
+
       <v-flex
+        xs12
+        :md6="hasSubscribableTimetables"
+        :md12="!hasSubscribableTimetables"
+        lg3
         d-flex
-        xs12
-        md6
-        lg4
       >
-        <last-changes-card />
+        <v-layout column>
+          <v-flex d-flex>
+            <upcoming-lectures-card />
+          </v-flex>
+
+          <v-flex
+            v-show="mensaIsOpen"
+            :d-flex="mensaIsOpen"
+          >
+            <mensa-card />
+          </v-flex>
+        </v-layout>
       </v-flex>
 
       <v-flex
-        v-show="displayGeneralNewsCard"
-        :d-flex="displayGeneralNewsCard"
+        v-if="hasSubscribableTimetables"
         xs12
         md6
-        lg4
+        lg3
+        d-flex
       >
-        <general-news-card />
+        <v-layout column>
+          <v-flex d-flex>
+            <quick-access-card />
+          </v-flex>
+
+          <v-flex 
+            v-if="displayStatsCard"
+            d-flex>
+            <stats-card />
+          </v-flex>
+        </v-layout>
       </v-flex>
 
       <v-flex
         xs12
-        md6
-        lg4
+        md12
+        :lg6="hasSubscribableTimetables"
+        :lg9="!hasSubscribableTimetables"
         d-flex
       >
         <v-layout
           row
           wrap
         >
-          <v-flex d-flex>
-            <upcoming-lectures-card />
+          <v-flex
+            v-show="displayGeneralNewsCard"
+            :d-flex="displayGeneralNewsCard"
+            xs12
+            md4
+            lg12>
+            <general-news-card />
           </v-flex>
           <v-flex
             v-show="displaySpecificNewsCard"
             :d-flex="displaySpecificNewsCard"
+            xs12
+            md4
+            lg6
           >
             <specific-news-card />
           </v-flex>
+          <v-flex
+            d-flex
+            xs12
+            md4
+            lg6
+          >
+            <last-changes-card />
+          </v-flex>
         </v-layout>
-      </v-flex>
-
-      <v-flex
-        v-show="mensaIsOpen"
-        :d-flex="mensaIsOpen"
-        xs12
-        md6
-        lg4
-      >
-        <mensa-card />
-      </v-flex>
-
-      <v-flex
-        v-if="displayQuickAccessCard"
-        xs12
-        md6
-        lg4
-        d-flex
-      >
-        <quick-access-card />
-      </v-flex>
-
-      <v-flex
-        v-if="displayStatsCard"
-        xs12
-        md6
-        lg4
-        d-flex
-      >
-        <stats-card />
       </v-flex>
     </v-layout>
   </v-container>
@@ -114,9 +123,6 @@ export default {
 
       return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
     },
-    displayQuickAccessCard() {
-      return this.favorites.length != 0 || this.customSchedulesAsRoutes.length != 0;
-    },
     displayGeneralNewsCard() {
       return this.generalNews.length > 0;
     },
@@ -124,7 +130,7 @@ export default {
       return this.specificNews.length > 0;
     },
     displayStatsCard() {
-      return this.$store.getters['splus/hasSubscribableTimetables'] && this.upcomingLectures.length != 0;
+      return this.upcomingLectures.length != 0;
     },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
