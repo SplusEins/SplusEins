@@ -1,11 +1,11 @@
 <template>
   <v-card>
-    <v-card-title class="title-padding">
+    <v-card-title>
       <div class="headline">
         Neues vom Campus
       </div>
     </v-card-title>
-    <v-card-text class="card-text-padding">
+    <v-card-text>
       <v-list dense>
         <div
           v-for="item in campusNews.slice(0, 5)"
@@ -54,20 +54,12 @@ export default {
 
 <style lang="scss">
 
-.title-padding{
-  padding: 10px 16px 5px 16px;
-}
-
 .link{
   text-decoration: none;
 }
 
 .list-tile{
   padding: 5px 0 5px 0px;
-}
-
-.card-text-padding{
-  padding-top: 0px;
 }
 
 </style>
