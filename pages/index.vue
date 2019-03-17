@@ -72,7 +72,7 @@
       </v-flex>
 
       <v-flex
-        v-if="hasSubscribableTimetables"
+        v-if="displayStatsCard"
         xs12
         md6
         lg4
@@ -123,11 +123,16 @@ export default {
     displaySpecificNewsCard() {
       return this.specificNews.length > 0;
     },
+    displayStatsCard() {
+      console.log(this.upcomingLectures)
+      return this.$store.getters['splus/hasSubscribableTimetables'] && this.upcomingLectures.length != 0;
+    },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
       favorites: (state) => state.splus.favoriteSchedules,
       generalNews: (state) => state.news.generalNews,
       specificNews: (state) => state.news.specificNews,
+      upcomingLectures: (state) => state.splus.upcomingLectures,
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
