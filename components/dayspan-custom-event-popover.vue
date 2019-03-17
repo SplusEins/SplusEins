@@ -119,7 +119,9 @@
               name="eventPopoverLocation"
             >
               <v-list-tile-title>
-                <span v-html="details.location" />
+                <span class="whitespace">
+                  {{ details.location }} 
+                </span>
               </v-list-tile-title>
             </slot>
           </v-list-tile-content>
@@ -135,7 +137,9 @@
               name="eventPopoverDescription"
             >
               <v-list-tile-title>
-                <span v-html="details.description" />
+                <span class="whitespace">
+                  {{ details.description }}
+                </span>
               </v-list-tile-title>
             </slot>
           </v-list-tile-content>
@@ -149,7 +153,9 @@
             <slot v-bind="slotData">
               name="eventPopoverNotifications"
               <v-list-tile-title>
-                <span v-html="details.notify" />
+                <span class="whitespace">
+                  {{ details.notify }}
+                </span>
               </v-list-tile-title>
             </slot>
           </v-list-tile-content>
@@ -165,7 +171,9 @@
               name="eventPopoverCalendar"
             >
               <v-list-tile-title>
-                <span v-html="details.calendar" />
+                <span class="whitespace">
+                  {{ details.calendar }}
+                </span>
               </v-list-tile-title>
             </slot>
           </v-list-tile-content>
@@ -359,5 +367,9 @@ export default {
 
 .toolbar-padding {
   padding: 0px 16px 20px 0px !important;
+}
+
+.whitespace{
+  white-space: normal;
 }
 </style>
