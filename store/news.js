@@ -46,7 +46,6 @@ export const actions = {
 
       const truncateArticle = (article) => {
         const sentences = article.text.split('.');
-        console.log(sentences);
         const text = sentences.length > 1 ? `${sentences[0]}.` : article.text;
         return {
           ...article,
@@ -58,7 +57,6 @@ export const actions = {
         ostfaliaNews.map((article) => ({ ...article, source: 'Ostfalia' })),
         campus38News.map((article) => ({ ...article, source: 'Campus 38' }))
       ).map(truncateArticle);
-      console.log(articles);
 
       const scoreArticle = (article) => {
         const date = new Date(article.date).getTime();
