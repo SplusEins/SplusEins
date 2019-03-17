@@ -43,7 +43,9 @@
             <quick-access-card />
           </v-flex>
 
-          <v-flex d-flex>
+          <v-flex 
+            v-if="displayStatsCard"
+            d-flex>
             <stats-card />
           </v-flex>
         </v-layout>
@@ -127,11 +129,15 @@ export default {
     displaySpecificNewsCard() {
       return this.specificNews.length > 0;
     },
+    displayStatsCard() {
+      return this.upcomingLectures.length != 0;
+    },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
       favorites: (state) => state.splus.favoriteSchedules,
       generalNews: (state) => state.news.generalNews,
       specificNews: (state) => state.news.specificNews,
+      upcomingLectures: (state) => state.splus.upcomingLectures,
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',

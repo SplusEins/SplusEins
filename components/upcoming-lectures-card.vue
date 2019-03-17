@@ -18,7 +18,9 @@
       <br>
       Uhrzeit: {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() == 0? "00" : nextEvent.start.minute() }} Uhr
       <br>
-      Raum: {{ nextEvent.room }}
+      <span v-if="!!nextEvent.room">
+        Raum: {{ nextEvent.room }}
+      </span>
     </v-card-text>
     <v-card-text v-else-if="hasSubscribableTimetables && nextEvent == undefined">
       <i>Keine weiteren Vorlesungen in dieser Woche!</i>
