@@ -151,6 +151,7 @@ export default {
 
     if (process.client || !store.state.lazyLoad) {
       await store.dispatch('mensa/loadWeek');
+      await store.dispatch('news/loadCampusNews');
     } else {
       console.log('lazy loading is enabled: not fetching mensa plan and timetable');
     }

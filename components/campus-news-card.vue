@@ -37,11 +37,13 @@ export default {
   computed: {
     ...mapState({
       campusNews: (state) => state.news.campusNews,
-      browserStateReady: (state) => state.browserStateReady,
     }),
   },
   mounted() {
-    this.loadCampusNews();
+    if (this.lazyLoad) {
+      // static build -> no news are in the store
+      this.loadCampusNews();
+    }
   },
   methods: {
     ...mapActions({
