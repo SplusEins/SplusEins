@@ -10,7 +10,6 @@
       row
       wrap
     >
-
       <!-- Breakpoint xs and sm -->
       <v-layout 
         v-show="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
@@ -68,7 +67,6 @@
         >
           <last-changes-card />
         </v-flex>
-
       </v-layout>
       
       <!-- Breakpoint md and display everyting -->
@@ -131,8 +129,7 @@
         v-show="!displayStatsCard && mensaIsOpen && $vuetify.breakpoint.md"
         row
         wrap
-      >
-        
+      >   
         <v-flex
           md6 
           d-flex
@@ -175,7 +172,6 @@
         >
           <campus-news-card />
         </v-flex>
-
       </v-layout>
 
       <!-- Breakpoint mdAndUp but no mensa -->
@@ -184,8 +180,7 @@
         row
         wrap
       >
-
-                <v-flex 
+        <v-flex 
           d-flex
           lg6
         >
@@ -230,7 +225,6 @@
         >
           <quick-access-card />
         </v-flex>
-
       </v-layout>
 
       <!-- Breakpoint mdAndUp no mensa and no subscribable timetables -->
@@ -239,7 +233,6 @@
         row
         wrap
       >
-     
         <v-flex
           md6 
           d-flex
@@ -275,7 +268,6 @@
             </v-flex>
           </v-layout>
         </v-flex>
-
       </v-layout>
 
       <!-- Breakpoint lgAndUp display everything -->
@@ -336,7 +328,6 @@
         >
           <quick-access-card />
         </v-flex>
-
       </v-layout>
 
       <!-- Breakpoint lgAndUp but has no subscribable timetables -->
@@ -345,7 +336,6 @@
         row
         wrap
       >
-
         <v-flex 
           d-flex
           lg6
@@ -386,9 +376,7 @@
             </v-flex>
           </v-layout>
         </v-flex>
-
       </v-layout> 
-
     </v-layout>
   </v-container>
 </template>
