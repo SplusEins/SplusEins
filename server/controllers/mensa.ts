@@ -3,6 +3,7 @@ import * as cors from 'cors';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
+import fetch from 'node-fetch';
 
 const MENSA_CACHE_SECONDS = 1800;
 
@@ -10,7 +11,6 @@ const MENSA_CACHE_SECONDS = 1800;
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
 const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
 
-const axios = require('axios');
 const router = express.Router();
 const cache = CACHE_DISABLE ?
   cacheManager.caching({ store: 'memory', max: 0 }) :
@@ -43,17 +43,18 @@ router.get('/', cors(), async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`mensa cache miss for key ${key}`);
 
-      const response = await axios.get(`https://openmensa.org/api/v2/canteens/166/days`);
-      const openDays = response.data;
+      const openDays = await fetch(`https://openmensa.org/api/v2/canteens/166/days`)
+        .then((res) => res.json());
 
       const weekdays = openDays
         .slice(0, 3)
         .map(({ date }) => moment(date));
-  
+
       const result = [];
       await Promise.all(weekdays.map(async (day) => {
-        const response = await axios.get(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`);
-        result.push({date: parseInt(day.format('YYYYMMDD')), data: {...response.data}});
+        const data = await fetch(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`)
+          .then((res) => res.json());
+        result.push({ date: parseInt(day.format('YYYYMMDD')), data });
       }));
 
       return result.sort((a,b) => a.date - b.date);
