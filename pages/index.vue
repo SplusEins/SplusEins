@@ -386,7 +386,6 @@ export default {
       if (this.weekPlan.length == 0) {
         return false;
       }
-      return false;
       return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
     },
     displayCampusNewsCard() {
