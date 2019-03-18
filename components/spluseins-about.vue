@@ -1,16 +1,12 @@
 <template>
-  <span class="text-xs-center">
+  <lazy-hydrate
+    ssr-only
+    :trigger-hydration="dialogOpen"
+  >
     <v-dialog
-      v-model="active"
+      v-model="dialogOpen"
       width="500"
     >
-      <a
-        slot="activator"
-        class="white--text"
-        @click="$track('Footer', 'openAbout')"
-      >
-        Über
-      </a>
       <v-card>
         <v-card-title
           class="headline primary"
@@ -53,14 +49,14 @@
             flat
             depressed
             color="primary"
-            @click="active = false"
+            @click="dialogOpen = false"
           >
             Schließen
           </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </span>
+  </lazy-hydrate>
 </template>
 
 
@@ -68,13 +64,18 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'SpluseinsAbout',
-  data: function() {
-    return {
-      active: false,
-    };
+  name: 'AboutDialog',
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    },
   },
   computed: {
+    dialogOpen: {
+      get() { return this.value; },
+      set(value) { this.$emit('input', value); }
+    },
     ...mapState({
       isDark: (state) => state.ui.isDark,
     }),

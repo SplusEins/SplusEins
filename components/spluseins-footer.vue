@@ -22,7 +22,12 @@
           SplusEins
         </strong>
         —
-        <spluseins-about />
+        <a
+          class="white--text"
+          @click="aboutDialogOpen = true; $track('Footer', 'openAbout')"
+        >
+          Über
+        </a>
         —
         <nuxt-link
           to="/impressum"
@@ -41,6 +46,7 @@
         </nuxt-link>
       </v-flex>
     </v-layout>
+    <spluseins-about v-model="aboutDialogOpen" />
   </v-footer>
 </template>
 
@@ -49,6 +55,11 @@ import SpluseinsAbout from './spluseins-about.vue'
 
 export default  {
   name: 'SplusEinsFooter',
+  data() {
+    return {
+      aboutDialogOpen: false,
+    };
+  },
   components: {
     SpluseinsAbout,
   }
