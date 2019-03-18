@@ -7,89 +7,166 @@
     grid-list-md
   >
     <v-layout
+      v-if="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
       row
       wrap>
-
-      <v-flex
-        xs12
-        :md6="hasSubscribableTimetables"
-        :md12="!hasSubscribableTimetables"
-        lg3
-        d-flex
-      >
-        <v-layout column>
-          <v-flex d-flex>
-            <upcoming-lectures-card />
-          </v-flex>
-
-          <v-flex
-            v-show="mensaIsOpen"
-            :d-flex="mensaIsOpen"
-          >
-            <mensa-card />
-          </v-flex>
-        </v-layout>
+      <v-flex 
+        d-flex>
+        <upcoming-lectures-card />
       </v-flex>
-
-      <v-flex
-        v-if="hasSubscribableTimetables"
-        xs12
-        md6
-        lg3
-        d-flex
-      >
-        <v-layout column>
-          <v-flex d-flex>
-            <quick-access-card />
-          </v-flex>
-
-          <v-flex 
-            v-if="displayStatsCard"
-            d-flex>
-            <stats-card />
-          </v-flex>
-        </v-layout>
+      <v-flex 
+        d-flex>
+        <mensa-card />
       </v-flex>
-
-      <v-flex
-        xs12
-        md12
-        :lg6="hasSubscribableTimetables"
-        :lg9="!hasSubscribableTimetables"
-        d-flex
-      >
-        <v-layout
-          row
-          wrap
-        >
-          <v-flex
-            v-show="displayCampusNewsCard"
-            :d-flex="displayCampusNewsCard"
-            xs12
-            md4
-            lg12>
-            <campus-news-card />
-          </v-flex>
-          <v-flex
-            v-show="displayFacultyNewsCard"
-            :d-flex="displayFacultyNewsCard"
-            xs12
-            md4
-            lg6
-          >
-            <faculty-news-card />
-          </v-flex>
-          <v-flex
-            d-flex
-            xs12
-            md4
-            lg6
-          >
-            <last-changes-card />
-          </v-flex>
-        </v-layout>
+      <v-flex 
+        d-flex>
+        <quick-access-card />
+      </v-flex>
+      <v-flex 
+        d-flex>
+        <stats-card />
+      </v-flex>
+      <v-flex 
+        d-flex>
+        <campus-news-card />
+      </v-flex>
+      <v-flex 
+        d-flex>
+        <faculty-news-card />
+      </v-flex>
+      <v-flex 
+        d-flex>
+        <last-changes-card />
       </v-flex>
     </v-layout>
+
+    <!-- md -->
+    <v-layout
+      v-if="$vuetify.breakpoint.md"
+      row
+      wrap>
+      <v-layout 
+        row
+        wrap>
+        <v-flex
+          md6 
+          d-flex>
+          <upcoming-lectures-card />
+        </v-flex>
+        <v-flex
+          md6  
+          d-flex>
+          <quick-access-card />
+        </v-flex>
+      </v-layout>
+
+      <v-layout
+        row
+        wrap
+      >
+        <v-flex
+          md6 
+          d-flex>
+          <mensa-card />
+        </v-flex>
+        <v-flex
+          md6 
+          d-flex>
+          <stats-card />
+        </v-flex>
+      </v-layout>
+
+      <v-layout
+        row
+        wrap>
+        <v-flex 
+          d-flex
+          md6>
+          <campus-news-card />
+        </v-flex>
+        <v-flex 
+          d-flex
+          md6>
+          <v-layout column>
+            <v-flex
+              d-flex
+              md6
+            >
+              <faculty-news-card />
+            </v-flex>
+            <v-flex
+              d-flex
+              md6
+            >
+              <last-changes-card />
+            </v-flex>
+          </v-layout>
+        </v-flex> 
+      </v-layout> 
+    </v-layout>
+
+    <!-- lg -->
+    <v-layout
+      v-if="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl"
+      row
+      wrap>
+      <v-layout 
+        row
+        wrap
+      >
+        <v-flex 
+          d-flex
+          lg4>
+          <v-layout column>
+            <v-flex
+              d-flex
+              lg6
+            >
+              <upcoming-lectures-card />
+            </v-flex>
+            <v-flex
+              d-flex
+              lg6
+            >
+              <faculty-news-card />
+            </v-flex>
+          </v-layout>
+        </v-flex>
+        <v-flex
+          lg4 
+          d-flex>
+          <campus-news-card />
+        </v-flex>
+        <v-flex
+          lg4 
+          d-flex>
+          <mensa-card />
+        </v-flex>
+      </v-layout>
+
+      <v-layout 
+        row
+        wrap
+      >
+        <v-flex
+          lg4 
+          d-flex>
+          <stats-card />
+        </v-flex>
+        <v-flex 
+          lg4
+          d-flex>
+          <quick-access-card />
+        </v-flex>
+        <v-flex 
+          d-flex
+          lg4>
+          <last-changes-card />
+        </v-flex> 
+      </v-layout>
+ 
+    </v-layout>
+    
   </v-container>
 </template>
 
