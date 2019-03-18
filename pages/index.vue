@@ -34,6 +34,15 @@
         </v-flex>
 
         <v-flex
+          v-show="hasSubscribableTimetables" 
+          :d-flex="hasSubscribableTimetables"
+          xs12
+          sm12
+        >
+          <quick-access-card />
+        </v-flex>
+
+        <v-flex
           v-show="displayStatsCard" 
           :d-flex="displayStatsCard"
           xs12
