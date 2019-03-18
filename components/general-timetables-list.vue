@@ -78,13 +78,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import LazyHydrate from 'vue-lazy-hydration';
 
 export default {
 name: 'GeneralTimetablesList',
-components: {
-  LazyHydrate,
-},
 computed: {
   ...mapGetters({
     schedulesTree: 'splus/getSchedulesAsTree',
