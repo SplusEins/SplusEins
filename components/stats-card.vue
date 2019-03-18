@@ -9,6 +9,7 @@
       :thickness="30"
       :background="isDark ? '#424242' : 'white'"
       :total="totalHours"
+      class="margin-left-and-right"
       unit="px"
     >
       <h1>{{ totalHours }}h</h1>diese Woche
@@ -83,6 +84,10 @@ export default {
 </script>
 
 <style lang="scss">
+
+.margin-left-and-right{
+  margin: 0 15px 0 15px;
+}
 
 .card-text{
   text-align: center;

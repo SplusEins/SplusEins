@@ -7,166 +7,355 @@
     grid-list-md
   >
     <v-layout
-      v-if="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
       row
       wrap>
-      <v-flex 
-        d-flex>
-        <upcoming-lectures-card />
-      </v-flex>
-      <v-flex 
-        d-flex>
-        <mensa-card />
-      </v-flex>
-      <v-flex 
-        d-flex>
-        <quick-access-card />
-      </v-flex>
-      <v-flex 
-        d-flex>
-        <stats-card />
-      </v-flex>
-      <v-flex 
-        d-flex>
-        <campus-news-card />
-      </v-flex>
-      <v-flex 
-        d-flex>
-        <faculty-news-card />
-      </v-flex>
-      <v-flex 
-        d-flex>
-        <last-changes-card />
-      </v-flex>
-    </v-layout>
 
-    <!-- md -->
-    <v-layout
-      v-if="$vuetify.breakpoint.md"
-      row
-      wrap>
-      <v-layout 
-        row
-        wrap>
-        <v-flex
-          md6 
-          d-flex>
+      <!-- Breakpoint xs and sm -->
+      <template v-if="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm">
+        <v-flex d-flex>
           <upcoming-lectures-card />
         </v-flex>
         <v-flex
-          md6  
-          d-flex>
-          <quick-access-card />
-        </v-flex>
-      </v-layout>
-
-      <v-layout
-        row
-        wrap
-      >
-        <v-flex
-          md6 
+          v-if="mensaIsOpen" 
           d-flex>
           <mensa-card />
         </v-flex>
         <v-flex
-          md6 
+          v-if="hasSubscribableTimetables" 
+          d-flex>
+          <quick-access-card />
+        </v-flex>
+        <v-flex
+          v-if="displayStatsCard"  
           d-flex>
           <stats-card />
         </v-flex>
-      </v-layout>
-
-      <v-layout
-        row
-        wrap>
-        <v-flex 
-          d-flex
-          md6>
+        <v-flex
+          v-if="displayCampusNewsCard"  
+          d-flex>
           <campus-news-card />
         </v-flex>
-        <v-flex 
-          d-flex
-          md6>
-          <v-layout column>
-            <v-flex
-              d-flex
-              md6
-            >
-              <faculty-news-card />
-            </v-flex>
-            <v-flex
-              d-flex
-              md6
-            >
-              <last-changes-card />
-            </v-flex>
-          </v-layout>
-        </v-flex> 
-      </v-layout> 
-    </v-layout>
+        <v-flex
+          v-if="displayFacultyNewsCard"  
+          d-flex>
+          <faculty-news-card />
+        </v-flex>
+        <v-flex d-flex>
+          <last-changes-card />
+        </v-flex>
+      </template>
+      
+      <!-- Breakpoint md and display everyting -->
+      <template v-if="displayStatsCard && mensaIsOpen && $vuetify.breakpoint.md">
+       
+        <v-layout 
+          row
+          wrap>
+          <v-flex
+            md6 
+            d-flex>
+            <upcoming-lectures-card />
+          </v-flex>
+          <v-flex
+            md6  
+            d-flex>
+            <quick-access-card />
+          </v-flex>
+        </v-layout>
 
-    <!-- lg -->
-    <v-layout
-      v-if="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl"
-      row
-      wrap>
-      <v-layout 
-        row
-        wrap
-      >
+        <v-layout
+          row
+          wrap>
+          <v-flex
+            md6 
+            d-flex>
+            <mensa-card />
+          </v-flex>
+          <v-flex
+            md6 
+            d-flex>
+            <stats-card />
+          </v-flex>
+        </v-layout>
+
+        <v-layout
+          row
+          wrap>
+          <v-flex 
+            d-flex
+            md6>
+            <campus-news-card />
+          </v-flex>
+          <v-flex 
+            d-flex
+            md6>
+            <v-layout column>
+              <v-flex
+                d-flex
+                md6>
+                <faculty-news-card />
+              </v-flex>
+              <v-flex
+                d-flex
+                md6>
+                <last-changes-card />
+              </v-flex>
+            </v-layout>
+          </v-flex>
+        </v-layout> 
+      </template>
+ 
+      <!-- Breakpoint md but has no subscribable timetables -->
+      <template v-if="!displayStatsCard && mensaIsOpen && $vuetify.breakpoint.md">
+        
+        <v-layout 
+          row
+          wrap>
+          <v-flex
+            md6 
+            d-flex>
+            <v-layout column>
+              <v-flex
+                d-flex
+                md6>
+                <upcoming-lectures-card />
+              </v-flex>
+              <v-flex
+                d-flex
+                md6>
+                <mensa-card />
+              </v-flex>
+            </v-layout>
+          </v-flex>
+          <v-flex 
+            d-flex
+            md6>
+            <v-layout column>
+              <v-flex
+                d-flex
+                md6>
+                <faculty-news-card />
+              </v-flex>
+              <v-flex
+                d-flex
+                md6>
+                <last-changes-card />
+              </v-flex>
+            </v-layout>
+          </v-flex>
+        </v-layout>
+
+        <v-layout
+          row
+          wrap>
+          <v-flex 
+            d-flex
+            md12>
+            <campus-news-card />
+          </v-flex>
+        </v-layout> 
+      </template>
+
+      <!-- Breakpoint mdAndUp but no mensa -->
+      <template v-if="displayStatsCard && !mensaIsOpen && $vuetify.breakpoint.mdAndUp">
+        <v-layout 
+          row
+          wrap>
+
+          <v-flex
+            md6 
+            d-flex>
+            <v-layout column>
+              <v-flex
+                d-flex
+                md6>
+                <upcoming-lectures-card />
+              </v-flex>
+              <v-flex
+                d-flex
+                md6>
+                <campus-news-card />
+              </v-flex>
+            </v-layout>
+          </v-flex>
+
+          <v-flex 
+            d-flex
+            md6>
+            <v-layout column>
+              <v-flex
+                d-flex
+                md6>
+                <stats-card />
+              </v-flex>
+              <v-flex
+                d-flex
+                md6>
+                <quick-access-card />
+              </v-flex>
+            </v-layout>
+          </v-flex>
+
+          <v-flex
+            d-flex
+            md6>
+            <faculty-news-card />
+          </v-flex>
+          <v-flex
+            d-flex
+            md6>
+            <last-changes-card />
+          </v-flex>
+
+        </v-layout>
+      </template>
+
+      <!-- Breakpoint mdAndUp no mensa and no subscribable timetables -->
+      <template v-if="!displayStatsCard && !mensaIsOpen && $vuetify.breakpoint.mdAndUp">
+        <v-layout 
+          row
+          wrap>
+
+          <v-flex
+            md6 
+            d-flex>
+            <v-layout column>
+              <v-flex
+                d-flex
+                md6>
+                <upcoming-lectures-card />
+              </v-flex>
+              <v-flex
+                d-flex
+                md6>
+                <campus-news-card />
+              </v-flex>
+            </v-layout>
+          </v-flex>
+
+          <v-flex 
+            d-flex
+            md6>
+            <v-layout column>
+              <v-flex
+                d-flex
+                md6>
+                <faculty-news-card />
+              </v-flex>
+              <v-flex
+                d-flex
+                md6>
+                <last-changes-card />
+              </v-flex>
+            </v-layout>
+          </v-flex>
+
+        </v-layout>
+      </template>
+
+      <!-- Breakpoint lgAndUp display everything -->
+      <template v-if="displayStatsCard && mensaIsOpen && $vuetify.breakpoint.lgAndUp">
+
+        <v-layout 
+          row
+          wrap>
+
+          <v-flex 
+            d-flex
+            lg4>
+            <v-layout column>
+              <v-flex
+                d-flex
+                lg6>
+                <upcoming-lectures-card />
+              </v-flex>
+              <v-flex
+                d-flex
+                lg6>
+                <faculty-news-card />
+              </v-flex>
+            </v-layout>
+          </v-flex>
+
+          <v-flex
+            lg4 
+            d-flex>
+            <campus-news-card />
+          </v-flex>
+          <v-flex
+            lg4 
+            d-flex>
+            <mensa-card />
+          </v-flex>
+
+        </v-layout>
+
+        <v-layout 
+          row
+          wrap>
+          <v-flex
+            lg4 
+            d-flex>
+            <stats-card />
+          </v-flex>
+          <v-flex 
+            lg4
+            d-flex>
+            <quick-access-card />
+          </v-flex>
+          <v-flex 
+            d-flex
+            lg4>
+            <last-changes-card />
+          </v-flex> 
+        </v-layout>
+
+      </template>
+
+      <!-- Breakpoint lgAndUp but has no subscribable timetables -->
+      <template v-if="!displayStatsCard && mensaIsOpen && $vuetify.breakpoint.lgAndUp">
+
         <v-flex 
           d-flex
-          lg4>
+          lg6>
           <v-layout column>
             <v-flex
               d-flex
-              lg6
-            >
+              lg6>
               <upcoming-lectures-card />
             </v-flex>
             <v-flex
               d-flex
-              lg6
-            >
+              lg6>
               <faculty-news-card />
+            </v-flex>
+            <v-flex
+              d-flex
+              lg6>
+              <mensa-card />
             </v-flex>
           </v-layout>
         </v-flex>
-        <v-flex
-          lg4 
-          d-flex>
-          <campus-news-card />
-        </v-flex>
-        <v-flex
-          lg4 
-          d-flex>
-          <mensa-card />
-        </v-flex>
-      </v-layout>
 
-      <v-layout 
-        row
-        wrap
-      >
-        <v-flex
-          lg4 
-          d-flex>
-          <stats-card />
-        </v-flex>
-        <v-flex 
-          lg4
-          d-flex>
-          <quick-access-card />
-        </v-flex>
         <v-flex 
           d-flex
-          lg4>
-          <last-changes-card />
-        </v-flex> 
-      </v-layout>
- 
+          lg6>
+          <v-layout column>
+            <v-flex
+              d-flex
+              lg6>
+              <last-changes-card />
+            </v-flex>
+            <v-flex
+              d-flex
+              lg6>
+              <campus-news-card />
+            </v-flex>
+          </v-layout>
+        </v-flex>
+
+      </template>  
     </v-layout>
-    
   </v-container>
 </template>
 
@@ -197,7 +386,7 @@ export default {
       if (this.weekPlan.length == 0) {
         return false;
       }
-
+      return false;
       return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
     },
     displayCampusNewsCard() {
@@ -207,7 +396,7 @@ export default {
       return Object.keys(this.facultyNews).length > 0;
     },
     displayStatsCard() {
-      return this.upcomingLectures.length != 0;
+      return this.$store.getters['splus/hasSubscribableTimetables'] && this.upcomingLectures.length != 0;
     },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
