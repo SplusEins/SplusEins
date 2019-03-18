@@ -84,10 +84,6 @@ export default {
 
 <style lang="scss">
 
-.margin-left-and-right{
-  margin: 0 15px 0 15px;
-}
-
 .card-text{
   text-align: center;
   margin-top: 8px;
