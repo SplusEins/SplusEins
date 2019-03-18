@@ -1,9 +1,10 @@
-import * as request from 'request-promise-native';
+import fetch from 'node-fetch';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
 import { RichLecture } from '../../model/RichLecture';
+import { URL } from 'url';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
 const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';
@@ -26,32 +27,30 @@ const cache = CACHE_DISABLE ?
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
-function splusPlanRequest(identifier: string, weekOfYear: number): PromiseLike<string> {
-  return request({
+function splusPlanRequest(identifier: string, weekOfYear: number): Promise<string> {
+  const url = new URL(PLAN_BASE);
+  url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
+  url.searchParams.append('identifier', identifier);
+  const body = `weeks=${weekOfYear}`;
+
+  return fetch(url.toString(), {
     method: 'POST',
-    uri: PLAN_BASE,
-    qs: {
-      semester: 'ss', // TODO change this in WS19/20
-      identifier,
-    },
-    formData: {
-      weeks: weekOfYear.toString(),
-    },
-  });
+    body,
+  }).then((res) => res.text());
 }
 
-function splusSetRequest(identifier: string, weekOfYear: number): PromiseLike<string> {
-  return request({
+function splusSetRequest(identifier: string, weekOfYear: number): Promise<string> {
+  const url = new URL(SET_BASE);
+  url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
+  const body = `weeks=${weekOfYear}&identifier[]=${encodeURIComponent(identifier)}`;
+
+  return fetch(url.toString(), {
     method: 'POST',
-    uri: SET_BASE,
-    qs: {
-      semester: 'ss', // TODO change this in WS19/20
+    body,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    formData: {
-      'identifier[]': identifier,
-      weeks: weekOfYear.toString(),
-    },
-  });
+  }).then((res) => res.text());
 }
 
 export interface Timetable {
