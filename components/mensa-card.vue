@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div class="headline">
-        Mensa Wolfenbüttel Heute
+        Mensa Wolfenbüttel {{ isPlanOfToday? 'Heute' : 'Morgen'}}
       </div>
     </v-card-title>
     <v-card-text class="card-text-padding">
@@ -35,7 +35,8 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
+import * as moment from 'moment';
 
 export default {
   name: 'MensaCard',
@@ -45,12 +46,18 @@ export default {
         return [];
       }
 
-      return Object.values(this.weekPlan[0].data)
+      return Object.values(this.getNextAvailablePlan.data)
         .filter(({ category }) => category.startsWith('Essen '));
+    },
+    isPlanOfToday() {
+      return parseInt(moment().format('YYYYMMDD')) == this.getNextAvailablePlan.date
     },
     ...mapState({
       lazyLoad: (state) => state.lazyLoad,
       weekPlan: (state) => state.mensa.weekPlan,
+    }),
+    ...mapGetters({
+      getNextAvailablePlan: 'mensa/getNextAvailablePlan',
     }),
   },
   mounted() {

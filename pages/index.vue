@@ -121,7 +121,7 @@ export default {
         return false;
       }
 
-      return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
+      return moment().day() == 6 || this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
     },
     displayCampusNewsCard() {
       return this.campusNews.length > 0;
