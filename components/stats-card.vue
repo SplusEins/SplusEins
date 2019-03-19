@@ -11,7 +11,7 @@
       :total="totalHours"
       unit="px"
     >
-      <h1>{{ totalHours }}h</h1>diese Woche
+      <h1>{{ sections.length != 0 ? totalHours : 0 }}h</h1>diese Woche
     </vc-donut>
     <v-card-text class="card-text">
       <h3>{{ subscribedTimetable.description || subscribedTimetable.label }}</h3>

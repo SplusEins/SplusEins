@@ -43,8 +43,8 @@
         </v-flex>
 
         <v-flex
-          v-show="displayStatsCard" 
-          :d-flex="displayStatsCard"
+          v-show="hasSubscribableTimetables" 
+          :d-flex="hasSubscribableTimetables"
           xs12
           sm12
         >
@@ -80,7 +80,7 @@
       
       <!-- Breakpoint md and display everyting -->
       <v-layout 
-        v-show="displayStatsCard && mensaIsOpen && $vuetify.breakpoint.md"
+        v-show="hasSubscribableTimetables && mensaIsOpen && $vuetify.breakpoint.md"
         row
         wrap
       >
@@ -135,7 +135,7 @@
 
       <!-- Breakpoint md but has no subscribable timetables -->
       <v-layout 
-        v-show="!displayStatsCard && mensaIsOpen && $vuetify.breakpoint.md"
+        v-show="!hasSubscribableTimetables && mensaIsOpen && $vuetify.breakpoint.md"
         row
         wrap
       >   
@@ -185,7 +185,7 @@
 
       <!-- Breakpoint mdAndUp but no mensa -->
       <v-layout 
-        v-show="displayStatsCard && !mensaIsOpen && $vuetify.breakpoint.mdAndUp"
+        v-show="hasSubscribableTimetables && !mensaIsOpen && $vuetify.breakpoint.mdAndUp"
         row
         wrap
       >
@@ -238,7 +238,7 @@
 
       <!-- Breakpoint mdAndUp no mensa and no subscribable timetables -->
       <v-layout 
-        v-show="!displayStatsCard && !mensaIsOpen && $vuetify.breakpoint.mdAndUp"
+        v-show="!hasSubscribableTimetables && !mensaIsOpen && $vuetify.breakpoint.mdAndUp"
         row
         wrap
       >
@@ -281,7 +281,7 @@
 
       <!-- Breakpoint lgAndUp display everything -->
       <v-layout 
-        v-show="displayStatsCard && mensaIsOpen && $vuetify.breakpoint.lgAndUp"
+        v-show="hasSubscribableTimetables && mensaIsOpen && $vuetify.breakpoint.lgAndUp"
         row
         wrap
       >
@@ -341,7 +341,7 @@
 
       <!-- Breakpoint lgAndUp but has no subscribable timetables -->
       <v-layout 
-        v-show="!displayStatsCard && mensaIsOpen && $vuetify.breakpoint.lgAndUp"
+        v-show="!hasSubscribableTimetables && mensaIsOpen && $vuetify.breakpoint.lgAndUp"
         row
         wrap
       >
@@ -424,9 +424,6 @@ export default {
     },
     displayFacultyNewsCard() {
       return Object.keys(this.facultyNews).length > 0;
-    },
-    displayStatsCard() {
-      return this.$store.getters['splus/hasSubscribableTimetables'] && this.upcomingLectures.length != 0;
     },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,
