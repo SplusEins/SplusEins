@@ -55,6 +55,7 @@ export default {
       console.log('lazy loading is enabled: not fetching any lectures');
     }
   },
+  middleware: 'cached',
   watchQuery: ['id', 'name', 'course'], // rerender page when query params change
 };
 </script>

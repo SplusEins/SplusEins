@@ -52,6 +52,7 @@ Environment variables:
   * `PORT` (backend)
   * `API_PREFIX` (backend)
   * `SEMESTER_WEEK_1` (frontend): first week with lectures
+  * `PAGE_CACHE_SECONDS` (frontend): rendered nuxt page cache duration
   * `ICS_PRELOAD_WEEKS` (backend): number of weeks to fetch for ICS
   * `ICS_CACHE_SECONDS` (backend): ICS header cache duration
   * `SPLUS_CACHE_SECONDS` (backend): timetable memory and header cache duration
