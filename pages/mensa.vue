@@ -146,6 +146,7 @@ export default {
       return item.notes.includes('vegetarisch') || item.notes.includes('vegan');
     },
   },
+  middleware: 'cached',
 };
 </script>
 

@@ -134,6 +134,7 @@ export default {
       setSidenav: 'ui/setSidenav',
     }),
   },
+  middleware: 'cached',
 }
 </script>
 

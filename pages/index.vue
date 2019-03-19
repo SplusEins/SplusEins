@@ -223,6 +223,7 @@ export default {
     ...mapMutations({
       setSidenav: 'ui/setSidenav',
     }),
-  }
+  },
+  middleware: 'cached',
 };
 </script>
