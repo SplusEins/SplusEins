@@ -6,11 +6,10 @@ import * as moment from 'moment';
 import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
 
-const NEWS_CACHE_SECONDS = 1800;
-
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
 const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
+const CACHE_SECONDS = parseInt(process.env.NEWS_CACHE_SECONDS || '1800');
 
 const router = express.Router();
 const cache = CACHE_DISABLE ?
@@ -71,9 +70,9 @@ router.get('/ostfalia', cors(), async (req, res, next) => {
             'DD.MM.YY').format('YYYY-MM-DD'),
         };
       }).get();
-    }, { ttl: NEWS_CACHE_SECONDS });
+    }, { ttl: CACHE_SECONDS });
 
-    res.set('Cache-Control', `public, max-age=${NEWS_CACHE_SECONDS}`);
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(data);
   } catch (error) {
     next(error);
@@ -88,7 +87,7 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
   if (!['i', 'r', 'e', 'sz', 'wf', 'wob', 'sud'].includes(faculty)) {
     // Informatik, Recht, Elektrotechnik,
     // Salzgitter, Wolfenbüttel, Wolfsburg, Suderburg
-    res.set('Cache-Control', `public, max-age=${NEWS_CACHE_SECONDS}`);
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
     return;
   }
@@ -149,9 +148,9 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
             'DD.MM.YY').format('YYYY-MM-DD'),
         };
       }).get();
-    }, { ttl: NEWS_CACHE_SECONDS });
+    }, { ttl: CACHE_SECONDS });
 
-    res.set('Cache-Control', `public, max-age=${NEWS_CACHE_SECONDS}`);
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(data);
   } catch (error) {
     next(error);
@@ -179,9 +178,9 @@ router.get('/campus38', cors(), async (req, res, next) => {
           date: $('published', this).text().trim().split('T')[0]
         };
       }).slice(0, 10).get();
-    }, { ttl: NEWS_CACHE_SECONDS });
+    }, { ttl: CACHE_SECONDS });
 
-    res.set('Cache-Control', `public, max-age=${NEWS_CACHE_SECONDS}`);
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(data);
   } catch (error) {
     next(error);
