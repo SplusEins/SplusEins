@@ -23,8 +23,8 @@
           </v-flex>
 
           <v-flex
-            v-show="mensaIsOpen"
-            :d-flex="mensaIsOpen"
+            v-show="displayMensaCard"
+            :d-flex="displayMensaCard"
           >
             <mensa-card />
           </v-flex>
@@ -116,7 +116,7 @@ export default {
     StatsCard,
   },
   computed: {
-    mensaIsOpen() {
+    displayMensaCard() {
       if (this.weekPlan.length == 0) {
         return false;
       }
