@@ -1,4 +1,4 @@
-const PAGE_CACHE_SECONDS = process.env.PAGE_CACHE_SECONDS || '3600';
+const PAGE_CACHE_SECONDS = process.env.PAGE_CACHE_SECONDS || '600';
 
 export default function ({ res }) {
   if (process.server) {
