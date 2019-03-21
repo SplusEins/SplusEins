@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div class="headline">
-        Mensa Wolfenbüttel {{ isPlanOfToday? 'Heute' : 'Morgen'}}
+        Mensa Wolfenbüttel {{ isPlanOfToday? 'Heute' : 'Morgen' }}
       </div>
     </v-card-title>
     <v-card-text class="card-text-padding">
@@ -50,7 +50,7 @@ export default {
         .filter(({ category }) => category.startsWith('Essen '));
     },
     isPlanOfToday() {
-      return parseInt(moment().format('YYYYMMDD')) == this.getNextAvailablePlan.date
+      return moment().isSame(this.getNextAvailablePlan.date, 'day');
     },
     ...mapState({
       lazyLoad: (state) => state.lazyLoad,
