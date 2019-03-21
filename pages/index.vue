@@ -23,8 +23,8 @@
           </v-flex>
 
           <v-flex
-            v-show="mensaIsOpen"
-            :d-flex="mensaIsOpen"
+            v-show="displayMensaCard"
+            :d-flex="displayMensaCard"
           >
             <mensa-card />
           </v-flex>
@@ -116,12 +116,12 @@ export default {
     StatsCard,
   },
   computed: {
-    mensaIsOpen() {
+    displayMensaCard() {
       if (this.weekPlan.length == 0) {
         return false;
       }
-
-      return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD'));
+      // display if next plan is from today or from tomorrow
+      return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD')) || this.weekPlan[0].date == parseInt(moment().add(1, 'days').format('YYYYMMDD'));;
     },
     displayCampusNewsCard() {
       return this.campusNews.length > 0;
