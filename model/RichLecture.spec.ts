@@ -53,6 +53,10 @@ describe('Test RichLecture', () => {
       'Elektr. u. magn. Felder',
       'Elektr. u. magn. Felder (online)',
     ]);
+    expectAllLecturesHaveDifferentTitleIds([
+      'IE-Wissensmanagement',
+      'ITM-Wirtschaftsrecht',
+    ]);
   });
 
   it('should generate the same title id for similar lectures', () => {

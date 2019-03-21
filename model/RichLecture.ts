@@ -17,6 +17,10 @@ export class RichLecture {
   duration: number;
 
   private generateTitleId(title: string): string {
+    switch (title) {
+      case 'ITM-Wirtschaftsrecht':
+        return 'IW2';
+    }
     return (title.match(/\b(\w)/g) || []).join('');
   }
 
