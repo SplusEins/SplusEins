@@ -50,7 +50,7 @@ export default {
         .filter(({ category }) => category.startsWith('Essen '));
     },
     isPlanOfToday() {
-      return parseInt(moment().format('YYYYMMDD')) == this.getNextAvailablePlan.date
+      return moment().isSame(this.getNextAvailablePlan.date, 'day');
     },
     ...mapState({
       lazyLoad: (state) => state.lazyLoad,

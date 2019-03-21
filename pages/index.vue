@@ -181,7 +181,7 @@ export default {
         return false;
       }
       // display if next plan is from today or from tomorrow
-      return this.weekPlan[0].date == parseInt(moment().format('YYYYMMDD')) || this.weekPlan[0].date == parseInt(moment().add(1, 'days').format('YYYYMMDD'));;
+      return moment().isSame(this.weekPlan[0].date, 'day') || moment().add(1, 'days').isSame(this.weekPlan[0].date, 'day');
     },
     displayCampusNewsCard() {
       return this.campusNews.length > 0;
