@@ -8,9 +8,6 @@ export default {
   */
   head: {
     titleTemplate: '%s - SplusEins',
-    link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' },
-    ],
     meta: [
       { hid: 'description', name: 'description', content: META_INFORMATION.description },
       { hid: 'og:description', name: 'og:description', content: META_INFORMATION.description },
@@ -41,7 +38,7 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/style/app.scss',
+    '~/assets/style/roboto.css',
     'vuetify/dist/vuetify.min.css',
     'dayspan-vuetify/dist/lib/dayspan-vuetify.min.css',
     '@mdi/font/css/materialdesignicons.min.css'
