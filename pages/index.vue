@@ -8,86 +8,146 @@
   >
     <v-layout
       row
-      wrap>
-
-      <v-flex
-        xs12
-        :md6="hasSubscribableTimetables"
-        :md12="!hasSubscribableTimetables"
-        lg3
-        d-flex
+      wrap
+    >
+      <!-- Breakpoint xs and sm -->
+      <v-layout 
+        v-show="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
+        row
+        wrap
       >
-        <v-layout column>
-          <v-flex d-flex>
-            <upcoming-lectures-card />
-          </v-flex>
-
-          <v-flex
-            v-show="displayMensaCard"
-            :d-flex="displayMensaCard"
-          >
-            <mensa-card />
-          </v-flex>
-        </v-layout>
-      </v-flex>
-
-      <v-flex
-        v-if="hasSubscribableTimetables"
-        xs12
-        md6
-        lg3
-        d-flex
-      >
-        <v-layout column>
-          <v-flex d-flex>
-            <quick-access-card />
-          </v-flex>
-
-          <v-flex 
-            v-if="displayStatsCard"
-            d-flex>
-            <stats-card />
-          </v-flex>
-        </v-layout>
-      </v-flex>
-
-      <v-flex
-        xs12
-        md12
-        :lg6="hasSubscribableTimetables"
-        :lg9="!hasSubscribableTimetables"
-        d-flex
-      >
-        <v-layout
-          row
-          wrap
+        <v-flex
+          xs12
+          sm12 
+          d-flex
         >
+          <upcoming-lectures-card />
+        </v-flex>
+
+        <v-flex
+          v-show="displayMensaCard" 
+          :d-flex="displayMensaCard"
+          xs12
+          sm12
+        >
+          <mensa-card />
+        </v-flex>
+
+        <v-flex
+          v-show="hasSubscribableTimetables" 
+          :d-flex="hasSubscribableTimetables"
+          xs12
+          sm12
+        >
+          <quick-access-card />
+        </v-flex>
+
+        <v-flex
+          v-show="hasSubscribableTimetables" 
+          :d-flex="hasSubscribableTimetables"
+          xs12
+          sm12
+        >
+          <stats-card />
+        </v-flex>
+  
+        <v-flex
+          v-show="displayCampusNewsCard" 
+          :d-flex="displayCampusNewsCard"
+          xs12
+          sm12
+        >
+          <campus-news-card />
+        </v-flex>
+
+        <v-flex
+          v-show="displayFacultyNewsCard" 
+          :d-flex="displayFacultyNewsCard"
+          xs12
+          sm12
+        >
+          <faculty-news-card />
+        </v-flex>
+  
+        <v-flex 
+          d-flex
+          xs12
+          sm12
+        >
+          <last-changes-card />
+        </v-flex>
+      </v-layout> 
+    </v-layout>
+
+    <!-- Breakpoint md and Up-->
+    <v-layout 
+      v-show="$vuetify.breakpoint.mdAndUp"
+      row
+      wrap
+    >
+      <v-flex 
+        d-flex
+        md6
+        lg6
+      >
+        <v-layout column>
           <v-flex
-            v-show="displayCampusNewsCard"
-            :d-flex="displayCampusNewsCard"
-            xs12
-            md4
-            lg12>
-            <campus-news-card />
-          </v-flex>
-          <v-flex
-            v-show="displayFacultyNewsCard"
-            :d-flex="displayFacultyNewsCard"
-            xs12
-            md4
-            lg6
+            d-flex
           >
-            <faculty-news-card />
+            <upcoming-lectures-card />
           </v-flex>
           <v-flex
             d-flex
-            xs12
-            md4
-            lg6
           >
-            <last-changes-card />
+            <faculty-news-card />
           </v-flex>
         </v-layout>
+      </v-flex>
+
+      <v-flex 
+        d-flex
+        md6
+        lg6
+      >
+        <campus-news-card />
+      </v-flex>
+
+      <v-flex
+        v-show="displayMensaCard"  
+        :d-flex="displayMensaCard"
+        md6
+        :lg4="hasSubscribableTimetables"
+        :lg6="!hasSubscribableTimetables"
+      >
+        <mensa-card />
+      </v-flex>
+
+      <v-flex
+        v-show="hasSubscribableTimetables"  
+        :d-flex="hasSubscribableTimetables"
+        md6
+        lg4 
+      >
+        <stats-card />
+      </v-flex>
+
+      <v-flex
+        v-show="hasSubscribableTimetables"  
+        :d-flex="hasSubscribableTimetables"
+        md6
+        lg4
+      >
+        <quick-access-card />
+      </v-flex>
+
+      <v-flex
+        d-flex
+        :md6="displayMensaCard"
+        :lg4="!displayMensaCard && hasSubscribableTimetables"
+        :lg6="displayMensaCard && !hasSubscribableTimetables"
+        :lg12="displayMensaCard && hasSubscribableTimetables"
+      >
+        <last-changes-card />
       </v-flex>
     </v-layout>
   </v-container>
@@ -128,9 +188,6 @@ export default {
     },
     displayFacultyNewsCard() {
       return Object.keys(this.facultyNews).length > 0;
-    },
-    displayStatsCard() {
-      return this.upcomingLectures.length != 0;
     },
     ...mapState({
       weekPlan: (state) => state.mensa.weekPlan,

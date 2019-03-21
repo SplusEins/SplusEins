@@ -13,7 +13,7 @@ const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
 const range = (lower: number, upper: number) => Array.from(Array(upper - lower), (x, i) => lower + i);
 
 const ICS_PRELOAD_WEEKS = parseInt(process.env.ICS_PRELOAD_WEEKS || '2');
-const ICS_CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
+const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
 
 /**
  * @param lecture lecture
@@ -52,7 +52,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     .filter((timetable) => timetable != undefined);
 
   if (timetables.length == 0) {
-    res.set('Cache-Control', `public, max-age=${ICS_CACHE_SECONDS}`);
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
     return;
   }
@@ -71,7 +71,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
 
     res.set('Content-Type', 'text/plain');
     res.set('Content-Disposition', 'attachment;filename="spluseins.ics"');
-    res.set('Cache-Control', `public, max-age=${ICS_CACHE_SECONDS}`);
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.send(cal.toString());
   } catch (error) {
     next(error);

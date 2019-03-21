@@ -4,7 +4,7 @@ import * as TIMETABLES from '../../assets/timetables.json';
 
 import getLectures from '../lib/SplusApi';
 
-const SPLUS_CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
+const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
 const router = express.Router();
 
@@ -24,7 +24,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
   const timetableId = req.params.timetable;
   const timetable = TIMETABLES.find(({ id }) => id == timetableId);
   if (!timetable) {
-    res.set('Cache-Control', `public, max-age=${SPLUS_CACHE_SECONDS}`);
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
     return;
   }
@@ -33,7 +33,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
 
   try {
     const data = await getLectures(timetable, week);
-    res.set('Cache-Control', `public, max-age=${SPLUS_CACHE_SECONDS}`);
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(data);
   } catch (error) {
     next(error);

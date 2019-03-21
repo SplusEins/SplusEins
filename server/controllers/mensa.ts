@@ -5,11 +5,10 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import fetch from 'node-fetch';
 
-const MENSA_CACHE_SECONDS = 1800;
-
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
 const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
+const CACHE_SECONDS = parseInt(process.env.MENSA_CACHE_SECONDS || '1800');
 
 const router = express.Router();
 const cache = CACHE_DISABLE ?
@@ -58,9 +57,9 @@ router.get('/', cors(), async (req, res, next) => {
       }));
 
       return result.sort((a,b) => moment(a.date).isBefore(moment(b.date)) ? -1 : 1);
-    }, { ttl: MENSA_CACHE_SECONDS });
+    }, { ttl: CACHE_SECONDS });
 
-    res.set('Cache-Control', `public, max-age=${MENSA_CACHE_SECONDS}`);
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(data);
   } catch (error) {
     next(error);
