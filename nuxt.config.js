@@ -81,11 +81,6 @@ export default {
   ** Build configuration
   */
   build: {
-    parallel: true,
-    cache: false,
-    /*
-    ** You can extend webpack config here
-    */
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
