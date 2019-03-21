@@ -5,13 +5,13 @@
     </v-card-title>
     <vc-donut
       :sections="sections"
-      :size="250"
+      :size="230"
       :thickness="30"
       :background="isDark ? '#424242' : 'white'"
       :total="totalHours"
       unit="px"
     >
-      <h1>{{ totalHours }}h</h1>diese Woche
+      <h1>{{ sections.length != 0 ? totalHours : 0 }}h</h1>diese Woche
     </vc-donut>
     <v-card-text class="card-text">
       <h3>{{ subscribedTimetable.description || subscribedTimetable.label }}</h3>

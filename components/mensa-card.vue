@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div class="headline">
-        Mensa Wolfenbüttel {{ isPlanOfToday? 'Heute' : 'Morgen'}}
+        Mensa Wolfenbüttel {{ isPlanOfToday? 'Heute' : 'Morgen' }}
       </div>
     </v-card-title>
     <v-card-text class="card-text-padding">
