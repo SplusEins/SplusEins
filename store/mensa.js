@@ -12,6 +12,10 @@ export const mutations = {
 
 export const getters = {
   getNextAvailablePlan: (state) => {
+    if(state.weekPlan.length == 0){
+      return {};
+    }
+
     // a plan is old if today is not friday, the mensa was open today and it's after 15 o'clock
     const isOld = moment().day() != 5 && moment().isSame(state.weekPlan[0].date, 'day') && moment().hour() > 14
 
