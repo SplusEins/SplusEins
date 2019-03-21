@@ -1,4 +1,5 @@
 import * as META_INFORMATION from './assets/meta-information.json';
+import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin';
 
 export default {
   mode: 'universal',
@@ -95,7 +96,10 @@ export default {
           exclude: /(node_modules)/
         });
       }
-    }
+    },
+    plugins: [new VuetifyLoaderPlugin()],
+    extractCSS: true,
+    transpile: ['vuetify/lib'],
   },
 
   /*
