@@ -15,10 +15,13 @@
         </v-list-tile-content>
       </v-list-tile>
 
-      <template v-for="(schedules, semester) in semesters">
+      <lazy-hydrate
+        v-for="(schedules, semester) in semesters"
+        :key="path + semester"
+        when-visible
+      >
         <v-list-group
           v-if="schedules.length > 1"
-          :key="path + semester"
           no-action
           sub-group
         >
@@ -68,7 +71,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-      </template>
+      </lazy-hydrate>
     </v-list-group>
   </v-list>
 </template>
@@ -77,11 +80,11 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'GeneralTimetablesList',
-  computed: {
-    ...mapGetters({
-      schedulesTree: 'splus/getSchedulesAsTree',
-    }),
-  },
+name: 'GeneralTimetablesList',
+computed: {
+  ...mapGetters({
+    schedulesTree: 'splus/getSchedulesAsTree',
+  }),
+},
 };
 </script>

@@ -61,6 +61,7 @@ export default {
     '@/plugins/vue-clipboard2',
     // https://github.com/dumptyd/vue-css-donut-chart
     '@/plugins/vue-css-donut-chart',
+    '@/plugins/lazy-hydrate',
   ],
 
   /*

@@ -4,6 +4,7 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import * as cheerio from 'cheerio';
+import fetch from 'node-fetch';
 
 const NEWS_CACHE_SECONDS = 1800;
 
@@ -11,7 +12,6 @@ const NEWS_CACHE_SECONDS = 1800;
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
 const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
 
-const axios = require('axios');
 const router = express.Router();
 const cache = CACHE_DISABLE ?
   cacheManager.caching({ store: 'memory', max: 0 }) :
@@ -51,13 +51,16 @@ router.get('/ostfalia', cors(), async (req, res, next) => {
       query += '&showDate=true';
       query += '&currPage=1';
 
-      const response = await axios.post(
-        'https://www.ostfalia.de/cms/system/modules/de.ostfalia.module.template/elements/renderNewsList.jsp',
-        query, {
+      const response = await fetch(
+        'https://www.ostfalia.de/cms/system/modules/de.ostfalia.module.template/elements/renderNewsList.jsp', {
+          method: 'POST',
+          body: query,
+          headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        });
+          }
+        }).then((res) => res.text());
 
-      const $ = cheerio.load(response.data);
+      const $ = cheerio.load(response);
       return $('article').map(function(i, article) {
         return {
           title: $('a', this).text().trim(),
@@ -102,8 +105,9 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`ostfalia faculty news cache miss for key ${key}`);
 
-      const response = await axios.get(url);
-      const $ = cheerio.load(response.data);
+      const response = await fetch(url)
+        .then((res) => res.text());
+      const $ = cheerio.load(response);
 
       if (faculty == 'e') {
         return $('article').eq(1).find('.ostfalia-content div').map(function(i, paragraph) {
@@ -164,8 +168,9 @@ router.get('/campus38', cors(), async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`campus38 news cache miss for key ${key}`);
 
-      const response = await axios.get('https://www.campus38.de/newsfeed.xml');
-      const $ = cheerio.load(response.data, {xmlMode: true});
+      const response = await fetch('https://www.campus38.de/newsfeed.xml')
+        .then((res) => res.text());
+      const $ = cheerio.load(response, { xmlMode: true });
       return $('entry').map(function(i, article) {
         return {
           title: $('title', this).text().trim(),
