@@ -10,17 +10,12 @@
 <script>
 import { mapState, mapGetters } from 'vuex';
 import SpluseinsCalendar from '../../components/spluseins-calendar.vue';
-import META_INFORMATION from '~/assets/meta-information.json';
 
 export default {
   name: 'TimetablePage',
   head() {
     return {
-      title: 'Stundenplan',
-      meta: [
-        { hid: 'description', name: 'description', content: (this.schedule.description || this.schedule.label) + ' – ' + META_INFORMATION.description },
-        { hid: 'og:description', name: 'og:description', content: (this.schedule.description || this.schedule.label) + ' – ' + META_INFORMATION.description }
-      ],
+      title: this.isCustomSchedule ? 'Stundenplan' : (this.schedule.description || this.schedule.label),
     };
   },
   components: {

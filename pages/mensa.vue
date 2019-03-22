@@ -79,7 +79,6 @@
 </template>
 
 <script>
-import META_INFORMATION from '~/assets/meta-information.json';
 import { mapState, mapActions, mapMutations } from 'vuex';
 import * as moment from 'moment';
 
@@ -88,10 +87,6 @@ export default {
   head() {
     return {
       title: 'Mensaplan',
-      meta: [
-        { hid: 'description', name: 'description', content: 'Mensaplan – ' + META_INFORMATION.description },
-        { hid: 'og:description', name: 'og:description', content: 'Mensaplan – ' + META_INFORMATION.description }
-      ],
     };
   },
   computed: {

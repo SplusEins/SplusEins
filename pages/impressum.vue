@@ -54,17 +54,12 @@
 <script>
 import { mapMutations } from 'vuex';
 import PROTECTED_INFORMATION from '~/assets/protected-information.json';
-import META_INFORMATION from '~/assets/meta-information.json';
 
 export default {
   name: 'SpluseinsImpressum',
   head() {
     return {
       title: 'Impressum',
-      meta: [
-        { hid: 'description', name: 'description', content: 'Impressum – ' + META_INFORMATION.description },
-        { hid: 'og:description', name: 'og:description', content: 'Impressum – ' + META_INFORMATION.description }
-      ],
     };
   },
   data() {
