@@ -16,6 +16,10 @@ export default {
   head() {
     return {
       title: this.isCustomSchedule ? 'Stundenplan' : this.schedule.longDescription,
+      meta: [
+        { hid: 'description', name: 'description', content: this.isCustomSchedule ? 'Stundenplan' : this.schedule.longDescription },
+        { hid: 'og:description', property: 'og:description', content: this.isCustomSchedule ? 'Stundenplan' : this.schedule.longDescription },
+      ],
     };
   },
   components: {
