@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test backend should return an ICS matching the snapshot 1`] = `
+"BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//sebbo.net//ical-generator//EN
+TIMEZONE-ID:Europe/Berlin
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:f9c26d64476e5b31@spluseins.de
+SEQUENCE:0
+
+DTSTART:20190319T071500Z
+DTEND:20190319T084500Z
+SUMMARY:Grundlagen des Programmierens - Labor
+LOCATION:P1\\\\, P4\\\\, P3\\\\, P2
+DESCRIPTION:Prof. Dr. F. Höppner\\\\, M.Sc. F. Morgenstern
+END:VEVENT
+BEGIN:VEVENT
+UID:eda985e3c5d22e42@spluseins.de
+SEQUENCE:0
+
+DTSTART:20190319T090000Z
+DTEND:20190319T103000Z
+SUMMARY:Grundlagen des Programmierens - Labor
+LOCATION:P1\\\\, P4\\\\, P3\\\\, P2
+DESCRIPTION:Prof. Dr. F. Höppner\\\\, M.Sc. F. Morgenstern
+END:VEVENT
+BEGIN:VEVENT
+UID:46ad93270c07134b@spluseins.de
+SEQUENCE:0
+
+DTSTART:20190322T090000Z
+DTEND:20190322T103000Z
+SUMMARY:Diskrete Strukturen-Bainf
+LOCATION:Scale-Up-Room 201\\\\, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)
+DESCRIPTION:Prof. Dr. P. Riegler
+END:VEVENT
+BEGIN:VEVENT
+UID:601a57aa74d7918a@spluseins.de
+SEQUENCE:0
+
+DTSTART:20190319T110000Z
+DTEND:20190319T123000Z
+SUMMARY:Diskrete Strukturen-Bainf
+LOCATION:Scale-Up-Room 201\\\\, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)
+DESCRIPTION:Prof. Dr. P. Riegler - Die VL findet in 7/? statt.
+END:VEVENT
+END:VCALENDAR"
+`;
+
+exports[`Test backend should return parsed lectures 1`] = `
+Object {
+  "events": Array [
+    Object {
+      "duration": 13.25,
+      "end": "2019-03-20T19:15:00.000Z",
+      "id": "R",
+      "location": "",
+      "meta": Object {
+        "description": "",
+        "organiserId": "",
+        "organiserName": "",
+      },
+      "start": "2019-03-20T06:00:00.000Z",
+      "title": "Reformationstag",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-19T08:45:00.000Z",
+      "id": "GdPL",
+      "location": "P1, P4, P3, P2",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Hoeppner Morgenstern",
+        "organiserName": "Prof. Dr. F. Höppner, M.Sc. F. Morgenstern",
+      },
+      "start": "2019-03-19T07:15:00.000Z",
+      "title": "Grundlagen des Programmierens - Labor",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-21T08:45:00.000Z",
+      "id": "MRSB",
+      "location": "",
+      "meta": Object {
+        "description": "Dr. S. Bellmer, Raum 252. Dieser Sondertermin findet zusammen mit Mathe-Repetitorium für Wirtschaftsinformatik statt!",
+        "organiserId": "",
+        "organiserName": "",
+      },
+      "start": "2019-03-21T07:15:00.000Z",
+      "title": "Mathe Repetitorium - Sondertermin - BInf",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-22T08:45:00.000Z",
+      "id": "GdPGB",
+      "location": "Hörsaal 223",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Hoeppner",
+        "organiserName": "Prof. Dr. F. Höppner",
+      },
+      "start": "2019-03-22T07:15:00.000Z",
+      "title": "Grundlagen des Programmierens - Gruppe B",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-22T08:45:00.000Z",
+      "id": "GdPGA",
+      "location": "Hörsaal 026",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Huhn",
+        "organiserName": "Prof. Dr. M. Huhn",
+      },
+      "start": "2019-03-22T07:15:00.000Z",
+      "title": "Grundlagen des Programmierens - Gruppe A",
+    },
+    Object {
+      "duration": 3.25,
+      "end": "2019-03-18T11:45:00.000Z",
+      "id": "IEhuKdICG1",
+      "location": "Seminarraum 152",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Schwiebert",
+        "organiserName": "M.A. J. Schwiebert (CS)",
+      },
+      "start": "2019-03-18T08:30:00.000Z",
+      "title": "I-Einführung und Kompetenzen der Informatik (CS) - Gruppe 1",
+    },
+    Object {
+      "duration": 3.25,
+      "end": "2019-03-18T11:45:00.000Z",
+      "id": "EhuKdIC",
+      "location": "11/1",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Jensen",
+        "organiserName": "Prof. Dr.-Ing. N. Jensen",
+      },
+      "start": "2019-03-18T08:30:00.000Z",
+      "title": "Einführung und Kompetenzen der Informatik (CS)",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-19T10:30:00.000Z",
+      "id": "GdPL",
+      "location": "P1, P4, P3, P2",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Hoeppner Morgenstern",
+        "organiserName": "Prof. Dr. F. Höppner, M.Sc. F. Morgenstern",
+      },
+      "start": "2019-03-19T09:00:00.000Z",
+      "title": "Grundlagen des Programmierens - Labor",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-21T10:30:00.000Z",
+      "id": "MC1S",
+      "location": "Hörsaal 252",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Bellmer",
+        "organiserName": "Dr. S. Bellmer",
+      },
+      "start": "2019-03-21T09:00:00.000Z",
+      "title": "Mathe Cafe 1. Sem",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-22T10:30:00.000Z",
+      "id": "DSB",
+      "location": "Scale-Up-Room 201, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Riegler",
+        "organiserName": "Prof. Dr. P. Riegler",
+      },
+      "start": "2019-03-22T09:00:00.000Z",
+      "title": "Diskrete Strukturen-Bainf",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-19T12:30:00.000Z",
+      "id": "DSB",
+      "location": "Scale-Up-Room 201, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)",
+      "meta": Object {
+        "description": "Die VL findet in 7/? statt.",
+        "organiserId": "Riegler",
+        "organiserName": "Prof. Dr. P. Riegler",
+      },
+      "start": "2019-03-19T11:00:00.000Z",
+      "title": "Diskrete Strukturen-Bainf",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-22T12:30:00.000Z",
+      "id": "IL1S",
+      "location": "Poolraum 132 (P8)",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Dick Anwander",
+        "organiserName": "Dipl.-Inf. D. Dick-Anwander",
+      },
+      "start": "2019-03-22T11:00:00.000Z",
+      "title": "Informatik-Lounge 1.Sem",
+    },
+    Object {
+      "duration": 4,
+      "end": "2019-03-21T17:00:00.000Z",
+      "id": "RuwAG2C",
+      "location": "Seminarraum 152",
+      "meta": Object {
+        "description": "",
+        "organiserId": "",
+        "organiserName": "",
+      },
+      "start": "2019-03-21T13:00:00.000Z",
+      "title": "Rhetorik und wissenschaftliches Arbeiten - Gruppe 2 (CS)",
+    },
+    Object {
+      "duration": 4,
+      "end": "2019-03-21T17:00:00.000Z",
+      "id": "RuwAG3C",
+      "location": "Seminarraum 136",
+      "meta": Object {
+        "description": "Dozenten: M.A. J. Schwiebert / Dipl.-Ing. H. Perkuhn",
+        "organiserId": "",
+        "organiserName": "",
+      },
+      "start": "2019-03-21T13:00:00.000Z",
+      "title": "Rhetorik und wissenschaftliches Arbeiten - Gruppe 3 (CS)",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-18T14:45:00.000Z",
+      "id": "TGdIATdIV",
+      "location": "11/1",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Dammann",
+        "organiserName": "Dipl.-Ing. K. Dammann",
+      },
+      "start": "2019-03-18T13:15:00.000Z",
+      "title": "Technische Grundlagen der Informatik Alt: Technik der Informatik-VL",
+    },
+    Object {
+      "duration": 1.5,
+      "end": "2019-03-19T14:45:00.000Z",
+      "id": "TGdIATdIV",
+      "location": "Hörsaal 252",
+      "meta": Object {
+        "description": "",
+        "organiserId": "Dammann",
+        "organiserName": "Dipl.-Ing. K. Dammann",
+      },
+      "start": "2019-03-19T13:15:00.000Z",
+      "title": "Technische Grundlagen der Informatik Alt: Technik der Informatik-VL",
+    },
+  ],
+  "meta": Object {
+    "degree": "Bachelor of Science",
+    "faculty": "Informatik",
+    "label": "Informatik",
+    "semester": 1,
+    "splusID": "SPLUS7A3292",
+  },
+  "name": "Bachelor of Science Informatik - 1. Semester",
+}
+`;

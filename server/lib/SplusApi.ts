@@ -3,7 +3,7 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
-import { SplusEinsEvent } from '../../model/SplusEinsEvent';
+import { RichLecture } from '../../model/RichLecture';
 import { URL, URLSearchParams } from 'url';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
@@ -65,9 +65,9 @@ export default function getLectures(timetable: Timetable, weekOfYear: number) {
     console.log(`timetable cache miss for key ${key}`);
     const id = '#' + timetable.id;
     const data = timetable.setplan? await splusSetRequest(id, weekOfYear) : await splusPlanRequest(id, weekOfYear);
-    const lectures = new SplusParser(data).getLectures(weekOfYear);
-    return lectures.map((lecture) => new SplusEinsEvent(lecture, weekOfYear));
-  }, { ttl: CACHE_SECONDS }) as Promise<SplusEinsEvent[]>;
+    const lectures = new SplusParser(data).getLectures();
+    return lectures.map((lecture) => new RichLecture(lecture, weekOfYear));
+  }, { ttl: CACHE_SECONDS }) as Promise<RichLecture[]>;
 }
 
 function lecturesForTimetablesAndWeek(timetables: Timetable[], week: number) {

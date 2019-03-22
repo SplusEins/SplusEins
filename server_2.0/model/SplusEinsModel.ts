@@ -1,8 +1,44 @@
-import * as moment from 'moment';
-import { ParsedLecture } from '../server/lib/ParsedLecture';
-import { EventMetadata } from './EventMetadata';
+import { ParsedLecture } from './SplusModel';
 
-export class SplusEinsEvent {
+export interface NewsElement {
+  title: string;
+  link: string;
+  text: string;
+  date?: Date;
+};
+
+export interface MensaDayPlan {
+  date: Date;
+  data: object;
+};
+
+export interface TimetableRequest {
+  id: string;
+  week: number;
+  setplan: boolean;
+};
+
+export interface EventMetadata {
+  organiserId: string;
+  organiserName: string;
+  description: string;
+};
+
+export interface TimetableMetadata {
+  splusID: string | string[];
+  faculty: string | string[];
+  degree: string | string[];
+  label: string | string[];
+  semester: number | number [];
+}
+
+export interface Timetable {
+  name: string,
+  events: Event[];
+  meta: TimetableMetadata;
+}
+
+export class Event {
   id: string;
   title: string;
   start: Date;
@@ -81,13 +117,18 @@ export class SplusEinsEvent {
       .join(' ');
   }
 
-  constructor(lecture: ParsedLecture, week: number) {
+  constructor(lecture: ParsedLecture) {
     this.id = this.generateTitleId(lecture.title);
     this.title = lecture.title;
     this.start = lecture.start;
-    this.end = lecture.end
-    this.duration = lecture.duration
+    this.end = lecture.end;
+    this.duration = lecture.duration;
     this.location = lecture.room;
-    this.meta = new EventMetadata(this.generateLecturerId(lecture.lecturer), lecture.lecturer, lecture.info);
+    this.meta = {
+                 organiserId: this.generateLecturerId(lecture.lecturer), 
+                 organiserName: lecture.lecturer, 
+                 description: lecture.info
+                };
   }
 };
+

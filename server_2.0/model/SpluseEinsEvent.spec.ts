@@ -1,13 +1,12 @@
-import { ParsedLecture } from '../server/lib/ParsedLecture';
-import { SplusEinsEvent } from './SplusEinsEvent';
-import moment = require('moment');
+import { ParsedLecture } from './SplusModel';
+import { Event } from './SplusEinsModel';
+import * as moment from 'moment';
 
 describe('Test Event', () => {
   function testLecture(title = 'Test - VL',
                        lecturer = 'Prof. Dr. tst. S. Eins'): ParsedLecture {
-    return <ParsedLecture>{
+    return <ParsedLecture> {
       title,
-      day: 1,
       start: moment('2019-03-19T07:15:00.000Z').toDate(),
       end: moment('2019-03-19T08:45:00.000Z').toDate(),
       duration: 1.5,
@@ -17,8 +16,8 @@ describe('Test Event', () => {
     };
   }
 
-  it('should construct from an ILecture', () => {
-    const event = new SplusEinsEvent(testLecture(), 0);
+  it('should construct from an ParsedLecture', () => {
+    const event = new Event(testLecture());
     expect(event).toBeDefined();
     expect(event.id).toBeDefined();
     expect(event.meta.organiserId).toBeDefined();
@@ -29,7 +28,7 @@ describe('Test Event', () => {
   it('should generate a unique title id', () => {
     function expectAllLecturesHaveDifferentTitleIds(titleVariations) {
       const lectures = titleVariations.map(
-        (title) => new SplusEinsEvent(testLecture(title), 0));
+        (title) => new Event(testLecture(title)));
       lectures.forEach(
         (lecture1, index) => lectures.slice(index + 1).forEach(
           (lecture2) => expect(lecture1.id).not.toBe(lecture2.id)));
@@ -64,7 +63,7 @@ describe('Test Event', () => {
   it('should generate the same title id for similar lectures', () => {
     function expectAllLecturesHaveSameTitleId(titleVariations) {
       const lectures = titleVariations.map(
-        (title) => new SplusEinsEvent(testLecture(title), 0));
+        (title) => new Event(testLecture(title)));
       lectures.slice(1).forEach(
         (lecture) => expect(lecture.id).toBe(lectures[0].id));
     }
@@ -78,10 +77,10 @@ describe('Test Event', () => {
   it('should generate a unique lecturer id', () => {
     function expectAllLecturesHaveDifferentLecturerIds(lecturerVariations) {
       const lectures = lecturerVariations.map(
-        (lecturer) => new SplusEinsEvent(testLecture('', lecturer), 0));
+        (lecturer) => new Event(testLecture('', lecturer)));
       lectures.forEach(
         (lecture1, index) => lectures.slice(index + 1).forEach(
-          (lecture2) => expect(lecture1.id).not.toBe(lecture2.id)));
+          (lecture2) => expect(lecture1.meta.organiserId).not.toBe(lecture2.meta.organiserId)));
     }
 
     expectAllLecturesHaveDifferentLecturerIds([
@@ -95,9 +94,9 @@ describe('Test Event', () => {
   it('should generate the same lecturer id for similar lectures', () => {
     function expectAllLecturesHaveSameLecturerId(lecturerVariations) {
       const lectures = lecturerVariations.map(
-        (lecturer) => new SplusEinsEvent(testLecture('', lecturer), 0));
+        (lecturer) => new Event(testLecture('', lecturer)));
       lectures.slice(1).forEach(
-        (lecture) => expect(lecture.id).toBe(lectures[0].id));
+        (lecture) => expect(lecture.meta.organiserId).toBe(lectures[0].meta.organiserId));
     }
 
     expectAllLecturesHaveSameLecturerId([
@@ -112,6 +111,6 @@ describe('Test Event', () => {
   });
 
   it('should generate ids for an empty title and lecturer', () => {
-    const lecture = new SplusEinsEvent(testLecture('', ''), 0);
+    const lecture = new Event(testLecture('', ''));
   });
 });

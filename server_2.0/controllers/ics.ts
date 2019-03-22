@@ -4,11 +4,10 @@ import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
-import { RichLecture } from '../../model/RichLecture';
-import { Timetable, getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
+import { Event, TimetableRequest } from '../model/SplusEinsModel';
+import getEvents from '../lib/SplusApi';
 
 const router = express.Router();
-
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
 const range = (lower: number, upper: number) => Array.from(Array(upper - lower), (x, i) => lower + i);
 
@@ -19,16 +18,16 @@ const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
  * @param lecture lecture
  * @returns ical event
  */
-function lectureToEvent(lecture: RichLecture) {
+function eventToICSEvent(lecture: Event) {
   const uid = sha256(JSON.stringify(lecture)).substr(0, 16);
   return {
     uid,
-    start: moment(lecture.start).add(lecture.begin, 'hours').toDate(),
-    end: moment(lecture.start).add(lecture.begin + lecture.duration, 'hours').toDate(),
+    start: lecture.start,
+    end: lecture.end,
     timestamp: moment().toDate(),
     summary: lecture.title,
-    description: lecture.lecturer + (lecture.info != '' ? ' - ' : '') + lecture.info,
-    location: lecture.room,
+    description: lecture.meta.organiserName + (lecture.meta.description != '' ? ' - ' : '') + lecture.meta.description,
+    location: lecture.location,
   };
 }
 
@@ -42,13 +41,14 @@ function lectureToEvent(lecture: RichLecture) {
  * @return An ICS calendar
  */
 router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
+
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>(req.params.lectures || '')
     .split(',')
     .filter((titleId) => titleId.length > 0);
 
   const timetables = timetableIds
-    .map((timetableId) => (<Timetable[]>TIMETABLES).find(({ id }) => id == timetableId))
+    .map((timetableId) => TIMETABLES.find(({ id }) => id == timetableId))
     .filter((timetable) => timetable != undefined);
 
   if (timetables.length == 0) {
@@ -61,11 +61,14 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
   const weeks = range(thisWeek, thisWeek + ICS_PRELOAD_WEEKS);
 
   try {
-    const allLectures = await getLecturesForTimetablesAndWeeks(timetables, weeks);
-    const lectures = titleIds.length > 0 ?
-      allLectures.filter(({ titleId }) => titleIds.includes(titleId))
-      : allLectures;
-    const events = lectures.map(lectureToEvent);
+    const requests: TimetableRequest[] = [];
+    weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequest>{id: timetable.id, week: week, setplan: timetable.setplan})));
+
+    const allEvents: Event[] = await getEvents(requests);
+    const filteredEvents = titleIds.length > 0 ?
+      allEvents.filter(({ id }) => titleIds.includes(id))
+      : allEvents;
+    const events = filteredEvents.map((event) => eventToICSEvent(event));
 
     const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });
 
