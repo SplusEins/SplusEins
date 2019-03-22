@@ -83,8 +83,21 @@ export default {
       set(value) { this.$emit('input', value); }
     },
     overlappingCourses() {
-      const withoutAt = (list, at) =>
-        list.filter((el, index) => index != at);
+      // get all lectures which have their title selected
+      const selectedLectures = this.lectures.filter(
+        (lecture) => this.selectedCourses.some(
+          (course) => course.titleId == lecture.titleId));
+
+      // group all lectures by day because only they can conflict
+      const lecturesByDay = new Map();
+      selectedLectures.forEach((lecture) => {
+        const key = `${moment(lecture.start).week()} ${lecture.day}`;
+        const list = lecturesByDay.get(key) || [];
+        list.push(lecture);
+        lecturesByDay.set(key, list);
+      });
+
+      // given two lectures, return true if they overlap
       const overlapsWith = ({
         begin: thisBegin,
         duration: thisDuration,
@@ -95,20 +108,24 @@ export default {
         duration: otherDuration,
         day: otherDay,
         start: otherStart
-        }) => thisDay == otherDay &&
-          moment(thisStart).week() == moment(otherStart).week() && (
-            (thisBegin >= otherBegin
-              && thisBegin <= otherBegin + otherDuration)
-            || (thisBegin + thisDuration >= otherBegin
-              && thisBegin + thisDuration <= otherBegin + otherDuration));
+        }) => (thisBegin >= otherBegin && thisBegin <= otherBegin + otherDuration)
+           || (thisBegin + thisDuration >= otherBegin && thisBegin + thisDuration <= otherBegin + otherDuration);
 
-      const selectedLectures = this.lectures.filter(
-        (lecture) => this.selectedCourses.some(
-          (course) => course.titleId == lecture.titleId));
+      const withoutAt = (list, at) => list.filter((el, index) => index != at);
 
-      const overlapLectures = selectedLectures.filter(
-        (oneLecture, index, self) =>
-          withoutAt(self, index).some(overlapsWith(oneLecture)));
+      // find conflicts
+      const overlapLectures = [].concat(...
+        [...lecturesByDay.values()].map(
+          // for every day…
+          (lectures) => lectures.filter(
+            // …get those two lectures…
+            (oneLecture, index, self) =>
+              // …where there is an overlap
+              withoutAt(self, index).some(overlapsWith(oneLecture)))
+        )
+      );
+
+      // get the titles of the overlaps
       const overlapTitles = new Map();
       overlapLectures.forEach(
         (lecture) => overlapTitles.set(lecture.titleId, lecture.title));
