@@ -6,13 +6,14 @@ import * as request from 'supertest';
 import { SplusParser } from './lib/SplusParser';
 import { readFile } from 'fs';
 import { promisify } from 'util';
-import { RichLecture } from '../model/RichLecture';
+import { SplusEinsEvent } from '../model/SplusEinsEvent';
+import { ParsedLecture } from './lib/ParsedLecture';
 
 async function splusApiMock(identifier: string, weekOfYear: string) {
   const htmlPath = './server/__snapshots__/splus_ibi1_44.html';
   const html = await promisify(readFile)(htmlPath, 'utf8');
-  const lectures = new SplusParser(html).getLectures();
-  return lectures.map((lecture) => new RichLecture(lecture, 12));
+  const lectures: ParsedLecture[] = new SplusParser(html).getLectures(12);
+  return lectures.map((lecture : ParsedLecture) => new SplusEinsEvent(lecture, 12));
 }
 
 jest.mock('./lib/SplusApi', () => ({

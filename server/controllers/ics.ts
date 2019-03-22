@@ -4,7 +4,7 @@ import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
-import { RichLecture } from '../../model/RichLecture';
+import { SplusEinsEvent } from '../../model/SplusEinsEvent';
 import { Timetable, getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
 
 const router = express.Router();
@@ -19,16 +19,16 @@ const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
  * @param lecture lecture
  * @returns ical event
  */
-function lectureToEvent(lecture: RichLecture) {
+function lectureToEvent(lecture: SplusEinsEvent) {
   const uid = sha256(JSON.stringify(lecture)).substr(0, 16);
   return {
     uid,
-    start: moment(lecture.start).add(lecture.begin, 'hours').toDate(),
-    end: moment(lecture.start).add(lecture.begin + lecture.duration, 'hours').toDate(),
+    start: lecture.start,
+    end: lecture.end,
     timestamp: moment().toDate(),
     summary: lecture.title,
-    description: lecture.lecturer + (lecture.info != '' ? ' - ' : '') + lecture.info,
-    location: lecture.room,
+    description: lecture.meta.orgraniserName + (lecture.meta.description != '' ? ' - ' : '') + lecture.meta.description,
+    location: lecture.location,
   };
 }
 
@@ -63,7 +63,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
   try {
     const allLectures = await getLecturesForTimetablesAndWeeks(timetables, weeks);
     const lectures = titleIds.length > 0 ?
-      allLectures.filter(({ titleId }) => titleIds.includes(titleId))
+      allLectures.filter(({ id }) => titleIds.includes(id))
       : allLectures;
     const events = lectures.map(lectureToEvent);
 

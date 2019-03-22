@@ -1,20 +1,15 @@
 import * as moment from 'moment';
-import { ILecture } from '../server/lib/ILecture';
+import { ParsedLecture } from '../server/lib/ParsedLecture';
+import { EventMetadata } from './EventMetadata';
 
-export class RichLecture {
-  /* ILecture attributes */
+export class SplusEinsEvent {
+  id: string;
   title: string;
-  day: number;
-  begin: number;
-  info: string;
-  room: string;
-  lecturer: string;
-
-  /* derived attributes */
-  titleId: string;
-  lecturerId: string;
   start: Date;
+  end: Date;
   duration: number;
+  location: string;
+  meta: EventMetadata;
 
   private generateTitleId(title: string): string {
     switch (title) {
@@ -86,25 +81,13 @@ export class RichLecture {
       .join(' ');
   }
 
-  private lectureToDate(lecture: ILecture, week: number): Date {
-    return moment()
-      .utcOffset('+0100')
-      .startOf('date')
-      .isoWeek(week % 52)
-      .isoWeekday(lecture.day + 1)
-      .toDate();
-  }
-
-  constructor(lecture: ILecture, week: number) {
+  constructor(lecture: ParsedLecture, week: number) {
+    this.id = this.generateTitleId(lecture.title);
     this.title = lecture.title;
-    this.titleId = this.generateTitleId(lecture.title);
-    this.day = lecture.day;
-    this.begin = lecture.begin;
-    this.info = lecture.info;
-    this.room = lecture.room;
-    this.lecturer = lecture.lecturer;
-    this.lecturerId = this.generateLecturerId(lecture.lecturer);
-    this.start = this.lectureToDate(lecture, week);
-    this.duration = lecture.end - lecture.begin;
+    this.start = lecture.start;
+    this.end = lecture.end
+    this.duration = lecture.duration
+    this.location = lecture.room;
+    this.meta = new EventMetadata(this.generateLecturerId(lecture.lecturer), lecture.lecturer, lecture.info);
   }
 };
