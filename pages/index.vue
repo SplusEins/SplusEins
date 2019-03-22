@@ -217,6 +217,10 @@ export default {
   head() {
     return {
       title: 'Startseite',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Startseite' },
+        { hid: 'og:description', property: 'og:description', content: 'Startseite' },
+      ],
     };
   },
   methods: {

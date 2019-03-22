@@ -117,6 +117,10 @@ export default {
   head() {
     return {
       title: 'Datenschutz',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Datenschutz' },
+        { hid: 'og:description', property: 'og:description', content: 'Datenschutz' },
+      ],
     };
   },
   data() {

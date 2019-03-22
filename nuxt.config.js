@@ -9,8 +9,16 @@ export default {
   head: {
     titleTemplate: '%s - SplusEins',
     meta: [
-      { hid: 'description', name: 'description', content: '%s – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel und Salzgitter' },
-      { hid: 'og:description', name: 'og:description', content: '%s – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel und Salzgitter' },
+      {
+        hid: 'description',
+        name: 'description',
+        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel und Salzgitter`,
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel und Salzgitter`,
+      },
       { hid: 'keywords', name: 'keywords', content: 'Sommersemester 2019, SS19, Ostfalia, Stundenplan, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Salzgitter, Karl-Scharfenberg, Informatik, Maschinenbau, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Logistik, Informationsmanagement, Verkehr, Mediendesign, Medienmanagement, Personenverkehrsmanagement, Wahlfächer, Wahlpflichtfächer' },
     ],
   },

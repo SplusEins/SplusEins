@@ -87,6 +87,10 @@ export default {
   head() {
     return {
       title: 'Mensaplan',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Mensaplan' },
+        { hid: 'og:description', property: 'og:description', content: 'Mensaplan' },
+      ],
     };
   },
   computed: {

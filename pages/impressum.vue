@@ -60,6 +60,10 @@ export default {
   head() {
     return {
       title: 'Impressum',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Impressum' },
+        { hid: 'og:description', property: 'og:description', content: 'Impressum' },
+      ],
     };
   },
   data() {
