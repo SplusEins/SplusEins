@@ -111,17 +111,12 @@
 <script>
 import { mapMutations } from 'vuex';
 import PROTECTED_INFORMATION from '~/assets/protected-information.json';
-import META_INFORMATION from '~/assets/meta-information.json';
 
 export default {
   name: 'SpluseinsDataPrivacy',
   head() {
     return {
       title: 'Datenschutz',
-      meta: [
-        { hid: 'description', name: 'description', content: 'Datenschutz – ' + META_INFORMATION.description },
-        { hid: 'og:description', name: 'og:description', content: 'Datenschutz – ' + META_INFORMATION.description }
-      ],
     };
   },
   data() {
