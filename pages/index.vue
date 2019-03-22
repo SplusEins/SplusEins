@@ -11,21 +11,21 @@
       wrap
     >
       <!-- Breakpoint xs and sm -->
-      <v-layout 
+      <v-layout
         v-show="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
         row
         wrap
       >
         <v-flex
           xs12
-          sm12 
+          sm12
           d-flex
         >
           <upcoming-lectures-card />
         </v-flex>
 
         <v-flex
-          v-show="displayMensaCard" 
+          v-show="displayMensaCard"
           :d-flex="displayMensaCard"
           xs12
           sm12
@@ -34,7 +34,7 @@
         </v-flex>
 
         <v-flex
-          v-show="hasSubscribableTimetables" 
+          v-show="hasSubscribableTimetables"
           :d-flex="hasSubscribableTimetables"
           xs12
           sm12
@@ -43,16 +43,16 @@
         </v-flex>
 
         <v-flex
-          v-show="hasSubscribableTimetables" 
+          v-show="hasSubscribableTimetables"
           :d-flex="hasSubscribableTimetables"
           xs12
           sm12
         >
           <stats-card />
         </v-flex>
-  
+
         <v-flex
-          v-show="displayCampusNewsCard" 
+          v-show="displayCampusNewsCard"
           :d-flex="displayCampusNewsCard"
           xs12
           sm12
@@ -61,31 +61,31 @@
         </v-flex>
 
         <v-flex
-          v-show="displayFacultyNewsCard" 
+          v-show="displayFacultyNewsCard"
           :d-flex="displayFacultyNewsCard"
           xs12
           sm12
         >
           <faculty-news-card />
         </v-flex>
-  
-        <v-flex 
+
+        <v-flex
           d-flex
           xs12
           sm12
         >
           <last-changes-card />
         </v-flex>
-      </v-layout> 
+      </v-layout>
     </v-layout>
 
     <!-- Breakpoint md and Up-->
-    <v-layout 
+    <v-layout
       v-show="$vuetify.breakpoint.mdAndUp"
       row
       wrap
     >
-      <v-flex 
+      <v-flex
         d-flex
         md6
         lg6
@@ -104,7 +104,7 @@
         </v-layout>
       </v-flex>
 
-      <v-flex 
+      <v-flex
         d-flex
         md6
         lg6
@@ -113,7 +113,7 @@
       </v-flex>
 
       <v-flex
-        v-show="displayMensaCard"  
+        v-show="displayMensaCard"
         :d-flex="displayMensaCard"
         md6
         :lg4="hasSubscribableTimetables"
@@ -123,16 +123,16 @@
       </v-flex>
 
       <v-flex
-        v-show="hasSubscribableTimetables"  
+        v-show="hasSubscribableTimetables"
         :d-flex="hasSubscribableTimetables"
         md6
-        lg4 
+        lg4
       >
         <stats-card />
       </v-flex>
 
       <v-flex
-        v-show="hasSubscribableTimetables"  
+        v-show="hasSubscribableTimetables"
         :d-flex="hasSubscribableTimetables"
         md6
         lg4
