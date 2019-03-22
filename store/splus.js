@@ -32,6 +32,7 @@ export const state = () => ({
         params: { timetable: timetable.id },
       },
       description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
+      longDescription: `${timetable.label} ${timetable.semester}. Semester ${shortenTimetableDegree(timetable)}`,
     })),
   /**
    * Map of created or visited custom timetables.
