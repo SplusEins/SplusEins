@@ -3,9 +3,8 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
-import { SplusEinsEvent } from '../model/SplusEinsModel';
+import { SplusEinsEvent, TimetableRequestStub } from '../model/SplusEinsModel';
 import { URL, URLSearchParams } from 'url';
-import { TimetableRequestStub } from '../model/SplusEinsModel';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
 const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';

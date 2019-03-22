@@ -4,9 +4,8 @@ import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
-import { SplusEinsEvent } from '../model/SplusEinsModel';
+import { SplusEinsEvent, TimetableRequestStub } from '../model/SplusEinsModel';
 import { getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
-import { TimetableRequestStub } from '../model/SplusEinsModel';
 
 const router = express.Router();
 
