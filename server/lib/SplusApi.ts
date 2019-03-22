@@ -3,8 +3,9 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
-import { SplusEinsEvent } from '../../model/SplusEinsEvent';
+import { SplusEinsEvent } from '../model/SplusEinsModel';
 import { URL, URLSearchParams } from 'url';
+import { TimetableRequestStub } from '../model/SplusEinsModel';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
 const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';
@@ -27,12 +28,12 @@ const cache = CACHE_DISABLE ?
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
-function splusPlanRequest(identifier: string, weekOfYear: number): Promise<string> {
+function splusPlanRequest(timetable: TimetableRequestStub): Promise<string> {
   const url = new URL(PLAN_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
-  url.searchParams.append('identifier', identifier);
+  url.searchParams.append('identifier', timetable.id);
   const body = new URLSearchParams();
-  body.append('weeks', weekOfYear.toString());
+  body.append('weeks', timetable.week.toString());
 
   return fetch(url.toString(), {
     method: 'POST',
@@ -40,12 +41,12 @@ function splusPlanRequest(identifier: string, weekOfYear: number): Promise<strin
   }).then((res) => res.text());
 }
 
-function splusSetRequest(identifier: string, weekOfYear: number): Promise<string> {
+function splusSetRequest(timetable: TimetableRequestStub): Promise<string> {
   const url = new URL(SET_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
   const body = new URLSearchParams();
-  body.append('weeks', weekOfYear.toString());
-  body.append('identifier[]', identifier);
+  body.append('weeks', timetable.week.toString());
+  body.append('identifier[]', timetable.id);
 
   return fetch(url.toString(), {
     method: 'POST',
@@ -53,29 +54,19 @@ function splusSetRequest(identifier: string, weekOfYear: number): Promise<string
   }).then((res) => res.text());
 }
 
-export interface Timetable {
-  id: string;
-  setplan?: boolean;
-}
-
-export default function getLectures(timetable: Timetable, weekOfYear: number) {
-  const key = `splus-${timetable.id}-${weekOfYear}`;
+export default function getLectures(timetable: TimetableRequestStub) {
+  const key = `splus-${timetable.id}-${timetable.week}`;
 
   return cache.wrap(key, async () => {
     console.log(`timetable cache miss for key ${key}`);
-    const id = '#' + timetable.id;
-    const data = timetable.setplan? await splusSetRequest(id, weekOfYear) : await splusPlanRequest(id, weekOfYear);
-    const lectures = new SplusParser(data).getLectures(weekOfYear);
-    return lectures.map((lecture) => new SplusEinsEvent(lecture, weekOfYear));
+    timetable.id = '#' + timetable.id;
+    const data = timetable.setplan? await splusSetRequest(timetable) : await splusPlanRequest(timetable);
+    const lectures = new SplusParser(data).getLectures(timetable.week);
+    return lectures.map((lecture) => new SplusEinsEvent(lecture));
   }, { ttl: CACHE_SECONDS }) as Promise<SplusEinsEvent[]>;
 }
 
-function lecturesForTimetablesAndWeek(timetables: Timetable[], week: number) {
-  return Promise.all(timetables.map((timetable) => getLectures(timetable, week)))
-    .then(flatten);
-}
-
-export function getLecturesForTimetablesAndWeeks(timetables: Timetable[], weeks: number[]) {
-  return Promise.all(weeks.map((week) => lecturesForTimetablesAndWeek(timetables, week)))
+export function getLecturesForTimetablesAndWeeks(timetables: TimetableRequestStub[]) {
+  return Promise.all(timetables.map((timetable: TimetableRequestStub) => getLectures(timetable)))
     .then(flatten);
 }

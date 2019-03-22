@@ -4,8 +4,9 @@ import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
-import { SplusEinsEvent } from '../../model/SplusEinsEvent';
-import { Timetable, getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
+import { SplusEinsEvent } from '../model/SplusEinsModel';
+import { getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
+import { TimetableRequestStub } from '../model/SplusEinsModel';
 
 const router = express.Router();
 
@@ -27,7 +28,7 @@ function lectureToEvent(lecture: SplusEinsEvent) {
     end: lecture.end,
     timestamp: moment().toDate(),
     summary: lecture.title,
-    description: lecture.meta.orgraniserName + (lecture.meta.description != '' ? ' - ' : '') + lecture.meta.description,
+    description: lecture.meta.organiserName + (lecture.meta.description != '' ? ' - ' : '') + lecture.meta.description,
     location: lecture.location,
   };
 }
@@ -48,7 +49,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     .filter((titleId) => titleId.length > 0);
 
   const timetables = timetableIds
-    .map((timetableId) => (<Timetable[]>TIMETABLES).find(({ id }) => id == timetableId))
+    .map((timetableId) => TIMETABLES.find(({ id }) => id == timetableId))
     .filter((timetable) => timetable != undefined);
 
   if (timetables.length == 0) {
@@ -61,7 +62,9 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
   const weeks = range(thisWeek, thisWeek + ICS_PRELOAD_WEEKS);
 
   try {
-    const allLectures = await getLecturesForTimetablesAndWeeks(timetables, weeks);
+    let requests: TimetableRequestStub[] = [];
+    weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequestStub>{id: timetable.id, week: week, setplan: timetable.setplan})));
+    const allLectures = await getLecturesForTimetablesAndWeeks(requests);
     const lectures = titleIds.length > 0 ?
       allLectures.filter(({ id }) => titleIds.includes(id))
       : allLectures;

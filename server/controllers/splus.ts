@@ -3,6 +3,7 @@ import * as cors from 'cors';
 import * as TIMETABLES from '../../assets/timetables.json';
 
 import getLectures from '../lib/SplusApi';
+import { TimetableRequestStub } from '../model/SplusEinsModel'
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
@@ -32,7 +33,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
   const week = parseInt(req.params.week);
 
   try {
-    const data = await getLectures(timetable, week);
+    const data = await getLectures(<TimetableRequestStub> {id: timetable.id, week: week, setplan: timetable.setplan});
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(data);
   } catch (error) {
