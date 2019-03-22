@@ -5,6 +5,7 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
+import { URLSearchParams } from 'url';
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -40,23 +41,20 @@ router.get('/ostfalia', cors(), async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`ostfalia news cache miss for key ${key}`);
 
-      let query = '';
-      query += 'itemsPerPage=10';
-      query += '&collectorParam=' + encodeURIComponent(
+      const query = new URLSearchParams();
+      query.append('itemsPerPage', '10');
+      query.append('collectorParam',
         'fq=type:of-news' +
         '&fq=parent-folders:"/sites/default/de/campus/.content/newsentries10/"' +
         '&sort=newsdate_de_dt desc' +
         '|createPath=/sites/default/de/campus/.content/newsentries10/news_%(number).xml');
-      query += '&showDate=true';
-      query += '&currPage=1';
+      query.append('showDate', 'true');
+      query.append('currPage', '1');
 
       const response = await fetch(
         'https://www.ostfalia.de/cms/system/modules/de.ostfalia.module.template/elements/renderNewsList.jsp', {
           method: 'POST',
           body: query,
-          headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-          }
         }).then((res) => res.text());
 
       const $ = cheerio.load(response);

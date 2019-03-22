@@ -4,7 +4,7 @@ import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
 import { RichLecture } from '../../model/RichLecture';
-import { URL } from 'url';
+import { URL, URLSearchParams } from 'url';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
 const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';
@@ -31,7 +31,8 @@ function splusPlanRequest(identifier: string, weekOfYear: number): Promise<strin
   const url = new URL(PLAN_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
   url.searchParams.append('identifier', identifier);
-  const body = `weeks=${weekOfYear}`;
+  const body = new URLSearchParams();
+  body.append('weeks', weekOfYear.toString());
 
   return fetch(url.toString(), {
     method: 'POST',
@@ -42,14 +43,13 @@ function splusPlanRequest(identifier: string, weekOfYear: number): Promise<strin
 function splusSetRequest(identifier: string, weekOfYear: number): Promise<string> {
   const url = new URL(SET_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
-  const body = `weeks=${weekOfYear}&identifier[]=${encodeURIComponent(identifier)}`;
+  const body = new URLSearchParams();
+  body.append('weeks', weekOfYear.toString());
+  body.append('identifier[]', identifier);
 
   return fetch(url.toString(), {
     method: 'POST',
     body,
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
   }).then((res) => res.text());
 }
 
