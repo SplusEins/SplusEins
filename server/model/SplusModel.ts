@@ -1,4 +1,4 @@
-export interface ParseBlock {
+export interface ParsedBlock {
     title: string;
     durationHours: number;
     durationSlots: number;

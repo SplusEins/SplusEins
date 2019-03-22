@@ -1,5 +1,5 @@
 import { load } from 'cheerio';
-import { ParsedLecture, ParseBlock } from '../model/SplusModel';
+import { ParsedLecture, ParsedBlock } from '../model/SplusModel';
 import * as moment from 'moment'
 
 export class SplusParser {
@@ -12,7 +12,7 @@ export class SplusParser {
     private colWidths: number[] = [];
     private colBlocked: number[] = [];
 
-    private blocks: ParseBlock[][][] = [];
+    private blocks: ParsedBlock[][][] = [];
 
     constructor(data: string) {
         this.$ = load(data);
@@ -98,7 +98,7 @@ export class SplusParser {
 
     private parseRow($row: Cheerio) {
         const $cols = $row.find('> td:not(:first-child)');
-        const blocks: ParseBlock[][] = [];
+        const blocks: ParsedBlock[][] = [];
 
         let offset = 0;
         for (let i = 0; i < $cols.length; i++) {
@@ -128,7 +128,7 @@ export class SplusParser {
         return blocks;
     }
 
-    private parseBlock($block: Cheerio): ParseBlock {
+    private parseBlock($block: Cheerio): ParsedBlock {
         const $tblTitle = $block.find('table:nth-child(1)');
         const $tblInfo = $block.find('table:nth-child(2)');
         const $tblLocation = $block.find('table:nth-child(3)');
