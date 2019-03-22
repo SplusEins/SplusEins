@@ -15,7 +15,7 @@ export default {
   name: 'TimetablePage',
   head() {
     return {
-      title: this.isCustomSchedule ? 'Stundenplan' : (this.schedule.description || this.schedule.label),
+      title: this.isCustomSchedule ? 'Stundenplan' : this.schedule.longDescription,
     };
   },
   components: {
