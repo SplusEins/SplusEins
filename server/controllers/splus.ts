@@ -3,7 +3,7 @@ import * as cors from 'cors';
 import * as TIMETABLES from '../../assets/timetables.json';
 
 import getLectures from '../lib/SplusApi';
-import { TimetableRequestStub } from '../model/SplusEinsModel'
+import { TimetableRequest } from '../model/SplusEinsModel'
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
@@ -22,9 +22,11 @@ router.options('/:timetable/:week', cors());
  * @return RichLecture[]
  */
 router.get('/:timetable/:week', cors(), async (req, res, next) => {
+
   const timetableId = req.params.timetable;
-  const timetable = TIMETABLES.find(({ id }) => id == timetableId);
-  if (!timetable) {
+  const requestedTimetable = TIMETABLES.find(({ id }) => id == timetableId);
+
+  if (!requestedTimetable) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
     return;
@@ -33,7 +35,9 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
   const week = parseInt(req.params.week);
 
   try {
-    const data = await getLectures(<TimetableRequestStub> {id: timetable.id, week: week, setplan: timetable.setplan});
+    const request: TimetableRequest = <TimetableRequest> {id: requestedTimetable.id, week: week, setplan: requestedTimetable.setplan};
+    const data = await getLectures(request);
+
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(data);
   } catch (error) {

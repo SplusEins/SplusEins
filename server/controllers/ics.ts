@@ -4,11 +4,10 @@ import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
-import { SplusEinsEvent, TimetableRequestStub } from '../model/SplusEinsModel';
+import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
 
 const router = express.Router();
-
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
 const range = (lower: number, upper: number) => Array.from(Array(upper - lower), (x, i) => lower + i);
 
@@ -19,7 +18,7 @@ const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
  * @param lecture lecture
  * @returns ical event
  */
-function lectureToEvent(lecture: SplusEinsEvent) {
+function eventToICSEvent(lecture: Event) {
   const uid = sha256(JSON.stringify(lecture)).substr(0, 16);
   return {
     uid,
@@ -42,6 +41,7 @@ function lectureToEvent(lecture: SplusEinsEvent) {
  * @return An ICS calendar
  */
 router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
+
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>(req.params.lectures || '')
     .split(',')
@@ -61,13 +61,14 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
   const weeks = range(thisWeek, thisWeek + ICS_PRELOAD_WEEKS);
 
   try {
-    let requests: TimetableRequestStub[] = [];
-    weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequestStub>{id: timetable.id, week: week, setplan: timetable.setplan})));
+    const requests: TimetableRequest[] = [];
+    weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequest>{id: timetable.id, week: week, setplan: timetable.setplan})));
+
     const allLectures = await getLecturesForTimetablesAndWeeks(requests);
     const lectures = titleIds.length > 0 ?
       allLectures.filter(({ id }) => titleIds.includes(id))
       : allLectures;
-    const events = lectures.map(lectureToEvent);
+    const events = lectures.map((lecture) => eventToICSEvent(lecture));
 
     const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });
 

@@ -3,7 +3,7 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
-import { SplusEinsEvent, TimetableRequestStub } from '../model/SplusEinsModel';
+import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { URL, URLSearchParams } from 'url';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
@@ -27,7 +27,8 @@ const cache = CACHE_DISABLE ?
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
-function splusPlanRequest(timetable: TimetableRequestStub): Promise<string> {
+
+function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(PLAN_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
   url.searchParams.append('identifier', timetable.id);
@@ -40,7 +41,7 @@ function splusPlanRequest(timetable: TimetableRequestStub): Promise<string> {
   }).then((res) => res.text());
 }
 
-function splusSetRequest(timetable: TimetableRequestStub): Promise<string> {
+function splusSetRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(SET_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
   const body = new URLSearchParams();
@@ -53,7 +54,7 @@ function splusSetRequest(timetable: TimetableRequestStub): Promise<string> {
   }).then((res) => res.text());
 }
 
-export default function getLectures(timetable: TimetableRequestStub) {
+export default function getLectures(timetable: TimetableRequest) {
   const key = `splus-${timetable.id}-${timetable.week}`;
 
   return cache.wrap(key, async () => {
@@ -61,11 +62,11 @@ export default function getLectures(timetable: TimetableRequestStub) {
     timetable.id = '#' + timetable.id;
     const data = timetable.setplan? await splusSetRequest(timetable) : await splusPlanRequest(timetable);
     const lectures = new SplusParser(data).getLectures(timetable.week);
-    return lectures.map((lecture) => new SplusEinsEvent(lecture));
-  }, { ttl: CACHE_SECONDS }) as Promise<SplusEinsEvent[]>;
+    return lectures.map((lecture) => new Event(lecture));
+  }, { ttl: CACHE_SECONDS }) as Promise<Event[]>;
 }
 
-export function getLecturesForTimetablesAndWeeks(timetables: TimetableRequestStub[]) {
-  return Promise.all(timetables.map((timetable: TimetableRequestStub) => getLectures(timetable)))
+export function getLecturesForTimetablesAndWeeks(timetables: TimetableRequest[]) {
+  return Promise.all(timetables.map((timetable: TimetableRequest) => getLectures(timetable)))
     .then(flatten);
 }

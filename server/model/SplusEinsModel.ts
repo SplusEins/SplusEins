@@ -1,6 +1,6 @@
 import { ParsedLecture } from './SplusModel';
 
-export interface TimetableRequestStub {
+export interface TimetableRequest {
   id: string;
   week: number;
   setplan: boolean;
@@ -12,21 +12,7 @@ export interface EventMetadata {
 	description: string;
 };
 
-export interface SplusTimetableMetadata {
-	splusId: string | string[];
-	faculty: string | string[];
-	degree: string | string[];
-	semester: number | number[];
-	description: string | string[];
-};
-
-export interface SplusEinsTimetable{
-	name: string;
-	events: SplusEinsEvent[];
-	meta: SplusTimetableMetadata;
-};
-
-export class SplusEinsEvent {
+export class Event {
   id: string;
   title: string;
   start: Date;
@@ -109,8 +95,8 @@ export class SplusEinsEvent {
     this.id = this.generateTitleId(lecture.title);
     this.title = lecture.title;
     this.start = lecture.start;
-    this.end = lecture.end
-    this.duration = lecture.duration
+    this.end = lecture.end;
+    this.duration = lecture.duration;
     this.location = lecture.room;
     this.meta = {
                  organiserId: this.generateLecturerId(lecture.lecturer), 
