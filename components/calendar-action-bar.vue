@@ -113,8 +113,8 @@
     />
     <open-calendar-dialog
       v-model="openCalendarDialogOpen"
-      :timetableIds="timetableIds"
-      :titleIds="titleIds"
+      :timetable-ids="timetableIds"
+      :title-ids="titleIds"
     />
   </div>
 </template>

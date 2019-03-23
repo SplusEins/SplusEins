@@ -21,7 +21,7 @@
       <v-container>
         <p>
           In deiner Kalender-Anwendung kannst du den Link abonnieren oder die Kalenderdatei für die nächsten Wochen importieren.
-          <br />
+          <br>
           Über den Link werden die Daten automatisch aktualisiert.
         </p>
         <v-layout
@@ -45,15 +45,23 @@
 
           <v-btn
             :href="downloadLink"
+            flat
+            @click="$track('ICS', 'download')"
           >
-            <v-icon left>mdi-download</v-icon>
+            <v-icon left>
+              mdi-download
+            </v-icon>
             Herunterladen
           </v-btn>
 
           <v-btn
             :href="webcalLink"
+            flat
+            @click="$track('ICS', 'open')"
           >
-            <v-icon left>mdi-open-in-app</v-icon>
+            <v-icon left>
+              mdi-open-in-app
+            </v-icon>
             App öffnen
           </v-btn>
         </v-layout>
@@ -94,21 +102,16 @@ export default {
       const base = this.$axios.defaults.baseURL;
       const absoluteBase = base.startsWith('http') ? base : window.location.origin + base;
       const webcalBase = absoluteBase.replace(/^https?/i, 'webcal');
-
       return webcalBase + this.calendarPath;
-      this.$track('ICS', 'open');
     },
     httpLink() {
       const base = this.$axios.defaults.baseURL;
       const absoluteBase = base.startsWith('http') ? base : window.location.origin + base;
-
       return absoluteBase + this.calendarPath;
-      this.$track('ICS', 'open');
     },
     downloadLink() {
       const base = this.$axios.defaults.baseURL;
       return base + this.calendarPath;
-      this.$track('ICS', 'open');
     },
     dialogOpen: {
       get() { return this.value; },
@@ -119,12 +122,6 @@ export default {
     onTextFieldCopySuccess() {
       this.textFieldCopySuccessMessage = 'Kopiert.';
     },
-    tryWebcalLink() {
-    },
   },
 };
 </script>
-
-<style scoped lang="scss">
-
-</style>
