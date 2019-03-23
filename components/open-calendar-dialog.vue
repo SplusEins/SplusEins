@@ -1,73 +1,56 @@
 <template>
-  <v-dialog
-    v-model="dialogOpen"
-    max-width="450"
+  <v-bottom-sheet
+    v-model="open"
+    inset
   >
-    <v-card>
-      <v-toolbar
-        dark
-        color="primary"
+    <v-list>
+      <v-subheader>Extern öffnen</v-subheader>
+      <v-list-tile
+        :href="downloadLink"
+        @click="open = false; $track('ICS', 'download')"
       >
-        <v-btn
-          icon
-          dark
-          @click.native="dialogOpen = false"
-        >
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
-        <v-toolbar-title>Extern öffnen</v-toolbar-title>
-      </v-toolbar>
-
-      <v-container>
-        <p>
-          In deiner Kalender-Anwendung kannst du den Link abonnieren oder die Kalenderdatei für die nächsten Wochen importieren.
-          <br>
-          Über den Link werden die Daten automatisch aktualisiert.
-        </p>
-        <v-layout
-          row
-          wrap
-          justify-space-between
-        >
-          <v-card-text>
-            <v-text-field
-              v-clipboard:copy="httpLink"
-              v-clipboard:success="onTextFieldCopySuccess"
-              :value="httpLink"
-              :success-messages="textFieldCopySuccessMessage"
-              append-icon="mdi-content-copy"
-              autofocus
-              solo
-              full-width
-              readonly
-            />
-          </v-card-text>
-
-          <v-btn
-            :href="downloadLink"
-            flat
-            @click="$track('ICS', 'download')"
+        <v-list-tile-avatar>
+          <v-avatar
+            size="32px"
+            tile
           >
-            <v-icon left>
-              mdi-download
-            </v-icon>
-            Herunterladen
-          </v-btn>
+            <v-icon>mdi-download</v-icon>
+          </v-avatar>
+        </v-list-tile-avatar>
+        <v-list-tile-title>Aktuelle Daten herunterladen</v-list-tile-title>
+      </v-list-tile>
 
-          <v-btn
-            :href="webcalLink"
-            flat
-            @click="$track('ICS', 'open')"
+      <v-list-tile
+        v-clipboard="httpLink"
+        @click="open = false; $track('ICS', 'copy')"
+      >
+        <v-list-tile-avatar>
+          <v-avatar
+            size="32px"
+            tile
           >
-            <v-icon left>
-              mdi-open-in-app
-            </v-icon>
-            App öffnen
-          </v-btn>
-        </v-layout>
-      </v-container>
-    </v-card>
-  </v-dialog>
+            <v-icon>mdi-content-copy</v-icon>
+          </v-avatar>
+        </v-list-tile-avatar>
+        <v-list-tile-title>Link in die Zwischenablage kopieren</v-list-tile-title>
+      </v-list-tile>
+
+      <v-list-tile
+        :href="webcalLink"
+        @click="open = false; $track('ICS', 'open')"
+      >
+        <v-list-tile-avatar>
+          <v-avatar
+            size="32px"
+            tile
+          >
+            <v-icon>mdi-open-in-app</v-icon>
+          </v-avatar>
+        </v-list-tile-avatar>
+        <v-list-tile-title>Link in Kalender-App öffnen</v-list-tile-title>
+      </v-list-tile>
+    </v-list>
+  </v-bottom-sheet>
 </template>
 
 <script>
@@ -113,7 +96,7 @@ export default {
       const base = this.$axios.defaults.baseURL;
       return base + this.calendarPath;
     },
-    dialogOpen: {
+    open: {
       get() { return this.value; },
       set(value) { this.$emit('input', value); }
     },
