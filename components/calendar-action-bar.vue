@@ -40,17 +40,17 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="share(); $track('Calendar', 'share', 'desktop')">
+        <v-list-tile @click="share(); $track('Calendar', 'share', 'mobile')">
           <v-list-tile-content>
             <v-list-tile-title>Teilen</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'dektop')">
+        <v-list-tile @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'mobile')">
           <v-list-tile-content>
             <v-list-tile-title>Extern öffnen</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'desktop')">
+        <v-list-tile @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'mobile')">
           <v-list-tile-content>
             <v-list-tile-title v-if="isCustomSchedule">
               Bearbeiten
@@ -62,7 +62,7 @@
         </v-list-tile>
         <v-list-tile
           v-if="isCustomSchedule"
-          @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'desktop')"
+          @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'mobile')"
         >
           <v-list-tile-title>Löschen</v-list-tile-title>
         </v-list-tile>
@@ -82,19 +82,19 @@
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-delete"
         text="Löschen"
-        @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'mobile')"
+        @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'desktop')"
       />
       <responsive-icon-button
         :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-pencil"
-        @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'mobile')"
+        @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'desktop')"
       />
       <responsive-icon-button
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-calendar"
         text="Extern öffnen"
-        @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS','mobile')"
+        @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'desktop')"
       />
     </span>
 

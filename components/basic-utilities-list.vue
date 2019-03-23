@@ -29,7 +29,7 @@
     <v-list-tile
       to="/mensa"
       nuxt
-      @click="$track('MensaPlan', 'opened','sideMenu')"
+      @click="$track('MensaPlan', 'opened', 'sideMenu')"
     >
       <v-list-tile-action>
         <v-icon>mdi-food-fork-drink</v-icon>
@@ -40,6 +40,7 @@
         </v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
+
     <custom-timetable-dialog v-model="customTimetableDialogOpen" />
   </v-list>
 </template>
