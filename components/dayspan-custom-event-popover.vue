@@ -1,9 +1,6 @@
 <template>
   <lazy-hydrate ssr-only>
-    <v-card
-      :class="classes"
-      class="ds-calendar-event-popover-card"
-    >
+    <v-card class="ds-calendar-event-popover-card">
       <v-toolbar
         :style="styleHeader"
         flat
@@ -13,100 +10,29 @@
           class="toolbar-padding"
         >
           {{ details.title }}
-          <v-icon
-            v-if="details.icon"
-            :style="styleButton"
-          >
-            {{ details.icon }}
-          </v-icon>
         </v-toolbar-title>
-
-        <v-btn
-          v-if="allowEdit"
-          color="secondary"
-          small
-          absolute
-          bottom
-          left
-          fab
-          icon
-          @click="edit"
-        >
-          <v-icon>edit</v-icon>
-        </v-btn>
-
-        <slot
-          v-bind="slotData"
-          name="eventPopoverToolbarLeft"
-        />
 
         <v-spacer />
 
-        <slot
-          v-bind="slotData"
-          name="eventPopoverToolbarRight"
-        />
-
-        <slot
-          v-bind="slotData"
-          name="eventPopoverToolbarActions"
+        <v-btn
+          icon
+          @click="close"
         >
-          <v-tooltip
-            v-if="!isReadOnly"
-            bottom
-          >
-            <ds-schedule-actions
-              slot="activator"
-              v-bind="{$scopedSlots}"
-              :calendar="calendar"
-              :calendar-event="calendarEvent"
-              :schedule="calendarEvent.schedule"
-              v-on="$listeners"
-            >
-              <v-btn
-                :style="styleButton"
-                icon
-              >
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </ds-schedule-actions>
-
-            <span>{{ labels.options }}</span>
-          </v-tooltip>
-        </slot>
-
-        <slot
-          v-bind="slotData"
-          name="eventPopoverToolbarClose"
-        >
-          <v-btn
-            :style="styleButton"
-            icon
-            @click="close"
-          >
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-        </slot>
+          <v-icon color="white">
+            mdi-close
+          </v-icon>
+        </v-btn>
       </v-toolbar>
-      <v-card-text>
-        <slot
-          v-bind="slotData"
-          name="eventPopoverBodyTop"
-        />
 
+      <v-card-text>
         <v-list dense>
           <v-list-tile>
             <v-list-tile-avatar>
               <v-icon>mdi-clock-outline</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <slot
-                v-bind="slotData"
-                name="eventPopoverOccurs"
-              >
-                <v-list-tile-title>{{ startDate }}</v-list-tile-title>
-                <v-list-tile-sub-title>{{ occurs }}</v-list-tile-sub-title>
-              </slot>
+              <v-list-tile-title>{{ startDate }}</v-list-tile-title>
+              <v-list-tile-sub-title>{{ timeframe }}</v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
 
@@ -115,16 +41,7 @@
               <v-icon>mdi-map-marker</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <slot
-                v-bind="slotData"
-                name="eventPopoverLocation"
-              >
-                <v-list-tile-title>
-                  <span class="whitespace">
-                    {{ details.location }}
-                  </span>
-                </v-list-tile-title>
-              </slot>
+              <v-list-tile-title>{{ details.location }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
@@ -133,32 +50,7 @@
               <v-icon>mdi-text-subject</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <slot
-                v-bind="slotData"
-                name="eventPopoverDescription"
-              >
-                <v-list-tile-title>
-                  <span class="whitespace">
-                    {{ details.description }}
-                  </span>
-                </v-list-tile-title>
-              </slot>
-            </v-list-tile-content>
-          </v-list-tile>
-
-          <v-list-tile v-if="details.notify">
-            <v-list-tile-avatar>
-              <v-icon>notifications</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <slot v-bind="slotData">
-                name="eventPopoverNotifications"
-                <v-list-tile-title>
-                  <span class="whitespace">
-                    {{ details.notify }}
-                  </span>
-                </v-list-tile-title>
-              </slot>
+              <v-list-tile-title>{{ details.description }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
@@ -167,42 +59,11 @@
               <v-icon>event</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <slot
-                v-bind="slotData"
-                name="eventPopoverCalendar"
-              >
-                <v-list-tile-title>
-                  <span class="whitespace">
-                    {{ details.calendar }}
-                  </span>
-                </v-list-tile-title>
-              </slot>
-            </v-list-tile-content>
-          </v-list-tile>
-
-          <v-list-tile v-if="hasBusy">
-            <v-list-tile-avatar>
-              <v-icon>work</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <slot
-                v-bind="slotData"
-                name="eventPopoverBusy"
-              >
-                <v-list-tile-title>{{ busyness }}</v-list-tile-title>
-              </slot>
+              <v-list-tile-title>{{ details.calendar }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
-        <slot
-          v-bind="slotData"
-          name="eventPopoverBodyBottom"
-        />
       </v-card-text>
-      <slot
-        v-bind="slotData"
-        name="eventPopoverActions"
-      />
     </v-card>
   </lazy-hydrate>
 </template>
@@ -211,128 +72,40 @@
 import { CalendarEvent, Calendar, Pattern } from 'dayspan';
 export default {
   name: 'DsCustomCalendarEventPopover',
-  props:
-  {
-    calendarEvent:
-    {
+  props: {
+    calendarEvent: {
       required: true,
       type: CalendarEvent
     },
-    calendar:
-    {
+    calendar: {
       required: true,
       type: Calendar
     },
-    readOnly:
-    {
-      type: Boolean,
-      default: false
-    },
-    edit:
-    {
+    close: {
       type: Function,
       default(){}
     },
-    allowEditOnReadOnly:
-    {
-      type: Boolean,
-      default: false,
-    },
-    close:
-    {
-      type: Function,
-      default(){}
-    },
-    formats:
-    {
-      type: Function,
-      validate(x) {
-        return this.$dsValidate(x, 'formats');
-      },
-      default() {
-        return this.$dsDefaults().formats;
-      }
-    },
-    labels:
-    {
-      type: Function,
-      validate(x) {
-        return this.$dsValidate(x, 'labels');
-      },
-      default() {
-        return this.$dsDefaults().labels;
-      }
-    }
   },
-  data: vm => ({
-  }),
-  computed:
-  {
-    slotData()
-    {
-      return {
-        calendarEvent: this.calendarEvent,
-        calendar: this.calendar,
-        edit: this.edit,
-        close: this.close,
-        details: this.details,
-        readOnly: this.readOnly
-      };
-    },
-    classes()
-    {
-      return {
-        'ds-event-cancelled': this.calendarEvent.cancelled
-      };
-    },
-    styleHeader()
-    {
+  computed: {
+    styleHeader() {
       return {
         backgroundColor: this.details.color,
         color: this.details.forecolor
       };
     },
-    styleButton()
-    {
-      return {
-        color: 'white'
-      };
+    startDate() {
+      return this.calendarEvent.start.toMoment().format('dddd, DD.MM.YY');
     },
-    startDate()
-    {
-      return this.calendarEvent.start.toMoment().format( 'dddd, DD.MM.YY' );
+    details() {
+      return this.calendarEvent.event.data;
     },
-    busyness()
-    {
-      return this.details.busy ? this.labels.busy : this.labels.free;
-    },
-    hasBusy()
-    {
-      return typeof this.details.busy === 'boolean';
-    },
-    occurs()
-    {
+    timeframe() {
       return this.$dayspan.getEventOccurrence(
         this.calendarEvent.start,
         this.calendarEvent.end,
       );
     },
-    details()
-    {
-      return this.calendarEvent.event.data;
-    },
-    allowEdit()
-    {
-      return this.allowEditOnReadOnly || !this.isReadOnly;
-    },
-    isReadOnly()
-    {
-      return this.readOnly || this.$dayspan.readOnly || this.details.readonly;
-    }
   },
-  methods:
-  {
-  }
 }
 </script>
 
@@ -369,9 +142,5 @@ export default {
 
 .toolbar-padding {
   padding: 0px 16px 20px 0px !important;
-}
-
-.whitespace{
-  white-space: normal;
 }
 </style>
