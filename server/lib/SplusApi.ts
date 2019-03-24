@@ -54,7 +54,7 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
   }).then((res) => res.text());
 }
 
-export default function getLectures(timetable: TimetableRequest) {
+function getLectures(timetable: TimetableRequest) {
   const key = `splus-${timetable.id}-${timetable.week}`;
 
   return cache.wrap(key, async () => {
@@ -66,7 +66,7 @@ export default function getLectures(timetable: TimetableRequest) {
   }, { ttl: CACHE_SECONDS }) as Promise<Event[]>;
 }
 
-export function getLecturesForTimetablesAndWeeks(timetables: TimetableRequest[]) {
+export function getEvents(timetables: TimetableRequest[]) {
   return Promise.all(timetables.map((timetable: TimetableRequest) => getLectures(timetable)))
     .then(flatten);
 }

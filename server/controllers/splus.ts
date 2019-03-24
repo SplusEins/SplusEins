@@ -2,9 +2,8 @@ import * as express from 'express';
 import * as cors from 'cors';
 import * as TIMETABLES from '../../assets/timetables.json';
 
-import getLectures from '../lib/SplusApi';
 import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
-import { getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
+import { getEvents } from '../lib/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
@@ -38,7 +37,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
 
   try {
     const request: TimetableRequest = <TimetableRequest> {id: requestedTimetable.id, week: week, setplan: requestedTimetable.setplan};
-    const data = await getLectures(request);
+    const events = await getEvents([request]);
 
     const meta : TimetableMetadata = <TimetableMetadata> {
       splusID: requestedTimetable.id,
@@ -49,7 +48,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
     }
     const timetable: Timetable = <Timetable> {
       name: `${(requestedTimetable.degree)} ${requestedTimetable.label} - ${requestedTimetable.semester}. Semester`,
-      events: data,
+      events: events,
       meta: meta
     }
 
@@ -94,10 +93,10 @@ router.get('/:name/:timetables/:week/:lectures?', async (req, res, next) => {
     const requests: TimetableRequest[] = [];
     timetables.forEach((timetable) => requests.push(<TimetableRequest>{id: timetable.id, week: week, setplan: timetable.setplan}));
 
-    const allLectures = await getLecturesForTimetablesAndWeeks(requests);
-    const lectures = titleIds.length > 0 ?
-      allLectures.filter(({ id }) => titleIds.includes(id))
-      : allLectures;
+    const allEvents = await getEvents(requests);
+    const filteredEvents = titleIds.length > 0 ?
+      allEvents.filter(({ id }) => titleIds.includes(id))
+      : allEvents;
 
     const meta: TimetableMetadata = <TimetableMetadata> {
       splusID: timetableIds,
@@ -109,7 +108,7 @@ router.get('/:name/:timetables/:week/:lectures?', async (req, res, next) => {
 
     const timetable: Timetable = <Timetable> {
       name: name,
-      events: lectures,
+      events: filteredEvents,
       meta: meta
     }
 

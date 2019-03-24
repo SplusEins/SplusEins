@@ -5,7 +5,7 @@ import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
-import { getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
+import { getEvents } from '../lib/SplusApi';
 
 const router = express.Router();
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
@@ -64,11 +64,11 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     const requests: TimetableRequest[] = [];
     weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequest>{id: timetable.id, week: week, setplan: timetable.setplan})));
 
-    const allLectures = await getLecturesForTimetablesAndWeeks(requests);
-    const lectures = titleIds.length > 0 ?
-      allLectures.filter(({ id }) => titleIds.includes(id))
-      : allLectures;
-    const events = lectures.map((lecture) => eventToICSEvent(lecture));
+    const allEvents: Event[] = await getEvents(requests);
+    const filteredEvents = titleIds.length > 0 ?
+      allEvents.filter(({ id }) => titleIds.includes(id))
+      : allEvents;
+    const events = filteredEvents.map((event) => eventToICSEvent(event));
 
     const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });
 
