@@ -7,9 +7,9 @@ export interface TimetableRequest {
 };
 
 export interface EventMetadata {
-	organiserId: string;
-	organiserName: string;
-	description: string;
+  organiserId: string;
+  organiserName: string;
+  description: string;
 };
 
 export interface TimetableMetadata {
