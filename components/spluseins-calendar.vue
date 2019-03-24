@@ -19,10 +19,7 @@
       slot="eventPopover"
       slot-scope="slotData"
     >
-      <dayspan-custom-event-popover
-        v-bind="slotData"
-        :read-only="true"
-      />
+      <dayspan-custom-event-popover v-bind="slotData" />
     </template>
   </dayspan-custom-calendar>
 </template>
