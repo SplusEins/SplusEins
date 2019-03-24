@@ -1,5 +1,17 @@
 import { ParsedLecture } from './SplusModel';
 
+export interface NewsElement {
+  title: string;
+  link: string;
+  text: string;
+  date?: Date;
+};
+
+export interface MensaDayPlan {
+  date: Date;
+  data: object;
+};
+
 export interface TimetableRequest {
   id: string;
   week: number;

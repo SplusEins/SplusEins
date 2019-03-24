@@ -7,6 +7,8 @@ import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
 import { URLSearchParams } from 'url';
 
+import { NewsElement } from '../model/SplusEinsModel';
+
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
 const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
@@ -33,6 +35,7 @@ router.options('/campus38', cors());
 
 /**
  * Get Ostfalia news
+ * @returns NewsElement[]
  */
 router.get('/ostfalia', cors(), async (req, res, next) => {
   const key = 'ostfalia-news';
@@ -59,13 +62,11 @@ router.get('/ostfalia', cors(), async (req, res, next) => {
 
       const $ = cheerio.load(response);
       return $('article').map(function(i, article) {
-        return {
+        return <NewsElement> {
           title: $('a', this).text().trim(),
           link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
           text: $('p', this).last().text().trim(),
-          date: moment(
-            $('p', this).first().text().trim(),
-            'DD.MM.YY').format('YYYY-MM-DD'),
+          date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate(),
         };
       }).get();
     }, { ttl: CACHE_SECONDS });
@@ -79,6 +80,7 @@ router.get('/ostfalia', cors(), async (req, res, next) => {
 
 /**
  * Get Ostfalia faculty news
+ * @returns NewsElement[]
  */
 router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
   const faculty = req.params.faculty;
@@ -110,7 +112,7 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
         return $('article').eq(1).find('.ostfalia-content div').map(function(i, paragraph) {
           const p = $('p', this).last();
           const text = p.text();
-          return {
+          return <NewsElement> {
             title: text.substring(text.indexOf(':') + 1,
               text.indexOf('mehr')).trim(),
             link: 'https://www.ostfalia.de' + $('a', p).attr('href'),
@@ -128,7 +130,7 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
             link = '';
           }
 
-          return {
+          return <NewsElement> {
             title: $(this).text().trim(),
             link,
             text: '',
@@ -137,13 +139,11 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
       }
 
       return $('article.news-campus').map(function(i, article) {
-        return {
+        return <NewsElement> {
           title: $('a', this).text().trim(),
           link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
           text: $('p', this).last().text().trim(),
-          date: moment(
-            $('p', this).first().text().trim(),
-            'DD.MM.YY').format('YYYY-MM-DD'),
+          date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate(),
         };
       }).get();
     }, { ttl: CACHE_SECONDS });
@@ -157,6 +157,7 @@ router.get('/ostfalia/:faculty', cors(), async (req, res, next) => {
 
 /**
  * Get Campus38 news
+ * @returns NewsElement[]
  */
 router.get('/campus38', cors(), async (req, res, next) => {
   const key = 'campus38-news';
@@ -169,11 +170,11 @@ router.get('/campus38', cors(), async (req, res, next) => {
         .then((res) => res.text());
       const $ = cheerio.load(response, { xmlMode: true });
       return $('entry').map(function(i, article) {
-        return {
+        return <NewsElement> {
           title: $('title', this).text().trim(),
           link: $('link', this).attr('href'),
           text: $('summary', this).text().trim(),
-          date: $('published', this).text().trim().split('T')[0]
+          date: moment($('published', this).text().trim().split('T')[0]).utcOffset('+0100').toDate(),
         };
       }).slice(0, 10).get();
     }, { ttl: CACHE_SECONDS });
