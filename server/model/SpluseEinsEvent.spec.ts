@@ -5,9 +5,8 @@ import * as moment from 'moment';
 describe('Test Event', () => {
   function testLecture(title = 'Test - VL',
                        lecturer = 'Prof. Dr. tst. S. Eins'): ParsedLecture {
-    return <ParsedLecture>{
+    return <ParsedLecture> {
       title,
-      day: 1,
       start: moment('2019-03-19T07:15:00.000Z').toDate(),
       end: moment('2019-03-19T08:45:00.000Z').toDate(),
       duration: 1.5,
@@ -17,7 +16,7 @@ describe('Test Event', () => {
     };
   }
 
-  it('should construct from an ILecture', () => {
+  it('should construct from an ParsedLecture', () => {
     const event = new Event(testLecture());
     expect(event).toBeDefined();
     expect(event.id).toBeDefined();
@@ -81,7 +80,7 @@ describe('Test Event', () => {
         (lecturer) => new Event(testLecture('', lecturer)));
       lectures.forEach(
         (lecture1, index) => lectures.slice(index + 1).forEach(
-          (lecture2) => expect(lecture1.id).not.toBe(lecture2.id)));
+          (lecture2) => expect(lecture1.meta.organiserId).not.toBe(lecture2.meta.organiserId)));
     }
 
     expectAllLecturesHaveDifferentLecturerIds([
@@ -97,7 +96,7 @@ describe('Test Event', () => {
       const lectures = lecturerVariations.map(
         (lecturer) => new Event(testLecture('', lecturer)));
       lectures.slice(1).forEach(
-        (lecture) => expect(lecture.id).toBe(lectures[0].id));
+        (lecture) => expect(lecture.meta.organiserId).toBe(lectures[0].meta.organiserId));
     }
 
     expectAllLecturesHaveSameLecturerId([

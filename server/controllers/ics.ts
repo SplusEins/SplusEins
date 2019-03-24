@@ -5,7 +5,7 @@ import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../../assets/timetables.json';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
-import { getEvents } from '../lib/SplusApi';
+import getEvents from '../lib/SplusApi';
 
 const router = express.Router();
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');

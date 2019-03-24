@@ -18,7 +18,7 @@ async function splusApiMock(identifier: string, weekOfYear: string) {
 
 jest.mock('./lib/SplusApi', () => ({
   default: jest.fn().mockImplementation(splusApiMock),
-  getLecturesForTimetablesAndWeeks: jest.fn().mockImplementation(splusApiMock),
+  getEvents: jest.fn().mockImplementation(splusApiMock),
 }));
 
 describe('Test backend', () => {

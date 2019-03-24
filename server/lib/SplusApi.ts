@@ -9,6 +9,8 @@ import { URL, URLSearchParams } from 'url';
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
 const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';
 
+const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
+
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
 const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
@@ -24,9 +26,6 @@ const cache = CACHE_DISABLE ?
       subdirs: true,
     },
   });
-
-const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
-
 
 function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(PLAN_BASE);
@@ -54,7 +53,7 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
   }).then((res) => res.text());
 }
 
-function getLectures(timetable: TimetableRequest) {
+function parsePlan(timetable: TimetableRequest) {
   const key = `splus-${timetable.id}-${timetable.week}`;
 
   return cache.wrap(key, async () => {
@@ -66,7 +65,7 @@ function getLectures(timetable: TimetableRequest) {
   }, { ttl: CACHE_SECONDS }) as Promise<Event[]>;
 }
 
-export function getEvents(timetables: TimetableRequest[]) {
-  return Promise.all(timetables.map((timetable: TimetableRequest) => getLectures(timetable)))
+export default function getEvents(timetables: TimetableRequest[]) {
+  return Promise.all(timetables.map((timetable: TimetableRequest) => parsePlan(timetable)))
     .then(flatten);
 }

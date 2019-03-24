@@ -3,7 +3,7 @@ import * as cors from 'cors';
 import * as TIMETABLES from '../../assets/timetables.json';
 
 import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
-import { getEvents } from '../lib/SplusApi';
+import getEvents from '../lib/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
@@ -37,7 +37,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
 
   try {
     const request: TimetableRequest = <TimetableRequest> {id: requestedTimetable.id, week: week, setplan: requestedTimetable.setplan};
-    const events = await getEvents([request]);
+    const events = await getEvents([ request ]);
 
     const meta : TimetableMetadata = <TimetableMetadata> {
       splusID: requestedTimetable.id,
@@ -61,15 +61,15 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
 
 
 /**
- * Get Timetable with given name for given splusIds und lecture Ids
+ * Get Timetable with given name for given splusIds, week und lecture Ids
  *
- * @param name Name of requested Timetable
  * @param timetables Comma-separated list of timetable IDs
  * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
  * @param lectures Comma-separated list of lecture title IDs
+ * @param name Name of requested Timetable
  * @return Timetable
  */
-router.get('/:name/:timetables/:week/:lectures?', async (req, res, next) => {
+router.get('/:timetables/:week/:lectures?/:name', async (req, res, next) => {
 
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>(req.params.lectures || '')
@@ -91,7 +91,7 @@ router.get('/:name/:timetables/:week/:lectures?', async (req, res, next) => {
 
   try {
     const requests: TimetableRequest[] = [];
-    timetables.forEach((timetable) => requests.push(<TimetableRequest>{id: timetable.id, week: week, setplan: timetable.setplan}));
+    timetables.forEach((timetable) => requests.push( <TimetableRequest> {id: timetable.id, week: week, setplan: timetable.setplan}));
 
     const allEvents = await getEvents(requests);
     const filteredEvents = titleIds.length > 0 ?
