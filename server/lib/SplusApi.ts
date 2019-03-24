@@ -53,7 +53,7 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
   }).then((res) => res.text());
 }
 
-function parsePlan(timetable: TimetableRequest) {
+function parseTimetable(timetable: TimetableRequest) {
   const key = `splus-${timetable.id}-${timetable.week}`;
 
   return cache.wrap(key, async () => {
@@ -66,6 +66,6 @@ function parsePlan(timetable: TimetableRequest) {
 }
 
 export default function getEvents(timetables: TimetableRequest[]) {
-  return Promise.all(timetables.map((timetable: TimetableRequest) => parsePlan(timetable)))
+  return Promise.all(timetables.map((timetable: TimetableRequest) => parseTimetable(timetable)))
     .then(flatten);
 }
