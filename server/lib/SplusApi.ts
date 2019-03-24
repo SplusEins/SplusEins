@@ -27,6 +27,13 @@ const cache = CACHE_DISABLE ?
     },
   });
 
+
+/**
+ * Fetch standard timetable from splus.ostfalia.de
+ * 
+ * @param timetable request
+ * @returns HTML-string
+ */
 function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(PLAN_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
@@ -40,6 +47,13 @@ function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
   }).then((res) => res.text());
 }
 
+
+/**
+ * Fetch set-timetable from splus.ostfalia.de
+ * 
+ * @param timetable request
+ * @returns HTML-string
+ */
 function splusSetRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(SET_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
@@ -53,7 +67,13 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
   }).then((res) => res.text());
 }
 
-function parseTimetable(timetable: TimetableRequest) {
+/**
+ * Parses HTML to Events
+ * 
+ * @param timetable request
+ * @returns parsed Events
+ */
+function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
   const key = `splus-${timetable.id}-${timetable.week}`;
 
   return cache.wrap(key, async () => {
@@ -65,7 +85,13 @@ function parseTimetable(timetable: TimetableRequest) {
   }, { ttl: CACHE_SECONDS }) as Promise<Event[]>;
 }
 
-export default function getEvents(timetables: TimetableRequest[]) {
+/**
+ * Manages multiple TimetableRequests
+ * 
+ * @param timetables request
+ * @returns requested Events
+ */
+export default function getEvents(timetables: TimetableRequest[]): Promise<Event[]> {
   return Promise.all(timetables.map((timetable: TimetableRequest) => parseTimetable(timetable)))
     .then(flatten);
 }
