@@ -3,7 +3,8 @@ import * as cors from 'cors';
 import * as TIMETABLES from '../../assets/timetables.json';
 
 import getLectures from '../lib/SplusApi';
-import { TimetableRequest } from '../model/SplusEinsModel'
+import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
+import { getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
@@ -13,13 +14,14 @@ const router = express.Router();
  * Accept CORS preflight requests.
  */
 router.options('/:timetable/:week', cors());
+router.options('/:name/:timetables/:week/:lectures?', cors());
 
 /**
- * Get all lectures for the given timetable and week.
+ * Get Timetable for given splusId and week
  *
  * @param timetable The splus "identifier" query param without "#" prefix.
  * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
- * @return RichLecture[]
+ * @return Timetable
  */
 router.get('/:timetable/:week', cors(), async (req, res, next) => {
 
@@ -38,8 +40,81 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
     const request: TimetableRequest = <TimetableRequest> {id: requestedTimetable.id, week: week, setplan: requestedTimetable.setplan};
     const data = await getLectures(request);
 
+    const meta : TimetableMetadata = <TimetableMetadata> {
+      splusID: requestedTimetable.id,
+      faculty: requestedTimetable.faculty,
+      degree: requestedTimetable.degree,
+      label: requestedTimetable.label,
+      semester: Number(requestedTimetable.semester)
+    }
+    const timetable: Timetable = <Timetable> {
+      name: `${(requestedTimetable.degree)} ${requestedTimetable.label} - ${requestedTimetable.semester}. Semester`,
+      events: data,
+      meta: meta
+    }
+
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
-    res.json(data);
+    res.json(timetable);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
+/**
+ * Get Timetable with given name for given splusIds und lecture Ids
+ *
+ * @param name Name of requested Timetable
+ * @param timetables Comma-separated list of timetable IDs
+ * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
+ * @param lectures Comma-separated list of lecture title IDs
+ * @return Timetable
+ */
+router.get('/:name/:timetables/:week/:lectures?', async (req, res, next) => {
+
+  const timetableIds = <string[]>req.params.timetables.split(',');
+  const titleIds = <string[]>(req.params.lectures || '')
+    .split(',')
+    .filter((titleId) => titleId.length > 0);
+
+  const timetables = timetableIds
+    .map((timetableId) => TIMETABLES.find(({ id }) => id == timetableId))
+    .filter((timetable) => timetable != undefined);
+
+  if (timetables.length == 0) {
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
+    res.sendStatus(404);
+    return;
+  }
+
+  const name = req.params.name;
+  const week = parseInt(req.params.week);
+
+  try {
+    const requests: TimetableRequest[] = [];
+    timetables.forEach((timetable) => requests.push(<TimetableRequest>{id: timetable.id, week: week, setplan: timetable.setplan}));
+
+    const allLectures = await getLecturesForTimetablesAndWeeks(requests);
+    const lectures = titleIds.length > 0 ?
+      allLectures.filter(({ id }) => titleIds.includes(id))
+      : allLectures;
+
+    const meta: TimetableMetadata = <TimetableMetadata> {
+      splusID: timetableIds,
+      faculty: timetables.map((x) => x.faculty),
+      degree: timetables.map((x) => x.degree),
+      label: timetables.map((x) => x.label),
+      semester: timetables.map((x) => Number(x.semester))
+    };
+
+    const timetable: Timetable = <Timetable> {
+      name: name,
+      events: lectures,
+      meta: meta
+    }
+
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
+    res.json(timetable);
   } catch (error) {
     next(error);
   }

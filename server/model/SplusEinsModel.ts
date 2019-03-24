@@ -12,6 +12,20 @@ export interface EventMetadata {
 	description: string;
 };
 
+export interface TimetableMetadata {
+  splusID: string | string[];
+  faculty: string | string[];
+  degree: string | string[];
+  label: string | string[];
+  semester: number | number [];
+}
+
+export interface Timetable {
+  name: string,
+  events: Event[];
+  meta: TimetableMetadata;
+}
+
 export class Event {
   id: string;
   title: string;
