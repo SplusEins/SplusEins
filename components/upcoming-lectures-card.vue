@@ -5,7 +5,7 @@
       <v-btn
         v-show="hasSubscribableTimetables"
         icon
-        @click="dialogOpen = true; $track('Upcoming Lectures', 'openSelectTimetable')"
+        @click="dialogOpen = true; $track('Calendar', 'openSelectTimetable')"
       >
         <v-icon>mdi-bookmark-outline</v-icon>
       </v-btn>
