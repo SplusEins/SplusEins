@@ -35,7 +35,7 @@ router.options('/', cors());
  * - then select first 3 open days
  * - then fetch plan for selected days
  *
- * @return {date: number (acts also as id), data: {}}
+ * @return MensaDayPlan[]
  */
 router.get('/', cors(), async (req, res, next) => {
   const key = 'mensa-' + moment().format('YYYY-MM-DD');

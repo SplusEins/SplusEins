@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nuxt",
     "dev:api": "nodemon --watch 'server/**/*.ts' --exec ts-node server/index.ts",
-	"dev:api2": "nodemon --watch 'server_2.0/**/*.ts' --exec ts-node server_2.0/index.ts",
+	  "dev:api2": "nodemon --watch 'server_2.0/**/*.ts' --exec ts-node server_2.0/index.ts",
     "build": "nuxt build",
     "build:api": "webpack --mode production",
     "start": "nuxt start",
