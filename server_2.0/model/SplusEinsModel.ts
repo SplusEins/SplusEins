@@ -28,7 +28,7 @@ export interface TimetableMetadata {
   splusID: string | string[];
   faculty: string | string[];
   degree: string | string[];
-  label: string | string[];
+  specialisation: string | string[];
   semester: number | number [];
 }
 

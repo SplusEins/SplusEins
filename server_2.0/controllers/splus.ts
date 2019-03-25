@@ -43,7 +43,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
       splusID: requestedTimetable.id,
       faculty: requestedTimetable.faculty,
       degree: requestedTimetable.degree,
-      label: requestedTimetable.label,
+      specialisation: requestedTimetable.label,
       semester: Number(requestedTimetable.semester)
     }
     const timetable: Timetable = <Timetable> {
@@ -102,7 +102,7 @@ router.get('/:timetables/:week/:lectures?/:name', async (req, res, next) => {
       splusID: timetableIds,
       faculty: timetables.map((x) => x.faculty),
       degree: timetables.map((x) => x.degree),
-      label: timetables.map((x) => x.label),
+      specialisation: timetables.map((x) => x.label),
       semester: timetables.map((x) => Number(x.semester))
     };
 
