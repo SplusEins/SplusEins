@@ -1,5 +1,8 @@
 <template>
-  <v-bottom-sheet v-model="open">
+  <v-bottom-sheet
+    v-model="open"
+    inset
+  >
     <v-list>
       <v-subheader>Link Teilen</v-subheader>
 
