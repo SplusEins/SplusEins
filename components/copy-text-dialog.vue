@@ -7,7 +7,8 @@
       <v-subheader>Link Teilen</v-subheader>
 
       <v-list-tile
-        v-clipboard="textToCopy"
+        v-clipboard:copy="text"
+        v-clipboard:success="onSuccess"
         @click="open = false"
       >
         <v-list-tile-avatar>
@@ -33,15 +34,10 @@ export default {
       type: Boolean,
       default: false
     },
-    textToCopy: {
+    text: {
       type: String,
       required: true
     },
-  },
-  data() {
-    return {
-      textFieldCopySuccessMessage: undefined,
-    };
   },
   computed: {
     open: {
@@ -50,8 +46,8 @@ export default {
     },
   },
   methods: {
-    onTextFieldCopySuccess() {
-      this.textFieldCopySuccessMessage = 'Kopiert.';
+    onSuccess() {
+      this.$emit('copied');
     },
   },
 };

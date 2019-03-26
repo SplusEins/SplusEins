@@ -109,13 +109,22 @@
     />
     <copy-text-dialog
       v-model="shareDialogOpen"
-      :text-to-copy="currentUrl()"
+      :text="currentUrl()"
+      @copied="copiedSnackbarOpen = true; $track('Calendar', 'share', 'copy')"
     />
     <open-calendar-dialog
       v-model="openCalendarDialogOpen"
       :timetable-ids="timetableIds"
       :title-ids="titleIds"
     />
+
+    <v-snackbar
+      v-model="copiedSnackbarOpen"
+      :timeout="1500"
+      bottom
+    >
+      Kopiert
+    </v-snackbar>
   </div>
 </template>
 
@@ -142,6 +151,7 @@ export default {
       openCalendarDialogOpen: false,
       deleteTimetableDialogOpen: false,
       shareDialogOpen: false,
+      copiedSnackbarOpen: false,
     };
   },
   computed: {
@@ -193,7 +203,7 @@ export default {
         this.$track('Calendar', 'favorite', 'added');
       }
     },
-    currentUrl(){
+    currentUrl() {
       return !!global.window ? window.location.href : '';
     },
     async share() {
@@ -205,7 +215,6 @@ export default {
         this.$track('Calendar', 'share', 'share');
       } else {
         this.shareDialogOpen = true;
-        this.$track('Calendar', 'share', 'copy');
       }
     },
     ...mapMutations({
