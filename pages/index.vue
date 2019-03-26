@@ -24,9 +24,10 @@
             <upcoming-lectures-card />
           </v-flex>
           <v-flex
+            v-show="$vuetify.breakpoint.mdAndUp"
             d-flex
           >
-            <faculty-news-card v-show="$vuetify.breakpoint.mdAndUp" />
+            <faculty-news-card />
           </v-flex>
         </v-layout>
       </v-flex>
