@@ -22,7 +22,7 @@
             Das <a href="https://github.com/SplusEins/SplusEins">Repository</a> sowie das <a href="https://trello.com/b/8L18rOVd">Trello Board</a> sind öffentlich einsehbar. Für News von uns oder Anregungen an uns benutzt doch unseren Subreddit <a href="https://www.reddit.com/r/spluseins/">r/spluseins</a>
             Besonderer Dank geht an Tim für den <a href="https://github.com/xThunderbolt/splus">Splus Parser</a>.<br>
             Alle Studenpläne basieren auf den Inhalten der öffentlich einsehbaren Website <a href="http://splus.ostfalia.de/">splus.ostfalia.de</a>.<br>
-            Die Mensapläne basieren auf den Inhalten von <a href="https://openmensa.org">OpenMensa</a>. <br>
+            Die Mensapläne basieren auf den Inhalten von <a href="https://openmensa.org">OpenMensa</a>.<br>
             Für Vollständigkeit wird keine Haftung übernommen.
           </p>
         </v-card-text>
