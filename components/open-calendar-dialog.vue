@@ -21,7 +21,8 @@
       </v-list-tile>
 
       <v-list-tile
-        v-clipboard="httpLink"
+        v-clipboard:copy="httpLink"
+        v-clipboard:success="onCopy"
         @click="open = false; $track('ICS', 'copy')"
       >
         <v-list-tile-avatar>
@@ -102,8 +103,8 @@ export default {
     },
   },
   methods: {
-    onTextFieldCopySuccess() {
-      this.textFieldCopySuccessMessage = 'Kopiert.';
+    onCopy() {
+      this.$emit('copied');
     },
   },
 };

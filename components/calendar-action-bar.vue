@@ -110,12 +110,13 @@
     <copy-text-dialog
       v-model="shareDialogOpen"
       :text="currentUrl()"
-      @copied="copiedSnackbarOpen = true; $track('Calendar', 'share', 'copy')"
+      @copied="copiedSnackbarOpen = true; $track('Calendar', 'ICS', 'copy')"
     />
     <open-calendar-dialog
       v-model="openCalendarDialogOpen"
       :timetable-ids="timetableIds"
       :title-ids="titleIds"
+      @copied="copiedSnackbarOpen = true; $track('Calendar', 'share', 'copy')"
     />
 
     <v-snackbar

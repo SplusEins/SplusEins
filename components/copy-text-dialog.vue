@@ -8,7 +8,7 @@
 
       <v-list-tile
         v-clipboard:copy="text"
-        v-clipboard:success="onSuccess"
+        v-clipboard:success="onCopy"
         @click="open = false"
       >
         <v-list-tile-avatar>
@@ -46,7 +46,7 @@ export default {
     },
   },
   methods: {
-    onSuccess() {
+    onCopy() {
       this.$emit('copied');
     },
   },
