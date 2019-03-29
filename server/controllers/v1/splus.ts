@@ -1,8 +1,8 @@
 import * as express from 'express';
 import * as cors from 'cors';
-import * as TIMETABLES from '../../assets/timetables.json';
+import * as TIMETABLES from '../../../assets/timetables.json';
 
-import getLectures from '../lib/SplusApi';
+import getLectures from '../../lib/v1/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 

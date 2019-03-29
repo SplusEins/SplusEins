@@ -1,36 +1,37 @@
-import { ILecture } from '../server/lib/ILecture';
-import { RichLecture } from './RichLecture';
+import { ParsedLecture } from './SplusModel';
+import { Event } from './SplusEinsModel';
+import * as moment from 'moment';
 
-describe('Test RichLecture', () => {
+describe('Test Event', () => {
   function testLecture(title = 'Test - VL',
-                       lecturer = 'Prof. Dr. tst. S. Eins'): ILecture {
-    return <ILecture>{
+                       lecturer = 'Prof. Dr. tst. S. Eins'): ParsedLecture {
+    return <ParsedLecture> {
       title,
-      day: 1,
-      begin: 8.25,
-      end: 9.75,
+      start: moment('2019-03-19T07:15:00.000Z').toDate(),
+      end: moment('2019-03-19T08:45:00.000Z').toDate(),
+      duration: 1.5,
       info: 'Nur für Unit-Tests',
       room: 'R404',
       lecturer,
     };
   }
 
-  it('should construct from an ILecture', () => {
-    const lecture = new RichLecture(testLecture(), 0);
-    expect(lecture).toBeDefined();
-    expect(lecture.titleId).toBeDefined();
-    expect(lecture.lecturerId).toBeDefined();
-    expect(lecture.duration).toBeDefined();
-    expect(lecture.start.valueOf()).toBe(Date.parse('2018-12-24T23:00:00.0000Z'));
+  it('should construct from an ParsedLecture', () => {
+    const event = new Event(testLecture());
+    expect(event).toBeDefined();
+    expect(event.id).toBeDefined();
+    expect(event.meta.organiserId).toBeDefined();
+    expect(event.duration).toBeDefined();
+    expect(event.start.valueOf()).toBe(Date.parse('2019-03-19T07:15:00.000Z'));
   });
 
   it('should generate a unique title id', () => {
     function expectAllLecturesHaveDifferentTitleIds(titleVariations) {
       const lectures = titleVariations.map(
-        (title) => new RichLecture(testLecture(title), 0));
+        (title) => new Event(testLecture(title)));
       lectures.forEach(
         (lecture1, index) => lectures.slice(index + 1).forEach(
-          (lecture2) => expect(lecture1.titleId).not.toBe(lecture2.titleId)));
+          (lecture2) => expect(lecture1.id).not.toBe(lecture2.id)));
     }
 
     expectAllLecturesHaveDifferentTitleIds([
@@ -62,9 +63,9 @@ describe('Test RichLecture', () => {
   it('should generate the same title id for similar lectures', () => {
     function expectAllLecturesHaveSameTitleId(titleVariations) {
       const lectures = titleVariations.map(
-        (title) => new RichLecture(testLecture(title), 0));
+        (title) => new Event(testLecture(title)));
       lectures.slice(1).forEach(
-        (lecture) => expect(lecture.titleId).toBe(lectures[0].titleId));
+        (lecture) => expect(lecture.id).toBe(lectures[0].id));
     }
 
     expectAllLecturesHaveSameTitleId([
@@ -76,10 +77,10 @@ describe('Test RichLecture', () => {
   it('should generate a unique lecturer id', () => {
     function expectAllLecturesHaveDifferentLecturerIds(lecturerVariations) {
       const lectures = lecturerVariations.map(
-        (lecturer) => new RichLecture(testLecture('', lecturer), 0));
+        (lecturer) => new Event(testLecture('', lecturer)));
       lectures.forEach(
         (lecture1, index) => lectures.slice(index + 1).forEach(
-          (lecture2) => expect(lecture1.lecturerId).not.toBe(lecture2.lecturerId)));
+          (lecture2) => expect(lecture1.meta.organiserId).not.toBe(lecture2.meta.organiserId)));
     }
 
     expectAllLecturesHaveDifferentLecturerIds([
@@ -93,9 +94,9 @@ describe('Test RichLecture', () => {
   it('should generate the same lecturer id for similar lectures', () => {
     function expectAllLecturesHaveSameLecturerId(lecturerVariations) {
       const lectures = lecturerVariations.map(
-        (lecturer) => new RichLecture(testLecture('', lecturer), 0));
+        (lecturer) => new Event(testLecture('', lecturer)));
       lectures.slice(1).forEach(
-        (lecture) => expect(lecture.lecturerId).toBe(lectures[0].lecturerId));
+        (lecture) => expect(lecture.meta.organiserId).toBe(lectures[0].meta.organiserId));
     }
 
     expectAllLecturesHaveSameLecturerId([
@@ -110,6 +111,6 @@ describe('Test RichLecture', () => {
   });
 
   it('should generate ids for an empty title and lecturer', () => {
-    const lecture = new RichLecture(testLecture('', ''), 0);
+    const lecture = new Event(testLecture('', ''));
   });
 });

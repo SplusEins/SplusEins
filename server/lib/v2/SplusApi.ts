@@ -3,11 +3,13 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
-import { RichLecture } from '../../model/RichLecture';
+import { Event, TimetableRequest } from '../../model/v2/SplusEinsModel';
 import { URL, URLSearchParams } from 'url';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
 const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';
+
+const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -25,7 +27,6 @@ const cache = CACHE_DISABLE ?
     },
   });
 
-const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 const sessionKeyAlphabet = '0123456789abcdefghijklmnopqrstuvwxyz';
 
 /**
@@ -41,12 +42,18 @@ function createSessionId() {
   return `spluseins-${key}`;
 }
 
-function splusPlanRequest(identifier: string, weekOfYear: number): Promise<string> {
+/**
+ * Fetch standard timetable from splus.ostfalia.de
+ *
+ * @param timetable request
+ * @returns HTML-string
+ */
+function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(PLAN_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
-  url.searchParams.append('identifier', identifier);
+  url.searchParams.append('identifier', timetable.id);
   const body = new URLSearchParams();
-  body.append('weeks', weekOfYear.toString());
+  body.append('weeks', timetable.week.toString());
   const sessionId = createSessionId();
 
   return fetch(url.toString(), {
@@ -58,12 +65,19 @@ function splusPlanRequest(identifier: string, weekOfYear: number): Promise<strin
   }).then((res) => res.text());
 }
 
-function splusSetRequest(identifier: string, weekOfYear: number): Promise<string> {
+
+/**
+ * Fetch set-timetable from splus.ostfalia.de
+ *
+ * @param timetable request
+ * @returns HTML-string
+ */
+function splusSetRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(SET_BASE);
   url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
   const body = new URLSearchParams();
-  body.append('weeks', weekOfYear.toString());
-  body.append('identifier[]', identifier);
+  body.append('weeks', timetable.week.toString());
+  body.append('identifier[]', timetable.id);
   const sessionId = createSessionId();
 
   return fetch(url.toString(), {
@@ -75,29 +89,31 @@ function splusSetRequest(identifier: string, weekOfYear: number): Promise<string
   }).then((res) => res.text());
 }
 
-export interface Timetable {
-  id: string;
-  setplan?: boolean;
-}
-
-export default function getLectures(timetable: Timetable, weekOfYear: number) {
-  const key = `splus-${timetable.id}-${weekOfYear}`;
+/**
+ * Parses HTML to Events
+ *
+ * @param timetable request
+ * @returns parsed Events
+ */
+function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
+  const key = `splus-${timetable.id}-${timetable.week}`;
 
   return cache.wrap(key, async () => {
     console.log(`timetable cache miss for key ${key}`);
-    const id = '#' + timetable.id;
-    const data = timetable.setplan? await splusSetRequest(id, weekOfYear) : await splusPlanRequest(id, weekOfYear);
-    const lectures = new SplusParser(data).getLectures();
-    return lectures.map((lecture) => new RichLecture(lecture, weekOfYear));
-  }, { ttl: CACHE_SECONDS }) as Promise<RichLecture[]>;
+    timetable.id = '#' + timetable.id;
+    const data = timetable.setplan? await splusSetRequest(timetable) : await splusPlanRequest(timetable);
+    const lectures = new SplusParser(data).getLectures(timetable.week);
+    return lectures.map((lecture) => new Event(lecture));
+  }, { ttl: CACHE_SECONDS }) as Promise<Event[]>;
 }
 
-function lecturesForTimetablesAndWeek(timetables: Timetable[], week: number) {
-  return Promise.all(timetables.map((timetable) => getLectures(timetable, week)))
-    .then(flatten);
-}
-
-export function getLecturesForTimetablesAndWeeks(timetables: Timetable[], weeks: number[]) {
-  return Promise.all(weeks.map((week) => lecturesForTimetablesAndWeek(timetables, week)))
+/**
+ * Manages multiple TimetableRequests
+ *
+ * @param timetables request
+ * @returns requested Events
+ */
+export default function getEvents(timetables: TimetableRequest[]): Promise<Event[]> {
+  return Promise.all(timetables.map((timetable: TimetableRequest) => parseTimetable(timetable)))
     .then(flatten);
 }

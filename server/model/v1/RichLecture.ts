@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { ILecture } from '../server/lib/ILecture';
+import { ILecture } from '../../lib/v1/ILecture';
 
 export class RichLecture {
   /* ILecture attributes */
