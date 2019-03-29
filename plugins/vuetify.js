@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
+import Vuetify, { VMenu } from 'vuetify/lib';
 import moment from 'moment';
 import {default as options} from './dayspan.config.js'
 import DaySpanVuetify from 'dayspan-vuetify';
@@ -14,6 +14,7 @@ Vue.$dayspan.addLocale('de', LocaleDe);
 Vue.$dayspan.setLocale('de', true);
 
 Vue.use(Vuetify, {
+  components: { VMenu },
   iconfont: 'mdi',
   options: {
     customProperties: true,
