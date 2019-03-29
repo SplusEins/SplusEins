@@ -8,7 +8,7 @@
       :outline="breakpoint"
       :icon="!breakpoint"
       :flat="!breakpoint"
-      @click="emit('click')"
+      @click="$emit('click')"
     >
       <v-icon :left="breakpoint">
         {{ icon }}
