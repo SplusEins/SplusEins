@@ -42,7 +42,7 @@ export default {
   name: 'MensaCard',
   computed: {
     mensaMenus() {
-      if (this.weekPlan.length == 0) {
+      if (this.plans.length == 0) {
         return [];
       }
 
@@ -54,7 +54,7 @@ export default {
     },
     ...mapState({
       lazyLoad: (state) => state.lazyLoad,
-      weekPlan: (state) => state.mensa.weekPlan,
+      plans: (state) => state.mensa.plans,
     }),
     ...mapGetters({
       getNextAvailablePlan: 'mensa/getNextAvailablePlan',
@@ -63,12 +63,12 @@ export default {
   mounted() {
     if (this.lazyLoad) {
       // static build -> no mensa plan is in the store
-      this.loadMensaWeek();
+      this.load();
     }
   },
   methods: {
     ...mapActions({
-      loadMensaWeek: 'mensa/loadWeek',
+      load: 'mensa/load',
     }),
   },
 };

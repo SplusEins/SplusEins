@@ -5,6 +5,8 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import fetch from 'node-fetch';
 
+import { MensaDayPlan } from '../model/v2/SplusEinsModel';
+
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
 const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
@@ -33,7 +35,7 @@ router.options('/', cors());
  * - then select first 3 open days
  * - then fetch plan for selected days
  *
- * @return {date: number (acts also as id), data: {}}
+ * @return MensaDayPlan[]
  */
 router.get('/', cors(), async (req, res, next) => {
   const key = 'mensa-' + moment().format('YYYY-MM-DD');
@@ -49,11 +51,12 @@ router.get('/', cors(), async (req, res, next) => {
         .slice(0, 3)
         .map(({ date }) => moment(date));
 
-      const result = [];
+      const result: MensaDayPlan[] = [];
+
       await Promise.all(weekdays.map(async (day) => {
         const data = await fetch(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`)
           .then((res) => res.json());
-        result.push({ date: day.format('YYYY-MM-DD'), data });
+        result.push(<MensaDayPlan> { date: day.toDate(), data });
       }));
 
       return result.sort((a,b) => moment(a.date).isBefore(moment(b.date)) ? -1 : 1);
