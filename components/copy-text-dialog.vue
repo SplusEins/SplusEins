@@ -1,38 +1,27 @@
 <template>
-  <v-dialog
-    v-model="dialogOpen"
-    max-width="400"
+  <v-bottom-sheet
+    v-model="open"
+    inset
   >
-    <v-card>
-      <v-toolbar
-        dark
-        color="primary"
-      >
-        <v-btn
-          icon
-          dark
-          @click.native="dialogOpen = false"
-        >
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
-        <v-toolbar-title>Link Teilen</v-toolbar-title>
-      </v-toolbar>
+    <v-list>
+      <v-subheader>Link Teilen</v-subheader>
 
-      <v-card-text class="card-text">
-        <v-text-field
-          v-clipboard:copy="textToCopy"
-          v-clipboard:success="onTextFieldCopySuccess"
-          :value="textToCopy"
-          :success-messages="textFieldCopySuccessMessage"
-          append-icon="mdi-content-copy"
-          autofocus
-          solo
-          full-width
-          readonly
-        />
-      </v-card-text>
-    </v-card>
-  </v-dialog>
+      <v-list-tile
+        v-clipboard="textToCopy"
+        @click="open = false"
+      >
+        <v-list-tile-avatar>
+          <v-avatar
+            size="32px"
+            tile
+          >
+            <v-icon>mdi-content-copy</v-icon>
+          </v-avatar>
+        </v-list-tile-avatar>
+        <v-list-tile-title>Link in die Zwischenablage kopieren</v-list-tile-title>
+      </v-list-tile>
+    </v-list>
+  </v-bottom-sheet>
 </template>
 
 <script>
@@ -55,7 +44,7 @@ export default {
     };
   },
   computed: {
-    dialogOpen: {
+    open: {
       get() { return this.value; },
       set(value) { this.$emit('input', value); }
     },
@@ -67,11 +56,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-
-.card-text{
-  padding: 10px 10px 0px 10px;
-}
-
-</style>

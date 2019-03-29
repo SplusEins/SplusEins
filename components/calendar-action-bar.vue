@@ -202,8 +202,10 @@ export default {
         await navigator.share({
           url: this.currentUrl(),
         });
+        this.$track('Calendar', 'share', 'share');
       } else {
         this.shareDialogOpen = true;
+        this.$track('Calendar', 'share', 'copy');
       }
     },
     ...mapMutations({
