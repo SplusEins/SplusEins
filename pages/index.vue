@@ -10,85 +10,12 @@
       row
       wrap
     >
-      <!-- Breakpoint xs and sm -->
-      <v-layout
-        v-show="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
-        row
-        wrap
-      >
-        <v-flex
-          xs12
-          sm12
-          d-flex
-        >
-          <upcoming-lectures-card />
-        </v-flex>
-
-        <v-flex
-          v-show="displayMensaCard"
-          :d-flex="displayMensaCard"
-          xs12
-          sm12
-        >
-          <mensa-card />
-        </v-flex>
-
-        <v-flex
-          v-show="hasSubscribableTimetables"
-          :d-flex="hasSubscribableTimetables"
-          xs12
-          sm12
-        >
-          <quick-access-card />
-        </v-flex>
-
-        <v-flex
-          v-show="hasSubscribableTimetables"
-          :d-flex="hasSubscribableTimetables"
-          xs12
-          sm12
-        >
-          <stats-card />
-        </v-flex>
-
-        <v-flex
-          v-show="displayCampusNewsCard"
-          :d-flex="displayCampusNewsCard"
-          xs12
-          sm12
-        >
-          <campus-news-card />
-        </v-flex>
-
-        <v-flex
-          v-show="displayFacultyNewsCard"
-          :d-flex="displayFacultyNewsCard"
-          xs12
-          sm12
-        >
-          <faculty-news-card />
-        </v-flex>
-
-        <v-flex
-          d-flex
-          xs12
-          sm12
-        >
-          <last-changes-card />
-        </v-flex>
-      </v-layout>
-    </v-layout>
-
-    <!-- Breakpoint md and Up-->
-    <v-layout
-      v-show="$vuetify.breakpoint.mdAndUp"
-      row
-      wrap
-    >
       <v-flex
         d-flex
         md6
         lg6
+        order-xs1
+        order-md1
       >
         <v-layout column>
           <v-flex
@@ -97,6 +24,7 @@
             <upcoming-lectures-card />
           </v-flex>
           <v-flex
+            v-show="$vuetify.breakpoint.mdAndUp"
             d-flex
           >
             <faculty-news-card />
@@ -108,8 +36,18 @@
         d-flex
         md6
         lg6
+        order-xs5
+        order-md2
       >
         <campus-news-card />
+      </v-flex>
+
+      <v-flex
+        d-flex
+        order-xs6
+        order-md7
+      >
+        <faculty-news-card v-show="!$vuetify.breakpoint.mdAndUp" />
       </v-flex>
 
       <v-flex
@@ -118,6 +56,8 @@
         md6
         :lg4="hasSubscribableTimetables"
         :lg6="!hasSubscribableTimetables"
+        order-xs2
+        order-md3
       >
         <mensa-card />
       </v-flex>
@@ -127,6 +67,8 @@
         :d-flex="hasSubscribableTimetables"
         md6
         lg4
+        order-xs4
+        order-md4
       >
         <stats-card />
       </v-flex>
@@ -136,6 +78,8 @@
         :d-flex="hasSubscribableTimetables"
         md6
         lg4
+        order-xs3
+        order-md5
       >
         <quick-access-card />
       </v-flex>
@@ -146,6 +90,8 @@
         :lg4="!displayMensaCard && hasSubscribableTimetables"
         :lg6="displayMensaCard && !hasSubscribableTimetables"
         :lg12="displayMensaCard && hasSubscribableTimetables"
+        order-xs7
+        order-md6
       >
         <last-changes-card />
       </v-flex>
