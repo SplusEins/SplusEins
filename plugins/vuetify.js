@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+import Vuetify from 'vuetify/lib';
 import moment from 'moment';
 import {default as options} from './dayspan.config.js'
 import DaySpanVuetify from 'dayspan-vuetify';
