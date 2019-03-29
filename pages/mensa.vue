@@ -39,7 +39,7 @@
       row
     >
       <v-flex
-        v-for="dayPlan in weekPlan"
+        v-for="dayPlan in plans"
         :key="dayPlan.date"
         xs12
       >
@@ -95,7 +95,7 @@ export default {
   },
   computed: {
     ...mapState({
-      weekPlan: (state) => state.mensa.weekPlan,
+      plans: (state) => state.mensa.plans,
       lazyLoad: (state) => state.lazyLoad,
       isDark: (state) => state.ui.isDark,
     }),
@@ -106,7 +106,7 @@ export default {
     }
 
     if (process.client || !store.state.lazyLoad) {
-      await store.dispatch('mensa/loadWeek');
+      await store.dispatch('mensa/load');
     } else {
       console.log('lazy loading is enabled: not fetching mensa plan');
     }
@@ -114,12 +114,12 @@ export default {
   mounted() {
     if (this.lazyLoad) {
       // static build -> no mensa plan is in the store
-      this.loadWeek();
+      this.load();
     }
   },
   methods: {
     ...mapActions({
-      loadWeek: 'mensa/loadWeek',
+      load: 'mensa/load',
     }),
     ...mapMutations({
       setSidenav: 'ui/setSidenav',

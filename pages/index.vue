@@ -123,11 +123,11 @@ export default {
   },
   computed: {
     displayMensaCard() {
-      if (this.weekPlan.length == 0) {
+      if (this.mensaPlans.length == 0) {
         return false;
       }
       // display if next plan is from today or from tomorrow
-      return moment().isSame(this.weekPlan[0].date, 'day') || moment().add(1, 'days').isSame(this.weekPlan[0].date, 'day');
+      return moment().isSame(this.mensaPlans[0].date, 'day') || moment().add(1, 'days').isSame(this.mensaPlans[0].date, 'day');
     },
     displayCampusNewsCard() {
       return this.campusNews.length > 0;
@@ -136,7 +136,7 @@ export default {
       return Object.keys(this.facultyNews).length > 0;
     },
     ...mapState({
-      weekPlan: (state) => state.mensa.weekPlan,
+      mensaPlans: (state) => state.mensa.plans,
       favorites: (state) => state.splus.favoriteSchedules,
       campusNews: (state) => state.news.campusNews,
       facultyNews: (state) => state.news.facultyNews,
@@ -153,7 +153,7 @@ export default {
     }
 
     if (process.client || !store.state.lazyLoad) {
-      await store.dispatch('mensa/loadWeek');
+      await store.dispatch('mensa/load');
       await store.dispatch('news/loadCampusNews');
       await store.dispatch('news/loadFacultyNews');
     } else {

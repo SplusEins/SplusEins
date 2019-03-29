@@ -1,32 +1,35 @@
 import * as moment from 'moment';
 
 export const state = () => ({
-  weekPlan: [],
+  /**
+   * List of MensaDayPlan objects
+   */
+  plans: [],
 });
 
 export const mutations = {
-  setWeekPlan(state, data){
-    state.weekPlan = data;
+  setPlans(state, data){
+    state.plans = data;
   },
 }
 
 export const getters = {
   getNextAvailablePlan: (state) => {
-    if(state.weekPlan.length == 0){
+    if(state.plans.length == 0){
       return {};
     }
 
-    // a plan is old if today is not friday, the mensa was open today and it's after 15 o'clock
-    const isOld = moment().day() != 5 && moment().isSame(state.weekPlan[0].date, 'day') && moment().hour() > 14
+    // A plan is old if today is not friday, the mensa was open today and it's after 15 o'clock
+    const isOld = moment().day() != 5 && moment().isSame(state.plans[0].date, 'day') && moment().hour() > 14
 
-    return isOld ? state.weekPlan[1] : state.weekPlan[0];
+    return isOld ? state.plans[1] : state.plans[0];
   },
 }
 
 export const actions = {
-  async loadWeek({ state, commit }) {
-    if(state.weekPlan[0] != undefined && moment().isSame(state.weekPlan[0].date, 'day')) {
-        return; // if weekPlan is not empty and data is up-to-date don't fetch
+  async load({ state, commit }) {
+    if(state.plans[0] != undefined && moment().isSame(state.plans[0].date, 'day')) {
+        return; // If weekPlan is not empty and data is up-to-date don't fetch
     }
       
     let result = [];
@@ -39,6 +42,6 @@ export const actions = {
         console.error('error during Mensa API call', error.message);
     }
 
-    commit('setWeekPlan', result);
+    commit('setPlans', result);
   }
 };
