@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors';
 import * as moment from 'moment';
-import { scale } from 'chroma-js/src/generator/scale';
+import * as chroma from '../lib/chroma';
 
 import TIMETABLES from '~/assets/timetables.json';
 import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, flatten, customScheduleToRoute, scalarArraysEqual } from '~/lib/util';
@@ -90,7 +90,8 @@ export const getters = {
       .map(({ lecturerId }) => lecturerId))
       .sort();
 
-    const colorScale = scale([colors.lightBlue.darken4, colors.cyan.darken4])
+    const colorScale = chroma
+      .scale([colors.lightBlue.darken4, colors.cyan.darken4])
       .colors(uniqueIds.length);
 
     const lecturesByStart = new Map();
