@@ -5,6 +5,7 @@ export interface NewsElement {
   link: string;
   text: string;
   date?: Date;
+  source?: string;
 };
 
 export interface MensaDayPlan {
