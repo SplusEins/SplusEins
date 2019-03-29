@@ -1,4 +1,5 @@
 import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin';
+import webpack from 'webpack';
 
 export default {
   mode: 'universal',
@@ -100,7 +101,10 @@ export default {
         });
       }
     },
-    plugins: [new VuetifyLoaderPlugin()],
+    plugins: [
+      new VuetifyLoaderPlugin(),
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de/),
+    ],
     extractCSS: true,
     transpile: ['vuetify/lib'],
   },
