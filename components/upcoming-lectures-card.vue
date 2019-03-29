@@ -33,7 +33,7 @@
       :open.sync="dialogOpen"
       :items="subscribableTimetables"
       :selected.sync="selectedItem"
-      title="Plan abbonieren"
+      title="Plan abonnieren"
     />
   </v-card>
 </template>

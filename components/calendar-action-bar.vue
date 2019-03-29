@@ -45,7 +45,7 @@
             <v-list-tile-title>Teilen</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="routeToIcsLink(); $track('Calendar', 'ICS', 'dektop')">
+        <v-list-tile @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'dektop')">
           <v-list-tile-content>
             <v-list-tile-title>Extern öffnen</v-list-tile-title>
           </v-list-tile-content>
@@ -94,7 +94,7 @@
         :breakpoint="$vuetify.breakpoint.xl"
         icon="mdi-calendar"
         text="Extern öffnen"
-        @click="routeToIcsLink(); $track('Calendar', 'ICS','mobile')"
+        @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS','mobile')"
       />
     </span>
 
@@ -111,12 +111,18 @@
       v-model="shareDialogOpen"
       :text-to-copy="currentUrl()"
     />
+    <open-calendar-dialog
+      v-model="openCalendarDialogOpen"
+      :timetable-ids="timetableIds"
+      :title-ids="titleIds"
+    />
   </div>
 </template>
 
 <script>
 import { mapMutations, mapState, mapGetters } from 'vuex';
 import CopyTextDialog from './copy-text-dialog.vue';
+import OpenCalendarDialog from './open-calendar-dialog.vue';
 import ResponsiveIconButton from './responsive-icon-button.vue';
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
@@ -125,6 +131,7 @@ export default {
   name: 'CalendarActionBar',
   components: {
     CopyTextDialog,
+    OpenCalendarDialog,
     ResponsiveIconButton,
     CustomTimetableDialog,
     CustomTimetableDeleteDialog,
@@ -132,6 +139,7 @@ export default {
   data() {
     return {
       editTimetableDialogOpen: false,
+      openCalendarDialogOpen: false,
       deleteTimetableDialogOpen: false,
       shareDialogOpen: false,
     };
@@ -145,6 +153,12 @@ export default {
     },
     isFavorite() {
       return this.favoriteSchedules.filter(favorite => favorite.id == this.currentSchedule.id).length != 0;
+    },
+    timetableIds() {
+      return this.isCustomSchedule ? this.currentSchedule.id : [this.currentSchedule.id];
+    },
+    titleIds() {
+      return this.isCustomSchedule ? this.currentSchedule.whitelist : [];
     },
     currentAsCustomSchedule() {
       if (this.isCustomSchedule) {
@@ -169,30 +183,6 @@ export default {
   methods: {
     routeToRoot() {
       this.$router.replace('/');
-    },
-    routeToIcsLink() {
-      const base = this.$axios.defaults.baseURL;
-      const absoluteBase = base.startsWith('http') ? base : window.location.origin + base;
-      const webcalBase = absoluteBase.replace(/^https?/i, 'webcal');
-
-      const timetableIds = this.isCustomSchedule ? this.currentSchedule.id.join(',') : this.currentSchedule.id;
-      const titleIds = this.isCustomSchedule ? this.currentSchedule.whitelist.join(',') : '';
-
-      const endpoint = 'api/ics/v1/';
-      const path = endpoint + timetableIds + '/' + titleIds;
-
-      const webcalUrl = webcalBase + path;
-      const httpUrl = base + path;
-
-      window.location = webcalUrl;
-      setTimeout(() => {
-        if(document.hasFocus()) {
-          window.open(httpUrl);
-          this.$track('ICS', 'download');
-        } else {
-          this.$track('ICS', 'open');
-        }
-      }, 300);
     },
     toggleFavorite() {
       if (this.isFavorite) {

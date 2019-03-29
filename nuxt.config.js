@@ -1,4 +1,3 @@
-import * as META_INFORMATION from './assets/meta-information.json';
 import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin';
 
 export default {
@@ -10,9 +9,17 @@ export default {
   head: {
     titleTemplate: '%s - SplusEins',
     meta: [
-      { hid: 'description', name: 'description', content: META_INFORMATION.description },
-      { hid: 'og:description', name: 'og:description', content: META_INFORMATION.description },
-      { hid: 'keywords', name: 'keywords', content: META_INFORMATION.keywords },
+      {
+        hid: 'description',
+        name: 'description',
+        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel und Salzgitter`,
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel und Salzgitter`,
+      },
+      { hid: 'keywords', name: 'keywords', content: 'Sommersemester 2019, SS19, Ostfalia, Stundenplan, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Salzgitter, Karl-Scharfenberg, Informatik, Maschinenbau, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Logistik, Informationsmanagement, Verkehr, Mediendesign, Medienmanagement, Personenverkehrsmanagement, Wahlfächer, Wahlpflichtfächer' },
     ],
   },
 

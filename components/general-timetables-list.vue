@@ -8,35 +8,23 @@
       v-for="(semesters, path) in schedulesTree"
       :key="path"
       no-action
+      @mouseover.native="$set(load, path, true)"
     >
       <v-list-tile slot="activator">
-        <v-list-tile-content>
-          <v-list-tile-title>{{ path }}</v-list-tile-title>
-        </v-list-tile-content>
+        {{ path }}
       </v-list-tile>
 
-      <lazy-hydrate
-        v-for="(schedules, semester) in semesters"
-        :key="path + semester"
-        when-visible
-      >
+      <template v-for="(schedules, semester) in semesters">
         <v-list-group
-          v-if="schedules.length > 1"
+          v-if="load[path] && schedules.length > 1"
+          :key="path + semester"
           no-action
           sub-group
         >
           <v-list-tile slot="activator">
-            <v-list-tile-content>
-              <v-list-tile-title v-if="semester == 'WPF'">
-                Wahlpflichtfächer
-              </v-list-tile-title>
-              <v-list-tile-title v-else-if="semester == 'OTHER'">
-                Sonstiges
-              </v-list-tile-title>
-              <v-list-tile-title v-else>
-                {{ semester }}. Semester
-              </v-list-tile-title>
-            </v-list-tile-content>
+            {{ semester == 'WPF' ? 'Wahlpflichtfächer' : '' }}
+            {{ semester == 'OTHER' ? 'Sonstiges' : '' }}
+            {{ !['WPF', 'OTHER'].includes(semester) ? semester + '. Semester' : '' }}
           </v-list-tile>
 
           <v-list-tile
@@ -44,34 +32,22 @@
             :key="schedule.id"
             :to="schedule.route"
             nuxt
+            @click="$track('Calendar', 'sideMenu plan used', 'normal')"
           >
-            <v-list-tile-content
-              value="true"
-              @click="$track('Calendar', 'sideMenu plan used', 'normal')"
-            >
-              <v-list-tile-title value="true">
-                {{ schedule.label }}
-              </v-list-tile-title>
-            </v-list-tile-content>
+            {{ schedule.label }}
           </v-list-tile>
         </v-list-group>
 
         <v-list-tile
-          v-else
-          :key="semester"
+          v-if="load[path] && schedules.length == 1"
+          :key="path + semester"
           :to="schedules[0].route"
           nuxt
+          @click="$track('Calendar', 'sideMenu plan used', 'normal')"
         >
-          <v-list-tile-content>
-            <v-list-tile-title v-if="semester == 'WPF'">
-              Wahlpflichtfächer
-            </v-list-tile-title>
-            <v-list-tile-title v-else>
-              {{ semester }}. Semester
-            </v-list-tile-title>
-          </v-list-tile-content>
+          {{ semester == 'WPF' ? 'Wahlpflichtfächer' : semester + '. Semester' }}
         </v-list-tile>
-      </lazy-hydrate>
+      </template>
     </v-list-group>
   </v-list>
 </template>
@@ -80,11 +56,16 @@
 import { mapGetters } from 'vuex';
 
 export default {
-name: 'GeneralTimetablesList',
-computed: {
-  ...mapGetters({
-    schedulesTree: 'splus/getSchedulesAsTree',
-  }),
-},
+  name: 'GeneralTimetablesList',
+  data() {
+    return {
+      load: {},
+    };
+  },
+  computed: {
+    ...mapGetters({
+      schedulesTree: 'splus/getSchedulesAsTree',
+    }),
+  },
 };
 </script>
