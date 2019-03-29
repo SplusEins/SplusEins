@@ -3,9 +3,9 @@ import * as express from 'express';
 import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
-import * as TIMETABLES from '../../assets/timetables.json';
-import { Event, TimetableRequest } from '../model/SplusEinsModel';
-import getEvents from '../lib/SplusApi';
+import * as TIMETABLES from '../../../assets/timetables.json';
+import { Event, TimetableRequest } from '../../model/v2/SplusEinsModel';
+import getEvents from '../../lib/v2/SplusApi';
 
 const router = express.Router();
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');

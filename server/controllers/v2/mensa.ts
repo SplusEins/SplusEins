@@ -5,7 +5,7 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import fetch from 'node-fetch';
 
-import { MensaDayPlan } from '../model/SplusEinsModel';
+import { MensaDayPlan } from '../../model/v2/SplusEinsModel';
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -52,7 +52,7 @@ router.get('/', cors(), async (req, res, next) => {
         .map(({ date }) => moment(date));
 
       const result: MensaDayPlan[] = [];
-      
+
       await Promise.all(weekdays.map(async (day) => {
         const data = await fetch(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`)
           .then((res) => res.json());

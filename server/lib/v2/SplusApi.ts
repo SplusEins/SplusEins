@@ -3,7 +3,7 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
-import { Event, TimetableRequest } from '../model/SplusEinsModel';
+import { Event, TimetableRequest } from '../../model/v2/SplusEinsModel';
 import { URL, URLSearchParams } from 'url';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
@@ -30,7 +30,7 @@ const cache = CACHE_DISABLE ?
 
 /**
  * Fetch standard timetable from splus.ostfalia.de
- * 
+ *
  * @param timetable request
  * @returns HTML-string
  */
@@ -50,7 +50,7 @@ function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
 
 /**
  * Fetch set-timetable from splus.ostfalia.de
- * 
+ *
  * @param timetable request
  * @returns HTML-string
  */
@@ -69,7 +69,7 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
 
 /**
  * Parses HTML to Events
- * 
+ *
  * @param timetable request
  * @returns parsed Events
  */
@@ -87,7 +87,7 @@ function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
 
 /**
  * Manages multiple TimetableRequests
- * 
+ *
  * @param timetables request
  * @returns requested Events
  */

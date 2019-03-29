@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test backend should return an ICS matching the snapshot 1`] = `
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Error</title>
+  </head>
+
+  <body>
+    <pre>TypeError: SplusApi_1.getLecturesForTimetablesAndWeeks is not a function<br> &nbsp; &nbsp;at Object.&lt;anonymous&gt; (P:\\spluseins\\server\\controllers\\ics.ts:64:31)<br> &nbsp; &nbsp;at step (P:\\spluseins\\server\\controllers\\ics.ts:32:23)<br> &nbsp; &nbsp;at Object.next (P:\\spluseins\\server\\controllers\\ics.ts:13:53)<br> &nbsp; &nbsp;at P:\\spluseins\\server\\controllers\\ics.ts:7:71<br> &nbsp; &nbsp;at new Promise (&lt;anonymous&gt;)<br> &nbsp; &nbsp;at Object.&lt;anonymous&gt;.__awaiter (P:\\spluseins\\server\\controllers\\ics.ts:3:12)<br> &nbsp; &nbsp;at P:\\spluseins\\server\\controllers\\ics.ts:44:69<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (P:\\spluseins\\node_modules\\express\\lib\\router\\layer.js:95:5)<br> &nbsp; &nbsp;at next (P:\\spluseins\\node_modules\\express\\lib\\router\\route.js:137:13)<br> &nbsp; &nbsp;at Route.dispatch (P:\\spluseins\\node_modules\\express\\lib\\router\\route.js:112:3)<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (P:\\spluseins\\node_modules\\express\\lib\\router\\layer.js:95:5)<br> &nbsp; &nbsp;at P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:281:22<br> &nbsp; &nbsp;at param (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:354:14)<br> &nbsp; &nbsp;at param (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:365:14)<br> &nbsp; &nbsp;at param (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:365:14)<br> &nbsp; &nbsp;at param (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:365:14)<br> &nbsp; &nbsp;at Function.process_params (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:410:3)<br> &nbsp; &nbsp;at next (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:275:10)<br> &nbsp; &nbsp;at Function.handle (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:174:3)<br> &nbsp; &nbsp;at router (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:47:12)<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (P:\\spluseins\\node_modules\\express\\lib\\router\\layer.js:95:5)<br> &nbsp; &nbsp;at trim_prefix (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:317:13)<br> &nbsp; &nbsp;at P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:284:7<br> &nbsp; &nbsp;at Function.process_params (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:335:12)<br> &nbsp; &nbsp;at next (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:275:10)<br> &nbsp; &nbsp;at expressInit (P:\\spluseins\\node_modules\\express\\lib\\middleware\\init.js:40:5)<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (P:\\spluseins\\node_modules\\express\\lib\\router\\layer.js:95:5)<br> &nbsp; &nbsp;at trim_prefix (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:317:13)<br> &nbsp; &nbsp;at P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:284:7<br> &nbsp; &nbsp;at Function.process_params (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:335:12)<br> &nbsp; &nbsp;at next (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:275:10)<br> &nbsp; &nbsp;at query (P:\\spluseins\\node_modules\\express\\lib\\middleware\\query.js:45:5)<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (P:\\spluseins\\node_modules\\express\\lib\\router\\layer.js:95:5)<br> &nbsp; &nbsp;at trim_prefix (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:317:13)<br> &nbsp; &nbsp;at P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:284:7<br> &nbsp; &nbsp;at Function.process_params (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:335:12)<br> &nbsp; &nbsp;at next (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:275:10)<br> &nbsp; &nbsp;at Function.handle (P:\\spluseins\\node_modules\\express\\lib\\router\\index.js:174:3)<br> &nbsp; &nbsp;at Function.handle (P:\\spluseins\\node_modules\\express\\lib\\application.js:174:10)<br> &nbsp; &nbsp;at Server.app (P:\\spluseins\\node_modules\\express\\lib\\express.js:39:9)<br> &nbsp; &nbsp;at Server.emit (events.js:197:13)<br> &nbsp; &nbsp;at parserOnIncoming (_http_server.js:680:12)<br> &nbsp; &nbsp;at HTTPParser.parserOnHeadersComplete (_http_common.js:113:17)</pre>
+  </body>
+
+</html>
+`;
+
+exports[`Test backend should return parsed lectures 1`] = `
+Array [
+  Object {
+    "duration": 13.25,
+    "end": "2019-03-20T19:15:00.000Z",
+    "id": "R",
+    "location": "",
+    "meta": Object {
+      "description": "",
+      "organiserId": "",
+      "organiserName": "",
+    },
+    "start": "2019-03-20T06:00:00.000Z",
+    "title": "Reformationstag",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-19T08:45:00.000Z",
+    "id": "GdPL",
+    "location": "P1, P4, P3, P2",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Hoeppner Morgenstern",
+      "organiserName": "Prof. Dr. F. Höppner, M.Sc. F. Morgenstern",
+    },
+    "start": "2019-03-19T07:15:00.000Z",
+    "title": "Grundlagen des Programmierens - Labor",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-21T08:45:00.000Z",
+    "id": "MRSB",
+    "location": "",
+    "meta": Object {
+      "description": "Dr. S. Bellmer, Raum 252. Dieser Sondertermin findet zusammen mit Mathe-Repetitorium für Wirtschaftsinformatik statt!",
+      "organiserId": "",
+      "organiserName": "",
+    },
+    "start": "2019-03-21T07:15:00.000Z",
+    "title": "Mathe Repetitorium - Sondertermin - BInf",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-22T08:45:00.000Z",
+    "id": "GdPGB",
+    "location": "Hörsaal 223",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Hoeppner",
+      "organiserName": "Prof. Dr. F. Höppner",
+    },
+    "start": "2019-03-22T07:15:00.000Z",
+    "title": "Grundlagen des Programmierens - Gruppe B",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-22T08:45:00.000Z",
+    "id": "GdPGA",
+    "location": "Hörsaal 026",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Huhn",
+      "organiserName": "Prof. Dr. M. Huhn",
+    },
+    "start": "2019-03-22T07:15:00.000Z",
+    "title": "Grundlagen des Programmierens - Gruppe A",
+  },
+  Object {
+    "duration": 3.25,
+    "end": "2019-03-18T11:45:00.000Z",
+    "id": "IEhuKdICG1",
+    "location": "Seminarraum 152",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Schwiebert",
+      "organiserName": "M.A. J. Schwiebert (CS)",
+    },
+    "start": "2019-03-18T08:30:00.000Z",
+    "title": "I-Einführung und Kompetenzen der Informatik (CS) - Gruppe 1",
+  },
+  Object {
+    "duration": 3.25,
+    "end": "2019-03-18T11:45:00.000Z",
+    "id": "EhuKdIC",
+    "location": "11/1",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Jensen",
+      "organiserName": "Prof. Dr.-Ing. N. Jensen",
+    },
+    "start": "2019-03-18T08:30:00.000Z",
+    "title": "Einführung und Kompetenzen der Informatik (CS)",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-19T10:30:00.000Z",
+    "id": "GdPL",
+    "location": "P1, P4, P3, P2",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Hoeppner Morgenstern",
+      "organiserName": "Prof. Dr. F. Höppner, M.Sc. F. Morgenstern",
+    },
+    "start": "2019-03-19T09:00:00.000Z",
+    "title": "Grundlagen des Programmierens - Labor",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-21T10:30:00.000Z",
+    "id": "MC1S",
+    "location": "Hörsaal 252",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Bellmer",
+      "organiserName": "Dr. S. Bellmer",
+    },
+    "start": "2019-03-21T09:00:00.000Z",
+    "title": "Mathe Cafe 1. Sem",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-22T10:30:00.000Z",
+    "id": "DSB",
+    "location": "Scale-Up-Room 201, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Riegler",
+      "organiserName": "Prof. Dr. P. Riegler",
+    },
+    "start": "2019-03-22T09:00:00.000Z",
+    "title": "Diskrete Strukturen-Bainf",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-19T12:30:00.000Z",
+    "id": "DSB",
+    "location": "Scale-Up-Room 201, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)",
+    "meta": Object {
+      "description": "Die VL findet in 7/? statt.",
+      "organiserId": "Riegler",
+      "organiserName": "Prof. Dr. P. Riegler",
+    },
+    "start": "2019-03-19T11:00:00.000Z",
+    "title": "Diskrete Strukturen-Bainf",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-22T12:30:00.000Z",
+    "id": "IL1S",
+    "location": "Poolraum 132 (P8)",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Dick Anwander",
+      "organiserName": "Dipl.-Inf. D. Dick-Anwander",
+    },
+    "start": "2019-03-22T11:00:00.000Z",
+    "title": "Informatik-Lounge 1.Sem",
+  },
+  Object {
+    "duration": 4,
+    "end": "2019-03-21T17:00:00.000Z",
+    "id": "RuwAG2C",
+    "location": "Seminarraum 152",
+    "meta": Object {
+      "description": "",
+      "organiserId": "",
+      "organiserName": "",
+    },
+    "start": "2019-03-21T13:00:00.000Z",
+    "title": "Rhetorik und wissenschaftliches Arbeiten - Gruppe 2 (CS)",
+  },
+  Object {
+    "duration": 4,
+    "end": "2019-03-21T17:00:00.000Z",
+    "id": "RuwAG3C",
+    "location": "Seminarraum 136",
+    "meta": Object {
+      "description": "Dozenten: M.A. J. Schwiebert / Dipl.-Ing. H. Perkuhn",
+      "organiserId": "",
+      "organiserName": "",
+    },
+    "start": "2019-03-21T13:00:00.000Z",
+    "title": "Rhetorik und wissenschaftliches Arbeiten - Gruppe 3 (CS)",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-18T14:45:00.000Z",
+    "id": "TGdIATdIV",
+    "location": "11/1",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Dammann",
+      "organiserName": "Dipl.-Ing. K. Dammann",
+    },
+    "start": "2019-03-18T13:15:00.000Z",
+    "title": "Technische Grundlagen der Informatik Alt: Technik der Informatik-VL",
+  },
+  Object {
+    "duration": 1.5,
+    "end": "2019-03-19T14:45:00.000Z",
+    "id": "TGdIATdIV",
+    "location": "Hörsaal 252",
+    "meta": Object {
+      "description": "",
+      "organiserId": "Dammann",
+      "organiserName": "Dipl.-Ing. K. Dammann",
+    },
+    "start": "2019-03-19T13:15:00.000Z",
+    "title": "Technische Grundlagen der Informatik Alt: Technik der Informatik-VL",
+  },
+]
+`;

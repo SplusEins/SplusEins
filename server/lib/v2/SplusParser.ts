@@ -1,5 +1,5 @@
 import { load } from 'cheerio';
-import { ParsedLecture, ParsedBlock } from '../model/SplusModel';
+import { ParsedLecture, ParsedBlock } from '../../model/v2/SplusModel';
 import * as moment from 'moment'
 
 export class SplusParser {
@@ -61,7 +61,7 @@ export class SplusParser {
             .startOf('date')
             .isoWeek(week % 52)
             .isoWeekday(lectureDay + 1)
-        
+
         return {start: day.add(start, 'hours').toDate(), end: day.add(duration, 'hours').toDate()}
     }
 

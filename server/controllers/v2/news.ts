@@ -7,7 +7,7 @@ import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
 import { URLSearchParams } from 'url';
 
-import { NewsElement } from '../model/SplusEinsModel';
+import { NewsElement } from '../../model/v2/SplusEinsModel';
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
