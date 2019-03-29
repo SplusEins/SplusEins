@@ -2,8 +2,8 @@ import fetch from 'node-fetch';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
+import { RichLecture } from '../../model/v1/RichLecture';
 import { SplusParser } from './SplusParser';
-import { RichLecture } from '../../model/RichLecture';
 import { URL, URLSearchParams } from 'url';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';

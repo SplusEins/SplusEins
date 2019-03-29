@@ -3,9 +3,9 @@ import * as express from 'express';
 import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
-import * as TIMETABLES from '../../assets/timetables.json';
-import { RichLecture } from '../../model/RichLecture';
-import { Timetable, getLecturesForTimetablesAndWeeks } from '../lib/SplusApi';
+import * as TIMETABLES from '../../../assets/timetables.json';
+import { RichLecture } from '../../model/v1/RichLecture';
+import { Timetable, getLecturesForTimetablesAndWeeks } from '../../lib/v1/SplusApi';
 
 const router = express.Router();
 

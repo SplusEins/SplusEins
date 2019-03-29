@@ -1,4 +1,4 @@
-import { ILecture } from '../server/lib/ILecture';
+import { ILecture } from '../../lib/v1/ILecture';
 import { RichLecture } from './RichLecture';
 
 describe('Test RichLecture', () => {

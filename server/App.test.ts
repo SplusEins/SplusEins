@@ -3,10 +3,10 @@ process.env.CACHE_DISABLE = '1';
 import App from './App';
 import * as request from 'supertest';
 
-import { SplusParser } from './lib/SplusParser';
+import { SplusParser } from './lib/v1/SplusParser';
 import { readFile } from 'fs';
 import { promisify } from 'util';
-import { RichLecture } from '../model/RichLecture';
+import { RichLecture } from './model/v1/RichLecture';
 
 async function splusApiMock(identifier: string, weekOfYear: string) {
   const htmlPath = './server/__snapshots__/splus_ibi1_44.html';

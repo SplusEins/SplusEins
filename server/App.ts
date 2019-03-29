@@ -1,8 +1,8 @@
 import * as express from 'express';
-import splusController from './controllers/splus';
-import mensaController from './controllers/mensa';
-import newsController from './controllers/news';
-import icsController from './controllers/ics';
+import splusController from './controllers/v1/splus';
+import mensaController from './controllers/v1/mensa';
+import newsController from './controllers/v1/news';
+import icsController from './controllers/v1/ics';
 import splusController2 from './controllers/v2/splus';
 import mensaController2 from './controllers/v2/mensa';
 import newsController2 from './controllers/v2/news';
