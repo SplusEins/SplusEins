@@ -15,7 +15,7 @@ async function splusApiMock(identifier: string, weekOfYear: string) {
   return lectures.map((lecture) => new RichLecture(lecture, 12));
 }
 
-jest.mock('./lib/SplusApi', () => ({
+jest.mock('./lib/v1/SplusApi', () => ({
   default: jest.fn().mockImplementation(splusApiMock),
   getLecturesForTimetablesAndWeeks: jest.fn().mockImplementation(splusApiMock),
 }));
