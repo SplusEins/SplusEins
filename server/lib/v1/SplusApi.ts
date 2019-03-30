@@ -81,7 +81,7 @@ export interface Timetable {
 }
 
 export default function getLectures(timetable: Timetable, weekOfYear: number) {
-  const key = `splus-${timetable.id}-${weekOfYear}`;
+  const key = `splus-${timetable.id}-${weekOfYear}-v1`;
 
   return cache.wrap(key, async () => {
     console.log(`timetable cache miss for key ${key}`);

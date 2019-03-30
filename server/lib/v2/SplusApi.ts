@@ -96,7 +96,7 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
  * @returns parsed Events
  */
 function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
-  const key = `splus-${timetable.id}-${timetable.week}`;
+  const key = `splus-${timetable.id}-${timetable.week}-v2`;
 
   return cache.wrap(key, async () => {
     console.log(`timetable cache miss for key ${key}`);
