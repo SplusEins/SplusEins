@@ -2,9 +2,8 @@ import * as express from 'express';
 import splusController from './controllers/v1/splus';
 import mensaController from './controllers/mensa';
 import newsController from './controllers/news';
-import icsController from './controllers/v1/ics';
+import icsController from './controllers/ics';
 import splusController2 from './controllers/v2/splus';
-import icsController2 from './controllers/v2/ics';
 
 class App {
   public app: express.Application;
@@ -20,7 +19,6 @@ class App {
     this.app.use(this.basePath + '/news', newsController);
     this.app.use(this.basePath + '/ics', icsController);
     this.app.use(this.basePath + '/v2/splus', splusController2);
-    this.app.use(this.basePath + '/v2/ics', icsController2);
   }
 }
 
