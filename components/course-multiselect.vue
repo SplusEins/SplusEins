@@ -34,8 +34,13 @@
             hide-details
           />
         </td>
-        <td>{{ props.item.title }}</td>
-        <td>{{ props.item.lecturer }}</td>
+        <td>
+          {{ props.item.title }}
+          <span v-show="$vuetify.breakpoint.xs">({{ props.item.lecturerId }}, {{ props.item.room }})</span>
+        </td>
+        <td v-show="$vuetify.breakpoint.smAndUp">
+          {{ props.item.lecturer }}
+        </td>
         <td v-show="$vuetify.breakpoint.smAndUp">
           {{ props.item.room }}
         </td>
