@@ -8,78 +8,82 @@
         justify-space-between
         row
       >
-        <v-flex shrink>
-          <v-tooltip
-            v-bind="{setToday, todayDate, calendar}"
-            name="today"
-            bottom
-          >
-            <v-btn
-              slot="activator"
-              :small="$vuetify.breakpoint.xs"
-              :icon="$vuetify.breakpoint.xs"
-              :outline="!$vuetify.breakpoint.xs"
-              depressed
-              @click="setToday(); $track('Calendar', 'setToday')"
+        <v-flex
+          shrink
+        >
+          <div class="toolbar-container">
+            <v-tooltip
+              v-bind="{setToday, todayDate, calendar}"
+              name="today"
+              bottom
             >
-              <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
-              <v-icon v-show="!$vuetify.breakpoint.smAndUp">
-                {{ labels.todayIcon }}
-              </v-icon>
-            </v-btn>
-            <span>{{ todayDate }}</span>
-          </v-tooltip>
+              <v-btn
+                slot="activator"
+                :small="$vuetify.breakpoint.xs"
+                :icon="$vuetify.breakpoint.xs"
+                :outline="!$vuetify.breakpoint.xs"
+                depressed
+                @click="setToday(); $track('Calendar', 'setToday')"
+              >
+                <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
+                <v-icon v-show="!$vuetify.breakpoint.smAndUp">
+                  {{ labels.todayIcon }}
+                </v-icon>
+              </v-btn>
+              <span>{{ todayDate }}</span>
+            </v-tooltip>
 
-          <v-tooltip
-            v-bind="{setToday, todayDate, calendar}"
-            name="today"
-            bottom
-          >
-            <v-btn
-              slot="activator"
-              :small="$vuetify.breakpoint.xs"
-              icon
-              depressed
-              @click="prev(); $track('Calendar', 'prevWeek', 'clicked')"
+            <v-tooltip
+              v-bind="{setToday, todayDate, calendar}"
+              name="today"
+              bottom
             >
-              <v-icon>mdi-chevron-left</v-icon>
-            </v-btn>
-            <span>{{ prevLabel }}</span>
-          </v-tooltip>
+              <v-btn
+                slot="activator"
+                :small="$vuetify.breakpoint.xs"
+                icon
+                depressed
+                @click="prev(); $track('Calendar', 'prevWeek', 'clicked')"
+              >
+                <v-icon>mdi-chevron-left</v-icon>
+              </v-btn>
+              <span>{{ prevLabel }}</span>
+            </v-tooltip>
 
-          <v-tooltip
-            v-bind="{next, nextLabel, calendar}"
-            name="next"
-            bottom
-          >
-            <v-btn
-              slot="activator"
-              :small="$vuetify.breakpoint.xs"
-              icon
-              depressed
-              @click="next(); $track('Calendar', 'nextWeek', 'clicked')"
+            <v-tooltip
+              v-bind="{next, nextLabel, calendar}"
+              name="next"
+              bottom
             >
-              <v-icon>mdi-chevron-right</v-icon>
-            </v-btn>
-            <span>{{ nextLabel }}</span>
-          </v-tooltip>
+              <v-btn
+                slot="activator"
+                :small="$vuetify.breakpoint.xs"
+                icon
+                depressed
+                @click="next(); $track('Calendar', 'nextWeek', 'clicked')"
+              >
+                <v-icon>mdi-chevron-right</v-icon>
+              </v-btn>
+              <span>{{ nextLabel }}</span>
+            </v-tooltip>
 
-          <span
-            v-show="$vuetify.breakpoint.smAndUp"
-            v-bind="{summary, calendar}"
-            name="extendedDateSummary"
-            class="ds-summary-text"
-          >
-            {{ summary(false) }}
-          </span>
-          <span
-            v-show="!$vuetify.breakpoint.smAndUp"
-            v-bind="{summary, calendar}"
-            name="shortDateSummary"
-            class="ds-summary-text"
-          >
-            {{ summary(true) }}
-          </span>
+            <span
+              v-show="$vuetify.breakpoint.smAndUp"
+              v-bind="{summary, calendar}"
+              name="extendedDateSummary"
+              class="ds-summary-text"
+            >
+              {{ summary(false) }}
+            </span>
+            <span
+              v-show="!$vuetify.breakpoint.smAndUp"
+              v-bind="{summary, calendar}"
+              name="shortDateSummary"
+              class="ds-summary-text"
+            >
+              {{ summary(true) }}
+            </span>
+          </div>
         </v-flex>
 
         <v-flex shrink>
@@ -376,8 +380,10 @@ export default {
   }
 }
 
-.ds-summary-text{
-  vertical-align: middle;
+.toolbar-container {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
 }
 
 .v-btn--floating.ds-add-event-today {
