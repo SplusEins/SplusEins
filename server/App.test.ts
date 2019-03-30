@@ -3,21 +3,22 @@ process.env.CACHE_DISABLE = '1';
 import App from './App';
 import * as request from 'supertest';
 
-import { SplusParser } from './lib/v1/SplusParser';
+import { SplusParser } from './lib/v2/SplusParser';
 import { readFile } from 'fs';
 import { promisify } from 'util';
-import { RichLecture } from './model/v1/RichLecture';
+import { Event } from './model/v2/SplusEinsModel';
+import { ParsedLecture } from './model/v2/SplusModel';
 
 async function splusApiMock(identifier: string, weekOfYear: string) {
   const htmlPath = './server/__snapshots__/splus_ibi1_44.html';
   const html = await promisify(readFile)(htmlPath, 'utf8');
-  const lectures = new SplusParser(html).getLectures();
-  return lectures.map((lecture) => new RichLecture(lecture, 12));
+  const lectures: ParsedLecture[] = new SplusParser(html).getLectures(12);
+  return lectures.map((lecture : ParsedLecture) => new Event(lecture));
 }
 
-jest.mock('./lib/v1/SplusApi', () => ({
+jest.mock('./lib/v2/SplusApi', () => ({
   default: jest.fn().mockImplementation(splusApiMock),
-  getLecturesForTimetablesAndWeeks: jest.fn().mockImplementation(splusApiMock),
+  getEvents: jest.fn().mockImplementation(splusApiMock),
 }));
 
 describe('Test backend', () => {
@@ -25,7 +26,7 @@ describe('Test backend', () => {
 
   it('should return parsed lectures', async () => {
     const response = await request(app).get(
-      '/api/splus/SPLUS7A3292/10');
+      '/api/v2/splus/SPLUS7A3292/10');
     expect(response.body).toMatchSnapshot();
   });
 
