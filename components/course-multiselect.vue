@@ -4,7 +4,7 @@
       :value="overlappingCourses.length > 0"
       type="warning"
     >
-      Kurse überschneiden sich: {{ overlappingCourses }}
+      Kurse überschneiden sich: {{ overlappingCourses.join(', ') }}
     </v-alert>
     <v-data-table
       v-model="selectedCourses"
@@ -30,7 +30,7 @@
           <v-checkbox
             v-model="props.selected"
             :disabled="!props.selected && selectedCourses.length > maxCourses"
-            primary
+            :color="overlappingCourses.includes(props.item.title) ? 'warning' : 'secondary'"
             hide-details
           />
         </td>
@@ -135,7 +135,7 @@ export default {
       overlapLectures.forEach(
         (lecture) => overlapTitles.set(lecture.titleId, lecture.title));
 
-      return [...overlapTitles.values()].join(', ');
+      return [...overlapTitles.values()]
     },
   },
 };
