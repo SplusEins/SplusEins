@@ -48,7 +48,6 @@ export default {
   */
   css: [
     '~/assets/style/roboto.css',
-    'vuetify/dist/vuetify.min.css',
     'dayspan-vuetify/dist/lib/dayspan-vuetify.min.css',
     '@mdi/font/css/materialdesignicons.min.css'
   ],
