@@ -88,6 +88,7 @@ export default function getLectures(timetable: Timetable, weekOfYear: number) {
     const id = '#' + timetable.id;
     const data = timetable.setplan? await splusSetRequest(id, weekOfYear) : await splusPlanRequest(id, weekOfYear);
     const lectures = new SplusParser(data).getLectures();
+    console.log(`saving ${lectures.length} lectures for ${key}`)
     return lectures.map((lecture) => new RichLecture(lecture, weekOfYear));
   }, { ttl: CACHE_SECONDS }) as Promise<RichLecture[]>;
 }
