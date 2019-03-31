@@ -5,11 +5,11 @@ const serverlessConfig = {
   target: 'node',
   devtool: false,
   entry: {
-    api: './server/serverless/api.ts',
+    api: './serverless.ts',
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist/server/serverless'),
+    path: path.resolve(__dirname, './dist/serverless'),
     libraryTarget: 'commonjs',
   },
   module: {
@@ -41,11 +41,11 @@ const serverConfig = {
   mode: process.env.NODE_ENV,
   target: 'node',
   entry: {
-    server: './server/index.ts',
+    server: './server.ts',
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist/server'),
+    path: path.resolve(__dirname, './dist/server'),
   },
   module: {
     rules: [ {

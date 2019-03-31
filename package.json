@@ -6,12 +6,11 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "dev:api": "nodemon --watch 'server/**/*.ts' --exec ts-node server/index.ts",
-	  "dev:api2": "nodemon --watch 'server_2.0/**/*.ts' --exec ts-node server_2.0/index.ts",
+    "dev:api": "cd server/ && nodemon -e ts -x ts-node server.ts",
     "build": "nuxt build",
-    "build:api": "webpack --mode production",
+    "build:api": "cd server/ && webpack --mode production --config webpack.config.js",
     "start": "nuxt start",
-    "start:api": "node dist/server/index.js",
+    "start:api": "node server/dist/server/server.js",
     "test": "jest",
     "generate": "nuxt generate"
   },
