@@ -19,7 +19,12 @@ const serverlessConfig = {
         {
           loader: 'babel-loader',
           options: {
-            presets: [ '@babel/preset-env' ],
+            presets: [
+              [
+                '@babel/preset-env',
+                { targets: { node: '8.15.0' } },
+              ],
+            ],
             plugins: [
               '@babel/plugin-proposal-class-properties',
               '@babel/plugin-transform-object-assign',
