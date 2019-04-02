@@ -1,6 +1,6 @@
 import { load } from 'cheerio';
 import { ParsedLecture, ParsedBlock } from '../../model/v2/SplusModel';
-import * as moment from 'moment'
+import * as moment from 'moment-timezone'
 
 export class SplusParser {
     private readonly startHour = 7;
@@ -57,7 +57,7 @@ export class SplusParser {
 
     private getDate(lectureDay, start: number, duration: number, week: number,): {start: Date, end: Date} {
         const day = moment()
-            .utcOffset('+0100')
+            .tz('Europe/Berlin')
             .startOf('date')
             .isoWeek(week % 52)
             .isoWeekday(lectureDay + 1)
