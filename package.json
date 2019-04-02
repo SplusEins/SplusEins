@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "nuxt",
     "dev:api": "nodemon --watch 'server/**/*.ts' --exec ts-node server/index.ts",
-	  "dev:api2": "nodemon --watch 'server_2.0/**/*.ts' --exec ts-node server_2.0/index.ts",
     "build": "nuxt build",
     "build:api": "webpack --mode production",
     "start": "nuxt start",
@@ -29,6 +28,7 @@
     "express": "^4.16.4",
     "ical-generator": "^1.6.0",
     "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
     "node-fetch": "^2.3.0",
     "nuxt": "^2.4.5",
     "vue": "^2.6.9",
