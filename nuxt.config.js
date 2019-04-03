@@ -102,7 +102,7 @@ export default {
       }
     },
     plugins: [
-      // new VuetifyLoaderPlugin(),
+      new VuetifyLoaderPlugin(),
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de/),
     ],
     extractCSS: true,
