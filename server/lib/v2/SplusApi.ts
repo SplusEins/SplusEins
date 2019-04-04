@@ -27,19 +27,23 @@ const cache = CACHE_DISABLE ?
     },
   });
 
-const sessionKeyAlphabet = '0123456789abcdefghijklmnopqrstuvwxyz';
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 /**
- * Return a 26 character long random session ID, prefixed by 'spluseins-'.
- * @see https://www.php.net/manual/en/function.session-create-id.php
+ * Synchronize a function.
  */
-function createSessionId() {
-  let key = '';
-  for (let n = 0; n <= 16; n++) {
-    const pos = Math.floor(Math.random() * sessionKeyAlphabet.length);
-    key += sessionKeyAlphabet.charAt(pos);
+let locked = false;
+async function synchronize<T>(fun: () => Promise<T>) {
+  while (locked) {
+    await sleep(0);
   }
-  return `spluseins-${key}`;
+  locked = true;
+  const result = await fun();
+  locked = false;
+  return result;
 }
 
 /**
@@ -54,15 +58,11 @@ function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
   url.searchParams.append('identifier', timetable.id);
   const body = new URLSearchParams();
   body.append('weeks', timetable.week.toString());
-  const sessionId = createSessionId();
 
-  return fetch(url.toString(), {
+  return synchronize(() => fetch(url.toString(), {
     method: 'POST',
-    headers: {
-      'Cookie': `PHPSESSID=${sessionId}`,
-    },
     body,
-  }).then((res) => res.text());
+  })).then((res) => res.text());
 }
 
 
@@ -78,15 +78,11 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
   const body = new URLSearchParams();
   body.append('weeks', timetable.week.toString());
   body.append('identifier[]', timetable.id);
-  const sessionId = createSessionId();
 
-  return fetch(url.toString(), {
+  return synchronize(() => fetch(url.toString(), {
     method: 'POST',
-    headers: {
-      'Cookie': `PHPSESSID=${sessionId}`,
-    },
     body,
-  }).then((res) => res.text());
+  })).then((res) => res.text());
 }
 
 /**
