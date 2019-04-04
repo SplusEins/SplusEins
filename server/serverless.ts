@@ -1,5 +1,5 @@
 import * as awsServerlessExpress from 'aws-serverless-express';
-import App from '../App';
+import App from './App';
 
 const server = awsServerlessExpress.createServer(new App('/.netlify/functions/api').app); // TODO make this configurable
 

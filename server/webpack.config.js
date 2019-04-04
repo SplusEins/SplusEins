@@ -5,11 +5,11 @@ const serverlessConfig = {
   target: 'node',
   devtool: false,
   entry: {
-    api: './server/serverless/api.ts',
+    api: './serverless.ts',
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist/server/serverless'),
+    path: path.resolve(__dirname, './dist/serverless'),
     libraryTarget: 'commonjs',
   },
   module: {
@@ -19,7 +19,12 @@ const serverlessConfig = {
         {
           loader: 'babel-loader',
           options: {
-            presets: [ '@babel/preset-env' ],
+            presets: [
+              [
+                '@babel/preset-env',
+                { targets: { node: '8.15.0' } },
+              ],
+            ],
             plugins: [
               '@babel/plugin-proposal-class-properties',
               '@babel/plugin-transform-object-assign',
@@ -41,11 +46,11 @@ const serverConfig = {
   mode: process.env.NODE_ENV,
   target: 'node',
   entry: {
-    server: './server/index.ts',
+    server: './server.ts',
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist/server'),
+    path: path.resolve(__dirname, './dist/server'),
   },
   module: {
     rules: [ {

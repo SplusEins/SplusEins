@@ -106,7 +106,7 @@ export default {
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de/),
     ],
     extractCSS: true,
-    transpile: ['vuetify/lib'],
+    transpile: [/^vuetify/],
   },
 
   /*

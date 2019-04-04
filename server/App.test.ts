@@ -10,7 +10,7 @@ import { Event } from './model/v2/SplusEinsModel';
 import { ParsedLecture } from './model/v2/SplusModel';
 
 async function splusApiMock(identifier: string, weekOfYear: string) {
-  const htmlPath = './server/__snapshots__/splus_ibi1_44.html';
+  const htmlPath = './__snapshots__/splus_ibi1_44.html';
   const html = await promisify(readFile)(htmlPath, 'utf8');
   const lectures: ParsedLecture[] = new SplusParser(html).getLectures(12);
   return lectures.map((lecture : ParsedLecture) => new Event(lecture));
