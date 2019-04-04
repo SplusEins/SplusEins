@@ -103,6 +103,7 @@ function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
     timetable.id = '#' + timetable.id;
     const data = timetable.setplan? await splusSetRequest(timetable) : await splusPlanRequest(timetable);
     const lectures = new SplusParser(data).getLectures(timetable.week);
+    console.log(`saving ${lectures.length} lectures for ${key}`)
     return lectures.map((lecture) => new Event(lecture));
   }, { ttl: CACHE_SECONDS }) as Promise<Event[]>;
 }

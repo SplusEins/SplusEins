@@ -28,6 +28,7 @@
     "express": "^4.16.4",
     "ical-generator": "^1.6.0",
     "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
     "node-fetch": "^2.3.0",
     "nuxt": "^2.5.1",
     "vue": "^2.6.10",
