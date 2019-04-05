@@ -1,7 +1,7 @@
 apps:
     - name: api-prod
       port: 3002
-      script: ./server/dist/server.js
+      script: ./server/dist/server/server.js
       instances: 'max'
       watch: false
       ignore_watch: ['./api-cache/**', './node_modules/**']
