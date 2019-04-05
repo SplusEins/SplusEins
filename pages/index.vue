@@ -25,7 +25,7 @@
           </v-flex>
           <v-flex
             v-show="$vuetify.breakpoint.mdAndUp"
-            d-flex
+            :d-flex="$vuetify.breakpoint.mdAndUp"
           >
             <faculty-news-card />
           </v-flex>
@@ -43,11 +43,12 @@
       </v-flex>
 
       <v-flex
-        d-flex
+        v-show="!$vuetify.breakpoint.mdAndUp"
+        :d-flex="!$vuetify.breakpoint.mdAndUp"
         order-xs6
         order-md7
       >
-        <faculty-news-card v-show="!$vuetify.breakpoint.mdAndUp" />
+        <faculty-news-card />
       </v-flex>
 
       <v-flex
