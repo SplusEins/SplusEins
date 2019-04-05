@@ -148,19 +148,6 @@ export default {
       hasSubscribableTimetables: 'splus/hasSubscribableTimetables',
     }),
   },
-  async fetch({ store, params }) {
-    if (process.static) {
-      store.commit('enableLazyLoad');
-    }
-
-    if (process.client || !store.state.lazyLoad) {
-      await store.dispatch('mensa/load');
-      await store.dispatch('news/loadCampusNews');
-      await store.dispatch('news/loadFacultyNews');
-    } else {
-      console.log('lazy loading is enabled: not fetching mensa plan and timetable');
-    }
-  },
   head() {
     return {
       title: 'Startseite',

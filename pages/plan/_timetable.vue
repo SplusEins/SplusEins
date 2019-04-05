@@ -35,23 +35,15 @@ export default {
   },
   async fetch({ store, params, query, error }) {
     store.dispatch('splus/importSchedule', { params, query });
-
-    if (process.static) {
-      store.commit('enableLazyLoad');
-      store.commit('splus/resetWeek', true);
-    } else {
-      store.commit('splus/resetWeek', false);
-    }
+    store.commit('splus/resetWeek', process.static);
 
     if (store.state.splus.schedule == undefined) {
       error({ statusCode: 404, message: 'Plan existiert nicht' });
       return;
     }
 
-    if (process.client || !store.state.lazyLoad) {
+    if (!store.state.lazyLoad) {
       await store.dispatch('splus/load');
-    } else {
-      console.log('lazy loading is enabled: not fetching any lectures');
     }
   },
   middleware: 'cached',

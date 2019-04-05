@@ -9,7 +9,7 @@ export const state = () => ({
    * Set to true by vuex-persist during restoration.
    */
   browserStateReady: false,
-    /**
+  /**
    * If true, do not load lectures on the server.
    * true if frontend is a static build.
    */
@@ -27,5 +27,20 @@ export const mutations = {
   },
   dequeueError(state){
     state.errorQueue.shift();
-  }
+  },
+};
+
+export const actions = {
+  async nuxtServerInit({ commit, dispatch }) {
+    if (process.static) {
+      commit('enableLazyLoad');
+      return;
+    }
+
+    await Promise.all([
+      dispatch('mensa/load'),
+      dispatch('news/loadCampusNews'),
+      dispatch('news/loadFacultyNews'),
+    ]);
+  },
 }
