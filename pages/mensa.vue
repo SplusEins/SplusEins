@@ -100,17 +100,6 @@ export default {
       isDark: (state) => state.ui.isDark,
     }),
   },
-  async fetch({ store, params }) {
-    if (process.static) {
-      store.commit('enableLazyLoad');
-    }
-
-    if (process.client || !store.state.lazyLoad) {
-      await store.dispatch('mensa/load');
-    } else {
-      console.log('lazy loading is enabled: not fetching mensa plan');
-    }
-  },
   mounted() {
     if (this.lazyLoad) {
       // static build -> no mensa plan is in the store
