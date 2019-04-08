@@ -77,7 +77,7 @@ export default {
     }),
   },
   watch: {
-    'events': function(events) {
+    events(events) {
       this.calendar.setEvents(events);
     },
     'currentWeek': 'loadLectures',
@@ -96,7 +96,7 @@ export default {
       setWeek: 'splus/setWeek',
     }),
     ...mapActions({
-      loadLectures: 'splus/loadPrefetching',
+      loadLectures: 'splus/load',
     }),
   },
 };

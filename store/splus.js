@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import * as chroma from '../lib/chroma';
 
 import TIMETABLES from '~/assets/timetables.json';
-import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, flatten, customScheduleToRoute, scalarArraysEqual } from '~/lib/util';
+import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customScheduleToRoute, scalarArraysEqual } from '~/lib/util';
 
 function defaultWeek() {
   if (moment().isoWeek() < SEMESTER_WEEK_1) {
@@ -16,6 +16,42 @@ function defaultWeek() {
   } else {
     return moment().isoWeek();
   }
+}
+
+/**
+ * Return all lectures for the given timetable and week.
+ */
+async function loadLectures(timetable, week, $get) {
+  const ids = Array.isArray(timetable.id) ? timetable.id : [timetable.id];
+
+  let lectures = [];
+  await Promise.all(ids.map(async (id) => {
+    const data = await $get(`/api/splus/${id}/${week}`);
+    lectures = lectures.concat(data);
+  }));
+
+  return lectures;
+}
+
+/**
+ * Filter the lectures array according to the custom timetable.
+ * Remove duplicates.
+ */
+function filterLectures(lectures, timetable) {
+  // filter based on whitelist
+  const filteredLectures = !!timetable.whitelist ? lectures.filter(
+    (lecture1) => timetable.whitelist.includes(lecture1.titleId)) : lectures;
+
+  // filter duplicates
+  const key = (lecture) =>
+    `${lecture.lecturerId} ${lecture.titleId} ${lecture.room} ` +
+    `${lecture.day} ${lecture.begin} ${lecture.duration}`;
+  const lecturesByKey = new Map();
+  filteredLectures.forEach(
+    (lecture) => lecturesByKey.set(key(lecture), lecture));
+  const uniqueLectures = [...lecturesByKey.values()];
+
+  return uniqueLectures;
 }
 
 export const state = () => ({
@@ -47,12 +83,12 @@ export const state = () => ({
    * filters: Whitelist array of keys.
    */
   customSchedules: {},
-  /**
-   * Map of { week: lectures[] }
-   */
   favoriteSchedules: [],
   subscribedTimetable: {},
-  lectures: {},
+  /**
+   * Events
+   */
+  lectures: [],
   /**
    * Currently viewed week.
    * Week 53 of year 2018 equals week 1 of year 2019.
@@ -70,24 +106,16 @@ export const getters = {
     return state.week || defaultWeek();
   },
   getHasLecturesOnWeekend: (state) => {
-    if (state.lectures[state.week] == undefined) {
-      return false;
-    }
-
     // 0: Monday, … 4: Friday, 5: Saturday, 6: Sunday
-    return state.lectures[state.week].filter(lecture => lecture.day > 4).length > 0;
+    return state.lectures.filter(lecture => lecture.day > 4).length > 0;
   },
   /**
    * @return The lectures as timestamp-aware dayspan calendar event inputs.
    * @see https://clickermonkey.github.io/dayspan/docs/interfaces/eventinput.html
    */
   getLecturesAsEvents: (state) => {
-    if (state.lectures[state.week] == undefined) {
-      return [];
-    }
-
-    const uniqueIds = uniq(flatten(Object.values(state.lectures))
-      .map(({ lecturerId }) => lecturerId))
+    const uniqueIds = uniq(state.lectures)
+      .map(({ lecturerId }) => lecturerId)
       .sort();
 
     const colorScale = chroma
@@ -96,12 +124,12 @@ export const getters = {
 
     const lecturesByStart = new Map();
     const lectureStartKey = (lecture) => `${lecture.day} ${lecture.begin}`;
-    state.lectures[state.week].forEach((lecture) =>
+    state.lectures.forEach((lecture) =>
       lecturesByStart.set(lectureStartKey(lecture), [...
         (lecturesByStart.get(lectureStartKey(lecture)) || []),
         lecture]));
 
-    return state.lectures[state.week].map((lecture) => {
+    return state.lectures.map((lecture) => {
       const start = moment(lecture.start);
       const color = colorScale[uniqueIds.indexOf(lecture.lecturerId)];
 
@@ -180,33 +208,12 @@ export const mutations = {
    * Add given lectures to the state,
    * paying respect to currently active whitelist.
    * Deduplicate using the title ID.
-   *
-   * upcoming -> set upcomingLectures, otherwise normal lectures
    */
-  setLectures(state, { lectures, week, upcoming }) {
-    // filter based on whitelist
-    const whitelist = upcoming ? state.upcomingLecturesTimetable.whitelist : state.schedule.whitelist;
-    const filteredLectures = !!whitelist ? lectures.filter(
-      (lecture1) => whitelist.includes(lecture1.titleId)) : lectures;
-
-    // filter duplicates
-    const key = (lecture) =>
-      `${lecture.lecturerId} ${lecture.titleId} ${lecture.room} ` +
-      `${lecture.day} ${lecture.begin} ${lecture.duration}`;
-    const lecturesByKey = new Map();
-    filteredLectures.forEach(
-      (lecture) => lecturesByKey.set(key(lecture), lecture));
-    const uniqueLectures = [...lecturesByKey.values()];
-
-    // reactive variant of state.lectures[week].push(lectures)
-    if (upcoming) {
-      state.upcomingLectures = uniqueLectures;
-    }else {
-      this._vm.$set(state.lectures, week, uniqueLectures);
-    }
+  setLectures(state, lectures) {
+    state.lectures = filterLectures(lectures, state.schedule);
   },
-  clearLectures(state) {
-    state.lectures = {};
+  setUpcomingLectures(state, lectures) {
+    state.upcomingLectures = filterLectures(lectures, state.upcomingLecturesTimetable);
   },
   setWeek(state, week) {
     state.week = week;
@@ -277,74 +284,33 @@ export const mutations = {
 
 export const actions = {
   /**
-   * Request data from the given week from the API and write it to the store.
+   * Request data for the given and the next week.
    */
-  async loadWeek({ state, commit }, week) {
-    if (!!state.lectures[week]) {
-      return; // cached, noop
+  async load({ state, commit }) {
+    try {
+      const lectures = await loadLectures(state.schedule, state.week, this.$axios.$get);
+      commit('setLectures', lectures);
+    } catch (error) {
+      commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
+      console.error('error during API call', error.message);
     }
-
-    const ids = Array.isArray(state.schedule.id) ?
-      state.schedule.id : [state.schedule.id];
-
-    let lectures = [];
-    await Promise.all(ids.map(async (id) => {
-      try {
-        const response = await this.$axios.get(`/api/splus/${id}/${week}`);
-        lectures = lectures.concat(response.data);
-      } catch (error) {
-        commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
-        console.error('error during API call', error.message);
-      }
-    }));
-
-    commit('setLectures', { week, lectures, upcoming: false });
   },
   /**
    * Request lectures of upcomingLecturesTimetable for defaultWeek
    */
   async loadUpcomingLectures({ state, commit }) {
-
-    let lectures = [];
-    const week = defaultWeek();
-    const ids = Array.isArray(state.upcomingLecturesTimetable.id) ?
-      state.upcomingLecturesTimetable.id : [state.upcomingLecturesTimetable.id];
-
-    await Promise.all(ids.map(async (id) => {
-      try {
-        const response = await this.$axios.get(`/api/splus/${id}/${week}`);
-        lectures = lectures.concat(response.data);
-      } catch (error) {
-        commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
-        console.error('error during API call', error.message);
-      }
-    }));
-
-    commit('setLectures', { week, lectures, upcoming: true });
-  },
-  /**
-   * Request data for the given week.
-   */
-  async load({ state, dispatch }) {
-    await dispatch('loadWeek', state.week);
-  },
-  /**
-   * Request data for the given and the next week.
-   */
-  async loadPrefetching({ state, dispatch }) {
-    await Promise.all([
-      dispatch('load'),
-      // prefetch the next week as well
-      // +1 is safe because it's not actually week of year
-      dispatch('loadWeek', state.week + 1)
-    ]);
+    try {
+      const lectures = await loadLectures(state.upcomingLecturesTimetable, defaultWeek(), this.$axios.$get);
+      commit('setUpcomingLectures', lectures);
+    } catch (error) {
+      commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
+      console.error('error during API call', error.message);
+    }
   },
   /**
    * Import timetable from route and set as current timetable.
    */
   importSchedule({ state, commit }, { params, query }) {
-    commit('clearLectures');
-
     switch (parseFloat(query.v)) {
       case 1:
         const whitelist = Array.isArray(query.course || []) ?
