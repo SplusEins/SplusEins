@@ -110,7 +110,17 @@ function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
  * @param timetables request
  * @returns requested Events
  */
-export default function getEvents(timetables: TimetableRequest[]): Promise<Event[]> {
-  return Promise.all(timetables.map((timetable: TimetableRequest) => parseTimetable(timetable)))
+export default async function getEvents(timetables: TimetableRequest[]): Promise<Event[]> {
+  const allEvents = await Promise.all(timetables.map((timetable: TimetableRequest) => parseTimetable(timetable)))
     .then(flatten);
+
+  // filter duplicates
+  const key = (event: Event) =>
+    `${event.meta.organiserId} ${event.id} ${event.location} ` +
+    `${event.start} ${event.end}`;
+  const eventsByKey = new Map<string, Event>();
+  allEvents.forEach((event) => eventsByKey.set(key(event), event));
+  const events = [...eventsByKey.values()];
+
+  return events;
 }
