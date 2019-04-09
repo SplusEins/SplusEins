@@ -237,8 +237,6 @@ export default {
         : Sorts.Start;
 
       this.calendar.set( state );
-
-      this.triggerChange();
     },
 
     isType(type, aroundDay)
@@ -277,42 +275,23 @@ export default {
 
     next()
     {
-      this.calendar.unselect().next();
-
-      this.triggerChange();
+      this.$emit('next');
     },
 
     prev()
     {
-      this.calendar.unselect().prev();
-
-      this.triggerChange();
+      this.$emit('prev');
     },
 
     setToday()
     {
-      const around = Day.fromMoment(moment().startOf('isoWeek'));
-      this.rebuild(around);
+      this.$emit('today');
     },
 
     viewDay(day)
     {
       this.rebuild( day, false, this.types[ 0 ] );
     },
-
-    eventsRefresh()
-    {
-      this.calendar.refreshEvents();
-
-      this.triggerChange();
-    },
-
-    triggerChange()
-    {
-      this.$emit('change', {
-        calendar: this.calendar
-      });
-    }
   }
 }
 </script>
