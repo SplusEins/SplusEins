@@ -3,7 +3,9 @@
     :calendar="calendar"
     :types="types"
     :read-only="true"
-    @change="calendarChanged"
+    @prev="prev"
+    @next="next"
+    @today="today"
   >
     <template slot="actions">
       <calendar-action-bar />
@@ -76,24 +78,40 @@ export default {
       events: 'splus/getLecturesAsEvents',
     }),
   },
-  watch: {
-    events(events) {
-      this.calendar.setEvents(events);
-    },
-    'currentWeek': 'loadLectures',
-  },
   mounted() {
     if (this.lazyLoad) {
       // static build -> no lectures are in the store
-      this.loadLectures();
+      this.refresh();
     }
   },
   methods: {
-    calendarChanged({ calendar }) {
-      this.setWeek(calendar.start.date.isoWeek());
+    async next() {
+      this.setWeek(this.currentWeek + 1);
+      await this.refresh();
+      this.calendar.next();
+    },
+    async prev() {
+      this.setWeek(this.currentWeek - 1);
+      await this.refresh();
+      this.calendar.prev();
+    },
+    async today() {
+      this.resetWeek(true);
+      await this.refresh();
+      while (this.calendar.start.date.isoWeek() > this.currentWeek) {
+        this.calendar.prev();
+      }
+      while (this.calendar.start.date.isoWeek() < this.currentWeek) {
+        this.calendar.next();
+      }
+    },
+    async refresh() {
+      await this.loadLectures();
+      this.calendar.setEvents(this.events);
     },
     ...mapMutations({
       setWeek: 'splus/setWeek',
+      resetWeek: 'splus/resetWeek',
     }),
     ...mapActions({
       loadLectures: 'splus/load',
