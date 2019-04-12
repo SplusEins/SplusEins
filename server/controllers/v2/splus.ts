@@ -13,7 +13,7 @@ const router = express.Router();
  * Accept CORS preflight requests.
  */
 router.options('/:timetable/:week', cors());
-router.options('/:name/:timetables/:week/:lectures?', cors());
+router.options('/:timetables/:week/:lectures?/:name', cors());
 
 /**
  * Get Timetable for given splusId and week
@@ -69,7 +69,7 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
  * @param name Name of requested Timetable
  * @return Timetable
  */
-router.get('/:timetables/:week/:lectures?/:name', async (req, res, next) => {
+router.get('/:timetables/:week/:lectures?/:name', cors(), async (req, res, next) => {
 
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>(req.params.lectures || '')
