@@ -5,7 +5,7 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import fetch from 'node-fetch';
 
-import { MensaDayPlan } from '../model/v2/SplusEinsModel';
+import { MensaDayPlan } from '../model/SplusEinsModel';
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';

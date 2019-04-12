@@ -1,14 +1,6 @@
-import {load} from 'cheerio';
-import {ILecture} from './ILecture';
-
-interface IBlock {
-    title: string;
-    durationHours: number;
-    durationSlots: number;
-    info: string;
-    room: string;
-    lecturer: string
-}
+import { load } from 'cheerio';
+import { ParsedLecture, ParsedBlock } from '../model/SplusModel';
+import * as moment from 'moment-timezone'
 
 export class SplusParser {
     private readonly startHour = 7;
@@ -20,7 +12,7 @@ export class SplusParser {
     private colWidths: number[] = [];
     private colBlocked: number[] = [];
 
-    private blocks: IBlock[][][] = [];
+    private blocks: ParsedBlock[][][] = [];
 
     constructor(data: string) {
         this.$ = load(data);
@@ -32,8 +24,8 @@ export class SplusParser {
         this.parseTable();
     }
 
-    getLectures(): ILecture[] {
-        let lectures: ILecture[] = [];
+    getLectures(weekOfYear: number): ParsedLecture[] {
+        let lectures: ParsedLecture[] = [];
 
         for (let i = 0; i < this.blocks.length; i++) {
             const begin = this.startHour + i * 0.25;
@@ -44,11 +36,12 @@ export class SplusParser {
                 for (let k = 0; k < day.length; k++) {
                     const block = day[k];
 
-                    const lecture = {
+                    const date = this.getDate(j, begin, block.durationHours, weekOfYear);
+                    const lecture : ParsedLecture= {
                         title: block.title,
-                        day: j,
-                        begin: begin,
-                        end: begin + block.durationHours,
+                        start: date.start,
+                        end: date.end,
+                        duration: block.durationHours,
                         info: block.info,
                         room: block.room,
                         lecturer: block.lecturer
@@ -60,6 +53,16 @@ export class SplusParser {
         }
 
         return lectures;
+    }
+
+    private getDate(lectureDay, start: number, duration: number, week: number,): {start: Date, end: Date} {
+        const day = moment()
+            .tz('Europe/Berlin')
+            .startOf('date')
+            .isoWeek(week % 52)
+            .isoWeekday(lectureDay + 1)
+
+        return {start: day.add(start, 'hours').toDate(), end: day.add(duration, 'hours').toDate()}
     }
 
     private getDay(col: number) {
@@ -95,7 +98,7 @@ export class SplusParser {
 
     private parseRow($row: Cheerio) {
         const $cols = $row.find('> td:not(:first-child)');
-        const blocks: IBlock[][] = [];
+        const blocks: ParsedBlock[][] = [];
 
         let offset = 0;
         for (let i = 0; i < $cols.length; i++) {
@@ -125,7 +128,7 @@ export class SplusParser {
         return blocks;
     }
 
-    private parseBlock($block: Cheerio): IBlock {
+    private parseBlock($block: Cheerio): ParsedBlock {
         const $tblTitle = $block.find('table:nth-child(1)');
         const $tblInfo = $block.find('table:nth-child(2)');
         const $tblLocation = $block.find('table:nth-child(3)');
