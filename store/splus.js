@@ -19,39 +19,43 @@ function defaultWeek() {
 }
 
 /**
- * Return all lectures for the given timetable and week.
+ * Return all events for the given timetable and week.
  */
-async function loadLectures(timetable, week, $get) {
-  const ids = Array.isArray(timetable.id) ? timetable.id : [timetable.id];
+async function loadEvents(timetable, week, $get) {
+  const isCustomSchedule = Array.isArray(timetable.id);
 
-  let lectures = [];
-  await Promise.all(ids.map(async (id) => {
-    const data = await $get(`/api/splus/${id}/${week}`);
-    lectures = lectures.concat(data);
+  let data;
+  if (isCustomSchedule) {
+    const ids = timetable.id.join(',');
+    const whitelist = timetable.whitelist.join(',');
+    data = await $get(`/api/v2/splus/${ids}/${week}/${whitelist}/${timetable.label}`);
+  } else {
+    data = await $get(`/api/v2/splus/${timetable.id}/${week}`);
+  }
+
+  return data.events.map((event) => ({
+    ...event,
+    start: moment(event.start),
+    end: moment(event.end),
   }));
-
-  return lectures;
 }
 
 /**
- * Filter the lectures array according to the custom timetable.
- * Remove duplicates.
+ * Transform v2 events to v1 lectures.
  */
-function filterLectures(lectures, timetable) {
-  // filter based on whitelist
-  const filteredLectures = !!timetable.whitelist ? lectures.filter(
-    (lecture1) => timetable.whitelist.includes(lecture1.titleId)) : lectures;
-
-  // filter duplicates
-  const key = (lecture) =>
-    `${lecture.lecturerId} ${lecture.titleId} ${lecture.room} ` +
-    `${lecture.day} ${lecture.begin} ${lecture.duration}`;
-  const lecturesByKey = new Map();
-  filteredLectures.forEach(
-    (lecture) => lecturesByKey.set(key(lecture), lecture));
-  const uniqueLectures = [...lecturesByKey.values()];
-
-  return uniqueLectures;
+function eventsAsLectures(events) {
+  return events.map((event) => ({
+    title: event.title,
+    day: event.start.day(),
+    begin: event.start.hour() + event.start.minute()/60,
+    info: event.meta.description,
+    room: event.location,
+    lecturer: event.meta.organiserName,
+    titleId: event.id,
+    lecturerId: event.meta.organiserId,
+    start: event.start,
+    duration: event.duration,
+  }));
 }
 
 export const state = () => ({
@@ -88,7 +92,8 @@ export const state = () => ({
   /**
    * Events
    */
-  lectures: [],
+  events: [],
+  lectures: [], // TODO deprecated in favor of events
   /**
    * Currently viewed week.
    * Week 53 of year 2018 equals week 1 of year 2019.
@@ -98,7 +103,8 @@ export const state = () => ({
    * state for upcoming-lectures-card
    */
   upcomingLecturesTimetable: undefined,
-  upcomingLectures: [],
+  upcomingEvents: [],
+  upcomingLectures: [], // TODO deprecated in favor of events
 });
 
 export const getters = {
@@ -204,16 +210,17 @@ export const getters = {
 };
 
 export const mutations = {
-  /**
-   * Add given lectures to the state,
-   * paying respect to currently active whitelist.
-   * Deduplicate using the title ID.
-   */
   setLectures(state, lectures) {
-    state.lectures = filterLectures(lectures, state.schedule);
+    state.lectures = lectures;
+  },
+  setEvents(state, events) {
+    state.events = events;
   },
   setUpcomingLectures(state, lectures) {
-    state.upcomingLectures = filterLectures(lectures, state.upcomingLecturesTimetable);
+    state.upcomingLectures = lectures;
+  },
+  setUpcomingEvents(state, events) {
+    state.upcomingEvents = events;
   },
   setWeek(state, week) {
     state.week = week;
@@ -288,8 +295,10 @@ export const actions = {
    */
   async load({ state, commit }) {
     try {
-      const lectures = await loadLectures(state.schedule, state.week, this.$axios.$get);
+      const events = await loadEvents(state.schedule, state.week, this.$axios.$get);
+      const lectures = eventsAsLectures(events);
       commit('setLectures', lectures);
+      commit('setEvents', events);
     } catch (error) {
       commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
       console.error('error during API call', error.message);
@@ -300,8 +309,10 @@ export const actions = {
    */
   async loadUpcomingLectures({ state, commit }) {
     try {
-      const lectures = await loadLectures(state.upcomingLecturesTimetable, defaultWeek(), this.$axios.$get);
+      const events = await loadEvents(state.upcomingLecturesTimetable, defaultWeek(), this.$axios.$get);
+      const lectures = eventsAsLectures(events);
       commit('setUpcomingLectures', lectures);
+      commit('setUpcomingEvents', events);
     } catch (error) {
       commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
       console.error('error during API call', error.message);
