@@ -99,6 +99,7 @@
 import { mapMutations, mapGetters, mapState } from 'vuex';
 import * as moment from 'moment';
 import { SEMESTER_WEEK_1, range, uniq, flatten, customScheduleToRoute } from '../lib/util';
+import { loadEvents, eventsAsLectures } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
 import CustomTimetableCookieReminder from './custom-timetable-cookie-reminder.vue'
@@ -208,9 +209,10 @@ export default {
 
       try {
         const weeks = range(SEMESTER_WEEK_1, SEMESTER_WEEK_1 + 5);
-        const responses = await Promise.all(weeks.map((week) =>
-          this.$axios.get(`/api/splus/${schedule.id}/${week}`)));
-        const uniqueLectures = flatten(responses.map(({ data }) => data))
+        const events = await Promise.all(weeks.map((week) =>
+          loadEvents(schedule, week, this.$axios.$get)));
+        const lectures = eventsAsLectures(flatten(events));
+        const uniqueLectures = lectures
           .filter((lecture, index, self) => self.indexOf(lecture) == index);
         this.$set(this.lectures, schedule.id, uniqueLectures);
       } catch (error) {

@@ -21,7 +21,7 @@ function defaultWeek() {
 /**
  * Return all events for the given timetable and week.
  */
-async function loadEvents(timetable, week, $get) {
+export async function loadEvents(timetable, week, $get) {
   const isCustomSchedule = Array.isArray(timetable.id);
 
   let data;
@@ -43,7 +43,7 @@ async function loadEvents(timetable, week, $get) {
 /**
  * Transform v2 events to v1 lectures.
  */
-function eventsAsLectures(events) {
+export function eventsAsLectures(events) {
   return events.map((event) => ({
     title: event.title,
     day: event.start.day(),
