@@ -3,11 +3,11 @@ process.env.CACHE_DISABLE = '1';
 import App from './App';
 import * as request from 'supertest';
 
-import { SplusParser } from './lib/v2/SplusParser';
+import { SplusParser } from './lib/SplusParser';
 import { readFile } from 'fs';
 import { promisify } from 'util';
-import { Event } from './model/v2/SplusEinsModel';
-import { ParsedLecture } from './model/v2/SplusModel';
+import { Event } from './model/SplusEinsModel';
+import { ParsedLecture } from './model/SplusModel';
 
 async function splusApiMock(identifier: string, weekOfYear: string) {
   const htmlPath = './__snapshots__/splus_ibi1_44.html';
@@ -16,7 +16,7 @@ async function splusApiMock(identifier: string, weekOfYear: string) {
   return lectures.map((lecture : ParsedLecture) => new Event(lecture));
 }
 
-jest.mock('./lib/v2/SplusApi', () => ({
+jest.mock('./lib/SplusApi', () => ({
   default: jest.fn().mockImplementation(splusApiMock),
   getEvents: jest.fn().mockImplementation(splusApiMock),
 }));
@@ -26,7 +26,7 @@ describe('Test backend', () => {
 
   it('should return parsed lectures', async () => {
     const response = await request(app).get(
-      '/api/v2/splus/SPLUS7A3292/10');
+      '/api/splus/SPLUS7A3292/10');
     expect(response.body).toMatchSnapshot();
   });
 

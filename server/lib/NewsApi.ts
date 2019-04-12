@@ -5,7 +5,7 @@ import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
 import { URLSearchParams } from 'url';
 
-import { NewsElement } from '../model/v2/SplusEinsModel';
+import { NewsElement } from '../model/SplusEinsModel';
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -54,7 +54,7 @@ async function ostfaliaNewsRequest(): Promise<NewsElement[]> {
       text: $('p', this).last().text().trim(),
       date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate(),
     };
-  }).get(); 
+  }).get();
 };
 
 /**
@@ -62,7 +62,7 @@ async function ostfaliaNewsRequest(): Promise<NewsElement[]> {
  * @returns NewsElement[]
  */
 async function campus38NewsRequest() : Promise<NewsElement[]> {
-  
+
   const response = await fetch('https://www.campus38.de/newsfeed.xml').then((res) => res.text());
   const $ = cheerio.load(response, { xmlMode: true });
   return $('entry').map(function(i, article) {
@@ -141,7 +141,7 @@ export function getCampusNews() {
 
   return cache.wrap(key, async () => {
     console.log('campus news cache miss');
-    
+
     const campus38News =await campus38NewsRequest()
     const ostfaliaNews = await ostfaliaNewsRequest();
 

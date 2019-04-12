@@ -3,7 +3,7 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
-import { Event, TimetableRequest } from '../../model/v2/SplusEinsModel';
+import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { URL, URLSearchParams } from 'url';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
@@ -92,7 +92,7 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
  * @returns parsed Events
  */
 function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
-  const key = `splus-${timetable.id}-${timetable.week}-v2`;
+  const key = `splus-${timetable.id}-${timetable.week}`;
 
   return cache.wrap(key, async () => {
     console.log(`timetable cache miss for key ${key}`);

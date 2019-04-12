@@ -28,9 +28,9 @@ export async function loadEvents(timetable, week, $get) {
   if (isCustomSchedule) {
     const ids = timetable.id.join(',');
     const whitelist = timetable.whitelist.join(',');
-    data = await $get(`/api/v2/splus/${ids}/${week}/${whitelist}/${timetable.label}`);
+    data = await $get(`/api/splus/${ids}/${week}/${whitelist}/${timetable.label}`);
   } else {
-    data = await $get(`/api/v2/splus/${timetable.id}/${week}`);
+    data = await $get(`/api/splus/${timetable.id}/${week}`);
   }
 
   return data.events.map((event) => ({
