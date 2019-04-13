@@ -11,7 +11,7 @@ function defaultWeek() {
   }
 
   // if the user is looking at today and is on Sat/Sun, peek to the next week
-  if (moment().day() == 6 || moment().day() == 0) {
+  if (moment().isoWeekday() == 6 || moment().isoWeekday() == 7) {
     return moment().isoWeek() + 1;
   } else {
     return moment().isoWeek();
@@ -46,7 +46,7 @@ export async function loadEvents(timetable, week, $get) {
 export function eventsAsLectures(events) {
   return events.map((event) => ({
     title: event.title,
-    day: event.start.day(),
+    day: event.start.isoWeekday(),
     begin: event.start.hour() + event.start.minute()/60,
     info: event.meta.description,
     room: event.location,
@@ -112,8 +112,8 @@ export const getters = {
     return state.week || defaultWeek();
   },
   getHasLecturesOnWeekend: (state) => {
-    // 0: Monday, … 4: Friday, 5: Saturday, 6: Sunday
-    return state.lectures.filter(lecture => lecture.day > 4).length > 0;
+    // 1: Monday, … 5: Friday, 6: Saturday, 7: Sunday
+    return state.lectures.filter(lecture => lecture.day > 5).length > 0;
   },
   /**
    * @return The lectures as timestamp-aware dayspan calendar event inputs.
