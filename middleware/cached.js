@@ -6,5 +6,6 @@ export default function ({ res, req, store }) {
   }
   if (res != undefined && store.state.errorQueue.length == 0) {
     res.setHeader('Cache-Control', `public, max-age=${PAGE_CACHE_SECONDS}`);
+    res.setHeader('Vary', 'Cookie');
   }
 }
