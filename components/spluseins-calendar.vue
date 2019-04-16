@@ -62,7 +62,7 @@ export default {
     const calendar = Calendar.days(7, around, 0);
 
     // computed properties are not available during client rendering yet, access the getter directly
-    calendar.setEvents(this.$store.getters['splus/getLecturesAsEvents']);
+    calendar.setEvents(this.$store.getters['splus/getCalendarEvents']);
 
     return {
       calendar,
@@ -75,7 +75,7 @@ export default {
       lazyLoad: (state) => state.lazyLoad,
     }),
     ...mapGetters({
-      events: 'splus/getLecturesAsEvents',
+      events: 'splus/getCalendarEvents',
     }),
   },
   mounted() {
