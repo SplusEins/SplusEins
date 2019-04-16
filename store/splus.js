@@ -116,47 +116,43 @@ export const getters = {
     return state.lectures.filter(lecture => lecture.day > 5).length > 0;
   },
   /**
-   * @return The lectures as timestamp-aware dayspan calendar event inputs.
+   * @return The events as timestamp-aware dayspan calendar event inputs.
    * @see https://clickermonkey.github.io/dayspan/docs/interfaces/eventinput.html
    */
-  getLecturesAsEvents: (state) => {
-    const uniqueIds = uniq(state.lectures)
-      .map(({ lecturerId }) => lecturerId)
-      .sort();
+  getCalendarEvents: (state) => {
+    const uniqueIds = uniq(state.events
+      .map((event) => event.meta.organiserId)
+      .sort());
 
     const colorScale = chroma
       .scale([colors.lightBlue.darken4, colors.cyan.darken4])
       .colors(uniqueIds.length);
 
-    const lecturesByStart = new Map();
-    const lectureStartKey = (lecture) => `${lecture.day} ${lecture.begin}`;
-    state.lectures.forEach((lecture) =>
-      lecturesByStart.set(lectureStartKey(lecture), [...
-        (lecturesByStart.get(lectureStartKey(lecture)) || []),
-        lecture]));
+    const eventsByStart = new Map();
+    state.events.forEach((event) =>
+      eventsByStart.set(event.start, [...
+        (eventsByStart.get(event.start) || []), event]));
 
-    return state.lectures.map((lecture) => {
-      const start = moment(lecture.start);
-      const color = colorScale[uniqueIds.indexOf(lecture.lecturerId)];
+    return state.events.map((event) => {
+      const color = colorScale[uniqueIds.indexOf(event.meta.organiserId)];
+      const description = event.meta.organiserName ? `${event.meta.organiserName}\n${event.meta.description}` : `${event.meta.description}`;
 
       return {
         data: {
-          title: lecture.title,
+          title: event.title,
           color, // needs to be a hex string
-          description: lecture.lecturer ? `${lecture.lecturer}\n${lecture.info}`: `${lecture.info}`,
-          location: lecture.room,
-          concurrentCount: lecturesByStart.get(lectureStartKey(lecture))
-            .length,
-          concurrentOffset: lecturesByStart.get(lectureStartKey(lecture))
-            .indexOf(lecture),
+          description,
+          location: event.location,
+          concurrentCount: eventsByStart.get(event.start).length,
+          concurrentOffset: eventsByStart.get(event.start).indexOf(event),
         },
         schedule: {
-          on: start,
+          on: event.start,
           times: [ {
-            hour: parseInt(lecture.begin),
-            minute: lecture.begin % 1 * 60,
+            hour: event.start.hour(),
+            minute: event.start.minute(),
           } ],
-          duration: lecture.duration,
+          duration: event.duration,
           durationUnit: 'hours',
         }
       };
