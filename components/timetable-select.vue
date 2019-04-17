@@ -95,7 +95,7 @@ export default {
       return this.loading || this.selectedSchedule == undefined || this.selectedSchedules.includes(this.selectedSchedule);
     },
     ...mapGetters({
-      schedulesTree: 'splus/getSchedulesAsTree',
+      schedulesTree: 'splus/getTimetablesAsTree',
     }),
   },
   watch: {

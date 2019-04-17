@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isCustomSchedule: 'splus/isCustomSchedule',
+      isCustomSchedule: 'splus/isCustomTimetable',
     }),
     ...mapState({
       schedule: (state) => state.splus.schedule,

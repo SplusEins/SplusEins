@@ -177,7 +177,7 @@ export default {
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
     }),
     ...mapGetters({
-      isCustomSchedule: 'splus/isCustomSchedule',
+      isCustomSchedule: 'splus/isCustomTimetable',
     }),
   },
   methods: {
