@@ -98,7 +98,7 @@
 <script>
 import { mapMutations, mapGetters, mapState } from 'vuex';
 import * as moment from 'moment';
-import { SEMESTER_WEEK_1, range, uniq, flatten, customScheduleToRoute } from '../lib/util';
+import { SEMESTER_WEEK_1, range, uniq, flatten, customTimetableToRoute } from '../lib/util';
 import { loadEvents, eventsAsLectures } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
@@ -160,10 +160,10 @@ export default {
       return flatten(Object.values(this.lectures));
     },
     ...mapGetters({
-      schedulesTree: 'splus/getSchedulesAsTree',
-      customScheduleLabels: 'splus/customScheduleLabels',
-      scheduleIds: 'splus/scheduleIds',
-      getScheduleById: 'splus/getScheduleById',
+      schedulesTree: 'splus/getTimetablesAsTree',
+      customScheduleLabels: 'splus/customTimetableLabels',
+      scheduleIds: 'splus/timetableIds',
+      getScheduleById: 'splus/getTimetableById',
     }),
     ...mapState({
       week: (state) => state.splus.week,
@@ -231,7 +231,7 @@ export default {
       // Set the base schedule and filters matching the given courses.
       const titleIds = uniq(this.selectedCourses.map(({ titleId }) => titleId));
 
-      const customScheduleRoute = customScheduleToRoute({
+      const customScheduleRoute = customTimetableToRoute({
         id: this.selectedSchedules.map(({ id }) => id ),
         label: this.selectedName,
         whitelist: titleIds,

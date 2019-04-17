@@ -64,7 +64,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      schedulesTree: 'splus/getSchedulesAsTree',
+      schedulesTree: 'splus/getTimetablesAsTree',
     }),
   },
 };

@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import * as chroma from '../lib/chroma';
 
 import TIMETABLES from '~/assets/timetables.json';
-import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customScheduleToRoute, scalarArraysEqual } from '~/lib/util';
+import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customTimetableToRoute, scalarArraysEqual } from '~/lib/util';
 
 function defaultWeek() {
   if (moment().isoWeek() < SEMESTER_WEEK_1) {
@@ -22,10 +22,10 @@ function defaultWeek() {
  * Return all events for the given timetable and week.
  */
 export async function loadEvents(timetable, week, $get) {
-  const isCustomSchedule = Array.isArray(timetable.id);
+  const isCustomTimetable = Array.isArray(timetable.id);
 
   let data;
-  if (isCustomSchedule) {
+  if (isCustomTimetable) {
     const ids = timetable.id.join(',');
     const whitelist = timetable.whitelist.join(',');
     data = await $get(`/api/splus/${ids}/${week}/${whitelist}/${timetable.label}`);
@@ -59,7 +59,7 @@ export function eventsAsLectures(events) {
 
 export const state = () => ({
   /**
-   * Current schedule, either one of TIMETABLES or customSchedules.
+   * Current timetable, either one of TIMETABLES or customTimetable.
    */
   schedule: undefined,
   schedules: TIMETABLES.map(
@@ -164,7 +164,7 @@ export const getters = {
    * Convert the state's star schema: { faculty, degree, semester, ...timetable }
    * into a hierarchy: { (faculty, degree): { semester: timetables } }
    */
-  getSchedulesAsTree: (state) => {
+  getTimetablesAsTree: (state) => {
     const tree = {};
     state.schedules.forEach((timetable) => {
       const path = timetable.path;
@@ -183,20 +183,20 @@ export const getters = {
 
     return tree;
   },
-  scheduleIds: (state) => {
+  timetableIds: (state) => {
     return state.schedules.map(({ id }) => id);
   },
-  getScheduleById: (state) => (timetableId) => {
+  getTimetableById: (state) => (timetableId) => {
     return state.schedules.find(({ id }) => id == timetableId);
   },
-  customSchedulesAsRoutes: (state) => {
+  customTimetablesAsRoutes: (state) => {
     return Object.values(state.customSchedules)
-      .map(customScheduleToRoute);
+      .map(customTimetableToRoute);
   },
-  customScheduleLabels: (state) => {
+  customTimetableLabels: (state) => {
     return Object.keys(state.customSchedules);
   },
-  isCustomSchedule: (state) => {
+  isCustomTimetable: (state) => {
     return !!state.schedule && !!state.schedule.whitelist;
   },
   subscribableTimetables: (state) => {

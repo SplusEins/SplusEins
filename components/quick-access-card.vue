@@ -45,7 +45,7 @@ export default {
       favorites: (state) => state.splus.favoriteSchedules,
     }),
     ...mapGetters({
-      customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
+      customSchedulesAsRoutes: 'splus/customTimetablesAsRoutes',
     }),
     displayDivider() {
       return this.favorites.length != 0 && this.customSchedulesAsRoutes.length != 0;
