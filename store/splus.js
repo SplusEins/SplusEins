@@ -33,29 +33,28 @@ export async function loadEvents(timetable, week, $get) {
     data = await $get(`/api/splus/${timetable.id}/${week}`);
   }
 
-  return data.events.map((event) => ({
-    ...event,
-    start: moment(event.start),
-    end: moment(event.end),
-  }));
+  return data.events;
 }
 
 /**
  * Transform v2 events to v1 lectures.
  */
 export function eventsAsLectures(events) {
-  return events.map((event) => ({
-    title: event.title,
-    day: event.start.isoWeekday(),
-    begin: event.start.hour() + event.start.minute()/60,
-    info: event.meta.description,
-    room: event.location,
-    lecturer: event.meta.organiserName,
-    titleId: event.id,
-    lecturerId: event.meta.organiserId,
-    start: event.start,
-    duration: event.duration,
-  }));
+  return events.map((event) => {
+    const startMoment = moment(event.start);
+    return {
+      title: event.title,
+      day: startMoment.isoWeekday(),
+      begin: startMoment.hour() + startMoment.minute()/60,
+      info: event.meta.description,
+      room: event.location,
+      lecturer: event.meta.organiserName,
+      titleId: event.id,
+      lecturerId: event.meta.organiserId,
+      start: event.start,
+      duration: event.duration,
+    };
+  });
 }
 
 export const state = () => ({
@@ -137,6 +136,7 @@ export const getters = {
       const color = colorScale[uniqueIds.indexOf(event.meta.organiserId)];
       const description = event.meta.organiserName ? `${event.meta.organiserName}\n${event.meta.description}` : `${event.meta.description}`;
 
+      const startMoment = moment(event.start);
       return {
         data: {
           title: event.title,
@@ -147,10 +147,10 @@ export const getters = {
           concurrentOffset: eventsByStart.get(event.start).indexOf(event),
         },
         schedule: {
-          on: event.start,
+          on: startMoment,
           times: [ {
-            hour: event.start.hour(),
-            minute: event.start.minute(),
+            hour: startMoment.hour(),
+            minute: startMoment.minute(),
           } ],
           duration: event.duration,
           durationUnit: 'hours',
