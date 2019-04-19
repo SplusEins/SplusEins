@@ -110,9 +110,11 @@ export const getters = {
   weekOrDefault: (state) => {
     return state.week || defaultWeek();
   },
-  getHasLecturesOnWeekend: (state) => {
-    // 1: Monday, … 5: Friday, 6: Saturday, 7: Sunday
-    return state.lectures.filter(lecture => lecture.day > 5).length > 0;
+  getHasEventsOnWeekend: (state) => {
+    return state.events
+      .map(({ start }) => moment(start).isoWeekday())
+      .filter((day) => day > 5) // 1: Monday, 5: Friday
+      .length > 0;
   },
   /**
    * @return The events as timestamp-aware dayspan calendar event inputs.
