@@ -198,23 +198,18 @@ export default {
       return today
     },
 
-    nextLabel()
-    {
-      return this.labels.next
+    nextLabel() {
+      return this.labels.next;
     },
-
-    prevLabel()
-    {
-      return this.labels.prev
+    prevLabel() {
+      return this.labels.prev;
     },
-
-    ...mapGetters({
-      hasLecturesOnWeekend: 'splus/getHasLecturesOnWeekend',
-    }),
-
     getWeekendClass(){
-      return this.hasLecturesOnWeekend ? '' : 'no-weekend'
-    }
+      return this.hasEventsOnWeekend ? '' : 'no-weekend';
+    },
+    ...mapGetters({
+      hasEventsOnWeekend: 'splus/getHasEventsOnWeekend',
+    }),
   },
 
   methods:
