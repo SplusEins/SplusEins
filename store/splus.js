@@ -21,16 +21,16 @@ function defaultWeek() {
 /**
  * Return all events for the given timetable and week.
  */
-export async function loadEvents(timetable, week, $get) {
+export async function loadEvents(timetable, weeks, $get) {
   const isCustomTimetable = Array.isArray(timetable.id);
 
   let data;
   if (isCustomTimetable) {
     const ids = timetable.id.join(',');
     const whitelist = timetable.whitelist.join(',');
-    data = await $get(`/api/splus/${ids}/${week}/${whitelist}/${timetable.label}`);
+    data = await $get(`/api/splus/${ids}/${weeks}/${whitelist}/${timetable.label}`);
   } else {
-    data = await $get(`/api/splus/${timetable.id}/${week}`);
+    data = await $get(`/api/splus/${timetable.id}/${weeks}`);
   }
 
   return data.events;

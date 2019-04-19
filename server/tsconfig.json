@@ -3,7 +3,7 @@
     "module": "commonjs",
     "target": "es2017",
     "sourceMap": true,
-    "lib": ["es2017", "es2018"],
+    "lib": ["es2017", "es2018", "esnext"],
     "resolveJsonModule": true,
     "downlevelIteration": true,
     "baseUrl": ".",
