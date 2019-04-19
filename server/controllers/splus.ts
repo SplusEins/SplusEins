@@ -12,48 +12,50 @@ const router = express.Router();
 /**
  * Accept CORS preflight requests.
  */
-router.options('/:timetable/:week', cors());
-router.options('/:timetables/:week/:lectures?/:name', cors());
+router.options('/:timetable/:weeks', cors());
+router.options('/:timetables/:weeks/:lectures?/:name', cors());
 
 /**
  * Get Timetable for given splusId and week
  *
  * @param timetable The splus "identifier" query param without "#" prefix.
- * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
+ * @param weeks Comma-separated list of the splus "week" request param. ISO week of year below 52 or week of next year above 52.
  * @return Timetable
  */
-router.get('/:timetable/:week', cors(), async (req, res, next) => {
-
+router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
   const timetableId = req.params.timetable;
-  const requestedTimetable = TIMETABLES.find(({ id }) => id == timetableId);
+  const timetable = TIMETABLES.find(({ id }) => id == timetableId);
 
-  if (!requestedTimetable) {
+  const weeks = req.params.weeks
+    .split(',')
+    .filter((week) => week.length > 0)
+    .map((week) => parseInt(week));
+
+  if (!timetable || weeks.length == 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
     return;
   }
 
-  const week = parseInt(req.params.week);
-
   try {
-    const request: TimetableRequest = <TimetableRequest> {id: requestedTimetable.id, week: week, setplan: requestedTimetable.setplan};
-    const events = await getEvents([ request ]);
+    const requests = weeks.map((week) => (<TimetableRequest> { id: timetable.id, week: week, setplan: timetable.setplan }) );
+    const events = await getEvents(requests);
 
-    const meta : TimetableMetadata = <TimetableMetadata> {
-      splusID: requestedTimetable.id,
-      faculty: requestedTimetable.faculty,
-      degree: requestedTimetable.degree,
-      specialisation: requestedTimetable.label,
-      semester: Number(requestedTimetable.semester)
-    }
-    const timetable: Timetable = <Timetable> {
-      name: `${(requestedTimetable.degree)} ${requestedTimetable.label} - ${requestedTimetable.semester}. Semester`,
+    const meta: TimetableMetadata = <TimetableMetadata> {
+      splusID: timetable.id,
+      faculty: timetable.faculty,
+      degree: timetable.degree,
+      specialisation: timetable.label,
+      semester: Number(timetable.semester)
+    };
+    const response: Timetable = <Timetable> {
+      name: `${(timetable.degree)} ${timetable.label} - ${timetable.semester}. Semester`,
       events: events,
-      meta: meta
-    }
+      meta: meta,
+    };
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
-    res.json(timetable);
+    res.json(response);
   } catch (error) {
     next(error);
   }
@@ -61,16 +63,15 @@ router.get('/:timetable/:week', cors(), async (req, res, next) => {
 
 
 /**
- * Get Timetable with given name for given splusIds, week und lecture Ids
+ * Get Timetable with given name for given splusIds, week and event Ids
  *
  * @param timetables Comma-separated list of timetable IDs
- * @param week The splus "week" request param. ISO week of year below 52 or week of next year above 52.
+ * @param weeks Comma-separated list of the splus "week" request param. ISO week of year below 52 or week of next year above 52.
  * @param lectures Comma-separated list of lecture title IDs
  * @param name Name of requested Timetable
  * @return Timetable
  */
-router.get('/:timetables/:week/:lectures?/:name', cors(), async (req, res, next) => {
-
+router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next) => {
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>(req.params.lectures || '')
     .split(',')
@@ -80,19 +81,21 @@ router.get('/:timetables/:week/:lectures?/:name', cors(), async (req, res, next)
     .map((timetableId) => TIMETABLES.find(({ id }) => id == timetableId))
     .filter((timetable) => timetable != undefined);
 
-  if (timetables.length == 0) {
+  const weeks = req.params.weeks
+    .split(',')
+    .filter((week) => week.length > 0)
+    .map((week) => parseInt(week));
+
+  if (timetables.length == 0 || weeks.length == 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
     return;
   }
 
   const name = req.params.name;
-  const week = parseInt(req.params.week);
 
   try {
-    const requests: TimetableRequest[] = [];
-    timetables.forEach((timetable) => requests.push( <TimetableRequest> {id: timetable.id, week: week, setplan: timetable.setplan}));
-
+    const requests = timetables.flatMap((timetable) => weeks.map((week) => (<TimetableRequest> { id: timetable.id, week: week, setplan: timetable.setplan }) ));
     const allEvents = await getEvents(requests);
     const filteredEvents = titleIds.length > 0 ?
       allEvents.filter(({ id }) => titleIds.includes(id))
@@ -103,14 +106,14 @@ router.get('/:timetables/:week/:lectures?/:name', cors(), async (req, res, next)
       faculty: timetables.map((x) => x.faculty),
       degree: timetables.map((x) => x.degree),
       specialisation: timetables.map((x) => x.label),
-      semester: timetables.map((x) => Number(x.semester))
+      semester: timetables.map((x) => Number(x.semester)),
     };
 
     const timetable: Timetable = <Timetable> {
       name: name,
       events: filteredEvents,
-      meta: meta
-    }
+      meta: meta,
+    };
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(timetable);
