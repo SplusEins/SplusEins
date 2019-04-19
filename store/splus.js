@@ -101,7 +101,6 @@ export const state = () => ({
   /**
    * state for upcoming-lectures-card
    */
-  upcomingLecturesTimetable: undefined,
   upcomingEvents: [],
   upcomingLectures: [], // TODO deprecated in favor of events
 });
@@ -233,9 +232,6 @@ export const mutations = {
   setSchedule(state, timetable) {
     state.schedule = timetable;
   },
-  setUpcomingLecturesTimetable(state, timetable) {
-    state.upcomingLecturesTimetable = timetable;
-  },
   addCustomSchedule(state, customTimetable) {
     const label = customTimetable.label;
     const customTimetableStored = state.customSchedules[label];
@@ -303,11 +299,11 @@ export const actions = {
     }
   },
   /**
-   * Request lectures of upcomingLecturesTimetable for defaultWeek
+   * Request lectures of subscribedTimetable for defaultWeek
    */
   async loadUpcomingLectures({ state, commit }) {
     try {
-      const events = await loadEvents(state.upcomingLecturesTimetable, defaultWeek(), this.$axios.$get);
+      const events = await loadEvents(state.subscribedTimetable, defaultWeek(), this.$axios.$get);
       const lectures = eventsAsLectures(events);
       commit('setUpcomingLectures', lectures);
       commit('setUpcomingEvents', events);

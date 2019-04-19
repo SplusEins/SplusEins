@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 import * as moment from 'moment';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import LastChangesCard from '../components/last-changes-card.vue';
@@ -142,6 +142,8 @@ export default {
       campusNews: (state) => state.news.campusNews,
       facultyNews: (state) => state.news.facultyNews,
       upcomingLectures: (state) => state.splus.upcomingLectures,
+      browserStateReady: (state) => state.browserStateReady,
+      subscribedTimetable: (state) => state.splus.subscribedTimetable,
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
@@ -157,9 +159,19 @@ export default {
       ],
     };
   },
+  watch: {
+    browserStateReady() {
+      if (Object.keys(this.subscribedTimetable).length > 0) {
+        this.loadFutureEvents();
+      }
+    },
+  },
   methods: {
     ...mapMutations({
       setSidenav: 'ui/setSidenav',
+    }),
+    ...mapActions({
+      loadFutureEvents: 'splus/loadUpcomingLectures',
     }),
   },
   middleware: 'cached',
