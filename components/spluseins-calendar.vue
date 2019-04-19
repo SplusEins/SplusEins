@@ -2,10 +2,10 @@
   <dayspan-custom-calendar
     :calendar="calendar"
     :types="types"
-    :read-only="true"
     @prev="prev"
     @next="next"
     @today="today"
+    read-only
   >
     <template slot="actions">
       <calendar-action-bar />
@@ -80,7 +80,7 @@ export default {
   },
   mounted() {
     if (this.lazyLoad) {
-      // static build -> no lectures are in the store
+      // static build -> no events are in the store
       this.refresh();
     }
   },
@@ -106,7 +106,7 @@ export default {
       }
     },
     async refresh() {
-      await this.loadLectures();
+      await this.load();
       this.calendar.setEvents(this.events);
     },
     ...mapMutations({
@@ -114,14 +114,13 @@ export default {
       resetWeek: 'splus/resetWeek',
     }),
     ...mapActions({
-      loadLectures: 'splus/load',
+      load: 'splus/load',
     }),
   },
 };
 </script>
 
 <style scoped lang="scss">
-
 .overlay {
   line-height: 100%;
   padding-top: 3px;
