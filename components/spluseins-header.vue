@@ -37,7 +37,7 @@
         <v-btn
           icon
           flat
-          @click="toggleDark(); $track('Menu', 'toggleDark', 'isDark: ' + isDark)"
+          @click="toggleDark(allCookiesAccepted); $track('Menu', 'toggleDark', 'isDark: ' + isDark)"
         >
           <v-icon>mdi-theme-light-dark</v-icon>
         </v-btn>
@@ -63,6 +63,7 @@ export default {
   computed: {
     ...mapState({
       isDark: state => state.ui.isDark,
+      allCookiesAccepted: state => state.privacy.allowAllCookies,
     }),
   },
   mounted() {
