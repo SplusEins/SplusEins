@@ -7,9 +7,11 @@ export const state = () => ({
 });
 
 export const mutations = {
-  toggleDark(state) {
+  toggleDark(state, setCookie) {
     state.isDark = !state.isDark;
-    document.cookie = `dark=${state.isDark}; expires=${new Date(Date.now() + 365*24*60*60*1000)};`
+    if (setCookie) {
+      document.cookie = `dark=${state.isDark}; expires=${new Date(Date.now() + 365*24*60*60*1000)};`
+    }
   },
   toggleSidenav(state) {
     state.sidenavIsOpen = !state.sidenavIsOpen;
