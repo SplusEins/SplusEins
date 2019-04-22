@@ -96,6 +96,39 @@
       >
         <last-changes-card />
       </v-flex>
+
+      <v-flex
+        d-flex
+        md4
+        lg5
+        order-xs7
+        order-md6
+      >
+        <v-card>
+          <v-card-title>
+            <div class="headline">
+              Empfohlen
+            </div>
+          </v-card-title>
+          <v-card-text>
+            <img
+              v-show="!loadYoutubeVideo"
+              style="width: 100%"
+              src="~/assets/img/pluseins-yt.jpg"
+              @click="loadYoutubeVideo = true"
+            >
+            <iframe
+              v-if="loadYoutubeVideo"
+              style="width: 100%"
+              height="330"
+                src="https://www.youtube-nocookie.com/embed/PS25JK2KTww?autoplay=1&rel=0"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </v-card-text>
+        </v-card>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -121,6 +154,11 @@ export default {
     CampusNewsCard,
     FacultyNewsCard,
     StatsCard,
+  },
+  data() {
+    return {
+      loadYoutubeVideo: false,
+    };
   },
   computed: {
     displayMensaCard() {
