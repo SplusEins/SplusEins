@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <h3 class="headline">
-        Nächste Vorlesung für {{ selectedItem.longDescription || selectedItem.label }}
+        Nächste Vorlesung
       </h3>
     </v-card-title>
 
