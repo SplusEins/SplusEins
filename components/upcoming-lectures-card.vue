@@ -30,8 +30,10 @@
     />
 
     <v-card-actions>
+      <v-spacer />
       <v-btn
         v-show="hasManySubscribableTimetables"
+        color="primary"
         flat
         @click="dialogOpen = true; $track('Calendar', 'openSelectTimetable')"
       >
