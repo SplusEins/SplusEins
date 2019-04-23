@@ -69,19 +69,17 @@
 
             <span
               v-show="$vuetify.breakpoint.smAndUp"
-              v-bind="{summary, calendar}"
               name="extendedDateSummary"
               class="ds-summary-text"
             >
-              {{ summary(false) }}
+              {{ longSummary }}
             </span>
             <span
               v-show="!$vuetify.breakpoint.smAndUp"
-              v-bind="{summary, calendar}"
               name="shortDateSummary"
               class="ds-summary-text"
             >
-              {{ summary(true) }}
+              {{ shortSummary }}
             </span>
           </div>
         </v-flex>
@@ -164,6 +162,16 @@ export default {
   },
   computed:
   {
+    longSummary() {
+      const firstDay = this.calendar.days[0].date;
+      const lastDay = this.calendar.days[6].date;
+      return firstDay.format('DD. MMMM') + ' – ' + lastDay.format('DD. MMMM');
+    },
+    shortSummary() {
+      const firstDay = this.calendar.days[0].date;
+      const lastDay = this.calendar.days[6].date;
+      return firstDay.format('DD.MM.') + ' - ' + lastDay.format('DD.MM.');
+    },
     currentType:
     {
       get()
@@ -214,13 +222,6 @@ export default {
 
   methods:
   {
-    summary(short)
-    {
-      const firstDay = this.calendar.days[0].date;
-      const lastDay = this.calendar.days[6].date;
-      return short? firstDay.format('DD.MM.') + ' - ' + lastDay.format('DD.MM.') : firstDay.format('DD. MMMM') + ' – ' + lastDay.format('DD. MMMM');
-    },
-
     minTwoDigits(n) {
       return (n < 10 ? '0' : '') + n;
     },
