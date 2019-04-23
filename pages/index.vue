@@ -161,12 +161,18 @@ export default {
   },
   watch: {
     browserStateReady() {
+      this.load();
+    },
+  },
+  mounted() {
+    this.load();
+  },
+  methods: {
+    load() {
       if (Object.keys(this.subscribedTimetable).length > 0) {
         this.loadFutureEvents();
       }
     },
-  },
-  methods: {
     ...mapMutations({
       setSidenav: 'ui/setSidenav',
     }),
