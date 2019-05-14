@@ -2,10 +2,10 @@
   <dayspan-custom-calendar
     :calendar="calendar"
     :types="types"
+    read-only
     @prev="prev"
     @next="next"
     @today="today"
-    read-only
   >
     <template slot="actions">
       <calendar-action-bar />
