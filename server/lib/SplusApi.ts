@@ -54,7 +54,7 @@ async function synchronize<T>(fun: () => Promise<T>) {
  */
 function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(PLAN_BASE);
-  url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
+  url.searchParams.append('semester', 'ws'); // TODO change this in SS20
   url.searchParams.append('identifier', timetable.id);
   const body = new URLSearchParams();
   body.append('weeks', timetable.week.toString());
@@ -74,7 +74,7 @@ function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
  */
 function splusSetRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(SET_BASE);
-  url.searchParams.append('semester', 'ss'); // TODO change this in WS19/20
+  url.searchParams.append('semester', 'ws'); // TODO change this in SS 20
   const body = new URLSearchParams();
   body.append('weeks', timetable.week.toString());
   body.append('identifier[]', timetable.id);
