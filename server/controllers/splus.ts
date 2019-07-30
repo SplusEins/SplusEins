@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as cors from 'cors';
-import * as TIMETABLES from '../../assets/timetables.json';
+import * as TIMETABLES from '../../assets/timetables.ws.json'; // TODO change this in SS20
 
 import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
 import getEvents from '../lib/SplusApi';
