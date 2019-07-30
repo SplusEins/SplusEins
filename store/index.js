@@ -4,7 +4,7 @@ export const state = () => ({
    * Should be incremented if the store schema changes and local browser data
    * needs to be migrated.
    */
-  version: 2,
+  version: 3,
   /**
    * Set to true by vuex-persist during restoration.
    */

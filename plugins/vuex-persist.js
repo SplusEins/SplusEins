@@ -28,6 +28,14 @@ export default ({ store }) => {
           }
         }
         value.version = 2;
+
+        //version 3: new semester -> new timetables ids
+        if (value.version < 3) {
+          value.splus.customSchedules = {};
+          value.splus.favoriteSchedules = [];
+          value.splus.subscribedTimetable = {};
+        }
+        value.version = 3;
       }
 
       return {
