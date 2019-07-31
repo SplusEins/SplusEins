@@ -89,9 +89,17 @@ export default {
     },
     overlappingCourses() {
       // get all lectures which have their title selected
-      const selectedLectures = this.lectures.filter(
+      let selectedLectures = this.lectures.filter(
         (lecture) => this.selectedCourses.some(
           (course) => course.titleId == lecture.titleId));
+
+      // filter duplicates
+      const key = (lecture) =>
+        `${lecture.lecturerId} ${lecture.titleId} ${lecture.room} ` +
+        `${lecture.start} ${lecture.duration}`;
+      const lecturesByKey = new Map();
+      selectedLectures.forEach((lecture) => lecturesByKey.set(key(lecture), lecture));
+      selectedLectures = [...lecturesByKey.values()];
 
       // group all lectures by day because only they can conflict
       const lecturesByDay = new Map();
