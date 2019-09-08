@@ -991,5 +991,349 @@
     "degree": "Master of Engineering",
     "semester": 2,
     "setplan": true
+  }, {
+    "id": "SPLUS7836F6",
+    "slug": "V_BA_BEE_Sem1",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS7836F7",
+    "slug": "V_BA_BEE_Sem2",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUS7836F8",
+    "slug": "V_BA_BEE_Sem3",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUS7836F9",
+    "slug": "V_BA_BEE_Sem4_BTP",
+    "label": "Bio- und Umwelttechnik BTP",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 4,
+    "setplan": true
+  }, {
+    "id": "SPLUS32C69F",
+    "slug": "V_BA_BEE_Sem4_LRH",
+    "label": "Bio- und Umwelttechnik LRH",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 4,
+    "setplan": true
+  }, {
+    "id": "SPLUS7836FA",
+    "slug": "V_BA_BEE_Sem5_BTP",
+    "label": "Bio- und Umwelttechnik BTP",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 5,
+    "setplan": true
+  }, {
+    "id": "SPLUS32C6A0",
+    "slug": "V_BA_BEE_Sem5_LRH",
+    "label": "Bio- und Umwelttechnik LRH",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 5,
+    "setplan": true
+  }, {
+    "id": "SPLUS7836FB",
+    "slug": "V_BA_BEE_Sem6_BTP",
+    "label": "Bio- und Umwelttechnik BTP",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 6,
+    "setplan": true
+  }, {
+    "id": "SPLUS32C6A1",
+    "slug": "V_BA_BEE_Sem6_LRH",
+    "label": "Bio- und Umwelttechnik LRH",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 6,
+    "setplan": true
+  }, {
+    "id": "SPLUS7836FC",
+    "slug": "V_BA_EGT_Sem1_Set1_EGT",
+    "label": "Energie- und Gebäudetechnik 1",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS783702",
+    "slug": "V_BA_EGTiP_Sem1_Set1",
+    "label": "Energie- und Gebäudetechnik 1 iP",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUSCFB856",
+    "slug": "V_BA_EGT_Sem1_Set2_EGTiP",
+    "label": "Energie- und Gebäudetechnik 2 iP",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS7836FD",
+    "slug": "V_BA_EGT_Sem2",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUS7836FE",
+    "slug": "V_BA_EGT_Sem3_Set1(EGT+EGTiP)",
+    "label": "Energie- und Gebäudetechnik 1 EGT+EGTiP",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EDE",
+    "slug": "V_BA_EGT_Sem3_Set2(EGT)",
+    "label": "Energie- und Gebäudetechnik 2 EGT",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUS783703",
+    "slug": "V_BA_EGTiP_Sem3_Set1",
+    "label": "Energie- und Gebäudetechnik iP",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUS7836FF",
+    "slug": "V_BA_EGT_Sem4_Set1(RET)",
+    "label": "Energie- und Gebäudetechnik RET",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 4,
+    "setplan": true
+  }, {
+    "id": "SPLUS32C69A",
+    "slug": "V_BA_EGT_Sem4_Set1(TGA)",
+    "label": "Energie- und Gebäudetechnik TGA",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 4,
+    "setplan": true
+  }, {
+    "id": "SPLUS783700",
+    "slug": "V_BA_EGT_Sem5_Set1(RET)",
+    "label": "Energie- und Gebäudetechnik RET",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 5,
+    "setplan": true
+  }, {
+    "id": "SPLUS32C69C",
+    "slug": "V_BA_EGT_Sem5_Set1(TGA)",
+    "label": "Energie- und Gebäudetechnik TGA",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 5,
+    "setplan": true
+  }, {
+    "id": "SPLUS783704",
+    "slug": "V_BA_EGTiP_Sem5_Set1",
+    "label": "Energie- und Gebäudetechnik iP",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 5,
+    "setplan": true
+  }, {
+    "id": "SPLUS783701",
+    "slug": "V_BA_EGT_Sem6_Set1(RET)",
+    "label": "Energie- und Gebäudetechnik RET",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 6,
+    "setplan": true
+  }, {
+    "id": "SPLUS32C69E",
+    "slug": "V_BA_EGT_Sem6_Set1(TGA)",
+    "label": "Energie- und Gebäudetechnik TGA",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 6,
+    "setplan": true
+  }, {
+    "id": "SPLUS41E3B2",
+    "slug": "V_BA_EWING_Sem1",
+    "label": "Wirtschaftsingenieurwesen Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUSFC5C0C",
+    "slug": "V_BA_UWING_Sem1",
+    "label": "Wirtschaftsingenieurwesen Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUSFC5C0D",
+    "slug": "V_BA_EWING_Sem2",
+    "label": "Wirtschaftsingenieurwesen Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUSFC5C0E",
+    "slug": "V_BA_UWING_Sem2",
+    "label": "Wirtschaftsingenieurwesen Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUS921C94",
+    "slug": "V_BA_EWING_Sem3",
+    "label": "Wirtschaftsingenieurwesen Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUS921C95",
+    "slug": "V_BA_UWING_Sem3",
+    "label": "Wirtschaftsingenieurwesen Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUS7F9607",
+    "slug": "V_BA_EWING_Sem5",
+    "label": "Wirtschaftsingenieurwesen Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 5,
+    "setplan": true
+  }, {
+    "id": "SPLUS7F9608",
+    "slug": "V_BA_UWING_Sem5",
+    "label": "Wirtschaftsingenieurwesen Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 5,
+    "setplan": true
+  }, {
+    "id": "SPLUSFC5DB1",
+    "slug": "V_BA_EWING_Sem7",
+    "label": "Wirtschaftsingenieurwesen Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 7,
+    "setplan": true
+  }, {
+    "id": "SPLUSFC5DB2",
+    "slug": "V_BA_UWING_Sem7",
+    "label": "Wirtschaftsingenieurwesen Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": 7,
+    "setplan": true
+  },  {
+    "id": "SPLUSEC7EDF",
+    "slug": "V_MA_EST_Sem1",
+    "label": "Energiesystemtechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EE0",
+    "slug": "V_MA_EST_Sem2_FM",
+    "label": "Energiesystemtechnik FM",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EE1",
+    "slug": "V_MA_EST_Sem2_ÖV",
+    "label": "Energiesystemtechnik ÖV",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EE2",
+    "slug": "V_MA_EST_Sem2_BU",
+    "label": "Energiesystemtechnik BU",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EE3",
+    "slug": "V_MA_EST_Sem3_FM",
+    "label": "Energiesystemtechnik FM",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EE4",
+    "slug": "V_MA_EST_Sem3_ÖV",
+    "label": "Energiesystemtechnik ÖV",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EE5",
+    "slug": "V_MA_EST_Sem3_BU",
+    "label": "Energiesystemtechnik BU",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EE6",
+    "slug": "V_MA_EST_Sem4_FM",
+    "label": "Energiesystemtechnik FM",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 4,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EE7",
+    "slug": "V_MA_EST_Sem4_ÖV",
+    "label": "Energiesystemtechnik ÖV",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 4,
+    "setplan": true
+  }, {
+    "id": "SPLUSEC7EE8",
+    "slug": "V_MA_EST_Sem4_BU",
+    "label": "Energiesystemtechnik BU",
+    "faculty": "Versorgungstechnik",
+    "degree": "Master of Engineering",
+    "semester": 4,
+    "setplan": true
   }
 ]
