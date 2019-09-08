@@ -20,6 +20,24 @@ describe('Test Timetables JSON', () => {
     expect(TIMETABLES_SS).toBeDefined();
   });
 
+
+  it('should check if splus have the right length', () => {
+    TIMETABLES_WS.forEach(el => {
+      if(el.id.length != 11) console.log(el.id);
+      expect(el.id.length).toEqual(11);
+    });
+    TIMETABLES_SS.forEach(el => {
+      if(el.id.length != 11) console.log(el.id);
+      expect(el.id.length).toEqual(11);
+    });
+  });
+
+  it('should check if splus ids are in right format', () => {
+    const splusIDRegex = /SPLUS[A-Za-z0-9]{6}/g;
+    TIMETABLES_WS.forEach(el => expect(el.id.match(splusIDRegex)).not.toEqual(null));
+    TIMETABLES_SS.forEach(el => expect(el.id.match(splusIDRegex)).not.toEqual(null));
+  });
+
   it('should not include any duplicated splus ids', () => {
     expect(findDuplicates(TIMETABLES_WS, 'id')).toEqual([]);
     expect(findDuplicates(TIMETABLES_SS, 'id')).toEqual([]);
