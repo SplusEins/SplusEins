@@ -1,5 +1,5 @@
-import { ParsedLecture } from './SplusModel';
-import { Event } from './SplusEinsModel';
+import { ParsedLecture } from '../model/SplusModel';
+import { Event } from '../model/SplusEinsModel';
 import * as moment from 'moment';
 
 describe('Test Event', () => {

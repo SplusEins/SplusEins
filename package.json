@@ -11,7 +11,7 @@
     "build:api": "cd server/ && webpack --mode production --config webpack.config.js",
     "start": "nuxt start",
     "start:api": "node server/dist/server/server.js",
-    "test": "cd server/ && jest",
+    "test": "cd server/tests && jest",
     "generate": "nuxt generate"
   },
   "dependencies": {
