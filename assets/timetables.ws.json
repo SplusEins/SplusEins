@@ -759,5 +759,237 @@
     "degree": "Master of Laws",
     "semester": 1,
     "setplan": true
+  }, {
+    "id": "SPLUSF431CC",
+    "slug": "M-BA&F6",
+    "label": "Antriebs- und Fahrzeugtechnik",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 6,
+    "setplan": true
+  }, {
+    "id": "SPLUS4073CA",
+    "slug": "M-BA&F7",
+    "label": "Antriebs- und Fahrzeugtechnik",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 7,
+    "setplan": true
+  }, {
+    "id": "SPLUS7FED2D",
+    "slug": "M-BK&E6",
+    "label": "Konstruktion und Entwicklung",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 6,
+    "setplan": true
+  }, {
+    "id": "SPLUSF431CD",
+    "slug": "M-BK&E7",
+    "label": "Konstruktion und Entwicklung",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 7,
+    "setplan": true
+  }, {
+    "id": "SPLUS3E7205",
+    "slug": "M-BM1a",
+    "label": "Maschinenbau a",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS701B16",
+    "slug": "M-BM1aLIFT (A)",
+    "label": "Maschinenbau a LIFT(A)",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUSBF0E2A",
+    "slug": "M-BM1b",
+    "label": "Maschinenbau b",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUSBF0E2B",
+    "slug": "M-BM1c",
+    "label": "Maschinenbau c",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS3E7207",
+    "slug": "M-BM2a",
+    "label": "Maschinenbau a",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUS3E7208",
+    "slug": "M-BM2b",
+    "label": "Maschinenbau b",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUS10F16F",
+    "slug": "M-BM3",
+    "label": "Maschinenbau",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUS10F172",
+    "slug": "M-BM4",
+    "label": "Maschinenbau",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 4,
+    "setplan": true
+  }, {
+    "id": "SPLUS7FED2E",
+    "slug": "M-BMec6",
+    "label": "Mechatronik",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 6,
+    "setplan": true
+  }, {
+    "id": "SPLUSF66B4E",
+    "slug": "M-BMec7",
+    "label": "Mechatronik",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 7,
+    "setplan": true
+  }, {
+    "id": "SPLUS7FED2F",
+    "slug": "M-BP&L6",
+    "label": "Produktion und Logistik",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 6,
+    "setplan": true
+  }, {
+    "id": "SPLUSF66B4F",
+    "slug": "M-BP&LW1",
+    "label": "Produktion und Logistik",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 7,
+    "setplan": true
+  }, {
+    "id": "SPLUS3116C7",
+    "slug": "M-BWi1a",
+    "label": "Wirtschaftsingenieurwesen a",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS6652A7",
+    "slug": "M-BWi1b Teil1",
+    "label": "Wirtschaftsingenieurwesen b Teil 1",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUSC1F10F",
+    "slug": "M-BWi1b Teil2",
+    "label": "Wirtschaftsingenieurwesen b Teil 2",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS6652A8",
+    "slug": "M-BWi1c",
+    "label": "Wirtschaftsingenieurwesen c",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS701B37",
+    "slug": "M-BWi1LIFT (A)",
+    "label": "Wirtschaftsingenieurwesen LIFT(A)",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS3AB7F3",
+    "slug": "M-BWi2a",
+    "label": "Wirtschaftsingenieurwesen a",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUS20EB52",
+    "slug": "M-BWi2b",
+    "label": "Wirtschaftsingenieurwesen b",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 2,
+    "setplan": true
+  }, {
+    "id": "SPLUS3116D0",
+    "slug": "M-BWi3",
+    "label": "Wirtschaftsingenieurwesen",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 3,
+    "setplan": true
+  }, {
+    "id": "SPLUS3116D2",
+    "slug": "M-BWi4",
+    "label": "Wirtschaftsingenieurwesen",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 4,
+    "setplan": true
+  }, {
+    "id": "SPLUS3116D4",
+    "slug": "M-BWi6",
+    "label": "Wirtschaftsingenieurwesen",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 6,
+    "setplan": true
+  }, {
+    "id": "SPLUS3116D3",
+    "slug": "M-BWi7",
+    "label": "Wirtschaftsingenieurwesen",
+    "faculty": "Maschinenbau",
+    "degree": "Bachelor of Engineering",
+    "semester": 7,
+    "setplan": true
+  }, {
+    "id": "SPLUS286589",
+    "slug": "M-MSE1",
+    "label": "Systems Engineering",
+    "faculty": "Maschinenbau",
+    "degree": "Master of Engineering",
+    "semester": 1,
+    "setplan": true
+  }, {
+    "id": "SPLUS86D702",
+    "slug": "M-MSE2",
+    "label": "Systems Engineering",
+    "faculty": "Maschinenbau",
+    "degree": "Master of Engineering",
+    "semester": 2,
+    "setplan": true
   }
 ]
