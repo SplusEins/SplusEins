@@ -50,7 +50,8 @@ export class Event {
   meta: EventMetadata;
 
   private generateId(title: string): string {
-    return crypto.createHash('sha1').update(title).digest('hex').slice(0, 5);
+    //since the id is part of the url it should not contain /, + or =
+    return crypto.createHash('sha1').update(title).digest('base64').replace(/[\/+=]/g, '').slice(0, 5);
   }
 
   constructor(lecture: ParsedLecture) {
