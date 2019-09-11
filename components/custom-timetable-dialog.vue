@@ -26,7 +26,7 @@
           <v-spacer />
           <v-toolbar-items>
             <v-btn
-              :disabled="!valid"
+              :disabled="!saveable"
               dark
               flat
               @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true;
@@ -152,6 +152,9 @@ export default {
     dialogOpen: {
       get() { return this.value; },
       set(value) { this.$emit('input', value); }
+    },
+    saveable() {
+      return this.valid && this.selectedCourses.length > 0;
     },
     isNew() {
       return !this.customSchedule;
