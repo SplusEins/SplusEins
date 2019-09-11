@@ -30,12 +30,14 @@ export default ({ store }) => {
         }
 
         //version 3: new semester -> new timetables ids
-        if (value.version < 3) {
+        //version 4: timetable hash ids
+        if (value.version < 4) {
           value.splus.customSchedules = {};
           value.splus.favoriteSchedules = [];
           value.splus.subscribedTimetable = {};
-          value.version = 3;
+          value.version = 4;
         }
+
       }
 
       return {
