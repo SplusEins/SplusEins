@@ -8,6 +8,7 @@ import getEvents from '../lib/SplusApi';
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
 const router = express.Router();
+const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
 /**
  * Accept CORS preflight requests.
@@ -95,7 +96,7 @@ router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next
   const name = req.params.name;
 
   try {
-    const requests = timetables.flatMap((timetable) => weeks.map((week) => (<TimetableRequest> { id: timetable.id, week: week, setplan: timetable.setplan }) ));
+    const requests = <TimetableRequest[]>flatten(timetables.map((timetable) => weeks.map((week) => (<TimetableRequest> { id: timetable.id, week: week, setplan: timetable.setplan }) )));
     const allEvents = await getEvents(requests);
     const filteredEvents = titleIds.length > 0 ?
       allEvents.filter(({ id }) => titleIds.includes(id))
