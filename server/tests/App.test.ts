@@ -32,7 +32,7 @@ describe('Test backend', () => {
 
    it('should create a ICS for multiple timetables and filters', async () => {
     const response = await request(app).get(
-      '/api/ics/v1/SPLUS63AE59,SPLUS7A3293/GdPL,DSB');
+      '/api/ics/v1/SPLUS63AE59,SPLUS7A3293/FQxKX,CEiss');
     expect(response.statusCode).toBe(200);
     expect(response.header['content-type']).toBe('text/plain; charset=utf-8');
     expect(response.text).toContain('BEGIN:VCALENDAR');
@@ -44,7 +44,7 @@ describe('Test backend', () => {
 
   it('should create an ICS for one timetable and one filter', async () => {
     const response = await request(app).get(
-      '/api/ics/v1/SPLUS63AE59/GdPL');
+      '/api/ics/v1/SPLUS63AE59/FQxKX');
     expect(response.statusCode).toBe(200);
     expect(response.header['content-type']).toBe('text/plain; charset=utf-8');
     expect(response.text).toContain('BEGIN:VCALENDAR');
@@ -73,7 +73,7 @@ describe('Test backend', () => {
 
   it('should return an ICS matching the snapshot', async () => {
     const response = await request(app).get(
-      '/api/ics/v1/SPLUS63AE59,SPLUS7A3293/GdPL,DSB');
+      '/api/ics/v1/SPLUS63AE59,SPLUS7A3293/FQxKX,CEiss');
     const deterministicText = response.text.replace(/^DTSTAMP:.*$/gm, '');
     expect(deterministicText).toMatchSnapshot();
   });

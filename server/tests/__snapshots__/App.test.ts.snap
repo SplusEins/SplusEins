@@ -7,7 +7,7 @@ PRODID:-//sebbo.net//ical-generator//EN
 TIMEZONE-ID:Europe/Berlin
 X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VEVENT
-UID:f9c26d64476e5b31@spluseins.de
+UID:9585077718d554fd@spluseins.de
 SEQUENCE:0
 
 DTSTART:20190319T071500Z
@@ -17,7 +17,7 @@ LOCATION:P1\\\\, P4\\\\, P3\\\\, P2
 DESCRIPTION:Prof. Dr. F. Höppner\\\\, M.Sc. F. Morgenstern
 END:VEVENT
 BEGIN:VEVENT
-UID:eda985e3c5d22e42@spluseins.de
+UID:0ba5570c86542e5a@spluseins.de
 SEQUENCE:0
 
 DTSTART:20190319T090000Z
@@ -27,7 +27,7 @@ LOCATION:P1\\\\, P4\\\\, P3\\\\, P2
 DESCRIPTION:Prof. Dr. F. Höppner\\\\, M.Sc. F. Morgenstern
 END:VEVENT
 BEGIN:VEVENT
-UID:46ad93270c07134b@spluseins.de
+UID:3f49cd3d7e83ee46@spluseins.de
 SEQUENCE:0
 
 DTSTART:20190322T090000Z
@@ -37,7 +37,7 @@ LOCATION:Scale-Up-Room 201\\\\, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)
 DESCRIPTION:Prof. Dr. P. Riegler
 END:VEVENT
 BEGIN:VEVENT
-UID:601a57aa74d7918a@spluseins.de
+UID:7e660a64737af7c8@spluseins.de
 SEQUENCE:0
 
 DTSTART:20190319T110000Z
@@ -55,11 +55,11 @@ Object {
     Object {
       "duration": 13.25,
       "end": "2019-03-20T19:15:00.000Z",
-      "id": "R",
+      "id": "nNGrK",
       "location": "",
       "meta": Object {
         "description": "",
-        "organiserId": "",
+        "organiserId": "2jmj7",
         "organiserName": "",
       },
       "start": "2019-03-20T06:00:00.000Z",
@@ -68,11 +68,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-19T08:45:00.000Z",
-      "id": "GdPL",
+      "id": "FQxKX",
       "location": "P1, P4, P3, P2",
       "meta": Object {
         "description": "",
-        "organiserId": "Hoeppner Morgenstern",
+        "organiserId": "vFiwX",
         "organiserName": "Prof. Dr. F. Höppner, M.Sc. F. Morgenstern",
       },
       "start": "2019-03-19T07:15:00.000Z",
@@ -81,11 +81,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-21T08:45:00.000Z",
-      "id": "MRSB",
+      "id": "rr1w8",
       "location": "",
       "meta": Object {
         "description": "Dr. S. Bellmer, Raum 252. Dieser Sondertermin findet zusammen mit Mathe-Repetitorium für Wirtschaftsinformatik statt!",
-        "organiserId": "",
+        "organiserId": "2jmj7",
         "organiserName": "",
       },
       "start": "2019-03-21T07:15:00.000Z",
@@ -94,11 +94,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-22T08:45:00.000Z",
-      "id": "GdPGB",
+      "id": "j9U6o",
       "location": "Hörsaal 223",
       "meta": Object {
         "description": "",
-        "organiserId": "Hoeppner",
+        "organiserId": "kYXRa",
         "organiserName": "Prof. Dr. F. Höppner",
       },
       "start": "2019-03-22T07:15:00.000Z",
@@ -107,11 +107,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-22T08:45:00.000Z",
-      "id": "GdPGA",
+      "id": "oWKWa",
       "location": "Hörsaal 026",
       "meta": Object {
         "description": "",
-        "organiserId": "Huhn",
+        "organiserId": "0UIPj",
         "organiserName": "Prof. Dr. M. Huhn",
       },
       "start": "2019-03-22T07:15:00.000Z",
@@ -120,11 +120,11 @@ Object {
     Object {
       "duration": 3.25,
       "end": "2019-03-18T11:45:00.000Z",
-      "id": "IEhuKdICG1",
+      "id": "hfx61",
       "location": "Seminarraum 152",
       "meta": Object {
         "description": "",
-        "organiserId": "Schwiebert",
+        "organiserId": "hO8nN",
         "organiserName": "M.A. J. Schwiebert (CS)",
       },
       "start": "2019-03-18T08:30:00.000Z",
@@ -133,11 +133,11 @@ Object {
     Object {
       "duration": 3.25,
       "end": "2019-03-18T11:45:00.000Z",
-      "id": "EhuKdIC",
+      "id": "JCBht",
       "location": "11/1",
       "meta": Object {
         "description": "",
-        "organiserId": "Jensen",
+        "organiserId": "KgUPf",
         "organiserName": "Prof. Dr.-Ing. N. Jensen",
       },
       "start": "2019-03-18T08:30:00.000Z",
@@ -146,11 +146,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-19T10:30:00.000Z",
-      "id": "GdPL",
+      "id": "FQxKX",
       "location": "P1, P4, P3, P2",
       "meta": Object {
         "description": "",
-        "organiserId": "Hoeppner Morgenstern",
+        "organiserId": "vFiwX",
         "organiserName": "Prof. Dr. F. Höppner, M.Sc. F. Morgenstern",
       },
       "start": "2019-03-19T09:00:00.000Z",
@@ -159,11 +159,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-21T10:30:00.000Z",
-      "id": "MC1S",
+      "id": "JQvwo",
       "location": "Hörsaal 252",
       "meta": Object {
         "description": "",
-        "organiserId": "Bellmer",
+        "organiserId": "xw7zh",
         "organiserName": "Dr. S. Bellmer",
       },
       "start": "2019-03-21T09:00:00.000Z",
@@ -172,11 +172,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-22T10:30:00.000Z",
-      "id": "DSB",
+      "id": "CEiss",
       "location": "Scale-Up-Room 201, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)",
       "meta": Object {
         "description": "",
-        "organiserId": "Riegler",
+        "organiserId": "gWgBA",
         "organiserName": "Prof. Dr. P. Riegler",
       },
       "start": "2019-03-22T09:00:00.000Z",
@@ -185,11 +185,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-19T12:30:00.000Z",
-      "id": "DSB",
+      "id": "CEiss",
       "location": "Scale-Up-Room 201, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)",
       "meta": Object {
         "description": "Die VL findet in 7/? statt.",
-        "organiserId": "Riegler",
+        "organiserId": "gWgBA",
         "organiserName": "Prof. Dr. P. Riegler",
       },
       "start": "2019-03-19T11:00:00.000Z",
@@ -198,11 +198,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-22T12:30:00.000Z",
-      "id": "IL1S",
+      "id": "4ef1h",
       "location": "Poolraum 132 (P8)",
       "meta": Object {
         "description": "",
-        "organiserId": "Dick Anwander",
+        "organiserId": "hLSul",
         "organiserName": "Dipl.-Inf. D. Dick-Anwander",
       },
       "start": "2019-03-22T11:00:00.000Z",
@@ -211,11 +211,11 @@ Object {
     Object {
       "duration": 4,
       "end": "2019-03-21T17:00:00.000Z",
-      "id": "RuwAG2C",
+      "id": "vMgWO",
       "location": "Seminarraum 152",
       "meta": Object {
         "description": "",
-        "organiserId": "",
+        "organiserId": "2jmj7",
         "organiserName": "",
       },
       "start": "2019-03-21T13:00:00.000Z",
@@ -224,11 +224,11 @@ Object {
     Object {
       "duration": 4,
       "end": "2019-03-21T17:00:00.000Z",
-      "id": "RuwAG3C",
+      "id": "Z9vh7",
       "location": "Seminarraum 136",
       "meta": Object {
         "description": "Dozenten: M.A. J. Schwiebert / Dipl.-Ing. H. Perkuhn",
-        "organiserId": "",
+        "organiserId": "2jmj7",
         "organiserName": "",
       },
       "start": "2019-03-21T13:00:00.000Z",
@@ -237,11 +237,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-18T14:45:00.000Z",
-      "id": "TGdIATdIV",
+      "id": "AvXET",
       "location": "11/1",
       "meta": Object {
         "description": "",
-        "organiserId": "Dammann",
+        "organiserId": "SaROF",
         "organiserName": "Dipl.-Ing. K. Dammann",
       },
       "start": "2019-03-18T13:15:00.000Z",
@@ -250,11 +250,11 @@ Object {
     Object {
       "duration": 1.5,
       "end": "2019-03-19T14:45:00.000Z",
-      "id": "TGdIATdIV",
+      "id": "AvXET",
       "location": "Hörsaal 252",
       "meta": Object {
         "description": "",
-        "organiserId": "Dammann",
+        "organiserId": "SaROF",
         "organiserName": "Dipl.-Ing. K. Dammann",
       },
       "start": "2019-03-19T13:15:00.000Z",
