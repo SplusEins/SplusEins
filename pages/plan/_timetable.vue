@@ -48,5 +48,6 @@ export default {
   },
   middleware: 'cached',
   watchQuery: ['id', 'name', 'course'], // rerender page when query params change
+  key: to => to.fullPath, // rerender full path
 };
 </script>
