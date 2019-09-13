@@ -60,20 +60,6 @@ describe('Test Event', () => {
     ]);
   });
 
-  it('should generate the same title id for similar lectures', () => {
-    function expectAllLecturesHaveSameTitleId(titleVariations) {
-      const lectures = titleVariations.map(
-        (title) => new Event(testLecture(title)));
-      lectures.slice(1).forEach(
-        (lecture) => expect(lecture.id).toBe(lectures[0].id));
-    }
-
-    expectAllLecturesHaveSameTitleId([
-      '-Fremdsprache auf erhöhten Niveau 2. Sem. Binf - Kurs B',
-      'Fremdsprache auf erhöhten Niveau 2. Sem. Binf - Kurs B',
-    ]);
-  });
-
   it('should generate a unique lecturer id', () => {
     function expectAllLecturesHaveDifferentLecturerIds(lecturerVariations) {
       const lectures = lecturerVariations.map(
@@ -88,25 +74,6 @@ describe('Test Event', () => {
       'Prof. Dr. F. Seutter',
       'Herr Brodowski',
       'Prof. Dr. M. Huhn'
-    ]);
-  });
-
-  it('should generate the same lecturer id for similar lectures', () => {
-    function expectAllLecturesHaveSameLecturerId(lecturerVariations) {
-      const lectures = lecturerVariations.map(
-        (lecturer) => new Event(testLecture('', lecturer)));
-      lectures.slice(1).forEach(
-        (lecture) => expect(lecture.meta.organiserId).toBe(lectures[0].meta.organiserId));
-    }
-
-    expectAllLecturesHaveSameLecturerId([
-      'Dr. F. Seutter',
-      'Prof. Dr. F. Seutter',
-      'F. Seutter',
-    ]);
-    expectAllLecturesHaveSameLecturerId([
-      'F. Höppner',
-      'F. Hoeppner',
     ]);
   });
 
