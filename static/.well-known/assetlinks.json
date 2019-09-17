@@ -3,6 +3,6 @@
   "target" : {
     "namespace": "android_app",
     "package_name": "de.spluseins.app",
-    "sha256_cert_fingerprints": [" 72:BB:B3:C6:7A:6B:66:80:07:48:9F:D0:4A:05:65:65:CF:3A:60:19:71:B4:1D:EA:DE:8B:F8:15:42:7B:86:B4"]
+    "sha256_cert_fingerprints": ["72:BB:B3:C6:7A:6B:66:80:07:48:9F:D0:4A:05:65:65:CF:3A:60:19:71:B4:1D:EA:DE:8B:F8:15:42:7B:86:B4"]
   }
 }]
