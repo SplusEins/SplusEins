@@ -51,8 +51,9 @@ router.get('/', cors(), async (req, res, next) => {
 
       const result: MensaDayPlan[] = [];
 
-      feed.openmensa.canteen[0].day.forEach((day: any) => {
+      feed.openmensa.canteen[0].day.slice(0,3).forEach((day: any) => {
         const dayDate = moment(day.$.date).toDate();
+        const categories = [];
         day.category.forEach((category) => {
           const data = {
             category: category.$.name,
@@ -60,13 +61,13 @@ router.get('/', cors(), async (req, res, next) => {
             name: category.meal[0].name[0],
             prices: category.meal[0].price.reduce((prices, price) => ({
               ...prices,
-              [price.$.role]: price._,
+              [price.$.role + 's']: parseFloat(price._),
             }), {}),
-            notes: category.meal[0].note,
+            notes: category.meal[0].note.map(note => note.toLowerCase()),
           };
-
-          result.push(<MensaDayPlan> { date: dayDate, data });
+          categories.push(data);
         })
+        result.push(<MensaDayPlan> { date: dayDate, data: categories });
       });
 
       return result.sort((a,b) => moment(a.date).isBefore(moment(b.date)) ? -1 : 1);
