@@ -116,7 +116,7 @@ export default async function getEvents(timetables: TimetableRequest[]): Promise
 
   // filter duplicates
   const key = (event: Event) =>
-    `${event.meta.organiserId} ${event.id} ${event.location} ` +
+    `${event.meta.organiserShortname} ${event.id} ${event.location} ` +
     `${event.start} ${event.end}`;
   const eventsByKey = new Map<string, Event>();
   allEvents.forEach((event) => eventsByKey.set(key(event), event));

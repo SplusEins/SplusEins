@@ -36,7 +36,7 @@
         </td>
         <td>
           {{ props.item.title }}
-          <span v-show="$vuetify.breakpoint.xs">({{ props.item.lecturerId }}, {{ props.item.room }})</span>
+          <span v-show="$vuetify.breakpoint.xs">{{ getShortMetadata(props.item) }}</span>
         </td>
         <td v-show="$vuetify.breakpoint.smAndUp">
           {{ props.item.lecturer }}
@@ -95,7 +95,7 @@ export default {
 
       // filter duplicates
       const key = (lecture) =>
-        `${lecture.lecturerId} ${lecture.titleId} ${lecture.room} ` +
+        `${lecture.organiserShortname} ${lecture.titleId} ${lecture.room} ` +
         `${lecture.start} ${lecture.duration}`;
       const lecturesByKey = new Map();
       selectedLectures.forEach((lecture) => lecturesByKey.set(key(lecture), lecture));
@@ -146,5 +146,18 @@ export default {
       return [...overlapTitles.values()]
     },
   },
+  methods: {
+    getShortMetadata(data) {
+        if (data.organiserShortname && data.room) {
+          return `(${data.organiserShortname}, ${data.room})`
+        } else if (data.organiserShortname) {
+          return `(${data.organiserShortname})`;
+        } else if (data.room) {
+          return `(${data.room})`;
+        } else {
+          return '';
+        }
+    }
+  }
 };
 </script>

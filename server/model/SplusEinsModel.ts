@@ -21,7 +21,7 @@ export interface TimetableRequest {
 };
 
 export interface EventMetadata {
-  organiserId: string;
+  organiserShortname: string;
   organiserName: string;
   description: string;
 };
@@ -54,6 +54,16 @@ export class Event {
     return crypto.createHash('sha1').update(title).digest('base64').replace(/[\/+=]/g, '').slice(0, 5);
   }
 
+  private generateOrganiserShortname(lecturer: string): string {
+    return lecturer
+      .replace(/Prof|Dr|Dipl|Ing|Herr|Frau|MA|BA/g, '')
+      .replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue').replace('ß', 'ss')
+      .replace(/[^a-z]/gi, ' ')
+      .split(' ')
+      .filter((w) => w.length > 3)
+      .join(' ');
+  }
+
   constructor(lecture: ParsedLecture) {
     this.id = this.generateId(lecture.title);
     this.title = lecture.title;
@@ -62,7 +72,7 @@ export class Event {
     this.duration = lecture.duration;
     this.location = lecture.room;
     this.meta = {
-                 organiserId: this.generateId(lecture.lecturer),
+                 organiserShortname: this.generateOrganiserShortname(lecture.lecturer),
                  organiserName: lecture.lecturer,
                  description: lecture.info
                 };

@@ -50,7 +50,7 @@ export function eventsAsLectures(events) {
       room: event.location,
       lecturer: event.meta.organiserName,
       titleId: event.id,
-      lecturerId: event.meta.organiserId,
+      organiserShortname: event.meta.organiserShortname,
       start: event.start,
       duration: event.duration,
     };
@@ -122,7 +122,7 @@ export const getters = {
    */
   getCalendarEvents: (state) => {
     const uniqueIds = uniq(state.events
-      .map((event) => event.meta.organiserId)
+      .map((event) => event.meta.organiserShortname)
       .sort());
 
     const colorScale = chroma
@@ -135,7 +135,7 @@ export const getters = {
         (eventsByStart.get(event.start) || []), event]));
 
     return state.events.map((event) => {
-      const color = colorScale[uniqueIds.indexOf(event.meta.organiserId)];
+      const color = colorScale[uniqueIds.indexOf(event.meta.organiserShortname)];
       const description = event.meta.organiserName ? `${event.meta.organiserName}\n${event.meta.description}` : `${event.meta.description}`;
 
       const startMoment = moment(event.start);

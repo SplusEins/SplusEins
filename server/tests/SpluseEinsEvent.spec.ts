@@ -20,7 +20,7 @@ describe('Test Event', () => {
     const event = new Event(testLecture());
     expect(event).toBeDefined();
     expect(event.id).toBeDefined();
-    expect(event.meta.organiserId).toBeDefined();
+    expect(event.meta.organiserShortname).toBeDefined();
     expect(event.duration).toBeDefined();
     expect(event.start.valueOf()).toBe(Date.parse('2019-03-19T07:15:00.000Z'));
   });
@@ -61,15 +61,15 @@ describe('Test Event', () => {
   });
 
   it('should generate a unique lecturer id', () => {
-    function expectAllLecturesHaveDifferentLecturerIds(lecturerVariations) {
+    function expectAllLecturesHaveDifferentOrganiserShortnames(lecturerVariations) {
       const lectures = lecturerVariations.map(
         (lecturer) => new Event(testLecture('', lecturer)));
       lectures.forEach(
         (lecture1, index) => lectures.slice(index + 1).forEach(
-          (lecture2) => expect(lecture1.meta.organiserId).not.toBe(lecture2.meta.organiserId)));
+          (lecture2) => expect(lecture1.meta.organiserShortname).not.toBe(lecture2.meta.organiserShortname)));
     }
 
-    expectAllLecturesHaveDifferentLecturerIds([
+    expectAllLecturesHaveDifferentOrganiserShortnames([
       'Prof. Dr. P. Riegler',
       'Prof. Dr. F. Seutter',
       'Herr Brodowski',

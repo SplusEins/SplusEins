@@ -7,7 +7,7 @@ PRODID:-//sebbo.net//ical-generator//EN
 TIMEZONE-ID:Europe/Berlin
 X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VEVENT
-UID:9585077718d554fd@spluseins.de
+UID:e29cf5ad1db23572@spluseins.de
 SEQUENCE:0
 
 DTSTART:20190319T071500Z
@@ -17,7 +17,7 @@ LOCATION:P1\\\\, P4\\\\, P3\\\\, P2
 DESCRIPTION:Prof. Dr. F. Höppner\\\\, M.Sc. F. Morgenstern
 END:VEVENT
 BEGIN:VEVENT
-UID:0ba5570c86542e5a@spluseins.de
+UID:e37673baacf3ae87@spluseins.de
 SEQUENCE:0
 
 DTSTART:20190319T090000Z
@@ -27,7 +27,7 @@ LOCATION:P1\\\\, P4\\\\, P3\\\\, P2
 DESCRIPTION:Prof. Dr. F. Höppner\\\\, M.Sc. F. Morgenstern
 END:VEVENT
 BEGIN:VEVENT
-UID:3f49cd3d7e83ee46@spluseins.de
+UID:43526e8fa77235f8@spluseins.de
 SEQUENCE:0
 
 DTSTART:20190322T090000Z
@@ -37,7 +37,7 @@ LOCATION:Scale-Up-Room 201\\\\, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)
 DESCRIPTION:Prof. Dr. P. Riegler
 END:VEVENT
 BEGIN:VEVENT
-UID:7e660a64737af7c8@spluseins.de
+UID:b0eca4cf94f59316@spluseins.de
 SEQUENCE:0
 
 DTSTART:20190319T110000Z
@@ -59,8 +59,8 @@ Object {
       "location": "",
       "meta": Object {
         "description": "",
-        "organiserId": "2jmj7",
         "organiserName": "",
+        "organiserShortname": "",
       },
       "start": "2019-03-20T06:00:00.000Z",
       "title": "Reformationstag",
@@ -72,8 +72,8 @@ Object {
       "location": "P1, P4, P3, P2",
       "meta": Object {
         "description": "",
-        "organiserId": "vFiwX",
         "organiserName": "Prof. Dr. F. Höppner, M.Sc. F. Morgenstern",
+        "organiserShortname": "Hoeppner Morgenstern",
       },
       "start": "2019-03-19T07:15:00.000Z",
       "title": "Grundlagen des Programmierens - Labor",
@@ -85,8 +85,8 @@ Object {
       "location": "",
       "meta": Object {
         "description": "Dr. S. Bellmer, Raum 252. Dieser Sondertermin findet zusammen mit Mathe-Repetitorium für Wirtschaftsinformatik statt!",
-        "organiserId": "2jmj7",
         "organiserName": "",
+        "organiserShortname": "",
       },
       "start": "2019-03-21T07:15:00.000Z",
       "title": "Mathe Repetitorium - Sondertermin - BInf",
@@ -98,8 +98,8 @@ Object {
       "location": "Hörsaal 223",
       "meta": Object {
         "description": "",
-        "organiserId": "kYXRa",
         "organiserName": "Prof. Dr. F. Höppner",
+        "organiserShortname": "Hoeppner",
       },
       "start": "2019-03-22T07:15:00.000Z",
       "title": "Grundlagen des Programmierens - Gruppe B",
@@ -111,8 +111,8 @@ Object {
       "location": "Hörsaal 026",
       "meta": Object {
         "description": "",
-        "organiserId": "0UIPj",
         "organiserName": "Prof. Dr. M. Huhn",
+        "organiserShortname": "Huhn",
       },
       "start": "2019-03-22T07:15:00.000Z",
       "title": "Grundlagen des Programmierens - Gruppe A",
@@ -124,8 +124,8 @@ Object {
       "location": "Seminarraum 152",
       "meta": Object {
         "description": "",
-        "organiserId": "hO8nN",
         "organiserName": "M.A. J. Schwiebert (CS)",
+        "organiserShortname": "Schwiebert",
       },
       "start": "2019-03-18T08:30:00.000Z",
       "title": "I-Einführung und Kompetenzen der Informatik (CS) - Gruppe 1",
@@ -137,8 +137,8 @@ Object {
       "location": "11/1",
       "meta": Object {
         "description": "",
-        "organiserId": "KgUPf",
         "organiserName": "Prof. Dr.-Ing. N. Jensen",
+        "organiserShortname": "Jensen",
       },
       "start": "2019-03-18T08:30:00.000Z",
       "title": "Einführung und Kompetenzen der Informatik (CS)",
@@ -150,8 +150,8 @@ Object {
       "location": "P1, P4, P3, P2",
       "meta": Object {
         "description": "",
-        "organiserId": "vFiwX",
         "organiserName": "Prof. Dr. F. Höppner, M.Sc. F. Morgenstern",
+        "organiserShortname": "Hoeppner Morgenstern",
       },
       "start": "2019-03-19T09:00:00.000Z",
       "title": "Grundlagen des Programmierens - Labor",
@@ -163,8 +163,8 @@ Object {
       "location": "Hörsaal 252",
       "meta": Object {
         "description": "",
-        "organiserId": "xw7zh",
         "organiserName": "Dr. S. Bellmer",
+        "organiserShortname": "Bellmer",
       },
       "start": "2019-03-21T09:00:00.000Z",
       "title": "Mathe Cafe 1. Sem",
@@ -176,8 +176,8 @@ Object {
       "location": "Scale-Up-Room 201, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)",
       "meta": Object {
         "description": "",
-        "organiserId": "gWgBA",
         "organiserName": "Prof. Dr. P. Riegler",
+        "organiserShortname": "Riegler",
       },
       "start": "2019-03-22T09:00:00.000Z",
       "title": "Diskrete Strukturen-Bainf",
@@ -189,8 +189,8 @@ Object {
       "location": "Scale-Up-Room 201, I-WF-Ex-7/? (Alter Speisesaal Cafe Limes)",
       "meta": Object {
         "description": "Die VL findet in 7/? statt.",
-        "organiserId": "gWgBA",
         "organiserName": "Prof. Dr. P. Riegler",
+        "organiserShortname": "Riegler",
       },
       "start": "2019-03-19T11:00:00.000Z",
       "title": "Diskrete Strukturen-Bainf",
@@ -202,8 +202,8 @@ Object {
       "location": "Poolraum 132 (P8)",
       "meta": Object {
         "description": "",
-        "organiserId": "hLSul",
         "organiserName": "Dipl.-Inf. D. Dick-Anwander",
+        "organiserShortname": "Dick Anwander",
       },
       "start": "2019-03-22T11:00:00.000Z",
       "title": "Informatik-Lounge 1.Sem",
@@ -215,8 +215,8 @@ Object {
       "location": "Seminarraum 152",
       "meta": Object {
         "description": "",
-        "organiserId": "2jmj7",
         "organiserName": "",
+        "organiserShortname": "",
       },
       "start": "2019-03-21T13:00:00.000Z",
       "title": "Rhetorik und wissenschaftliches Arbeiten - Gruppe 2 (CS)",
@@ -228,8 +228,8 @@ Object {
       "location": "Seminarraum 136",
       "meta": Object {
         "description": "Dozenten: M.A. J. Schwiebert / Dipl.-Ing. H. Perkuhn",
-        "organiserId": "2jmj7",
         "organiserName": "",
+        "organiserShortname": "",
       },
       "start": "2019-03-21T13:00:00.000Z",
       "title": "Rhetorik und wissenschaftliches Arbeiten - Gruppe 3 (CS)",
@@ -241,8 +241,8 @@ Object {
       "location": "11/1",
       "meta": Object {
         "description": "",
-        "organiserId": "SaROF",
         "organiserName": "Dipl.-Ing. K. Dammann",
+        "organiserShortname": "Dammann",
       },
       "start": "2019-03-18T13:15:00.000Z",
       "title": "Technische Grundlagen der Informatik Alt: Technik der Informatik-VL",
@@ -254,8 +254,8 @@ Object {
       "location": "Hörsaal 252",
       "meta": Object {
         "description": "",
-        "organiserId": "SaROF",
         "organiserName": "Dipl.-Ing. K. Dammann",
+        "organiserShortname": "Dammann",
       },
       "start": "2019-03-19T13:15:00.000Z",
       "title": "Technische Grundlagen der Informatik Alt: Technik der Informatik-VL",
