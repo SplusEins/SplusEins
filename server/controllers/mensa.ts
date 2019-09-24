@@ -45,32 +45,22 @@ router.get('/', cors(), async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`mensa cache miss for key ${key}`);
 
-      const feed = await fetch('https://openmensa.schneefux.xyz/ostniedersachsen/wolfenbuettel/full.xml')
-        .then((res) => res.text())
-        .then(parseStringPromise) as any;
+      const openDays = await fetch(`https://openmensa.org/api/v2/canteens/166/days`)
+        .then((res) => res.json());
+
+      const weekdays = openDays
+        .slice(0, 3)
+        .map(({ date }) => moment(date));
 
       const result: MensaDayPlan[] = [];
 
-      feed.openmensa.canteen[0].day.slice(0,3).forEach((day: any) => {
-        const dayDate = moment(day.$.date).toDate();
-        const categories = [];
-        day.category.forEach((category) => {
-          const data = {
-            category: category.$.name,
-            id: `${dayDate.valueOf()}-${category.$.name}-${category.meal[0].name[0]}`,
-            name: category.meal[0].name[0],
-            prices: category.meal[0].price.reduce((prices, price) => ({
-              ...prices,
-              [price.$.role + 's']: parseFloat(price._),
-            }), {}),
-            notes: category.meal[0].note.map(note => note.toLowerCase()),
-          };
-          categories.push(data);
-        })
-        result.push(<MensaDayPlan> { date: dayDate, data: categories });
-      });
+      await Promise.all(weekdays.map(async (day) => {
+        const data = await fetch(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`)
+          .then((res) => res.json());
+        result.push(<MensaDayPlan>{ date: day.toDate(), data });
+      }));
 
-      return result.sort((a,b) => moment(a.date).isBefore(moment(b.date)) ? -1 : 1);
+      return result.sort((a, b) => moment(a.date).isBefore(moment(b.date)) ? -1 : 1);
     }, { ttl: CACHE_SECONDS });
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);

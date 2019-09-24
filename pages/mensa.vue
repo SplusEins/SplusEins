@@ -124,14 +124,14 @@ export default {
       return euros + ',' + cents + '€';
     },
     getIconColor(item) {
-      if(item == undefined || item.notes.includes('vegetarisch')){
+      if(item == undefined || item.notes.includes('Vegetarisch')){
         return this.isDark? 'white' : 'black';
-      }else if(item.notes.includes('vegan')){
+      }else if(item.notes.includes('Vegan')){
         return 'green';
       }
     },
     displayIcon(item) {
-      return item.notes.includes('vegetarisch') || item.notes.includes('vegan');
+      return item.notes.includes('Vegetarisch') || item.notes.includes('Vegan');
     },
   },
   middleware: 'cached',
