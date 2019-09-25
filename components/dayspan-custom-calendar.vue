@@ -306,6 +306,11 @@ export default {
   height: 100%;
 }
 
+.ds-ev-title {
+  word-break: break-all;
+  white-space: initial;
+}
+
 .ds-hour:nth-child(n+21),
 .ds-hour:nth-child(-n+7){
   display: none;
