@@ -20,7 +20,7 @@ export default {
         property: 'og:description',
         template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel und Salzgitter`,
       },
-      { hid: 'keywords', name: 'keywords', content: 'Sommersemester 2019, SS19, Ostfalia, Stundenplan, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Salzgitter, Karl-Scharfenberg, Informatik, Maschinenbau, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Logistik, Informationsmanagement, Verkehr, Mediendesign, Medienmanagement, Personenverkehrsmanagement, Wahlfächer, Wahlpflichtfächer' },
+      { hid: 'keywords', name: 'keywords', content: 'Splus1, splus1, Wintersemester 2019, Wintersemester 2020, WS1920, Ostfalia, Stundenplan, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Salzgitter, Karl-Scharfenberg, Informatik, Maschinenbau, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Logistik, Informationsmanagement, Verkehr, Mediendesign, Medienmanagement, Personenverkehrsmanagement, Wahlfächer, Wahlpflichtfächer' },
     ],
   },
 
