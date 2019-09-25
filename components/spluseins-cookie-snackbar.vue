@@ -13,6 +13,7 @@
     >
       <v-btn
         ref="btn-deny"
+        color="primary"
         flat
         @click="setAllCookiesDenied()"
       >
@@ -20,6 +21,7 @@
       </v-btn>
       <v-btn
         ref="btn-allow-necessary"
+        color="primary"
         flat
         @click="setNecessaryCookiesAllowed()"
       >
@@ -27,7 +29,7 @@
       </v-btn>
       <v-btn
         ref="btn-allow-all"
-        color="success"
+        color="primary"
         flat
         @click="setAllCookiesAllowed()"
       >
