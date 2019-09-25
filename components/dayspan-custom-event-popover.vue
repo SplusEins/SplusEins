@@ -50,7 +50,7 @@
               <v-icon>mdi-text-subject</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>{{ details.description }}</v-list-tile-title>
+              <v-list-tile-title class="overflow-y">{{ details.description }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
@@ -142,5 +142,9 @@ export default {
 
 .toolbar-padding {
   padding: 0px 16px 20px 0px !important;
+}
+
+.overflow-y {
+ overflow-y: auto;
 }
 </style>
