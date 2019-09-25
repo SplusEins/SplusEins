@@ -302,6 +302,10 @@ export default {
   user-select: auto !important;
 }
 
+.ds-calendar-event .v-menu__activator {
+  height: 100%;
+}
+
 .ds-hour:nth-child(n+21),
 .ds-hour:nth-child(-n+7){
   display: none;
