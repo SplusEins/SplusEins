@@ -1,5 +1,5 @@
 <template>
-  <lazy-hydrate ssr-only>
+  <lazy-hydrate when-visible>
     <v-card class="ds-calendar-event-popover-card">
       <v-toolbar
         :style="styleHeader"
