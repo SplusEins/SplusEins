@@ -11,7 +11,7 @@
       :total="totalHours"
       unit="px"
     >
-      <h1>{{ sections.length != 0 ? totalHours : 0 }}h</h1>diese Woche
+      <h1>{{ sections.length != 0 ? totalHours.toLocaleString() : 0 }}h</h1>diese Woche
     </vc-donut>
     <v-card-text class="card-text">
       <h3>{{ subscribedTimetable.description || subscribedTimetable.label }}</h3>
@@ -75,7 +75,7 @@ export default {
        this.totalHours = totalHoursCalc > 0 ? totalHoursCalc : 1;
 
        uniqueLectures.forEach((value, key) => {
-          this.sections.push({label: key + ' - ' + value + ' Stunden', value: value});
+          this.sections.push({label: key + ' - ' + value.toLocaleString() + ' Stunden', value: value});
        });
     },
   },
