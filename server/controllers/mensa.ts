@@ -4,7 +4,6 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import fetch from 'node-fetch';
-import { parseStringPromise } from 'xml2js';
 
 import { MensaDayPlan } from '../model/SplusEinsModel';
 
@@ -49,7 +48,7 @@ router.get('/', cors(), async (req, res, next) => {
         .then((res) => res.json());
 
       const weekdays = openDays
-        .slice(0, 3)
+        .slice(0, 6)
         .map(({ date }) => moment(date));
 
       const result: MensaDayPlan[] = [];

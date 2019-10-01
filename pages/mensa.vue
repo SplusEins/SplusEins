@@ -1,8 +1,5 @@
 <template>
   <v-container
-    v-touch="{
-      right: () => setSidenav(true)
-    }"
     fluid
     grid-list-md
     hide-overlay
@@ -33,45 +30,49 @@
       </span>
     </span>
     <v-divider class="divider" />
-
-    <v-layout
-      :wrap="$vuetify.breakpoint.smAndDown"
-      row
+    <v-carousel
+      :hide-controls="$vuetify.breakpoint.smAndDown"
+      :hide-delimiters="!$vuetify.breakpoint.smAndDown"
+      :light="!isDark"
+      :interval="$vuetify.breakpoint.smAndDown? 6000: 18000"
+      height="100%"
+      cycle
     >
-      <v-flex
-        v-for="dayPlan in plans"
-        :key="dayPlan.date"
-        xs12
-      >
-        <v-card height="100%">
-          <v-card-title>
-            <h3>{{ getDayHeader(dayPlan) }}</h3>
-          </v-card-title>
-          <v-divider />
-          <v-list
-            v-for="item in dayPlan.data"
-            :key="item.id"
-            dense
+      <template v-if="$vuetify.breakpoint.smAndDown">
+        <v-carousel-item
+          v-for="dayPlan in plans"
+          :key="dayPlan.date"
+        >
+          <v-layout row>
+            <mensa-dayplan :plan="dayPlan" />
+          </v-layout>
+        </v-carousel-item>
+      </template>
+      <template v-else>
+        <v-carousel-item
+          v-for="dayPlanGroup in groupedDayPlans"
+          :key="dayPlanGroup[0].date"
+        >
+          <v-layout
+            row
+            class="carousel-control-padding"
           >
-            <div class="list-tile">
-              <span class="category">{{ item.category }}:</span>
-              <v-icon
-                v-if="displayIcon(item)"
-                :color="getIconColor(item)"
-                class="icon"
-                small
-              >
-                mdi-leaf
-              </v-icon>
-              <br>
-              <span>{{ item.name }}</span>
-              <br>
-              <span class="price">Studenten: {{ getPriceLabel(item.prices.students) }} - Angestellte: {{ getPriceLabel(item.prices.employees) }}</span>
-            </div>
-          </v-list>
-        </v-card>
-      </v-flex>
-    </v-layout>
+            <mensa-dayplan
+              :plan="dayPlanGroup[0]"
+            />
+            <mensa-dayplan
+              v-if="dayPlanGroup[1]"
+              :plan="dayPlanGroup[1]"
+            />
+            <mensa-dayplan
+              v-if="dayPlanGroup[2]"
+              :plan="dayPlanGroup[2]"
+            />
+          </v-layout>
+        </v-carousel-item>
+      </template>
+    </v-carousel>
+
     <span class="disclaimer">
       Quelle: openmensa.org
     </span>
@@ -80,6 +81,7 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
+import MensaDayplan from '../components/mensa-dayplan.vue';
 import * as moment from 'moment';
 
 export default {
@@ -93,12 +95,22 @@ export default {
       ],
     };
   },
+  components: {
+    MensaDayplan
+  },
   computed: {
     ...mapState({
       plans: (state) => state.mensa.plans,
       lazyLoad: (state) => state.lazyLoad,
       isDark: (state) => state.ui.isDark,
     }),
+    groupedDayPlans() {
+      const grouped = [];
+      for (let i = 0; i < this.plans.length; i += 3) {
+          grouped.push(this.plans.slice(i, i + 3));
+      }
+      return grouped;
+    }
   },
   mounted() {
     if (this.lazyLoad) {
@@ -113,16 +125,6 @@ export default {
     ...mapMutations({
       setSidenav: 'ui/setSidenav',
     }),
-    getDayHeader(dayPlan) {
-      const day = moment(dayPlan.date.toString());
-      return (day.isSame(moment(), 'day')? 'Heute' : day.format('dddd')) + " - " + day.format('DD.MM.YYYY');
-    },
-    getPriceLabel(price) {
-      const euros = Math.floor(price);
-      let cents = Math.round((price - euros) * 100);
-      cents = cents >= 10 ? cents : '0' + cents;
-      return euros + ',' + cents + '€';
-    },
     getIconColor(item) {
       if(item == undefined || item.notes.includes('Vegetarisch')){
         return this.isDark? 'white' : 'black';
@@ -130,35 +132,33 @@ export default {
         return 'green';
       }
     },
-    displayIcon(item) {
-      return item.notes.includes('Vegetarisch') || item.notes.includes('Vegan');
-    },
   },
   middleware: 'cached',
 };
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss">
+
+.v-carousel {
+  box-shadow: none !important;
+}
+
+.carousel-control-padding {
+  padding: 0 50px;
+  margin: 0px !important;
+}
+
+.v-window__container,
+.v-image {
+  height: 100% !important;
+}
+
+.v-carousel__controls {
+  height: 40px !important;
+}
 
 .explanation{
-  opacity: 0.5;
-}
-
-.icon{
-  opacity: 0.7;
-}
-
-.list-tile{
-  padding: 5px 0 5px 15px;
-}
-
-.category {
-  font-weight: bold;
-}
-
-.price{
-  font-size: 12px;
   opacity: 0.5;
 }
 
