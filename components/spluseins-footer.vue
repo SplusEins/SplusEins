@@ -16,7 +16,7 @@
         xs12
         class="font-size"
       >
-        2019
+        {{ new Date().getFullYear() }}
         —
         <strong>
           SplusEins
