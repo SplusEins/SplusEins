@@ -34,21 +34,23 @@
       :hide-controls="$vuetify.breakpoint.smAndDown"
       :hide-delimiters="!$vuetify.breakpoint.smAndDown"
       :light="!isDark"
-      :interval="$vuetify.breakpoint.smAndDown? 6000: 18000"
+      :cycle="false"
       height="100%"
-      cycle
     >
       <template v-if="$vuetify.breakpoint.smAndDown">
         <v-carousel-item
           v-for="dayPlan in plans"
           :key="dayPlan.date"
         >
-          <v-layout row>
+          <v-layout
+            row
+            class="carousel-delimiter-padding"
+          >
             <mensa-dayplan :plan="dayPlan" />
           </v-layout>
         </v-carousel-item>
       </template>
-      <template v-else>
+      <template v-if="!$vuetify.breakpoint.smAndDown">
         <v-carousel-item
           v-for="dayPlanGroup in groupedDayPlans"
           :key="dayPlanGroup[0].date"
@@ -142,6 +144,10 @@ export default {
 
 .v-carousel {
   box-shadow: none !important;
+}
+
+.carousel-delimiter-padding {
+  padding-bottom: 40px;
 }
 
 .carousel-control-padding {
