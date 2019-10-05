@@ -39,6 +39,7 @@ router.options('/', cors());
  */
 router.get('/', cors(), async (req, res, next) => {
   const key = 'mensa-' + moment().format('YYYY-MM-DD');
+  const amountOfReturnedDays = 6;
 
   try {
     const data = await cache.wrap(key, async () => {
@@ -48,7 +49,7 @@ router.get('/', cors(), async (req, res, next) => {
         .then((res) => res.json());
 
       const weekdays = openDays
-        .slice(0, 6)
+        .slice(0, amountOfReturnedDays)
         .map(({ date }) => moment(date));
 
       const result: MensaDayPlan[] = [];
