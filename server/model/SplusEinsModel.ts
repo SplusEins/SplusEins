@@ -18,6 +18,7 @@ export interface TimetableRequest {
   id: string;
   week: number;
   setplan: boolean;
+  raumplan: boolean;
 };
 
 export interface EventMetadata {

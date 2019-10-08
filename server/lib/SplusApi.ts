@@ -7,6 +7,7 @@ import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { URL, URLSearchParams } from 'url';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
+const RAUMPLAN_BASE = 'http://splus.ostfalia.de/raumplan123.php';
 const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
@@ -86,6 +87,25 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
 }
 
 /**
+ * Fetch Raumplan-timetable from splus.ostfalia.de
+ *
+ * @param timetable request
+ * @returns HTML-string
+ */
+function splusRaumplanRequest(timetable: TimetableRequest): Promise<string> {
+  const url = new URL(RAUMPLAN_BASE);
+  url.searchParams.append('semester', 'ws'); // TODO change this in SS20
+  url.searchParams.append('identifier', timetable.id);
+  const body = new URLSearchParams();
+  body.append('weeks', timetable.week.toString());
+
+  return synchronize(() => fetch(url.toString(), {
+    method: 'POST',
+    body,
+  })).then((res) => res.text());
+}
+
+/**
  * Parses HTML to Events
  *
  * @param timetable request
@@ -97,7 +117,16 @@ function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
   return cache.wrap(key, async () => {
     console.log(`timetable cache miss for key ${key}`);
     timetable.id = '#' + timetable.id;
-    const data = timetable.setplan? await splusSetRequest(timetable) : await splusPlanRequest(timetable);
+    let data;
+    if (timetable.setplan) {
+      data = await splusSetRequest(timetable);
+    }
+    if (timetable.raumplan) {
+      data = await splusPlanRequest(timetable);
+    }
+    if (!timetable.setplan && !timetable.raumplan) {
+      data = await splusRaumplanRequest(timetable);
+    }
     const lectures = new SplusParser(data).getLectures(timetable.week);
     console.log(`saving ${lectures.length} lectures for ${key}`)
     return lectures.map((lecture) => new Event(lecture));
