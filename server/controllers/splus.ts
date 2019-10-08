@@ -39,7 +39,12 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
   }
 
   try {
-    const requests = weeks.map((week) => (<TimetableRequest> { id: timetable.id, week: week, setplan: timetable.setplan }) );
+    const requests = weeks.map((week) => (<TimetableRequest> {
+      id: timetable.id,
+      week: week,
+      setplan: timetable.setplan,
+      raumplan: timetable.raumplan,
+    }) );
     const events = await getEvents(requests);
 
     const meta: TimetableMetadata = <TimetableMetadata> {
@@ -96,7 +101,12 @@ router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next
   const name = req.params.name;
 
   try {
-    const requests = <TimetableRequest[]>flatten(timetables.map((timetable) => weeks.map((week) => (<TimetableRequest> { id: timetable.id, week: week, setplan: timetable.setplan }) )));
+    const requests = <TimetableRequest[]>flatten(timetables.map((timetable) => weeks.map((week) => (<TimetableRequest> {
+      id: timetable.id,
+      week: week,
+      setplan: timetable.setplan,
+      raumplan: timetable.raumplan,
+    }) )));
     const allEvents = await getEvents(requests);
     const filteredEvents = titleIds.length > 0 ?
       allEvents.filter(({ id }) => titleIds.includes(id))
