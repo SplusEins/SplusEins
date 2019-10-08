@@ -94,10 +94,10 @@ function splusSetRequest(timetable: TimetableRequest): Promise<string> {
  */
 function splusRaumplanRequest(timetable: TimetableRequest): Promise<string> {
   const url = new URL(RAUMPLAN_BASE);
-  url.searchParams.append('semester', 'ws'); // TODO change this in SS20
-  url.searchParams.append('identifier', timetable.id);
+  url.searchParams.append('semester', 'ws'); // TODO change this in SS 20
   const body = new URLSearchParams();
   body.append('weeks', timetable.week.toString());
+  body.append('identifier[]', timetable.id);
 
   return synchronize(() => fetch(url.toString(), {
     method: 'POST',
