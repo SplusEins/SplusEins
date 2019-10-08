@@ -42,5 +42,4 @@ describe('Test Timetables JSON', () => {
     expect(findDuplicates(TIMETABLES_WS, 'id')).toEqual([]);
     expect(findDuplicates(TIMETABLES_SS, 'id')).toEqual([]);
   });
-
 });
