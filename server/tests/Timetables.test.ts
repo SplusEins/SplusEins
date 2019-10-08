@@ -43,9 +43,4 @@ describe('Test Timetables JSON', () => {
     expect(findDuplicates(TIMETABLES_SS, 'id')).toEqual([]);
   });
 
-  it('should not include any duplicated slugs', () => {
-    expect(findDuplicates(TIMETABLES_WS, 'slug')).toEqual([]);
-    expect(findDuplicates(TIMETABLES_SS, 'slug')).toEqual([]);
-  });
-
 });
