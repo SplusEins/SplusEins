@@ -122,10 +122,10 @@ function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
       data = await splusSetRequest(timetable);
     }
     if (timetable.raumplan) {
-      data = await splusPlanRequest(timetable);
+      data = await splusRaumplanRequest(timetable);
     }
     if (!timetable.setplan && !timetable.raumplan) {
-      data = await splusRaumplanRequest(timetable);
+      data = await splusPlanRequest(timetable);
     }
     const lectures = new SplusParser(data).getLectures(timetable.week);
     console.log(`saving ${lectures.length} lectures for ${key}`)
