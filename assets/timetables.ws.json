@@ -1094,7 +1094,7 @@
     "label": "Hörsaal 127",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
-    "semester": "ROOMS",
+    "semester": "Räume",
     "raumplan": true
   },
   {
@@ -1103,7 +1103,7 @@
     "label": "Scale-Up-Raum",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
-    "semester": "ROOMS",
+    "semester": "Räume",
     "raumplan": true
   }
 ]

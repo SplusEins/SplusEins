@@ -23,9 +23,8 @@
         >
           <v-list-tile slot="activator">
             {{ semester == 'WPF' ? 'Wahlpflichtfächer' : '' }}
-            {{ semester == 'ROOMS' ? 'Räume' : '' }}
-            {{ semester == 'OTHER' ? 'Sonstiges' : '' }}
-            {{ !['WPF', 'ROOMS', 'OTHER'].includes(semester) ? semester + '. Semester' : '' }}
+            {{ semester == 'Räume' ? 'Räume' : '' }}
+            {{ !['WPF', 'Räume'].includes(semester) ? semester + '. Semester' : '' }}
           </v-list-tile>
 
           <v-list-tile
@@ -46,7 +45,8 @@
           nuxt
           @click="$track('Calendar', 'sideMenu plan used', 'normal')"
         >
-          {{ semester == 'WPF' ? 'Wahlpflichtfächer' : semester == 'ROOMS' ? 'Räume' : semester == 'OTHER' ? 'Sonstige' : semester + '. Semester' }}
+          {{ semester }}
+          {{ !['WPF', 'Räume'].includes(semester) ? '. Semester' : '' }}
         </v-list-tile>
       </template>
     </v-list-group>
