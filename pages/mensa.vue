@@ -30,51 +30,52 @@
       </span>
     </span>
     <v-divider class="divider" />
-    <v-carousel
-      :hide-controls="$vuetify.breakpoint.smAndDown"
-      :hide-delimiters="!$vuetify.breakpoint.smAndDown"
-      :light="!isDark"
-      :cycle="false"
-      height="100%"
-    >
-      <template v-if="$vuetify.breakpoint.smAndDown">
-        <v-carousel-item
-          v-for="dayPlan in plans"
-          :key="dayPlan.date"
-        >
-          <v-layout
-            row
-            class="carousel-delimiter-padding"
+    <no-ssr>
+      <v-carousel
+        :hide-controls="$vuetify.breakpoint.smAndDown"
+        :hide-delimiters="!$vuetify.breakpoint.smAndDown"
+        :light="!isDark"
+        :cycle="false"
+        height="100%"
+      >
+        <template v-if="$vuetify.breakpoint.smAndDown">
+          <v-carousel-item
+            v-for="dayPlan in plans"
+            :key="dayPlan.date"
           >
-            <mensa-dayplan :plan="dayPlan" />
-          </v-layout>
-        </v-carousel-item>
-      </template>
-      <template v-if="!$vuetify.breakpoint.smAndDown">
-        <v-carousel-item
-          v-for="dayPlanGroup in groupedDayPlans"
-          :key="dayPlanGroup[0].date"
-        >
-          <v-layout
-            row
-            class="carousel-control-padding"
+            <v-layout
+              row
+              class="carousel-delimiter-padding"
+            >
+              <mensa-dayplan :plan="dayPlan" />
+            </v-layout>
+          </v-carousel-item>
+        </template>
+        <template v-if="!$vuetify.breakpoint.smAndDown">
+          <v-carousel-item
+            v-for="dayPlanGroup in groupedDayPlans"
+            :key="dayPlanGroup[0].date"
           >
-            <mensa-dayplan
-              :plan="dayPlanGroup[0]"
-            />
-            <mensa-dayplan
-              v-if="dayPlanGroup[1]"
-              :plan="dayPlanGroup[1]"
-            />
-            <mensa-dayplan
-              v-if="dayPlanGroup[2]"
-              :plan="dayPlanGroup[2]"
-            />
-          </v-layout>
-        </v-carousel-item>
-      </template>
-    </v-carousel>
-
+            <v-layout
+              row
+              class="carousel-control-padding"
+            >
+              <mensa-dayplan
+                :plan="dayPlanGroup[0]"
+              />
+              <mensa-dayplan
+                v-if="dayPlanGroup[1]"
+                :plan="dayPlanGroup[1]"
+              />
+              <mensa-dayplan
+                v-if="dayPlanGroup[2]"
+                :plan="dayPlanGroup[2]"
+              />
+            </v-layout>
+          </v-carousel-item>
+        </template>
+      </v-carousel>
+    </no-ssr>
     <span class="disclaimer">
       Quelle: openmensa.org
     </span>
