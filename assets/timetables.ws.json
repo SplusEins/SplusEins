@@ -1,7 +1,6 @@
 [
   {
     "id": "SPLUSAD601E",
-    "slug": "I-B-DT1",
     "label": "Digital Technologies",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -10,7 +9,6 @@
   },
   {
     "id": "SPLUS63AE59",
-    "slug": "I-B-I1",
     "label": "Informatik",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -18,7 +16,6 @@
   },
   {
     "id": "SPLUSB3BC21",
-    "slug": "I-B-I2-CE",
     "label": "Computer Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -26,7 +23,6 @@
   },
   {
     "id": "SPLUS63AE5A",
-    "slug": "I-B-I2-IE",
     "label": "Information Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -34,7 +30,6 @@
   },
   {
     "id": "SPLUSB3BC22",
-    "slug": "I-B-I2-MI",
     "label": "Medieninformatik",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -42,7 +37,6 @@
   },
   {
     "id": "SPLUSB3BC20",
-    "slug": "I-B-I2-SE",
     "label": "Software Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -50,7 +44,6 @@
   },
   {
     "id": "SPLUSB3BC1F",
-    "slug": "I-B-I2-SysE",
     "label": "System Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -58,7 +51,6 @@
   },
   {
     "id": "SPLUS63AE5B",
-    "slug": "I-B-I3-CE",
     "label": "Computer Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -66,7 +58,6 @@
   },
   {
     "id": "SPLUSB3BC29",
-    "slug": "I-B-I3-IE",
     "label": "Information Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -74,7 +65,6 @@
   },
   {
     "id": "SPLUSB3BC2A",
-    "slug": "I-B-I3-MI",
     "label": "Medieninformatik",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -82,7 +72,6 @@
   },
   {
     "id": "SPLUSB3BC2B",
-    "slug": "I-B-I3-SE",
     "label": "Software Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -90,7 +79,6 @@
   },
   {
     "id": "SPLUSB3BC2C",
-    "slug": "I-B-I3-SysE",
     "label": "System Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -98,7 +86,6 @@
   },
   {
     "id": "SPLUSB3BC2D",
-    "slug": "I-B-I4-CE",
     "label": "Computer Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -106,7 +93,6 @@
   },
   {
     "id": "SPLUS8677CD",
-    "slug": "I-B-I4-IE",
     "label": "Information Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -114,7 +100,6 @@
   },
   {
     "id": "SPLUS73FFC6",
-    "slug": "I-B-I4-MI",
     "label": "Medieninformatik",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -122,7 +107,6 @@
   },
   {
     "id": "SPLUS659BF0",
-    "slug": "I-B-I4-SE",
     "label": "Software Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -130,7 +114,6 @@
   },
   {
     "id": "SPLUS69C0D0",
-    "slug": "I-B-I4-SysE",
     "label": "System Engineering",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -138,7 +121,6 @@
   },
   {
     "id": "SPLUS63AE5D",
-    "slug": "I-B-I5",
     "label": "Informatik",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -146,7 +128,6 @@
   },
   {
     "id": "SPLUS63AE62",
-    "slug": "I-B-ITM5",
     "label": "IT-Management",
     "faculty": "Informatik",
     "degree": "Master of Science",
@@ -154,7 +135,6 @@
   },
   {
     "id": "SPLUS55788F",
-    "slug": "I-Master-Informatik",
     "label": "Informatik",
     "faculty": "Informatik",
     "degree": "Master of Science",
@@ -162,7 +142,6 @@
   },
   {
     "id": "SPLUS925F6A",
-    "slug": "I-VFH-MA-MI1",
     "label": "Medieninformatik VFH",
     "faculty": "Informatik",
     "degree": "Master of Science",
@@ -170,7 +149,6 @@
   },
   {
     "id": "SPLUS2EA0A2",
-    "slug": "I-VFH-MA-MI2",
     "label": "Medieninformatik VFH",
     "faculty": "Informatik",
     "degree": "Master of Science",
@@ -178,7 +156,6 @@
   },
   {
     "id": "SPLUS925F6B",
-    "slug": "I-VFH-MA-MI3",
     "label": "Medieninformatik VFH",
     "faculty": "Informatik",
     "degree": "Master of Science",
@@ -186,7 +163,6 @@
   },
   {
     "id": "SPLUSC6A347",
-    "slug": "I-VFH-MA-WI1",
     "label": "Wirtschaftsinformatik VFH",
     "faculty": "Informatik",
     "degree": "Master of Science",
@@ -194,7 +170,6 @@
   },
   {
     "id": "SPLUS8D0BC9",
-    "slug": "I-VFH-MA-WI2",
     "label": "Wirtschaftsinformatik VFH",
     "faculty": "Informatik",
     "degree": "Master of Science",
@@ -202,7 +177,6 @@
   },
   {
     "id": "SPLUSC6A348",
-    "slug": "I-VFH-MA-WI3",
     "label": "Wirtschaftsinformatik VFH",
     "faculty": "Informatik",
     "degree": "Master of Science",
@@ -210,7 +184,6 @@
   },
   {
     "id": "SPLUS2F75B9",
-    "slug": "I-VFH-MI1",
     "label": "Medieninformatik VFH",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -218,7 +191,6 @@
   },
   {
     "id": "SPLUS2F75BA",
-    "slug": "I-VFH-MI3",
     "label": "Medieninformatik VFH",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -226,7 +198,6 @@
   },
   {
     "id": "SPLUS2F75BB",
-    "slug": "I-VFH-MI5",
     "label": "Medieninformatik VFH",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -234,7 +205,6 @@
   },
   {
     "id": "SPLUSC2C4BC",
-    "slug": "I-VFH-MI6",
     "label": "Medieninformatik VFH",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -242,7 +212,6 @@
   },
   {
     "id": "SPLUS2F75BD",
-    "slug": "I-VFH-WI1",
     "label": "Wirtschaftsinformatik VFH",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -250,7 +219,6 @@
   },
   {
     "id": "SPLUS2F75BE",
-    "slug": "I-VFH-WI3",
     "label": "Wirtschaftsinformatik VFH",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -258,7 +226,6 @@
   },
   {
     "id": "SPLUS2F75BF",
-    "slug": "I-VFH-WI5",
     "label": "Wirtschaftsinformatik VFH",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -266,7 +233,6 @@
   },
   {
     "id": "SPLUSC2C4BD",
-    "slug": "I-VFH-WI6",
     "label": "Wirtschaftsinformatik VFH",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -274,7 +240,6 @@
   },
   {
     "id": "SPLUSCB568F",
-    "slug": "I-UWPF-B",
     "label": "Überfachliche Wahlpflichtfächer Bachelor",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -282,7 +247,6 @@
   },
   {
     "id": "SPLUSD49B48",
-    "slug": "I--WPF-B",
     "label": "Wahlpflichtfächer Bachelor",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -290,7 +254,6 @@
   },
   {
     "id": "SPLUSB3BC3C",
-    "slug": "I-WI-S1",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -298,7 +261,6 @@
   },
   {
     "id": "SPLUS2A876A",
-    "slug": "I-WI-S3",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -306,7 +268,6 @@
   },
   {
     "id": "SPLUSCB568E",
-    "slug": "I-WI-S5",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -314,7 +275,6 @@
   },
   {
     "id": "SPLUSC2C4BB",
-    "slug": "I-WI-S6",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
@@ -322,7 +282,6 @@
   },
   {
     "id": "SPLUS3BF4F1",
-    "slug": "E-B WPF",
     "label": "Wahlpflichtfächer Bachelor",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -330,7 +289,6 @@
   },
   {
     "id": "SPLUS3BF4EF",
-    "slug": "E-B1 EIT MathePLUS",
     "label": "EIT MathePLUS",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -338,7 +296,6 @@
   },
   {
     "id": "SPLUS3BF4F0",
-    "slug": "E-B1 EIT MatheSTAND A",
     "label": "EIT MatheSTAND Gruppe A",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -346,7 +303,6 @@
   },
   {
     "id": "SPLUS4F841A",
-    "slug": "E-B1 EITiP MatheSTAND B",
     "label": "EITiP MatheSTAND Gruppe B",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -354,7 +310,6 @@
   },
   {
     "id": "SPLUS642471",
-    "slug": "E-B1 WEIT MathePLUS",
     "label": "WEIT MathePLUS",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -362,7 +317,6 @@
   },
   {
     "id": "SPLUSD18F0F",
-    "slug": "E-B1 WEIT MatheSTAND A",
     "label": "WEIT MatheSTAND Gruppe A",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -370,7 +324,6 @@
   },
   {
     "id": "SPLUSF60FA9",
-    "slug": "E-B1 WEITiP MatheSTAND B",
     "label": "WEITiP MatheSTAND Gruppe B",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -378,7 +331,6 @@
   },
   {
     "id": "SPLUS4F841B",
-    "slug": "E-B2 EIT/EITiP",
     "label": "EIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -386,7 +338,6 @@
   },
   {
     "id": "SPLUSBD6A7C",
-    "slug": "E-B2 WEIT/WEITiP",
     "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -394,7 +345,6 @@
   },
   {
     "id": "SPLUS4F841C",
-    "slug": "E-B3 EIT/EITiP",
     "label": "EIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -402,7 +352,6 @@
   },
   {
     "id": "SPLUSF60FAB",
-    "slug": "E-B3 WEIT/WEITiP",
     "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -410,7 +359,6 @@
   },
   {
     "id": "SPLUSD18F08",
-    "slug": "E-B4 EIT/EITiP-AT",
     "label": "EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -418,7 +366,6 @@
   },
   {
     "id": "SPLUSD18F09",
-    "slug": "E-B4 EIT/EITiP-EE",
     "label": "EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -426,7 +373,6 @@
   },
   {
     "id": "SPLUSD18F0A",
-    "slug": "E-B4 EIT/EITiP-IT",
     "label": "EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -434,7 +380,6 @@
   },
   {
     "id": "SPLUS3579EA",
-    "slug": "E-B4 WEIT/WEITiP",
     "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -442,7 +387,6 @@
   },
   {
     "id": "SPLUSD18F0B",
-    "slug": "E-B5 EIT/EITiP-AT",
     "label": "EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -450,7 +394,6 @@
   },
   {
     "id": "SPLUSD18F0C",
-    "slug": "E-B5 EIT/EITiP-EE",
     "label": "EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -458,7 +401,6 @@
   },
   {
     "id": "SPLUSD18F0D",
-    "slug": "E-B5 EIT/EITiP-IT",
     "label": "EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -466,7 +408,6 @@
   },
   {
     "id": "SPLUS3579EC",
-    "slug": "E-B5 WEIT/WEITiP",
     "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -474,7 +415,6 @@
   },
   {
     "id": "SPLUSF60FAC",
-    "slug": "E-B6 EIT/EITiP-AT",
     "label": "EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -482,7 +422,6 @@
   },
   {
     "id": "SPLUSF60FAD",
-    "slug": "E-B6 EIT/EITiP-EE",
     "label": "EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -490,7 +429,6 @@
   },
   {
     "id": "SPLUSF60FAE",
-    "slug": "E-B6 EIT/EITiP-IT",
     "label": "EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -498,7 +436,6 @@
   },
   {
     "id": "SPLUSBD6A7D",
-    "slug": "E-B6 WEIT/WEITiP",
     "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
@@ -506,7 +443,6 @@
   },
   {
     "id": "SPLUS4F842C",
-    "slug": "IMES Teil WS-B",
     "label": "Teilzeit IMES",
     "faculty": "Elektrotechnik",
     "degree": "Master of Engineering",
@@ -514,7 +450,6 @@
   },
   {
     "id": "SPLUS4F842D",
-    "slug": "IMES Vollzeit",
     "label": "Vollzeit IMES",
     "faculty": "Elektrotechnik",
     "degree": "Master of Engineering",
@@ -522,7 +457,6 @@
   },
   {
     "id": "SPLUS1DECE5",
-    "slug": "R RFS 1",
     "label": "Recht, Finanzmanagement und Steuern",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -531,7 +465,6 @@
   },
   {
     "id": "SPLUS1DECE4",
-    "slug": "R RFS 2",
     "label": "Recht, Finanzmanagement und Steuern",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -540,7 +473,6 @@
   },
   {
     "id": "SPLUS1DECE3",
-    "slug": "R RFS 3",
     "label": "Recht, Finanzmanagement und Steuern",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -549,7 +481,6 @@
   },
   {
     "id": "SPLUS1DECE2",
-    "slug": "R RFS 4",
     "label": "Recht, Finanzmanagement und Steuern",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -558,7 +489,6 @@
   },
   {
     "id": "SPLUS1DECE0",
-    "slug": "R RFS 6",
     "label": "Recht, Finanzmanagement und Steuern",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -567,7 +497,6 @@
   },
   {
     "id": "SPLUS1DECDA",
-    "slug": "R RPP 1",
     "label": "Recht, Personalmanagement und -psychologie",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -576,7 +505,6 @@
   },
   {
     "id": "SPLUS1DECDB",
-    "slug": "R RPP 2",
     "label": "Recht, Personalmanagement und -psychologie",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -585,7 +513,6 @@
   },
   {
     "id": "SPLUS1DECDC",
-    "slug": "R RPP 3",
     "label": "Recht, Personalmanagement und -psychologie",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -594,7 +521,6 @@
   },
   {
     "id": "SPLUS1DECDD",
-    "slug": "R RPP 4",
     "label": "Recht, Personalmanagement und -psychologie",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -603,7 +529,6 @@
   },
   {
     "id": "SPLUS1DECDF",
-    "slug": "R RPP 6",
     "label": "Recht, Personalmanagement und -psychologie",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -612,7 +537,6 @@
   },
   {
     "id": "SPLUS5A5760",
-    "slug": "R WR 1",
     "label": "Wirtschaftsrecht",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -621,7 +545,6 @@
   },
   {
     "id": "SPLUS5A575F",
-    "slug": "R WR 2",
     "label": "Wirtschaftsrecht",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -630,7 +553,6 @@
   },
   {
     "id": "SPLUSD271FC",
-    "slug": "R WR 3",
     "label": "Wirtschaftsrecht",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -639,7 +561,6 @@
   },
   {
     "id": "SPLUSD271FB",
-    "slug": "R WR 4",
     "label": "Wirtschaftsrecht",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -648,7 +569,6 @@
   },
   {
     "id": "SPLUS1DECD9",
-    "slug": "R WR 6",
     "label": "Wirtschaftsrecht",
     "faculty": "Recht",
     "degree": "Bachelor of Laws",
@@ -657,7 +577,6 @@
   },
   {
     "id": "SPLUSF9BEF2",
-    "slug": "R Master 1",
     "label": "International Law and Business",
     "faculty": "Recht",
     "degree": "Master of Laws",
@@ -665,7 +584,6 @@
     "setplan": true
   }, {
     "id": "SPLUSF431CC",
-    "slug": "M-BA&F6",
     "label": "Antriebs- und Fahrzeugtechnik",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -673,7 +591,6 @@
     "setplan": true
   }, {
     "id": "SPLUS4073CA",
-    "slug": "M-BA&F7",
     "label": "Antriebs- und Fahrzeugtechnik",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -681,7 +598,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7FED2D",
-    "slug": "M-BK&E6",
     "label": "Konstruktion und Entwicklung",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -689,7 +605,6 @@
     "setplan": true
   }, {
     "id": "SPLUSF431CD",
-    "slug": "M-BK&E7",
     "label": "Konstruktion und Entwicklung",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -697,7 +612,6 @@
     "setplan": true
   }, {
     "id": "SPLUS3E7205",
-    "slug": "M-BM1a",
     "label": "Maschinenbau a",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -705,7 +619,6 @@
     "setplan": true
   }, {
     "id": "SPLUS701B16",
-    "slug": "M-BM1aLIFT (A)",
     "label": "Maschinenbau a LIFT(A)",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -713,7 +626,6 @@
     "setplan": true
   }, {
     "id": "SPLUSBF0E2A",
-    "slug": "M-BM1b",
     "label": "Maschinenbau b",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -721,7 +633,6 @@
     "setplan": true
   }, {
     "id": "SPLUSBF0E2B",
-    "slug": "M-BM1c",
     "label": "Maschinenbau c",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -729,7 +640,6 @@
     "setplan": true
   }, {
     "id": "SPLUS3E7207",
-    "slug": "M-BM2a",
     "label": "Maschinenbau a",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -737,7 +647,6 @@
     "setplan": true
   }, {
     "id": "SPLUS3E7208",
-    "slug": "M-BM2b",
     "label": "Maschinenbau b",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -745,7 +654,6 @@
     "setplan": true
   }, {
     "id": "SPLUS10F16F",
-    "slug": "M-BM3",
     "label": "Maschinenbau",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -753,7 +661,6 @@
     "setplan": true
   }, {
     "id": "SPLUS10F172",
-    "slug": "M-BM4",
     "label": "Maschinenbau",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -761,7 +668,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7FED2E",
-    "slug": "M-BMec6",
     "label": "Mechatronik",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -769,7 +675,6 @@
     "setplan": true
   }, {
     "id": "SPLUSF66B4E",
-    "slug": "M-BMec7",
     "label": "Mechatronik",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -777,7 +682,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7FED2F",
-    "slug": "M-BP&L6",
     "label": "Produktion und Logistik",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -785,7 +689,6 @@
     "setplan": true
   }, {
     "id": "SPLUSF66B4F",
-    "slug": "M-BP&LW1",
     "label": "Produktion und Logistik",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -793,7 +696,6 @@
     "setplan": true
   }, {
     "id": "SPLUS3116C7",
-    "slug": "M-BWi1a",
     "label": "Wirtschaftsingenieurwesen a",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -801,7 +703,6 @@
     "setplan": true
   }, {
     "id": "SPLUS6652A7",
-    "slug": "M-BWi1b Teil1",
     "label": "Wirtschaftsingenieurwesen b Teil 1",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -809,7 +710,6 @@
     "setplan": true
   }, {
     "id": "SPLUSC1F10F",
-    "slug": "M-BWi1b Teil2",
     "label": "Wirtschaftsingenieurwesen b Teil 2",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -817,7 +717,6 @@
     "setplan": true
   }, {
     "id": "SPLUS6652A8",
-    "slug": "M-BWi1c",
     "label": "Wirtschaftsingenieurwesen c",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -825,7 +724,6 @@
     "setplan": true
   }, {
     "id": "SPLUS701B37",
-    "slug": "M-BWi1LIFT (A)",
     "label": "Wirtschaftsingenieurwesen LIFT(A)",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -833,7 +731,6 @@
     "setplan": true
   }, {
     "id": "SPLUS3AB7F3",
-    "slug": "M-BWi2a",
     "label": "Wirtschaftsingenieurwesen a",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -841,7 +738,6 @@
     "setplan": true
   }, {
     "id": "SPLUS20EB52",
-    "slug": "M-BWi2b",
     "label": "Wirtschaftsingenieurwesen b",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -849,7 +745,6 @@
     "setplan": true
   }, {
     "id": "SPLUS3116D0",
-    "slug": "M-BWi3",
     "label": "Wirtschaftsingenieurwesen",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -857,7 +752,6 @@
     "setplan": true
   }, {
     "id": "SPLUS3116D2",
-    "slug": "M-BWi4",
     "label": "Wirtschaftsingenieurwesen",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -865,7 +759,6 @@
     "setplan": true
   }, {
     "id": "SPLUS3116D4",
-    "slug": "M-BWi6",
     "label": "Wirtschaftsingenieurwesen",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -873,7 +766,6 @@
     "setplan": true
   }, {
     "id": "SPLUS3116D3",
-    "slug": "M-BWi7",
     "label": "Wirtschaftsingenieurwesen",
     "faculty": "Maschinenbau",
     "degree": "Bachelor of Engineering",
@@ -881,7 +773,6 @@
     "setplan": true
   }, {
     "id": "SPLUS286589",
-    "slug": "M-MSE1",
     "label": "Systems Engineering",
     "faculty": "Maschinenbau",
     "degree": "Master of Engineering",
@@ -889,7 +780,6 @@
     "setplan": true
   }, {
     "id": "SPLUS86D702",
-    "slug": "M-MSE2",
     "label": "Systems Engineering",
     "faculty": "Maschinenbau",
     "degree": "Master of Engineering",
@@ -897,7 +787,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836F6",
-    "slug": "V_BA_BEE_Sem1",
     "label": "Bio- und Umwelttechnik",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -905,7 +794,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836F7",
-    "slug": "V_BA_BEE_Sem2",
     "label": "Bio- und Umwelttechnik",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -913,7 +801,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836F8",
-    "slug": "V_BA_BEE_Sem3",
     "label": "Bio- und Umwelttechnik",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -921,7 +808,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836F9",
-    "slug": "V_BA_BEE_Sem4_BTP",
     "label": "Bio- und Umwelttechnik BTP",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -929,7 +815,6 @@
     "setplan": true
   }, {
     "id": "SPLUS32C69F",
-    "slug": "V_BA_BEE_Sem4_LRH",
     "label": "Bio- und Umwelttechnik LRH",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -937,7 +822,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836FA",
-    "slug": "V_BA_BEE_Sem5_BTP",
     "label": "Bio- und Umwelttechnik BTP",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -945,7 +829,6 @@
     "setplan": true
   }, {
     "id": "SPLUS32C6A0",
-    "slug": "V_BA_BEE_Sem5_LRH",
     "label": "Bio- und Umwelttechnik LRH",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -953,7 +836,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836FB",
-    "slug": "V_BA_BEE_Sem6_BTP",
     "label": "Bio- und Umwelttechnik BTP",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -961,7 +843,6 @@
     "setplan": true
   }, {
     "id": "SPLUS32C6A1",
-    "slug": "V_BA_BEE_Sem6_LRH",
     "label": "Bio- und Umwelttechnik LRH",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -969,7 +850,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836FC",
-    "slug": "V_BA_EGT_Sem1_Set1_EGT",
     "label": "Energie- und Gebäudetechnik 1",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -977,7 +857,6 @@
     "setplan": true
   }, {
     "id": "SPLUS783702",
-    "slug": "V_BA_EGTiP_Sem1_Set1",
     "label": "Energie- und Gebäudetechnik 1 iP",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -985,7 +864,6 @@
     "setplan": true
   }, {
     "id": "SPLUSCFB856",
-    "slug": "V_BA_EGT_Sem1_Set2_EGTiP",
     "label": "Energie- und Gebäudetechnik 2 iP",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -993,7 +871,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836FD",
-    "slug": "V_BA_EGT_Sem2",
     "label": "Energie- und Gebäudetechnik",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1001,7 +878,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836FE",
-    "slug": "V_BA_EGT_Sem3_Set1(EGT+EGTiP)",
     "label": "Energie- und Gebäudetechnik 1 EGT+EGTiP",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1009,7 +885,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EDE",
-    "slug": "V_BA_EGT_Sem3_Set2(EGT)",
     "label": "Energie- und Gebäudetechnik 2 EGT",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1017,7 +892,6 @@
     "setplan": true
   }, {
     "id": "SPLUS783703",
-    "slug": "V_BA_EGTiP_Sem3_Set1",
     "label": "Energie- und Gebäudetechnik iP",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1025,7 +899,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7836FF",
-    "slug": "V_BA_EGT_Sem4_Set1(RET)",
     "label": "Energie- und Gebäudetechnik RET",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1033,7 +906,6 @@
     "setplan": true
   }, {
     "id": "SPLUS32C69A",
-    "slug": "V_BA_EGT_Sem4_Set1(TGA)",
     "label": "Energie- und Gebäudetechnik TGA",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1041,7 +913,6 @@
     "setplan": true
   }, {
     "id": "SPLUS783700",
-    "slug": "V_BA_EGT_Sem5_Set1(RET)",
     "label": "Energie- und Gebäudetechnik RET",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1049,7 +920,6 @@
     "setplan": true
   }, {
     "id": "SPLUS32C69C",
-    "slug": "V_BA_EGT_Sem5_Set1(TGA)",
     "label": "Energie- und Gebäudetechnik TGA",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1057,7 +927,6 @@
     "setplan": true
   }, {
     "id": "SPLUS783704",
-    "slug": "V_BA_EGTiP_Sem5_Set1",
     "label": "Energie- und Gebäudetechnik iP",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1065,7 +934,6 @@
     "setplan": true
   }, {
     "id": "SPLUS783701",
-    "slug": "V_BA_EGT_Sem6_Set1(RET)",
     "label": "Energie- und Gebäudetechnik RET",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1073,7 +941,6 @@
     "setplan": true
   }, {
     "id": "SPLUS32C69E",
-    "slug": "V_BA_EGT_Sem6_Set1(TGA)",
     "label": "Energie- und Gebäudetechnik TGA",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1081,7 +948,6 @@
     "setplan": true
   }, {
     "id": "SPLUS41E3B2",
-    "slug": "V_BA_EWING_Sem1",
     "label": "Wirtschaftsingenieurwesen Energie",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1089,7 +955,6 @@
     "setplan": true
   }, {
     "id": "SPLUSFC5C0C",
-    "slug": "V_BA_UWING_Sem1",
     "label": "Wirtschaftsingenieurwesen Umwelt",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1097,7 +962,6 @@
     "setplan": true
   }, {
     "id": "SPLUSFC5C0D",
-    "slug": "V_BA_EWING_Sem2",
     "label": "Wirtschaftsingenieurwesen Energie",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1105,7 +969,6 @@
     "setplan": true
   }, {
     "id": "SPLUSFC5C0E",
-    "slug": "V_BA_UWING_Sem2",
     "label": "Wirtschaftsingenieurwesen Umwelt",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1113,7 +976,6 @@
     "setplan": true
   }, {
     "id": "SPLUS921C94",
-    "slug": "V_BA_EWING_Sem3",
     "label": "Wirtschaftsingenieurwesen Energie",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1121,7 +983,6 @@
     "setplan": true
   }, {
     "id": "SPLUS921C95",
-    "slug": "V_BA_UWING_Sem3",
     "label": "Wirtschaftsingenieurwesen Umwelt",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1129,7 +990,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7F9607",
-    "slug": "V_BA_EWING_Sem5",
     "label": "Wirtschaftsingenieurwesen Energie",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1137,7 +997,6 @@
     "setplan": true
   }, {
     "id": "SPLUS7F9608",
-    "slug": "V_BA_UWING_Sem5",
     "label": "Wirtschaftsingenieurwesen Umwelt",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1145,7 +1004,6 @@
     "setplan": true
   }, {
     "id": "SPLUSFC5DB1",
-    "slug": "V_BA_EWING_Sem7",
     "label": "Wirtschaftsingenieurwesen Energie",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1153,7 +1011,6 @@
     "setplan": true
   }, {
     "id": "SPLUSFC5DB2",
-    "slug": "V_BA_UWING_Sem7",
     "label": "Wirtschaftsingenieurwesen Umwelt",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
@@ -1161,7 +1018,6 @@
     "setplan": true
   },  {
     "id": "SPLUSEC7EDF",
-    "slug": "V_MA_EST_Sem1",
     "label": "Energiesystemtechnik",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
@@ -1169,7 +1025,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EE0",
-    "slug": "V_MA_EST_Sem2_FM",
     "label": "Energiesystemtechnik FM",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
@@ -1177,7 +1032,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EE1",
-    "slug": "V_MA_EST_Sem2_ÖV",
     "label": "Energiesystemtechnik ÖV",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
@@ -1185,7 +1039,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EE2",
-    "slug": "V_MA_EST_Sem2_BU",
     "label": "Energiesystemtechnik BU",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
@@ -1193,7 +1046,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EE3",
-    "slug": "V_MA_EST_Sem3_FM",
     "label": "Energiesystemtechnik FM",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
@@ -1201,7 +1053,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EE4",
-    "slug": "V_MA_EST_Sem3_ÖV",
     "label": "Energiesystemtechnik ÖV",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
@@ -1209,7 +1060,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EE5",
-    "slug": "V_MA_EST_Sem3_BU",
     "label": "Energiesystemtechnik BU",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
@@ -1217,7 +1067,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EE6",
-    "slug": "V_MA_EST_Sem4_FM",
     "label": "Energiesystemtechnik FM",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
@@ -1225,7 +1074,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EE7",
-    "slug": "V_MA_EST_Sem4_ÖV",
     "label": "Energiesystemtechnik ÖV",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
@@ -1233,7 +1081,6 @@
     "setplan": true
   }, {
     "id": "SPLUSEC7EE8",
-    "slug": "V_MA_EST_Sem4_BU",
     "label": "Energiesystemtechnik BU",
     "faculty": "Versorgungstechnik",
     "degree": "Master of Engineering",
