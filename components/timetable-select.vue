@@ -81,6 +81,7 @@ export default {
     semesters() {
       return this.schedulesTree[this.selectedPath] != undefined ?
         Object.keys(this.schedulesTree[this.selectedPath])
+          .filter((semester) => semester !== 'Räume')
         : [];
     },
     schedules() {
