@@ -287,7 +287,7 @@
     "label": "Hörsaal 127",
     "faculty": "Informatik",
     "degree": "Räume",
-    "semester": "Räume",
+    "semester": "1. Obergeschoss",
     "raumplan": true
   },
   {
@@ -296,25 +296,7 @@
     "label": "Scale-Up-Raum",
     "faculty": "Informatik",
     "degree": "Räume",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSF0ACE9",
-    "slug": "I-HS 127",
-    "label": "Hörsaal 127",
-    "faculty": "Informatik",
-    "degree": "Räume",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSBEC51A",
-    "slug": "I-SU-201",
-    "label": "Scale-Up-Raum",
-    "faculty": "Informatik",
-    "degree": "Räume",
-    "semester": "Räume",
+    "semester": "2. Obergeschoss",
     "raumplan": true
   },
   {
