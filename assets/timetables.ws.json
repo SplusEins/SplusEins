@@ -282,6 +282,42 @@
     "semester": "6"
   },
   {
+    "id": "SPLUSF0ACE9",
+    "slug": "I-HS 127",
+    "label": "Hörsaal 127",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Räume",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSBEC51A",
+    "slug": "I-SU-201",
+    "label": "Scale-Up-Raum",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Räume",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSF0ACE9",
+    "slug": "I-HS 127",
+    "label": "Hörsaal 127",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Räume",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSBEC51A",
+    "slug": "I-SU-201",
+    "label": "Scale-Up-Raum",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Räume",
+    "raumplan": true
+  },
+  {
     "id": "SPLUS3BF4F1",
     "label": "Wahlpflichtfächer Bachelor",
     "faculty": "Elektrotechnik",
@@ -1087,41 +1123,5 @@
     "degree": "Master of Engineering",
     "semester": 4,
     "setplan": true
-  },
-  {
-    "id": "SPLUSF0ACE9",
-    "slug": "I-HS 127",
-    "label": "Hörsaal 127",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSBEC51A",
-    "slug": "I-SU-201",
-    "label": "Scale-Up-Raum",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSF0ACE9",
-    "slug": "I-HS 127",
-    "label": "Hörsaal 127",
-    "faculty": "Informatik",
-    "degree": "Master of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSBEC51A",
-    "slug": "I-SU-201",
-    "label": "Scale-Up-Raum",
-    "faculty": "Informatik",
-    "degree": "Master of Science",
-    "semester": "Räume",
-    "raumplan": true
   }
 ]
