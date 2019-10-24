@@ -489,6 +489,270 @@
     "semester": 1
   },
   {
+    "id": "SPLUSF0ACE9",
+    "label": "Hörsaal 127",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "1. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSF0ACE7",
+    "label": "Hörsaal 223",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "2. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSF0ACE6",
+    "label": "Hörsaal 252",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "2. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS2E1969",
+    "label": "Labor 006",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Erdgeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS31C451",
+    "label": "Labor 51",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Erdgeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSA84A3B",
+    "label": "Labor 57",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Erdgeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS241461",
+    "label": "Labor EIS 101",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "1. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS8677CF",
+    "label": "Labor 128",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "1. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS2ADB39",
+    "label": "Labor 129",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "1. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSD4E070",
+    "label": "Labor 155",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "1. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS0B2CC3",
+    "label": "Labor 157",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "1. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSF0ACEE",
+    "label": "Poolraum P8",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "1. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSBBCCF3",
+    "label": "Seminarraum 027",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Erdgeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSBBCCF2",
+    "label": "Seminarraum 136",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "1. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSF0ACEB",
+    "label": "Seminarraum 152",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "1. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSBEC508",
+    "label": "Seminarraum 205",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "2. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSF0ACEC",
+    "label": "Seminarraum 224",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "2. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSBEC51A",
+    "label": "Scale-Up-Raum 201",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "2. Obergeschoss",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSD91BC9",
+    "label": "Am Solferino",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "TWW",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS8CA55E",
+    "label": "TWW 9/1",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "TWW",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS8CA55F",
+    "label": "TWW 9/3",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "TWW",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS0A7594",
+    "label": "WOB C-127",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS407935",
+    "label": "WOB C-223",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS0A7592",
+    "label": "WOB C-227",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS0A7595",
+    "label": "WOB C-231",
+    "faculty": "Informatik",
+    "degree": "RÄume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSFC9F60",
+    "label": "WOB C-234",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS0FDCF0",
+    "label": "WOB Congresspark",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS43066B",
+    "label": "WOB D-009",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS0A7591",
+    "label": "WOB D-112",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS85117D",
+    "label": "WOB D-121",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSFC9F61",
+    "label": "WOB D-202",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUSC086F1",
+    "label": "WOB D-208",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
+    "id": "SPLUS0A7593",
+    "label": "WOB D-220",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Wolfsburg",
+    "raumplan": true
+  },
+  {
     "id": "SPLUS1DECE5",
     "label": "Recht, Finanzmanagement und Steuern",
     "faculty": "Recht",
@@ -1119,269 +1383,5 @@
     "degree": "Master of Engineering",
     "semester": 4,
     "setplan": true
-  },
-  {
-    "id": "SPLUSF0ACE9",
-    "label": "Hörsaal 127",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSF0ACE7",
-    "label": "Hörsaal 223",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSF0ACE6",
-    "label": "Hörsaal 252",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS2E1969",
-    "label": "Labor 006",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS31C451",
-    "label": "Labor 51",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSA84A3B",
-    "label": "Labor 57",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS241461",
-    "label": "Labor EIS 101",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS8677CF",
-    "label": "Labor 128",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS2ADB39",
-    "label": "Labor 129",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSD4E070",
-    "label": "Labor 155",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS0B2CC3",
-    "label": "Labor 157",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSF0ACEE",
-    "label": "Poolraum P8",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSBBCCF3",
-    "label": "Seminarraum 027",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSBBCCF2",
-    "label": "Seminarraum 136",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSF0ACEB",
-    "label": "Seminarraum 152",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSBEC508",
-    "label": "Seminarraum 205",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSF0ACEC",
-    "label": "Seminarraum 224",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSBEC51A",
-    "label": "Scale-Up-Raum 201",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSD91BC9",
-    "label": "Am Solferino",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS8CA55E",
-    "label": "TWW 9/1",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS8CA55F",
-    "label": "TWW 9/3",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS0A7594",
-    "label": "WOB C-127",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS407935",
-    "label": "WOB C-223",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS0A7592",
-    "label": "WOB C-227",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS0A7595",
-    "label": "WOB C-231",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSFC9F60",
-    "label": "WOB C-234",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS0FDCF0",
-    "label": "WOB Congresspark",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS43066B",
-    "label": "WOB D-009",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS0A7591",
-    "label": "WOB D-112",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS85117D",
-    "label": "WOB D-121",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSFC9F61",
-    "label": "WOB D-202",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUSC086F1",
-    "label": "WOB D-208",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
-  },
-  {
-    "id": "SPLUS0A7593",
-    "label": "WOB D-220",
-    "faculty": "Informatik",
-    "degree": "Bachelor of Science",
-    "semester": "Räume",
-    "raumplan": true
   }
 ]
