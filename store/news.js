@@ -18,7 +18,7 @@ export const mutations = {
 
 export const actions = {
   async loadFacultyNews({ state, commit }) {
-    const faculties = ['i', 'r', 'e', 'sz', 'wf', 'wob', 'sud'];
+    const faculties = ['i', 'r', 'e', 'wf', 'wob', 'sud'];
     try {
       const news = await this.$axios.$get('/api/news/faculty');
 
