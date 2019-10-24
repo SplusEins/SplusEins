@@ -35,7 +35,7 @@ router.get('/campus', cors(), async (req, res, next) => {
 router.get('/faculty', cors(), async (req, res, next) => {
 
   // Informatik, Recht, Elektrotechnik,
-  // Salzgitter, Wolfenbüttel, Wolfsburg, Suderburg
+  // Wolfenbüttel, Wolfsburg, Suderburg
   const faculties = ['i', 'r', 'e', 'sz', 'wf', 'wob', 'sud'];
     
   try {
