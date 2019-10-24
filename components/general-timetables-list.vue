@@ -22,9 +22,8 @@
           sub-group
         >
           <v-list-tile slot="activator">
-            {{ semester == 'WPF' ? 'Wahlpflichtfächer' : '' }}
-            {{ semester == 'Räume' ? 'Räume' : '' }}
-            {{ !['WPF', 'Räume'].includes(semester) ? semester + '. Semester' : '' }}
+            {{ semester == 'WPF' ? 'Wahlpflichtfächer' : semester }}
+            {{ semester != 'WPF' && !isNaN(Number(semester)) ? '. Semester' : '' }}
           </v-list-tile>
 
           <v-list-tile
@@ -46,7 +45,6 @@
           @click="$track('Calendar', 'sideMenu plan used', 'normal')"
         >
           {{ semester }}
-          {{ !['WPF', 'Räume'].includes(semester) ? '. Semester' : '' }}
         </v-list-tile>
       </template>
     </v-list-group>
