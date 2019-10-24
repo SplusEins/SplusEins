@@ -56,7 +56,6 @@ export default {
                              {description: 'Fakultät Recht', title: 'aus dem Recht', path: 'r'},
                              {description: 'Standort Wolfenbüttel', title: 'aus Wolfenbüttel', path: 'wf'},
                              {description: 'Standort Wolfsburg', title: 'aus Wolfsburg', path: 'wob'},
-                             {description: 'Standort Salzgitter', title: 'aus Salzgitter', path: 'sz'},
                              {description: 'Standort Suderburg', title: 'aus Suderburg', path: 'sud'},];
 
     return {
