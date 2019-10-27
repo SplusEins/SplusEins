@@ -76,12 +76,12 @@ export default {
   },
   computed: {
     paths() {
-      return Object.keys(this.schedulesTree);
+      return Object.keys(this.schedulesTree)
+        .filter((path) => !path.includes('Räume'));
     },
     semesters() {
       return this.schedulesTree[this.selectedPath] != undefined ?
         Object.keys(this.schedulesTree[this.selectedPath])
-          .filter((semester) => semester !== 'Räume')
         : [];
     },
     schedules() {
