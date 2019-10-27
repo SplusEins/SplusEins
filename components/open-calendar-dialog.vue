@@ -90,7 +90,9 @@ export default {
     httpLink() {
       const base = this.$axios.defaults.baseURL;
       const absoluteBase = base.startsWith('http') ? base : window.location.origin + base;
-      return absoluteBase + this.calendarPath;
+      if(absoluteBase.endsWith('/'))
+        return absoluteBase + this.calendarPath;
+      return absoluteBase + '/' + this.calendarPath;
     },
     downloadLink() {
       const base = this.$axios.defaults.baseURL;
