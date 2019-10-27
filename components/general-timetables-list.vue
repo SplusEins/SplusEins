@@ -22,8 +22,7 @@
           sub-group
         >
           <v-list-tile slot="activator">
-            {{ semester == 'WPF' ? 'Wahlpflichtfächer' : semester }}
-            {{ semester != 'WPF' && !isNaN(Number(semester)) ? '. Semester' : '' }}
+            {{ semester == 'WPF' ? 'Wahlpflichtfächer' : !isNaN(Number(semester)) ? semester + '. Semester' : semester }}
           </v-list-tile>
 
           <v-list-tile
@@ -44,7 +43,7 @@
           nuxt
           @click="$track('Calendar', 'sideMenu plan used', 'normal')"
         >
-          {{ semester }}
+          {{ semester == 'WPF' ? 'Wahlpflichtfächer' : semester + '. Semester' }}
         </v-list-tile>
       </template>
     </v-list-group>
