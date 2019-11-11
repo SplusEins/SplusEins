@@ -106,9 +106,7 @@ export default {
       this.textFieldCopySuccessMessage = 'Kopiert.';
     },
     returnValidPath(path){
-      if(path.endsWith('/'))
-        return path;
-      return path + '/';
+      return path.endsWith('/') ? path : path + '/';
     }
   },
 };
