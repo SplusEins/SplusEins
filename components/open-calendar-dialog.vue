@@ -85,18 +85,16 @@ export default {
       const base = this.$axios.defaults.baseURL;
       const absoluteBase = base.startsWith('http') ? base : window.location.origin + base;
       const webcalBase = absoluteBase.replace(/^https?/i, 'webcal');
-      return webcalBase + this.calendarPath;
+      return this.returnValidPath(webcalBase) + this.calendarPath;
     },
     httpLink() {
       const base = this.$axios.defaults.baseURL;
       const absoluteBase = base.startsWith('http') ? base : window.location.origin + base;
-      if(absoluteBase.endsWith('/'))
-        return absoluteBase + this.calendarPath;
-      return absoluteBase + '/' + this.calendarPath;
+      return this.returnValidPath(absoluteBase) + this.calendarPath;
     },
     downloadLink() {
       const base = this.$axios.defaults.baseURL;
-      return base + this.calendarPath;
+      return this.returnValidPath(base) + this.calendarPath;
     },
     open: {
       get() { return this.value; },
@@ -107,6 +105,9 @@ export default {
     onTextFieldCopySuccess() {
       this.textFieldCopySuccessMessage = 'Kopiert.';
     },
+    returnValidPath(path){
+      return path.endsWith('/') ? path : path + '/';
+    }
   },
 };
 </script>
