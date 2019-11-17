@@ -36,7 +36,7 @@
         d-flex
         md6
         lg6
-        order-xs5
+        order-xs6
         order-md2
       >
         <campus-news-card />
@@ -45,7 +45,7 @@
       <v-flex
         v-show="!$vuetify.breakpoint.mdAndUp"
         :d-flex="!$vuetify.breakpoint.mdAndUp"
-        order-xs6
+        order-xs7
         order-md7
       >
         <faculty-news-card />
@@ -91,10 +91,17 @@
         :lg4="!displayMensaCard && hasSubscribableTimetables"
         :lg6="displayMensaCard && !hasSubscribableTimetables"
         :lg12="displayMensaCard && hasSubscribableTimetables"
-        order-xs7
+        order-xs5
         order-md6
       >
-        <last-changes-card />
+        <v-layout :column="!$vuetify.breakpoint.mdAndUp">
+          <v-flex xs6 d-flex>
+            <support-us-card />
+          </v-flex>
+          <v-flex xs6 d-flex>
+            <last-changes-card />
+          </v-flex>
+        </v-layout>
       </v-flex>
     </v-layout>
   </v-container>
@@ -105,6 +112,7 @@ import { mapState, mapGetters, mapMutations } from 'vuex';
 import * as moment from 'moment';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import LastChangesCard from '../components/last-changes-card.vue';
+import SupportUsCard from '../components/support-us-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import CampusNewsCard from '../components/campus-news-card.vue';
@@ -120,6 +128,7 @@ export default {
     MensaCard,
     CampusNewsCard,
     FacultyNewsCard,
+    SupportUsCard,
     StatsCard,
   },
   computed: {
