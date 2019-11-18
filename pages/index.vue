@@ -94,7 +94,7 @@
         order-xs5
         order-md6
       >
-        <v-layout :column="!$vuetify.breakpoint.mdAndUp">
+        <v-layout :column="!$vuetify.breakpoint.lgAndUp">
           <v-flex xs6 d-flex>
             <support-us-card />
           </v-flex>
