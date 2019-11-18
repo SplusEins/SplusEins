@@ -25,7 +25,7 @@
         @click="sendMoneyOpen = true"
       >
         <span class="mr-3">💸</span>
-        senden (PayPal)
+        senden
       </v-btn>
       <v-btn
         flat
