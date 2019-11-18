@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div class="headline">
-        Unterstütze Uns
+        Unterstütze das Team
       </div>
     </v-card-title>
     <v-card-text class="card-text-padding">
