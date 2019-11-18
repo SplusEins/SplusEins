@@ -55,8 +55,8 @@
         v-show="displayMensaCard"
         :d-flex="displayMensaCard"
         md6
-        :lg4="hasSubscribableTimetables"
-        :lg6="!hasSubscribableTimetables"
+        :lg4="debug2||hasSubscribableTimetables"
+        :lg6="!(debug2||hasSubscribableTimetables)"
         order-xs2
         order-md3
       >
@@ -64,8 +64,8 @@
       </v-flex>
 
       <v-flex
-        v-show="hasSubscribableTimetables"
-        :d-flex="hasSubscribableTimetables"
+        v-show="debug2||hasSubscribableTimetables"
+        :d-flex="debug2||hasSubscribableTimetables"
         md6
         lg4
         order-xs4
@@ -75,8 +75,8 @@
       </v-flex>
 
       <v-flex
-        v-show="hasSubscribableTimetables"
-        :d-flex="hasSubscribableTimetables"
+        v-show="debug2||hasSubscribableTimetables"
+        :d-flex="hasSubscribableTimetables||debug2"
         md6
         lg4
         order-xs3
@@ -88,22 +88,24 @@
       <v-flex
         d-flex
         :md6="displayMensaCard"
-        :lg4="!displayMensaCard && hasSubscribableTimetables"
-        :lg6="displayMensaCard && !hasSubscribableTimetables"
-        :lg12="displayMensaCard && hasSubscribableTimetables"
+        :lg4="!displayMensaCard && (hasSubscribableTimetables||debug2)"
+        :lg6="displayMensaCard && !(hasSubscribableTimetables||debug2)"
+        :lg12="displayMensaCard && (hasSubscribableTimetables||debug2)"
         order-xs5
         order-md6
       >
-        <v-layout :column="!$vuetify.breakpoint.lgAndUp">
-          <v-flex xs6 d-flex>
+        <v-layout :column="$vuetify.breakpoint.lgAndUp || $vuetify.breakpoint.xs">
+          <v-flex d-flex>
             <support-us-card />
           </v-flex>
-          <v-flex xs6 d-flex>
+          <v-flex d-flex>
             <last-changes-card />
           </v-flex>
         </v-layout>
       </v-flex>
     </v-layout>
+            <v-btn @click="debug = !debug">toggle mensa card</v-btn>
+            <v-btn @click="debug2 = !debug2">toggle custom card</v-btn>
   </v-container>
 </template>
 
@@ -133,17 +135,12 @@ export default {
   },
   computed: {
     displayMensaCard() {
+      return this.debug
       if (this.mensaPlans.length == 0) {
         return false;
       }
       // display if next plan is from today or from tomorrow
       return moment().isSame(this.mensaPlans[0].date, 'day') || moment().add(1, 'days').isSame(this.mensaPlans[0].date, 'day');
-    },
-    displayCampusNewsCard() {
-      return this.campusNews.length > 0;
-    },
-    displayFacultyNewsCard() {
-      return Object.keys(this.facultyNews).length > 0;
     },
     ...mapState({
       mensaPlans: (state) => state.mensa.plans,
@@ -156,6 +153,9 @@ export default {
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
       hasSubscribableTimetables: 'splus/hasSubscribableTimetables',
     }),
+  },
+  data() {
+    return { debug: true, debug2: false }
   },
   head() {
     return {
