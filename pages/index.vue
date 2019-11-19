@@ -55,8 +55,8 @@
         v-show="displayMensaCard"
         :d-flex="displayMensaCard"
         md6
-        :lg4="debug2||hasSubscribableTimetables"
-        :lg6="!(debug2||hasSubscribableTimetables)"
+        :lg4="hasSubscribableTimetables"
+        :lg6="!hasSubscribableTimetables"
         order-xs2
         order-md3
       >
@@ -64,8 +64,8 @@
       </v-flex>
 
       <v-flex
-        v-show="debug2||hasSubscribableTimetables"
-        :d-flex="debug2||hasSubscribableTimetables"
+        v-show="hasSubscribableTimetables"
+        :d-flex="hasSubscribableTimetables"
         md6
         lg4
         order-xs4
@@ -75,8 +75,8 @@
       </v-flex>
 
       <v-flex
-        v-show="debug2||hasSubscribableTimetables"
-        :d-flex="hasSubscribableTimetables||debug2"
+        v-show="hasSubscribableTimetables"
+        :d-flex="hasSubscribableTimetables"
         md6
         lg4
         order-xs3
@@ -88,9 +88,9 @@
       <v-flex
         d-flex
         :md6="displayMensaCard"
-        :lg4="!displayMensaCard && (hasSubscribableTimetables||debug2)"
-        :lg6="displayMensaCard && !(hasSubscribableTimetables||debug2)"
-        :lg12="displayMensaCard && (hasSubscribableTimetables||debug2)"
+        :lg4="!displayMensaCard && hasSubscribableTimetables"
+        :lg6="displayMensaCard && !hasSubscribableTimetables"
+        :lg12="displayMensaCard && hasSubscribableTimetables"
         order-xs5
         order-md6
       >
@@ -104,8 +104,6 @@
         </v-layout>
       </v-flex>
     </v-layout>
-            <v-btn @click="debug = !debug">toggle mensa card</v-btn>
-            <v-btn @click="debug2 = !debug2">toggle custom card</v-btn>
   </v-container>
 </template>
 
@@ -135,7 +133,6 @@ export default {
   },
   computed: {
     displayMensaCard() {
-      return this.debug
       if (this.mensaPlans.length == 0) {
         return false;
       }
@@ -153,9 +150,6 @@ export default {
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
       hasSubscribableTimetables: 'splus/hasSubscribableTimetables',
     }),
-  },
-  data() {
-    return { debug: true, debug2: false }
   },
   head() {
     return {

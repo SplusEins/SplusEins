@@ -30,7 +30,7 @@
       <v-btn
         flat
         color="primary"
-        href="mailto:team@spluseins.de?subject=❤️"
+        href="javascript:location='mailto:\u0074\u0065\u0061\u006d\u0040\u0073\u0070\u006c\u0075\u0073\u0065\u0069\u006e\u0073\u002e\u0064\u0065';void 0"
       >
         <span class="mr-3">❤️</span>
         senden (Mail)
@@ -94,4 +94,3 @@ export default {
 }
 
 </style>
-
