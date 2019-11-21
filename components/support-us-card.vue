@@ -12,6 +12,7 @@
       </p>
       <b>Unsere Unterstützer</b>
       <ul>
+        <li>Brian – 2,50€ "Macht so weiter! :-)"</li>
         <li>Timo</li>
         <li>Fabian</li>
         <li>Jan</li>
