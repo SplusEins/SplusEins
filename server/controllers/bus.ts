@@ -2,7 +2,6 @@ import * as express from 'express';
 import * as cors from 'cors';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
-import * as moment from 'moment';
 
 import * as createClient from 'hafas-client';
 import * as dbProfile from 'hafas-client/p/db'
@@ -30,7 +29,6 @@ const cache = CACHE_DISABLE ?
 router.options('/', cors());
 
 router.get('/', cors(), async (req, res, next) => {
-  const key = 'bus-' + moment().format('YYYY-MM-DD_HH-mm');
   const hafasOpts = {
     results: 5,
     language: 'de',
@@ -41,8 +39,8 @@ router.get('/', cors(), async (req, res, next) => {
   const fh = '891038'
 
   try {
-    const data = await cache.wrap(key, async () => {
-      console.log(`bus cache miss for key ${key}`);
+    const data = await cache.wrap('bus', async () => {
+      console.log(`bus cache miss for key bus`);
 
       const exerToFh = await hafasClient.journeys(exer, fh, hafasOpts)
       const fhToExer = await hafasClient.journeys(fh, exer, hafasOpts)
