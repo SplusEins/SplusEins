@@ -7,6 +7,7 @@
     </v-card-title>
     <v-card-text class="card-text-padding">
       <ul>
+        <li>Eine Seite zeigt, welche Busse zwischen den Standorten Wolfenbüttel fahren.</li>
         <li>Für die Fakultät Informatik können Raumpläne aufgerufen werden.</li>
         <li>Ein Stundenplan kann in externen Kalender-Anwendungen importiert und abonniert werden.</li>
         <li>Auf der Startseite werden Statistiken zum abonnierten Plan angezeigt.</li>
