@@ -52,6 +52,7 @@ router.get('/', cors(), async (req, res, next) => {
           date: leg.departure,
           line: leg.line.name,
         }))
+        .sort((a, b) => Date.parse(a) - Date.parse(b));
 
       return {
         exerToFh: extractDateAndLine(exerToFh.journeys),
