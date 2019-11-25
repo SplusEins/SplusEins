@@ -41,6 +41,21 @@
       </v-list-tile-content>
     </v-list-tile>
 
+    <v-list-tile
+      to="/bus"
+      nuxt
+      @click="$track('BusPlan', 'opened', 'sideMenu')"
+    >
+      <v-list-tile-action>
+        <v-icon>mdi-bus</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title>
+          Busse Wolfenbüttel
+        </v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+
     <custom-timetable-dialog v-model="customTimetableDialogOpen" />
   </v-list>
 </template>
