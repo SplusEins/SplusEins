@@ -72,6 +72,7 @@ export default {
         'exerToFh': 'Exer zu Fachhochschule',
         'fhToExer': 'Fachhochschule zu Exer',
       },
+      refreshTimer: undefined,
       relativeDate: (str) => moment(str).fromNow(),
       absoluteDate: (str) => moment(str).format('HH:mm'),
       minutesUntilDate: (str) => moment(str).diff(moment(), 'minutes'),
@@ -81,7 +82,15 @@ export default {
   mounted() {
     if (this.lazyLoad) {
       // static build -> no mensa plan is in the store
-      this.load();
+      this.load()
+    }
+    if (process.client) {
+      this.refreshTimer = setInterval(() => this.load(), 60000)
+    }
+  },
+  destroyed() {
+    if (process.client) {
+      clearInterval(this.refreshTimer)
     }
   },
   methods: {
