@@ -22,7 +22,10 @@
             >
               <v-list-tile-content>
                 <p>
-                  <v-chip outline :color="lineColor(departure.line)">
+                  <v-chip
+                    outline
+                    :color="lineColor(departure.line)"
+                  >
                     Linie {{ departure.line }}
                   </v-chip>
                   {{ absoluteDate(departure.date) }} Uhr
