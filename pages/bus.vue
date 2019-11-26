@@ -25,7 +25,10 @@
                   <v-chip outline :color="lineColor(departure.line)">
                     Linie {{ departure.line }}
                   </v-chip>
-                  {{ relativeDate(departure.date) }}
+                  {{ absoluteDate(departure.date) }} Uhr
+                  <template v-if="minutesUntilDate(departure.date) < 15">
+                    ({{ relativeDate(departure.date) }})
+                  </template>
                 </p>
               </v-list-tile-content>
             </v-list-tile>
@@ -70,6 +73,8 @@ export default {
         'fhToExer': 'Fachhochschule zu Exer',
       },
       relativeDate: (str) => moment(str).fromNow(),
+      absoluteDate: (str) => moment(str).format('HH:mm'),
+      minutesUntilDate: (str) => moment(str).diff(moment(), 'minutes'),
       lineColor: (line) => ['pink', 'purple', 'blue'][parseInt(line) % 4],
     }
   },
