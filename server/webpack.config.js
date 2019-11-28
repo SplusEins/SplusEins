@@ -39,6 +39,7 @@ const serverlessConfig = {
   },
   resolve: {
     extensions: [ '.ts', '.js' ],
+    mainFields: [ 'main' ],
   },
 };
 
@@ -63,6 +64,7 @@ const serverConfig = {
   },
   resolve: {
     extensions: [ '.ts', '.js' ],
+    mainFields: [ 'main' ],
   },
 };
 
