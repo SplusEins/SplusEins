@@ -13,6 +13,7 @@
       <b>Unsere Unterstützer</b>
       <ul>
         <li>Brian – 1 Monat "Macht so weiter! :-)"</li>
+        <li>Anonym – 1 Monat</li>
         <li>Timo</li>
         <li>Fabian</li>
         <li>Jan</li>
