@@ -32,6 +32,7 @@
 
 <script>
 import * as moment from 'moment';
+import { mapState } from 'vuex';
 
 export default {
   name: "MensaDayplanComponent",
@@ -40,6 +41,11 @@ export default {
       type: Object,
       default: () => {}
     },
+  },
+  computed: {
+    ...mapState({
+      isDark: (state) => state.ui.isDark
+    })
   },
   methods: {
     getDayHeader(dayPlan) {
