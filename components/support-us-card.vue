@@ -12,6 +12,7 @@
       </p>
       <b>Unsere Unterstützer</b>
       <ul>
+        <li>Florian – 2 Monate "Tolle Arbeit, weiter so!"</li>
         <li>Brian – 1 Monat "Macht so weiter! :-)"</li>
         <li>Anonym – 1 Monat</li>
         <li>Timo</li>
