@@ -46,6 +46,8 @@ $ npm start:api
 
 Environment variables:
 
+  * `SKED_USER` (backend): stundenplan.ostfalia.de username
+  * `SKED_PASSWORD` (backend): stundenplan.ostfalia.de username
   * `CACHE_PATH` (backend)
   * `CACHE_DISABLE` (backend)
   * `HOST` (backend)

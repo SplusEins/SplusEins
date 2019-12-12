@@ -44,6 +44,7 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
       week: week,
       setplan: timetable.setplan,
       raumplan: timetable.raumplan,
+      sked: timetable.sked,
     }) );
     const events = await getEvents(requests);
 
@@ -106,6 +107,7 @@ router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next
       week: week,
       setplan: timetable.setplan,
       raumplan: timetable.raumplan,
+      sked: timetable.sked,
     }) )));
     const allEvents = await getEvents(requests);
     const filteredEvents = titleIds.length > 0 ?
