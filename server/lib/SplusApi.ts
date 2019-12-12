@@ -1,16 +1,21 @@
-import fetch from 'node-fetch';
+import fetch, { Headers } from 'node-fetch';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
 import { SplusParser } from './SplusParser';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { URL, URLSearchParams } from 'url';
+import parseSked from './SkedParser';
 
 const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
 const RAUMPLAN_BASE = 'http://splus.ostfalia.de/raumplan123.php';
 const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';
+const SKED_BASE = 'https://stundenplan.ostfalia.de/';
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
+
+const SKED_USER = process.env.SKED_USER;
+const SKED_PASSWORD = process.env.SKED_PASSWORD;
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -106,6 +111,20 @@ function splusRaumplanRequest(timetable: TimetableRequest): Promise<string> {
 }
 
 /**
+ * Fetch sked-timetable from stundenplan.ostfalia.de
+ * @param timetable request
+ * @returns HTML-string
+ */
+function skedRequest(timetable: TimetableRequest): Promise<string> {
+  const token = Buffer.from(SKED_USER + ':' + SKED_PASSWORD).toString('base64');
+  const headers = new Headers();
+  headers.append('Authorization', 'Basic ' + token);
+
+  const url = SKED_BASE + encodeURIComponent(timetable.id).replace(/-/g, '/');
+  return fetch(url, { headers }).then((res) => res.text());
+}
+
+/**
  * Parses HTML to Events
  *
  * @param timetable request
@@ -116,18 +135,29 @@ function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
 
   return cache.wrap(key, async () => {
     console.log(`timetable cache miss for key ${key}`);
-    timetable.id = '#' + timetable.id;
     let data;
+    let lectures;
+
+    if (timetable.sked) {
+      data = await skedRequest(timetable);
+      lectures = parseSked(data, timetable.week);
+    }
     if (timetable.setplan) {
+      timetable.id = '#' + timetable.id;
       data = await splusSetRequest(timetable);
+      lectures = new SplusParser(data).getLectures(timetable.week);
     }
     if (timetable.raumplan) {
+      timetable.id = '#' + timetable.id;
       data = await splusRaumplanRequest(timetable);
+      lectures = new SplusParser(data).getLectures(timetable.week);
     }
-    if (!timetable.setplan && !timetable.raumplan) {
+    if (!timetable.setplan && !timetable.raumplan && !timetable.sked) {
+      timetable.id = '#' + timetable.id;
       data = await splusPlanRequest(timetable);
+      lectures = new SplusParser(data).getLectures(timetable.week);
     }
-    const lectures = new SplusParser(data).getLectures(timetable.week);
+
     console.log(`saving ${lectures.length} lectures for ${key}`)
     return lectures.map((lecture) => new Event(lecture));
   }, { ttl: CACHE_SECONDS }) as Promise<Event[]>;

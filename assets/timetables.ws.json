@@ -6,7 +6,8 @@
     "degree": "Bachelor of Science",
     "semester": "1",
     "setplan": false,
-    "raumplan": false
+    "raumplan": false,
+    "sked": false
   },
   {
     "id": "SPLUS63AE59",
@@ -1351,5 +1352,47 @@
     "degree": "Master of Engineering",
     "semester": 4,
     "setplan": true
+  }, {
+    "id": "s-lp-Bachelor Soziale Arbeit_1_1. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": 1,
+    "sked": true
+  }, {
+    "id": "s-lp-Bachelor Soziale Arbeit_2_2. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": 2,
+    "sked": true
+  }, {
+    "id": "s-lp-Bachelor Soziale Arbeit_3_3. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": 3,
+    "sked": true
+  }, {
+    "id": "s-lp-Bachelor Soziale Arbeit_4_4. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": 4,
+    "sked": true
+  }, {
+    "id": "s-lp-Bachelor Soziale Arbeit_5_5. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": 5,
+    "sked": true
+  }, {
+    "id": "s-lp-Bachelor Soziale Arbeit_6_6. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": 6,
+    "sked": true
   }
 ]

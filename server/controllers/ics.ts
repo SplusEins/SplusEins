@@ -62,7 +62,12 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
 
   try {
     const requests: TimetableRequest[] = [];
-    weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequest>{id: timetable.id, week: week, setplan: timetable.setplan})));
+    weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequest>{
+      id: timetable.id,
+      week: week,
+      setplan: timetable.setplan,
+      sked: timetable.sked,
+    })));
 
     const allEvents: Event[] = await getEvents(requests);
     const filteredEvents = titleIds.length > 0 ?
