@@ -6,6 +6,7 @@ import { createHash } from 'crypto';
 import * as TIMETABLES from '../../assets/timetables.ws.json'; // TODO change this in SS20
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import getEvents from '../lib/SplusApi';
+import { skedGuard } from './splus';
 
 const router = express.Router();
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
@@ -13,6 +14,7 @@ const range = (lower: number, upper: number) => Array.from(Array(upper - lower),
 
 const ICS_PRELOAD_WEEKS = parseInt(process.env.ICS_PRELOAD_WEEKS || '4');
 const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
+
 
 /**
  * @param lecture lecture
@@ -54,6 +56,10 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
   if (timetables.length == 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
+    return;
+  }
+
+  if (timetables.some(timetable => timetable.sked) && !skedGuard(req, res)) {
     return;
   }
 

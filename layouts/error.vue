@@ -43,6 +43,12 @@
             >
               Diese Seite gibt es leider nicht...
             </div>
+            <div
+              v-if="error.statusCode == 403"
+              class="text-xs-center"
+            >
+              Verbinde dich mit dem Ostfalia-WLAN, bevor du diesen Plan aufrufen kannst.
+            </div>
           </v-card-text>
 
           <v-card-text>

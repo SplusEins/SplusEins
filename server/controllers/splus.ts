@@ -6,9 +6,22 @@ import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEi
 import getEvents from '../lib/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
+const AUTH_SECRET = process.env.AUTH_SECRET;
 
 const router = express.Router();
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
+
+const isRequestFromOstfalia = (req) =>
+  (req.headers['x-forwarded-for'] || req.connection.remoteAddress).startsWith('141.41.');
+export const skedGuard = (req, res) => {
+  if (req.cookies['auth'] == AUTH_SECRET) return true;
+  if (isRequestFromOstfalia(req)) {
+    res.cookie('auth', AUTH_SECRET, { maxAge: 900000, httpOnly: true });
+    return true;
+  }
+  res.sendStatus(403);
+  return false;
+}
 
 /**
  * Accept CORS preflight requests.
@@ -35,6 +48,10 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
   if (!timetable || weeks.length == 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
+    return;
+  }
+
+  if (timetable.sked && !skedGuard(req, res)) {
     return;
   }
 
@@ -96,6 +113,10 @@ router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next
   if (timetables.length == 0 || weeks.length == 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
+    return;
+  }
+
+  if (timetables.some(timetable => timetable.sked) && !skedGuard(req, res)) {
     return;
   }
 

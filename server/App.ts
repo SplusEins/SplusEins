@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as cookieParser from 'cookie-parser';
 import splusController from './controllers/splus';
 import mensaController from './controllers/mensa';
 import newsController from './controllers/news';
@@ -10,6 +11,7 @@ class App {
 
   constructor(private basePath: string = '/api') {
     this.app = express();
+    this.app.use(cookieParser());
     this.routes();
   }
 

@@ -298,6 +298,9 @@ export const actions = {
       commit('setLectures', lectures);
       commit('setEvents', events);
     } catch (error) {
+      if (error.response.status == 403) {
+        throw error;
+      }
       commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
       console.error('error during API call', error.message);
     }
@@ -312,6 +315,9 @@ export const actions = {
       commit('setUpcomingLectures', lectures);
       commit('setUpcomingEvents', events);
     } catch (error) {
+      if (error.response.status == 403) {
+        throw error;
+      }
       commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
       console.error('error during API call', error.message);
     }
