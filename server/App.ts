@@ -6,12 +6,14 @@ import newsController from './controllers/news';
 import icsController from './controllers/ics';
 import busController from './controllers/bus';
 
+const COOKIE_SECRET = process.env.COOKIE_SECRET;
+
 class App {
   public app: express.Application;
 
   constructor(private basePath: string = '/api') {
     this.app = express();
-    this.app.use(cookieParser());
+    this.app.use(cookieParser(COOKIE_SECRET));
     this.routes();
   }
 
