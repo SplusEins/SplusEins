@@ -48,7 +48,7 @@ Environment variables:
 
   * `SKED_USER` (backend): stundenplan.ostfalia.de username
   * `SKED_PASSWORD` (backend): stundenplan.ostfalia.de username
-  * `AUTH_SECRET` (backend): cookie that restricts access to Ostfalia students
+  * `COOKIE_SECRET` (backend): token used to sign cookies
   * `CACHE_PATH` (backend)
   * `CACHE_DISABLE` (backend)
   * `HOST` (backend)

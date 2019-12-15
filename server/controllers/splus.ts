@@ -6,7 +6,6 @@ import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEi
 import getEvents from '../lib/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
-const AUTH_SECRET = process.env.AUTH_SECRET;
 
 const router = express.Router();
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
@@ -14,9 +13,14 @@ const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 const isRequestFromOstfalia = (req) =>
   (req.headers['x-forwarded-for'] || req.connection.remoteAddress).startsWith('141.41.');
 export const skedGuard = (req, res) => {
-  if (req.cookies['auth'] == AUTH_SECRET) return true;
+  const twoWeeks = 14 * 24 * 60 * 60 * 1000;
   if (isRequestFromOstfalia(req)) {
-    res.cookie('auth', AUTH_SECRET, { maxAge: 900000, httpOnly: true });
+    res.cookie('auth', Date.now() + twoWeeks,
+      { maxAge: twoWeeks, httpOnly: true, signed: true });
+    return true;
+  }
+  if ('auth' in req.signedCookies &&
+      Date.now() < parseInt(req.signedCookies['auth'])) {
     return true;
   }
   res.sendStatus(403);
