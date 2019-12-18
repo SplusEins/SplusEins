@@ -28,6 +28,8 @@ $ npm run generate
 
 ## Build Setup (Backend)
 
+`cd server/`
+
 ```bash
 
 # Set environment variables
@@ -35,11 +37,11 @@ $ CACHE_PATH=spluseins-cache (Linux/Unix)
 $ set CACHE_PATH=spluseins-cache (Windows)
 
 # start dev api at localhost:3001
-$ npm run dev:api
+$ npm run dev
 
 # build for production and launch server
-$ npm run build:api
-$ npm start:api
+$ npm run build
+$ npm start
 ```
 
 ## Configuration
