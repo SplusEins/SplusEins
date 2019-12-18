@@ -1,5 +1,5 @@
-import * as TIMETABLES_WS from '../../assets/timetables.ws.json';
-import * as TIMETABLES_SS from '../../assets/timetables.ss.json';
+import * as TIMETABLES_WS from '../assets/timetables.ws.json';
+import * as TIMETABLES_SS from '../assets/timetables.ss.json';
 
 describe('Test Timetables JSON', () => {
 

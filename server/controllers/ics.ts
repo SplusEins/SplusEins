@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
-import * as TIMETABLES from '../../assets/timetables.ws.json'; // TODO change this in SS20
+import * as TIMETABLES from '../assets/timetables.ws.json'; // TODO change this in SS20
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import getEvents from '../lib/SplusApi';
 import { skedGuard } from './splus';
