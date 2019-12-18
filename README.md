@@ -7,6 +7,8 @@ Please send us a mail if you have any questions or suggestions.
 
 ## Build Setup (Frontend)
 
+`cd web/`
+
 ``` bash
 # install dependencies
 $ npm install
