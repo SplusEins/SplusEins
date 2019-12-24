@@ -1,3 +1,0 @@
-[build]
-  command = "export API_PREFIX=/.netlify/functions/ && export API_URL_BROWSER=$API_PREFIX && npm run generate && npm run build:api"
-  functions = "server/dist/serverless"
