@@ -13,12 +13,12 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel`,
+        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel. Schaue Pläne von splus Ostfalia und Mensa Ostfalia an.`,
       },
       {
         hid: 'og:description',
         property: 'og:description',
-        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel`,
+        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel. Schaue Pläne von splus Ostfalia und Mensa Ostfalia an.`,
       },
       { hid: 'keywords', name: 'keywords', content: 'Splus1, splus1, Wintersemester 2019, Wintersemester 2020, WS1920, Ostfalia, Stundenplan, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Informatik, Maschinenbau, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Wahlfächer, Wahlpflichtfächer' },
     ],
