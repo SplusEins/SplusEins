@@ -11,14 +11,19 @@ export default function parseSked(html: string, filterWeek: number) {
   // format "Liste"
   $('body table.tbl tbody tr[class^="tr"]').each(function() {
     const cols = $(this).children('td').get()
-      .map(col => $(col).text().replace(/-\w+$/, '').trim());
+      .map(col => $(col).text().replace(/-\w*$/, '').trim());
+    if (cols.length != 17) {
+      // wrong format
+      return
+    }
+
     const uhrzeit_0 = cols[0];
     const uhrzeit_1 = cols[1];
     const datum = cols[5] || lastDatum;
     const veranstaltung = cols[7];
     const dozent = cols[3];
     const raum = cols[9];
-    const anmerkung = '';
+    const anmerkung = cols[15];
 
     lastDatum = datum;
 
@@ -45,6 +50,11 @@ export default function parseSked(html: string, filterWeek: number) {
   $('body table.tbl tbody tr[class^="tr"]').each(function() {
     const cols = $(this).children('td').get()
       .map(col => $(col).text().replace('-', '').trim());
+    if (cols.length != 13) {
+      // wrong format
+      return;
+    }
+
     const datum = cols[0] || lastDatum;
     const uhrzeit_0 = cols[2];
     const uhrzeit_1 = cols[3];
