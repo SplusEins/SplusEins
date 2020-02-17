@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors';
 import * as moment from 'moment';
 import * as chroma from '../lib/chroma';
 
-import TIMETABLES from '~/assets/timetables.ws.json'; // TODO change this in SS20
+import TIMETABLES from '~/assets/timetables.json'; // TODO change this in WS20
 import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customTimetableToRoute, scalarArraysEqual } from '~/lib/util';
 
 function defaultWeek() {

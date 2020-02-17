@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as cors from 'cors';
-import * as TIMETABLES from '../assets/timetables.ws.json'; // TODO change this in SS20
+import * as TIMETABLES from '../assets/timetables.json'; // TODO change this in WS20
 
 import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
 import getEvents from '../lib/SplusApi';
@@ -68,6 +68,7 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
       setplan: timetable.setplan,
       raumplan: timetable.raumplan,
       sked: timetable.sked,
+      skedPath: timetable.skedPath,
     }) );
     const events = await getEvents(requests);
 
