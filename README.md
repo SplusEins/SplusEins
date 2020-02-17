@@ -52,6 +52,7 @@ Environment variables:
 
   * `SKED_USER` (backend): stundenplan.ostfalia.de username
   * `SKED_PASSWORD` (backend): stundenplan.ostfalia.de username
+  * `SKED_IP_WHITELIST_PREFIX` (backend): allowed IPs for stundenplan.ostfalia.de access
   * `COOKIE_SECRET` (backend): token used to sign cookies
   * `CACHE_PATH` (backend)
   * `CACHE_DISABLE` (backend)
