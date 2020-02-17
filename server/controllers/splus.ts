@@ -6,12 +6,14 @@ import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEi
 import getEvents from '../lib/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
+const SKED_IP_WHITELIST_PREFIX = process.env.SKED_IP_WHITELIST_PREFIX != undefined
+  ? process.env.SKED_IP_WHITELIST_PREFIX : '141.41.';
 
 const router = express.Router();
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
 const isRequestFromOstfalia = (req) =>
-  (req.headers['x-forwarded-for'] || req.connection.remoteAddress).startsWith('141.41.');
+  (req.headers['x-forwarded-for'] || req.connection.remoteAddress).startsWith(SKED_IP_WHITELIST_PREFIX);
 export const skedGuard = (req, res) => {
   const twoWeeks = 14 * 24 * 60 * 60 * 1000;
   if (isRequestFromOstfalia(req)) {
