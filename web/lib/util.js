@@ -5,7 +5,7 @@ export const scalarArraysEqual = (array1, array2) =>
   array1.every((value, index) => value === array2[index]);
 export const range = (lower, upper) => Array.from(Array(upper - lower), (x, i) => lower + i);
 
-export const SEMESTER_WEEK_1 = parseInt(process.env.SEMESTER_WEEK_1 || '39'); // TODO change this in SS20
+export const SEMESTER_WEEK_1 = parseInt(process.env.SEMESTER_WEEK_1 || '10'); // TODO change this in WS20
 
 export function customTimetableToRoute(customTimetable) {
   const query = {

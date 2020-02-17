@@ -20,6 +20,7 @@ export interface TimetableRequest {
   setplan: boolean;
   raumplan: boolean;
   sked: boolean;
+  skedPath: string;
 };
 
 export interface EventMetadata {
