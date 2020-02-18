@@ -50,9 +50,7 @@
               <v-icon>mdi-text-subject</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title class="overflow-y">
-                {{ details.description }}
-              </v-list-tile-title>
+              <v-list-tile-title class="overflow-y">{{ details.description }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
