@@ -11,7 +11,7 @@ export default function parseSked(html: string, filterWeek: number) {
   // format "Liste"
   $('body table.tbl tbody tr[class^="tr"]').each(function() {
     const cols = $(this).children('td').get()
-      .map(col => $(col).text().replace(/-\w*$/, '').trim());
+      .map(col => $(col).text().replace(/-\s*$/, '').trim());
     if (cols.length != 17) {
       // wrong format
       return
