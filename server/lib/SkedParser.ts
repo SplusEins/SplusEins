@@ -66,8 +66,8 @@ export default function parseSked(html: string, filterWeek: number) {
     lastDatum = datum;
 
     const dateFormat = 'DD.MM.YYYY H:m'
-    const start = moment(datum + ' ' + uhrzeit_0, dateFormat);
-    const end = moment(datum + ' ' + uhrzeit_1, dateFormat);
+    const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');
+    const end = moment.tz(datum + ' ' + uhrzeit_1, dateFormat, 'Europe/Berlin');
 
     if (start.isoWeek() != filterWeek % 52) {
       return;
