@@ -20,7 +20,7 @@ export default function parseSked(html: string, filterWeek: number) {
     const uhrzeit_0 = cols[0];
     const uhrzeit_1 = cols[1];
     const datum = cols[5] || lastDatum;
-    const veranstaltung = cols[7];
+    const veranstaltung = cols[7].replace(/I-/, '');;
     const dozent = cols[3];
     const raum = cols[9];
     const anmerkung = cols[15];
