@@ -141,10 +141,6 @@ export default {
     },
     ...mapState({
       mensaPlans: (state) => state.mensa.plans,
-      favorites: (state) => state.splus.favoriteSchedules,
-      campusNews: (state) => state.news.campusNews,
-      facultyNews: (state) => state.news.facultyNews,
-      upcomingLectures: (state) => state.splus.upcomingLectures,
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',

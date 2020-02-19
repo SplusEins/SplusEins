@@ -38,43 +38,41 @@ export default {
   computed: {
     ...mapState({
       isDark: (state) => state.ui.isDark,
-      upcomingLectures: (state) => state.splus.upcomingLectures,
+      upcomingEvents: (state) => state.splus.upcomingEvents,
       subscribedTimetable: (state) => state.splus.subscribedTimetable,
     }),
   },
   watch: {
-    upcomingLectures() {
-      this.updateSections();
-    },
+    upcomingEvents: 'updateSections',
   },
   mounted() {
     this.updateSections();
   },
   methods: {
     updateSections() {
-       let uniqueLectures = new Map();
+       let uniqueEvents = new Map();
        let weekdays = [];
        let totalHoursCalc = 0;
        this.sections = [];
 
-       this.upcomingLectures.forEach(element => {
-         if(uniqueLectures.has(element.title)){
-           uniqueLectures.set(element.title, uniqueLectures.get(element.title) + element.duration)
+       this.upcomingEvents.forEach(element => {
+         if(uniqueEvents.has(element.title)){
+           uniqueEvents.set(element.title, uniqueEvents.get(element.title) + element.duration)
          } else {
-           uniqueLectures.set(element.title, element.duration)
+           uniqueEvents.set(element.title, element.duration)
          }
          if(!weekdays.includes(moment(element.start).day())) weekdays.push(moment(element.start).day())
        });
 
        this.totalWeekdays = weekdays.length;
 
-       uniqueLectures.forEach((value) => {
+       uniqueEvents.forEach((value) => {
           totalHoursCalc += value
        });
 
        this.totalHours = totalHoursCalc > 0 ? totalHoursCalc : 1;
 
-       uniqueLectures.forEach((value, key) => {
+       uniqueEvents.forEach((value, key) => {
           this.sections.push({label: key + ' - ' + value.toLocaleString() + ' Stunden', value: value});
        });
     },
