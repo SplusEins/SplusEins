@@ -13,7 +13,7 @@
 
     <template slot="containerInside">
       <span class="overlay">
-        Quelle: splus.ostfalia.de
+        Quelle: {{ schedule.sked ? 'stundenplan.ostfalia.de' : 'splus.ostfalia.de' }}
       </span>
     </template>
 
@@ -73,6 +73,7 @@ export default {
     ...mapState({
       currentWeek: (state) => state.splus.week,
       lazyLoad: (state) => state.lazyLoad,
+      schedule: (state) => state.splus.schedule,
     }),
     ...mapGetters({
       events: 'splus/getCalendarEvents',
