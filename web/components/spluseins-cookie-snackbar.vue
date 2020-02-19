@@ -53,7 +53,7 @@ export default {
   },
   watch: {
     allowAllCookies() {
-      if (this.browserStateReady) {
+      if (this.browserStateReady && '$matomo' in this) {
         if (this.allowAllCookies == false) {
           this.$matomo.disableCookies();
           this.$matomo.deleteCookies();

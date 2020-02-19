@@ -12,6 +12,8 @@ export default ({ app }, inject) =>{
     trackerFileName: 'piwik',
   });
   inject('track', function (category, action, name, value) {
-    this.$matomo.trackEvent(category, action, name, value);
+    if ('$matomo' in this) {
+      this.$matomo.trackEvent(category, action, name, value);
+    }
   });
 };
