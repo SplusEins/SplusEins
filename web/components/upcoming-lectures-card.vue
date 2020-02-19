@@ -60,7 +60,7 @@ export default {
       set(value){ this.setSubscribedTimetable(value);}
     },
     ...mapState({
-      upcomingLectures: (state) => state.splus.upcomingLectures,
+      upcomingEvents: (state) => state.splus.upcomingEvents,
       upcomingLecturesTimetable: (state) => state.splus.upcomingLecturesTimetable,
       subscribedTimetable: (state) => state.splus.subscribedTimetable,
       browserStateReady: (state) => state.browserStateReady,
@@ -76,7 +76,7 @@ export default {
         this.load();
       }
     },
-    upcomingLectures() {
+    upcomingEvents() {
       this.nextEvent = this.findNextEvent();
     },
   },
@@ -91,21 +91,23 @@ export default {
       setUpcomingLecturesTimetable: 'splus/setUpcomingLecturesTimetable',
     }),
     ...mapActions({
-      loadLectures: 'splus/loadUpcomingLectures',
+      loadEvents: 'splus/loadUpcomingEvents',
     }),
     findNextEvent() {
-      const possibleEvents = this.upcomingLectures
-                             .map(event => {return {title: event.title,
-                                                    room: event.room,
-                                                    lecturer: event.lecturer,
-                                                    start: moment(event.start).hour(parseInt(event.begin / 1)).minute(event.begin % 1 * 60)}})
-                             .filter(event => event.start.valueOf() - moment().valueOf() > 0)
-                             .sort((a,b) => a.start.valueOf() - b.start.valueOf());
+      const possibleEvents = this.upcomingEvents
+        .map(event => ({
+          title: event.title,
+          room: event.location,
+          lecturer: event.meta.organiserName,
+          start: moment(event.start).hour(parseInt(event.begin / 1)).minute(event.begin % 1 * 60),
+        }))
+        .filter(event => event.start.valueOf() - moment().valueOf() > 0)
+        .sort((a,b) => a.start.valueOf() - b.start.valueOf());
       return possibleEvents[0] != undefined? possibleEvents[0] : undefined;
     },
     load(){
       this.setUpcomingLecturesTimetable(this.subscribedTimetable);
-      this.loadLectures();
+      this.loadEvents();
     }
   }
 };

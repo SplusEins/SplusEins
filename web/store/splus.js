@@ -103,7 +103,6 @@ export const state = () => ({
    */
   upcomingLecturesTimetable: undefined,
   upcomingEvents: [],
-  upcomingLectures: [], // TODO deprecated in favor of events
 });
 
 export const getters = {
@@ -214,9 +213,6 @@ export const mutations = {
   setEvents(state, events) {
     state.events = events;
   },
-  setUpcomingLectures(state, lectures) {
-    state.upcomingLectures = lectures;
-  },
   setUpcomingEvents(state, events) {
     state.upcomingEvents = events;
   },
@@ -308,11 +304,9 @@ export const actions = {
   /**
    * Request lectures of upcomingLecturesTimetable for defaultWeek
    */
-  async loadUpcomingLectures({ state, commit }) {
+  async loadUpcomingEvents({ state, commit }) {
     try {
       const events = await loadEvents(state.upcomingLecturesTimetable, defaultWeek(), this.$axios.$get);
-      const lectures = eventsAsLectures(events);
-      commit('setUpcomingLectures', lectures);
       commit('setUpcomingEvents', events);
     } catch (error) {
       if (error.response.status == 403) {
