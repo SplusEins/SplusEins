@@ -43,7 +43,6 @@ function eventToICSEvent(lecture: Event) {
  * @return An ICS calendar
  */
 router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
-
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>(req.params.lectures || '')
     .split(',')
@@ -71,8 +70,6 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequest>{
       id: timetable.id,
       week: week,
-      setplan: timetable.setplan,
-      sked: timetable.sked,
     })));
 
     const allEvents: Event[] = await getEvents(requests);

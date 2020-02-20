@@ -14,6 +14,10 @@ const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
 const isRequestFromOstfalia = (req) =>
   (req.headers['x-forwarded-for'] || req.connection.remoteAddress).startsWith(SKED_IP_WHITELIST_PREFIX);
+/**
+ * Authorize requests if they originate from a Ostfalia IP or contain a cookie.
+ * Add a cookie to requests from Ostfalia IPs.
+ */
 export const skedGuard = (req, res) => {
   const twoWeeks = 14 * 24 * 60 * 60 * 1000;
   if (isRequestFromOstfalia(req)) {
@@ -36,10 +40,10 @@ router.options('/:timetable/:weeks', cors());
 router.options('/:timetables/:weeks/:lectures?/:name', cors());
 
 /**
- * Get Timetable for given splusId and week
+ * Get Timetable for given id and week
  *
- * @param timetable The splus "identifier" query param without "#" prefix.
- * @param weeks Comma-separated list of the splus "week" request param. ISO week of year below 52 or week of next year above 52.
+ * @param timetable id
+ * @param weeks Comma-separated list of weeks
  * @return Timetable
  */
 router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
@@ -65,15 +69,12 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
     const requests = weeks.map((week) => (<TimetableRequest> {
       id: timetable.id,
       week: week,
-      setplan: timetable.setplan,
-      raumplan: timetable.raumplan,
-      sked: timetable.sked,
       skedPath: timetable.skedPath,
     }) );
     const events = await getEvents(requests);
 
     const meta: TimetableMetadata = <TimetableMetadata> {
-      splusID: timetable.id,
+      id: timetable.id,
       faculty: timetable.faculty,
       degree: timetable.degree,
       specialisation: timetable.label,
@@ -94,10 +95,10 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
 
 
 /**
- * Get Timetable with given name for given splusIds, week and event Ids
+ * Get Timetable with given name for given timetable Ids, week and event Ids
  *
  * @param timetables Comma-separated list of timetable IDs
- * @param weeks Comma-separated list of the splus "week" request param. ISO week of year below 52 or week of next year above 52.
+ * @param weeks Comma-separated list of weeks.
  * @param lectures Comma-separated list of lecture title IDs
  * @param name Name of requested Timetable
  * @return Timetable
@@ -133,9 +134,6 @@ router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next
     const requests = <TimetableRequest[]>flatten(timetables.map((timetable) => weeks.map((week) => (<TimetableRequest> {
       id: timetable.id,
       week: week,
-      setplan: timetable.setplan,
-      raumplan: timetable.raumplan,
-      sked: timetable.sked,
     }) )));
     const allEvents = await getEvents(requests);
     const filteredEvents = titleIds.length > 0 ?
@@ -143,7 +141,7 @@ router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next
       : allEvents;
 
     const meta: TimetableMetadata = <TimetableMetadata> {
-      splusID: timetableIds,
+      id: timetableIds,
       faculty: timetables.map((x) => x.faculty),
       degree: timetables.map((x) => x.degree),
       specialisation: timetables.map((x) => x.label),

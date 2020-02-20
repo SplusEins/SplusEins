@@ -2,14 +2,9 @@ import fetch, { Headers } from 'node-fetch';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
-import { SplusParser } from './SplusParser';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
-import { URL, URLSearchParams } from 'url';
 import parseSked from './SkedParser';
 
-const PLAN_BASE = 'http://splus.ostfalia.de/semesterplan123.php';
-const RAUMPLAN_BASE = 'http://splus.ostfalia.de/raumplan123.php';
-const SET_BASE = 'http://splus.ostfalia.de/studentensetplan123.php';
 const SKED_BASE = 'https://stundenplan.ostfalia.de/';
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
@@ -33,82 +28,6 @@ const cache = CACHE_DISABLE ?
     },
   });
 
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-/**
- * Synchronize a function.
- */
-let locked = false;
-async function synchronize<T>(fun: () => Promise<T>) {
-  while (locked) {
-    await sleep(0);
-  }
-  locked = true;
-  const result = await fun();
-  locked = false;
-  return result;
-}
-
-/**
- * Fetch standard timetable from splus.ostfalia.de
- *
- * @param timetable request
- * @returns HTML-string
- */
-function splusPlanRequest(timetable: TimetableRequest): Promise<string> {
-  const url = new URL(PLAN_BASE);
-  url.searchParams.append('semester', 'ss'); // TODO change this in WS20
-  url.searchParams.append('identifier', timetable.id);
-  const body = new URLSearchParams();
-  body.append('weeks', timetable.week.toString());
-
-  return synchronize(() => fetch(url.toString(), {
-    method: 'POST',
-    body,
-  })).then((res) => res.text());
-}
-
-
-/**
- * Fetch set-timetable from splus.ostfalia.de
- *
- * @param timetable request
- * @returns HTML-string
- */
-function splusSetRequest(timetable: TimetableRequest): Promise<string> {
-  const url = new URL(SET_BASE);
-  url.searchParams.append('semester', 'ws'); // TODO change this in SS 20
-  const body = new URLSearchParams();
-  body.append('weeks', timetable.week.toString());
-  body.append('identifier[]', timetable.id);
-
-  return synchronize(() => fetch(url.toString(), {
-    method: 'POST',
-    body,
-  })).then((res) => res.text());
-}
-
-/**
- * Fetch Raumplan-timetable from splus.ostfalia.de
- *
- * @param timetable request
- * @returns HTML-string
- */
-function splusRaumplanRequest(timetable: TimetableRequest): Promise<string> {
-  const url = new URL(RAUMPLAN_BASE);
-  url.searchParams.append('semester', 'ws'); // TODO change this in SS 20
-  const body = new URLSearchParams();
-  body.append('weeks', timetable.week.toString());
-  body.append('identifier[]', timetable.id);
-
-  return synchronize(() => fetch(url.toString(), {
-    method: 'POST',
-    body,
-  })).then((res) => res.text());
-}
 
 /**
  * Fetch sked-timetable from stundenplan.ostfalia.de
@@ -135,28 +54,9 @@ function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
 
   return cache.wrap(key, async () => {
     console.log(`timetable cache miss for key ${key}`);
-    let data;
-    let lectures;
 
-    if (timetable.sked) {
-      data = await skedRequest(timetable);
-      lectures = parseSked(data, timetable.week);
-    }
-    if (timetable.setplan) {
-      timetable.id = '#' + timetable.id;
-      data = await splusSetRequest(timetable);
-      lectures = new SplusParser(data).getLectures(timetable.week);
-    }
-    if (timetable.raumplan) {
-      timetable.id = '#' + timetable.id;
-      data = await splusRaumplanRequest(timetable);
-      lectures = new SplusParser(data).getLectures(timetable.week);
-    }
-    if (!timetable.setplan && !timetable.raumplan && !timetable.sked) {
-      timetable.id = '#' + timetable.id;
-      data = await splusPlanRequest(timetable);
-      lectures = new SplusParser(data).getLectures(timetable.week);
-    }
+    const data = await skedRequest(timetable);
+    const lectures = parseSked(data, timetable.week);
 
     console.log(`saving ${lectures.length} lectures for ${key}`)
     return lectures.map((lecture) => new Event(lecture));

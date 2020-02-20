@@ -5,7 +5,7 @@ import { ParsedLecture } from '../model/SplusModel';
 export default function parseSked(html: string, filterWeek: number) {
   const $ = load(html);
 
-  const events = [];
+  const events = [] as ParsedLecture[];
   let lastDatum = '';
 
   // format "Liste"

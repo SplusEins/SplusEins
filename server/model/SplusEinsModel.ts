@@ -17,9 +17,6 @@ export interface MensaDayPlan {
 export interface TimetableRequest {
   id: string;
   week: number;
-  setplan: boolean;
-  raumplan: boolean;
-  sked: boolean;
   skedPath: string;
 };
 
@@ -30,7 +27,7 @@ export interface EventMetadata {
 };
 
 export interface TimetableMetadata {
-  splusID: string | string[];
+  id: string | string[];
   faculty: string | string[];
   degree: string | string[];
   specialisation: string | string[];
