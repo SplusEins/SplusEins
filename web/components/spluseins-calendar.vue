@@ -13,7 +13,7 @@
 
     <template slot="containerInside">
       <span class="overlay">
-        Quelle: {{ schedule.sked ? 'stundenplan.ostfalia.de' : 'splus.ostfalia.de' }}
+        Quelle: stundenplan.ostfalia.de
       </span>
     </template>
 
