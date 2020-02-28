@@ -135,6 +135,13 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
             veranstaltung = parts[2];
             raum = parts[1]
             anmerkung = parts.splice(4).join(', ') || ''
+            break;
+          case 'Bau-Wasser-Boden':
+              dozent = parts[3];
+              veranstaltung = parts[2];
+              raum = parts[4]
+              anmerkung = parts[1];
+              break;
         }
 
 
@@ -147,10 +154,10 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
         }
 
         events.push({
-          info: anmerkung,
-          room: raum,
-          lecturer: dozent,
-          title: veranstaltung,
+          info: anmerkung || '',
+          room: raum || '',
+          lecturer: dozent || '',
+          title: veranstaltung || '',
           start: start.toDate(),
           end: end.toDate(),
           duration: end.diff(start, 'hours', true),
