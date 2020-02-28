@@ -576,5 +576,311 @@
     "semester": "1",
     "graphical": true,
     "skedPath": "b/wp/ss20_b_stdgrp_bau_1.html"
+  },
+  {
+    "id": "elektro-eit-1",
+    "label": "EIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT SS 2020_1_1. Sem..html"
+  },
+  {
+    "id": "elektro-eitmp-1",
+    "label": "EIT-MathePlus",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-GS SS 2020_1_1. Sem. EIT.html"
+  },
+  {
+    "id": "elektro-eitweit-1",
+    "label": "EIT-WEIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT SS 2020_1_1. Sem..html"
+  },
+  {
+    "id": "elektro-eitweitmp-1",
+    "label": "EIT-WEIT-MathePlus",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT SS 2020_1_1. Sem. WEIT.html"
+  },
+  {
+    "id": "elektro-eit-2",
+    "label": "EIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-GS WS 2019-20_2_2. Sem..html"
+  },
+  {
+    "id": "elektro-eitip-2",
+    "label": "EIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-GS WS 2019-20_2_2. Sem. EIT.html"
+  },
+  {
+    "id": "elektro-weit-2",
+    "label": "WEIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT WS 2019-20_2_2. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-2",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT WS 2019-20_2_2. Sem. WEIT.html"
+  },
+  {
+    "id": "elektro-eitip-3",
+    "label": "EIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-GS SS 2019_3_3. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-3",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT SS 2019_3_3. Sem..html"
+  },
+  {
+    "id": "elektro-eitipat-4",
+    "label": "EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-AT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-eitipat-5",
+    "label": "EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-AT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-eitipat-6",
+    "label": "EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-AT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-eitipee-4",
+    "label": "EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-EE WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-eitipee-5",
+    "label": "EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-EE SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-eitipee-6",
+    "label": "EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-EE WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-eitipit-4",
+    "label": "EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-IT WS 2018-19_4_4. Sem..htmll"
+  },
+  {
+    "id": "elektro-eitipit-5",
+    "label": "EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-IT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-eitipit-6",
+    "label": "EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-EE WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-4",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-5",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-6",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipat-4",
+    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-AT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipat-5",
+    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-AT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipat-6",
+    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-AT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipee-4",
+    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-EE WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipee-5",
+    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-AT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipee-6",
+    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-EE WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipit-4",
+    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-IT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipit-5",
+    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-IT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipit-6",
+    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-IT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-block-weitip-4",
+    "label": "Blockveranstaltungen-WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-WEIT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-block-weitip-5",
+    "label": "Blockveranstaltungen-WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-WEIT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-block-weitip-6",
+    "label": "Blockveranstaltungen-WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-WEIT WS 2017-18_6_6. Sem..html"
   }
 ]
