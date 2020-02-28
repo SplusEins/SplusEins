@@ -142,6 +142,12 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
               raum = parts[4]
               anmerkung = parts[1];
               break;
+          case 'Elektrotechnik':
+              dozent = parts[2];
+              veranstaltung = parts[1];
+              raum = parts[3]
+              anmerkung = parts.splice(4).join(', ') || ''
+              break;
         }
 
 
