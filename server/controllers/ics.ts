@@ -58,7 +58,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     return;
   }
 
-  if (timetables.some(timetable => timetable.sked) && !skedGuard(req, res)) {
+  if (!skedGuard(req, res)) {
     return;
   }
 

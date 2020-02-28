@@ -7,7 +7,7 @@
     "semester": "1",
     "setplan": false,
     "raumplan": false,
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html"
   },
   {
@@ -16,7 +16,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "1",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Digital Technologies 2. Sem..html"
   },
   {
@@ -25,7 +25,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "5",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Informatik 5. Sem..html"
   },
   {
@@ -34,7 +34,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "2",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. CE 2. Sem. (PO18).html"
   },
   {
@@ -43,7 +43,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "3",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. CE 3. Sem. (PO18).html"
   },
   {
@@ -52,7 +52,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "4",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. 4. Sem. CE (PO18).html"
   },
   {
@@ -61,7 +61,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "2",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 2. Sem. (PO13).html"
   },
   {
@@ -70,7 +70,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "3",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 3. Sem. (PO13).html"
   },
   {
@@ -79,7 +79,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "4",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 4. Sem. (PO13).html"
   },
   {
@@ -88,7 +88,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "2",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 2. Sem. (PO18).html"
   },
   {
@@ -97,7 +97,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "3",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 3. Sem. (PO18).html"
   },
   {
@@ -106,7 +106,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "4",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 4. Sem. (PO18).html"
   },
   {
@@ -115,7 +115,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "2",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. MEI 2. Sem. (PO18).html"
   },
   {
@@ -124,7 +124,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "3",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. MEI 3. Sem. (PO18).html"
   },
   {
@@ -133,7 +133,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "4",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. MEI 4. Sem. (PO18).html"
   },
   {
@@ -142,7 +142,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "2",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SOE 2. Sem. (PO18).html"
   },
   {
@@ -151,7 +151,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "3",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SOE 3. Sem. (PO18).html"
   },
   {
@@ -160,7 +160,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "4",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SOE 4. Sem. (PO18).html"
   },
   {
@@ -169,7 +169,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "2",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 2. Sem. (PO13).html"
   },
   {
@@ -178,7 +178,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "3",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 3. Sem. (PO13).html"
   },
   {
@@ -187,7 +187,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "4",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 4. Sem. (PO13).html"
   },
   {
@@ -196,7 +196,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "2",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 2. Sem. (PO18).html"
   },
   {
@@ -205,7 +205,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "3",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 3. Sem. (PO18).html"
   },
   {
@@ -214,7 +214,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "4",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 4. Sem. (PO18).html"
   },
   {
@@ -223,7 +223,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "1",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI 1. Sem..html"
   },
   {
@@ -232,7 +232,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "2",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI 2. Sem..html"
   },
   {
@@ -241,7 +241,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "3",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI 3. Sem..html"
   },
   {
@@ -250,7 +250,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "4",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI_4_4. Sem..html"
   },
   {
@@ -259,7 +259,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "5",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI 5. Sem..html"
   },
   {
@@ -268,7 +268,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "4",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/IT-Management_4_4. Sem..html"
   },
   {
@@ -277,7 +277,7 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "WPF",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/Alle UWPF_1_1. Sem..html"
   },
   {
@@ -286,7 +286,169 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "WPF",
-    "sked": true,
+    "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/Alle WPF_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-1",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_SoSe 20_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-2",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_2019_WS_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-4",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-6",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-1",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2020_SoSe_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-2",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-4",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-6",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-1",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2020_SoSe_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-2",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2019_WS_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-4",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-6-hkrg",
+    "label": "Energie- und Gebäudetechnik - HKRG",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-6-retew",
+    "label": "Energie- und Gebäudetechnik - RETEW",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2017_WS_6_EGT 6. Sem. - HKRG_Kopie.html"
+  },
+  {
+    "id": "versorgung-dt-energie-2",
+    "label": "Digital Technologies Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/dt/Digital Technologies (DT Energie)_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-1",
+    "label": " Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2020_SoSe_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-2",
+    "label": " Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2019_WS_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-4",
+    "label": " Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-6",
+    "label": " Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2017_WS_6_6. Sem..html"
   }
 ]

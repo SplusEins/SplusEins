@@ -1,9 +1,8 @@
 import fetch, { Headers } from 'node-fetch';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
-
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
-import parseSked from './SkedParser';
+import { parseSkedGraphical, parseSkedList } from './SkedParser';
 
 const SKED_BASE = 'https://stundenplan.ostfalia.de/';
 
@@ -56,7 +55,9 @@ function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
     console.log(`timetable cache miss for key ${key}`);
 
     const data = await skedRequest(timetable);
-    const lectures = parseSked(data, timetable.week);
+    const lectures = timetable.graphical ?
+      parseSkedGraphical(data, timetable.week) :
+      parseSkedList(data, timetable.week);
 
     console.log(`saving ${lectures.length} lectures for ${key}`)
     return lectures.map((lecture) => new Event(lecture));
