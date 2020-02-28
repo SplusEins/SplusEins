@@ -567,5 +567,14 @@
     "semester": "WPF",
     "graphical": true,
     "skedPath": "r/studentenset/R-WPF-WF-Tutorien_1_1. Sem..html"
+  },
+  {
+    "id": "bau-bauing-1",
+    "label": "Bauingenieurwesen",
+    "faculty": "Bau-Wasser-Boden",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "b/wp/ss20_b_stdgrp_bau_1.html"
   }
 ]
