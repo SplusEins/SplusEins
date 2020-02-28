@@ -88,25 +88,25 @@ export function parseSkedList(html: string, filterWeek: number) {
   return events;
 }
 
-export function parseSkedGraphical(html: string, filterWeek: number) {
+export function parseSkedGraphical(html: string, filterWeek: number, faculty: string) {
   const $ = load(html);
   const events = [] as ParsedLecture[];
 
   $('body table').each(function() {
     let cols = parseTable(load(this, {decodeEntities: false}), true, true, false)
-    cols = cols.filter(c => c[0].length > 0) // filter pseudo columns
 
+    cols = cols.filter(c => c[0].length > 0) // filter pseudo columns -> first entry is not date string
     cols = cols.map(col => col.filter(text =>
         !new RegExp('^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$', 'g').test(text) && // filter time entries
         text.length > 1 && // filter empty entries and empty tags -> 1
-        text.charAt(0) !== '[')) // filter footnotes
+        !text.startsWith('['))) // filter footnotes
     cols = cols.filter(col => col.length > 1) // filter empty
     cols = cols.map(col => [... new Set(col)]) // filter duplicates
-    cols = cols.map(col => col.map(text => text.replace(/<span\/?[^>]+(>|$)/g, '')
-            .replace('</span>', '')
-            .replace(/\s\[\d+\]/g, '')));
+    cols = cols.map(col => col.map(text => text
+        .replace(/<span.+>.+<\/span>/g, '') // remove <span>
+        .replace(/\s\[\d+\]/g, ''))); // replace footnote links: e.g. [1]
 
-    cols.forEach((col) => {
+    cols.forEach(col => {
       col.forEach((entry, index) => {
         if(index == 0) {
           // is date
@@ -117,10 +117,26 @@ export function parseSkedGraphical(html: string, filterWeek: number) {
         const time = parts[0].replace('Uhr', '').split(' - ')
         const uhrzeit_0 = time[0];
         const uhrzeit_1 = time[1];
-        const dozent = parts[1];
-        const veranstaltung = parts[2];
-        const raum = parts[3]
-        const anmerkung = parts.splice(4).join(', ') || ''
+
+        let dozent = ''
+        let veranstaltung = ''
+        let raum = ''
+        let anmerkung = ''
+
+        switch(faculty) {
+          case 'Versorgungstechnik':
+            dozent = parts[1];
+            veranstaltung = parts[2];
+            raum = parts[3]
+            anmerkung = parts.splice(4).join(', ') || ''
+            break;
+          case 'Recht':
+            dozent = parts[3];
+            veranstaltung = parts[2];
+            raum = parts[1]
+            anmerkung = parts.splice(4).join(', ') || ''
+        }
+
 
         const dateFormat = 'DD.MM.YYYY H:m'
         const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');

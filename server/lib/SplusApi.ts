@@ -56,7 +56,7 @@ function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
 
     const data = await skedRequest(timetable);
     const lectures = timetable.graphical ?
-      parseSkedGraphical(data, timetable.week) :
+      parseSkedGraphical(data, timetable.week, timetable.faculty) :
       parseSkedList(data, timetable.week);
 
     console.log(`saving ${lectures.length} lectures for ${key}`)

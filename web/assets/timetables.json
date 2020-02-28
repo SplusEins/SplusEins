@@ -417,7 +417,7 @@
   },
   {
     "id": "versorgung-bee-1",
-    "label": " Bio- und Umwelttechnik",
+    "label": "Bio- und Umwelttechnik",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
     "semester": "1",
@@ -426,7 +426,7 @@
   },
   {
     "id": "versorgung-bee-2",
-    "label": " Bio- und Umwelttechnik",
+    "label": "Bio- und Umwelttechnik",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
     "semester": "2",
@@ -435,7 +435,7 @@
   },
   {
     "id": "versorgung-bee-4",
-    "label": " Bio- und Umwelttechnik",
+    "label": "Bio- und Umwelttechnik",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
     "semester": "4",
@@ -444,11 +444,128 @@
   },
   {
     "id": "versorgung-bee-6",
-    "label": " Bio- und Umwelttechnik",
+    "label": "Bio- und Umwelttechnik",
     "faculty": "Versorgungstechnik",
     "degree": "Bachelor of Engineering",
     "semester": "6",
     "graphical": true,
     "skedPath": "v/stundenplan/bee/BEE_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "recht-rpp-1",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_1_1. Sem..html"
+  },
+  {
+    "id": "recht-rpp-2",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_2_2. Sem..html"
+  },
+  {
+    "id": "recht-rpp-3",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_3_3. Sem..html"
+  },
+  {
+    "id": "recht-rpp-4",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_4_4. Sem..html"
+  },
+  {
+    "id": "recht-rpp-5",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_5_5. Sem..html"
+  },
+  {
+    "id": "recht-rpp-6",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_6_6. Sem..html"
+  },
+  {
+    "id": "recht-wr-1",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_1_1. Sem..html"
+  },
+  {
+    "id": "recht-wr-2",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_2_2. Sem..html"
+  },
+  {
+    "id": "recht-wr-3",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_3_3. Sem..html"
+  },
+  {
+    "id": "recht-wr-4",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_4_4. Sem..html"
+  },
+  {
+    "id": "recht-wr-5",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_5_5. Sem..html"
+  },
+  {
+    "id": "recht-wr-6",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_6_6. Sem..html"
+  },
+  {
+    "id": "recht-wpf",
+    "label": "Wahlpflichtfächer",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "WPF",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WPF-WF-Tutorien_1_1. Sem..html"
   }
 ]
