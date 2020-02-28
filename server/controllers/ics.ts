@@ -70,6 +70,8 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequest>{
       id: timetable.id,
       week: week,
+      graphical: timetable.graphical,
+      faculty: timetable.faculty
     })));
 
     const allEvents: Event[] = await getEvents(requests);
