@@ -1,8 +1,9 @@
 import { load } from 'cheerio';
 import * as moment from 'moment-timezone';
 import { ParsedLecture } from '../model/SplusModel';
+import parseTable from './parseTable';
 
-export default function parseSked(html: string, filterWeek: number) {
+export function parseSkedList(html: string, filterWeek: number) {
   const $ = load(html);
 
   const events = [] as ParsedLecture[];
@@ -82,6 +83,65 @@ export default function parseSked(html: string, filterWeek: number) {
       end: end.toDate(),
       duration: end.diff(start, 'hours', true),
     } as ParsedLecture);
+  });
+
+  return events;
+}
+
+export function parseSkedGraphical(html: string, filterWeek: number) {
+  const $ = load(html);
+  const events = [] as ParsedLecture[];
+
+  $('body table').each(function() {
+    let cols = parseTable(load(this, {decodeEntities: false}), true, true, false)
+    cols = cols.filter(c => c[0].length > 0) // filter pseudo columns
+
+    cols = cols.map(col => col.filter(text =>
+        !new RegExp('^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$', 'g').test(text) && // filter time entries
+        text.length > 1 && // filter empty entries and empty tags -> 1
+        text.charAt(0) !== '[')) // filter footnotes
+    cols = cols.filter(col => col.length > 1) // filter empty
+    cols = cols.map(col => [... new Set(col)]) // filter duplicates
+    cols = cols.map(col => col.map(text => text.replace(/<span\/?[^>]+(>|$)/g, '')
+            .replace('</span>', '')
+            .replace(/\s\[\d+\]/g, '')));
+
+    cols.forEach((col) => {
+      col.forEach((entry, index) => {
+        if(index == 0) {
+          // is date
+          return;
+        }
+        const datum = col[0].split(', ')[1]
+        const parts = entry.split('<br>');
+        const time = parts[0].replace('Uhr', '').split(' - ')
+        const uhrzeit_0 = time[0];
+        const uhrzeit_1 = time[1];
+        const dozent = parts[1];
+        const veranstaltung = parts[2];
+        const raum = parts[3]
+        const anmerkung = parts.splice(4).join(', ') || ''
+
+        const dateFormat = 'DD.MM.YYYY H:m'
+        const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');
+        const end = moment.tz(datum + ' ' + uhrzeit_1, dateFormat, 'Europe/Berlin');
+
+        if (start.isoWeek() != filterWeek % 52) {
+          return;
+        }
+
+        events.push({
+          info: anmerkung,
+          room: raum,
+          lecturer: dozent,
+          title: veranstaltung,
+          start: start.toDate(),
+          end: end.toDate(),
+          duration: end.diff(start, 'hours', true),
+        } as ParsedLecture);
+
+      })
+    })
   });
 
   return events;

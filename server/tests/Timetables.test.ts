@@ -21,5 +21,6 @@ describe('Test Timetables JSON', () => {
 
   it('should not include any duplicated ids', () => {
     expect(findDuplicates(TIMETABLES, 'id')).toEqual([]);
+    expect(findDuplicates(TIMETABLES, 'skedPath')).toEqual([]);
   });
 });

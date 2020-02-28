@@ -61,7 +61,7 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
     return;
   }
 
-  if (timetable.sked && !skedGuard(req, res)) {
+  if (!skedGuard(req, res)) {
     return;
   }
 
@@ -70,6 +70,7 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
       id: timetable.id,
       week: week,
       skedPath: timetable.skedPath,
+      graphical: timetable.graphical
     }) );
     const events = await getEvents(requests);
 
@@ -124,7 +125,7 @@ router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next
     return;
   }
 
-  if (timetables.some(timetable => timetable.sked) && !skedGuard(req, res)) {
+  if (!skedGuard(req, res)) {
     return;
   }
 
@@ -134,6 +135,8 @@ router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next
     const requests = <TimetableRequest[]>flatten(timetables.map((timetable) => weeks.map((week) => (<TimetableRequest> {
       id: timetable.id,
       week: week,
+      skedPath: timetable.skedPath,
+      graphical: timetable.graphical,
     }) )));
     const allEvents = await getEvents(requests);
     const filteredEvents = titleIds.length > 0 ?
