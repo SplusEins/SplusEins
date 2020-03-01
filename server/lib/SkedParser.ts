@@ -142,6 +142,10 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
               raum = parts[4]
               anmerkung = parts[1];
               break;
+          case 'Fahrzeugtechnik':
+          case 'Gesundheitswesen':
+          case 'Soziale Arbeit':
+          case 'Verkehr-Sport-Tourismus-Medien':
           case 'Elektrotechnik':
               dozent = parts[2];
               veranstaltung = parts[1];
