@@ -5,7 +5,6 @@
     "faculty": "Informatik",
     "degree": "Bachelor of Science",
     "semester": "1",
-    "setplan": false,
     "raumplan": false,
     "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html"
@@ -288,285 +287,6 @@
     "semester": "WPF",
     "graphical": false,
     "skedPath": "i/Semester/Semester-Liste/Alle WPF_1_1. Sem..html"
-  },
-  {
-    "id": "versorgung-wing-e-1",
-    "label": "Wirtschaftsingenieur Energie",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "1",
-    "graphical": true,
-    "skedPath": "v/stundenplan/wing/WING Energie_SoSe 20_1_1. Sem..html"
-  },
-  {
-    "id": "versorgung-wing-e-2",
-    "label": "Wirtschaftsingenieur Energie",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "2",
-    "graphical": true,
-    "skedPath": "v/stundenplan/wing/WING Energie_2019_WS_2_2. Sem..html"
-  },
-  {
-    "id": "versorgung-wing-e-4",
-    "label": "Wirtschaftsingenieur Energie",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "4",
-    "graphical": true,
-    "skedPath": "v/stundenplan/wing/WING Energie_2018_WS_4_4. Sem..html"
-  },
-  {
-    "id": "versorgung-wing-e-6",
-    "label": "Wirtschaftsingenieur Energie",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "6",
-    "graphical": true,
-    "skedPath": "v/stundenplan/wing/WING Energie_2017_WS_6_6. Sem..html"
-  },
-  {
-    "id": "versorgung-wing-u-1",
-    "label": "Wirtschaftsingenieur Umwelt",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "1",
-    "graphical": true,
-    "skedPath": "v/stundenplan/wing/WING Umwelt_2020_SoSe_1_1. Sem..html"
-  },
-  {
-    "id": "versorgung-wing-u-2",
-    "label": "Wirtschaftsingenieur Umwelt",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "2",
-    "graphical": true,
-    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_2_2. Sem..html"
-  },
-  {
-    "id": "versorgung-wing-u-4",
-    "label": "Wirtschaftsingenieur Umwelt",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "4",
-    "graphical": true,
-    "skedPath": "v/stundenplan/wing/WING Umwelt_2018_WS_4_4. Sem..html"
-  },
-  {
-    "id": "versorgung-wing-u-6",
-    "label": "Wirtschaftsingenieur Umwelt",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "6",
-    "graphical": true,
-    "skedPath": "v/stundenplan/wing/WING Umwelt_2017_WS_6_6. Sem..html"
-  },
-  {
-    "id": "versorgung-egt-1",
-    "label": "Energie- und Gebäudetechnik",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "1",
-    "graphical": true,
-    "skedPath": "v/stundenplan/egt/EGT_2020_SoSe_1_1. Sem..html"
-  },
-  {
-    "id": "versorgung-egt-2",
-    "label": "Energie- und Gebäudetechnik",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "2",
-    "graphical": true,
-    "skedPath": "v/stundenplan/egt/EGT_2019_WS_2_2. Sem..html"
-  },
-  {
-    "id": "versorgung-egt-4",
-    "label": "Energie- und Gebäudetechnik",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "4",
-    "graphical": true,
-    "skedPath": "v/stundenplan/egt/EGT_2018_WS_4_4. Sem..html"
-  },
-  {
-    "id": "versorgung-egt-6-hkrg",
-    "label": "Energie- und Gebäudetechnik - HKRG",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "6",
-    "graphical": true,
-    "skedPath": "v/stundenplan/egt/EGT_2017_WS_6_6. Sem..html"
-  },
-  {
-    "id": "versorgung-egt-6-retew",
-    "label": "Energie- und Gebäudetechnik - RETEW",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "6",
-    "graphical": true,
-    "skedPath": "v/stundenplan/egt/EGT_2017_WS_6_EGT 6. Sem. - HKRG_Kopie.html"
-  },
-  {
-    "id": "versorgung-dt-energie-2",
-    "label": "Digital Technologies Energie",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "2",
-    "graphical": true,
-    "skedPath": "v/stundenplan/dt/Digital Technologies (DT Energie)_2_2. Sem..html"
-  },
-  {
-    "id": "versorgung-bee-1",
-    "label": "Bio- und Umwelttechnik",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "1",
-    "graphical": true,
-    "skedPath": "v/stundenplan/bee/BEE_2020_SoSe_1_1. Sem..html"
-  },
-  {
-    "id": "versorgung-bee-2",
-    "label": "Bio- und Umwelttechnik",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "2",
-    "graphical": true,
-    "skedPath": "v/stundenplan/bee/BEE_2019_WS_2_2. Sem..html"
-  },
-  {
-    "id": "versorgung-bee-4",
-    "label": "Bio- und Umwelttechnik",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "4",
-    "graphical": true,
-    "skedPath": "v/stundenplan/bee/BEE_2018_WS_4_4. Sem..html"
-  },
-  {
-    "id": "versorgung-bee-6",
-    "label": "Bio- und Umwelttechnik",
-    "faculty": "Versorgungstechnik",
-    "degree": "Bachelor of Engineering",
-    "semester": "6",
-    "graphical": true,
-    "skedPath": "v/stundenplan/bee/BEE_2017_WS_6_6. Sem..html"
-  },
-  {
-    "id": "recht-rpp-1",
-    "label": "Personalmanagement und -psychologie",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "1",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-RPP_1_1. Sem..html"
-  },
-  {
-    "id": "recht-rpp-2",
-    "label": "Personalmanagement und -psychologie",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "2",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-RPP_2_2. Sem..html"
-  },
-  {
-    "id": "recht-rpp-3",
-    "label": "Personalmanagement und -psychologie",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "3",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-RPP_3_3. Sem..html"
-  },
-  {
-    "id": "recht-rpp-4",
-    "label": "Personalmanagement und -psychologie",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "4",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-RPP_4_4. Sem..html"
-  },
-  {
-    "id": "recht-rpp-5",
-    "label": "Personalmanagement und -psychologie",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "5",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-RPP_5_5. Sem..html"
-  },
-  {
-    "id": "recht-rpp-6",
-    "label": "Personalmanagement und -psychologie",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "6",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-RPP_6_6. Sem..html"
-  },
-  {
-    "id": "recht-wr-1",
-    "label": "Wirtschaftsrecht",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "1",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-WR_1_1. Sem..html"
-  },
-  {
-    "id": "recht-wr-2",
-    "label": "Wirtschaftsrecht",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "2",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-WR_2_2. Sem..html"
-  },
-  {
-    "id": "recht-wr-3",
-    "label": "Wirtschaftsrecht",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "3",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-WR_3_3. Sem..html"
-  },
-  {
-    "id": "recht-wr-4",
-    "label": "Wirtschaftsrecht",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "4",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-WR_4_4. Sem..html"
-  },
-  {
-    "id": "recht-wr-5",
-    "label": "Wirtschaftsrecht",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "5",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-WR_5_5. Sem..html"
-  },
-  {
-    "id": "recht-wr-6",
-    "label": "Wirtschaftsrecht",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "6",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-WR_6_6. Sem..html"
-  },
-  {
-    "id": "recht-wpf",
-    "label": "Wahlpflichtfächer",
-    "faculty": "Recht",
-    "degree": "Bachelor of Laws",
-    "semester": "WPF",
-    "graphical": true,
-    "skedPath": "r/studentenset/R-WPF-WF-Tutorien_1_1. Sem..html"
   },
   {
     "id": "bau-bauing-1",
@@ -882,5 +602,896 @@
     "semester": "6",
     "graphical": false,
     "skedPath": "e/block/E-WEIT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "fahrzeug-mechinf-1",
+    "label": "Fahrzeugmechatronik und -informatik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "f/wp/1. Semester Fahrzeugmechatronik und -informatik SoSe 20.html"
+  },
+  {
+    "id": "fahrzeug-techlift-1",
+    "label": "Fahrzeugtechnik LIFT",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "f/wp/1. Semester FT LIFT SoSe 20.html"
+  },
+  {
+    "id": "fahrzeug-tech-1",
+    "label": "Fahrzeugtechnik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "f/wp/1. Semester Fahrzeugtechnik SoSe 20.html"
+  },
+  {
+    "id": "fahrzeug-mechinf-2",
+    "label": "Fahrzeugmechatronik und -informatik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "f/wp/FMI Kohorte WS 19-20.html"
+  },
+  {
+    "id": "fahrzeug-tech-2",
+    "label": "Fahrzeugtechnik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "f/wp/WS 19-20 Fzt..html"
+  },
+  {
+    "id": "fahrzeug-malift-2",
+    "label": "Mathe-Lift",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "f/wp/2. Semester FT-Lift WS 19-20.html"
+  },
+  {
+    "id": "fahrzeug-aggrfahr-3",
+    "label": "Aggregate- und Fahrwerkentwicklung",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester AGF SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-aufbau-3",
+    "label": "Aufbauentwicklung",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester ABE SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-infelek-3",
+    "label": "Informatik und Elektronik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester IuE SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-mecha-3",
+    "label": "Mechatronik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester MET SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-produmw-3",
+    "label": "Produktion und Umwelt",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester PU SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-servproz-3",
+    "label": "Servicetechnik und Prozesse",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester STP SoSe 19.html"
+  },
+  {
+    "id": "gesund-mag-k-2",
+    "label": "MAG Gruppe K",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/MAG_2_MAG-K.html"
+  },
+  {
+    "id": "gesund-mag-l-2",
+    "label": "MAG Gruppe L",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/MAG_2_MAG-L.html"
+  },
+  {
+    "id": "gesund-mag-m-2",
+    "label": "MAG Gruppe M",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/MAG_2_MAG-M.html"
+  },
+  {
+    "id": "gesund-mag-n-2",
+    "label": "MAG Gruppe N",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/MAG_2_MAG-N.html"
+  },
+  {
+    "id": "gesund-mig-kh-4",
+    "label": "MIG Schwerpunkt KH",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/MIG_4_4. Sem._KH.html"
+  },
+  {
+    "id": "gesund-mig-kv-4",
+    "label": "MIG Schwerpunkt KV",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/MIG_4_4. Sem._KV.html"
+  },
+  {
+    "id": "gesund-mig-ph-4",
+    "label": "MIG Schwerpunkt PH",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/MIG_4_4. Sem._PH.html"
+  },
+  {
+    "id": "gesund-mig-wpf",
+    "label": "MIG Wahlpflichtfächer",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "WPF",
+    "graphical": true,
+    "skedPath": "g/wp/WPF_4_4. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-1",
+    "label": "APP",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "g/wp/APP_1_1. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-4",
+    "label": "APB",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/APB_4_4. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-3",
+    "label": "APIP",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "g/wp/APIP_3_3. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-5",
+    "label": "APIP",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "g/wp/APIP_5_5. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-wpf",
+    "label": "Wahlpflichtfächer APB",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "WPF",
+    "graphical": true,
+    "skedPath": "g/wp/WPF APB_6_6. Sem.html"
+  },
+  {
+    "id": "gesund-bmp-1",
+    "label": "BMP",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "g/wp/BMP_1_1. Sem.html"
+  },
+  {
+    "id": "gesund-bmr-1",
+    "label": "BMR",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "g/wp/BMR_1_1. Sem.html"
+  },
+  {
+    "id": "gesund-pm-b-4",
+    "label": "PM Studienprofil B",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/PM_4_4. Sem.html"
+  },
+  {
+    "id": "gesund-pm-m-4",
+    "label": "PM Studienprofil M",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/PM_4_4. Sem._SP-M.html"
+  },
+  {
+    "id": "gesund-pm-b-6",
+    "label": "PM Studienprofil B",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "g/wp/PM_6_6. Sem._SP-B.html"
+  },
+  {
+    "id": "gesund-pm-m-6",
+    "label": "PM Studienprofil M",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "g/wp/PM_6_6. Sem._SP-M.html"
+  },
+  {
+    "id": "gesund-ivg-2",
+    "label": "IVG",
+    "faculty": "Gesundheitswesen",
+    "degree": "Master of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/IVG_2_2. Sem.html"
+  },
+  {
+    "id": "recht-rpp-1",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_1_1. Sem..html"
+  },
+  {
+    "id": "recht-rpp-2",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_2_2. Sem..html"
+  },
+  {
+    "id": "recht-rpp-3",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_3_3. Sem..html"
+  },
+  {
+    "id": "recht-rpp-4",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_4_4. Sem..html"
+  },
+  {
+    "id": "recht-rpp-5",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_5_5. Sem..html"
+  },
+  {
+    "id": "recht-rpp-6",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_6_6. Sem..html"
+  },
+  {
+    "id": "recht-wr-1",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_1_1. Sem..html"
+  },
+  {
+    "id": "recht-wr-2",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_2_2. Sem..html"
+  },
+  {
+    "id": "recht-wr-3",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_3_3. Sem..html"
+  },
+  {
+    "id": "recht-wr-4",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_4_4. Sem..html"
+  },
+  {
+    "id": "recht-wr-5",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_5_5. Sem..html"
+  },
+  {
+    "id": "recht-wr-6",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_6_6. Sem..html"
+  },
+  {
+    "id": "recht-wpf",
+    "label": "Wahlpflichtfächer",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "WPF",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WPF-WF-Tutorien_1_1. Sem..html"
+  },
+  {
+    "id": "sozi-4",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_4_4. Sem.html"
+  },
+  {
+    "id": "sozi-5",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_5_5. Sem.html"
+  },
+  {
+    "id": "sozi-6",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_6_6. Sem.html"
+  },
+  {
+    "id": "sozi-1",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "s/wp/Berufsanerkennungsjahr_1_1. Sem.html"
+  },
+  {
+    "id": "vstm-mpm-2",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_pvm_2.html"
+  },
+  {
+    "id": "vstm-mpm-4",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_pvm_4.html"
+  },
+  {
+    "id": "vstm-mpm-6",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_pvm_6.html"
+  },
+  {
+    "id": "vstm-tlm-2",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tlm_2.html"
+  },
+  {
+    "id": "vstm-tlm-4",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tlm_4.html"
+  },
+  {
+    "id": "vstm-tlm-6",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tlm_6.html"
+  },
+  {
+    "id": "vstm-spm-2",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_spm_2.html"
+  },
+  {
+    "id": "vstm-spm-4",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_spm_4.html"
+  },
+  {
+    "id": "vstm-srm-2",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_srm_2.html"
+  },
+  {
+    "id": "vstm-srm-4",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_srm_4.html"
+  },
+  {
+    "id": "vstm-tm-2",
+    "label": "Tourismusmangement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tm_2.html"
+  },
+  {
+    "id": "vstm-tm-4",
+    "label": "Tourismusmangement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tm_4.html"
+  },
+  {
+    "id": "vstm-mdba-2",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_md_2.html"
+  },
+  {
+    "id": "vstm-mdba-4",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_md_4.html"
+  },
+  {
+    "id": "vstm-mk-2",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mk_2.html"
+  },
+  {
+    "id": "vstm-mk-4",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mk_4.html"
+  },
+  {
+    "id": "vstm-mm-2",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mm_2.html"
+  },
+  {
+    "id": "vstm-mm-4",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mm_4.html"
+  },
+  {
+    "id": "vstm-lip-2",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_2.html"
+  },
+  {
+    "id": "vstm-lip-6",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_4.html"
+  },
+  {
+    "id": "vstm-lip-8",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "8",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_8.html"
+  },
+  {
+    "id": "vstm-lim-2",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_2.html"
+  },
+  {
+    "id": "vstm-lim-4",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_4.html"
+  },
+  {
+    "id": "vstm-lim-6",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_6.html"
+  },
+  {
+    "id": "vstm-wmv-2",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wiv_2.html"
+  },
+  {
+    "id": "vstm-wmv-4",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wiv_4.html"
+  },
+  {
+    "id": "vstm-wmv-6",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wiv_6.html"
+  },
+  {
+    "id": "vstm-mvl-1",
+    "label": "Verkehr und Logistik",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_mvl_1.html"
+  },
+  {
+    "id": "vstm-fdu-2",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_2.html"
+  },
+  {
+    "id": "vstm-fdu-4",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_4.html"
+  },
+  {
+    "id": "vstm-mkm-2",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_2.html"
+  },
+  {
+    "id": "vstm-mkm-4",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_4.html"
+  },
+  {
+    "id": "versorgung-wing-e-1",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_SoSe 20_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-2",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_2019_WS_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-4",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-6",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-1",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2020_SoSe_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-2",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-4",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-6",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-1",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2020_SoSe_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-2",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2019_WS_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-4",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-6-hkrg",
+    "label": "Energie- und Gebäudetechnik - HKRG",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-6-retew",
+    "label": "Energie- und Gebäudetechnik - RETEW",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2017_WS_6_EGT 6. Sem. - HKRG_Kopie.html"
+  },
+  {
+    "id": "versorgung-dt-energie-2",
+    "label": "Digital Technologies Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/dt/Digital Technologies (DT Energie)_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-1",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2020_SoSe_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-2",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2019_WS_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-4",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-6",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2017_WS_6_6. Sem..html"
   }
 ]
