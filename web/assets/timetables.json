@@ -289,6 +289,15 @@
     "skedPath": "i/Semester/Semester-Liste/Alle WPF_1_1. Sem..html"
   },
   {
+    "id": "informatik-master",
+    "label": "Informatik",
+    "faculty": "Informatik",
+    "degree": "Master of Science",
+    "semester": "Alle",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte)_1_1.%20Sem..html"
+  },
+  {
     "id": "bau-bauing-1",
     "label": "Bauingenieurwesen",
     "faculty": "Bau-Wasser-Boden",
