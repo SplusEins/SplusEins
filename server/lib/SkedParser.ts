@@ -47,6 +47,45 @@ export function parseSkedList(html: string, filterWeek: number) {
     } as ParsedLecture);
   });
 
+  // format "Listenplan" (2)
+  $('body table.tbl tbody tr[class^="tr"]').each(function() {
+    const cols = $(this).children('td').get()
+      .map(col => $(col).text().replace(/-\s*$/, '').trim());
+    if (cols.length != 15) {
+      // wrong format
+      return
+    }
+
+    const datum = cols[0] || lastDatum;
+    const uhrzeit_0 = cols[2];
+    const uhrzeit_1 = cols[3];
+    const veranstaltung = cols[5].replace(/^I-/, '');
+    const dozent = cols[7];
+    const raum = cols[9];
+    const anmerkung = cols[13];
+
+    lastDatum = datum;
+
+    const dateFormat = 'DD.MM.YYYY H:m'
+    const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');
+    const end = moment.tz(datum + ' ' + uhrzeit_1, dateFormat, 'Europe/Berlin');
+
+    if (start.isoWeek() != filterWeek % 52) {
+      return;
+    }
+
+    events.push({
+      info: anmerkung,
+      room: raum,
+      lecturer: dozent,
+      title: veranstaltung,
+      start: start.toDate(),
+      end: end.toDate(),
+      duration: end.diff(start, 'hours', true),
+    } as ParsedLecture);
+  });
+
+
   // format "Listenplan"
   $('body table.tbl tbody tr[class^="tr"]').each(function() {
     const cols = $(this).children('td').get()
