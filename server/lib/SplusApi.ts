@@ -41,7 +41,9 @@ function skedRequest(timetable: TimetableRequest): Promise<string> {
   const url = SKED_BASE + timetable.skedPath;
   return fetch(url, { headers }).then((res) => {
     if (!res.ok) {
-        console.error(`Sked error for ${timetable.id}-${timetable.week}: ${res.statusText}`);
+        const message = `Sked error for ${timetable.id}-${timetable.week}: ${res.statusText}`;
+        console.error(message);
+        throw new Error(message);
     }
     return res.text()
   })
