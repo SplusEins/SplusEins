@@ -4,9 +4,12 @@
   "description": "Spluseins Docs",
   "author": "schneefux",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vuepress dev",
+    "build": "vuepress build",
+    "start": "http-server .vuepress/dist/ -p $PORT"
   },
   "dependencies": {
+    "http-server": "^0.12.1",
     "vuepress": "^1.3.1"
   }
 }
