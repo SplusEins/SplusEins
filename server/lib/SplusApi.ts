@@ -27,24 +27,6 @@ const cache = CACHE_DISABLE ?
     },
   });
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-/**
- * Synchronize a function.
- */
-let locked = false;
-async function synchronize<T>(fun: () => Promise<T>) {
-  while (locked) {
-    await sleep(0);
-  }
-  locked = true;
-  const result = await fun();
-  locked = false;
-  return result;
-}
-
 /**
  * Fetch sked-timetable from stundenplan.ostfalia.de
  * @param timetable request
@@ -80,7 +62,7 @@ function skedRequest(timetable: TimetableRequest): Promise<string> {
  * @returns parsed Events
  */
 async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
-    const data = await synchronize(() => skedRequest(timetable));
+    const data = await skedRequest(timetable);
     const lectures = timetable.graphical ?
       parseSkedGraphical(data, timetable.week, timetable.faculty) :
       parseSkedList(data, timetable.week);
