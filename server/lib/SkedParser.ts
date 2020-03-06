@@ -7,24 +7,52 @@ export function parseSkedList(html: string, filterWeek: number) {
   const $ = load(html);
 
   const events = [] as ParsedLecture[];
+
   let lastDatum = '';
+  let datum = '';
+  let uhrzeit_0 = '';
+  let uhrzeit_1 = '';
+  let veranstaltung = '';
+  let dozent = '';
+  let raum = '';
+  let anmerkung = '';
 
   // format "Liste"
   $('body table.tbl tbody tr[class^="tr"]').each(function() {
     const cols = $(this).children('td').get()
       .map(col => $(col).text().replace(/-\s*$/, '').trim());
-    if (cols.length != 17) {
-      // wrong format
-      return
-    }
 
-    const uhrzeit_0 = cols[0];
-    const uhrzeit_1 = cols[1];
-    const datum = cols[5] || lastDatum;
-    const veranstaltung = cols[7].replace(/^I-/, '');
-    const dozent = cols[3];
-    const raum = cols[9];
-    const anmerkung = cols[15];
+    switch(cols.length) {
+      case 13:  
+        datum = cols[0] || lastDatum;
+        uhrzeit_0 = cols[2];
+        uhrzeit_1 = cols[3];
+        veranstaltung = cols[5];
+        dozent = cols[7];
+        raum = cols[9];
+        anmerkung = cols[11];
+        break
+      case 15:
+        datum = cols[0] || lastDatum;
+        uhrzeit_0 = cols[2];
+        uhrzeit_1 = cols[3];
+        veranstaltung = cols[5];
+        dozent = cols[7];
+        raum = cols[9];
+        anmerkung = cols[13];
+        break
+      case 17: 
+        datum = cols[5] || lastDatum;
+        uhrzeit_0 = cols[0];
+        uhrzeit_1 = cols[1];
+        veranstaltung = cols[7];
+        dozent = cols[3];
+        raum = cols[9];
+        anmerkung = cols[15];
+        break
+      default:
+        return;
+    }
 
     lastDatum = datum;
 
@@ -40,84 +68,7 @@ export function parseSkedList(html: string, filterWeek: number) {
       info: anmerkung,
       room: raum,
       lecturer: dozent,
-      title: veranstaltung,
-      start: start.toDate(),
-      end: end.toDate(),
-      duration: end.diff(start, 'hours', true),
-    } as ParsedLecture);
-  });
-
-  // format "Listenplan" (2)
-  $('body table.tbl tbody tr[class^="tr"]').each(function() {
-    const cols = $(this).children('td').get()
-      .map(col => $(col).text().replace(/-\s*$/, '').trim());
-    if (cols.length != 15) {
-      // wrong format
-      return
-    }
-
-    const datum = cols[0] || lastDatum;
-    const uhrzeit_0 = cols[2];
-    const uhrzeit_1 = cols[3];
-    const veranstaltung = cols[5].replace(/^I-/, '');
-    const dozent = cols[7];
-    const raum = cols[9];
-    const anmerkung = cols[13];
-
-    lastDatum = datum;
-
-    const dateFormat = 'DD.MM.YYYY H:m'
-    const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');
-    const end = moment.tz(datum + ' ' + uhrzeit_1, dateFormat, 'Europe/Berlin');
-
-    if (start.isoWeek() != filterWeek % 52) {
-      return;
-    }
-
-    events.push({
-      info: anmerkung,
-      room: raum,
-      lecturer: dozent,
-      title: veranstaltung,
-      start: start.toDate(),
-      end: end.toDate(),
-      duration: end.diff(start, 'hours', true),
-    } as ParsedLecture);
-  });
-
-
-  // format "Listenplan"
-  $('body table.tbl tbody tr[class^="tr"]').each(function() {
-    const cols = $(this).children('td').get()
-      .map(col => $(col).text().replace('-', '').trim());
-    if (cols.length != 13) {
-      // wrong format
-      return;
-    }
-
-    const datum = cols[0] || lastDatum;
-    const uhrzeit_0 = cols[2];
-    const uhrzeit_1 = cols[3];
-    const veranstaltung = cols[5].replace(/^I-/, '');
-    const dozent = cols[7];
-    const raum = cols[9];
-    const anmerkung = cols[11];
-
-    lastDatum = datum;
-
-    const dateFormat = 'DD.MM.YYYY H:m'
-    const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');
-    const end = moment.tz(datum + ' ' + uhrzeit_1, dateFormat, 'Europe/Berlin');
-
-    if (start.isoWeek() != filterWeek % 52) {
-      return;
-    }
-
-    events.push({
-      info: anmerkung,
-      room: raum,
-      lecturer: dozent,
-      title: veranstaltung,
+      title: veranstaltung.replace(/^I-/, ''),
       start: start.toDate(),
       end: end.toDate(),
       duration: end.diff(start, 'hours', true),
