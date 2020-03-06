@@ -61,13 +61,6 @@ export default {
       ],
     };
   },
-  computed: {
-    ...mapState({
-      departures: (state) => state.bus.departures,
-      lazyLoad: (state) => state.lazyLoad,
-      isDark: (state) => state.ui.isDark,
-    }),
-  },
   data() {
     return {
       directions: ['exerToFh', 'fhToExer'],
@@ -81,6 +74,13 @@ export default {
       minutesUntilDate: (str) => moment(str).diff(moment(), 'minutes'),
       lineColor: (line) => ['pink', 'purple', 'blue'][parseInt(line) % 4],
     }
+  },
+  computed: {
+    ...mapState({
+      departures: (state) => state.bus.departures,
+      lazyLoad: (state) => state.lazyLoad,
+      isDark: (state) => state.ui.isDark,
+    }),
   },
   mounted() {
     if (this.lazyLoad) {
