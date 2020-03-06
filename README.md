@@ -66,3 +66,4 @@ Environment variables:
   * `SPLUS_CACHE_SECONDS` (backend): timetable memory and header cache duration
   * `NEWS_CACHE_SECONDS` (backend): news memory and header cache duration
   * `MENSA_CACHE_SECONDS` (backend): mensa memory and header cache duration
+  * `PROTECTED_INFORMATION` (frontend): team members for Impressum/Datenschutz
