@@ -51,7 +51,9 @@ export function parseSkedList(html: string, filterWeek: number) {
         anmerkung = cols[15];
         break
       default:
-        return;
+        const msg = 'No suitable parser for sked list plan found!'
+        console.error(msg)
+        throw new Error(msg)
     }
 
     lastDatum = datum;
