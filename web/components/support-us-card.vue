@@ -7,7 +7,8 @@
     </v-card-title>
     <v-card-text class="card-text-padding">
       <p>
-        SplusEins ist ein Freizeitprojekt. Möchtest du uns motivieren? <br />
+        SplusEins ist ein Freizeitprojekt, welches das Ziel hat den Ostfalia Stundenplan (ehemals SPLUS) 
+        sowie den Mensaplan der Hochschule Wolfenbüttel ansprechend darzustellen.<br /><br />Möchtest du uns motivieren?<br />
         Für 2€ bezahlst du uns den Server für einen Monat. Wir nehmen dich und deine Nachricht in die Liste auf.
       </p>
       <b>Unsere Unterstützer</b>
