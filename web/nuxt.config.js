@@ -1,5 +1,6 @@
 import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin';
 import webpack from 'webpack';
+import PROTECTED_INFORMATION from './assets/protected-information.json';
 
 export default {
   mode: 'universal',
@@ -85,6 +86,10 @@ export default {
   ** Axios module configuration
   */
   axios: {
+  },
+
+  env: {
+    team: ('PROTECTED_INFORMATION' in process.env ? JSON.parse(process.env.PROTECTED_INFORMATION) : PROTECTED_INFORMATION).team,
   },
 
   /*

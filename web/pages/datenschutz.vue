@@ -110,7 +110,6 @@
 
 <script>
 import { mapMutations } from 'vuex';
-import PROTECTED_INFORMATION from '~/assets/protected-information.json';
 
 export default {
   name: 'SpluseinsDataPrivacy',
@@ -125,7 +124,7 @@ export default {
   },
   data() {
     return {
-      team: PROTECTED_INFORMATION.team
+      team: process.env.team,
     }
   },
   methods: {
