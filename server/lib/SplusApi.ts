@@ -27,6 +27,10 @@ const cache = CACHE_DISABLE ?
     },
   });
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 /**
  * Fetch sked-timetable from stundenplan.ostfalia.de
  * @param timetable request
@@ -43,15 +47,20 @@ function skedRequest(timetable: TimetableRequest): Promise<string> {
     headers.append('Authorization', 'Basic ' + token);
 
     const url = SKED_BASE + timetable.skedPath;
-    return fetch(url, { headers }).then((res) => {
-      if (!res.ok) {
-          const message = `Sked error for ${timetable.id}-${timetable.week}: ${res.statusText}`;
-          console.error(message);
-          throw new Error(message);
+    let error;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const res = await fetch(url, { headers });
+      if (res.ok) {
+        console.log(`saving lectures for ${key}`)
+        return res.text()
       }
-      console.log(`saving lectures for ${key}`)
-      return res.text()
-    })
+
+      error = `Sked error for ${timetable.id}-${timetable.week}: ${res.statusText} (attempt ${attempt})`;
+      console.error(error);
+      await sleep(100);
+    }
+
+    throw new Error(error);
   }, { ttl: CACHE_SECONDS }) as Promise<string>;
 }
 
