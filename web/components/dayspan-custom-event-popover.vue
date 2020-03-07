@@ -147,6 +147,7 @@ export default {
 }
 
 .overflow-y {
- overflow-y: auto;
+  overflow-y: auto;
+  white-space: normal !important;
 }
 </style>
