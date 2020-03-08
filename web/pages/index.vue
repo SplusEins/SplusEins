@@ -150,6 +150,10 @@ export default {
   head() {
     return {
       title: 'Startseite',
+      meta: [
+        { hid: 'description', name: 'description', content: 'SplusEins – Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.' },
+        { hid: 'og:description', property: 'og:description', content: 'SplusEins – Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.' },
+      ],
     };
   },
   methods: {

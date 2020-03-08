@@ -11,17 +11,7 @@ export default {
   head: {
     titleTemplate: '%s - SplusEins',
     meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel. Schaue Pläne der Ostfalia und Mensa Ostfalia an.`,
-      },
-      {
-        hid: 'og:description',
-        property: 'og:description',
-        template: (title) => `${title} – Stundenplan und Mensaplan für Studenten der Ostfalia Wolfenbüttel. Schaue Pläne der Ostfalia und Mensa Ostfalia an.`,
-      },
-      { hid: 'keywords', name: 'keywords', content: 'Splus1, splus1, Sommersemester 2020, SS20, Ostfalia, Stundenplan, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Informatik, Maschinenbau, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Wahlfächer, Wahlpflichtfächer' },
+      { hid: 'keywords', name: 'keywords', content: 'SplusEins, Splus1, splus1, Sommersemester 2020, SS20, Ostfalia, Stundenplan, Busplan, Bus, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Suderburg, Wolfsburg, Salzgitter, Informatik, Bau, Wasser, Boden, Fahrzeugtechnik, Gesundheitswesen, Verkehr, Sport, Tourismus, Medien, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Wahlfächer, Wahlpflichtfächer' },
       { hid: 'google-site-verification', name: 'google-site-verification', content: 'EBsrsgaLbFe2iWIzVaE77k6bO0BtpcgBVLXm5DJzgUc' }
     ],
   },
