@@ -298,6 +298,213 @@
     "skedPath": "i/Semester/Semester-Liste/M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte)_1_1.%20Sem..html"
   },
   {
+    "id": "informatik-raum-2-006",
+    "label": "006 (Labor)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Labor 2-006.html"
+  },
+  {
+    "id": "informatik-raum-2-026",
+    "label": "026 (Hörsaal)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/2-026.html"
+  },
+  {
+    "id": "informatik-raum-2-027",
+    "label": "027",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar 2-027.html"
+  },
+  {
+    "id": "informatik-raum-2-127",
+    "label": "127 (Hörsaal)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/2-127.html"
+  },
+  {
+    "id": "informatik-raum-2-129",
+    "label": "129 (Poolraum)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar--Poolraum 2-129.html"
+  },
+  {
+    "id": "informatik-raum-2-152",
+    "label": "152",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar-2-152.html"
+  },
+  {
+    "id": "informatik-raum-2-201",
+    "label": "201 (Scale-Up)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/ScaleUp 2-201.html"
+  },
+  {
+    "id": "informatik-raum-2-223",
+    "label": "223 (Hörsaal)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/2-223.html"
+  },
+  {
+    "id": "informatik-raum-2-224",
+    "label": "224",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar 2-224.html"
+  },
+  {
+    "id": "informatik-raum-2-252",
+    "label": "252 (Hörsaal)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/2-252.html"
+  },
+  {
+    "id": "informatik-raum-7",
+    "label": "7",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 7",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/7-_.html"
+  },
+  {
+    "id": "informatik-raum-9-1",
+    "label": "1",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 9",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar 9-1.html"
+  },
+  {
+    "id": "informatik-raum-9-3",
+    "label": "3",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 9",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar 9-3.html"
+  },
+  {
+    "id": "informatik-raum-11-1",
+    "label": "1",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 11",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/11-1.html"
+  },
+  {
+    "id": "informatik-raum-11-4",
+    "label": "4",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 11",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/11-4.html"
+  },
+  {
+    "id": "informatik-raum-aula",
+    "label": "Aula",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Aula.html"
+  },
+  {
+    "id": "informatik-raum-p1",
+    "label": "P1",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P1.html"
+  },
+  {
+    "id": "informatik-raum-p2",
+    "label": "P2",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P2.html"
+  },
+  {
+    "id": "informatik-raum-p3",
+    "label": "P3",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P3.html"
+  },
+  {
+    "id": "informatik-raum-p4",
+    "label": "P4",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P4.html"
+  },
+  {
+    "id": "informatik-raum-p5",
+    "label": "P5",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P5.html"
+  },
+  {
+    "id": "informatik-raum-p6",
+    "label": "P6",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P6.html"
+  },
+  {
+    "id": "informatik-raum-p7",
+    "label": "P7",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P7.html"
+  },
+  {
     "id": "bau-bauing-1",
     "label": "Bauingenieurwesen",
     "faculty": "Bau-Wasser-Boden",
