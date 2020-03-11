@@ -43,7 +43,7 @@
           nuxt
           @click="$track('Calendar', 'sideMenu plan used', 'normal')"
         >
-          {{ semester == 'WPF' ? 'Wahlpflichtfächer' : semester + '. Semester' }}
+          {{ semester == 'WPF' ? 'Wahlpflichtfächer' : !isNaN(Number(semester)) ? semester + '. Semester' : semester }}
         </v-list-tile>
       </template>
     </v-list-group>

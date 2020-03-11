@@ -3,6 +3,8 @@ import * as moment from 'moment-timezone';
 import { ParsedLecture } from '../model/SplusModel';
 import parseTable from './parseTable';
 
+moment.locale('de');
+
 export function parseSkedList(html: string, filterWeek: number) {
   const $ = load(html);
 
@@ -23,7 +25,17 @@ export function parseSkedList(html: string, filterWeek: number) {
       .map(col => $(col).text().replace(/-\s*$/, '').trim());
 
     switch(cols.length) {
-      case 13:  
+      case 11:
+        // Raumplan Informatik - https://stundenplan.ostfalia.de/i/R%c3%a4ume/Raumbelegung-Listenform/2-252.html
+        raum = cols[0];
+        datum = cols[2] || lastDatum;
+        uhrzeit_0 = cols[4];
+        uhrzeit_1 = cols[5];
+        dozent = cols[7];
+        veranstaltung = cols[9];
+        anmerkung = '';
+        break;
+      case 13:
         datum = cols[0] || lastDatum;
         uhrzeit_0 = cols[2];
         uhrzeit_1 = cols[3];
@@ -41,7 +53,7 @@ export function parseSkedList(html: string, filterWeek: number) {
         raum = cols[9];
         anmerkung = cols[13];
         break
-      case 17: 
+      case 17:
         datum = cols[5] || lastDatum;
         uhrzeit_0 = cols[0];
         uhrzeit_1 = cols[1];
@@ -60,11 +72,17 @@ export function parseSkedList(html: string, filterWeek: number) {
 
     lastDatum = datum;
 
-    const dateFormat = 'DD.MM.YYYY H:m'
-    const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');
-    const end = moment.tz(datum + ' ' + uhrzeit_1, dateFormat, 'Europe/Berlin');
+    let start = null;
+    let end = null;
+    for (const format of ['DD.MM.YYYY H:m', 'LLL YYYY H:m']) {
+      start = moment.tz(datum + ' ' + uhrzeit_0, format, 'Europe/Berlin');
+      end = moment.tz(datum + ' ' + uhrzeit_1, format, 'Europe/Berlin');
+      if (start.isValid() && end.isValid()) {
+        break;
+      }
+    }
 
-    if (start.isoWeek() != filterWeek % 52) {
+    if (!start.isValid() || !end.isValid() || start.isoWeek() != filterWeek % 52) {
       return;
     }
 
