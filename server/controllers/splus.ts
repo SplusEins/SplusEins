@@ -83,7 +83,9 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
       semester: Number(timetable.semester)
     };
     const response: Timetable = <Timetable> {
-      name: `${(timetable.degree)} ${timetable.label} - ${timetable.semester}. Semester`,
+      name: timetable.degree == 'Räume' ?
+              `${timetable.semester} ${timetable.label}` :
+              `${(timetable.degree)} ${timetable.label} - ${timetable.semester}. Semester`,
       events: events,
       meta: meta,
     };
