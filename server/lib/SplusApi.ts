@@ -57,7 +57,7 @@ function skedRequest(timetable: TimetableRequest): Promise<string> {
 
       error = `Sked error for ${timetable.id}-${timetable.week}: ${res.statusText} (attempt ${attempt})`;
       console.error(error);
-      await sleep(100);
+      await sleep(50 + Math.random() * 100);
     }
 
     throw new Error(error);
