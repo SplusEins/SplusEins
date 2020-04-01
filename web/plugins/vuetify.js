@@ -21,11 +21,11 @@ Vue.use(Vuetify, {
     customProperties: true,
   },
   theme: {
-    primary: colors.amber.base,
+    primary: colors.blue.darken3,
     accent: colors.lightBlue.base,
     secondary: colors.lightBlue.base,
     info: colors.teal.lighten1,
-    warning: colors.amber.base,
+    warning: colors.blue.darken3,
     error: colors.deepOrange.accent4,
     success: colors.green.accent3,
   },
