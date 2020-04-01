@@ -32,7 +32,7 @@ export default {
   ** Customize the progress-bar color
   */
   loading: {
-    color: '#ffc107', // amber.base
+    color: '#1565C0', // blue.darken3
   },
 
   /*
