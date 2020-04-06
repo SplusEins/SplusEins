@@ -5,11 +5,13 @@ module.exports = {
     logo: '/logo.png',
     sidebar: [
       ['/', 'Start'],
+      '/grundlagen',
       '/konfiguration',
       '/wartung/',
       '/wartung/semesterbeginn',
     ],
     repo: 'spluseins/spluseins',
+    docsDir: 'docs',
     displayAllHeaders: true,
     editLinks: true,
   },
