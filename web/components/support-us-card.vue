@@ -18,6 +18,7 @@
         <li>Florian – 2 Monate "Tolle Arbeit, weiter so!"</li>
         <li>Lysanne – 1 Monat "Fast ganz oben! 🎈"</li>
         <li>Brian – 1 Monat "Macht so weiter! :-)"</li>
+        <li>Nikolai - 0.5 Monate "Danke für SplusEins :)</li>
         <li>Timo</li>
         <li>Fabian</li>
         <li>Jan</li>
