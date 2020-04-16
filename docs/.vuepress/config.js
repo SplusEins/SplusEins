@@ -7,6 +7,7 @@ module.exports = {
       ['/', 'Start'],
       '/grundlagen',
       '/konfiguration',
+      '/server',
       '/wartung/',
       '/wartung/semesterbeginn',
     ],
