@@ -32,7 +32,7 @@ router.options('/', cors());
 /**
  * Request OpenMensa API
  * - first fetch open days
- * - then select first 3 open days
+ * - then select first 6 open days
  * - then fetch plan for selected days
  *
  * @return MensaDayPlan[]
