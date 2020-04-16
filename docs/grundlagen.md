@@ -9,7 +9,7 @@ Die Anwendung wurde nach dem Client-Server Modell entwickelt. Der Client (Fronte
 ## Funktionen
 
 ### Stundenplan
-SplusEins wurde entwickelt als die Hochschule als Stundenplananwendung das System Splus verwendet hat und wurde nach dem Umstieg auf [Sked](https://stundenplan.ostfalia.de/) im Sommersemester 2020 angepasst.
+SplusEins wurde entwickelt, als die Hochschule als Stundenplananwendung das System Splus verwendet hat und wurde nach dem Umstieg auf [Sked](https://stundenplan.ostfalia.de/) im Sommersemester 2020 angepasst.
 
 Das Grundprinizip der Anwendung ist wie folgt: Dem Client liegt eine Liste von verfügbaren Stundenplänen vor. Sobald einer dieser Pläne abgerufen wird, wird eine Anfrage an das Backend gestellt. Dieses verfügt über einen Cache mit konfigurierbarer Caching-Dauer. Sind die benötigten Daten im Cache vorhanden werden diese an den Client zurückgeliefert. Ist das nicht der Fall ruft der Server den angefragten Stundenplan von Sked ab. Von Sked erhält das Backend eine HTML, welche im Anschluss mithilfe eines Parsers nach den relevanten Informationen durchsucht wird. Falls dieser Prozess erfolgreich durchgeführt werden konnte, werden die Daten im Cache gespeichert und dann an den Client versendet.
 
