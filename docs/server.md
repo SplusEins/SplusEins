@@ -8,7 +8,7 @@ Als Spracherweiterung zu JS wurde [Typescript](https://www.typescriptlang.org) g
 
 ## Verzeichnisse und Dateien
 
-  * `/assets`: beinhaltet die `timetables.json`, einer JSON Datei welche alle zur Verfügung stehende Pläne enthält
+  * `/assets`: beinhaltet die `timetables.json`, eine JSON-Datei welche alle zur Verfügung stehende Pläne enthält
   * `/lib`: beinhaltet Implementierung von verschiedenen Tools wie den Parser für die Stundenpläne
   * `/controllers`: beinhaltet die Controller für die einzelnen Endpunkte des Servers
   * `/model`: beinhaltet die Implementierung des Typescript Interfaces und Klassen
