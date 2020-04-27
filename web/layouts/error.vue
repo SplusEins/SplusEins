@@ -65,7 +65,7 @@
               flat
               to="/"
               nuxt
-              color="blue"
+              color="primary"
               @click="$track('Error', 'backToMain', 'error status', error.statusCode)"
             >
               Main Page
