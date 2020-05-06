@@ -10,6 +10,7 @@ module.exports = {
       '/server',
       '/wartung/',
       '/wartung/semesterbeginn',
+	  '/benutzer',
     ],
     repo: 'spluseins/spluseins',
     docsDir: 'docs',
