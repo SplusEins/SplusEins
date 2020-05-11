@@ -100,3 +100,20 @@ Die Endpunkte zum Abfragen der News-Daten befinden sich in der Datei `controller
 
 **Rückgabe:**
   Liefert ein NewsElement-Array (siehe `model/SplusEinsModel.ts`), welches Neuigkeiten der Fakultäten Informatik, Recht und E-Technik sowie den Standorten Wolfenbüttel, Wolfsburg und Suderburg enthält. Die Daten stammen von den jeweiligen Ostfalia-Webseiten.
+
+## Parser
+Der Parser für die Stundenpläne von sked befindet sich im Verzeichnis des Servers unter `/lib/SkedParser.ts`.
+
+In Sked gibt es grundsätzlich zwei verschiedene Arten von Stundenplänen. Zum einen `Listenpläne` (Auflistung der Module) und zum anderen `grafische Pläne` (anschauliche Darstellung).
+Für beide Versionen hat der Parser eine Implementierung da es für manche Studiengänge manchmal nur eine der beiden gibt.
+Sie Funktionen heißen `parseSkedList` und `parseSkedGraphical`. Diese erhalten als Übergabeparameter das HTML der Stundnenplanseite als String und die gewünschte Woche als Zahl.
+Mit Hilfe der Bibliothek [cheerio](https://cheerio.js.org/) kann auf die einzelnen Tags des HTML zugegriffen werden. Sie bildet die Grundlage des Parsers.
+
+In beiden Implementierung wird so der Quelltext der Pläne nach den nötigen Informationen durchsucht.
+Leider sind nicht alle Pläne gleich aufgebaut:
+  * Die Listenpläne haben teilweise eine unterschiedliche Anzahl von Spalten, deshalb gibt es im entsprechenden Parser eine Fallunterscheidung.
+  * Die Texte der Module, welche im grafischen Plan eingetragen sind abhängig von der Fakultät unterschiedlich aufgebaut. So wird als Beispiel manchmal erst der Raum oder erst der Dozent genannt.
+
+Beschäftigt man sich mit dem Parser muss man diese Punkte **zwangsläufig** beachten.
+
+Beide Implementierung des Parser liefern eine Liste vom Interface *ParsedLecture* zurück wie es in `/model/SplusModel.ts` definiert ist.
