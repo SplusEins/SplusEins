@@ -24,11 +24,11 @@ Diese müssen folgende Struktur besitzen:
     "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html"
   }
 ```
-* `id` ist eine selbgewählter, lesbarer Identifier welcher im Pfad einer SplusEins URL enthalten ist z.B. `https://spluseins.de/plan/informatik-1`
+* `id` ist eine selbstgewählter, lesbarer Identifier welcher im Pfad einer SplusEins URL enthalten ist z.B. `https://spluseins.de/plan/informatik-1`
 * `label` ist ein Bezeichner welcher zum Beispiel die Vertiefungsrichtung bzw. Studienrichtung kennzeichnet
 * `faculty` gibt die Fakultät an
 * `degree` gibt den angestrebten Studienabschluss an
-* `semester` gibt überraschenderweise das Semester an
+* `semester` gibt über­ra­schen­der­wei­se das Semester an
 * `raumplan` ist ein Boolean-Wert welcher angibt, ob es sich um einen Raumplan handelt
 * `graphical` ist ein Boolean-Wert welcher angibt, ob es sich um einen `grafischen Plan` handelt (bei `false` handelt es sich um einen `Listenplan`)
 * `skedPath` gibt den Pfad an, über welchen der Plan in der Sked Anwendung abgerufen werden kann (z.B. `http://stundenplan.ostfalia.de/i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html`)

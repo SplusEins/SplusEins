@@ -106,7 +106,7 @@ Der Parser für die Stundenpläne von sked befindet sich im Verzeichnis des Serv
 
 In Sked gibt es grundsätzlich zwei verschiedene Arten von Stundenplänen. Zum einen `Listenpläne` (Auflistung der Module) und zum anderen `grafische Pläne` (anschauliche Darstellung).
 Für beide Versionen hat der Parser eine Implementierung da es für manche Studiengänge manchmal nur eine der beiden gibt.
-Sie Funktionen heißen `parseSkedList` und `parseSkedGraphical`. Diese erhalten als Übergabeparameter das HTML der Stundnenplanseite als String und die gewünschte Woche als Zahl.
+Sie Funktionen heißen `parseSkedList` und `parseSkedGraphical`. Diese erhalten als Übergabeparameter das HTML der Stundenplanseite als String und die gewünschte Woche als Zahl.
 Mit Hilfe der Bibliothek [cheerio](https://cheerio.js.org/) kann auf die einzelnen Tags des HTML zugegriffen werden. Sie bildet die Grundlage des Parsers.
 
 In beiden Implementierung wird so der Quelltext der Pläne nach den nötigen Informationen durchsucht.
