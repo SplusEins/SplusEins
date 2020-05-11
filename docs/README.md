@@ -1,2 +1,4 @@
-Hallo VuePress
+SplusEins Dokumentation
 ===
+
+![Logo](logo.png)

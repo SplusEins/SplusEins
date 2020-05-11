@@ -4,13 +4,11 @@ module.exports = {
   themeConfig: {
     logo: '/logo.png',
     sidebar: [
-      ['/', 'Start'],
       '/grundlagen',
       '/konfiguration',
       '/server',
-      '/wartung/',
-      '/wartung/semesterbeginn',
-	  '/benutzer',
+      '/semesterbeginn',
+	    '/benutzer',
     ],
     repo: 'spluseins/spluseins',
     docsDir: 'docs',
