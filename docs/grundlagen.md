@@ -21,3 +21,8 @@ Auf der Startseite von SplusEins werden News angezeigt. Diese Stammen aus versch
 
 ### Busplan
 SplusEins stellt Nahverkehrsinformationen für die Verbindung zwischen den beiden Standorten in Wolfenbüttel zur Verfügung. Die Daten stammen von der Deutschen Bahn und werden über ein System namens Hafas mithilfe des [Hafas-Client](https://github.com/public-transport/hafas-client) abgerufen. Wie auch beim Stundenplan und Mensaplan fragt das Frontend die Daten vom Backend ab, welches Anfragen an Hafas stellt. Die Anfragen können ebenfalls, sofern aktuelle Daten vorhanden sind, mithilfe eines Caches beantwortet werden.
+
+## Frontend
+
+### Farben
+Die Primärfarbe der Webseite orientiert sich an der Zentralfarbe des Ostfalia [Styleguides](https://www.ostfalia.de/cms/de/huk/.content/documents/OF_styleguide_web.pdf). Diese ist aber für den Gebrauch im Dark/ Light Modus zu dunkel. Deswegen wurde eine Farbe direkt von Vuetify gewählt: `colors.blue.darken3` die der Zentralfarbe sehr ähnelt. Als Sekundärfarbe wurde `colors.amber.base` gewählt. In der Datei `web\plugins\vuetify.js` befinden sich unter `theme` die Einstellungen für die Farben.
