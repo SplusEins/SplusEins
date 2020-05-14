@@ -6,6 +6,7 @@ module.exports = {
     sidebar: [
       '/grundlagen',
       '/konfiguration',
+      '/deployment',
       '/server',
       '/semesterbeginn',
 	    '/benutzer',
