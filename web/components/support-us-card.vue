@@ -13,16 +13,13 @@
       </p>
       <b>Unsere Unterstützer</b>
       <ul>
+        <li>Anonym - 5 Monate "Ich bin der Uwe und ich bin auch dabei"</li>
         <li>Anonym – 3 Monate</li>
         <li>Lea – 2 Monate "Spitzenmäßig"</li>
         <li>Florian – 2 Monate "Tolle Arbeit, weiter so!"</li>
         <li>Lysanne – 1 Monat "Fast ganz oben! 🎈"</li>
         <li>Brian – 1 Monat "Macht so weiter! :-)"</li>
         <li>Nikolai - 0.5 Monate "Danke für SplusEins :)"</li>
-        <li>Timo</li>
-        <li>Fabian</li>
-        <li>Jan</li>
-        <li>Finn</li>
       </ul>
     </v-card-text>
     <v-card-actions>
