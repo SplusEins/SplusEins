@@ -1,0 +1,1713 @@
+[
+  {
+    "id": "informatik-1",
+    "label": "Informatik",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "1",
+    "raumplan": false,
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html"
+  },
+  {
+    "id": "digitech-2",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "1",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Digital Technologies 2. Sem..html"
+  },
+  {
+    "id": "informatik-5",
+    "label": "Informatik",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Informatik 5. Sem..html"
+  },
+  {
+    "id": "informatik-2-ce",
+    "label": "Computer Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. CE 2. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-3-ce",
+    "label": "Computer Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. CE 3. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-4-ce",
+    "label": "Computer Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. 4. Sem. CE (PO18).html"
+  },
+  {
+    "id": "informatik-2-ie-13",
+    "label": "Information Engineering (PO13)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 2. Sem. (PO13).html"
+  },
+  {
+    "id": "informatik-3-ie-13",
+    "label": "Information Engineering (PO13)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 3. Sem. (PO13).html"
+  },
+  {
+    "id": "informatik-4-ie-13",
+    "label": "Information Engineering (PO13)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 4. Sem. (PO13).html"
+  },
+  {
+    "id": "informatik-2-ie-18",
+    "label": "Information Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 2. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-3-ie-18",
+    "label": "Information Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 3. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-4-ie-18",
+    "label": "Information Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. IE 4. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-2-mi",
+    "label": "Medieninformatik (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. MEI 2. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-3-mi",
+    "label": "Medieninformatik (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. MEI 3. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-4-mi",
+    "label": "Medieninformatik (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. MEI 4. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-2-soe",
+    "label": "Software Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SOE 2. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-3-soe",
+    "label": "Software Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SOE 3. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-4-soe",
+    "label": "Software Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SOE 4. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-2-sye-13",
+    "label": "System Engineering (PO13)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 2. Sem. (PO13).html"
+  },
+  {
+    "id": "informatik-3-sye-13",
+    "label": "System Engineering (PO13)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 3. Sem. (PO13).html"
+  },
+  {
+    "id": "informatik-4-sye-13",
+    "label": "System Engineering (PO13)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 4. Sem. (PO13).html"
+  },
+  {
+    "id": "informatik-2-sye-18",
+    "label": "System Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 2. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-3-sye-18",
+    "label": "System Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 3. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-4-sye-18",
+    "label": "System Engineering (PO18)",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. SYE 4. Sem. (PO18).html"
+  },
+  {
+    "id": "informatik-1-winf",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "1",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI 1. Sem..html"
+  },
+  {
+    "id": "informatik-2-winf",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI 2. Sem..html"
+  },
+  {
+    "id": "informatik-3-winf",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI 3. Sem..html"
+  },
+  {
+    "id": "informatik-4-winf",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI_4_4. Sem..html"
+  },
+  {
+    "id": "informatik-5-winf",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/I-B.Sc. WI 5. Sem..html"
+  },
+  {
+    "id": "informatik-itmanagement-4",
+    "label": "IT-Management",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/IT-Management_4_4. Sem..html"
+  },
+  {
+    "id": "informatik-uwpf",
+    "label": "Überfachliche Wahlpflichtfächer",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "WPF",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/Alle UWPF_1_1. Sem..html"
+  },
+  {
+    "id": "informatik-wpf",
+    "label": "Wahlpflichtfächer",
+    "faculty": "Informatik",
+    "degree": "Bachelor of Science",
+    "semester": "WPF",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/Alle WPF_1_1. Sem..html"
+  },
+  {
+    "id": "informatik-master",
+    "label": "Informatik",
+    "faculty": "Informatik",
+    "degree": "Master of Science",
+    "semester": "Alle",
+    "graphical": false,
+    "skedPath": "i/Semester/Semester-Liste/M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte)_1_1.%20Sem..html"
+  },
+  {
+    "id": "informatik-raum-2-006",
+    "label": "006 (Labor)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Labor 2-006.html"
+  },
+  {
+    "id": "informatik-raum-2-026",
+    "label": "026 (Hörsaal)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/2-026.html"
+  },
+  {
+    "id": "informatik-raum-2-027",
+    "label": "027",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar 2-027.html"
+  },
+  {
+    "id": "informatik-raum-2-127",
+    "label": "127 (Hörsaal)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/2-127.html"
+  },
+  {
+    "id": "informatik-raum-2-129",
+    "label": "129 (Poolraum)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar--Poolraum 2-129.html"
+  },
+  {
+    "id": "informatik-raum-2-152",
+    "label": "152",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar 2-152.html"
+  },
+  {
+    "id": "informatik-raum-2-201",
+    "label": "201 (Scale-Up)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/ScaleUp 2-201.html"
+  },
+  {
+    "id": "informatik-raum-2-223",
+    "label": "223 (Hörsaal)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/2-223.html"
+  },
+  {
+    "id": "informatik-raum-2-224",
+    "label": "224",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar 2-224.html"
+  },
+  {
+    "id": "informatik-raum-2-252",
+    "label": "252 (Hörsaal)",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 2",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/2-252.html"
+  },
+  {
+    "id": "informatik-raum-7",
+    "label": "7",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 7",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/7-_.html"
+  },
+  {
+    "id": "informatik-raum-9-1",
+    "label": "1",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 9",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar 9-1.html"
+  },
+  {
+    "id": "informatik-raum-9-3",
+    "label": "3",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 9",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Seminar 9-3.html"
+  },
+  {
+    "id": "informatik-raum-11-1",
+    "label": "1",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 11",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/11-1.html"
+  },
+  {
+    "id": "informatik-raum-11-4",
+    "label": "4",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Exer 11",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/11-4.html"
+  },
+  {
+    "id": "informatik-raum-aula",
+    "label": "Aula",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/Aula.html"
+  },
+  {
+    "id": "informatik-raum-p1",
+    "label": "P1",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P1.html"
+  },
+  {
+    "id": "informatik-raum-p2",
+    "label": "P2",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P2.html"
+  },
+  {
+    "id": "informatik-raum-p3",
+    "label": "P3",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P3.html"
+  },
+  {
+    "id": "informatik-raum-p4",
+    "label": "P4",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P4.html"
+  },
+  {
+    "id": "informatik-raum-p5",
+    "label": "P5",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P5.html"
+  },
+  {
+    "id": "informatik-raum-p6",
+    "label": "P6",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P6.html"
+  },
+  {
+    "id": "informatik-raum-p7",
+    "label": "P7",
+    "faculty": "Informatik",
+    "degree": "Räume",
+    "semester": "Salzdahlumer Straße",
+    "graphical": false,
+    "skedPath": "i/R%c3%a4ume/Raumbelegung-Listenform/P7.html"
+  },
+  {
+    "id": "bau-bauing-1",
+    "label": "Bauingenieurwesen",
+    "faculty": "Bau-Wasser-Boden",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "b/wp/ss20_b_stdgrp_bau_1.html"
+  },
+  {
+    "id": "elektro-eit-1",
+    "label": "EIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT SS 2020_1_1. Sem..html"
+  },
+  {
+    "id": "elektro-eitmp-1",
+    "label": "EIT-MathePlus",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-GS SS 2020_1_1. Sem. EIT.html"
+  },
+  {
+    "id": "elektro-eitweit-1",
+    "label": "EIT-WEIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT SS 2020_1_1. Sem..html"
+  },
+  {
+    "id": "elektro-eitweitmp-1",
+    "label": "EIT-WEIT-MathePlus",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT SS 2020_1_1. Sem. WEIT.html"
+  },
+  {
+    "id": "elektro-eit-2",
+    "label": "EIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-GS WS 2019-20_2_2. Sem..html"
+  },
+  {
+    "id": "elektro-eitip-2",
+    "label": "EIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-GS WS 2019-20_2_2. Sem. EIT.html"
+  },
+  {
+    "id": "elektro-weit-2",
+    "label": "WEIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT WS 2019-20_2_2. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-2",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT WS 2019-20_2_2. Sem. WEIT.html"
+  },
+  {
+    "id": "elektro-eitip-3",
+    "label": "EIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-GS SS 2019_3_3. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-3",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT SS 2019_3_3. Sem..html"
+  },
+  {
+    "id": "elektro-eitipat-4",
+    "label": "EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-AT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-eitipat-5",
+    "label": "EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-AT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-eitipat-6",
+    "label": "EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-AT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-eitipee-4",
+    "label": "EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-EE WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-eitipee-5",
+    "label": "EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-EE SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-eitipee-6",
+    "label": "EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-EE WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-eitipit-4",
+    "label": "EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-IT WS 2018-19_4_4. Sem..htmll"
+  },
+  {
+    "id": "elektro-eitipit-5",
+    "label": "EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-IT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-eitipit-6",
+    "label": "EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-EE WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-4",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-5",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-weitip-6",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipat-4",
+    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-AT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipat-5",
+    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-AT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipat-6",
+    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-AT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipee-4",
+    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-EE WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipee-5",
+    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-AT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipee-6",
+    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-EE WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipit-4",
+    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-IT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipit-5",
+    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-IT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-block-eitipit-6",
+    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT-IT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "elektro-block-weitip-4",
+    "label": "Blockveranstaltungen-WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-WEIT WS 2018-19_4_4. Sem..html"
+  },
+  {
+    "id": "elektro-block-weitip-5",
+    "label": "Blockveranstaltungen-WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-WEIT SS 2018_5_5. Sem..html"
+  },
+  {
+    "id": "elektro-block-weitip-6",
+    "label": "Blockveranstaltungen-WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-WEIT WS 2017-18_6_6. Sem..html"
+  },
+  {
+    "id": "fahrzeug-mechinf-1",
+    "label": "Fahrzeugmechatronik und -informatik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "f/wp/1. Semester Fahrzeugmechatronik und -informatik SoSe 20.html"
+  },
+  {
+    "id": "fahrzeug-techlift-1",
+    "label": "Fahrzeugtechnik LIFT",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "f/wp/1. Semester FT LIFT SoSe 20.html"
+  },
+  {
+    "id": "fahrzeug-tech-1",
+    "label": "Fahrzeugtechnik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "f/wp/1. Semester Fahrzeugtechnik SoSe 20.html"
+  },
+  {
+    "id": "fahrzeug-mechinf-2",
+    "label": "Fahrzeugmechatronik und -informatik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "f/wp/FMI Kohorte WS 19-20.html"
+  },
+  {
+    "id": "fahrzeug-tech-2",
+    "label": "Fahrzeugtechnik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "f/wp/WS 19-20 Fzt..html"
+  },
+  {
+    "id": "fahrzeug-malift-2",
+    "label": "Mathe-Lift",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "f/wp/2. Semester FT-Lift WS 19-20.html"
+  },
+  {
+    "id": "fahrzeug-aggrfahr-3",
+    "label": "Aggregate- und Fahrwerkentwicklung",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester AGF SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-aufbau-3",
+    "label": "Aufbauentwicklung",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester ABE SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-infelek-3",
+    "label": "Informatik und Elektronik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester IuE SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-mecha-3",
+    "label": "Mechatronik",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester MET SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-produmw-3",
+    "label": "Produktion und Umwelt",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester PU SoSe 19.html"
+  },
+  {
+    "id": "fahrzeug-servproz-3",
+    "label": "Servicetechnik und Prozesse",
+    "faculty": "Fahrzeugtechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "f/wp/3. Semester STP SoSe 19.html"
+  },
+  {
+    "id": "gesund-mag-k-2",
+    "label": "MAG Gruppe K",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/MAG_2_MAG-K.html"
+  },
+  {
+    "id": "gesund-mag-l-2",
+    "label": "MAG Gruppe L",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/MAG_2_MAG-L.html"
+  },
+  {
+    "id": "gesund-mag-m-2",
+    "label": "MAG Gruppe M",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/MAG_2_MAG-M.html"
+  },
+  {
+    "id": "gesund-mag-n-2",
+    "label": "MAG Gruppe N",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/MAG_2_MAG-N.html"
+  },
+  {
+    "id": "gesund-mig-kh-4",
+    "label": "MIG Schwerpunkt KH",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/MIG_4_4. Sem._KH.html"
+  },
+  {
+    "id": "gesund-mig-kv-4",
+    "label": "MIG Schwerpunkt KV",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/MIG_4_4. Sem._KV.html"
+  },
+  {
+    "id": "gesund-mig-ph-4",
+    "label": "MIG Schwerpunkt PH",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/MIG_4_4. Sem._PH.html"
+  },
+  {
+    "id": "gesund-mig-wpf",
+    "label": "MIG Wahlpflichtfächer",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Arts",
+    "semester": "WPF",
+    "graphical": true,
+    "skedPath": "g/wp/WPF_4_4. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-1",
+    "label": "APP",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "g/wp/APP_1_1. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-4",
+    "label": "APB",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/APB_4_4. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-3",
+    "label": "APIP",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "g/wp/APIP_3_3. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-5",
+    "label": "APIP",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "g/wp/APIP_5_5. Sem.html"
+  },
+  {
+    "id": "gesund-angpfl-wpf",
+    "label": "Wahlpflichtfächer APB",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "WPF",
+    "graphical": true,
+    "skedPath": "g/wp/WPF APB_6_6. Sem.html"
+  },
+  {
+    "id": "gesund-bmp-1",
+    "label": "BMP",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "g/wp/BMP_1_1. Sem.html"
+  },
+  {
+    "id": "gesund-bmr-1",
+    "label": "BMR",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "g/wp/BMR_1_1. Sem.html"
+  },
+  {
+    "id": "gesund-pm-b-4",
+    "label": "PM Studienprofil B",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/PM_4_4. Sem.html"
+  },
+  {
+    "id": "gesund-pm-m-4",
+    "label": "PM Studienprofil M",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "g/wp/PM_4_4. Sem._SP-M.html"
+  },
+  {
+    "id": "gesund-pm-b-6",
+    "label": "PM Studienprofil B",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "g/wp/PM_6_6. Sem._SP-B.html"
+  },
+  {
+    "id": "gesund-pm-m-6",
+    "label": "PM Studienprofil M",
+    "faculty": "Gesundheitswesen",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "g/wp/PM_6_6. Sem._SP-M.html"
+  },
+  {
+    "id": "gesund-ivg-2",
+    "label": "IVG",
+    "faculty": "Gesundheitswesen",
+    "degree": "Master of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "g/wp/IVG_2_2. Sem.html"
+  },
+  {
+    "id": "recht-rpp-1",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_1_1. Sem..html"
+  },
+  {
+    "id": "recht-rpp-2",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_2_2. Sem..html"
+  },
+  {
+    "id": "recht-rpp-3",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_3_3. Sem..html"
+  },
+  {
+    "id": "recht-rpp-4",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_4_4. Sem..html"
+  },
+  {
+    "id": "recht-rpp-5",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_5_5. Sem..html"
+  },
+  {
+    "id": "recht-rpp-6",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-RPP_6_6. Sem..html"
+  },
+  {
+    "id": "recht-wr-1",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_1_1. Sem..html"
+  },
+  {
+    "id": "recht-wr-2",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_2_2. Sem..html"
+  },
+  {
+    "id": "recht-wr-3",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_3_3. Sem..html"
+  },
+  {
+    "id": "recht-wr-4",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_4_4. Sem..html"
+  },
+  {
+    "id": "recht-wr-5",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_5_5. Sem..html"
+  },
+  {
+    "id": "recht-wr-6",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WR_6_6. Sem..html"
+  },
+  {
+    "id": "recht-wpf",
+    "label": "Wahlpflichtfächer",
+    "faculty": "Recht",
+    "degree": "Bachelor of Laws",
+    "semester": "WPF",
+    "graphical": true,
+    "skedPath": "r/studentenset/R-WPF-WF-Tutorien_1_1. Sem..html"
+  },
+  {
+    "id": "sozi-4",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_4_4. Sem.html"
+  },
+  {
+    "id": "sozi-5",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_5_5. Sem.html"
+  },
+  {
+    "id": "sozi-6",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_6_6. Sem.html"
+  },
+  {
+    "id": "sozi-1",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "degree": "Bachelor of Arts",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "s/wp/Berufsanerkennungsjahr_1_1. Sem.html"
+  },
+  {
+    "id": "vstm-mpm-2",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_pvm_2.html"
+  },
+  {
+    "id": "vstm-mpm-4",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_pvm_4.html"
+  },
+  {
+    "id": "vstm-mpm-6",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_pvm_6.html"
+  },
+  {
+    "id": "vstm-tlm-2",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tlm_2.html"
+  },
+  {
+    "id": "vstm-tlm-4",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tlm_4.html"
+  },
+  {
+    "id": "vstm-tlm-6",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tlm_6.html"
+  },
+  {
+    "id": "vstm-spm-2",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_spm_2.html"
+  },
+  {
+    "id": "vstm-spm-4",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_spm_4.html"
+  },
+  {
+    "id": "vstm-srm-2",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_srm_2.html"
+  },
+  {
+    "id": "vstm-srm-4",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_srm_4.html"
+  },
+  {
+    "id": "vstm-tm-2",
+    "label": "Tourismusmangement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tm_2.html"
+  },
+  {
+    "id": "vstm-tm-4",
+    "label": "Tourismusmangement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tm_4.html"
+  },
+  {
+    "id": "vstm-mdba-2",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_md_2.html"
+  },
+  {
+    "id": "vstm-mdba-4",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_md_4.html"
+  },
+  {
+    "id": "vstm-mk-2",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mk_2.html"
+  },
+  {
+    "id": "vstm-mk-4",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mk_4.html"
+  },
+  {
+    "id": "vstm-mm-2",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mm_2.html"
+  },
+  {
+    "id": "vstm-mm-4",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mm_4.html"
+  },
+  {
+    "id": "vstm-lip-2",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_2.html"
+  },
+  {
+    "id": "vstm-lip-6",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_4.html"
+  },
+  {
+    "id": "vstm-lip-8",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "8",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_8.html"
+  },
+  {
+    "id": "vstm-lim-2",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_2.html"
+  },
+  {
+    "id": "vstm-lim-4",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_4.html"
+  },
+  {
+    "id": "vstm-lim-6",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_6.html"
+  },
+  {
+    "id": "vstm-wmv-2",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wiv_2.html"
+  },
+  {
+    "id": "vstm-wmv-4",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wiv_4.html"
+  },
+  {
+    "id": "vstm-wmv-6",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Bachelor of Science",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wiv_6.html"
+  },
+  {
+    "id": "vstm-mvl-1",
+    "label": "Verkehr und Logistik",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_mvl_1.html"
+  },
+  {
+    "id": "vstm-fdu-2",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_2.html"
+  },
+  {
+    "id": "vstm-fdu-4",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_4.html"
+  },
+  {
+    "id": "vstm-mkm-2",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_2.html"
+  },
+  {
+    "id": "vstm-mkm-4",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "degree": "Master of Arts",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_4.html"
+  },
+  {
+    "id": "versorgung-wing-e-1",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_SoSe 20_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-2",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_2019_WS_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-4",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-e-6",
+    "label": "Wirtschaftsingenieur Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Energie_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-1",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2020_SoSe_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-2",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-4",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-wing-u-6",
+    "label": "Wirtschaftsingenieur Umwelt",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-1",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2020_SoSe_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-2",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2019_WS_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-4",
+    "label": "Energie- und Gebäudetechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-6-hkrg",
+    "label": "Energie- und Gebäudetechnik - HKRG",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2017_WS_6_6. Sem..html"
+  },
+  {
+    "id": "versorgung-egt-6-retew",
+    "label": "Energie- und Gebäudetechnik - RETEW",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/egt/EGT_2017_WS_6_EGT 6. Sem. - HKRG_Kopie.html"
+  },
+  {
+    "id": "versorgung-dt-energie-2",
+    "label": "Digital Technologies Energie",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/dt/Digital Technologies (DT Energie)_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-1",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2020_SoSe_1_1. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-2",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2019_WS_2_2. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-4",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2018_WS_4_4. Sem..html"
+  },
+  {
+    "id": "versorgung-bee-6",
+    "label": "Bio- und Umwelttechnik",
+    "faculty": "Versorgungstechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "v/stundenplan/bee/BEE_2017_WS_6_6. Sem..html"
+  }
+]
