@@ -45,6 +45,14 @@ export default ({ store }) => {
           value.splus.subscribedTimetable = {};
           value.version = 5;
         }
+
+        //version 6: new semester
+        if (value.version < 6) {
+          value.splus.customSchedules = {};
+          value.splus.favoriteSchedules = [];
+          value.splus.subscribedTimetable = {};
+          value.version = 6;
+        }
       }
 
       return {
