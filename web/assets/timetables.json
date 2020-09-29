@@ -269,5 +269,293 @@
     "semester": "Alle",
     "graphical": false,
     "skedPath": "/i/Semester/Semester-Liste/M.Sc. Informatik (Alle Sem.+Schwerpunkte).html"
+  },
+  {
+    "id": "elektro-eit-1",
+    "label": "EIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT-GS-Sem1.html"
+  },
+  {
+    "id": "elektro-eitip-1",
+    "label": "EIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-EITiP-GS-Sem1.html"
+  },
+  {
+    "id": "elektro-eitweit-1",
+    "label": "WEIT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT-Sem1.html"
+  },
+  {
+    "id": "elektro-weitip-1",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "1",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEITiP-Sem1.html"
+  },
+  {
+    "id": "elektro-eitip-2",
+    "label": "EIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-GS-Sem2.html"
+  },
+  {
+    "id": "elektro-weitip-2",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "2",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT(iP)-Sem2.html"
+  },
+  {
+    "id": "elektro-eitip-3",
+    "label": "EIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-GS-Sem3.html"
+  },
+  {
+    "id": "elektro-weitip-3",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "3",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT(iP)-Sem3.html"
+  },
+  {
+    "id": "elektro-eitipat-4",
+    "label": "EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-AT-Sem4.html"
+  },
+  {
+    "id": "elektro-eitipat-5",
+    "label": "EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-AT-Sem5.html"
+  },
+  {
+    "id": "elektro-eitipat-6",
+    "label": "EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-AT-Sem6.html"
+  },
+  {
+    "id": "elektro-eitipee-4",
+    "label": "EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-EE-Sem4.html"
+  },
+  {
+    "id": "elektro-eitipee-5",
+    "label": "EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-EE-Sem5.html"
+  },
+  {
+    "id": "elektro-eitipee-6",
+    "label": "EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-EE-Sem6.html"
+  },
+  {
+    "id": "elektro-eitipit-4",
+    "label": "EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-IT-Sem4.html"
+  },
+  {
+    "id": "elektro-eitipit-5",
+    "label": "EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-IT-Sem5.html"
+  },
+  {
+    "id": "elektro-eitipit-6",
+    "label": "EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-EIT(iP)-IT-Sem6.html"
+  },
+  {
+    "id": "elektro-weitip-4",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT(iP)-Sem4.html"
+  },
+  {
+    "id": "elektro-weitip-5",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT(iP)-Sem5.html"
+  },
+  {
+    "id": "elektro-weitip-6",
+    "label": "WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": true,
+    "skedPath": "e/semester/E-WEIT(iP)-Sem6.html"
+  },
+  {
+    "id": "elektro-block-eitipat-4",
+    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT(iP)-AT-Sem4.html"
+  },
+  {
+    "id": "elektro-block-eitipat-5",
+    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT(iP)-AT-Sem5.html"
+  },
+  {
+    "id": "elektro-block-eitipat-6",
+    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT(iP)-AT-Sem6.html"
+  },
+  {
+    "id": "elektro-block-eitipee-4",
+    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT(iP)-EE-Sem4.html"
+  },
+  {
+    "id": "elektro-block-eitipee-5",
+    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT(iP)-EE-Sem5.html"
+  },
+  {
+    "id": "elektro-block-eitipee-6",
+    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT(iP)-EE-Sem6.html"
+  },
+  {
+    "id": "elektro-block-eitipit-4",
+    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT(iP)-IT-Sem4.html"
+  },
+  {
+    "id": "elektro-block-eitipit-5",
+    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT(iP)-IT-Sem5.html"
+  },
+  {
+    "id": "elektro-block-eitipit-6",
+    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-EIT(iP)-IT-Sem6.html"
+  },
+  {
+    "id": "elektro-block-weitip-4",
+    "label": "Blockveranstaltungen-WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "4",
+    "graphical": false,
+    "skedPath": "e/block/E-WEIT(iP)-Sem4.html"
+  },
+  {
+    "id": "elektro-block-weitip-5",
+    "label": "Blockveranstaltungen-WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "5",
+    "graphical": false,
+    "skedPath": "e/block/E-WEIT(iP)-Sem5.html"
+  },
+  {
+    "id": "elektro-block-weitip-6",
+    "label": "Blockveranstaltungen-WEIT-iP",
+    "faculty": "Elektrotechnik",
+    "degree": "Bachelor of Engineering",
+    "semester": "6",
+    "graphical": false,
+    "skedPath": "e/block/E-WEIT(iP)-Sem6.html"
   }
 ]
