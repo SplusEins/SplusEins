@@ -87,22 +87,11 @@ async function facultyNewsRequest(faculty: String) : Promise<NewsElement[]> {
   } else {
     url = 'https://www.ostfalia.de/cms/de/campus/' + faculty;
   }
+  // Faculty E hosts their news on a subpage
+  if (faculty == "e") url += '/studium'
 
   const response = await fetch(url).then((res) => res.text());
   const $ = cheerio.load(response);
-
-  if (faculty == 'e') {
-    return $('article').eq(1).find('.ostfalia-content div').map(function(i, paragraph) {
-      const p = $('p', this).last();
-      const text = p.text();
-      return <NewsElement> {
-        title: text.substring(text.indexOf(':') + 1,
-          text.indexOf('mehr')).trim(),
-        link: 'https://www.ostfalia.de' + $('a', p).attr('href'),
-        text: '',
-      }
-    }).get();
-  }
 
   if (faculty == 'i') {
     return $('article .ostfalia-content table tbody td').map(function(i, td) {
