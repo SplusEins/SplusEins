@@ -112,9 +112,13 @@ async function facultyNewsRequest(faculty: String) : Promise<NewsElement[]> {
 
   return $('article.news-campus').map(function(i, article) {
     return <NewsElement> {
-      title: $('a', this).text().trim(),
-      link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
-      text: $('p', this).last().text().trim(),
+      // Title is the description of the first link
+      title: $('a', this).first().text().trim(),
+      // Convert relative link into absolute
+      link: 'https://www.ostfalia.de' + $('a', this).first().attr('href'),
+      // Get last paragraph that is not empty
+      text: $('p', this).filter(function (i, el) { return $(this).text() != "" }).last().text().trim(),
+      // Convert date string (like "21.09.2020") into Date object
       date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate(),
     };
   }).get();
