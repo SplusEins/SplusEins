@@ -13,10 +13,10 @@
       </p>
       <b>Unsere Unterstützer</b>
       <ul>
+        <li>Florian – 7 Monate "Tolle Arbeit, weiter so!"</li>
         <li>Anonym – 5 Monate "Ich bin der Uwe und ich bin auch dabei"</li>
         <li>Anonym – 3 Monate</li>
         <li>Lea – 2 Monate "Spitzenmäßig"</li>
-        <li>Florian – 2 Monate "Tolle Arbeit, weiter so!"</li>
         <li>Lysanne – 1 Monat "Fast ganz oben! 🎈"</li>
         <li>Brian – 1 Monat "Macht so weiter! :-)"</li>
         <li>Nikolai – 0.5 Monate "Danke für SplusEins :)"</li>
