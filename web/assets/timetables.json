@@ -281,7 +281,7 @@
   },
   {
     "id": "elektro-eitip-1",
-    "label": "EIT-iP",
+    "label": "EITiP",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "1",
@@ -299,7 +299,7 @@
   },
   {
     "id": "elektro-weitip-1",
-    "label": "WEIT-iP",
+    "label": "WEITiP",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "1",
@@ -308,7 +308,7 @@
   },
   {
     "id": "elektro-eitip-2",
-    "label": "EIT-iP",
+    "label": "EIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "2",
@@ -317,7 +317,7 @@
   },
   {
     "id": "elektro-weitip-2",
-    "label": "WEIT-iP",
+    "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "2",
@@ -326,7 +326,7 @@
   },
   {
     "id": "elektro-eitip-3",
-    "label": "EIT-iP",
+    "label": "EIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "3",
@@ -335,7 +335,7 @@
   },
   {
     "id": "elektro-weitip-3",
-    "label": "WEIT-iP",
+    "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "3",
@@ -344,7 +344,7 @@
   },
   {
     "id": "elektro-eitipat-4",
-    "label": "EIT-iP-AT",
+    "label": "EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "4",
@@ -353,7 +353,7 @@
   },
   {
     "id": "elektro-eitipat-5",
-    "label": "EIT-iP-AT",
+    "label": "EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "5",
@@ -362,7 +362,7 @@
   },
   {
     "id": "elektro-eitipat-6",
-    "label": "EIT-iP-AT",
+    "label": "EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "6",
@@ -371,7 +371,7 @@
   },
   {
     "id": "elektro-eitipee-4",
-    "label": "EIT-iP-EE",
+    "label": "EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "4",
@@ -380,7 +380,7 @@
   },
   {
     "id": "elektro-eitipee-5",
-    "label": "EIT-iP-EE",
+    "label": "EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "5",
@@ -389,7 +389,7 @@
   },
   {
     "id": "elektro-eitipee-6",
-    "label": "EIT-iP-EE",
+    "label": "EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "6",
@@ -398,7 +398,7 @@
   },
   {
     "id": "elektro-eitipit-4",
-    "label": "EIT-iP-IT",
+    "label": "EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "4",
@@ -407,7 +407,7 @@
   },
   {
     "id": "elektro-eitipit-5",
-    "label": "EIT-iP-IT",
+    "label": "EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "5",
@@ -416,7 +416,7 @@
   },
   {
     "id": "elektro-eitipit-6",
-    "label": "EIT-iP-IT",
+    "label": "EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "6",
@@ -425,7 +425,7 @@
   },
   {
     "id": "elektro-weitip-4",
-    "label": "WEIT-iP",
+    "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "4",
@@ -434,7 +434,7 @@
   },
   {
     "id": "elektro-weitip-5",
-    "label": "WEIT-iP",
+    "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "5",
@@ -443,7 +443,7 @@
   },
   {
     "id": "elektro-weitip-6",
-    "label": "WEIT-iP",
+    "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "6",
@@ -452,7 +452,7 @@
   },
   {
     "id": "elektro-block-eitipat-4",
-    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "label": "Blockveranstaltungen-EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "4",
@@ -461,7 +461,7 @@
   },
   {
     "id": "elektro-block-eitipat-5",
-    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "label": "Blockveranstaltungen-EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "5",
@@ -470,7 +470,7 @@
   },
   {
     "id": "elektro-block-eitipat-6",
-    "label": "Blockveranstaltungen-EIT-iP-AT",
+    "label": "Blockveranstaltungen-EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "6",
@@ -479,7 +479,7 @@
   },
   {
     "id": "elektro-block-eitipee-4",
-    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "label": "Blockveranstaltungen-EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "4",
@@ -488,7 +488,7 @@
   },
   {
     "id": "elektro-block-eitipee-5",
-    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "label": "Blockveranstaltungen-EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "5",
@@ -497,7 +497,7 @@
   },
   {
     "id": "elektro-block-eitipee-6",
-    "label": "Blockveranstaltungen-EIT-iP-EE",
+    "label": "Blockveranstaltungen-EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "6",
@@ -506,7 +506,7 @@
   },
   {
     "id": "elektro-block-eitipit-4",
-    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "label": "Blockveranstaltungen-EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "4",
@@ -515,7 +515,7 @@
   },
   {
     "id": "elektro-block-eitipit-5",
-    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "label": "Blockveranstaltungen-EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "5",
@@ -524,7 +524,7 @@
   },
   {
     "id": "elektro-block-eitipit-6",
-    "label": "Blockveranstaltungen-EIT-iP-IT",
+    "label": "Blockveranstaltungen-EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "6",
@@ -533,7 +533,7 @@
   },
   {
     "id": "elektro-block-weitip-4",
-    "label": "Blockveranstaltungen-WEIT-iP",
+    "label": "Blockveranstaltungen-WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "4",
@@ -542,7 +542,7 @@
   },
   {
     "id": "elektro-block-weitip-5",
-    "label": "Blockveranstaltungen-WEIT-iP",
+    "label": "Blockveranstaltungen-WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "5",
@@ -551,7 +551,7 @@
   },
   {
     "id": "elektro-block-weitip-6",
-    "label": "Blockveranstaltungen-WEIT-iP",
+    "label": "Blockveranstaltungen-WEIT(iP)",
     "faculty": "Elektrotechnik",
     "degree": "Bachelor of Engineering",
     "semester": "6",
