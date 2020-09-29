@@ -17,6 +17,7 @@
 
         <v-card-text class="text-padding">
           <p>
+            Elektrotechnik-Pläne: gepflegt von <a href="https://github.com/l3d00m">Thomas</a><br>
             Ein inoffizieller Stundenplan von Studenten für Studenten der Ostfalia-Hochschule.<br>
             Gebaut mit <a href="https://nuxtjs.org">Nuxt</a>, <a href="https://vuetifyjs.com">Vuetify</a>, <a href="https://github.com/ClickerMonkey/dayspan-vuetify">Dayspan-Vuetify</a>, Icons von <a href="https://materialdesignicons.com/">Material Design Icons</a> und der Schriftart <a href="https://fonts.google.com/specimen/Roboto">Roboto</a>.<br>
             Das <a href="https://github.com/SplusEins/SplusEins">Repository</a> sowie das <a href="https://trello.com/b/8L18rOVd">Trello Board</a> sind öffentlich einsehbar.
