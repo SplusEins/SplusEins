@@ -13,13 +13,13 @@
       </p>
       <b>Unsere Unterstützer</b>
       <ul>
-        <li>Florian – 7 Monate "Tolle Arbeit, weiter so!"</li>
         <li>Anonym - 6 Monate "Überboten, erster :)"</li>
         <li>Kevin - 5 Monate "Nices Ding"</li>
+        <li>Florian H. – 5 Monate "✌️"</li>
         <li>Anonym – 5 Monate "Ich bin der Uwe und ich bin auch dabei"</li>
         <li>Paul - 2.5 Monate</li>
-        <li>Florian – 2 Monate "Tolle Arbeit, weiter so!"</li>
         <li>Lea – 2 Monate "Spitzenmäßig"</li>
+        <li>Florian B. – 2 Monate "Tolle Arbeit, weiter so!"</li>
         <li>Philipp - 1 Monat</li>
         <li>Lysanne – 1 Monat "Fast ganz oben! 🎈"</li>
         <li>Brian – 1 Monat "Macht so weiter! :-)"</li>
