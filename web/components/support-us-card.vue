@@ -35,14 +35,6 @@
         <span class="mr-3">💸</span>
         senden
       </v-btn>
-      <v-btn
-        flat
-        color="primary"
-        href="javascript:location='mailto:\u0074\u0065\u0061\u006d\u0040\u0073\u0070\u006c\u0075\u0073\u0065\u0069\u006e\u0073\u002e\u0064\u0065';void 0"
-      >
-        <span class="mr-3">❤️</span>
-        senden (Mail)
-      </v-btn>
     </v-card-actions>
 
     <v-bottom-sheet
@@ -64,20 +56,6 @@
             </v-avatar>
           </v-list-tile-avatar>
           <v-list-tile-title>PayPal</v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile
-          href="bitcoin:3MAZp21eRAo4HjngDSieofWNGVg9tJXg74"
-          @click="sendMoneyOpen = false"
-        >
-          <v-list-tile-avatar>
-            <v-avatar
-              size="32px"
-              tile
-            >
-              <v-icon>mdi-bitcoin</v-icon>
-            </v-avatar>
-          </v-list-tile-avatar>
-          <v-list-tile-title>Bitcoin: 3MAZp21eRAo4HjngDSieofWNGVg9tJXg74</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-bottom-sheet>
