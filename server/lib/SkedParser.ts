@@ -126,7 +126,7 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
         }
         const datum = col[0].split(', ')[1]
         const parts = entry.split('<br>');
-        const time = parts[0].replace('Uhr', '').split(' - ')
+        const time = parts[0].split('Uhr')[0].split(' - ')
         const uhrzeit_0 = time[0];
         const uhrzeit_1 = time[1];
 
@@ -143,10 +143,19 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
             anmerkung = parts.splice(4).join(', ') || ''
             break;
           case 'Recht':
-            dozent = parts[3];
-            veranstaltung = parts[2];
-            raum = parts[1]
-            anmerkung = parts.splice(4).join(', ') || ''
+            // Sometimes has the room in the second row and sometimes not. 
+            // This regex detects it based on the fact that it either starts with digits and only has non whitespace chars until EOL or next comma
+            // or it starts with 1-3 letters followed by digits and non whitespace chars.
+            if (parts[1].match(/^\w{0,3}\d+\S*(,|$)/)) {
+              dozent = parts[3];
+              veranstaltung = parts[2];
+              raum = parts[1]
+              anmerkung = parts.splice(4).join(', ') || ''
+            } else {
+              dozent = parts[2];
+              veranstaltung = parts[1];
+              anmerkung = parts.splice(3).join(', ') || ''
+            }
             break;
           case 'Bau-Wasser-Boden':
               dozent = parts[3];
@@ -154,6 +163,11 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
               raum = parts[4]
               anmerkung = parts[1];
               break;
+          case 'Handel und Soziale Arbeit':
+            // Leider ohne Dozent / Raum, da die Zeilen in dieser Fakultät zu unterschiedlich genutzt werden
+            veranstaltung = parts[2];
+            anmerkung = parts[1];
+            break;
           case 'Fahrzeugtechnik':
           case 'Gesundheitswesen':
           case 'Soziale Arbeit':
@@ -164,6 +178,10 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
               raum = parts[3]
               anmerkung = parts.splice(4).join(', ') || ''
               break;
+          default:
+            console.log("No parser defined for faculty " + faculty)
+            throw new Error("This faculty is not supported.");
+            break;
         }
 
 
