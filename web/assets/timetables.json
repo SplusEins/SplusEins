@@ -663,7 +663,7 @@
     "faculty": "Bau-Wasser-Boden",
     "graphical": true,
     "id": "b_stgrp_china_2019_1",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
@@ -672,7 +672,7 @@
     "faculty": "Bau-Wasser-Boden",
     "graphical": true,
     "id": "b_stgrp_doppel_20_1",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
@@ -743,7 +743,7 @@
     "label": "Fahrzeugmechatronik und -informatik",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_1_semester_fahrzeugmechatronik_und_informatik",
+    "id": "f_1_fahrzeugmechatronik_und_informatik",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -752,7 +752,7 @@
     "label": "Fahrzeugtechnik LIFT",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_1_semester_ft_lift",
+    "id": "f_1_ft_lift",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -761,7 +761,7 @@
     "label": "Fahrzeugtechnik",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_1_semester_fahrzeugtechnik",
+    "id": "f_1_fahrzeugtechnik",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -788,7 +788,7 @@
     "label": "Mathe-Lift",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_2_semester_ft_lift",
+    "id": "f_2_ft_lift",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -797,7 +797,7 @@
     "label": "Aggregate- und Fahrwerkentwicklung",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_3_semester_agf",
+    "id": "f_3_agf",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -806,7 +806,7 @@
     "label": "Aufbauentwicklung",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_3_semester_abe",
+    "id": "f_3_abe",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -815,7 +815,7 @@
     "label": "Informatik und Elektronik",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_3_semester_iue",
+    "id": "f_3_iue",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -824,7 +824,7 @@
     "label": "Mechatronik",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_3_semester_met",
+    "id": "f_3_met",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -833,7 +833,7 @@
     "label": "Produktion und Umwelt",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_3_semester_pu",
+    "id": "f_3_pu",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -842,7 +842,7 @@
     "label": "Servicetechnik und Prozesse",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_3_semester_stp",
+    "id": "f_3_stp",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -914,8 +914,8 @@
     "label": "Fahrzeugmechatronik und -informatik Lift",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_3_semester_fmi_mathe_lift",
-    "semester": 0,
+    "id": "f_3_fmi_mathe_lift",
+    "semester": 3,
     "degree": "Bachelor"
   },
   {
@@ -924,7 +924,7 @@
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
     "id": "f_fmi_kohorte",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
@@ -932,8 +932,8 @@
     "label": "Fahrzeugtechnik Mathe-Lift",
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
-    "id": "f_2_semester_fahrzeugtechnik_mathe_lift",
-    "semester": 0,
+    "id": "f_2_fahrzeugtechnik_mathe_lift",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
@@ -942,7 +942,7 @@
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
     "id": "f_fzt_kohorte",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
@@ -951,7 +951,7 @@
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
     "id": "f_master_fahrzeugtechnik",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Master"
   },
   {
@@ -960,7 +960,7 @@
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
     "id": "f_m_t",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
@@ -969,12 +969,12 @@
     "faculty": "Fahrzeugtechnik",
     "graphical": true,
     "id": "f_wing",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
     "skedPath": "g/wp/APP_2_2.Sem.html",
-    "label": "Angewandte Pflegewissenschaft im Praxisverbund (APP)",
+    "label": "APP",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_app_2_2_sem",
@@ -983,7 +983,7 @@
   },
   {
     "skedPath": "g/wp/APB_5_5.Sem.html",
-    "label": "Angewandte Pflegewissenschaften berufsbegleitend (APB)",
+    "label": "APB",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_apb_5_5_sem",
@@ -992,7 +992,7 @@
   },
   {
     "skedPath": "g/wp/APIP_4_4.Sem.html",
-    "label": "Angewandte Pflegewissenschaften im Praxisverbund (APIP)",
+    "label": "APIP",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_apip_4_4_sem",
@@ -1001,7 +1001,7 @@
   },
   {
     "skedPath": "g/wp/APIP_6_6.Sem.html",
-    "label": "Angewandte Pflegewissenschaften im Praxisverbund (APIP)",
+    "label": "APIP",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_apip_6_6_sem",
@@ -1010,7 +1010,7 @@
   },
   {
     "skedPath": "g/wp/BMP_2_B_2.Sem.html",
-    "label": "Berufspädagogik und Management in der Pflege (BMP) - Studienprofil B",
+    "label": "BMP - Studienprofil B",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_bmp_2_b_2_sem",
@@ -1019,7 +1019,7 @@
   },
   {
     "skedPath": "g/wp/BMP_2_M_2.Sem.html",
-    "label": "Berufspädagogik und Management in der Pflege (BMP) - Studienprofil M",
+    "label": "BMP - Studienprofil M",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_bmp_2_m_2_sem",
@@ -1028,7 +1028,7 @@
   },
   {
     "skedPath": "g/wp/BMR_2_B_2.Sem.html",
-    "label": "Berufspädagogik und Management im Rettungsdienst (BMR) - Studienprofil B",
+    "label": "BMR - Studienprofil B",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_bmr_2_b_2_sem",
@@ -1037,7 +1037,7 @@
   },
   {
     "skedPath": "g/wp/BMR_2_M_2.Sem.html",
-    "label": "Berufspädagogik und Management im Rettungsdienst (BMR) - Studienprofil M",
+    "label": "BMR - Studienprofil M",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_bmr_2_m_2_sem",
@@ -1046,7 +1046,7 @@
   },
   {
     "skedPath": "g/wp/MAG_1_Y1_1.Sem.html",
-    "label": "Management im Gesundheitswesen (MAG) - Gruppe Y1",
+    "label": "MAG - Gruppe Y1",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mag_1_y1_1_sem",
@@ -1055,7 +1055,7 @@
   },
   {
     "skedPath": "g/wp/MAG_1_Y2_1.Sem.html",
-    "label": "Management im Gesundheitswesen (MAG) - Gruppe Y2",
+    "label": "MAG - Gruppe Y2",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mag_1_y2_1_sem",
@@ -1064,7 +1064,7 @@
   },
   {
     "skedPath": "g/wp/MAG_1_Z1_1.Sem.html",
-    "label": "Management im Gesundheitswesen (MAG) - Gruppe Z1",
+    "label": "MAG - Gruppe Z1",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mag_1_z1_1_sem",
@@ -1073,7 +1073,7 @@
   },
   {
     "skedPath": "g/wp/MAG_1_Z2_1.Sem.html",
-    "label": "Management im Gesundheitswesen (MAG) - Gruppe Z2",
+    "label": "MAG - Gruppe Z2",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mag_1_z2_1_sem",
@@ -1082,7 +1082,7 @@
   },
   {
     "skedPath": "g/wp/MAG_3_A_3.Sem.html",
-    "label": "Management im Gesundheitswesen (MAG) - Gruppe A (A1 und A2)",
+    "label": "MAG - Gruppe A (A1 und A2)",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mag_3_a_3_sem",
@@ -1091,7 +1091,7 @@
   },
   {
     "skedPath": "g/wp/MAG_3_B_3.Sem.html",
-    "label": "Management im Gesundheitswesen (MAG) - Gruppe B (B1 und B2)",
+    "label": "MAG - Gruppe B (B1 und B2)",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mag_3_b_3_sem",
@@ -1100,7 +1100,7 @@
   },
   {
     "skedPath": "g/wp/MIG_5_KH_5.Sem.html",
-    "label": "Management im Gesundheitswesen (MIG) - Schwerpunkt KH",
+    "label": "MIG - Schwerpunkt KH",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mig_5_kh_5_sem",
@@ -1109,7 +1109,7 @@
   },
   {
     "skedPath": "g/wp/MIG_5_KV_5.Sem.html",
-    "label": "Management im Gesundheitswesen (MIG) - Schwerpunkt KV",
+    "label": "MIG - Schwerpunkt KV",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mig_5_kv_5_sem",
@@ -1118,7 +1118,7 @@
   },
   {
     "skedPath": "g/wp/MIG_5_PH_5.Sem.html",
-    "label": "Management im Gesundheitswesen (MIG) - Schwerpunkt PH",
+    "label": "MIG - Schwerpunkt PH",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mig_5_ph_5_sem",
@@ -1127,7 +1127,7 @@
   },
   {
     "skedPath": "g/wp/MIG_5_WPF_5.Sem.html",
-    "label": "Management im Gesundheitswesen Wahlpflichtangebot (WPF MIG)",
+    "label": "WPF MIG 5. und höhere Sem.",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_mig_5_wpf_5_sem",
@@ -1136,7 +1136,7 @@
   },
   {
     "skedPath": "g/wp/PM_5_B_5.Sem.html",
-    "label": "Paramedic (PM) - Studienprofil B",
+    "label": "PM - Studienprofil B",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_pm_5_b_5_sem",
@@ -1145,7 +1145,7 @@
   },
   {
     "skedPath": "g/wp/PM_5_M_5.Sem.html",
-    "label": "Paramedic (PM) - Studienprofil M",
+    "label": "PM - Studienprofil M",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_pm_5_m_5_sem",
@@ -1154,7 +1154,7 @@
   },
   {
     "skedPath": "g/wp/IVG_1_1.Sem.html",
-    "label": "Integriertes Versorgungsmanagement im Gesundheitswesen (IVG)",
+    "label": "IVG",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_ivg_1_1_sem",
@@ -1163,7 +1163,7 @@
   },
   {
     "skedPath": "g/wp/IVG_3_3.Sem.html",
-    "label": "Integriertes Versorgungsmanagement im Gesundheitswesen (IVG)",
+    "label": "IVG",
     "faculty": "Gesundheitswesen",
     "graphical": true,
     "id": "g_ivg_3_3_sem",
@@ -1172,7 +1172,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_hul_1.html",
-    "label": "Handel und Logistik - Handel und Logistik_PO 2018",
+    "label": "Handel und Logistik - PO 2018 - Handel und Logistik_PO 2018",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
     "id": "h_stdgrp_hul_1",
@@ -1181,7 +1181,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_hul_3.html",
-    "label": "Handel und Logistik - Handel und Logistik_PO 2018",
+    "label": "Handel und Logistik - PO 2018 - Handel und Logistik_PO 2018",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
     "id": "h_stdgrp_hul_3",
@@ -1190,7 +1190,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_hul_5.html",
-    "label": "Handel und Logistik - Handel und Logistik_PO 2018",
+    "label": "Handel und Logistik - PO 2018 - Handel und Logistik_PO 2018",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
     "id": "h_stdgrp_hul_5",
@@ -1217,7 +1217,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_2.html",
-    "label": "Soziale Arbeit",
+    "label": "PO 2018 - Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
     "id": "h_stdgrp_soa_2",
@@ -1226,7 +1226,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_3.html",
-    "label": "Soziale Arbeit",
+    "label": "PO 2018 - Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
     "id": "h_stdgrp_soa_3",
@@ -1235,7 +1235,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_4.html",
-    "label": "Soziale Arbeit",
+    "label": "PO 2018 - Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
     "id": "h_stdgrp_soa_4",
@@ -1244,7 +1244,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_5.html",
-    "label": "Soziale Arbeit",
+    "label": "PO 2018 - Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
     "id": "h_stdgrp_soa_5",
@@ -1257,7 +1257,7 @@
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
     "id": "h_baj_soa_wise20_21",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
@@ -1266,7 +1266,7 @@
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
     "id": "h_wahlpflichtfaecher_soa",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
@@ -1274,8 +1274,8 @@
     "label": "Erstsemesterveranstaltungen",
     "faculty": "Recht",
     "graphical": true,
-    "id": "r_erstsemesterveranstaltungen_2_ersti_va_kopie",
-    "semester": 0,
+    "id": "r_erstveranstaltungen_2_ersti_va_kopie",
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
@@ -1284,7 +1284,7 @@
     "faculty": "Recht",
     "graphical": true,
     "id": "r_exkursionen_3_3_sem",
-    "semester": 0,
+    "semester": 3,
     "degree": "Bachelor"
   },
   {
@@ -1347,7 +1347,7 @@
     "faculty": "Recht",
     "graphical": true,
     "id": "r_gremien_und_sitzungen_aktuell",
-    "semester": 0,
+    "semester": "Ohne Semester",
     "degree": "Bachelor"
   },
   {
@@ -1410,7 +1410,7 @@
     "faculty": "Recht",
     "graphical": true,
     "id": "r_wpf_wf_tutorien_3_3_sem",
-    "semester": 0,
+    "semester": 3,
     "degree": "Bachelor"
   },
   {
@@ -1487,7 +1487,7 @@
   },
   {
     "skedPath": "v/stundenplan/bee/BEE_2020_SoSe_1_1. Sem..html",
-    "label": "Bio- und Umwelttechnik (BEE )",
+    "label": "BEE",
     "faculty": "Versorgungstechnik",
     "graphical": true,
     "id": "v_bee_2020_sem",
@@ -1496,43 +1496,43 @@
   },
   {
     "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_2_2. Sem..html",
-    "label": "Bio- und Umwelttechnik (BEE )",
+    "label": "BEE",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_bee__2_2_sem",
+    "id": "v_bee_2_2_sem",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_3_3. Sem..html",
-    "label": "Bio- und Umwelttechnik (BEE )",
+    "label": "BEE",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_bee__3_3_sem",
-    "semester": 3,
+    "id": "v_bee_3_3_sem",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_5_5. Semester (2018).html",
-    "label": "Bio- und Umwelttechnik (BEE ) (PO 2013)",
+    "label": "BEE (PO 2013)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_bee__5_5_semester_2018",
+    "id": "v_bee_5_5_2018",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_5_5. Sem.2.html",
-    "label": "Bio- und Umwelttechnik (BEE ) (PO 2018)",
+    "label": "BEE (PO 2018)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_bee__5_5_sem_2",
+    "id": "v_bee_5_5_sem_2",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/egt/EGT_2020_SoSe_1_1. Sem..html",
-    "label": "Energie- und Gebäudetechnik (EGT / EGTiP)",
+    "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "graphical": true,
     "id": "v_egt_2020_sem",
@@ -1541,46 +1541,46 @@
   },
   {
     "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_2_2. Sem..html",
-    "label": "Energie- und Gebäudetechnik (EGT / EGTiP)",
+    "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_egt_egtip__2_2_sem",
+    "id": "v_egt_egtip_2_2_sem",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_3_3. Sem..html",
-    "label": "Energie- und Gebäudetechnik (EGT / EGTiP)",
+    "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_egt_egtip__3_3_sem",
-    "semester": 3,
+    "id": "v_egt_egtip_3_3_sem",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_5_5. Sem.2.html",
-    "label": "Energie- und Gebäudetechnik (EGT / EGTiP) (2018)",
+    "label": "EGT / EGTiP (2018)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_egt_egtip__5_5_sem_2",
+    "id": "v_egt_egtip_5_5_sem_2",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_5_5. Sem.1.html",
-    "label": "Energie- und Gebäudetechnik (EGT / EGTiP) - EGTIP RET (WS 17)/(2013)",
+    "label": "EGT / EGTiP - EGTIP RET (WS 17)/(2013)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_egt_egtip__5_5_sem_1",
+    "id": "v_egt_egtip_5_5_sem_1",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_5_5. Semester (2018).html",
-    "label": "Energie- und Gebäudetechnik (EGT / EGTiP) - EGTIP TGA (WS 17)/(2013)",
+    "label": "EGT / EGTiP - EGTIP TGA (WS 17)/(2013)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_egt_egtip__5_5_semester_2018",
+    "id": "v_egt_egtip_5_5_2018",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1604,100 +1604,100 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_1_1. Sem..html",
-    "label": "Wirtschaftsingenieur Energie (WING E)",
+    "label": "WING E",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_energie_wing_e__1_1_sem",
+    "id": "v_wing_e_1_1_sem",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_2_2. Sem..html",
-    "label": "Wirtschaftsingenieur Energie (WING E)",
+    "label": "WING E",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_energie_wing_e__2_2_sem",
+    "id": "v_wing_e_2_2_sem",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_3_3. Sem..html",
-    "label": "Wirtschaftsingenieur Energie (WING E)",
+    "label": "WING E",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_energie_wing_e__3_3_sem",
+    "id": "v_wing_e_3_3_sem",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_5_5. Sem..html",
-    "label": "Wirtschaftsingenieur Energie (WING E)",
+    "label": "WING E",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_energie_wing_e__5_5_sem",
+    "id": "v_wing_e_5_5_sem",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_7_7. Sem..html",
-    "label": "Wirtschaftsingenieur Energie (WING E)",
+    "label": "WING E",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_energie_wing_e__7_7_sem",
+    "id": "v_wing_e_7_7_sem",
     "semester": 7,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/WING Umwelt_2020_SoSe_1_1. Sem..html",
-    "label": "Wirtschaftsingenieur Umwelt (WING U)",
+    "label": "WING U",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_wing_umwelt_2020_sem",
+    "id": "v_wing_2020_sem",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_2_2. Sem..html",
-    "label": "Wirtschaftsingenieur Umwelt (WING U)",
+    "label": "WING U",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_umwelt_wing_u__2_2_sem",
+    "id": "v_wing_u_2_2_sem",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_3_3. Sem..html",
-    "label": "Wirtschaftsingenieur Umwelt (WING U)",
+    "label": "WING U",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_umwelt_wing_u__3_3_sem",
+    "id": "v_wing_u_3_3_sem",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_5_5. Semester.html",
-    "label": "Wirtschaftsingenieur Umwelt (WING U) (PO 2015)",
+    "label": "WING U (PO 2015)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_umwelt_wing_u__5_5_semester",
+    "id": "v_wing_u_5_5_",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_5_5. Sem..html",
-    "label": "Wirtschaftsingenieur Umwelt (WING U) (PO 2018)",
+    "label": "WING U (PO 2018)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_umwelt_wing_u__5_5_sem",
+    "id": "v_wing_u_5_5_sem",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_7_7. Sem..html",
-    "label": "Wirtschaftsingenieur Umwelt (WING U)",
+    "label": "WING U",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_umwelt_wing_u__7_7_sem",
+    "id": "v_wing_u_7_7_sem",
     "semester": 7,
     "degree": "Bachelor"
   }

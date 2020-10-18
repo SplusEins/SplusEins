@@ -16,7 +16,7 @@
 
       <template v-for="(schedules, semester) in semesters">
         <v-list-group
-          v-if="load[path] && schedules.length > 1"
+          v-if="load[path]"
           :key="path + semester"
           no-action
           sub-group
@@ -35,16 +35,6 @@
             {{ schedule.label }}
           </v-list-tile>
         </v-list-group>
-
-        <v-list-tile
-          v-if="load[path] && schedules.length == 1"
-          :key="path + semester"
-          :to="schedules[0].route"
-          nuxt
-          @click="$track('Calendar', 'sideMenu plan used', 'normal')"
-        >
-          {{ semester == 'WPF' ? 'Wahlpflichtfächer' : !isNaN(Number(semester)) ? semester + '. Semester' : semester }}
-        </v-list-tile>
       </template>
     </v-list-group>
   </v-list>
