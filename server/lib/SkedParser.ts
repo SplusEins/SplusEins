@@ -126,6 +126,10 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
         }
         const datum = col[0].split(', ')[1]
         const parts = entry.split('<br>');
+        if (parts.length < 3) {
+          // Should at least have time & name, otherwise no valid column
+          return;
+        }
         const time = parts[0].split('Uhr')[0].split(' - ')
         const uhrzeit_0 = time[0];
         const uhrzeit_1 = time[1];
