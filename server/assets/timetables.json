@@ -1319,8 +1319,8 @@
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_egt_egtip_3_3_4_ws20",
-    "semester": 4,
+    "id": "v_egt_egtip_3_ws20",
+    "semester": 3,
     "degree": "Bachelor"
   },
   {
@@ -1445,7 +1445,7 @@
     "label": "WING U (PO 2015)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_wing_u_5ester_5_ws20",
+    "id": "v_wing_u_15_5_ws20",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1454,7 +1454,7 @@
     "label": "WING U (PO 2018)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_wing_u_5_ws20",
+    "id": "v_wing_u_18_5_ws20",
     "semester": 5,
     "degree": "Bachelor"
   },
