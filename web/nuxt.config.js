@@ -3,7 +3,8 @@ import webpack from 'webpack';
 import PROTECTED_INFORMATION from './assets/protected-information.json';
 
 export default {
-  mode: 'universal',
+  telemetry: false,
+  modern: process.env.NODE_ENV == 'development' ? false : 'server',
 
   /*
   ** Headers of the page
