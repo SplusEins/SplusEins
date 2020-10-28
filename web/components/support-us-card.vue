@@ -20,6 +20,7 @@
         <li>Paul - 2.5 Monate</li>
         <li>Lea – 2 Monate "Spitzenmäßig"</li>
         <li>Florian B. – 2 Monate "Tolle Arbeit, weiter so!"</li>
+        <li>John - 1 Monat</li>
         <li>Philipp - 1 Monat</li>
         <li>Lysanne – 1 Monat "Fast ganz oben! 🎈"</li>
         <li>Brian – 1 Monat "Macht so weiter! :-)"</li>
