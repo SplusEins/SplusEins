@@ -323,7 +323,7 @@ export const actions = {
    */
   importSchedule({ state, commit }, { params, query }) {
     switch (parseFloat(query.v)) {
-      case 1:
+      case 1: {
         const whitelist = Array.isArray(query.course || []) ?
           query.course : [query.course];
         const id = Array.isArray(query.id || []) ?
@@ -334,7 +334,8 @@ export const actions = {
         commit('addCustomSchedule', customTimetable);
         commit('setSchedule', customTimetable);
         break;
-      default:
+      }
+      default: {
         if (!isNaN(query.v)) {
           console.log('unsupported custom timetable query version', query);
         }
@@ -344,6 +345,7 @@ export const actions = {
 
         // standard, no filters
         commit('setSchedule', timetable);
+      }
     }
   },
 };

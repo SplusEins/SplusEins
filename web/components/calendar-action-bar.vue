@@ -194,7 +194,7 @@ export default {
       }
     },
     currentUrl(){
-      return !!global.window ? window.location.href : '';
+      return global.window ? window.location.href : '';
     },
     async share() {
       // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share

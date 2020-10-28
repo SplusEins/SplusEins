@@ -81,7 +81,7 @@ export default {
     },
   },
   mounted() {
-    if(!!this.subscribedTimetable.id) {
+    if(this.subscribedTimetable.id) {
        this.load();
     }
   },

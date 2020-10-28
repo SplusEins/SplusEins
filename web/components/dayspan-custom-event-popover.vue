@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { CalendarEvent, Calendar, Pattern } from 'dayspan';
+import { CalendarEvent, Calendar } from 'dayspan';
 export default {
   name: 'DsCustomCalendarEventPopover',
   props: {

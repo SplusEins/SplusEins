@@ -13,7 +13,7 @@ export default ({ store }) => {
       value = typeof value === 'string' ? JSON.parse(value || '{}') : (value || {});
 
       //version migration
-      if (!!value.version) {
+      if (value.version) {
 
         //version 2: new semester -> new timetable ids + theme property -> ui property
         if (value.version < 2) {
