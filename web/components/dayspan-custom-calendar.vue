@@ -118,8 +118,7 @@
 </template>
 
 <script>
-import * as moment from 'moment';
-import { Sorts, Calendar, Day } from 'dayspan';
+import { Sorts, Calendar } from 'dayspan';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -144,7 +143,7 @@ export default {
     {
       type: Array,
       default(){
-        return {}
+        return []
       }
     },
     labels:

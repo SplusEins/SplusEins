@@ -97,7 +97,6 @@
 
 <script>
 import { mapMutations, mapGetters, mapState } from 'vuex';
-import * as moment from 'moment';
 import { SEMESTER_WEEK_1, range, uniq, flatten, customTimetableToRoute } from '../lib/util';
 import { loadEvents, eventsAsLectures } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';

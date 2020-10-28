@@ -21,7 +21,7 @@
             position="right"
           />
           <v-card-media
-            v-else-if="error.statusCode == 403 || 401"
+            v-else-if="error.statusCode == 403 || 401"
             class="ErrorImg"
             src="/403_401.png"
             width="80%"

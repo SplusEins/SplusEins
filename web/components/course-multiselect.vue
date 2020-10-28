@@ -114,13 +114,9 @@ export default {
       const overlapsWith = ({
         begin: thisBegin,
         duration: thisDuration,
-        day: thisDay,
-        start: thisStart
       }) => ({
         begin: otherBegin,
         duration: otherDuration,
-        day: otherDay,
-        start: otherStart
         }) => (thisBegin >= otherBegin && thisBegin <= otherBegin + otherDuration)
            || (thisBegin + thisDuration >= otherBegin && thisBegin + thisDuration <= otherBegin + otherDuration);
 

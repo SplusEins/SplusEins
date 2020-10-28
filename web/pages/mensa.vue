@@ -85,7 +85,6 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
 import MensaDayplan from '../components/mensa-dayplan.vue';
-import * as moment from 'moment';
 
 export default {
   name: 'MensaPage',

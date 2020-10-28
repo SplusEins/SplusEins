@@ -17,7 +17,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async loadFacultyNews({ state, commit }) {
+  async loadFacultyNews({ commit }) {
     const faculties = ['i', 'r', 'e', 'wf', 'wob', 'sud'];
     try {
       const news = await this.$axios.$get('/api/news/faculty');
@@ -31,7 +31,7 @@ export const actions = {
       console.error(`error during News API call (Fakultät-News)`, error.message);
     }
   },
-  async loadCampusNews({ state, commit }) {
+  async loadCampusNews({ commit }) {
     try {
       const campusNews = await this.$axios.$get('/api/news/campus');
 
