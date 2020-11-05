@@ -14,8 +14,10 @@ Please send us a mail if you have any questions or suggestions.
 $ npm install
 
 # Set environment variables to use the remote api
-$ API_URL=https://spluseins.de/ (Linux/Unix)
-$ set API_URL=https://spluseins.de/ (Windows)
+$ API_URL=https://spluseins.de/ #Linux/Unix
+$ set API_URL=https://spluseins.de/ #Windows
+# Alternatively use locally provided API (see below, backend setup)
+$ API_URL="http://127.0.0.1:3001"
 
 # serve with hot reload at localhost:3000
 $ npm run dev
@@ -33,6 +35,8 @@ $ npm run generate
 `cd server/`
 
 ```bash
+# install dependencies
+$ npm install
 
 # Set environment variables
 $ CACHE_PATH=spluseins-cache (Linux/Unix)
@@ -48,22 +52,4 @@ $ npm start
 
 ## Configuration
 
-Environment variables:
-
-  * `SKED_USER` (backend): stundenplan.ostfalia.de username
-  * `SKED_PASSWORD` (backend): stundenplan.ostfalia.de username
-  * `SKED_IP_WHITELIST_PREFIX` (backend): allowed IPs for stundenplan.ostfalia.de access
-  * `COOKIE_SECRET` (backend): token used to sign cookies
-  * `CACHE_PATH` (backend)
-  * `CACHE_DISABLE` (backend)
-  * `HOST` (backend)
-  * `PORT` (backend)
-  * `API_PREFIX` (backend)
-  * `SEMESTER_WEEK_1` (frontend): first week with lectures
-  * `PAGE_CACHE_SECONDS` (frontend): rendered nuxt page cache duration
-  * `ICS_PRELOAD_WEEKS` (backend): number of weeks to fetch for ICS
-  * `ICS_CACHE_SECONDS` (backend): ICS header cache duration
-  * `SPLUS_CACHE_SECONDS` (backend): timetable memory and header cache duration
-  * `NEWS_CACHE_SECONDS` (backend): news memory and header cache duration
-  * `MENSA_CACHE_SECONDS` (backend): mensa memory and header cache duration
-  * `PROTECTED_INFORMATION` (frontend): team members for Impressum/Datenschutz
+Please refer to [the SplusEins documentation](https://docs.spluseins.de/konfiguration.html)
