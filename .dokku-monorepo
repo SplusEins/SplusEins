@@ -1,3 +1,3 @@
-api.spluseins.de=server
-docs.spluseins.de=docs
-spluseins.de=web
+api=server
+docs=docs
+web=web
