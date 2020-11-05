@@ -7,12 +7,12 @@ export interface NewsElement {
   text: string;
   date?: Date;
   source?: string;
-};
+}
 
 export interface MensaDayPlan {
   date: Date;
-  data: object;
-};
+  data: Record<string, unknown>;
+}
 
 export interface TimetableRequest {
   id: string;
@@ -20,13 +20,13 @@ export interface TimetableRequest {
   skedPath: string;
   graphical: boolean;
   faculty: string
-};
+}
 
 export interface EventMetadata {
   organiserShortname: string;
   organiserName: string;
   description: string;
-};
+}
 
 export interface TimetableMetadata {
   id: string | string[];
@@ -53,7 +53,7 @@ export class Event {
 
   private generateId(title: string): string {
     //since the id is part of the url it should not contain /, + or =
-    return crypto.createHash('sha1').update(title).digest('base64').replace(/[\/+=]/g, '').slice(0, 5);
+    return crypto.createHash('sha1').update(title).digest('base64').replace(/[/+=]/g, '').slice(0, 5);
   }
 
   private censorOrganiserName(name: string): string {
@@ -85,4 +85,4 @@ export class Event {
                  description: lecture.info
                 };
   }
-};
+}

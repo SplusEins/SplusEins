@@ -5,7 +5,7 @@ export interface ParsedBlock {
 	info: string;
 	room: string;
 	lecturer: string
-};
+}
 
 export interface ParsedLecture {
 	title: string;
@@ -15,4 +15,4 @@ export interface ParsedLecture {
 	info: string;
 	room: string,
 	lecturer: string;
-};
+}
