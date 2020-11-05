@@ -1,6 +1,7 @@
 module.exports = {
   title: 'SplusEins',
   description: 'Dokumentation von spluseins.de',
+  base: '/docs/',
   themeConfig: {
     logo: '/logo.png',
     sidebar: [
