@@ -1,4 +1,4 @@
 SplusEins Dokumentation
 ===
 
-![Logo](logo.png)
+<img :src="$withBase('/logo.png')" alt="Logo">
