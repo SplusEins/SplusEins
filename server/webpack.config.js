@@ -1,5 +1,4 @@
 const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
 
 const serverlessConfig = {
   mode: process.env.NODE_ENV,
@@ -42,7 +41,6 @@ const serverlessConfig = {
     extensions: [ '.ts', '.js' ],
     mainFields: [ 'main' ],
   },
-  //plugins: [new ESLintPlugin()] //Todo enable after linter findings are fixed
 };
 
 const serverConfig = {
@@ -68,7 +66,6 @@ const serverConfig = {
     extensions: [ '.ts', '.js' ],
     mainFields: [ 'main' ],
   },
-  //plugins: [new ESLintPlugin()] //Todo enable after linter findings are fixed
 };
 
 module.exports = [ serverlessConfig, serverConfig ];
