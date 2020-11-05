@@ -17,10 +17,14 @@
 
         <v-card-text class="text-padding">
           <p>
-            Elektrotechnik-Pläne: gepflegt von <a href="https://github.com/l3d00m">Thomas</a><br>
-            Ein inoffizieller Stundenplan von Studenten für Studenten der Ostfalia-Hochschule.<br>
+            Ein inoffizieller Stundenplan von Studenten für Studenten der Ostfalia.
+          </p>
+          <p>
+            Der <a href="https://github.com/SplusEins/SplusEins">Code</a>, die <a href="https://docs.spluseins.de">Dokumentation</a> und das <a href="https://trello.com/b/8L18rOVd">Planungsboard</a> sind öffentlich einsehbar.
+            Solltet du Probleme festellen, schreib uns doch gerne per Mail: team(at)spluseins(punkt)de.
+          </p>
+          <p>
             Gebaut mit <a href="https://nuxtjs.org">Nuxt</a>, <a href="https://vuetifyjs.com">Vuetify</a>, <a href="https://github.com/ClickerMonkey/dayspan-vuetify">Dayspan-Vuetify</a>, Icons von <a href="https://materialdesignicons.com/">Material Design Icons</a> und der Schriftart <a href="https://fonts.google.com/specimen/Roboto">Roboto</a>.<br>
-            Das <a href="https://github.com/SplusEins/SplusEins">Repository</a> sowie das <a href="https://trello.com/b/8L18rOVd">Trello Board</a> sind öffentlich einsehbar.
             Alle Stundenpläne basieren auf den Inhalten von <a href="http://stundenplan.ostfalia.de/">stundenplan.ostfalia.de</a>.<br>
             Die Mensapläne basieren auf den Inhalten von <a href="https://openmensa.org">OpenMensa</a>.<br>
             Für Vollständigkeit wird keine Haftung übernommen.
