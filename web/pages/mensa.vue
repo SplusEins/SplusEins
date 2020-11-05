@@ -6,7 +6,7 @@
     class="container-padding"
   >
     <h2>Mensa Wolfenbüttel</h2>
-    <span>Montag bis Freitag 11:15 - 14:15 Uhr</span>
+    <span><a href="https://www.stw-on.de/wolfenbuettel/essen/mensa/#c2368">Offizielle Mensa-Seite mit Öffnungszeiten</a></span>
     <br>
     <span class="explanation">
       <span>
