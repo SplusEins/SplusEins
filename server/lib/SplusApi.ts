@@ -4,7 +4,7 @@ import * as fsStore from 'cache-manager-fs-hash';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { parseSkedGraphical, parseSkedList } from './SkedParser';
 
-const SKED_BASE = 'https://stundenplan.ostfalia.de/';
+const SKED_BASE = process.env.SKED_URL || 'https://stundenplan.ostfalia.de/';
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
