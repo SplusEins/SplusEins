@@ -42,7 +42,7 @@
               :color="isDark? 'white': 'black'"
               medium
             >
-              mdi-github-circle
+              mdi-github
             </v-icon>
           </v-btn>
           <v-btn
