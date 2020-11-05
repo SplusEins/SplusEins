@@ -7,21 +7,22 @@ export default function parseTable($, dupCols, dupRows, textMode) {
   if (dupRows === undefined) dupRows = false;
   if (textMode === undefined) textMode = false;
 
-  var columns = [],
-      curr_x = 0,
+  const columns = [];
+  let curr_x = 0,
       curr_y = 0;
   $("tr").each(function(row_idx, row) {
       curr_y = 0;
       $("td, th", row).each(function(col_idx, col) {
-          var rowspan = $(col).attr('rowspan') || 1;
-          var colspan = $(col).attr('colspan') || 1;
+          const rowspan = $(col).attr('rowspan') || 1;
+          const colspan = $(col).attr('colspan') || 1;
+          let content;
           if (textMode === true) {
-              var content = $(col).text().trim() || "";
+              content = $(col).text().trim() || "";
           } else {
-              var content = $(col).html() || "";
+              content = $(col).html() || "";
           }
 
-          var x = 0,
+          let x = 0,
               y = 0;
           for (x = 0; x < rowspan; x++) {
               for (y = 0; y < colspan; y++) {
@@ -49,4 +50,4 @@ export default function parseTable($, dupCols, dupRows, textMode) {
   });
 
   return columns;
-};
+}

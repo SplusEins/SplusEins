@@ -55,7 +55,7 @@ async function ostfaliaNewsRequest(): Promise<NewsElement[]> {
       date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate(),
     };
   }).get();
-};
+}
 
 /**
  * Fetch and parse campus38 news
@@ -73,13 +73,13 @@ async function campus38NewsRequest() : Promise<NewsElement[]> {
       date: moment($('published', this).text().trim().split('T')[0]).utcOffset('+0100').toDate(),
     };
   }).slice(0, 10).get();
-};
+}
 
 /**
  * Get Ostfalia faculty news
  * @returns NewsElement[]
  */
-async function facultyNewsRequest(faculty: String) : Promise<NewsElement[]> {
+async function facultyNewsRequest(faculty: string) : Promise<NewsElement[]> {
 
   let url;
   if (faculty.length == 1) {
@@ -122,7 +122,7 @@ async function facultyNewsRequest(faculty: String) : Promise<NewsElement[]> {
       date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate(),
     };
   }).get();
-};
+}
 
 /**
  * Manages campus news requests
@@ -170,7 +170,7 @@ export function getCampusNews() {
  * @param requested faculty
  * @returns NewsElement[]
  */
-export function getFacultyNews(faculty: String) {
+export function getFacultyNews(faculty: string) {
   const key = 'faculty-news-' + faculty;
 
   return cache.wrap(key, async () => {
