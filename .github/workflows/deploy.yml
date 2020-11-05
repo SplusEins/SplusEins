@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+    
+# Define common variables for all jobs since all use the dokku action
+env:
+  PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+  HOST: spluseins-i.ostfalia.de
+  FORCE_DEPLOY: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Deploy with dokku
+        uses: vitalyliber/dokku-github-action@v6.1
+        env:
+          PROJECT: web
+  deploy-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Deploy with dokku
+        uses: vitalyliber/dokku-github-action@v6.1
+        env:
+          PROJECT: api
+          
+  deploy-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Deploy with dokku
+        uses: vitalyliber/dokku-github-action@v6.1
+        env:
+          PROJECT: docs
