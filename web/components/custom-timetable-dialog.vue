@@ -97,7 +97,7 @@
 
 <script>
 import { mapMutations, mapGetters, mapState } from 'vuex';
-import { SEMESTER_WEEK_1, range, uniq, flatten, customTimetableToRoute } from '../lib/util';
+import { range, uniq, flatten, customTimetableToRoute } from '../lib/util';
 import { loadEvents, eventsAsLectures } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
@@ -166,6 +166,7 @@ export default {
       customScheduleLabels: 'splus/customTimetableLabels',
       scheduleIds: 'splus/timetableIds',
       getScheduleById: 'splus/getTimetableById',
+      weekOrDefault: 'splus/weekOrDefault',
     }),
     ...mapState({
       week: (state) => state.splus.week,
@@ -210,7 +211,7 @@ export default {
       this.loading = true;
 
       try {
-        const weeks = range(SEMESTER_WEEK_1, SEMESTER_WEEK_1 + 5);
+        const weeks = range(this.weekOrDefault - 1, this.weekOrDefault + 5);
         const events = await Promise.all(weeks.map((week) =>
           loadEvents(schedule, week, this.$axios.$get)));
         const lectures = eventsAsLectures(flatten(events));
