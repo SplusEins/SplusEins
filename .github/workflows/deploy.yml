@@ -12,6 +12,7 @@ on:
 env:
   PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
   HOST: spluseins-i.ostfalia.de
+  PORT: 8080
   FORCE_DEPLOY: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
