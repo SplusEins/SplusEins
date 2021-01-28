@@ -1,5 +1,7 @@
 # SplusEins
-
+![Server Build](https://github.com/SplusEins/SplusEins/workflows/Server%20Build/badge.svg)
+![Web Build](https://github.com/SplusEins/SplusEins/workflows/Web%20Build/badge.svg)
+![Deployment](https://github.com/SplusEins/SplusEins/workflows/Deploy/badge.svg)
 ## Issue Management
 
 Planned features and bugs are tracked in [Trello](https://trello.com/b/8L18rOVd).
