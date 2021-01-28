@@ -36,7 +36,7 @@
         d-flex
         md6
         lg6
-        order-xs5
+        order-xs6
         order-md2
       >
         <campus-news-card />
@@ -45,7 +45,7 @@
       <v-flex
         v-show="!$vuetify.breakpoint.mdAndUp"
         :d-flex="!$vuetify.breakpoint.mdAndUp"
-        order-xs3
+        order-xs7
         order-md7
       >
         <faculty-news-card />
@@ -55,8 +55,8 @@
         v-show="displayMensaCard"
         :d-flex="displayMensaCard"
         md6
-        :lg6="hasSubscribableTimetables"
-        :lg12="!hasSubscribableTimetables"
+        :lg4="hasSubscribableTimetables"
+        :lg6="!hasSubscribableTimetables"
         order-xs2
         order-md3
       >
@@ -67,7 +67,7 @@
         v-show="hasSubscribableTimetables"
         :d-flex="hasSubscribableTimetables"
         md6
-        lg6
+        lg4
         order-xs4
         order-md4
       >
@@ -78,11 +78,27 @@
         v-show="hasSubscribableTimetables"
         :d-flex="hasSubscribableTimetables"
         md6
-        lg12
-        order-xs6
-        order-md10
+        lg4
+        order-xs3
+        order-md5
       >
-        <last-changes-card />
+        <quick-access-card />
+      </v-flex>
+
+      <v-flex
+        d-flex
+        :md6="displayMensaCard"
+        :lg4="!displayMensaCard && hasSubscribableTimetables"
+        :lg6="displayMensaCard && !hasSubscribableTimetables"
+        :lg12="displayMensaCard && hasSubscribableTimetables"
+        order-xs5
+        order-md6
+      >
+        <v-layout :column="$vuetify.breakpoint.lgAndUp || $vuetify.breakpoint.xs">
+          <v-flex d-flex>
+            <last-changes-card />
+          </v-flex>
+        </v-layout>
       </v-flex>
     </v-layout>
   </v-container>
@@ -93,6 +109,7 @@ import { mapState, mapGetters, mapMutations } from 'vuex';
 import * as moment from 'moment';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import LastChangesCard from '../components/last-changes-card.vue';
+import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import CampusNewsCard from '../components/campus-news-card.vue';
 import FacultyNewsCard from '../components/faculty-news-card.vue';
@@ -103,6 +120,7 @@ export default {
   components: {
     UpcomingLecturesCard,
     LastChangesCard,
+    QuickAccessCard,
     MensaCard,
     CampusNewsCard,
     FacultyNewsCard,
