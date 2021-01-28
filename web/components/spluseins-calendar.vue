@@ -87,14 +87,14 @@ export default {
   },
   methods: {
     async next() {
-      this.setWeek(this.currentWeek + 1);
-      await this.refresh();
       this.calendar.next();
+      this.setWeek(this.calendar.start.date.isoWeek());
+      await this.refresh();
     },
     async prev() {
-      this.setWeek(this.currentWeek - 1);
-      await this.refresh();
       this.calendar.prev();
+      this.setWeek(this.calendar.start.date.isoWeek());
+      await this.refresh();   
     },
     async today() {
       this.resetWeek(true);

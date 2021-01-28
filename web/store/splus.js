@@ -6,7 +6,9 @@ import TIMETABLES from '~/assets/timetables.json'; // TODO change this in SS21
 import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customTimetableToRoute, scalarArraysEqual } from '~/lib/util';
 
 function defaultWeek() {
-  if (moment().isoWeek() < SEMESTER_WEEK_1) {
+  if (moment().isoWeek() < SEMESTER_WEEK_1 && (SEMESTER_WEEK_1 - moment().isoWeek) < 8) {
+    // Use semester beginning instead of today if semester hasn't started yet
+    // Do that only a few weeks before the semester so we avoid bugs with year wraparounds
     return SEMESTER_WEEK_1;
   }
 
