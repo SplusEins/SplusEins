@@ -5,7 +5,7 @@ import parseTable from './parseTable';
 
 moment.locale('de');
 
-export function parseSkedList(html: string, filterWeek: number) {
+export function parseSkedList(html: string): ParsedLecture[] {
   const $ = load(html);
 
   const events = [] as ParsedLecture[];
@@ -82,7 +82,7 @@ export function parseSkedList(html: string, filterWeek: number) {
       }
     }
 
-    if (!start.isValid() || !end.isValid() || start.isoWeek() != filterWeek % 52) {
+    if (!start.isValid() || !end.isValid()) {
       return;
     }
 
@@ -100,7 +100,7 @@ export function parseSkedList(html: string, filterWeek: number) {
   return events;
 }
 
-export function parseSkedGraphical(html: string, filterWeek: number, faculty: string) {
+export function parseSkedGraphical(html: string, faculty: string): ParsedLecture[]  {
   const $ = load(html);
   const events = [] as ParsedLecture[];
 
@@ -193,7 +193,7 @@ export function parseSkedGraphical(html: string, filterWeek: number, faculty: st
         const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');
         const end = moment.tz(datum + ' ' + uhrzeit_1, dateFormat, 'Europe/Berlin');
 
-        if (start.isoWeek() != filterWeek % 52) {
+        if (!start.isValid() || !end.isValid()) {
           return;
         }
 
