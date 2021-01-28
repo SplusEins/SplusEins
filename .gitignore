@@ -89,3 +89,6 @@ assets/.DS_Store
 credentials.yml
 
 spluseinscache
+
+.vscode/
+*.code-workspace
