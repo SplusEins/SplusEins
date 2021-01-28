@@ -1,7 +1,9 @@
 import fetch, { Headers } from 'node-fetch';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
+import * as moment from 'moment';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
+import { ParsedLecture } from '../model/SplusModel';
 import { parseSkedGraphical, parseSkedList } from './SkedParser';
 
 const SKED_BASE = 'https://stundenplan.ostfalia.de/';
@@ -36,32 +38,26 @@ function sleep(ms) {
  * @param timetable request
  * @returns HTML-string
  */
-function skedRequest(timetable: TimetableRequest): Promise<string> {
-  const key = `sked-${timetable.id}`;
+async function skedRequest(timetable: TimetableRequest): Promise<string> {
+  const token = Buffer.from(SKED_USER + ':' + SKED_PASSWORD).toString('base64');
+  const headers = new Headers();
+  headers.append('Authorization', 'Basic ' + token);
 
-  return cache.wrap(key, async () => {
-    console.log(`timetable cache miss for key ${key}`);
-
-    const token = Buffer.from(SKED_USER + ':' + SKED_PASSWORD).toString('base64');
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic ' + token);
-
-    const url = SKED_BASE + timetable.skedPath;
-    let error;
-    for (let attempt = 0; attempt < 3; attempt++) {
-      const res = await fetch(url, { headers });
-      if (res.ok) {
-        console.log(`saving lectures for ${key}`)
-        return res.text()
-      }
-
-      error = `Sked error for ${timetable.id}-${timetable.week}: ${res.statusText} (attempt ${attempt})`;
-      console.error(error);
-      await sleep(100);
+  const url = SKED_BASE + timetable.skedPath;
+  console.log(`Url for ${timetable.id} is ${url}`)
+  let error;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const res = await fetch(url, { headers });
+    if (res.ok) {
+      return res.text()
     }
 
-    throw new Error(error);
-  }, { ttl: CACHE_SECONDS }) as Promise<string>;
+    error = `Sked error for ${timetable.id}-${timetable.week}: ${res.statusText} (attempt ${attempt})`;
+    console.error(error);
+    await sleep(100);
+  }
+
+  throw new Error(error);
 }
 
 /**
@@ -71,13 +67,20 @@ function skedRequest(timetable: TimetableRequest): Promise<string> {
  * @returns parsed Events
  */
 async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
+  const key = `lectures-${timetable.id}`;
+
+  let lectures: ParsedLecture[] = await cache.wrap(key, async () => {
+    console.log(`Lectures cache miss for key ${key}`);
     const data = await skedRequest(timetable);
     const lectures = timetable.graphical ?
-      parseSkedGraphical(data, timetable.week, timetable.faculty) :
-      parseSkedList(data, timetable.week);
-
-    console.log(`serving ${lectures.length} lectures for ${timetable.id}`)
-    return lectures.map((lecture) => new Event(lecture));
+      parseSkedGraphical(data, timetable.faculty) :
+      parseSkedList(data);
+    console.log(`Storing ${lectures.length} parsed lectures for ${key} in cache`)
+    return lectures;
+  }, { ttl: CACHE_SECONDS });
+  lectures = lectures.filter(lecture => moment(lecture.start).isoWeek() == timetable.week);
+  console.log(`Serving ${lectures.length} lectures for ${timetable.id} in week ${timetable.week}`);
+  return lectures.map((lecture) => new Event(lecture));
 }
 
 /**
