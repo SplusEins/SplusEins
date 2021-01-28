@@ -97,6 +97,9 @@ export default {
           exclude: /(node_modules)/
         });
       }
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
     },
     plugins: [
       new VuetifyLoaderPlugin(),
