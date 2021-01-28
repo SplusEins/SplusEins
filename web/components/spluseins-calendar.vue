@@ -87,28 +87,34 @@ export default {
   },
   methods: {
     async next() {
-      this.calendar.next();
-      this.setWeek(this.calendar.start.date.isoWeek());
+      // Jump forward 7 days, but do not refresh now (will be called in this.refresh())
+      this.calendar.next(7, true);
       await this.refresh();
     },
     async prev() {
-      this.calendar.prev();
-      this.setWeek(this.calendar.start.date.isoWeek());
+      // Jump back 7 days
+      this.calendar.prev(7, true);
       await this.refresh();   
     },
     async today() {
       this.resetWeek(true);
-      await this.refresh();
+      // This scrolls forward or backward until the today's week has been reached
       while (this.calendar.start.date.isoWeek() > this.currentWeek) {
-        this.calendar.prev();
+        this.calendar.prev(7, true);
       }
       while (this.calendar.start.date.isoWeek() < this.currentWeek) {
-        this.calendar.next();
+        this.calendar.next(7, true);
       }
+      await this.refresh();
     },
     async refresh() {
+      // Store the week so switching calendars keeps the same week
+      this.setWeek(this.calendar.start.date.isoWeek());
+      // Load the data and store the events in the calendar
       await this.load();
       this.calendar.setEvents(this.events);
+      // Refresh calendar AFTER the events have been loaded to avoid flickering
+      this.calendar.refresh();
     },
     ...mapMutations({
       setWeek: 'splus/setWeek',
