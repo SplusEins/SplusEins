@@ -97,8 +97,8 @@
 
 <script>
 import { mapMutations, mapGetters, mapState } from 'vuex';
-import { range, uniq, flatten, customTimetableToRoute } from '../lib/util';
-import { loadEvents, eventsAsLectures } from '../store/splus';
+import { uniq, flatten, customTimetableToRoute } from '../lib/util';
+import { loadUniqueLectures, eventsAsLectures } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
 import CustomTimetableCookieReminder from './custom-timetable-cookie-reminder.vue'
@@ -211,13 +211,9 @@ export default {
       this.loading = true;
 
       try {
-        const weeks = range(this.weekOrDefault - 1, this.weekOrDefault + 5);
-        const events = await Promise.all(weeks.map((week) =>
-          loadEvents(schedule, week, this.$axios.$get)));
-        const lectures = eventsAsLectures(flatten(events));
-        const uniqueLectures = lectures
-          .filter((lecture, index, self) => self.indexOf(lecture) == index);
-        this.$set(this.lectures, schedule.id, uniqueLectures);
+        const events = await loadUniqueLectures(schedule, this.$axios.$get);
+        const lectures = eventsAsLectures(events);
+        this.$set(this.lectures, schedule.id, lectures);
       } catch (error) {
         this.enqueueError('Stundenplan: API-Verbindung fehlgeschlagen');
         console.error('error during API call', error.message);

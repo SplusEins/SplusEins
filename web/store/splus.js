@@ -39,6 +39,13 @@ export async function loadEvents(timetable, weeks, $get) {
 }
 
 /**
+ * Return all unique lectures for the given timetable.
+ */
+export async function loadUniqueLectures(timetable, $get) {
+  return await $get(`/api/splus/${timetable.id}/lectures`);
+}
+
+/**
  * Transform v2 events to v1 lectures.
  */
 export function eventsAsLectures(events) {

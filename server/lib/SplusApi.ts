@@ -3,9 +3,7 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
-import { ParsedLecture } from '../model/SplusModel';
 import { parseSkedGraphical, parseSkedList } from './SkedParser';
-import { eventNames } from 'process';
 
 const SKED_BASE = process.env.SKED_URL || 'https://stundenplan.ostfalia.de/';
 
@@ -83,7 +81,6 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
 
 export async function getUniqueEvents(timetable: TimetableRequest): Promise<Event[]> {
   // Disable week field
-  timetable.week = null;
   const allEvents = await parseTimetable(timetable);
   // Filter all unique events
   const uniqueEvents = [...new Set(allEvents.map(obj => obj.id))] // search all unique IDs
