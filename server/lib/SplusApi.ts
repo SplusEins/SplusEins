@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { ParsedLecture } from '../model/SplusModel';
 import { parseSkedGraphical, parseSkedList } from './SkedParser';
+import { eventNames } from 'process';
 
 const SKED_BASE = 'https://stundenplan.ostfalia.de/';
 
@@ -69,18 +70,32 @@ async function skedRequest(timetable: TimetableRequest): Promise<string> {
 async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
   const key = `lectures-${timetable.id}`;
 
-  let lectures: ParsedLecture[] = await cache.wrap(key, async () => {
+  return await cache.wrap(key, async () => {
     console.log(`Lectures cache miss for key ${key}`);
     const data = await skedRequest(timetable);
     const lectures = timetable.graphical ?
       parseSkedGraphical(data, timetable.faculty) :
       parseSkedList(data);
     console.log(`Storing ${lectures.length} parsed lectures for ${key} in cache`)
-    return lectures;
+    return lectures.map((lecture) => new Event(lecture));
   }, { ttl: CACHE_SECONDS });
-  lectures = lectures.filter(lecture => moment(lecture.start).isoWeek() == timetable.week);
-  console.log(`Serving ${lectures.length} lectures for ${timetable.id} in week ${timetable.week}`);
-  return lectures.map((lecture) => new Event(lecture));
+}
+
+export async function getUniqueEvents(timetable: TimetableRequest): Promise<Event[]> {
+  // Disable week field
+  timetable.week = null;
+  const allEvents = await parseTimetable(timetable);
+  // Filter all unique events
+  const uniqueEvents = [...new Set(allEvents.map(obj => obj.id))] // search all unique IDs
+    .map(id => {
+       //map IDs back to events
+      const matchingEvent = allEvents.find(evt => evt.id == id);
+      // clear end and start since this is just one of the random events for this ID
+      matchingEvent.start = null; 
+      matchingEvent.end = null;
+      return matchingEvent;
+    });
+  return uniqueEvents
 }
 
 /**
@@ -90,8 +105,9 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
  * @returns requested Events
  */
 export default async function getEvents(timetables: TimetableRequest[]): Promise<Event[]> {
-  const allEvents = await Promise.all(timetables.map((timetable: TimetableRequest) => parseTimetable(timetable)))
-    .then(flatten);
+  const allEvents = await Promise.all(timetables.map((timetable: TimetableRequest) => parseTimetable(timetable)
+    .then(events => events.filter(lecture => moment(lecture.start).isoWeek() == timetable.week))
+  )).then(flatten);
 
   // filter duplicates
   const key = (event: Event) =>
@@ -101,5 +117,6 @@ export default async function getEvents(timetables: TimetableRequest[]): Promise
   allEvents.forEach((event) => eventsByKey.set(key(event), event));
   const events = [...eventsByKey.values()];
 
+  console.log(`Serving ${events.length} lectures for ${timetables[0].id}`);
   return events;
 }
