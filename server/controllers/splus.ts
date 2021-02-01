@@ -21,7 +21,7 @@ router.options('/:timetables/:weeks/:lectures?/:name', cors());
  * Get unique lectures for given timetable id
  *
  * @param timetable id
- * @return Timetable
+ * @return Array of unique events
  */
 router.get('/:timetable/lectures', cors(), async (req, res, next) => {
   const timetableId = req.params.timetable;
@@ -42,23 +42,8 @@ router.get('/:timetable/lectures', cors(), async (req, res, next) => {
     };
     const events = await getUniqueEvents(request);
 
-    const meta: TimetableMetadata = <TimetableMetadata> {
-      id: timetable.id,
-      faculty: timetable.faculty,
-      degree: timetable.degree,
-      specialisation: timetable.label,
-      semester: Number(timetable.semester)
-    };
-    const response: Timetable = <Timetable> {
-      name: timetable.degree == 'Räume' ?
-              `${timetable.semester} ${timetable.label}` :
-              `${(timetable.degree)} ${timetable.label} - ${timetable.semester}. Semester`,
-      events: events,
-      meta: meta,
-    };
-
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
-    res.json(response);
+    res.json(events);
   } catch (error) {
     next(error);
   }
