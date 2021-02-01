@@ -3,7 +3,7 @@ import * as cors from 'cors';
 import * as TIMETABLES from '../assets/timetables.json'; // TODO change this in SS21
 
 import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
-import getEvents from '../lib/SplusApi';
+import getEvents, { getUniqueEvents } from '../lib/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
@@ -13,8 +13,56 @@ const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 /**
  * Accept CORS preflight requests.
  */
+router.options('/:timetable/lectures', cors());
 router.options('/:timetable/:weeks', cors());
 router.options('/:timetables/:weeks/:lectures?/:name', cors());
+
+/**
+ * Get unique lectures for given timetable id
+ *
+ * @param timetable id
+ * @return Timetable
+ */
+router.get('/:timetable/lectures', cors(), async (req, res, next) => {
+  const timetableId = req.params.timetable;
+  const timetable = TIMETABLES.find(({ id }) => id == timetableId);
+
+   if (!timetable) {
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
+    res.sendStatus(404);
+    return;
+  }
+
+  try {
+    const request: TimetableRequest = <TimetableRequest> {
+      id: timetable.id,
+      skedPath: timetable.skedPath,
+      graphical: timetable.graphical,
+      faculty: timetable.faculty
+    };
+    const events = await getUniqueEvents(request);
+
+    const meta: TimetableMetadata = <TimetableMetadata> {
+      id: timetable.id,
+      faculty: timetable.faculty,
+      degree: timetable.degree,
+      specialisation: timetable.label,
+      semester: Number(timetable.semester)
+    };
+    const response: Timetable = <Timetable> {
+      name: timetable.degree == 'Räume' ?
+              `${timetable.semester} ${timetable.label}` :
+              `${(timetable.degree)} ${timetable.label} - ${timetable.semester}. Semester`,
+      events: events,
+      meta: meta,
+    };
+
+    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+});
 
 /**
  * Get Timetable for given id and week
