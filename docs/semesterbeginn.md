@@ -6,9 +6,11 @@ title: Semesterbeginn
 
 ## Aktualisierung der Pläne
 
-Jedes Semester ändern sich die Pläne in Sked.
-Zu Beginn müssen deshalb alle existierenden Pläne manuell herausgesucht und in die Datei `timetables.json` in `server/assets/` und `web/assets/` eingetragen werden.
-Oft sind die Pläne in aufeinander folgenden Sommersemestern bzw. Wintersemestern sehr ähnlich. Sie können also teilweise wiederverwendet werden.
+Jedes Semester ändern sich die Pläne in Sked. Zu Beginn müssen deshalb alle existierenden Pläne herausgesucht und in die Datei `timetables.json` in `server/assets/` und `web/assets/` eingetragen werden.
+
+::: tip
+Um diesen Vorgang zu vereinfachen, wurde [`sked-parser`](https://github.com/SplusEins/sked_parser) geschrieben, welches die notwendige `timetables.json` erstellt. In der README des Projektes befindet sich eine ausführliche Erklärung.
+:::
 
 Für jeden Plan muss ein JSON-Objekt in der Datei definiert werden.
 Diese müssen folgende Struktur besitzen:
@@ -33,7 +35,9 @@ Diese müssen folgende Struktur besitzen:
 * `graphical` ist ein Boolean-Wert welcher angibt, ob es sich um einen `grafischen Plan` handelt (bei `false` handelt es sich um einen `Listenplan`)
 * `skedPath` gibt den Pfad an, über welchen der Plan in der Sked Anwendung abgerufen werden kann (z.B. `http://stundenplan.ostfalia.de/i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html`)
 
+Siehe auch [Erklärungen zum serverseitigen Parser](./server.md#parser).
+
 
 ## Semesterstart setzen
 
-Für das Frontend muss die Umgebungsvariable `SEMESTER_WEEK_1` auf die ISO-Woche der ersten Semesterwoche des aktellen Semesters gesetzt werden. Das Frontend muss neu gebaut werden.
+Für das Frontend muss die Umgebungsvariable `SEMESTER_WEEK_1` auf die ISO-Woche der ersten Semesterwoche des aktuellen Semesters gesetzt werden. Das Frontend muss neu gebaut werden.

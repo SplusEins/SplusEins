@@ -86,12 +86,6 @@ Der abonnierte Plan lässt sich über die Infokarte „Nächste Vorlesung“ än
 Diese Infokarte beinhaltet Links zu allen erstellten und favorisierten Plänen.
 ![img](./img/spluseins_start_full_f.png)
 
-#### Unterstütze das Team
-Diese Infokarte beinhaltet Möglichkeiten, die Entwicklung der Website zu unterstützen. Dies ist möglich durch:
-* Spenden von Geld: PayPal, Bitcoin
-* Senden einer E-Mail (Öffnen in externem E-Mail-Programm)
-![img](./img/spluseins_start_full_g.png)
-
 #### Letzte Änderungen
 Diese Infokarte beinhaltet letzte Änderungen an der Seite.
 ![img](./img/spluseins_start_full_h.png)

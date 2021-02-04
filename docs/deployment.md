@@ -97,4 +97,14 @@ Mittels des Let's Encrypt Bots kann zudem sehr einfach ein SSL-Zertifikat erstel
 
 ## Manuell
 
-[Siehe README](https://github.com/SplusEins/SplusEins), die HTML- und JavaScript-Dateien liegen anschließend in `dist/`.
+[Siehe README](https://github.com/SplusEins/SplusEins) zum Ausführen der Module im Development-Modus. Die Dokumentation der einzelnen Umgebungsvariablen befindet sich im [Konfiguration-Abschnitt](konfiguration.md#umgebungsvariablen).
+
+Alle Module (`docs`, `server`, `web`) können dazu **jeweils** mit den folgenden Befehlen in den produktiven Betrieb gebracht werden:
+```bash
+# Install all modules
+npm install
+# build and launch server
+npm run build
+npm start
+```
+
