@@ -8,6 +8,7 @@ on:
   push:
     paths:
       - "web/**"
+    branches: [master]
   pull_request:
     paths:
       - "web/**"
