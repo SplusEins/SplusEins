@@ -51,7 +51,7 @@ async function skedRequest(timetable: TimetableRequest): Promise<string> {
       return res.text()
     }
 
-    error = `Sked error for ${timetable.id}-${timetable.week}: ${res.statusText} (attempt ${attempt})`;
+    error = `Sked error for ${timetable.id}: ${res.statusText} (attempt ${attempt})`;
     console.error(error);
     await sleep(100);
   }
@@ -79,19 +79,27 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
   }, { ttl: CACHE_SECONDS });
 }
 
+/**
+ * Executes the timetable parsing and returns only unique events.
+ * 
+ * Uniqueness is determined by the ID field (which is derived from the title of the event/lecture).
+ * 
+ * @param timetable request, the week field will be ignored.
+ * @returns An array of the unique events. Parameters for a specific event (like start and end date) are set to null.
+ */
 export async function getUniqueEvents(timetable: TimetableRequest): Promise<Event[]> {
-  // Disable week field
   const allEvents = await parseTimetable(timetable);
-  // Filter all unique events
+  // Filter unique events
   const uniqueEvents = [...new Set(allEvents.map(obj => obj.id))] // search all unique IDs
     .map(id => {
-       //map IDs back to events
+      //map IDs back to events
       const matchingEvent = allEvents.find(evt => evt.id == id);
       // clear end and start since this is just one of the random events for this ID
-      matchingEvent.start = null; 
+      matchingEvent.start = null;
       matchingEvent.end = null;
       return matchingEvent;
     });
+  console.log(`Returning ${uniqueEvents.length} unique lecture metadata for ${timetable.id}`);
   return uniqueEvents
 }
 
@@ -101,9 +109,14 @@ export async function getUniqueEvents(timetable: TimetableRequest): Promise<Even
  * @param timetables request
  * @returns requested Events
  */
-export default async function getEvents(timetables: TimetableRequest[]): Promise<Event[]> {
+export async function getEvents(timetables: TimetableRequest[]): Promise<Event[]> {
   const allEvents = await Promise.all(timetables.map((timetable: TimetableRequest) => parseTimetable(timetable)
-    .then(events => events.filter(lecture => moment(lecture.start).isoWeek() == timetable.week))
+    .then(events => {
+      // Return only events for the correct week of a single request
+      events = events.filter(lecture => moment(lecture.start).isoWeek() == timetable.week)
+      console.log(`Serving ${events.length} lectures for ${timetable.id}`)
+      return events;
+    })
   )).then(flatten);
 
   // filter duplicates
@@ -114,6 +127,5 @@ export default async function getEvents(timetables: TimetableRequest[]): Promise
   allEvents.forEach((event) => eventsByKey.set(key(event), event));
   const events = [...eventsByKey.values()];
 
-  console.log(`Serving ${events.length} lectures for ${timetables[0].id}`);
   return events;
 }
