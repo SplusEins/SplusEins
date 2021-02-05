@@ -3,7 +3,7 @@ import * as cors from 'cors';
 import * as TIMETABLES from '../assets/timetables.json'; // TODO change this in SS21
 
 import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
-import getEvents, { getUniqueEvents } from '../lib/SplusApi';
+import { getEvents, getUniqueEvents } from '../lib/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
@@ -34,7 +34,8 @@ router.get('/:timetable/lectures', cors(), async (req, res, next) => {
   }
 
   try {
-    const request: TimetableRequest = <TimetableRequest> {
+    // Don't set week in request since it's not used anyway
+    const request: TimetableRequest = <TimetableRequest>{
       id: timetable.id,
       skedPath: timetable.skedPath,
       graphical: timetable.graphical,
