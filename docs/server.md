@@ -24,7 +24,7 @@ Die API des Servers wird grundlegend über die Controller, welche sich im `serve
 Bei der API handelt es sich um eine REST-Schnittstelle welche mit dem JSON-Format arbeitet.
 
 ## Stundenplan
-Die Endpunkte zum Abfragen der Stundenpläne durch das Frontends sind in der Datei `controller/splus.ts` definiert.
+Die Endpunkte zum Abfragen der Stundenpläne durch das Frontend sind in der Datei `controller/splus.ts` definiert.
 
 ### GET `/splus/:timetable/:weeks`
 **Parameter:**
@@ -32,7 +32,7 @@ Die Endpunkte zum Abfragen der Stundenpläne durch das Frontends sind in der Dat
   * weeks: Eine oder mehrere durch Komma getrennte Kalenderwochen
 
 **Rückgabe:**
-  Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Verstanstaltungen) in diesem Plan in den angeforderten Wochen enthält.
+  Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Veranstaltungen) in diesem Plan in den angeforderten Wochen enthält.
 
 **Beispiel:**
   `/splus/informatik-wpf/33,34`
@@ -45,11 +45,21 @@ Die Endpunkte zum Abfragen der Stundenpläne durch das Frontends sind in der Dat
   * name: frei wählbarer Name für einen Stundenplan (für personalierte Pläne)
 
 **Rückgabe:**
-  Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Verstanstaltungen) oder falls übergeben, nur die angeforderten Veranstaltungen (lectures) enthält.
+  Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Veranstaltungen) oder falls übergeben, nur die angeforderten Veranstaltungen (lectures) enthält.
   Der Stundenplan hat den übergebenen Namen.
 
 **Beispiel:**
   `/splus/informatik-wpf,informatik-1/33,34/D123A,GA31R/MeinPlan`
+
+### GET `/splus/:timetable/lectures`
+**Parameter:**
+  * timetable: Stundenplan-ID wie in `assets/timetables.json`
+
+**Rückgabe:**
+  Liefert ein `Event`-Array (siehe `model/SplusEinsModel.ts`), welches aus den einzelnen Vorlesungen dieses Stundenplans besteht. Damit kann herausgefunden werden, welches und wie viele Module es in diesem Plan gibt. Wird im Frontend genutzt, um die Liste zum Personalisieren eines Plans bereitzustellen.
+
+**Beispiel:**
+  `/splus/informatik-wpf/lectures`
 
 ## ICS
 Der Endpunkt zum Abfragen der Stundenpläne im [iCalendar](https://de.wikipedia.org/wiki/ICalendar) Format für Kalender-Apps wie Outlook befindet sich in der Datei `controller/ics.ts`.
