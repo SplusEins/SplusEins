@@ -23,21 +23,31 @@ const cache = CACHE_DISABLE
     }
   });
 
+const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
+
 /**
- * Fetch and parse ostfalia news
+ * Fetch and parse ostfalia news from internal ostfalia endpoint they use for openCMS
+ * 
+ * @param newsSelector News type to load
  * @returns NewsElement[]
  */
 async function ostfaliaNewsRequest(newsSelector: string): Promise<NewsElement[]> {
-
+  if (['wob', 'wf', 'sud', 'sz'].includes(newsSelector)) {
+    // prepend standort/campus selectors with necceassary prefix
+    newsSelector = "campus/" + newsSelector;
+  }
   const query = new URLSearchParams();
   query.append('itemsPerPage', '10');
+  // Syntax of collectorParam very similar to https://documentation.opencms.org/opencms-documentation/more-opencms-features/solr-search-integration
+  // so that param will probably be forwarded to Apache SOLR
   query.append('collectorParam',
-    'fq=type:of-news' +
-    '&fq=parent-folders:"/sites/default/de/' + newsSelector + '/.content/"' +
-    '&sort=newsdate_de_dt desc' +
-    '&rows=25');
-  query.append('showDate', 'true');
-  query.append('currPage', '1');
+    'fq=type:of-news' + // not stricly neccessary, but kept here just in case
+    '&fq=parent-folders:"/sites/default/de/' + newsSelector + '/.content/"' + // .content could be removed as well
+    '&sort=newsdate_de_dt desc' + // order the articles by date in the SOLR requests
+    '&rows=25'); // limit the number of requested rows, otherwise server error
+  query.append('showDate', 'true'); // always show dates on articles
+  query.append('currPage', '1'); // pagination, we always need the first page
+  query.append('teaserLength', '150'); // cut off descriptions longer than x characters, doesn't always work?
 
   const response = await fetch(
     'https://www.ostfalia.de/cms/system/modules/de.ostfalia.module.template/elements/renderNewsList.jsp', {
@@ -54,7 +64,7 @@ async function ostfaliaNewsRequest(newsSelector: string): Promise<NewsElement[]>
       date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate()
     };
   }).get();
-  console.log(`${newsSelector} has ${elements.length} items.`)
+  console.log(`Fetched ${elements.length} news for "${newsSelector}"`)
   return elements;
 }
 
@@ -76,113 +86,74 @@ async function campus38NewsRequest(): Promise<NewsElement[]> {
 }
 
 /**
- * Get Ostfalia faculty news
- * @returns NewsElement[]
+ * Helper function for cleaning news articles
+ * @param news news to parse
+ * @returns filtered and sorted news articles with truncated descriptions
  */
-async function facultyNewsRequest(faculty: string): Promise<NewsElement[]> {
-  let url;
-  if (faculty.length == 1) {
-    url = 'https://www.ostfalia.de/cms/de/' + faculty;
-    switch (faculty) {
-      case "i": // weird format
-      case "r":
-      case "s":
-        // URL stays as is
-        break;
-      //case "k": // has no date, so remove for now
-      case "v": // uses different article format?
-      case "b":
-      case "h":
-      case "f":
-      case "g":
-      case "w":
-        // At least those faculties all use the same system
-        url += '/fakultaet/aktuelles';
-        break;
-      case "e":
-        // Faculty E has to do it in their own way of course
-        url += '/studium';
-        break;
-      default:
-        throw new Error(`Faculty ${faculty} not supported`);
-    }
-  } else {
-    // Standort-News
-    if (!["wob", "sz", "wf", "sud"].includes(faculty)) {
-      // zuerst überprüfen, dass es ein valid request ist
-      throw new Error(`Standort ${faculty} not supported`);
-    }
-    url = 'https://www.ostfalia.de/cms/de/campus/' + faculty;
-  }
+function truncateAndSortNews(news: NewsElement[]): NewsElement[] {
+  // don't show articles that are more than x days in the future, 
+  // can happen in some rare cases where news items = calendar items (like faculty S)
+  news = news.filter(article => (moment(article.date).diff(moment(), 'days') < 3))
 
-  const response = await fetch(url).then((res) => res.text());
-  const $ = cheerio.load(response);
-
-  return $('article.news-campus').map(function () {
-    return <NewsElement>{
-      // Title is the description of the first link
-      title: $('a', this).first().text().trim(),
-      // Convert relative link into absolute
-      link: 'https://www.ostfalia.de' + $('a', this).first().attr('href'),
-      // Get paragraphs that are not empty but exclude the first paragraph because it contains the date
-      text: $('p', this).filter(function (i) { return ($(this).text().trim() != "" && i != 0) }).text().trim(),
-      // Convert date string (like "21.09.2020") into Date object
-      date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate()
+  // Truncate article descriptions
+  const truncateArticle = (article: NewsElement) => {
+    if (article.text.length == 0) {
+      return article;
+    }
+    const sentences = article.text.split('.');
+    let text = sentences.reduce((text, sentence) => text.length < 80 ? text + sentence + '.' : text, '');
+    if (text.length > 250) {
+      // hard cut-off in case the sentence was longer than expected
+      text = text.slice(0, 250) + "...";
+    }
+    return {
+      ...article,
+      text,
     };
-  }).get();
+  };
+  news = news.map(truncateArticle);
+
+  // Sort articles by date, but rank "campus38" lower because they have much more news
+  const scoreArticle = (article: NewsElement) => {
+    const date = new Date(article.date).getTime();
+    const now = new Date().getTime();
+    const age = now - date;
+    const boost = article.source == 'campus38' ? 0.35 : 1.0;
+    return age / boost;
+  };
+  return news.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
 }
 
 /**
- * Manages campus news requests
+ * Manages news requests
  *
+ * @param newsSelectors faculty
  * @returns NewsElement[]
  */
-export function getCampusNews(): Promise<NewsElement[]> {
-  const key = 'campus-news';
+export default async function getNews(newsSelectors: string[]): Promise<NewsElement[]> {
+  const facultySelectors = ['r', 'v', 'm', 'b', 'k', 'h', 'f', 'g', 'w', 'e', 's']; // all allowed faculties
+  const campusSelectors = ['wob', 'wf', 'sud', 'sz']; // all allowed campuses/standorte
+  const otherSelectors = ['campus', 'campus38']; // currently only ostfalia global news and Campus 38 news.
+  const allowedSelectors = facultySelectors.concat(campusSelectors, otherSelectors);
 
-  return cache.wrap(key, async () => {
-    console.log('campus news cache miss');
-
-    const campus38News = await campus38NewsRequest()
-    const ostfaliaNews = await ostfaliaNewsRequest('campus');
-
-    const truncateArticle = (article : NewsElement) => {
-      const sentences = article.text.split('.');
-      const text = sentences.reduce((text, sentence) => text.length < 50 ? text + sentence + '.' : text, '');
-      return {
-        ...article,
-        text
-      };
-    };
-
-    const articles = [].concat(
-      ostfaliaNews.map((article) => ({ ...article, source: 'Ostfalia' })),
-      campus38News.map((article) => ({ ...article, source: 'Campus 38' }))
-    ).map(truncateArticle);
-
-    const scoreArticle = (article : NewsElement) => {
-      const date = new Date(article.date).getTime();
-      const now = new Date().getTime();
-      const age = now - date;
-      const boost = article.source == 'Ostfalia' ? 3.0 : 1.0;
-      return age / boost;
-    };
-
-    return articles.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
-  }, { ttl: CACHE_SECONDS }) as Promise<NewsElement[]>;
-}
-
-/**
- * Manages faculty news requests
- *
- * @param requested faculty
- * @returns NewsElement[]
- */
-export function getFacultyNews(faculty: string): Promise<NewsElement[]> {
-  const key = 'faculty-news-' + faculty;
-
-  return cache.wrap(key, async () => {
-    console.log(`faculty news cache miss for faculty: ${faculty}`);
-    return (await ostfaliaNewsRequest(faculty)).map((article) => ({ ...article, source: faculty }));
-  }, { ttl: CACHE_SECONDS }) as Promise<NewsElement[]>;
+  const facultyNews = await Promise.all(
+    newsSelectors.map(async (newsSelector) => {
+      if (!allowedSelectors.includes(newsSelector)) {
+        throw new Error(`Selector "${newsSelector}" not supported`);
+      }
+      try {
+        const key = 'faculty-news-' + newsSelector;
+        return await cache.wrap(key, async () => {
+          let newsEls: NewsElement[] = newsSelector != 'campus38' ?
+            await ostfaliaNewsRequest(newsSelector) : await campus38NewsRequest();
+          newsEls = newsEls.map((article) => ({ ...article, source: newsSelector }));
+          return newsEls;
+        }, { ttl: CACHE_SECONDS }) as Promise<NewsElement[]>;
+      } catch (e) {
+        console.log(`Error while loading faculty news for "${newsSelector}": ${e.message}`)
+        return [];
+      }
+    })
+  ).then(flatten);
+  return truncateAndSortNews(facultyNews);
 }
