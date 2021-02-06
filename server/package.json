@@ -25,7 +25,8 @@
     "ical-generator": "^1.15.4",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "rss": "^1.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
@@ -40,6 +41,7 @@
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.25",
     "@types/node-fetch": "^2.5.8",
+    "@types/rss": "0.0.28",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
     "babel-core": "^7.0.0-bridge.0",
