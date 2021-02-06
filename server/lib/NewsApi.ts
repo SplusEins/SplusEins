@@ -27,43 +27,46 @@ const cache = CACHE_DISABLE
  * Fetch and parse ostfalia news
  * @returns NewsElement[]
  */
-async function ostfaliaNewsRequest (): Promise<NewsElement[]> {
+async function ostfaliaNewsRequest(newsSelector: string): Promise<NewsElement[]> {
+
   const query = new URLSearchParams();
   query.append('itemsPerPage', '10');
   query.append('collectorParam',
     'fq=type:of-news' +
-  '&fq=parent-folders:"/sites/default/de/campus/.content/newsentries10/"' +
-  '&sort=newsdate_de_dt desc' +
-  '|createPath=/sites/default/de/campus/.content/newsentries10/news_%(number).xml');
+    '&fq=parent-folders:"/sites/default/de/' + newsSelector + '/.content/"' +
+    '&sort=newsdate_de_dt desc' +
+    '&rows=25');
   query.append('showDate', 'true');
   query.append('currPage', '1');
 
   const response = await fetch(
     'https://www.ostfalia.de/cms/system/modules/de.ostfalia.module.template/elements/renderNewsList.jsp', {
-      method: 'POST',
-      body: query
-    }).then((res) => res.text());
+    method: 'POST',
+    body: query,
+  }).then((res) => res.text());
 
   const $ = cheerio.load(response);
-  return $('article').map(function (i, article) {
-    return <NewsElement> {
+  const elements: NewsElement[] = await $('article').map(function () {
+    return <NewsElement>{
       title: $('a', this).text().trim(),
       link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
       text: $('p', this).last().text().trim(),
       date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate()
     };
   }).get();
+  console.log(`${newsSelector} has ${elements.length} items.`)
+  return elements;
 }
 
 /**
  * Fetch and parse campus38 news
  * @returns NewsElement[]
  */
-async function campus38NewsRequest () : Promise<NewsElement[]> {
+async function campus38NewsRequest(): Promise<NewsElement[]> {
   const response = await fetch('https://www.campus38.de/newsfeed.xml').then((res) => res.text());
   const $ = cheerio.load(response, { xmlMode: true });
-  return $('entry').map(function (i, article) {
-    return <NewsElement> {
+  return $('entry').map(function () {
+    return <NewsElement>{
       title: $('title', this).text().trim(),
       link: $('link', this).attr('href'),
       text: $('summary', this).text().trim(),
@@ -76,44 +79,53 @@ async function campus38NewsRequest () : Promise<NewsElement[]> {
  * Get Ostfalia faculty news
  * @returns NewsElement[]
  */
-async function facultyNewsRequest (faculty: string) : Promise<NewsElement[]> {
+async function facultyNewsRequest(faculty: string): Promise<NewsElement[]> {
   let url;
   if (faculty.length == 1) {
     url = 'https://www.ostfalia.de/cms/de/' + faculty;
+    switch (faculty) {
+      case "i": // weird format
+      case "r":
+      case "s":
+        // URL stays as is
+        break;
+      //case "k": // has no date, so remove for now
+      case "v": // uses different article format?
+      case "b":
+      case "h":
+      case "f":
+      case "g":
+      case "w":
+        // At least those faculties all use the same system
+        url += '/fakultaet/aktuelles';
+        break;
+      case "e":
+        // Faculty E has to do it in their own way of course
+        url += '/studium';
+        break;
+      default:
+        throw new Error(`Faculty ${faculty} not supported`);
+    }
   } else {
+    // Standort-News
+    if (!["wob", "sz", "wf", "sud"].includes(faculty)) {
+      // zuerst überprüfen, dass es ein valid request ist
+      throw new Error(`Standort ${faculty} not supported`);
+    }
     url = 'https://www.ostfalia.de/cms/de/campus/' + faculty;
   }
-  // Faculty E hosts their news on a subpage
-  if (faculty == 'e') url += '/studium'
 
   const response = await fetch(url).then((res) => res.text());
   const $ = cheerio.load(response);
 
-  if (faculty == 'i') {
-    return $('article .ostfalia-content table tbody td').map(function (i, td) {
-      let link = $('a', this).first().attr('href');
-      if (!!link && !link.startsWith('http')) {
-        link = 'https://www.ostfalia.de' + link;
-      } else {
-        link = '';
-      }
-
-      return <NewsElement> {
-        title: $(this).text().trim(),
-        link,
-        text: ''
-      }
-    }).get();
-  }
-
-  return $('article.news-campus').map(function (i, article) {
-    return <NewsElement> {
+  return $('article.news-campus').map(function () {
+    return <NewsElement>{
       // Title is the description of the first link
       title: $('a', this).first().text().trim(),
       // Convert relative link into absolute
       link: 'https://www.ostfalia.de' + $('a', this).first().attr('href'),
       // Get paragraphs that are not empty but exclude the first paragraph because it contains the date
-      text: $('p', this).filter(function (i, el) { return ($(this).text().trim() != '' && i != 0) }).text().trim(),
+      text: $('p', this).filter(function (i) { return ($(this).text().trim() != "" && i != 0) }).text().trim(),
       // Convert date string (like "21.09.2020") into Date object
       date: moment($('p', this).first().text().trim(), 'DD.MM.YY').utcOffset('+0100').toDate()
     };
@@ -125,16 +137,16 @@ async function facultyNewsRequest (faculty: string) : Promise<NewsElement[]> {
  *
  * @returns NewsElement[]
  */
-export function getCampusNews () {
+export function getCampusNews(): Promise<NewsElement[]> {
   const key = 'campus-news';
 
   return cache.wrap(key, async () => {
     console.log('campus news cache miss');
 
     const campus38News = await campus38NewsRequest()
-    const ostfaliaNews = await ostfaliaNewsRequest();
+    const ostfaliaNews = await ostfaliaNewsRequest('campus');
 
-    const truncateArticle = (article) => {
+    const truncateArticle = (article : NewsElement) => {
       const sentences = article.text.split('.');
       const text = sentences.reduce((text, sentence) => text.length < 50 ? text + sentence + '.' : text, '');
       return {
@@ -148,7 +160,7 @@ export function getCampusNews () {
       campus38News.map((article) => ({ ...article, source: 'Campus 38' }))
     ).map(truncateArticle);
 
-    const scoreArticle = (article) => {
+    const scoreArticle = (article : NewsElement) => {
       const date = new Date(article.date).getTime();
       const now = new Date().getTime();
       const age = now - date;
@@ -166,11 +178,11 @@ export function getCampusNews () {
  * @param requested faculty
  * @returns NewsElement[]
  */
-export function getFacultyNews (faculty: string) {
+export function getFacultyNews(faculty: string): Promise<NewsElement[]> {
   const key = 'faculty-news-' + faculty;
 
   return cache.wrap(key, async () => {
     console.log(`faculty news cache miss for faculty: ${faculty}`);
-    return (await facultyNewsRequest(faculty)).map((article) => ({ ...article, source: faculty }));
+    return (await ostfaliaNewsRequest(faculty)).map((article) => ({ ...article, source: faculty }));
   }, { ttl: CACHE_SECONDS }) as Promise<NewsElement[]>;
 }
