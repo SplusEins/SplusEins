@@ -90,7 +90,7 @@ async function campus38NewsRequest(): Promise<NewsElement[]> {
  * @param news news to parse
  * @returns filtered and sorted news articles with truncated descriptions
  */
-function truncateAndSortNews(news: NewsElement[]): NewsElement[] {
+function truncateAndSortNews(news: NewsElement[], limit: number): NewsElement[] {
   // don't show articles that are more than x days in the future, 
   // can happen in some rare cases where news items = calendar items (like faculty S)
   news = news.filter(article => (moment(article.date).diff(moment(), 'days') < 3))
@@ -121,7 +121,10 @@ function truncateAndSortNews(news: NewsElement[]): NewsElement[] {
     const boost = article.source == 'campus38' ? 0.35 : 1.0;
     return age / boost;
   };
-  return news.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
+  news = news.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
+  // Cut array after limit (yes this is legit javascript: https://stackoverflow.com/a/31560542/4026792)
+  news.length = limit;
+  return news;
 }
 
 /**
@@ -130,7 +133,7 @@ function truncateAndSortNews(news: NewsElement[]): NewsElement[] {
  * @param newsSelectors faculty
  * @returns NewsElement[]
  */
-export default async function getNews(newsSelectors: string[]): Promise<NewsElement[]> {
+export default async function getNews(newsSelectors: string[], limit: number): Promise<NewsElement[]> {
   const facultySelectors = ['r', 'v', 'm', 'b', 'k', 'h', 'f', 'g', 'w', 'e', 's']; // all allowed faculties
   const campusSelectors = ['wob', 'wf', 'sud', 'sz']; // all allowed campuses/standorte
   const otherSelectors = ['campus', 'campus38']; // currently only ostfalia global news and Campus 38 news.
@@ -155,5 +158,5 @@ export default async function getNews(newsSelectors: string[]): Promise<NewsElem
       }
     })
   ).then(flatten);
-  return truncateAndSortNews(facultyNews);
+  return truncateAndSortNews(facultyNews, limit);
 }
