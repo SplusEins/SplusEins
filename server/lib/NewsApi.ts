@@ -27,17 +27,17 @@ const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
 /**
  * Fetch and parse ostfalia news from internal ostfalia endpoint they use for openCMS
- * 
+ *
  * @param newsSelector News type to load
  * @returns NewsElement[]
  */
-async function ostfaliaNewsRequest(newsSelector: string): Promise<NewsElement[]> {
+async function ostfaliaNewsRequest (newsSelector: string): Promise<NewsElement[]> {
   if (['wob', 'wf', 'sud', 'sz'].includes(newsSelector)) {
     // prepend standort/campus selectors with necceassary prefix
-    newsSelector = "campus/" + newsSelector;
+    newsSelector = 'campus/' + newsSelector;
   }
   const query = new URLSearchParams();
-  query.append('itemsPerPage', '10');
+  query.append('itemsPerPage', '20');
   // Syntax of collectorParam very similar to https://documentation.opencms.org/opencms-documentation/more-opencms-features/solr-search-integration
   // so that param will probably be forwarded to Apache SOLR
   query.append('collectorParam',
@@ -47,16 +47,16 @@ async function ostfaliaNewsRequest(newsSelector: string): Promise<NewsElement[]>
     '&rows=25'); // limit the number of requested rows, otherwise server error
   query.append('showDate', 'true'); // always show dates on articles
   query.append('currPage', '1'); // pagination, we always need the first page
-  query.append('teaserLength', '150'); // cut off descriptions longer than x characters, doesn't always work?
+  query.append('teaserLength', '250'); // cut off descriptions longer than x characters, doesn't always work?
 
   const response = await fetch(
     'https://www.ostfalia.de/cms/system/modules/de.ostfalia.module.template/elements/renderNewsList.jsp', {
-    method: 'POST',
-    body: query,
-  }).then((res) => res.text());
+      method: 'POST',
+      body: query
+    }).then((res) => res.text());
 
   const $ = cheerio.load(response);
-  const elements: NewsElement[] = await $('article').map(function () {
+  const elements: NewsElement[] = $('article').map(function () {
     return <NewsElement>{
       title: $('a', this).text().trim(),
       link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
@@ -72,7 +72,7 @@ async function ostfaliaNewsRequest(newsSelector: string): Promise<NewsElement[]>
  * Fetch and parse campus38 news
  * @returns NewsElement[]
  */
-async function campus38NewsRequest(): Promise<NewsElement[]> {
+async function campus38NewsRequest (): Promise<NewsElement[]> {
   const response = await fetch('https://www.campus38.de/newsfeed.xml').then((res) => res.text());
   const $ = cheerio.load(response, { xmlMode: true });
   return $('entry').map(function () {
@@ -90,8 +90,8 @@ async function campus38NewsRequest(): Promise<NewsElement[]> {
  * @param news news to parse
  * @returns filtered and sorted news articles with truncated descriptions
  */
-function truncateAndSortNews(news: NewsElement[], limit: number): NewsElement[] {
-  // don't show articles that are more than x days in the future, 
+function truncateAndSortNews (news: NewsElement[], limit: number): NewsElement[] {
+  // don't show articles that are more than x days in the future,
   // can happen in some rare cases where news items = calendar items (like faculty S)
   news = news.filter(article => (moment(article.date).diff(moment(), 'days') < 3))
 
@@ -100,15 +100,15 @@ function truncateAndSortNews(news: NewsElement[], limit: number): NewsElement[] 
     if (article.text.length == 0) {
       return article;
     }
-    const sentences = article.text.split('.');
+    const sentences = article.text.split('.'); // fixme this logic can be improved
     let text = sentences.reduce((text, sentence) => text.length < 80 ? text + sentence + '.' : text, '');
     if (text.length > 250) {
       // hard cut-off in case the sentence was longer than expected
-      text = text.slice(0, 250) + "...";
+      text = text.slice(0, 250) + '...';
     }
     return {
       ...article,
-      text,
+      text
     };
   };
   news = news.map(truncateArticle);
@@ -123,7 +123,7 @@ function truncateAndSortNews(news: NewsElement[], limit: number): NewsElement[] 
   };
   news = news.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
   // Cut array after limit (yes this is legit javascript: https://stackoverflow.com/a/31560542/4026792)
-  news.length = limit;
+  if (news.length > limit) news.length = limit;
   return news;
 }
 
@@ -133,7 +133,7 @@ function truncateAndSortNews(news: NewsElement[], limit: number): NewsElement[] 
  * @param newsSelectors faculty
  * @returns NewsElement[]
  */
-export default async function getNews(newsSelectors: string[], limit: number): Promise<NewsElement[]> {
+export default async function getNews (newsSelectors: string[], limit: number): Promise<NewsElement[]> {
   const facultySelectors = ['r', 'v', 'm', 'b', 'k', 'h', 'f', 'g', 'w', 'e', 's']; // all allowed faculties
   const campusSelectors = ['wob', 'wf', 'sud', 'sz']; // all allowed campuses/standorte
   const otherSelectors = ['campus', 'campus38']; // currently only ostfalia global news and Campus 38 news.
@@ -147,8 +147,9 @@ export default async function getNews(newsSelectors: string[], limit: number): P
       try {
         const key = 'faculty-news-' + newsSelector;
         return await cache.wrap(key, async () => {
-          let newsEls: NewsElement[] = newsSelector != 'campus38' ?
-            await ostfaliaNewsRequest(newsSelector) : await campus38NewsRequest();
+          let newsEls: NewsElement[] = newsSelector != 'campus38'
+            ? await ostfaliaNewsRequest(newsSelector)
+            : await campus38NewsRequest();
           newsEls = newsEls.map((article) => ({ ...article, source: newsSelector }));
           return newsEls;
         }, { ttl: CACHE_SECONDS }) as Promise<NewsElement[]>;
