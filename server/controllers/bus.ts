@@ -1,5 +1,4 @@
 import * as express from 'express';
-import * as cors from 'cors';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
@@ -26,9 +25,9 @@ const cache = CACHE_DISABLE ?
     },
   });
 
-router.options('/', cors());
+router.options('/');
 
-router.get('/', cors(), async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   const hafasOpts = {
     results: 5,
     language: 'de',

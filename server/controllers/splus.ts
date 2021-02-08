@@ -1,5 +1,4 @@
 import * as express from 'express';
-import * as cors from 'cors';
 import * as TIMETABLES from '../assets/timetables.json'; // TODO change this in SS21
 
 import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
@@ -13,9 +12,9 @@ const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 /**
  * Accept CORS preflight requests.
  */
-router.options('/:timetable/lectures', cors());
-router.options('/:timetable/:weeks', cors());
-router.options('/:timetables/:weeks/:lectures?/:name', cors());
+router.options('/:timetable/lectures');
+router.options('/:timetable/:weeks');
+router.options('/:timetables/:weeks/:lectures?/:name');
 
 /**
  * Get unique lectures for given timetable id
@@ -23,7 +22,7 @@ router.options('/:timetables/:weeks/:lectures?/:name', cors());
  * @param timetable id
  * @return Array of unique events
  */
-router.get('/:timetable/lectures', cors(), async (req, res, next) => {
+router.get('/:timetable/lectures', async (req, res, next) => {
   const timetableId = req.params.timetable;
   const timetable = TIMETABLES.find(({ id }) => id == timetableId);
 
@@ -57,7 +56,7 @@ router.get('/:timetable/lectures', cors(), async (req, res, next) => {
  * @param weeks Comma-separated list of weeks
  * @return Timetable
  */
-router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
+router.get('/:timetable/:weeks', async (req, res, next) => {
   const timetableId = req.params.timetable;
   const timetable = TIMETABLES.find(({ id }) => id == timetableId);
 
@@ -114,7 +113,7 @@ router.get('/:timetable/:weeks', cors(), async (req, res, next) => {
  * @param name Name of requested Timetable
  * @return Timetable
  */
-router.get('/:timetables/:weeks/:lectures?/:name', cors(), async (req, res, next) => {
+router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>(req.params.lectures || '')
     .split(',')

@@ -1,5 +1,4 @@
 import * as express from 'express';
-import * as cors from 'cors';
 
 import { getCampusNews, getFacultyNews } from '../lib/NewsApi'
 
@@ -11,14 +10,14 @@ const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 /**
  * Accept CORS preflight requests.
  */
-router.options('/campus', cors());
-router.options('/faculty', cors());
+router.options('/campus');
+router.options('/faculty');
 
 /**
  * Get campus news
  * @returns NewsElement[]
  */
-router.get('/campus', cors(), async (req, res, next) => {
+router.get('/campus', async (req, res, next) => {
   try {
     const campusNews = await getCampusNews();
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
@@ -32,7 +31,7 @@ router.get('/campus', cors(), async (req, res, next) => {
  * Get ostfalia faculty news
  * @returns NewsElement[]
  */
-router.get('/faculty', cors(), async (req, res, next) => {
+router.get('/faculty', async (req, res, next) => {
 
   // Informatik, Recht, Elektrotechnik,
   // Wolfenbüttel, Wolfsburg, Suderburg
