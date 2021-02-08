@@ -1,5 +1,4 @@
 import * as express from 'express';
-import * as cors from 'cors';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
@@ -27,7 +26,7 @@ const cache = CACHE_DISABLE ?
 /**
  * Accept CORS preflight requests.
  */
-router.options('/', cors());
+router.options('/');
 
 /**
  * Request OpenMensa API
@@ -37,7 +36,7 @@ router.options('/', cors());
  *
  * @return MensaDayPlan[]
  */
-router.get('/', cors(), async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   const key = 'mensa-' + moment().format('YYYY-MM-DD');
   const amountOfReturnedDays = 6;
 
