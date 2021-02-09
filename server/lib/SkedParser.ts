@@ -185,7 +185,6 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
           default:
             console.log('No parser defined for faculty ' + faculty)
             throw new Error('This faculty is not supported.');
-            break;
         }
 
         const dateFormat = 'DD.MM.YYYY H:m'

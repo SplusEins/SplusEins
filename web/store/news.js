@@ -23,7 +23,7 @@ export const actions = {
       const news = await this.$axios.$get('/api/news/faculty');
 
       const newsMap = {};
-      faculties.forEach((faculty) => newsMap[faculty] = news.filter((article) => article.source == faculty));
+      faculties.forEach((faculty) => { newsMap[faculty] = news.filter((article) => article.source == faculty) });
 
       commit('setFacultyNews', newsMap);
     } catch (error) {

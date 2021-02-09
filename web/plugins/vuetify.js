@@ -3,9 +3,9 @@ import Vuetify, { VMenu } from 'vuetify/lib';
 import colors from 'vuetify/es5/util/colors';
 
 import moment from 'moment';
-import { default as options } from './dayspan.config.js'
+import options from './dayspan.config.js'
 import DaySpanVuetify from 'dayspan-vuetify';
-import { default as LocaleDe } from '~/assets/ds-de.js';
+import LocaleDe from '~/assets/ds-de.js';
 
 moment.locale('de');
 
