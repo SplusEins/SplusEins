@@ -19,8 +19,11 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    eqeqeq: 'warn',
-    camelcase: 'warn',
+    eqeqeq: 'warn', // don't error on wrong equality signs
+    camelcase: 'warn', // don't error on non camel case
+    quotes: 'warn', // don't error on double qoutes
+    'comma-dangle': 'warn',
+    'spaced-comment': 'warn',
     'prefer-regex-literals': 'warn',
     semi: 'off' // no preference for semicolons at end
   }

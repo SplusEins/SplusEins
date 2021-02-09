@@ -18,9 +18,12 @@ module.exports = {
   plugins: ['vue'],
   // add your custom rules here
   rules: {
-    eqeqeq: 'warn',
     'multiline-ternary': 'warn',
-    camelcase: 'warn',
+    eqeqeq: 'warn', // don't error on wrong equality signs
+    camelcase: 'warn', // don't error on non camel case
+    quotes: 'warn', // don't error on double qoutes
+    'comma-dangle': 'warn',
+    'spaced-comment': 'warn',
     semi: 'off' // no preference for semicolons at end
   }
 }
