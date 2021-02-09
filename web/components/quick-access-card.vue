@@ -42,15 +42,15 @@ export default {
   name: 'QuickAccessCard',
   computed: {
     ...mapState({
-      favorites: (state) => state.splus.favoriteSchedules,
+      favorites: (state) => state.splus.favoriteSchedules
     }),
     ...mapGetters({
-      customSchedulesAsRoutes: 'splus/customTimetablesAsRoutes',
+      customSchedulesAsRoutes: 'splus/customTimetablesAsRoutes'
     }),
-    displayDivider() {
+    displayDivider () {
       return this.favorites.length != 0 && this.customSchedulesAsRoutes.length != 0;
     }
-  },
+  }
 };
 </script>
 

@@ -39,9 +39,9 @@ export default {
   components: {
     CalendarActionBar,
     DayspanCustomCalendar,
-    DayspanCustomEventPopover,
+    DayspanCustomEventPopover
   },
-  data() {
+  data () {
     const week = moment()
       .isoWeek(this.$store.getters['splus/weekOrDefault'])
       .startOf('isoWeek');
@@ -66,37 +66,37 @@ export default {
 
     return {
       calendar,
-      types: [ weeklyCalendar ],
+      types: [weeklyCalendar]
     };
   },
   computed: {
     ...mapState({
       currentWeek: (state) => state.splus.week,
       lazyLoad: (state) => state.lazyLoad,
-      schedule: (state) => state.splus.schedule,
+      schedule: (state) => state.splus.schedule
     }),
     ...mapGetters({
-      events: 'splus/getCalendarEvents',
-    }),
+      events: 'splus/getCalendarEvents'
+    })
   },
-  mounted() {
+  mounted () {
     if (this.lazyLoad) {
       // static build -> no events are in the store
       this.refresh();
     }
   },
   methods: {
-    async next() {
+    async next () {
       // Jump forward 7 days, but do not refresh now (will be called in this.refresh())
       this.calendar.next(7, true);
       await this.refresh();
     },
-    async prev() {
+    async prev () {
       // Jump back 7 days
       this.calendar.prev(7, true);
-      await this.refresh();   
+      await this.refresh();
     },
-    async today() {
+    async today () {
       this.resetWeek(true);
       // This scrolls forward or backward until the today's week has been reached
       while (this.calendar.start.date.isoWeek() > this.currentWeek) {
@@ -107,7 +107,7 @@ export default {
       }
       await this.refresh();
     },
-    async refresh() {
+    async refresh () {
       // Store the week so switching calendars keeps the same week
       this.setWeek(this.calendar.start.date.isoWeek());
       // Load the data and store the events in the calendar
@@ -118,12 +118,12 @@ export default {
     },
     ...mapMutations({
       setWeek: 'splus/setWeek',
-      resetWeek: 'splus/resetWeek',
+      resetWeek: 'splus/resetWeek'
     }),
     ...mapActions({
-      load: 'splus/load',
-    }),
-  },
+      load: 'splus/load'
+    })
+  }
 };
 </script>
 

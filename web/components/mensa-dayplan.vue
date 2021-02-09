@@ -35,12 +35,12 @@ import * as moment from 'moment';
 import { mapState } from 'vuex';
 
 export default {
-  name: "MensaDayplanComponent",
+  name: 'MensaDayplanComponent',
   props: {
     plan: {
       type: Object,
       default: () => {}
-    },
+    }
   },
   computed: {
     ...mapState({
@@ -48,27 +48,27 @@ export default {
     })
   },
   methods: {
-    getDayHeader(dayPlan) {
+    getDayHeader (dayPlan) {
       const day = moment(dayPlan.date.toString());
-      return (day.isSame(moment(), 'day')? 'Heute' : day.format('dddd')) + " - " + day.format('DD.MM.YYYY');
+      return (day.isSame(moment(), 'day') ? 'Heute' : day.format('dddd')) + ' - ' + day.format('DD.MM.YYYY');
     },
-    getPriceLabel(price) {
+    getPriceLabel (price) {
       const euros = Math.floor(price);
       let cents = Math.round((price - euros) * 100);
       cents = cents >= 10 ? cents : '0' + cents;
       return euros + ',' + cents + '€';
     },
-    getIconColor(item) {
-      if(item == undefined || item.notes.includes('Vegetarisch')){
-        return this.isDark? 'white' : 'black';
-      }else if(item.notes.includes('Vegan')){
+    getIconColor (item) {
+      if (item == undefined || item.notes.includes('Vegetarisch')) {
+        return this.isDark ? 'white' : 'black';
+      } else if (item.notes.includes('Vegan')) {
         return 'green';
       }
     },
-    displayIcon(item) {
+    displayIcon (item) {
       return item.notes.includes('Vegetarisch') || item.notes.includes('Vegan');
-    },
-  },
+    }
+  }
 }
 </script>
 

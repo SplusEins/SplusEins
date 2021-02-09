@@ -12,14 +12,14 @@ const COOKIE_SECRET = process.env.COOKIE_SECRET;
 class App {
   public app: express.Application;
 
-  constructor(private basePath: string = '/api') {
+  constructor (private basePath: string = '/api') {
     this.app = express();
     this.app.use(cookieParser(COOKIE_SECRET));
     this.app.use(cors())
     this.routes();
   }
 
-  private routes(): void {
+  private routes (): void {
     this.app.use(this.basePath + '/splus', splusController);
     this.app.use(this.basePath + '/mensa', mensaController);
     this.app.use(this.basePath + '/news', newsController);

@@ -53,16 +53,16 @@
 <script>
 import SpluseinsAbout from './spluseins-about.vue'
 
-export default  {
+export default {
   name: 'SplusEinsFooter',
   components: {
-    SpluseinsAbout,
+    SpluseinsAbout
   },
-  data() {
+  data () {
     return {
-      aboutDialogOpen: false,
+      aboutDialogOpen: false
     };
-  },
+  }
 }
 </script>
 

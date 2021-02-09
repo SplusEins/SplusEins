@@ -27,56 +27,56 @@ import * as moment from 'moment';
 
 export default {
   name: 'StatsCard',
-  data() {
-      return {
-        dialogOpen: false,
-        totalHours: 1,
-        totalWeekdays: 0,
-        sections: [],
-      };
+  data () {
+    return {
+      dialogOpen: false,
+      totalHours: 1,
+      totalWeekdays: 0,
+      sections: []
+    };
   },
   computed: {
     ...mapState({
       isDark: (state) => state.ui.isDark,
       upcomingEvents: (state) => state.splus.upcomingEvents,
-      subscribedTimetable: (state) => state.splus.subscribedTimetable,
-    }),
+      subscribedTimetable: (state) => state.splus.subscribedTimetable
+    })
   },
   watch: {
-    upcomingEvents: 'updateSections',
+    upcomingEvents: 'updateSections'
   },
-  mounted() {
+  mounted () {
     this.updateSections();
   },
   methods: {
-    updateSections() {
-       let uniqueEvents = new Map();
-       let weekdays = [];
-       let totalHoursCalc = 0;
-       this.sections = [];
+    updateSections () {
+      const uniqueEvents = new Map();
+      const weekdays = [];
+      let totalHoursCalc = 0;
+      this.sections = [];
 
-       this.upcomingEvents.forEach(element => {
-         if(uniqueEvents.has(element.title)){
-           uniqueEvents.set(element.title, uniqueEvents.get(element.title) + element.duration)
-         } else {
-           uniqueEvents.set(element.title, element.duration)
-         }
-         if(!weekdays.includes(moment(element.start).day())) weekdays.push(moment(element.start).day())
-       });
+      this.upcomingEvents.forEach(element => {
+        if (uniqueEvents.has(element.title)) {
+          uniqueEvents.set(element.title, uniqueEvents.get(element.title) + element.duration)
+        } else {
+          uniqueEvents.set(element.title, element.duration)
+        }
+        if (!weekdays.includes(moment(element.start).day())) weekdays.push(moment(element.start).day())
+      });
 
-       this.totalWeekdays = weekdays.length;
+      this.totalWeekdays = weekdays.length;
 
-       uniqueEvents.forEach((value) => {
-          totalHoursCalc += value
-       });
+      uniqueEvents.forEach((value) => {
+        totalHoursCalc += value
+      });
 
-       this.totalHours = totalHoursCalc > 0 ? totalHoursCalc : 1;
+      this.totalHours = totalHoursCalc > 0 ? totalHoursCalc : 1;
 
-       uniqueEvents.forEach((value, key) => {
-          this.sections.push({label: key + ' - ' + value.toLocaleString() + ' Stunden', value: value});
-       });
-    },
-  },
+      uniqueEvents.forEach((value, key) => {
+        this.sections.push({ label: key + ' - ' + value.toLocaleString() + ' Stunden', value: value });
+      });
+    }
+  }
 };
 </script>
 

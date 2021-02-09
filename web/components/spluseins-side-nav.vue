@@ -41,17 +41,17 @@ export default {
     FavoriteTimetablesList,
     CustomTimetablesList,
     InstallButtonList,
-    BasicUtilitiesList,
+    BasicUtilitiesList
   },
   computed: {
     drawer: {
-      get() { return this.sidenavIsOpen; },
-      set(val) { this.setSidenav(val) }
+      get () { return this.sidenavIsOpen; },
+      set (val) { this.setSidenav(val) }
     },
-    hasCustomTimetables() {
+    hasCustomTimetables () {
       return JSON.stringify(this.customSchedules) != '{}';
     },
-    hasFavoriteTimetables() {
+    hasFavoriteTimetables () {
       return this.favoriteSchedules.length > 0;
     },
     ...mapState({
@@ -59,18 +59,18 @@ export default {
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
       sidenavIsOpen: (state) => state.ui.sidenavIsOpen,
       browserStateReady: (state) => state.browserStateReady,
-      isDark: state => state.ui.isDark,
-    }),
+      isDark: state => state.ui.isDark
+    })
   },
   watch: {
-    browserStateReady() {
+    browserStateReady () {
       this.setSidenav(this.$vuetify.breakpoint.mdAndUp);
     }
   },
   methods: {
     ...mapMutations({
-      setSidenav: 'ui/setSidenav',
-    }),
+      setSidenav: 'ui/setSidenav'
+    })
   }
 };
 </script>

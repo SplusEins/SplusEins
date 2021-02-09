@@ -18,15 +18,15 @@ Vue.use(Vuetify, {
   components: { VMenu },
   iconfont: 'mdi',
   options: {
-    customProperties: true,
+    customProperties: true
   },
   theme: {
     primary: colors.blue.darken3,
     accent: colors.lightBlue.base,
-    secondary: colors.amber.base, //'#009eeD', // wolfenbüttel-blau, da sonst keine sekundär farbe gegeben ist
+    secondary: colors.amber.base, // '#009eeD', // wolfenbüttel-blau, da sonst keine sekundär farbe gegeben ist
     info: colors.teal.lighten1,
     warning: colors.blue.darken3,
     error: colors.deepOrange.accent4,
-    success: colors.green.accent3,
-  },
+    success: colors.green.accent3
+  }
 });

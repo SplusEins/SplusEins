@@ -43,16 +43,16 @@ import { mapMutations, mapState } from 'vuex';
 export default {
   name: 'SpluseinsCookieSnackbar',
   computed: {
-    snackbarOpen() {
+    snackbarOpen () {
       return this.browserStateReady && this.allowAllCookies == undefined;
     },
     ...mapState({
       allowAllCookies: (state) => state.privacy.allowAllCookies,
-      browserStateReady: (state) => state.browserStateReady,
-    }),
+      browserStateReady: (state) => state.browserStateReady
+    })
   },
   watch: {
-    allowAllCookies() {
+    allowAllCookies () {
       if (this.browserStateReady && '$matomo' in this) {
         if (this.allowAllCookies == false) {
           this.$matomo.disableCookies();
@@ -63,14 +63,14 @@ export default {
           this.$matomo.rememberConsentGiven();
         }
       }
-    },
+    }
   },
   methods: {
     ...mapMutations({
       setNecessaryCookiesAllowed: 'privacy/setNecessaryCookiesAllowed',
       setAllCookiesAllowed: 'privacy/setAllCookiesAllowed',
-      setAllCookiesDenied: 'privacy/setAllCookiesDenied',
-    }),
-  },
+      setAllCookiesDenied: 'privacy/setAllCookiesDenied'
+    })
+  }
 };
 </script>

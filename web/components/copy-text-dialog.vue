@@ -36,23 +36,23 @@ export default {
     textToCopy: {
       type: String,
       required: true
-    },
+    }
   },
-  data() {
+  data () {
     return {
-      textFieldCopySuccessMessage: undefined,
+      textFieldCopySuccessMessage: undefined
     };
   },
   computed: {
     open: {
-      get() { return this.value; },
-      set(value) { this.$emit('input', value); }
-    },
+      get () { return this.value; },
+      set (value) { this.$emit('input', value); }
+    }
   },
   methods: {
-    onTextFieldCopySuccess() {
+    onTextFieldCopySuccess () {
       this.textFieldCopySuccessMessage = 'Kopiert.';
-    },
-  },
+    }
+  }
 };
 </script>

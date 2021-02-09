@@ -20,17 +20,17 @@
 <script>
 export default {
   name: 'InstallButtonList',
-  data() {
+  data () {
     return {
-      deferredPrompt: undefined,
+      deferredPrompt: undefined
     };
   },
   computed: {
-    visible() {
+    visible () {
       return !!this.deferredPrompt;
-    },
+    }
   },
-  mounted() {
+  mounted () {
     // See https://developers.google.com/web/fundamentals/app-install-banners/
     window.addEventListener('beforeinstallprompt', (e) => {
       // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -40,15 +40,15 @@ export default {
     });
   },
   methods: {
-    async install() {
+    async install () {
       // Show the prompt
       this.deferredPrompt.prompt();
 
       // Wait for the user to respond to the prompt
       const choice = await this.deferredPrompt.userChoice;
-      this.$matomo.trackEvent('Application','installed', choice.outcome);
+      this.$matomo.trackEvent('Application', 'installed', choice.outcome);
       this.deferredPrompt = undefined;
-    },
-  },
+    }
+  }
 };
 </script>

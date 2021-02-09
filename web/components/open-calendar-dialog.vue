@@ -69,45 +69,45 @@ export default {
     titleIds: {
       type: Array,
       required: true
-    },
+    }
   },
-  data() {
+  data () {
     return {
-      textFieldCopySuccessMessage: undefined,
+      textFieldCopySuccessMessage: undefined
     };
   },
   computed: {
-    calendarPath() {
+    calendarPath () {
       const endpoint = 'api/ics/v1/';
       return endpoint + this.timetableIds.join(',') + '/' + this.titleIds.join(',');
     },
-    webcalLink() {
+    webcalLink () {
       const base = this.$axios.defaults.baseURL;
       const absoluteBase = base.startsWith('http') ? base : window.location.origin + base;
       const webcalBase = absoluteBase.replace(/^https?/i, 'webcal');
       return this.returnValidPath(webcalBase) + this.calendarPath;
     },
-    httpLink() {
+    httpLink () {
       const base = this.$axios.defaults.baseURL;
       const absoluteBase = base.startsWith('http') ? base : window.location.origin + base;
       return this.returnValidPath(absoluteBase) + this.calendarPath;
     },
-    downloadLink() {
+    downloadLink () {
       const base = this.$axios.defaults.baseURL;
       return this.returnValidPath(base) + this.calendarPath;
     },
     open: {
-      get() { return this.value; },
-      set(value) { this.$emit('input', value); }
-    },
-  },
-  methods: {
-    onTextFieldCopySuccess() {
-      this.textFieldCopySuccessMessage = 'Kopiert.';
-    },
-    returnValidPath(path){
-      return path.endsWith('/') ? path : path + '/';
+      get () { return this.value; },
+      set (value) { this.$emit('input', value); }
     }
   },
+  methods: {
+    onTextFieldCopySuccess () {
+      this.textFieldCopySuccessMessage = 'Kopiert.';
+    },
+    returnValidPath (path) {
+      return path.endsWith('/') ? path : path + '/';
+    }
+  }
 };
 </script>

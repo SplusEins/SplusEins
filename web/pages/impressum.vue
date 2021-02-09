@@ -56,26 +56,26 @@ import { mapMutations } from 'vuex';
 
 export default {
   name: 'SpluseinsImpressum',
-  head() {
+  head () {
     return {
       title: 'Impressum',
       meta: [
         { hid: 'description', name: 'description', content: 'Impressum' },
-        { hid: 'og:description', property: 'og:description', content: 'Impressum' },
-      ],
+        { hid: 'og:description', property: 'og:description', content: 'Impressum' }
+      ]
     };
   },
-  data() {
+  data () {
     return {
-      team: process.env.team,
+      team: process.env.team
     }
   },
   methods: {
     ...mapMutations({
-      setSidenav: 'ui/setSidenav',
-    }),
+      setSidenav: 'ui/setSidenav'
+    })
   },
-  middleware: 'cached',
+  middleware: 'cached'
 }
 </script>
 

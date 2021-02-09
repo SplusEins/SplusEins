@@ -27,12 +27,12 @@ export default {
     SpluseinsHeader,
     SpluseinsFooter,
     SpluseinsErrorSnackbar,
-    SpluseinsCookieSnackbar,
+    SpluseinsCookieSnackbar
   },
   computed: {
     ...mapState({
-      isDark: state => state.ui.isDark,
-    }),
-  },
+      isDark: state => state.ui.isDark
+    })
+  }
 };
 </script>

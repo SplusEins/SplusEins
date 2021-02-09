@@ -5,7 +5,7 @@ import parseTable from './parseTable';
 
 moment.locale('de');
 
-export function parseSkedList(html: string): ParsedLecture[] {
+export function parseSkedList (html: string): ParsedLecture[] {
   const $ = load(html);
 
   const events = [] as ParsedLecture[];
@@ -20,11 +20,11 @@ export function parseSkedList(html: string): ParsedLecture[] {
   let anmerkung = '';
 
   // format "Liste"
-  $('body table.tbl tbody tr[class^="tr"]').each(function() {
+  $('body table.tbl tbody tr[class^="tr"]').each(function () {
     const cols = $(this).children('td').get()
       .map(col => $(col).text().replace(/-\s*$/, '').trim());
 
-    switch(cols.length) {
+    switch (cols.length) {
       case 11:
         // Raumplan Informatik - https://stundenplan.ostfalia.de/i/R%c3%a4ume/Raumbelegung-Listenform/2-252.html
         raum = cols[0];
@@ -93,34 +93,34 @@ export function parseSkedList(html: string): ParsedLecture[] {
       title: veranstaltung.replace(/^I-/, ''),
       start: start.toDate(),
       end: end.toDate(),
-      duration: end.diff(start, 'hours', true),
+      duration: end.diff(start, 'hours', true)
     } as ParsedLecture);
   });
 
   return events;
 }
 
-export function parseSkedGraphical(html: string, faculty: string): ParsedLecture[]  {
+export function parseSkedGraphical (html: string, faculty: string): ParsedLecture[] {
   const $ = load(html);
   const events = [] as ParsedLecture[];
 
-  $('body table').each(function() {
-    let cols = parseTable(load(this, {decodeEntities: false}), true, true, false)
+  $('body table').each(function () {
+    let cols = parseTable(load(this, { decodeEntities: false }), true, true, false)
 
     cols = cols.filter(c => c[0].length > 0) // filter pseudo columns -> first entry is not date string
     cols = cols.map(col => col.filter(text =>
-        !new RegExp('^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$', 'g').test(text) && // filter time entries
+      !new RegExp('^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$', 'g').test(text) && // filter time entries
         text.length > 1 && // filter empty entries and empty tags -> 1
         !text.startsWith('['))) // filter footnotes
     cols = cols.filter(col => col.length > 1) // filter empty
-    cols = cols.map(col => [... new Set(col)]) // filter duplicates
+    cols = cols.map(col => [...new Set(col)]) // filter duplicates
     cols = cols.map(col => col.map(text => text
-        .replace(/<span.+>.+<\/span>/g, '') // remove <span>
-        .replace(/\s\[\d+\]/g, ''))); // replace footnote links: e.g. [1]
+      .replace(/<span.+>.+<\/span>/g, '') // remove <span>
+      .replace(/\s\[\d+\]/g, ''))); // replace footnote links: e.g. [1]
 
     cols.forEach(col => {
       col.forEach((entry, index) => {
-        if(index == 0) {
+        if (index == 0) {
           // is date
           return;
         }
@@ -139,7 +139,7 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
         let raum = ''
         let anmerkung = ''
 
-        switch(faculty) {
+        switch (faculty) {
           case 'Versorgungstechnik':
             dozent = parts[1];
             veranstaltung = parts[2];
@@ -147,7 +147,7 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
             anmerkung = parts.splice(4).join(', ') || ''
             break;
           case 'Recht':
-            // Sometimes has the room in the second row and sometimes not. 
+            // Sometimes has the room in the second row and sometimes not.
             // This regex detects it based on the fact that it either starts with digits and only has non whitespace chars until EOL or next comma
             // or it starts with 1-3 letters followed by digits and non whitespace chars.
             if (parts[1].match(/^\w{0,3}\d+\S*(,|$)/)) {
@@ -162,11 +162,11 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
             }
             break;
           case 'Bau-Wasser-Boden':
-              dozent = parts[3];
-              veranstaltung = parts[2];
-              raum = parts[4]
-              anmerkung = parts[1];
-              break;
+            dozent = parts[3];
+            veranstaltung = parts[2];
+            raum = parts[4]
+            anmerkung = parts[1];
+            break;
           case 'Handel und Soziale Arbeit':
             // Leider ohne Dozent / Raum, da die Zeilen in dieser Fakultät zu unterschiedlich genutzt werden
             veranstaltung = parts[2];
@@ -177,17 +177,16 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
           case 'Soziale Arbeit':
           case 'Verkehr-Sport-Tourismus-Medien':
           case 'Elektrotechnik':
-              dozent = parts[2];
-              veranstaltung = parts[1];
-              raum = parts[3]
-              anmerkung = parts.splice(4).join(', ') || ''
-              break;
+            dozent = parts[2];
+            veranstaltung = parts[1];
+            raum = parts[3]
+            anmerkung = parts.splice(4).join(', ') || ''
+            break;
           default:
-            console.log("No parser defined for faculty " + faculty)
-            throw new Error("This faculty is not supported.");
+            console.log('No parser defined for faculty ' + faculty)
+            throw new Error('This faculty is not supported.');
             break;
         }
-
 
         const dateFormat = 'DD.MM.YYYY H:m'
         const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');
@@ -204,9 +203,8 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
           title: veranstaltung || '',
           start: start.toDate(),
           end: end.toDate(),
-          duration: end.diff(start, 'hours', true),
+          duration: end.diff(start, 'hours', true)
         } as ParsedLecture);
-
       })
     })
   });

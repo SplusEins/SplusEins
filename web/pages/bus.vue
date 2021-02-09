@@ -52,37 +52,37 @@ import * as moment from 'moment';
 
 export default {
   name: 'BusPage',
-  head() {
+  head () {
     return {
       title: 'Busplan',
       meta: [
         { hid: 'description', name: 'description', content: 'Busplan' },
-        { hid: 'og:description', property: 'og:description', content: 'Busplan' },
-      ],
+        { hid: 'og:description', property: 'og:description', content: 'Busplan' }
+      ]
     };
   },
-  data() {
+  data () {
     return {
       directions: ['exerToFh', 'fhToExer'],
       directionLabel: {
-        'exerToFh': 'Exer zu Fachhochschule',
-        'fhToExer': 'Fachhochschule zu Exer',
+        exerToFh: 'Exer zu Fachhochschule',
+        fhToExer: 'Fachhochschule zu Exer'
       },
       refreshTimer: undefined,
       relativeDate: (str) => moment(str).fromNow(),
       absoluteDate: (str) => moment(str).format('HH:mm'),
       minutesUntilDate: (str) => moment(str).diff(moment(), 'minutes'),
-      lineColor: (line) => ['pink', 'purple', 'blue'][parseInt(line) % 4],
+      lineColor: (line) => ['pink', 'purple', 'blue'][parseInt(line) % 4]
     }
   },
   computed: {
     ...mapState({
       departures: (state) => state.bus.departures,
       lazyLoad: (state) => state.lazyLoad,
-      isDark: (state) => state.ui.isDark,
-    }),
+      isDark: (state) => state.ui.isDark
+    })
   },
-  mounted() {
+  mounted () {
     if (this.lazyLoad) {
       // static build -> no mensa plan is in the store
       this.load()
@@ -91,23 +91,22 @@ export default {
       this.refreshTimer = setInterval(() => this.load(), 60000)
     }
   },
-  destroyed() {
+  destroyed () {
     if (process.client) {
       clearInterval(this.refreshTimer)
     }
   },
   methods: {
     ...mapActions({
-      load: 'bus/load',
+      load: 'bus/load'
     }),
     ...mapMutations({
-      setSidenav: 'ui/setSidenav',
-    }),
+      setSidenav: 'ui/setSidenav'
+    })
   },
-  middleware: 'cached',
+  middleware: 'cached'
 };
 </script>
-
 
 <style lang="scss">
 .disclaimer {

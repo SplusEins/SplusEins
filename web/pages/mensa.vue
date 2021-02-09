@@ -88,13 +88,13 @@ import MensaDayplan from '../components/mensa-dayplan.vue';
 
 export default {
   name: 'MensaPage',
-  head() {
+  head () {
     return {
       title: 'Mensaplan',
       meta: [
         { hid: 'description', name: 'description', content: 'Mensaplan' },
-        { hid: 'og:description', property: 'og:description', content: 'Mensaplan' },
-      ],
+        { hid: 'og:description', property: 'og:description', content: 'Mensaplan' }
+      ]
     };
   },
   components: {
@@ -104,17 +104,17 @@ export default {
     ...mapState({
       plans: (state) => state.mensa.plans,
       lazyLoad: (state) => state.lazyLoad,
-      isDark: (state) => state.ui.isDark,
+      isDark: (state) => state.ui.isDark
     }),
-    groupedDayPlans() {
+    groupedDayPlans () {
       const grouped = [];
       for (let i = 0; i < this.plans.length; i += 3) {
-          grouped.push(this.plans.slice(i, i + 3));
+        grouped.push(this.plans.slice(i, i + 3));
       }
       return grouped;
     }
   },
-  mounted() {
+  mounted () {
     if (this.lazyLoad) {
       // static build -> no mensa plan is in the store
       this.load();
@@ -122,23 +122,22 @@ export default {
   },
   methods: {
     ...mapActions({
-      load: 'mensa/load',
+      load: 'mensa/load'
     }),
     ...mapMutations({
-      setSidenav: 'ui/setSidenav',
+      setSidenav: 'ui/setSidenav'
     }),
-    getIconColor(item) {
-      if(item == undefined || item.notes.includes('Vegetarisch')){
-        return this.isDark? 'white' : 'black';
-      }else if(item.notes.includes('Vegan')){
+    getIconColor (item) {
+      if (item == undefined || item.notes.includes('Vegetarisch')) {
+        return this.isDark ? 'white' : 'black';
+      } else if (item.notes.includes('Vegan')) {
         return 'green';
       }
-    },
+    }
   },
-  middleware: 'cached',
+  middleware: 'cached'
 };
 </script>
-
 
 <style lang="scss">
 

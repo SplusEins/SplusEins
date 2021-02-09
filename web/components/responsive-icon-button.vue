@@ -36,7 +36,7 @@ export default {
     text: {
       required: true,
       type: String
-    },
-  },
+    }
+  }
 };
 </script>

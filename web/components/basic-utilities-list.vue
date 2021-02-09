@@ -65,12 +65,12 @@ import CustomTimetableDialog from './custom-timetable-dialog.vue';
 
 export default {
   components: {
-    CustomTimetableDialog,
+    CustomTimetableDialog
   },
-  data() {
+  data () {
     return {
-      customTimetableDialogOpen: false,
+      customTimetableDialogOpen: false
     };
-  },
- };
+  }
+};
 </script>

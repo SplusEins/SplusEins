@@ -14,15 +14,15 @@ const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
 const CACHE_SECONDS = parseInt(process.env.BUS_CACHE_SECONDS || '60');
 
 const router = express.Router();
-const cache = CACHE_DISABLE ?
-  cacheManager.caching({ store: 'memory', max: 0 }) :
-  cacheManager.caching({
+const cache = CACHE_DISABLE
+  ? cacheManager.caching({ store: 'memory', max: 0 })
+  : cacheManager.caching({
     store: fsStore,
     options: {
       path: CACHE_PATH,
       ttl: 60,
-      subdirs: true,
-    },
+      subdirs: true
+    }
   });
 
 router.options('/');
@@ -31,7 +31,7 @@ router.get('/', async (req, res, next) => {
   const hafasOpts = {
     results: 5,
     language: 'de',
-    startWithWalking: false,
+    startWithWalking: false
   }
 
   const exer = '891011' // await hafasClient.locations('Wolfenbüttel Exer Süd')
@@ -39,7 +39,7 @@ router.get('/', async (req, res, next) => {
 
   try {
     const data = await cache.wrap('bus', async () => {
-      console.log(`bus cache miss for key bus`);
+      console.log('bus cache miss for key bus');
 
       const exerToFh = await hafasClient.journeys(exer, fh, hafasOpts)
       const fhToExer = await hafasClient.journeys(fh, exer, hafasOpts)
@@ -49,13 +49,13 @@ router.get('/', async (req, res, next) => {
         .map(legs => legs[0])
         .map(leg => ({
           date: leg.departure,
-          line: leg.line.name.replace("Bus ", ""), // remove Bus string at start
+          line: leg.line.name.replace('Bus ', '') // remove Bus string at start
         }))
         .sort((a, b) => Date.parse(a) - Date.parse(b));
 
       return {
         exerToFh: extractDateAndLine(exerToFh.journeys),
-        fhToExer: extractDateAndLine(fhToExer.journeys),
+        fhToExer: extractDateAndLine(fhToExer.journeys)
       }
     }, { ttl: CACHE_SECONDS });
 

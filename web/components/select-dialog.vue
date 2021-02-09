@@ -51,34 +51,34 @@
 
 export default {
   name: 'SelectDialog',
-   props: {
+  props: {
     open: {
       type: Boolean,
       default: false
     },
-    title:{
+    title: {
       type: String,
-      default: 'Titel',
+      default: 'Titel'
     },
     items: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     selected: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
   computed: {
     dialogOpen: {
-      get() { return this.open; },
-      set(value) { this.$emit('update:open', value); }
+      get () { return this.open; },
+      set (value) { this.$emit('update:open', value); }
     },
     selectedItem: {
-      get() { return this.selected; },
-      set(value) { this.$emit('update:selected', value); }
+      get () { return this.selected; },
+      set (value) { this.$emit('update:selected', value); }
     }
-  },
+  }
 };
 </script>
 

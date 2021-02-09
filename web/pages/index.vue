@@ -124,10 +124,10 @@ export default {
     MensaCard,
     CampusNewsCard,
     FacultyNewsCard,
-    StatsCard,
+    StatsCard
   },
   computed: {
-    displayMensaCard() {
+    displayMensaCard () {
       if (this.mensaPlans.length == 0) {
         return false;
       }
@@ -135,27 +135,27 @@ export default {
       return moment().isSame(this.mensaPlans[0].date, 'day') || moment().add(1, 'days').isSame(this.mensaPlans[0].date, 'day');
     },
     ...mapState({
-      mensaPlans: (state) => state.mensa.plans,
+      mensaPlans: (state) => state.mensa.plans
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
-      hasSubscribableTimetables: 'splus/hasSubscribableTimetables',
-    }),
+      hasSubscribableTimetables: 'splus/hasSubscribableTimetables'
+    })
   },
-  head() {
+  head () {
     return {
       title: 'Startseite',
       meta: [
         { hid: 'description', name: 'description', content: 'SplusEins – Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.' },
-        { hid: 'og:description', property: 'og:description', content: 'SplusEins – Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.' },
-      ],
+        { hid: 'og:description', property: 'og:description', content: 'SplusEins – Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.' }
+      ]
     };
   },
   methods: {
     ...mapMutations({
-      setSidenav: 'ui/setSidenav',
-    }),
+      setSidenav: 'ui/setSidenav'
+    })
   },
-  middleware: 'cached',
+  middleware: 'cached'
 };
 </script>

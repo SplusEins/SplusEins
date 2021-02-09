@@ -12,15 +12,15 @@ const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
 const CACHE_SECONDS = parseInt(process.env.MENSA_CACHE_SECONDS || '1800');
 
 const router = express.Router();
-const cache = CACHE_DISABLE ?
-  cacheManager.caching({ store: 'memory', max: 0 }) :
-  cacheManager.caching({
+const cache = CACHE_DISABLE
+  ? cacheManager.caching({ store: 'memory', max: 0 })
+  : cacheManager.caching({
     store: fsStore,
     options: {
       path: CACHE_PATH,
       ttl: 60,
-      subdirs: true,
-    },
+      subdirs: true
+    }
   });
 
 /**
@@ -44,7 +44,7 @@ router.get('/', async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`mensa cache miss for key ${key}`);
 
-      const openDays = await fetch(`https://openmensa.org/api/v2/canteens/166/days`)
+      const openDays = await fetch('https://openmensa.org/api/v2/canteens/166/days')
         .then((res) => res.json());
 
       const weekdays = openDays

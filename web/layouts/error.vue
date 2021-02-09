@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 
 export default {
   props: {
@@ -92,9 +92,9 @@ export default {
   },
   computed: {
     ...mapState({
-      isDark: state => state.ui.isDark,
-    }),
-  },
+      isDark: state => state.ui.isDark
+    })
+  }
 }
 </script>
 

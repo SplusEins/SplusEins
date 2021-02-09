@@ -19,12 +19,12 @@
 <script>
 import { mapState } from 'vuex';
 
-export default  {
+export default {
   name: 'FavoriteTimetablesList',
   computed: {
     ...mapState({
-      favoriteSchedules: (state) => state.splus.favoriteSchedules,
-    }),
-  },
+      favoriteSchedules: (state) => state.splus.favoriteSchedules
+    })
+  }
 };
 </script>

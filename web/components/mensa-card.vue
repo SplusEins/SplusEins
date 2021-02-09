@@ -41,7 +41,7 @@ import * as moment from 'moment';
 export default {
   name: 'MensaCard',
   computed: {
-    mensaMenus() {
+    mensaMenus () {
       if (this.plans.length == 0) {
         return [];
       }
@@ -49,18 +49,18 @@ export default {
       return Object.values(this.getNextAvailablePlan.data)
         .filter(({ category }) => category.startsWith('Essen '));
     },
-    isPlanOfToday() {
+    isPlanOfToday () {
       return moment().isSame(this.getNextAvailablePlan.date, 'day');
     },
     ...mapState({
       lazyLoad: (state) => state.lazyLoad,
-      plans: (state) => state.mensa.plans,
+      plans: (state) => state.mensa.plans
     }),
     ...mapGetters({
-      getNextAvailablePlan: 'mensa/getNextAvailablePlan',
-    }),
+      getNextAvailablePlan: 'mensa/getNextAvailablePlan'
+    })
   },
-  mounted() {
+  mounted () {
     if (this.lazyLoad) {
       // static build -> no mensa plan is in the store
       this.load();
@@ -68,9 +68,9 @@ export default {
   },
   methods: {
     ...mapActions({
-      load: 'mensa/load',
-    }),
-  },
+      load: 'mensa/load'
+    })
+  }
 };
 </script>
 

@@ -57,7 +57,7 @@ export default {
   props: {
     maxCourses: {
       type: Number,
-      default: () => Infinity,
+      default: () => Infinity
     },
     lectures: {
       type: Array,
@@ -66,28 +66,28 @@ export default {
     value: {
       type: Array,
       default: () => []
-    },
+    }
   },
-  data() {
+  data () {
     return {
       headers: [
         { value: 'title' },
         { value: 'lecturer' },
-        { value: 'room' },
-      ],
+        { value: 'room' }
+      ]
     };
   },
   computed: {
-    courses() {
+    courses () {
       const lecturesById = new Map();
       this.lectures.forEach((lecture) => lecturesById.set(lecture.titleId, lecture));
       return [...lecturesById.values()];
     },
     selectedCourses: {
-      get() { return this.value; },
-      set(value) { this.$emit('input', value); }
+      get () { return this.value; },
+      set (value) { this.$emit('input', value); }
     },
-    overlappingCourses() {
+    overlappingCourses () {
       // get all lectures which have their title selected
       let selectedLectures = this.lectures.filter(
         (lecture) => this.selectedCourses.some(
@@ -113,25 +113,24 @@ export default {
       // given two lectures, return true if they overlap
       const overlapsWith = ({
         begin: thisBegin,
-        duration: thisDuration,
+        duration: thisDuration
       }) => ({
         begin: otherBegin,
-        duration: otherDuration,
-        }) => (thisBegin >= otherBegin && thisBegin <= otherBegin + otherDuration)
-           || (thisBegin + thisDuration >= otherBegin && thisBegin + thisDuration <= otherBegin + otherDuration);
+        duration: otherDuration
+      }) => (thisBegin >= otherBegin && thisBegin <= otherBegin + otherDuration) ||
+           (thisBegin + thisDuration >= otherBegin && thisBegin + thisDuration <= otherBegin + otherDuration);
 
       const withoutAt = (list, at) => list.filter((el, index) => index != at);
 
       // find conflicts
-      const overlapLectures = [].concat(...
-        [...lecturesByDay.values()].map(
-          // for every day…
-          (lectures) => lectures.filter(
-            // …get those two lectures…
-            (oneLecture, index, self) =>
-              // …where there is an overlap
-              withoutAt(self, index).some(overlapsWith(oneLecture)))
-        )
+      const overlapLectures = [].concat(...[...lecturesByDay.values()].map(
+        // for every day…
+        (lectures) => lectures.filter(
+          // …get those two lectures…
+          (oneLecture, index, self) =>
+          // …where there is an overlap
+            withoutAt(self, index).some(overlapsWith(oneLecture)))
+      )
       );
 
       // get the titles of the overlaps
@@ -140,19 +139,19 @@ export default {
         (lecture) => overlapTitles.set(lecture.titleId, lecture.title));
 
       return [...overlapTitles.values()]
-    },
+    }
   },
   methods: {
-    getShortMetadata(data) {
-        if (data.organiserShortname && data.room) {
-          return `(${data.organiserShortname}, ${data.room})`
-        } else if (data.organiserShortname) {
-          return `(${data.organiserShortname})`;
-        } else if (data.room) {
-          return `(${data.room})`;
-        } else {
-          return '';
-        }
+    getShortMetadata (data) {
+      if (data.organiserShortname && data.room) {
+        return `(${data.organiserShortname}, ${data.room})`
+      } else if (data.organiserShortname) {
+        return `(${data.organiserShortname})`;
+      } else if (data.room) {
+        return `(${data.room})`;
+      } else {
+        return '';
+      }
     }
   }
 };

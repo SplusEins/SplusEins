@@ -20,11 +20,11 @@
             Ein inoffizieller Stundenplan von Studenten für Studenten der Ostfalia.
           </p>
           <p>
-            Hilfe zu SplusEins findest du in der <a href="https://spluseins.de/docs/benutzer.html#erste-schritte">Benutzerdokumentation</a>. 
+            Hilfe zu SplusEins findest du in der <a href="https://spluseins.de/docs/benutzer.html#erste-schritte">Benutzerdokumentation</a>.
             Solltest du trotzdem Probleme haben, schreib uns doch gerne per Mail: team(at)spluseins(punkt)de.
           </p>
           <p>
-            Der <a href="https://github.com/SplusEins/SplusEins">Code</a> ist öffentlich einsehbar. 
+            Der <a href="https://github.com/SplusEins/SplusEins">Code</a> ist öffentlich einsehbar.
             Falls du bei der Entwicklung helfen willst, schreib uns gerne per Mail oder einfach über GitHub.
           </p>
           <p>
@@ -67,7 +67,6 @@
   </lazy-hydrate>
 </template>
 
-
 <script>
 import { mapState } from 'vuex';
 
@@ -77,17 +76,17 @@ export default {
     value: {
       type: Boolean,
       default: false
-    },
+    }
   },
   computed: {
     dialogOpen: {
-      get() { return this.value; },
-      set(value) { this.$emit('input', value); }
+      get () { return this.value; },
+      set (value) { this.$emit('input', value); }
     },
     ...mapState({
-      isDark: (state) => state.ui.isDark,
-    }),
-  },
+      isDark: (state) => state.ui.isDark
+    })
+  }
 };
 </script>
 
