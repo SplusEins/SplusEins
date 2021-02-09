@@ -1,13 +1,27 @@
 module.exports = {
-  root: true,
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
+  env: {
+    es2021: true,
+    node: true
+  },
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'standard'
   ],
-  // required to lint *.vue files
-  plugins: ["@typescript-eslint"],
-  // add your custom rules here
-  rules: {},
-};
+
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module'
+  },
+  plugins: [
+    '@typescript-eslint'
+  ],
+  rules: {
+    eqeqeq: 'warn',
+    camelcase: 'warn',
+    'prefer-regex-literals': 'warn',
+    semi: 'off' // no preference for semicolons at end
+  }
+}

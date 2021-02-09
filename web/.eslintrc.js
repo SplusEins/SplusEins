@@ -1,20 +1,26 @@
 module.exports = {
-  root: true,
   env: {
     browser: true,
     node: true,
+    es2021: true
   },
   parserOptions: {
-    parser: "babel-eslint",
+    parser: 'babel-eslint',
+    ecmaVersion: 12,
+    sourceType: 'module'
   },
   extends: [
-    "eslint:recommended",
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    "plugin:vue/strongly-recommended",
+    'eslint:recommended',
+    'plugin:vue/strongly-recommended',
+    'standard'
   ],
   // required to lint *.vue files
-  plugins: ["vue"],
+  plugins: ['vue'],
   // add your custom rules here
-  rules: {},
-};
+  rules: {
+    eqeqeq: 'warn',
+    'multiline-ternary': 'warn',
+    camelcase: 'warn',
+    semi: 'off' // no preference for semicolons at end
+  }
+}
