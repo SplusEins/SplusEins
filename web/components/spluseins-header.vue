@@ -67,8 +67,8 @@ export default {
     })
   },
   mounted () {
-    window.addEventListener('offline', () => this.isOffline = true);
-    window.addEventListener('online', () => this.isOffline = false);
+    window.addEventListener('offline', () => { this.isOffline = true });
+    window.addEventListener('online', () => { this.isOffline = false });
   },
   methods: {
     ...mapMutations({
