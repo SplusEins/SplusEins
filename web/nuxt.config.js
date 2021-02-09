@@ -14,7 +14,7 @@ export default {
     meta: [
       { hid: 'keywords', name: 'keywords', content: 'SplusEins, Splus1, splus1, Sommersemester 2020, SS20, Ostfalia, Stundenplan, Busplan, Bus, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Suderburg, Wolfsburg, Salzgitter, Informatik, Bau, Wasser, Boden, Fahrzeugtechnik, Gesundheitswesen, Verkehr, Sport, Tourismus, Medien, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Wahlfächer, Wahlpflichtfächer' },
       { hid: 'google-site-verification', name: 'google-site-verification', content: 'EBsrsgaLbFe2iWIzVaE77k6bO0BtpcgBVLXm5DJzgUc' }
-    ],
+    ]
   },
 
   /*
@@ -26,14 +26,14 @@ export default {
     name: 'SplusEins',
     author: 'SplusEins-Team',
     ogHost: 'https://spluseins.de',
-    ogImage: '/logo.png',
+    ogImage: '/logo.png'
   },
 
   /*
   ** Customize the progress-bar color
   */
   loading: {
-    color: '#1565C0', // blue.darken3
+    color: '#1565C0' // blue.darken3
   },
 
   /*
@@ -61,7 +61,7 @@ export default {
     // https://github.com/dumptyd/vue-css-donut-chart
     '@/plugins/vue-css-donut-chart',
     // https://github.com/maoberlehner/vue-lazy-hydration
-    '@/plugins/lazy-hydrate',
+    '@/plugins/lazy-hydrate'
   ],
 
   /*
@@ -71,7 +71,7 @@ export default {
     // https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // https://pwa.nuxtjs.org/
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa'
   ],
   /*
   ** Axios module configuration
@@ -80,14 +80,14 @@ export default {
   },
 
   env: {
-    team: ('PROTECTED_INFORMATION' in process.env ? JSON.parse(process.env.PROTECTED_INFORMATION) : PROTECTED_INFORMATION).team,
+    team: ('PROTECTED_INFORMATION' in process.env ? JSON.parse(process.env.PROTECTED_INFORMATION) : PROTECTED_INFORMATION).team
   },
 
   /*
   ** Build configuration
   */
   build: {
-    extend(config, ctx) {
+    extend (config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
@@ -103,10 +103,10 @@ export default {
     },
     plugins: [
       new VuetifyLoaderPlugin(),
-      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de/),
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de/)
     ],
     extractCSS: true,
-    transpile: [/^vuetify/],
+    transpile: [/^vuetify/]
   },
 
   /*
@@ -114,6 +114,6 @@ export default {
   */
   generate: {
     fallback: true,
-    routes: [],
-  },
+    routes: []
+  }
 };

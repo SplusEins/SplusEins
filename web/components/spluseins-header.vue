@@ -53,20 +53,20 @@ import { mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'SpluseinsHeader',
-  components: {SpluseinsSideNav},
+  components: { SpluseinsSideNav },
   data () {
     return {
       isOffline: false,
-      offlineNoticeOpen: false,
+      offlineNoticeOpen: false
     };
   },
   computed: {
     ...mapState({
       isDark: state => state.ui.isDark,
-      allCookiesAccepted: state => state.privacy.allowAllCookies,
-    }),
+      allCookiesAccepted: state => state.privacy.allowAllCookies
+    })
   },
-  mounted() {
+  mounted () {
     window.addEventListener('offline', () => this.isOffline = true);
     window.addEventListener('online', () => this.isOffline = false);
   },
@@ -74,9 +74,9 @@ export default {
     ...mapMutations({
       toggleDark: 'ui/toggleDark',
       toggleSidenav: 'ui/toggleSidenav',
-      enqueueError: 'enqueueError',
-    }),
-  },
+      enqueueError: 'enqueueError'
+    })
+  }
 };
 </script>
 

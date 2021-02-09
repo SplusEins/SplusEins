@@ -5,7 +5,7 @@ import * as chroma from '../lib/chroma';
 import TIMETABLES from '~/assets/timetables.json'; // TODO change this in SS21
 import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customTimetableToRoute, scalarArraysEqual } from '~/lib/util';
 
-function defaultWeek() {
+function defaultWeek () {
   if (moment().isoWeek() < SEMESTER_WEEK_1 && (SEMESTER_WEEK_1 - moment().isoWeek) < 8) {
     // Use semester beginning instead of today if semester hasn't started yet
     // Do that only a few weeks before the semester so we avoid bugs with year wraparounds
@@ -23,7 +23,7 @@ function defaultWeek() {
 /**
  * Return all events for the given timetable and week.
  */
-export async function loadEvents(timetable, weeks, $get) {
+export async function loadEvents (timetable, weeks, $get) {
   const isCustomTimetable = Array.isArray(timetable.id);
 
   let data;
@@ -41,27 +41,27 @@ export async function loadEvents(timetable, weeks, $get) {
 /**
  * Return all unique lectures for the given timetable.
  */
-export async function loadUniqueLectures(timetable, $get) {
+export async function loadUniqueLectures (timetable, $get) {
   return await $get(`/api/splus/${timetable.id}/lectures`);
 }
 
 /**
  * Transform v2 events to v1 lectures.
  */
-export function eventsAsLectures(events) {
+export function eventsAsLectures (events) {
   return events.map((event) => {
     const startMoment = moment(event.start);
     return {
       title: event.title,
       day: startMoment.isoWeekday(),
-      begin: startMoment.hour() + startMoment.minute()/60,
+      begin: startMoment.hour() + startMoment.minute() / 60,
       info: event.meta.description,
       room: event.location,
       lecturer: event.meta.organiserName,
       titleId: event.id,
       organiserShortname: event.meta.organiserShortname,
       start: event.start,
-      duration: event.duration,
+      duration: event.duration
     };
   });
 }
@@ -77,12 +77,12 @@ export const state = () => ({
       path: `${timetable.faculty} ${timetable.degree}`,
       route: {
         name: 'plan-timetable',
-        params: { timetable: timetable.id },
+        params: { timetable: timetable.id }
       },
       description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
-      longDescription: timetable.degree == 'Räume' ?
-                      `${timetable.semester} – Raum ${timetable.label}` :
-                      `${timetable.label} ${timetable.semester}. Semester ${shortenTimetableDegree(timetable)}`,
+      longDescription: timetable.degree == 'Räume'
+        ? `${timetable.semester} – Raum ${timetable.label}`
+        : `${timetable.label} ${timetable.semester}. Semester ${shortenTimetableDegree(timetable)}`
     })),
   /**
    * Map of created or visited custom timetables.
@@ -113,7 +113,7 @@ export const state = () => ({
    * state for upcoming-lectures-card
    */
   upcomingLecturesTimetable: undefined,
-  upcomingEvents: [],
+  upcomingEvents: []
 });
 
 export const getters = {
@@ -141,8 +141,7 @@ export const getters = {
 
     const eventsByStart = new Map();
     state.events.forEach((event) =>
-      eventsByStart.set(event.start, [...
-        (eventsByStart.get(event.start) || []), event]));
+      eventsByStart.set(event.start, [...(eventsByStart.get(event.start) || []), event]));
 
     return state.events.map((event) => {
       const color = colorScale[uniqueIds.indexOf(event.meta.organiserShortname)];
@@ -156,16 +155,16 @@ export const getters = {
           description,
           location: event.location,
           concurrentCount: eventsByStart.get(event.start).length,
-          concurrentOffset: eventsByStart.get(event.start).indexOf(event),
+          concurrentOffset: eventsByStart.get(event.start).indexOf(event)
         },
         schedule: {
           on: startMoment,
-          times: [ {
+          times: [{
             hour: startMoment.hour(),
-            minute: startMoment.minute(),
-          } ],
+            minute: startMoment.minute()
+          }],
           duration: event.duration,
-          durationUnit: 'hours',
+          durationUnit: 'hours'
         }
       };
     });
@@ -218,32 +217,32 @@ export const getters = {
 };
 
 export const mutations = {
-  setLectures(state, lectures) {
+  setLectures (state, lectures) {
     state.lectures = lectures;
   },
-  setEvents(state, events) {
+  setEvents (state, events) {
     state.events = events;
   },
-  setUpcomingEvents(state, events) {
+  setUpcomingEvents (state, events) {
     state.upcomingEvents = events;
   },
-  setWeek(state, week) {
+  setWeek (state, week) {
     state.week = week;
   },
-  resetWeek(state, forceDefault) {
+  resetWeek (state, forceDefault) {
     if (forceDefault) {
       state.week = defaultWeek();
     } else {
       state.week = state.week || defaultWeek();
     }
   },
-  setSchedule(state, timetable) {
+  setSchedule (state, timetable) {
     state.schedule = timetable;
   },
-  setUpcomingLecturesTimetable(state, timetable) {
+  setUpcomingLecturesTimetable (state, timetable) {
     state.upcomingLecturesTimetable = timetable;
   },
-  addCustomSchedule(state, customTimetable) {
+  addCustomSchedule (state, customTimetable) {
     const label = customTimetable.label;
     const customTimetableStored = state.customSchedules[label];
 
@@ -262,43 +261,43 @@ export const mutations = {
     }
 
     this._vm.$set(state.customSchedules, label, customTimetable);
-    if(Object.keys(state.subscribedTimetable).length === 0) {
+    if (Object.keys(state.subscribedTimetable).length === 0) {
       state.subscribedTimetable = state.customSchedules[label];
     }
   },
-  deleteCustomSchedule(state, customTimetable) {
+  deleteCustomSchedule (state, customTimetable) {
     this._vm.$delete(state.customSchedules, customTimetable.label);
-    if(state.subscribedTimetable.label == customTimetable.label) {
+    if (state.subscribedTimetable.label == customTimetable.label) {
       const subscribables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
-      state.subscribedTimetable = subscribables.length == 0? {} : subscribables[0];
+      state.subscribedTimetable = subscribables.length == 0 ? {} : subscribables[0];
     }
   },
-  addFavoriteSchedule(state, favoriteTimetable){
-    if(state.favoriteSchedules.filter(favorite => favorite.id == favoriteTimetable.id).length == 0){
+  addFavoriteSchedule (state, favoriteTimetable) {
+    if (state.favoriteSchedules.filter(favorite => favorite.id == favoriteTimetable.id).length == 0) {
       state.favoriteSchedules.push(favoriteTimetable);
-      if(Object.keys(state.subscribedTimetable).length === 0) {
+      if (Object.keys(state.subscribedTimetable).length === 0) {
         state.subscribedTimetable = favoriteTimetable;
       }
     }
   },
-  removeFavoriteSchedule(state, favoriteTimetable){
+  removeFavoriteSchedule (state, favoriteTimetable) {
     state.favoriteSchedules = state.favoriteSchedules
       .filter((timetable) => timetable.id != favoriteTimetable.id);
-    if(state.subscribedTimetable.id == favoriteTimetable.id) {
+    if (state.subscribedTimetable.id == favoriteTimetable.id) {
       const subscribables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
-      state.subscribedTimetable = subscribables.length == 0? {} : subscribables[0];
+      state.subscribedTimetable = subscribables.length == 0 ? {} : subscribables[0];
     }
   },
-  setSubscribedTimetable(state, timetable) {
+  setSubscribedTimetable (state, timetable) {
     state.subscribedTimetable = timetable;
-  },
+  }
 };
 
 export const actions = {
   /**
    * Request data for the given and the next week.
    */
-  async load({ state, commit }) {
+  async load ({ state, commit }) {
     try {
       const events = await loadEvents(state.schedule, state.week, this.$axios.$get);
       const lectures = eventsAsLectures(events);
@@ -308,14 +307,14 @@ export const actions = {
       if (error.response.status == 403) {
         throw error;
       }
-      commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
+      commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', { root: true });
       console.error('error during API call', error.message);
     }
   },
   /**
    * Request lectures of upcomingLecturesTimetable for defaultWeek
    */
-  async loadUpcomingEvents({ state, commit }) {
+  async loadUpcomingEvents ({ state, commit }) {
     try {
       const events = await loadEvents(state.upcomingLecturesTimetable, defaultWeek(), this.$axios.$get);
       commit('setUpcomingEvents', events);
@@ -323,20 +322,22 @@ export const actions = {
       if (error.response.status == 403) {
         throw error;
       }
-      commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', {root:true});
+      commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', { root: true });
       console.error('error during API call', error.message);
     }
   },
   /**
    * Import timetable from route and set as current timetable.
    */
-  importSchedule({ state, commit }, { params, query }) {
+  importSchedule ({ state, commit }, { params, query }) {
     switch (parseFloat(query.v)) {
       case 1: {
-        const whitelist = Array.isArray(query.course || []) ?
-          query.course : [query.course];
-        const id = Array.isArray(query.id || []) ?
-          query.id : [query.id];
+        const whitelist = Array.isArray(query.course || [])
+          ? query.course
+          : [query.course];
+        const id = Array.isArray(query.id || [])
+          ? query.id
+          : [query.id];
         const label = query.name;
         const customTimetable = { id, label, whitelist };
 
@@ -356,5 +357,5 @@ export const actions = {
         commit('setSchedule', timetable);
       }
     }
-  },
+  }
 };

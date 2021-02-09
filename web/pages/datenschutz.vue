@@ -113,26 +113,26 @@ import { mapMutations } from 'vuex';
 
 export default {
   name: 'SpluseinsDataPrivacy',
-  head() {
+  head () {
     return {
       title: 'Datenschutz',
       meta: [
         { hid: 'description', name: 'description', content: 'Datenschutz' },
-        { hid: 'og:description', property: 'og:description', content: 'Datenschutz' },
-      ],
+        { hid: 'og:description', property: 'og:description', content: 'Datenschutz' }
+      ]
     };
   },
-  data() {
+  data () {
     return {
-      team: process.env.team,
+      team: process.env.team
     }
   },
   methods: {
     ...mapMutations({
-      setSidenav: 'ui/setSidenav',
-    }),
+      setSidenav: 'ui/setSidenav'
+    })
   },
-  middleware: 'cached',
+  middleware: 'cached'
 }
 </script>
 

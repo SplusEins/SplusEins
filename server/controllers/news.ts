@@ -32,15 +32,14 @@ router.get('/campus', async (req, res, next) => {
  * @returns NewsElement[]
  */
 router.get('/faculty', async (req, res, next) => {
-
   // Informatik, Recht, Elektrotechnik,
   // Wolfenbüttel, Wolfsburg, Suderburg
   const faculties = ['i', 'r', 'e', 'wf', 'wob', 'sud'];
-    
+
   try {
     const facultyNews = await Promise.all(
       faculties.map(async (faculty) => {
-        try{
+        try {
           return await getFacultyNews(faculty);
         } catch {
           console.log(`Error while loading faculty news for key: ${faculty}`)

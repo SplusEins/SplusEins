@@ -134,33 +134,33 @@ export default {
     OpenCalendarDialog,
     ResponsiveIconButton,
     CustomTimetableDialog,
-    CustomTimetableDeleteDialog,
+    CustomTimetableDeleteDialog
   },
-  data() {
+  data () {
     return {
       editTimetableDialogOpen: false,
       openCalendarDialogOpen: false,
       deleteTimetableDialogOpen: false,
-      shareDialogOpen: false,
+      shareDialogOpen: false
     };
   },
   computed: {
-    isMobile() {
+    isMobile () {
       return !this.$vuetify.breakpoint.mdAndUp;
     },
-    isTinyMobile() {
+    isTinyMobile () {
       return this.$vuetify.breakpoint.width <= 400;
     },
-    isFavorite() {
+    isFavorite () {
       return this.favoriteSchedules.filter(favorite => favorite.id == this.currentSchedule.id).length != 0;
     },
-    timetableIds() {
+    timetableIds () {
       return this.isCustomSchedule ? this.currentSchedule.id : [this.currentSchedule.id];
     },
-    titleIds() {
+    titleIds () {
       return this.isCustomSchedule ? this.currentSchedule.whitelist : [];
     },
-    currentAsCustomSchedule() {
+    currentAsCustomSchedule () {
       if (this.isCustomSchedule) {
         return this.currentSchedule;
       } else {
@@ -168,23 +168,23 @@ export default {
         return {
           label: '',
           id: [this.currentSchedule.id],
-          whitelist: [],
+          whitelist: []
         };
       }
     },
     ...mapState({
       currentSchedule: (state) => state.splus.schedule,
-      favoriteSchedules: (state) => state.splus.favoriteSchedules,
+      favoriteSchedules: (state) => state.splus.favoriteSchedules
     }),
     ...mapGetters({
-      isCustomSchedule: 'splus/isCustomTimetable',
-    }),
+      isCustomSchedule: 'splus/isCustomTimetable'
+    })
   },
   methods: {
-    routeToRoot() {
+    routeToRoot () {
       this.$router.replace('/');
     },
-    toggleFavorite() {
+    toggleFavorite () {
       if (this.isFavorite) {
         this.removeFavoriteSchedule(this.currentSchedule);
         this.$track('Calendar', 'favorite', 'removed');
@@ -193,14 +193,14 @@ export default {
         this.$track('Calendar', 'favorite', 'added');
       }
     },
-    currentUrl(){
+    currentUrl () {
       return global.window ? window.location.href : '';
     },
-    async share() {
+    async share () {
       // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
       if (navigator.share) {
         await navigator.share({
-          url: this.currentUrl(),
+          url: this.currentUrl()
         });
         this.$track('Calendar', 'share', 'share');
       } else {
@@ -210,8 +210,8 @@ export default {
     },
     ...mapMutations({
       addFavoriteSchedule: 'splus/addFavoriteSchedule',
-      removeFavoriteSchedule: 'splus/removeFavoriteSchedule',
-    }),
-  },
+      removeFavoriteSchedule: 'splus/removeFavoriteSchedule'
+    })
+  }
 };
 </script>

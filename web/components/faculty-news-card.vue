@@ -48,36 +48,36 @@ import SelectDialog from './select-dialog.vue'
 export default {
   name: 'FacultyNewsCard',
   components: {
-    SelectDialog,
+    SelectDialog
   },
-  data() {
-    const availableSoures = [{description: 'Fakultät Informatik', title: 'aus der Informatik', path: 'i'},
-                             {description: 'Fakultät Elektrotechnik', title: 'aus der E-Technik', path: 'e'},
-                             {description: 'Fakultät Recht', title: 'aus dem Recht', path: 'r'},
-                             {description: 'Standort Wolfenbüttel', title: 'aus Wolfenbüttel', path: 'wf'},
-                             {description: 'Standort Wolfsburg', title: 'aus Wolfsburg', path: 'wob'},
-                             {description: 'Standort Suderburg', title: 'aus Suderburg', path: 'sud'},];
+  data () {
+    const availableSoures = [{ description: 'Fakultät Informatik', title: 'aus der Informatik', path: 'i' },
+      { description: 'Fakultät Elektrotechnik', title: 'aus der E-Technik', path: 'e' },
+      { description: 'Fakultät Recht', title: 'aus dem Recht', path: 'r' },
+      { description: 'Standort Wolfenbüttel', title: 'aus Wolfenbüttel', path: 'wf' },
+      { description: 'Standort Wolfsburg', title: 'aus Wolfsburg', path: 'wob' },
+      { description: 'Standort Suderburg', title: 'aus Suderburg', path: 'sud' }];
 
     return {
       dialogOpen: false,
-      availableSoures,
+      availableSoures
     }
   },
   computed: {
-    news() {
+    news () {
       return Object.keys(this.facultyNews).length > 0 ? this.facultyNews[this.faculty] : [];
     },
     selectedItem: {
-      get(){ return this.availableSoures.filter(source => source.path == this.faculty)[0]; },
-      set(value){ this.setFaculty(value.path); }
+      get () { return this.availableSoures.filter(source => source.path == this.faculty)[0]; },
+      set (value) { this.setFaculty(value.path); }
     },
     ...mapState({
       facultyNews: (state) => state.news.facultyNews,
       faculty: (state) => state.news.faculty,
-      lazyLoad: (state) => state.lazyLoad,
-    }),
+      lazyLoad: (state) => state.lazyLoad
+    })
   },
-  mounted() {
+  mounted () {
     if (this.lazyLoad) {
       // static build -> no news are in the store
       this.loadNews();
@@ -85,15 +85,14 @@ export default {
   },
   methods: {
     ...mapActions({
-      loadNews: 'news/loadFacultyNews',
+      loadNews: 'news/loadFacultyNews'
     }),
     ...mapMutations({
-      setFaculty: 'news/setFaculty',
-    }),
-  },
+      setFaculty: 'news/setFaculty'
+    })
+  }
 };
 </script>
-
 
 <style lang="scss">
 

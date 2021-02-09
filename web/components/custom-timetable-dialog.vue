@@ -108,7 +108,7 @@ export default {
   components: {
     TimetableSelect,
     CourseMultiselect,
-    CustomTimetableCookieReminder,
+    CustomTimetableCookieReminder
   },
   props: {
     value: {
@@ -118,9 +118,9 @@ export default {
     customSchedule: {
       type: Object,
       default: () => undefined
-    },
+    }
   },
-  data() {
+  data () {
     return {
       /* user data */
       selectedName: '',
@@ -134,31 +134,31 @@ export default {
       rules: {
         required: (value) => !!value || 'Pflichtfeld',
         uniqueScheduleLabel:
-          (value) => !this.scheduleIds.includes(value)
-                     || 'Bereits vergeben',
+          (value) => !this.scheduleIds.includes(value) ||
+                     'Bereits vergeben',
         uniqueCustomScheduleLabel:
-          (value) => !this.customScheduleLabels.includes(value)
-                     || 'Bereits vergeben',
+          (value) => !this.customScheduleLabels.includes(value) ||
+                     'Bereits vergeben'
       },
       // reasonable limits to ensure good performance
       // and a usable UI
       maxSchedules: 8,
       maxCourses: 20,
-      cookieReminderDialogOpen: false,
+      cookieReminderDialogOpen: false
     };
   },
   computed: {
     dialogOpen: {
-      get() { return this.value; },
-      set(value) { this.$emit('input', value); }
+      get () { return this.value; },
+      set (value) { this.$emit('input', value); }
     },
-    saveable() {
+    saveable () {
       return this.valid && this.selectedCourses.length > 0;
     },
-    isNew() {
+    isNew () {
       return !this.customSchedule;
     },
-    allLectures() {
+    allLectures () {
       return flatten(Object.values(this.lectures));
     },
     ...mapGetters({
@@ -166,16 +166,16 @@ export default {
       customScheduleLabels: 'splus/customTimetableLabels',
       scheduleIds: 'splus/timetableIds',
       getScheduleById: 'splus/getTimetableById',
-      weekOrDefault: 'splus/weekOrDefault',
+      weekOrDefault: 'splus/weekOrDefault'
     }),
     ...mapState({
       week: (state) => state.splus.week,
-      allowNecessaryCookies: (state) => state.privacy.allowNecessaryCookies,
-    }),
+      allowNecessaryCookies: (state) => state.privacy.allowNecessaryCookies
+    })
   },
   watch: {
-    dialogOpen() {
-      if(this.dialogOpen){
+    dialogOpen () {
+      if (this.dialogOpen) {
         if (!this.isNew) {
           this.load();
         }
@@ -183,7 +183,7 @@ export default {
     }
   },
   methods: {
-    getFormattedName(schedule){
+    getFormattedName (schedule) {
       for (const element of this.selectedSchedules) {
         if ((schedule.label == element.label) && (schedule.semester != element.semester)) {
           return schedule.label + ' (' + schedule.semester + '. Sem)';
@@ -191,7 +191,7 @@ export default {
       }
       return schedule.label;
     },
-    async addSchedule(schedule) {
+    async addSchedule (schedule) {
       if (this.selectedSchedules.includes(schedule)) {
         return;
       }
@@ -199,15 +199,15 @@ export default {
       this.selectedSchedules.push(schedule);
       await this.loadLectures(schedule);
     },
-    removeSchedule(schedule) {
+    removeSchedule (schedule) {
       const index = this.selectedSchedules.indexOf(schedule);
       this.selectedSchedules.splice(index, 1);
       const titles = this.lectures[schedule.id].map(lecture => lecture.title)
       this.$set(this.lectures, schedule.id, []);
       this.selectedCourses = this.selectedCourses.filter(
-         (course) => !titles.includes(course.title));
+        (course) => !titles.includes(course.title));
     },
-    async loadLectures(schedule) {
+    async loadLectures (schedule) {
       this.loading = true;
 
       try {
@@ -224,16 +224,16 @@ export default {
     /**
      * Store the edited schedule.
      */
-    save() {
+    save () {
       this.dialogOpen = false;
 
       // Set the base schedule and filters matching the given courses.
       const titleIds = uniq(this.selectedCourses.map(({ titleId }) => titleId));
 
       const customScheduleRoute = customTimetableToRoute({
-        id: this.selectedSchedules.map(({ id }) => id ),
+        id: this.selectedSchedules.map(({ id }) => id),
         label: this.selectedName,
-        whitelist: titleIds,
+        whitelist: titleIds
       });
 
       if (!this.isNew) {
@@ -246,7 +246,7 @@ export default {
     /**
      * Load the state from a passed schedule.
      */
-    async load() {
+    async load () {
       this.selectedName = this.customSchedule.label;
 
       await Promise.all(this.customSchedule.id.map(async (id) =>
@@ -259,8 +259,8 @@ export default {
     },
     ...mapMutations({
       enqueueError: 'enqueueError',
-      deleteCustomSchedule: 'splus/deleteCustomSchedule',
-    }),
-  },
+      deleteCustomSchedule: 'splus/deleteCustomSchedule'
+    })
+  }
 };
 </script>

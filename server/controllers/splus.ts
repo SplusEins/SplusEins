@@ -26,7 +26,7 @@ router.get('/:timetable/lectures', async (req, res, next) => {
   const timetableId = req.params.timetable;
   const timetable = TIMETABLES.find(({ id }) => id == timetableId);
 
-   if (!timetable) {
+  if (!timetable) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
     return;
@@ -78,7 +78,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
       skedPath: timetable.skedPath,
       graphical: timetable.graphical,
       faculty: timetable.faculty
-    }) );
+    }));
     const events = await getEvents(requests);
 
     const meta: TimetableMetadata = <TimetableMetadata> {
@@ -89,11 +89,11 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
       semester: Number(timetable.semester)
     };
     const response: Timetable = <Timetable> {
-      name: timetable.degree == 'Räume' ?
-              `${timetable.semester} ${timetable.label}` :
-              `${(timetable.degree)} ${timetable.label} - ${timetable.semester}. Semester`,
+      name: timetable.degree == 'Räume'
+        ? `${timetable.semester} ${timetable.label}`
+        : `${(timetable.degree)} ${timetable.label} - ${timetable.semester}. Semester`,
       events: events,
-      meta: meta,
+      meta: meta
     };
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
@@ -102,7 +102,6 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
     next(error);
   }
 });
-
 
 /**
  * Get Timetable with given name for given timetable Ids, week and event Ids
@@ -143,10 +142,10 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
       skedPath: timetable.skedPath,
       graphical: timetable.graphical,
       faculty: timetable.faculty
-    }) )));
+    }))));
     const allEvents = await getEvents(requests);
-    const filteredEvents = titleIds.length > 0 ?
-      allEvents.filter(({ id }) => titleIds.includes(id))
+    const filteredEvents = titleIds.length > 0
+      ? allEvents.filter(({ id }) => titleIds.includes(id))
       : allEvents;
 
     const meta: TimetableMetadata = <TimetableMetadata> {
@@ -154,13 +153,13 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
       faculty: timetables.map((x) => x.faculty),
       degree: timetables.map((x) => x.degree),
       specialisation: timetables.map((x) => x.label),
-      semester: timetables.map((x) => Number(x.semester)),
+      semester: timetables.map((x) => Number(x.semester))
     };
 
     const timetable: Timetable = <Timetable> {
       name: name,
       events: filteredEvents,
-      meta: meta,
+      meta: meta
     };
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);

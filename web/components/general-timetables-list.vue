@@ -55,15 +55,15 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'GeneralTimetablesList',
-  data() {
+  data () {
     return {
-      load: {},
+      load: {}
     };
   },
   computed: {
     ...mapGetters({
-      schedulesTree: 'splus/getTimetablesAsTree',
-    }),
-  },
+      schedulesTree: 'splus/getTimetablesAsTree'
+    })
+  }
 };
 </script>

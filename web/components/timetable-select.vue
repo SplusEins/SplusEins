@@ -67,58 +67,58 @@ export default {
       default: () => []
     }
   },
-  data() {
+  data () {
     return {
       selectedSchedule: undefined,
       selectedPath: undefined,
-      selectedSemester: undefined,
+      selectedSemester: undefined
     };
   },
   computed: {
-    paths() {
+    paths () {
       return Object.keys(this.schedulesTree)
         .filter((path) => !path.includes('Räume'));
     },
-    semesters() {
-      return this.schedulesTree[this.selectedPath] != undefined ?
-        Object.keys(this.schedulesTree[this.selectedPath])
+    semesters () {
+      return this.schedulesTree[this.selectedPath] != undefined
+        ? Object.keys(this.schedulesTree[this.selectedPath])
         : [];
     },
-    schedules() {
-      return this.schedulesTree[this.selectedPath] != undefined ?
-        this.schedulesTree[this.selectedPath][this.selectedSemester] || []
+    schedules () {
+      return this.schedulesTree[this.selectedPath] != undefined
+        ? this.schedulesTree[this.selectedPath][this.selectedSemester] || []
         : [];
     },
-    hasMultipleSchedules() {
+    hasMultipleSchedules () {
       return this.schedules && this.schedules.length > 1;
     },
-    disableLoad() {
+    disableLoad () {
       return this.loading || this.selectedSchedule == undefined || this.selectedSchedules.includes(this.selectedSchedule);
     },
     ...mapGetters({
-      schedulesTree: 'splus/getTimetablesAsTree',
-    }),
+      schedulesTree: 'splus/getTimetablesAsTree'
+    })
   },
   watch: {
-    selectedPath() {
+    selectedPath () {
       if (this.semesters.length == 1) {
         this.selectedSemester = this.semesters[0];
       } else {
         this.selectedSemester = undefined;
       }
     },
-    selectedSemester() {
+    selectedSemester () {
       if (this.schedules.length == 1) {
         this.selectedSchedule = this.schedules[0];
       } else {
         this.selectedSchedule = undefined;
       }
-    },
+    }
   },
   methods: {
-    submit() {
+    submit () {
       this.$emit('input', this.selectedSchedule);
-    },
-  },
+    }
+  }
 };
 </script>

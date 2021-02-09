@@ -7,28 +7,28 @@ export const range = (lower, upper) => Array.from(Array(upper - lower), (x, i) =
 
 export const SEMESTER_WEEK_1 = parseInt(process.env.SEMESTER_WEEK_1 || '41'); // TODO change this in SS21
 
-export function customTimetableToRoute(customTimetable) {
+export function customTimetableToRoute (customTimetable) {
   const query = {
     id: customTimetable.id,
     course: customTimetable.whitelist,
     name: customTimetable.label,
-    v: '1',
+    v: '1'
   };
 
   return { name: 'plan-timetable', params: {}, query };
 }
 
-export function timetableToRoute(timetable) {
+export function timetableToRoute (timetable) {
   return {
     name: 'plan-timetable',
-    params: { timetable: timetable.id },
+    params: { timetable: timetable.id }
   };
 }
 
-export function shortenTimetableDegree(timetable) {
+export function shortenTimetableDegree (timetable) {
   let shortenedDegree;
 
-  switch(timetable.degree){
+  switch (timetable.degree) {
     case 'Bachelor of Science': shortenedDegree = 'B.Sc.'; break;
     case 'Master of Science': shortenedDegree = 'M.Sc.'; break;
     case 'Bachelor of Arts': shortenedDegree = 'B.A.'; break;

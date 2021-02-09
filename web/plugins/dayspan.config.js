@@ -15,18 +15,17 @@ export default {
   data: {
     inactiveBlendAmount: 0.6,
     dayHeight: hourHeight * dayspanDayLengthHours,
-    hourHeight: hourHeight,
+    hourHeight: hourHeight
   },
 
   methods:
   {
 
-    getStyleNow()
-    {
+    getStyleNow () {
       const nowMillis = this.now.asTime().toMilliseconds();
       const dayspanOffsetMillis = dayspanOffsetHoursPre * Constants.MILLIS_IN_HOUR;
-      const delta = (nowMillis - dayspanOffsetMillis)
-        / (Constants.MILLIS_IN_DAY / dayspanScalingFactor);
+      const delta = (nowMillis - dayspanOffsetMillis) /
+        (Constants.MILLIS_IN_DAY / dayspanScalingFactor);
       const top = delta * this.dayHeight;
 
       return {
@@ -38,8 +37,7 @@ export default {
       };
     },
 
-    getStyleTimed(details, calendarEvent)
-    {
+    getStyleTimed (details, calendarEvent) {
       const past = calendarEvent.time.end.isBefore(this.now);
       const bounds = calendarEvent.getTimeBounds(
         this.dayHeight * dayspanScalingFactor,
@@ -61,9 +59,8 @@ export default {
       };
     },
 
-    getEventOccurrence(start, end)
-    {    
+    getEventOccurrence (start, end) {
       return start.date.format('HH:mm') + ' Uhr bis ' + end.date.format('HH:mm') + ' Uhr';
-    },
-  },
+    }
+  }
 };

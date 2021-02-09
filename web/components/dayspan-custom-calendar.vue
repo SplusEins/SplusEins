@@ -130,7 +130,7 @@ export default {
     calendar:
     {
       type: Calendar,
-      default(){
+      default () {
         return {}
       }
     },
@@ -142,14 +142,14 @@ export default {
     types:
     {
       type: Array,
-      default(){
+      default () {
         return []
       }
     },
     labels:
     {
       type: Object,
-      default() {
+      default () {
         return {
           next: 'Nächste Woche',
           prev: 'Vorherige Woche',
@@ -157,101 +157,94 @@ export default {
           todayIcon: 'mdi-calendar-today'
         }
       }
-    },
+    }
   },
   computed:
   {
-    longSummary() {
+    longSummary () {
       const firstDay = this.calendar.days[0].date;
       const lastDay = this.calendar.days[6].date;
       return firstDay.format('DD. MMMM') + ' – ' + lastDay.format('DD. MMMM');
     },
-    shortSummary() {
+    shortSummary () {
       const firstDay = this.calendar.days[0].date;
       const lastDay = this.calendar.days[6].date;
       return firstDay.format('DD.MM.') + ' - ' + lastDay.format('DD.MM.');
     },
     currentType:
     {
-      get()
-      {
+      get () {
         return this.types.find((type) =>
           type.type === this.calendar.type &&
           type.size === this.calendar.size
         ) || this.types[0];
       },
-      set(type)
-      {
+      set (type) {
         this.rebuild(undefined, true, type);
       }
     },
 
-    todayDate()
-    {
+    todayDate () {
       let today = new Date();
       let dd = today.getDate();
-      let mm = today.getMonth()+1; //January is 0!
-      let yyyy = today.getFullYear();
+      let mm = today.getMonth() + 1; // January is 0!
+      const yyyy = today.getFullYear();
 
-      if(dd<10) {
-          dd = '0'+dd
+      if (dd < 10) {
+        dd = '0' + dd
       }
 
-      if(mm<10) {
-          mm = '0'+mm
+      if (mm < 10) {
+        mm = '0' + mm
       }
 
-      today = dd + '.'+mm +'.' + yyyy;
+      today = dd + '.' + mm + '.' + yyyy;
       return today
     },
 
-    nextLabel() {
+    nextLabel () {
       return this.labels.next;
     },
-    prevLabel() {
+    prevLabel () {
       return this.labels.prev;
     },
-    getWeekendClass(){
+    getWeekendClass () {
       return this.hasEventsOnWeekend ? '' : 'no-weekend';
     },
     ...mapGetters({
-      hasEventsOnWeekend: 'splus/getHasEventsOnWeekend',
-    }),
+      hasEventsOnWeekend: 'splus/getHasEventsOnWeekend'
+    })
   },
 
   methods:
   {
-    minTwoDigits(n) {
+    minTwoDigits (n) {
       return (n < 10 ? '0' : '') + n;
     },
 
-    setState(state)
-    {
+    setState (state) {
       state.eventSorter = state.listTimes
         ? Sorts.List([Sorts.FullDay, Sorts.Start])
         : Sorts.Start;
 
-      this.calendar.set( state );
+      this.calendar.set(state);
     },
 
-    isType(type, aroundDay)
-    {
-      let cal = this.calendar;
+    isType (type, aroundDay) {
+      const cal = this.calendar;
 
       return (cal.type === type.type && cal.size === type.size &&
           (!aroundDay || cal.span.matchesDay(aroundDay)));
     },
 
-    rebuild (aroundDay, force, forceType)
-    {
-      let type = forceType || this.currentType || this.types[ 2 ];
+    rebuild (aroundDay, force, forceType) {
+      const type = forceType || this.currentType || this.types[2];
 
-      if (this.isType( type, aroundDay ) && !force)
-      {
+      if (this.isType(type, aroundDay) && !force) {
         return;
       }
 
-      let input = {
+      const input = {
         type: type.type,
         size: type.size,
         around: aroundDay,
@@ -265,28 +258,24 @@ export default {
         repeatCovers: type.repeat
       };
 
-      this.setState( input );
+      this.setState(input);
     },
 
-    next()
-    {
+    next () {
       this.$emit('next');
     },
 
-    prev()
-    {
+    prev () {
       this.$emit('prev');
     },
 
-    setToday()
-    {
+    setToday () {
       this.$emit('today');
     },
 
-    viewDay(day)
-    {
-      this.rebuild( day, false, this.types[ 0 ] );
-    },
+    viewDay (day) {
+      this.rebuild(day, false, this.types[0]);
+    }
   }
 }
 </script>

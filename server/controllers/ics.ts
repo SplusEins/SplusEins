@@ -14,12 +14,11 @@ const range = (lower: number, upper: number) => Array.from(Array(upper - lower),
 const ICS_PRELOAD_WEEKS = parseInt(process.env.ICS_PRELOAD_WEEKS || '4');
 const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
 
-
 /**
  * @param lecture lecture
  * @returns ical event
  */
-function eventToICSEvent(lecture: Event) {
+function eventToICSEvent (lecture: Event) {
   const uid = sha256(JSON.stringify(lecture)).substr(0, 16);
   return {
     uid,
@@ -28,7 +27,7 @@ function eventToICSEvent(lecture: Event) {
     timestamp: moment().toDate(),
     summary: lecture.title,
     description: lecture.meta.organiserName + (lecture.meta.description != '' ? ' - ' : '') + lecture.meta.description,
-    location: lecture.location,
+    location: lecture.location
   };
 }
 
@@ -71,8 +70,8 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     })));
 
     const allEvents: Event[] = await getEvents(requests);
-    const filteredEvents = titleIds.length > 0 ?
-      allEvents.filter(({ id }) => titleIds.includes(id))
+    const filteredEvents = titleIds.length > 0
+      ? allEvents.filter(({ id }) => titleIds.includes(id))
       : allEvents;
     const events = filteredEvents.map((event) => eventToICSEvent(event));
 

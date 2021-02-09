@@ -23,24 +23,24 @@ export default {
   name: 'SpluseinsErrorSnackbar',
   computed: {
     snackbarOpen: {
-        get() {
-            return this.errorQueue.length != 0;
-        },
-        set() {
-          this.dequeueError();
-        }
+      get () {
+        return this.errorQueue.length != 0;
+      },
+      set () {
+        this.dequeueError();
+      }
     },
     ...mapState({
       errorQueue: state => state.errorQueue
     }),
-    next(){
+    next () {
       return this.errorQueue[0];
     }
   },
   methods: {
     ...mapMutations({
-      dequeueError: 'dequeueError',
-    }),
-  },
+      dequeueError: 'dequeueError'
+    })
+  }
 };
 </script>

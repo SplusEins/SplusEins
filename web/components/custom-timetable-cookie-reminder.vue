@@ -53,18 +53,18 @@ export default {
     value: {
       type: Boolean,
       default: false
-    },
+    }
   },
   computed: {
     dialogOpen: {
-      get() { return this.value; },
-      set(value) { this.$emit('input', value); }
-    },
+      get () { return this.value; },
+      set (value) { this.$emit('input', value); }
+    }
   },
   methods: {
     ...mapMutations({
-      setNecessaryCookiesAllowed: 'privacy/setNecessaryCookiesAllowed',
-    }),
+      setNecessaryCookiesAllowed: 'privacy/setNecessaryCookiesAllowed'
+    })
   }
 };
 </script>

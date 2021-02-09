@@ -25,8 +25,8 @@ export default {
   name: 'CustomTimetablesList',
   computed: {
     ...mapGetters({
-      customSchedulesAsRoutes: 'splus/customTimetablesAsRoutes',
-    }),
-  },
+      customSchedulesAsRoutes: 'splus/customTimetablesAsRoutes'
+    })
+  }
 };
 </script>

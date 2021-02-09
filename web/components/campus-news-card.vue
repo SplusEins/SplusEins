@@ -40,10 +40,10 @@ export default {
     ...mapState({
       campusNews: (state) => state.news.campusNews,
       lazyLoad: (state) => state.lazyLoad,
-      isDark: state => state.ui.isDark,
-    }),
+      isDark: state => state.ui.isDark
+    })
   },
-  mounted() {
+  mounted () {
     if (this.lazyLoad) {
       // static build -> no news are in the store
       this.loadCampusNews();
@@ -51,12 +51,11 @@ export default {
   },
   methods: {
     ...mapActions({
-      loadCampusNews: 'news/loadCampusNews',
-    }),
-  },
+      loadCampusNews: 'news/loadCampusNews'
+    })
+  }
 };
 </script>
-
 
 <style lang="scss">
 

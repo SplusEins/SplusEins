@@ -85,29 +85,29 @@ export default {
     },
     close: {
       type: Function,
-      default(){}
-    },
+      default () {}
+    }
   },
   computed: {
-    styleHeader() {
+    styleHeader () {
       return {
         backgroundColor: this.details.color,
         color: this.details.forecolor
       };
     },
-    startDate() {
+    startDate () {
       return this.calendarEvent.start.toMoment().format('dddd, DD.MM.YY');
     },
-    details() {
+    details () {
       return this.calendarEvent.event.data;
     },
-    timeframe() {
+    timeframe () {
       return this.$dayspan.getEventOccurrence(
         this.calendarEvent.start,
-        this.calendarEvent.end,
+        this.calendarEvent.end
       );
-    },
-  },
+    }
+  }
 }
 </script>
 

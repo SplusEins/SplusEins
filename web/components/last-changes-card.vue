@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'LastChangesCard',
+  name: 'LastChangesCard'
 };
 </script>
 
@@ -28,4 +28,3 @@ export default {
 }
 
 </style>
-

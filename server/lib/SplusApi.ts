@@ -17,18 +17,18 @@ const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
 const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
-const cache = CACHE_DISABLE ?
-  cacheManager.caching({ store: 'memory', max: 0 }) :
-  cacheManager.caching({
+const cache = CACHE_DISABLE
+  ? cacheManager.caching({ store: 'memory', max: 0 })
+  : cacheManager.caching({
     store: fsStore,
     options: {
       path: CACHE_PATH,
       ttl: 60,
-      subdirs: true,
-    },
+      subdirs: true
+    }
   });
 
-function sleep(ms) {
+function sleep (ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -37,7 +37,7 @@ function sleep(ms) {
  * @param timetable request
  * @returns HTML-string
  */
-async function skedRequest(timetable: TimetableRequest): Promise<string> {
+async function skedRequest (timetable: TimetableRequest): Promise<string> {
   const token = Buffer.from(SKED_USER + ':' + SKED_PASSWORD).toString('base64');
   const headers = new Headers();
   headers.append('Authorization', 'Basic ' + token);
@@ -65,15 +65,15 @@ async function skedRequest(timetable: TimetableRequest): Promise<string> {
  * @param timetable request
  * @returns parsed Events
  */
-async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
+async function parseTimetable (timetable: TimetableRequest): Promise<Event[]> {
   const key = `lectures-${timetable.id}`;
 
   return await cache.wrap(key, async () => {
     console.log(`Lectures cache miss for key ${key}`);
     const data = await skedRequest(timetable);
-    const lectures = timetable.graphical ?
-      parseSkedGraphical(data, timetable.faculty) :
-      parseSkedList(data);
+    const lectures = timetable.graphical
+      ? parseSkedGraphical(data, timetable.faculty)
+      : parseSkedList(data);
     console.log(`Storing ${lectures.length} parsed lectures for ${key} in cache`)
     return lectures.map((lecture) => new Event(lecture));
   }, { ttl: CACHE_SECONDS });
@@ -81,18 +81,18 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
 
 /**
  * Executes the timetable parsing and returns only unique events.
- * 
+ *
  * Uniqueness is determined by the ID field (which is derived from the title of the event/lecture).
- * 
+ *
  * @param timetable request, the week field will be ignored.
  * @returns An array of the unique events. Parameters for a specific event (like start and end date) are set to null.
  */
-export async function getUniqueEvents(timetable: TimetableRequest): Promise<Event[]> {
+export async function getUniqueEvents (timetable: TimetableRequest): Promise<Event[]> {
   const allEvents = await parseTimetable(timetable);
   // Filter unique events
   const uniqueEvents = [...new Set(allEvents.map(obj => obj.id))] // search all unique IDs
     .map(id => {
-      //map IDs back to events
+      // map IDs back to events
       const matchingEvent = allEvents.find(evt => evt.id == id);
       // clear end and start since this is just one of the random events for this ID
       matchingEvent.start = null;
@@ -109,7 +109,7 @@ export async function getUniqueEvents(timetable: TimetableRequest): Promise<Even
  * @param timetables request
  * @returns requested Events
  */
-export async function getEvents(timetables: TimetableRequest[]): Promise<Event[]> {
+export async function getEvents (timetables: TimetableRequest[]): Promise<Event[]> {
   const allEvents = await Promise.all(timetables.map((timetable: TimetableRequest) => parseTimetable(timetable)
     .then(events => {
       // Return only events for the correct week of a single request

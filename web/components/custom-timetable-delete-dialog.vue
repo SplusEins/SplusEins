@@ -41,23 +41,23 @@ export default {
     customSchedule: {
       type: Object,
       required: true
-    },
+    }
   },
   computed: {
     dialogOpen: {
-      get() { return this.value; },
-      set(value) { this.$emit('input', value); }
-    },
+      get () { return this.value; },
+      set (value) { this.$emit('input', value); }
+    }
   },
   methods: {
-    confirmDelete() {
+    confirmDelete () {
       this.dialogOpen = false;
       this.deleteCustomSchedule(this.customSchedule);
       this.$emit('on-delete');
     },
     ...mapMutations({
-      deleteCustomSchedule: 'splus/deleteCustomSchedule',
-    }),
-  },
+      deleteCustomSchedule: 'splus/deleteCustomSchedule'
+    })
+  }
 };
 </script>

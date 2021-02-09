@@ -51,18 +51,18 @@ export class Event {
   location: string;
   meta: EventMetadata;
 
-  private generateId(title: string): string {
-    //since the id is part of the url it should not contain /, + or =
+  private generateId (title: string): string {
+    // since the id is part of the url it should not contain /, + or =
     return crypto.createHash('sha1').update(title).digest('base64').replace(/[/+=]/g, '').slice(0, 5);
   }
 
-  private censorOrganiserName(name: string): string {
+  private censorOrganiserName (name: string): string {
     return name.split(' ').map(part =>
       (new RegExp('Prof|Dr|Dipl|Ing|Inform|Herr|Frau|MA|BA|rer.|nat.|Master|Bachelor', 'g').test(part)) || part.length < 3 ? part : part.charAt(0) + '.')
       .join(' ')
   }
 
-  private generateOrganiserShortname(lecturer: string): string {
+  private generateOrganiserShortname (lecturer: string): string {
     return lecturer
       .replace(/Prof|Dr|Dipl|Ing|Inform|Herr|Frau|MA|BA|rer.|nat.|Master|Bachelor/g, '')
       .replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue').replace('ß', 'ss')
@@ -72,7 +72,7 @@ export class Event {
       .join(' ');
   }
 
-  constructor(lecture: ParsedLecture) {
+  constructor (lecture: ParsedLecture) {
     this.id = this.generateId(lecture.title);
     this.title = lecture.title;
     this.start = lecture.start;
@@ -80,9 +80,9 @@ export class Event {
     this.duration = lecture.duration;
     this.location = lecture.room;
     this.meta = {
-                 organiserShortname: this.generateOrganiserShortname(this.censorOrganiserName(lecture.lecturer)),
-                 organiserName: this.censorOrganiserName(lecture.lecturer),
-                 description: lecture.info
-                };
+      organiserShortname: this.generateOrganiserShortname(this.censorOrganiserName(lecture.lecturer)),
+      organiserName: this.censorOrganiserName(lecture.lecturer),
+      description: lecture.info
+    };
   }
 }
