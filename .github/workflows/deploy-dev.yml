@@ -28,13 +28,13 @@ jobs:
         uses: vitalyliber/dokku-github-action@v6.1
         env:
           PROJECT: web-staging
-  deploy-api-staging:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # workaround for dokku
-      - name: Deploy with dokku
-        uses: vitalyliber/dokku-github-action@v6.1
-        env:
-          PROJECT: api-staging
+  # deploy-api-staging:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0 # workaround for dokku
+  #     - name: Deploy with dokku
+  #       uses: vitalyliber/dokku-github-action@v6.1
+  #       env:
+  #         PROJECT: api-staging
