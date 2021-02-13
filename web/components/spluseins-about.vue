@@ -39,20 +39,35 @@
 
         <v-card-actions>
           <v-spacer />
-          <v-btn
-            icon
-            outline
-            color="primary"
-            target="_blank"
-            href="https://github.com/SplusEins/SplusEins"
+          <v-tooltip
+            left
+            close-delay="1200"
           >
-            <v-icon
-              :color="isDark? 'white': 'black'"
-              medium
-            >
-              mdi-github
-            </v-icon>
-          </v-btn>
+            <template #activator="{ on }">
+              <v-btn
+                v-on="version ? on : ''"
+                icon
+                outline
+                color="primary"
+                target="_blank"
+                href="https://github.com/SplusEins/SplusEins"
+              >
+                <v-icon
+                  :color="isDark? 'white': 'black'"
+                  medium
+                >
+                  mdi-github
+                </v-icon>
+              </v-btn>
+            </template>
+            Version
+            <a
+              class="default-text-color"
+              target="_blank"
+              :href="commitUrl()"
+            >{{ version.slice(0,7) }}</a>
+          </v-tooltip>
+
           <v-btn
             flat
             depressed
@@ -72,6 +87,11 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'AboutDialog',
+  data () {
+    return {
+      version: process.env.version.trim()
+    }
+  },
   props: {
     value: {
       type: Boolean,
@@ -86,6 +106,11 @@ export default {
     ...mapState({
       isDark: (state) => state.ui.isDark
     })
+  },
+  methods: {
+    commitUrl: function () {
+      return 'https://github.com/SplusEins/SplusEins/commit/' + this.version
+    }
   }
 };
 </script>
@@ -93,5 +118,8 @@ export default {
 <style scoped lang="scss">
 .text-padding{
   padding: 10px 16px 0px 16px;
+}
+.default-text-color{
+  color: inherit;
 }
 </style>
