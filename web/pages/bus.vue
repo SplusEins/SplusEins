@@ -87,14 +87,10 @@ export default {
       // static build -> no mensa plan is in the store
       this.load()
     }
-    if (process.client) {
-      this.refreshTimer = setInterval(() => this.load(), 60000)
-    }
+    this.refreshTimer = setInterval(() => this.load(), 60000)
   },
   destroyed () {
-    if (process.client) {
-      clearInterval(this.refreshTimer)
-    }
+    clearInterval(this.refreshTimer)
   },
   methods: {
     ...mapActions({
