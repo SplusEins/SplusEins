@@ -12,6 +12,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/strongly-recommended',
+    'plugin:nuxt/recommended',
     'standard'
   ],
   // required to lint *.vue files
