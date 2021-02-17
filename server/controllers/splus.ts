@@ -1,5 +1,5 @@
 import * as express from 'express';
-import * as TIMETABLES from '../assets/timetables.json'; // TODO change this in SS21
+import * as TIMETABLES from '../assets/timetables.json';
 
 import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
 import { getEvents, getUniqueEvents } from '../lib/SplusApi';

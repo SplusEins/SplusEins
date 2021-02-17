@@ -27,29 +27,12 @@ export default ({ store }) => {
           value.version = 2;
         }
 
-        // version 3: new semester -> new timetables ids
-        // version 4: timetable hash ids
-        if (value.version < 4) {
+        // version 3-7: new semester
+        if (value.version < 7) { // TODO increment in WS21
           value.splus.customSchedules = {};
           value.splus.favoriteSchedules = [];
           value.splus.subscribedTimetable = {};
-          value.version = 4;
-        }
-
-        // version 5: new semester
-        if (value.version < 5) {
-          value.splus.customSchedules = {};
-          value.splus.favoriteSchedules = [];
-          value.splus.subscribedTimetable = {};
-          value.version = 5;
-        }
-
-        // version 6: new semester
-        if (value.version < 6) {
-          value.splus.customSchedules = {};
-          value.splus.favoriteSchedules = [];
-          value.splus.subscribedTimetable = {};
-          value.version = 6;
+          value.version = 7; // TODO increment in WS21
         }
       }
 

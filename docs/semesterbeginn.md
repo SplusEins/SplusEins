@@ -40,4 +40,6 @@ Siehe auch [Erklärungen zum serverseitigen Parser](./server.md#parser).
 
 ## Semesterstart setzen
 
-Für das Frontend muss die Umgebungsvariable `SEMESTER_WEEK_1` auf die ISO-Woche der ersten Semesterwoche des aktuellen Semesters gesetzt werden. Das Frontend muss neu gebaut werden.
+Für das Frontend muss die Variable `SEMESTER_WEEK_1` in [`web/store/splus.js`](https://github.com/SplusEins/SplusEins/blob/master/web/store/splus.js) auf die ISO-Woche der ersten Semesterwoche des aktuellen Semesters gesetzt werden.
+
+Zudem muss für das `vuex-persist`-Plugin die Storage-Version erhöht werden, damit alte (personalisierte) Pläne des vorherigen Semesters aus dem `Local Storage` der Nutzer gelöscht werden. Dies passiert in [`web/plugins/vuex-persist.js`](https://github.com/SplusEins/SplusEins/blob/master/web/plugins/vuex-persist.js), die Zeilen sind mit TODOs markiert.
