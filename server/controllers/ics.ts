@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as ical from 'ical-generator';
 import { createHash } from 'crypto';
 
-import * as TIMETABLES from '../assets/timetables.json'; // TODO change this in SS21
+import * as TIMETABLES from '../assets/timetables.json';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { getEvents } from '../lib/SplusApi';
 
