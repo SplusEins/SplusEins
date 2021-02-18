@@ -1,101 +1,200 @@
 [
   {
-    "skedPath": "g/wp/MAG2_A1_SOSE2021.html",
-    "label": "MAG - Gruppe A1",
-    "faculty": "Gesundheitswesen",
+    "skedPath": "e/semester/E-EIT(iP)-IT-Sem6.html",
+    "label": "EIT(iP)-IT",
+    "faculty": "Elektrotechnik",
     "graphical": true,
-    "id": "g_mag2_a1_2_ss21",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/APP3_SOSE2021.html",
-    "label": "APP",
-    "faculty": "Gesundheitswesen",
-    "graphical": true,
-    "id": "g_app3_3_ss21",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMP3_B_SOSE2021.html",
-    "label": "BMP - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "graphical": true,
-    "id": "g_bmp3_b_3_ss21",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMR3_M_SOSE2021.html",
-    "label": "BMR - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "graphical": true,
-    "id": "g_bmr3_m_3_ss21",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/MAG4_KV_SOSE2021.html",
-    "label": "MAG - Schwerpunkt KV",
-    "faculty": "Gesundheitswesen",
-    "graphical": true,
-    "id": "g_mag4_kv_4_ss21",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/PM6_B_SOSE2021.html",
-    "label": "PM - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "graphical": true,
-    "id": "g_pm6_b_6_ss21",
+    "id": "e_eit_ip_it_6_ss21",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "g/wp/MAG2_A2_SOSE2021.html",
-    "label": "MAG - Gruppe A2",
-    "faculty": "Gesundheitswesen",
+    "skedPath": "e/semester/E-WEITiP-Sem2.html",
+    "label": "WEITiP",
+    "faculty": "Elektrotechnik",
     "graphical": true,
-    "id": "g_mag2_a2_2_ss21",
+    "id": "e_weitip_2_ss21",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "g/wp/BMP3_M_SOSE2021.html",
-    "label": "BMP - Studienprofil M",
-    "faculty": "Gesundheitswesen",
+    "skedPath": "e/semester/E-EIT-GS-Sem1.html",
+    "label": "EIT",
+    "faculty": "Elektrotechnik",
     "graphical": true,
-    "id": "g_bmp3_m_3_ss21",
+    "id": "e_eit_gs_1_ss21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-AT-Sem6.html",
+    "label": "EIT(iP)-AT",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_ip_at_6_ss21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-GS-Sem3.html",
+    "label": "EIT(iP)",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_ip_gs_3_ss21",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "g/wp/MAG4_PH_SOSE2021.html",
-    "label": "MAG - Schwerpunkt PH",
-    "faculty": "Gesundheitswesen",
+    "skedPath": "e/semester/E-WEIT(iP)-Sem6.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
     "graphical": true,
-    "id": "g_mag4_ph_4_ss21",
+    "id": "e_weit_ip_6_ss21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-EE-Sem4.html",
+    "label": "EIT(iP)-EE",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_ip_ee_4_ss21",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "g/wp/APIP7_SOSE2021.html",
-    "label": "APIP",
-    "faculty": "Gesundheitswesen",
+    "skedPath": "e/semester/E-WEIT(iP)-Sem5.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
     "graphical": true,
-    "id": "g_apip7_7_ss21",
-    "semester": 7,
+    "id": "e_weit_ip_5_ss21",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "g/wp/MAG4_KH_SOSE2021.html",
-    "label": "MAG - Schwerpunkt KH",
-    "faculty": "Gesundheitswesen",
+    "skedPath": "e/semester/E-WEIT(iP)-Sem4.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
     "graphical": true,
-    "id": "g_mag4_kh_4_ss21",
+    "id": "e_weit_ip_4_ss21",
     "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-AT-Sem5.html",
+    "label": "EIT(iP)-AT",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_ip_at_5_ss21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT-Sem1.html",
+    "label": "WEIT",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_weit_1_ss21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-IMES-VZ.html",
+    "label": "IMES Vollzeit",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_imes_vz_ss21",
+    "semester": "Sonstige",
+    "degree": "Master"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT(iP)-Sem3.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_weit_ip_3_ss21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EITiP-GS-Sem2.html",
+    "label": "EITiP",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eitip_gs_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-IT-Sem4.html",
+    "label": "EIT(iP)-IT",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_ip_it_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-AT-Sem4.html",
+    "label": "EIT(iP)-AT",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_ip_at_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-IT-Sem5.html",
+    "label": "EIT(iP)-IT",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_ip_it_5_ss21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT-GS-Sem2.html",
+    "label": "EIT",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_gs_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-EE-Sem5.html",
+    "label": "EIT(iP)-EE",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_ip_ee_5_ss21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-IMES-TZ.html",
+    "label": "IMES Teilzeit",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_imes_tz_ss21",
+    "semester": "Sonstige",
+    "degree": "Master"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT-Sem2.html",
+    "label": "WEIT",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_weit_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-EE-Sem6.html",
+    "label": "EIT(iP)-EE",
+    "faculty": "Elektrotechnik",
+    "graphical": true,
+    "id": "e_eit_ip_ee_6_ss21",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -103,8 +202,44 @@
     "label": "IVG",
     "faculty": "Gesundheitswesen",
     "graphical": true,
-    "id": "g_ivg2_2_ss21",
+    "id": "g_ivg_2_ss21",
     "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/APIP5_SOSE2021.html",
+    "label": "APIP",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_apip_5_ss21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/MAG2_A1_SOSE2021.html",
+    "label": "MAG - Gruppe A1",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_mag_a1_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/APIP7_SOSE2021.html",
+    "label": "APIP",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_apip_7_ss21",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/BMP1_SOSE2021.html",
+    "label": "BMP",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_bmp_1_ss21",
+    "semester": 1,
     "degree": "Bachelor"
   },
   {
@@ -112,17 +247,26 @@
     "label": "MAG - Gruppe B1",
     "faculty": "Gesundheitswesen",
     "graphical": true,
-    "id": "g_mag2_b1_2_ss21",
+    "id": "g_mag_b1_2_ss21",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "g/wp/WPF_MIG6_SOSE2021.html",
-    "label": "WPF MIG 6. und höhere Sem.",
+    "skedPath": "g/wp/MAG4_KH_SOSE2021.html",
+    "label": "MAG - Schwerpunkt KH",
     "faculty": "Gesundheitswesen",
     "graphical": true,
-    "id": "g_wpf_mig6_ss21",
-    "semester": "WPF",
+    "id": "g_mag_kh_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/BMR3_M_SOSE2021.html",
+    "label": "BMR - Studienprofil M",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_bmr_m_3_ss21",
+    "semester": 3,
     "degree": "Bachelor"
   },
   {
@@ -130,17 +274,17 @@
     "label": "APP",
     "faculty": "Gesundheitswesen",
     "graphical": true,
-    "id": "g_app1_1_ss21",
+    "id": "g_app_1_ss21",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "g/wp/BMR1_SOSE2021.html",
-    "label": "BMR",
+    "skedPath": "g/wp/PM6_M_SOSE2021.html",
+    "label": "PM - Studienprofil M",
     "faculty": "Gesundheitswesen",
     "graphical": true,
-    "id": "g_bmr1_1_ss21",
-    "semester": 1,
+    "id": "g_pm_m_6_ss21",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -153,39 +297,48 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "g/wp/MAG2_A2_SOSE2021.html",
+    "label": "MAG - Gruppe A2",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_mag_a_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/MAG4_PH_SOSE2021.html",
+    "label": "MAG - Schwerpunkt PH",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_mag_ph_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/WPF_MIG6_SOSE2021.html",
+    "label": "WPF MIG 6. und höhere Sem.",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_wpf_mig6_ss21",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/BMR1_SOSE2021.html",
+    "label": "BMR",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_bmr_1_ss21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "g/wp/BMR3_B_SOSE2021.html",
     "label": "BMR - Studienprofil B",
     "faculty": "Gesundheitswesen",
     "graphical": true,
-    "id": "g_bmr3_b_3_ss21",
+    "id": "g_bmr_b_3_ss21",
     "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/APIP5_SOSE2021.html",
-    "label": "APIP",
-    "faculty": "Gesundheitswesen",
-    "graphical": true,
-    "id": "g_apip5_5_ss21",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/PM6_M_SOSE2021.html",
-    "label": "PM - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "graphical": true,
-    "id": "g_pm6_m_6_ss21",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMP1_SOSE2021.html",
-    "label": "BMP",
-    "faculty": "Gesundheitswesen",
-    "graphical": true,
-    "id": "g_bmp1_1_ss21",
-    "semester": 1,
     "degree": "Bachelor"
   },
   {
@@ -193,26 +346,62 @@
     "label": "MAG - Gruppe B2",
     "faculty": "Gesundheitswesen",
     "graphical": true,
-    "id": "g_mag2_b2_2_ss21",
+    "id": "g_mag_b_2_ss21",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_soa_3.html",
-    "label": "Soziale Arbeit",
-    "faculty": "Handel und Soziale Arbeit",
+    "skedPath": "g/wp/APP3_SOSE2021.html",
+    "label": "APP",
+    "faculty": "Gesundheitswesen",
     "graphical": true,
-    "id": "h_stdgrp_soa_3_ss21",
+    "id": "g_app_3_ss21",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_soa_2.html",
-    "label": "Soziale Arbeit",
+    "skedPath": "g/wp/MAG4_KV_SOSE2021.html",
+    "label": "MAG - Schwerpunkt KV",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_mag_kv_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/PM6_B_SOSE2021.html",
+    "label": "PM - Studienprofil B",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_pm_b_6_ss21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/BMP3_B_SOSE2021.html",
+    "label": "BMP - Studienprofil B",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_bmp_b_3_ss21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/BMP3_M_SOSE2021.html",
+    "label": "BMP - Studienprofil M",
+    "faculty": "Gesundheitswesen",
+    "graphical": true,
+    "id": "g_bmp_m_3_ss21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "h/wp/h_stdgrp_hul_4.html",
+    "label": "Handel und Logistik - PO 2018 - Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
-    "id": "h_stdgrp_soa_2_ss21",
-    "semester": 2,
+    "id": "h_hul_4_ss21",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
@@ -220,7 +409,7 @@
     "label": "Handel und Logistik - PO 2018 - Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
-    "id": "h_stdgrp_hul_2_ss21",
+    "id": "h_hul_2_ss21",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -229,7 +418,7 @@
     "label": "Handel und Logistik - PO 2018 - Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
-    "id": "h_stdgrp_hul_6_ss21",
+    "id": "h_hul_6_ss21",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -238,17 +427,8 @@
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
-    "id": "h_stdgrp_soa_5_ss21",
+    "id": "h_soa_5_ss21",
     "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "h/wp/h_stdgrp_hul_4.html",
-    "label": "Handel und Logistik - PO 2018 - Handel und Logistik",
-    "faculty": "Handel und Soziale Arbeit",
-    "graphical": true,
-    "id": "h_stdgrp_hul_4_ss21",
-    "semester": 4,
     "degree": "Bachelor"
   },
   {
@@ -256,7 +436,7 @@
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
-    "id": "h_stdgrp_soa_6_ss21",
+    "id": "h_soa_6_ss21",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -265,79 +445,34 @@
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
-    "id": "h_stdgrp_soa_4_ss21",
+    "id": "h_soa_4_ss21",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/R-RPP_6_6. Sem..html",
-    "label": "Personalmanagement und -psychologie",
-    "faculty": "Recht",
+    "skedPath": "h/wp/h_stdgrp_soa_2.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
-    "id": "r_rpp_6_ss21",
-    "semester": 6,
+    "id": "h_soa_2_ss21",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/R-RFS_4_4. Sem..html",
-    "label": "Finanzmanagement und Steuern",
-    "faculty": "Recht",
+    "skedPath": "h/wp/h_stdgrp_soa_3.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
     "graphical": true,
-    "id": "r_rfs_4_ss21",
-    "semester": 4,
+    "id": "h_soa_3_ss21",
+    "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/R-WR_4_4. Sem..html",
+    "skedPath": "r/studentenset/R-B-WR_2_2. Sem..html",
     "label": "Wirtschaftsrecht",
     "faculty": "Recht",
     "graphical": true,
-    "id": "r_wr_4_ss21",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "r/studentenset/R-Exkursionen_3_3. Sem..html",
-    "label": "Exkursionen (derzeit finden keine Exkursionen statt)",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_exkursionen_3_ss21",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "r/studentenset/R-RFS_3_3. Sem..html",
-    "label": "Finanzmanagement und Steuern",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_rfs_3_ss21",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "r/studentenset/R-B-RPP_1_1. Sem..html",
-    "label": "Personalmanagement und -psychologie",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_b_rpp_1_ss21",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "r/studentenset/R-M-FTC_2_2. Sem..html",
-    "label": "Finance, Tax and Company Law",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_m_ftc_2_ss21",
-    "semester": 2,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "r/studentenset/R-B-RPP_2_2. Sem..html",
-    "label": "Personalmanagement und -psychologie",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_b_rpp_2_ss21",
+    "id": "r_b_wr_2_ss21",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -351,66 +486,21 @@
     "degree": "Master"
   },
   {
-    "skedPath": "r/studentenset/R-B-WR_2_2. Sem..html",
-    "label": "Wirtschaftsrecht",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_b_wr_2_ss21",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "r/studentenset/R-Gremien und Sitzungen Aktuell.html",
-    "label": "Gremien und Sitzungen",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_gremien_und_sitzungen_aktuell_ss21",
-    "semester": "Sonstige",
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "r/studentenset/R-WR_3_3. Sem..html",
-    "label": "Wirtschaftsrecht",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_wr_3_ss21",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "r/studentenset/R-RPP_3_3. Sem..html",
+    "skedPath": "r/studentenset/R-B-RPP_2_2. Sem..html",
     "label": "Personalmanagement und -psychologie",
     "faculty": "Recht",
     "graphical": true,
-    "id": "r_rpp_3_ss21",
-    "semester": 3,
+    "id": "r_b_rpp_2_ss21",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/R-M-ILB_2_2. Sem..html",
-    "label": "International Law and Business",
+    "skedPath": "r/studentenset/R-B-RPP_1_1. Sem..html",
+    "label": "Personalmanagement und -psychologie",
     "faculty": "Recht",
     "graphical": true,
-    "id": "r_m_ilb_2_ss21",
-    "semester": 2,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "r/studentenset/R-RFS_6_6. Sem..html",
-    "label": "Finanzmanagement und Steuern",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_rfs_6_ss21",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "r/studentenset/R-B-RFS_2_2. Sem..html",
-    "label": "Finanzmanagement und Steuern",
-    "faculty": "Recht",
-    "graphical": true,
-    "id": "r_b_rfs_2_ss21",
-    "semester": 2,
+    "id": "r_b_rpp_1_ss21",
+    "semester": 1,
     "degree": "Bachelor"
   },
   {
@@ -423,12 +513,21 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/Erstsemesterveranstaltungen_4_4. Sem..html",
-    "label": "Erstsemesterveranstaltungen",
+    "skedPath": "r/studentenset/R-RFS_3_3. Sem..html",
+    "label": "Finanzmanagement und Steuern",
     "faculty": "Recht",
     "graphical": true,
-    "id": "r_erstsemesterveranstaltungen_4_ss21",
-    "semester": 4,
+    "id": "r_rfs_3_ss21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-RFS_2_2. Sem..html",
+    "label": "Finanzmanagement und Steuern",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_b_rfs_2_ss21",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
@@ -441,12 +540,12 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/R-B-WR_1_1. Sem..html",
-    "label": "Wirtschaftsrecht",
+    "skedPath": "r/studentenset/R-RPP_6_6. Sem..html",
+    "label": "Personalmanagement und -psychologie",
     "faculty": "Recht",
     "graphical": true,
-    "id": "r_b_wr_1_ss21",
-    "semester": 1,
+    "id": "r_rpp_6_ss21",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -459,6 +558,24 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "r/studentenset/R-B-WR_1_1. Sem..html",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_b_wr_1_ss21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/Erstsemesterveranstaltungen_4_4. Sem..html",
+    "label": "Erstsemesterveranstaltungen",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_erstsemesterveranstaltungen_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "r/studentenset/R-WPF-WF-Tutorien_4_4. Sem..html",
     "label": "Wahlpflichtfächer SoSe 2021",
     "faculty": "Recht",
@@ -468,22 +585,94 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "s/wp/Master PSA_4. Sem._Schwerpunkt 2.html",
-    "label": "Master Präventive - Schwerpunkt 2",
-    "faculty": "Soziale Arbeit",
+    "skedPath": "r/studentenset/R-RFS_4_4. Sem..html",
+    "label": "Finanzmanagement und Steuern",
+    "faculty": "Recht",
     "graphical": true,
-    "id": "s_master_psa_4hwerpunkt_2_4_ss21",
+    "id": "r_rfs_4_ss21",
     "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-Gremien und Sitzungen Aktuell.html",
+    "label": "Gremien und Sitzungen",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_gremien_und_sitzungen_aktuell_ss21",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-M-FTC_2_2. Sem..html",
+    "label": "Finance, Tax and Company Law",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_m_ftc_2_ss21",
+    "semester": 2,
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 2_Kopie.html",
-    "label": "Master Präventive - Schwerpunkt 1",
-    "faculty": "Soziale Arbeit",
+    "skedPath": "r/studentenset/R-WR_3_3. Sem..html",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
     "graphical": true,
-    "id": "s_ma_psa_2hwerpunkt_kopie_2_ss21",
+    "id": "r_wr_3_ss21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-RFS_6_6. Sem..html",
+    "label": "Finanzmanagement und Steuern",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_rfs_6_ss21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-M-ILB_2_2. Sem..html",
+    "label": "International Law and Business",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_m_ilb_2_ss21",
     "semester": 2,
     "degree": "Master"
+  },
+  {
+    "skedPath": "r/studentenset/R-RPP_3_3. Sem..html",
+    "label": "Personalmanagement und -psychologie",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_rpp_3_ss21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-Exkursionen_3_3. Sem..html",
+    "label": "Exkursionen (derzeit finden keine Exkursionen statt)",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_exkursionen_3_ss21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-WR_4_4. Sem..html",
+    "label": "Wirtschaftsrecht",
+    "faculty": "Recht",
+    "graphical": true,
+    "id": "r_wr_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_2_2. Sem.html",
+    "label": "Bachelor",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
   },
   {
     "skedPath": "s/wp/MA MSM_4_4. Sem.html",
@@ -495,39 +684,21 @@
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_2_2. Sem.html",
-    "label": "Bachelor",
+    "skedPath": "s/wp/MA 2020 PSA_1_1. Sem.html",
+    "label": "Master Präventive - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "graphical": true,
-    "id": "s_2_2_ss21",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_3_3. Sem.html",
-    "label": "Bachelor",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_3_3_ss21",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_1_1. Sem.html",
-    "label": "Bachelor",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_1_1_ss21",
+    "id": "s_ma_2020_psa_1_ss21",
     "semester": 1,
-    "degree": "Bachelor"
+    "degree": "Master"
   },
   {
-    "skedPath": "s/wp/MA PSA_2_Schwerpunkt 1.html",
+    "skedPath": "s/wp/MA PSA_1_1. Sem. - Schwerpunkt 1.html",
     "label": "Master Präventive - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "graphical": true,
-    "id": "s_ma_psa_schwerpunkt_1_2_ss21",
-    "semester": 2,
+    "id": "s_ma_psa_schwerpunkt_1_ss21",
+    "semester": 1,
     "degree": "Master"
   },
   {
@@ -540,84 +711,12 @@
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/S-Fakultaetstermine_1_1. Sem.html",
-    "label": "Fakultätstermine SS 2021 - Gremienzeiten",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_fakultaetstermine_1_ss21",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "s/wp/Berufsanerkennungsjahr_1_1. Sem.html",
     "label": "Berufsanerkennungsjahr SoSe 21",
     "faculty": "Soziale Arbeit",
     "graphical": true,
     "id": "s_berufsanerkennungsjahr_1_ss21",
     "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/MA 2020 PSA_1_1. Sem.html",
-    "label": "Master Präventive - Schwerpunkt 1",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_ma_2020_psa_1_ss21",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA MSM_2_2. Sem.html",
-    "label": "Fernstudiengang Master Sozialmanagement",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_ma_msm_2_ss21",
-    "semester": 2,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_6_6. Sem.html",
-    "label": "Bachelor",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_6_6_ss21",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/MA PSA_1_1. Sem. - Schwerpunkt 1.html",
-    "label": "Master Präventive - Schwerpunkt 2",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_ma_psa_1hwerpunkt_1_ss21",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA MSM_3_3. Sem.html",
-    "label": "Fernstudiengang Master Sozialmanagement",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_ma_msm_3_ss21",
-    "semester": 3,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/Master PSA_4. Sem._Schwerpunkt 1.html",
-    "label": "Master Präventive - Schwerpunkt 1",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_master_psa_4hwerpunkt_1_4_ss21",
-    "semester": 4,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_4_4. Sem.html",
-    "label": "Bachelor",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_4_4_ss21",
-    "semester": 4,
     "degree": "Bachelor"
   },
   {
@@ -630,15 +729,6 @@
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_5_5. Sem.html",
-    "label": "Bachelor",
-    "faculty": "Soziale Arbeit",
-    "graphical": true,
-    "id": "s_5_5_ss21",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "s/wp/Weiterbindlung Erlebnispaedagogok_1_1. Sem.html",
     "label": "Weiterbindlung Erlebnispädagogok",
     "faculty": "Soziale Arbeit",
@@ -648,21 +738,120 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "s/wp/Master PSA_3. Sem._Schwerpunkt 1.html",
+    "skedPath": "s/wp/Master PSA_4. Sem._Schwerpunkt 2.html",
+    "label": "Master Präventive - Schwerpunkt 2",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_master_psa_schwerpunkt_2_4_ss21",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_5_5. Sem.html",
+    "label": "Bachelor",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_5_ss21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_3_3. Sem.html",
+    "label": "Bachelor",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_3_ss21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/Master PSA_4. Sem._Schwerpunkt 1.html",
     "label": "Master Präventive - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "graphical": true,
-    "id": "s_master_psa_3hwerpunkt_1_3_ss21",
+    "id": "s_master_psa_schwerpunkt_1_4_ss21",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_4_4. Sem.html",
+    "label": "Bachelor",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/MA MSM_2_2. Sem.html",
+    "label": "Fernstudiengang Master Sozialmanagement",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_ma_msm_2_ss21",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/S-Fakultaetstermine_1_1. Sem.html",
+    "label": "Fakultätstermine SS 2021 - Gremienzeiten",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_fakultaetstermine_1_ss21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/MA MSM_3_3. Sem.html",
+    "label": "Fernstudiengang Master Sozialmanagement",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_ma_msm_3_ss21",
     "semester": 3,
     "degree": "Master"
   },
   {
-    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_6_6. Sem..html",
-    "label": "BEE",
-    "faculty": "Versorgungstechnik",
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_6_6. Sem.html",
+    "label": "Bachelor",
+    "faculty": "Soziale Arbeit",
     "graphical": true,
-    "id": "v_bee_6_ss21",
+    "id": "s_6_ss21",
     "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/Master PSA_3. Sem._Schwerpunkt 1.html",
+    "label": "Master Präventive - Schwerpunkt 1",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_master_psa_schwerpunkt_1_3_ss21",
+    "semester": 3,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 2_Kopie.html",
+    "label": "Master Präventive - Schwerpunkt 1",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_ma_psa_schwerpunkt_kopie_2_ss21",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_2_Schwerpunkt 1.html",
+    "label": "Master Präventive - Schwerpunkt 2",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_ma_psa_schwerpunkt_1_2_ss21",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_1_1. Sem.html",
+    "label": "Bachelor",
+    "faculty": "Soziale Arbeit",
+    "graphical": true,
+    "id": "s_1_ss21",
+    "semester": 1,
     "degree": "Bachelor"
   },
   {
@@ -675,21 +864,12 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_6_6. Sem. OeIV.html",
-    "label": "EGT / EGTiP TGA",
+    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_6_6. Sem..html",
+    "label": "BEE",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_egt_egtip_oeiv_6_ss21",
+    "id": "v_bee_6_ss21",
     "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_4_4. Sem..html",
-    "label": "EGT / EGTiP",
-    "faculty": "Versorgungstechnik",
-    "graphical": true,
-    "id": "v_egt_egtip_4_ss21",
-    "semester": 4,
     "degree": "Bachelor"
   },
   {
@@ -711,12 +891,21 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_4_4. Sem..html",
-    "label": "WING E",
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_4_4. Sem..html",
+    "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_wing_e_4_ss21",
+    "id": "v_egt_egtip_4_ss21",
     "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_6_6. Sem. OeIV.html",
+    "label": "EGT / EGTiP TGA",
+    "faculty": "Versorgungstechnik",
+    "graphical": true,
+    "id": "v_egt_egtip_oeiv_6_ss21",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -733,8 +922,17 @@
     "label": "WING E (PO 2018)",
     "faculty": "Versorgungstechnik",
     "graphical": true,
-    "id": "v_wing_e_6ester_6_ss21",
+    "id": "v_wing_e_6_ss21",
     "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_4_4. Sem..html",
+    "label": "WING E",
+    "faculty": "Versorgungstechnik",
+    "graphical": true,
+    "id": "v_wing_e_4_ss21",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
