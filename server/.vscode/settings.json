@@ -1,0 +1,6 @@
+{
+    "[js,ts]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "editor.formatOnSave": true
+}
