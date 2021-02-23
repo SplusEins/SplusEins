@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome incognito nuxt",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}",
+            "runtimeArgs": [
+                "--incognito"
+            ],
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome nuxt",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Nuxt Server",
+            "runtimeVersion": "14.15.4",
+            "args": [
+                "dev"
+            ],
+            "linux": {
+                "program": "${workspaceFolder}/node_modules/.bin/nuxt"
+            },
+            "windows": {
+                "program": "${workspaceFolder}/node_modules/nuxt/bin/nuxt.js"
+            },
+            "env": {
+                "API_URL": "http://127.0.0.1:3001"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Nuxt Server+Client",
+            "configurations": [
+                "nuxt-server",
+                "nuxt-client"
+            ]
+        }
+    ]
+}
