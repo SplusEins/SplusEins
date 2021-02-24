@@ -7,7 +7,7 @@ More information about the usage of this directory in [the documentation](https:
 
 **Implemented Pages**:
 
-  * index: *start page*
-  * impressum: *legal notice page*
-  * datenschutz: *data privacy page*
-  * plan: *timetables*
+- index: _start page_
+- impressum: _legal notice page_
+- datenschutz: _data privacy page_
+- plan: _timetables_

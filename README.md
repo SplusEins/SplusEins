@@ -1,4 +1,5 @@
 # SplusEins
+
 ![Server Build](https://github.com/SplusEins/SplusEins/workflows/Server%20Build/badge.svg?branch=master)
 ![Web Build](https://github.com/SplusEins/SplusEins/workflows/Web%20Build/badge.svg?branch=master)
 ![Deployment](https://github.com/SplusEins/SplusEins/workflows/Deploy/badge.svg?branch=master)
@@ -14,13 +15,14 @@ Please report any bugs or feature requests to the [GitHub issue tracker](https:/
 Contributions very much welcome! Feel free to write us a mail if you have any questions or just open a new issue. Don't forget to check out the [project documentation](https://spluseins.de/docs).
 
 ## Installation
+
 Follow the next steps if you want to develop/build locally.
 
 ### Setup frontend
 
 `cd web/`
 
-``` bash
+```bash
 # install dependencies
 npm install
 
@@ -42,6 +44,7 @@ npm run generate
 `cd server/`
 
 Add your ostfalia credentials as environment variables, preferably in a `.env`-file.
+
 ```bash
 # ./server/.env
 SKED_USER=idxxxxxx
