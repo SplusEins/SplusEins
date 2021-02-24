@@ -4,25 +4,25 @@ const serverConfig = {
   mode: process.env.NODE_ENV,
   target: 'node',
   entry: {
-    server: './server.ts',
+    server: './server.ts'
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, './dist/server'),
+    path: path.resolve(__dirname, './dist/server')
   },
   module: {
-    rules: [ {
+    rules: [{
       test: /\.ts$/,
       use: [
-        { loader: 'ts-loader' },
+        { loader: 'ts-loader' }
       ],
       exclude: /node_modules/
-    } ]
+    }]
   },
   resolve: {
-    extensions: [ '.ts', '.js' ],
-    mainFields: [ 'main' ],
-  },
+    extensions: ['.ts', '.js'],
+    mainFields: ['main']
+  }
 };
 
-module.exports = [ serverConfig ];
+module.exports = [serverConfig];
