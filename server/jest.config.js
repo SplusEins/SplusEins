@@ -1,15 +1,15 @@
 module.exports = {
-  "moduleNameMapper": {
-    "^@/(.*)$": "<rootDir>/$1",
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1'
   },
-  "moduleFileExtensions": [
-    "js",
-    "ts",
-    "json",
+  moduleFileExtensions: [
+    'js',
+    'ts',
+    'json'
   ],
-  "transform": {
-    "^.+\\.ts$": "ts-jest",
+  transform: {
+    '^.+\\.ts$': 'ts-jest'
   },
-  "testURL": "http://localhost/",
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  testURL: 'http://localhost/',
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$'
 };
