@@ -41,8 +41,8 @@
         {
             "name": "Nuxt Server+Client",
             "configurations": [
-                "nuxt-server",
-                "nuxt-client"
+                "Nuxt Server",
+                "Chrome nuxt"
             ]
         }
     ]
