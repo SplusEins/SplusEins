@@ -11,7 +11,7 @@ Please report any bugs or feature requests to the [GitHub issue tracker](https:/
 
 ## Contributing
 
-Contributions very much welcome! Feel free to write us a mail if you have any questions or just open a new issue. Don't forget to check out out the [project documentation](https://spluseins.de/docs).
+Contributions very much welcome! Feel free to write us a mail if you have any questions or just open a new issue. Don't forget to check out the [project documentation](https://spluseins.de/docs).
 
 ## Installation
 Follow the next steps if you want to develop/build locally.
@@ -40,6 +40,13 @@ npm run generate
 ### Setup backend
 
 `cd server/`
+
+Add your ostfalia credentials as environment variables, preferably in a `.env`-file.
+```bash
+# ./server/.env
+SKED_USER=idxxxxxx
+SKED_PASSWORD=your_ostfalia_pw
+```
 
 ```bash
 # install dependencies

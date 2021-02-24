@@ -33,7 +33,8 @@ dokku apps:create web
 dokku apps:create api
 dokku apps:create docs
 ```
-4. Ports der einzelnen Module/Container wie folgt definieren (werden sonst zufällig gesetzt). 
+4. Einmal mit der lokalen Maschine deployen, wie im vorherigen Kapitel erklärt. Sonst werden die nachfolgenden Einstellungen später beim ersten Deploy wieder überschrieben.
+5. Ports der einzelnen Module/Container wie folgt definieren (werden sonst zufällig gesetzt). 
 ```
 dokku proxy:ports-set web http:50000:5000
 dokku proxy:ports-set api http:50001:5000
@@ -43,7 +44,7 @@ dokku proxy:ports-set docs http:50002:5000
 Port 5000 ist der Standard für die Anwendung **innerhalb** des Dokku-Containers, der dann auf einen Port des Hosts weitergeleitet werden muss. Diese entsprechenden Host-Ports (z.B. hier 50002 für `docs`) sind frei wählbar und müssen nur wieder innerhalb des nginx Reverse Proxy weiter unten referenziert werden.
 :::
 
-5. Setzen der Umgebungsvariablen für die Module, siehe [Umgebungsvariablen](./konfiguration.md#umgebungsvariablen). Besonders wichtig sind die `HOST`-Variablen, diese müssen wie folgt **auf dem Server** gesetzt werden:
+6. Setzen der Umgebungsvariablen für die Module, siehe [Umgebungsvariablen](./konfiguration.md#umgebungsvariablen). Besonders wichtig sind die `HOST`-Variablen, diese müssen wie folgt **auf dem Server** gesetzt werden:
 ```
 dokku config:set web HOST=0.0.0.0
 dokku config:set api HOST=0.0.0.0
@@ -52,14 +53,20 @@ dokku config:set docs HOST=0.0.0.0
 ::: warning
 Ohne das Setzen der Host-Variablen funktioniert der Setup nicht, da die Applikationen standardmäßig nur auf `localhost` innerhalb des Containers gebindet werden.
 :::
-6. Anlegend der nginx-Konfiguration für den notwendigen Reverse Proxy als `/etc/nginx/conf.d/00-default-vhost.conf`:
+7. Anlegend der nginx-Konfiguration für den notwendigen Reverse Proxy als `/etc/nginx/conf.d/00-default-vhost.conf`:
 ```nginx
 server {
   server_name _;
   listen 80 default_server;
-  listen [::]:80 default_server ipv6only=on;
+  listen [::]:80 default_server;
   access_log  /var/log/nginx/dokku-access.log;
   error_log   /var/log/nginx/dokku-error.log;
+
+  # www subdomain entfernen
+  if ($host ~* ^www\.(.*)) {
+    set $host_without_www $1;
+    rewrite ^(.*) https://$host_without_www$1 permanent;
+  }
 
   location / {
     proxy_pass http://localhost:50000;
@@ -70,6 +77,7 @@ server {
     include /etc/nginx/proxy-params.conf;
   }
   location /docs {
+    rewrite ^/docs/(.*) /$1  break;
     proxy_pass http://localhost:50002;
     include /etc/nginx/proxy-params.conf;
   }
@@ -80,7 +88,7 @@ map $http_upgrade $connection_upgrade {
     ''      close;
 }
 ```
-7. Die Datei `/etc/nginx/proxy-params.conf` wird von der angelegten Reverse-Proxy-Konfiguration referenziert und muss deshalb mit folgendem Inhalt angelegt werden. Diese setzt einige allgemeine Einstellungen für jeden Reverse Proxy.
+8. Die Datei `/etc/nginx/proxy-params.conf` wird von der angelegten Reverse-Proxy-Konfiguration referenziert und muss deshalb mit folgendem Inhalt angelegt werden. Diese setzt einige allgemeine Einstellungen für jeden Reverse Proxy.
 ```nginx
 proxy_set_header Upgrade $http_upgrade;
 proxy_set_header Connection $connection_upgrade;
@@ -88,10 +96,10 @@ proxy_http_version 1.1;
 proxy_set_header X-REAL-IP $remote_addr;
 proxy_buffering off;
 ```
-8. Die Konfiguration kann mit `nginx -t` getestet werden und wird mit `sudo systemctl restart nginx` aktiv.
-9. Wie im vorherigen Kapitel beschrieben, muss jetzt mit einer lokalen Maschine deployt werden. Danach sollte SplusEins erreichbar sein.
+9. Die Konfiguration kann mit `nginx -t` getestet werden und wird mit `sudo systemctl restart nginx` aktiv.
+10. Wie im vorherigen Kapitel beschrieben, muss jetzt mit einer lokalen Maschine deployt werden. Danach sollte SplusEins erreichbar sein.
 ::: tip
-Mittels des Let's Encrypt Bots kann zudem sehr einfach ein SSL-Zertifikat erstellt werden: `sudo certbot --nginx -d domainname.de -d www.domainname.de` ([ausführliche Anleitung](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04-de)).
+Mittels des Let's Encrypt Bots kann zudem sehr einfach ein SSL-Zertifikat erstellt und zu nginx hinzugefügt werden: `sudo certbot --nginx -d spluseins.de -d www.spluseins.de -d spluseins-i.ostfalia.de` ([ausführliche Anleitung](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04-de)).
 :::
 
 
