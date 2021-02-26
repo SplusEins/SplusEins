@@ -2,6 +2,7 @@ import { load } from 'cheerio';
 import * as moment from 'moment-timezone';
 import { ParsedLecture } from '../model/SplusModel';
 import parseTable from './parseTable';
+import * as CSV from 'csv-string';
 
 moment.locale('de');
 
@@ -12,8 +13,8 @@ export function parseSkedList (html: string): ParsedLecture[] {
 
   let lastDatum = '';
   let datum = '';
-  let uhrzeit_0 = '';
-  let uhrzeit_1 = '';
+  let uhrzeitStart = '';
+  let uhrzeitEnde = '';
   let veranstaltung = '';
   let dozent = '';
   let raum = '';
@@ -29,16 +30,16 @@ export function parseSkedList (html: string): ParsedLecture[] {
         // Raumplan Informatik - https://stundenplan.ostfalia.de/i/R%c3%a4ume/Raumbelegung-Listenform/2-252.html
         raum = cols[0];
         datum = cols[2] || lastDatum;
-        uhrzeit_0 = cols[4];
-        uhrzeit_1 = cols[5];
+        uhrzeitStart = cols[4];
+        uhrzeitEnde = cols[5];
         dozent = cols[7];
         veranstaltung = cols[9];
         anmerkung = '';
         break;
       case 13:
         datum = cols[0] || lastDatum;
-        uhrzeit_0 = cols[2];
-        uhrzeit_1 = cols[3];
+        uhrzeitStart = cols[2];
+        uhrzeitEnde = cols[3];
         veranstaltung = cols[5];
         dozent = cols[7];
         raum = cols[9];
@@ -46,8 +47,8 @@ export function parseSkedList (html: string): ParsedLecture[] {
         break
       case 15:
         datum = cols[0] || lastDatum;
-        uhrzeit_0 = cols[2];
-        uhrzeit_1 = cols[3];
+        uhrzeitStart = cols[2];
+        uhrzeitEnde = cols[3];
         veranstaltung = cols[5];
         dozent = cols[7];
         raum = cols[9];
@@ -55,8 +56,8 @@ export function parseSkedList (html: string): ParsedLecture[] {
         break
       case 17:
         datum = cols[5] || lastDatum;
-        uhrzeit_0 = cols[0];
-        uhrzeit_1 = cols[1];
+        uhrzeitStart = cols[0];
+        uhrzeitEnde = cols[1];
         veranstaltung = cols[7];
         dozent = cols[3];
         raum = cols[9];
@@ -75,8 +76,8 @@ export function parseSkedList (html: string): ParsedLecture[] {
     let start = null;
     let end = null;
     for (const format of ['DD.MM.YYYY H:m', 'LLL YYYY H:m']) {
-      start = moment.tz(datum + ' ' + uhrzeit_0, format, 'Europe/Berlin');
-      end = moment.tz(datum + ' ' + uhrzeit_1, format, 'Europe/Berlin');
+      start = moment.tz(datum + ' ' + uhrzeitStart, format, 'Europe/Berlin');
+      end = moment.tz(datum + ' ' + uhrzeitEnde, format, 'Europe/Berlin');
       if (start.isValid() && end.isValid()) {
         break;
       }
@@ -91,6 +92,82 @@ export function parseSkedList (html: string): ParsedLecture[] {
       room: raum,
       lecturer: dozent,
       title: veranstaltung.replace(/^I-/, ''),
+      start: start.toDate(),
+      end: end.toDate(),
+      duration: end.diff(start, 'hours', true)
+    } as ParsedLecture);
+  });
+
+  return events;
+}
+
+export function parseSkedCSV (csvString: string): ParsedLecture[] {
+  const events = [] as ParsedLecture[];
+
+  const arr = CSV.parse(csvString);
+  // Pop the first row from the array since it contains the header strings
+  const headerRow = arr.shift();
+
+  // iterate through every CSV row
+  arr.forEach(function (cols) {
+    let datum = '';
+    let uhrzeitStart = '';
+    let uhrzeitEnde = '';
+    let veranstaltung = '';
+    let dozent = '';
+    let raum = '';
+    let anmerkung = '';
+    // Iterate through every CSV column
+    cols.forEach(function (content, index) {
+      // Get the name of this column from the header row by the current index
+      const columnName = headerRow[index].trim().toLowerCase();
+      // Simply map the fields to the right variables by their column header
+      switch (columnName) {
+        case 'datum':
+          datum = content;
+          break;
+        case 'uhrzeit': {
+          const timeParts = content.split('Uhr')[0].split(' - ')
+          uhrzeitStart = timeParts[0].trim();
+          uhrzeitEnde = timeParts[1].trim();
+          break;
+        }
+        case 'veranstaltung':
+          // remove I- prefix from name if exists
+          veranstaltung = content.replace(/^I-/, '');
+          break;
+        case 'dozent':
+          dozent = content;
+          break;
+        case 'raum':
+          raum = content;
+          break;
+        case 'anmerkung':
+          anmerkung = content;
+          break;
+        default:
+          break;
+      }
+    });
+
+    let start = null;
+    let end = null;
+    for (const format of ['DD.MM.YYYY H:m', 'LLL YYYY H:m']) {
+      start = moment.tz(datum + ' ' + uhrzeitStart, format, 'Europe/Berlin');
+      end = moment.tz(datum + ' ' + uhrzeitEnde, format, 'Europe/Berlin');
+      if (start.isValid() && end.isValid()) {
+        break;
+      }
+    }
+    if (!start.isValid() || !end.isValid()) {
+      return;
+    }
+
+    events.push({
+      info: anmerkung,
+      room: raum,
+      lecturer: dozent,
+      title: veranstaltung,
       start: start.toDate(),
       end: end.toDate(),
       duration: end.diff(start, 'hours', true)
@@ -131,8 +208,8 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
           return;
         }
         const time = parts[0].split('Uhr')[0].split(' - ')
-        const uhrzeit_0 = time[0];
-        const uhrzeit_1 = time[1];
+        const uhrzeitStart = time[0];
+        const uhrzeitEnde = time[1];
 
         let dozent = ''
         let veranstaltung = ''
@@ -188,8 +265,8 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
         }
 
         const dateFormat = 'DD.MM.YYYY H:m'
-        const start = moment.tz(datum + ' ' + uhrzeit_0, dateFormat, 'Europe/Berlin');
-        const end = moment.tz(datum + ' ' + uhrzeit_1, dateFormat, 'Europe/Berlin');
+        const start = moment.tz(datum + ' ' + uhrzeitStart, dateFormat, 'Europe/Berlin');
+        const end = moment.tz(datum + ' ' + uhrzeitEnde, dateFormat, 'Europe/Berlin');
 
         if (!start.isValid() || !end.isValid()) {
           return;

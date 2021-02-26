@@ -18,8 +18,8 @@ export interface TimetableRequest {
   id: string;
   week: number;
   skedPath: string;
-  graphical: boolean;
-  faculty: string
+  faculty: string;
+  type: string
 }
 
 export interface EventMetadata {
