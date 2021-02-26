@@ -114,10 +114,11 @@ Die Endpunkte zum Abfragen der News-Daten befinden sich in der Datei `controller
 ## Parser
 Der Parser für die Stundenpläne von sked befindet sich im Verzeichnis des Servers unter `/lib/SkedParser.ts`.
 
-In Sked gibt es grundsätzlich zwei verschiedene Arten von Stundenplänen. Zum einen `Listenpläne` (Auflistung der Module) und zum anderen `grafische Pläne` (anschauliche Darstellung).
-Für beide Versionen hat der Parser eine Implementierung da es für manche Studiengänge manchmal nur eine der beiden gibt.
-Sie Funktionen heißen `parseSkedList` und `parseSkedGraphical`. Diese erhalten als Übergabeparameter das HTML der Stundenplanseite als String und die gewünschte Woche als Zahl.
-Mit Hilfe der Bibliothek [cheerio](https://cheerio.js.org/) kann auf die einzelnen Tags des HTML zugegriffen werden. Sie bildet die Grundlage des Parsers.
+In Sked gibt es grundsätzlich drei verschiedene Arten von Stundenplänen. `Listenpläne` als Auflistung der Module, `grafische Pläne` als anschauliche Darstellung (einem Stundenplan nachempfunden) und `CSV-Pläne` (der Fakultät Informatik).
+Für alle Versionen hat der Parser eine Implementierung, da es für manche Studiengänge nicht alle Formen gibt. 
+
+Die HTML-Parser Funktionen sind `parseSkedList` und `parseSkedGraphical`. Diese erhalten als Übergabeparameter das HTML der Stundenplanseite als String.
+Mithilfe der Bibliothek [cheerio](https://cheerio.js.org/) kann auf die einzelnen Tags des HTML zugegriffen werden. Sie bildet die Grundlage des HTML-Parsers.
 
 In beiden Implementierung wird so der Quelltext der Pläne nach den nötigen Informationen durchsucht.
 Leider sind nicht alle Pläne gleich aufgebaut:
@@ -126,4 +127,6 @@ Leider sind nicht alle Pläne gleich aufgebaut:
 
 Beschäftigt man sich mit dem Parser muss man diese Punkte **zwangsläufig** beachten.
 
-Beide Implementierung des Parser liefern eine Liste vom Interface *ParsedLecture* zurück wie es in `/model/SplusModel.ts` definiert ist.
+`parseSkedCSV` ist die Funktion für das CSV, hier wird lediglich das CSV eingelesen und anhand der Spaltenüberschriften zugeordnet. Diese Methode ist bevorzugt, da sie am wenigstens Fehler erzeugt.
+
+Alle Implementierung der Parser liefern eine Liste vom Interface *ParsedLecture* zurück, wie es in `/model/SplusModel.ts` definiert ist.
