@@ -3,7 +3,7 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
-import { parseSkedGraphical, parseSkedList } from './SkedParser';
+import { parseSkedCSV, parseSkedGraphical, parseSkedList } from './SkedParser';
 
 const SKED_BASE = process.env.SKED_URL || 'https://stundenplan.ostfalia.de/';
 
@@ -71,9 +71,20 @@ async function parseTimetable (timetable: TimetableRequest): Promise<Event[]> {
   return await cache.wrap(key, async () => {
     console.log(`Lectures cache miss for key ${key}`);
     const data = await skedRequest(timetable);
-    const lectures = timetable.graphical
-      ? parseSkedGraphical(data, timetable.faculty)
-      : parseSkedList(data);
+    let lectures;
+    switch (timetable.type) {
+      case 'graphical':
+        lectures = parseSkedGraphical(data, timetable.faculty)
+        break;
+      case 'list':
+        lectures = parseSkedList(data);
+        break;
+      case 'csv':
+        lectures = parseSkedCSV(data);
+        break;
+      default:
+        throw new Error(`Unsupported timetable type detected: ${timetable.type}.`);
+    }
     console.log(`Storing ${lectures.length} parsed lectures for ${key} in cache`)
     return lectures.map((lecture) => new Event(lecture));
   }, { ttl: CACHE_SECONDS });

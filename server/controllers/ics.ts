@@ -64,7 +64,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequest>{
       id: timetable.id,
       week: week,
-      graphical: timetable.graphical,
+      type: timetable.type,
       faculty: timetable.faculty,
       skedPath: timetable.skedPath
     })));

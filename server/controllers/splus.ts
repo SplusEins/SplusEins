@@ -37,8 +37,8 @@ router.get('/:timetable/lectures', async (req, res, next) => {
     const request: TimetableRequest = <TimetableRequest>{
       id: timetable.id,
       skedPath: timetable.skedPath,
-      graphical: timetable.graphical,
-      faculty: timetable.faculty
+      faculty: timetable.faculty,
+      type: timetable.type
     };
     const events = await getUniqueEvents(request);
 
@@ -76,8 +76,8 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
       id: timetable.id,
       week: week,
       skedPath: timetable.skedPath,
-      graphical: timetable.graphical,
-      faculty: timetable.faculty
+      faculty: timetable.faculty,
+      type: timetable.type
     }));
     const events = await getEvents(requests);
 
@@ -140,8 +140,8 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
       id: timetable.id,
       week: week,
       skedPath: timetable.skedPath,
-      graphical: timetable.graphical,
-      faculty: timetable.faculty
+      faculty: timetable.faculty,
+      type: timetable.type
     }))));
     const allEvents = await getEvents(requests);
     const filteredEvents = titleIds.length > 0
