@@ -49,7 +49,7 @@ router.get('/', async (req, res, next) => {
         .map(legs => legs[0])
         .map(leg => ({
           date: leg.departure,
-          line: leg.line.name.replace('Bus ', '') // remove Bus string at start
+          line: leg.line.name.replace('Bus', '').replace('AST', '').trim() // remove Bus string at start
         }))
         .sort((a, b) => Date.parse(a) - Date.parse(b));
 
