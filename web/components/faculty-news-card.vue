@@ -14,7 +14,7 @@
     <v-card-text class="card-text-padding">
       <v-list dense>
         <div
-          v-for="item in news.slice(0, 2)"
+          v-for="item in facultyNews"
           :key="item.link"
           class="list-tile"
         >
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import SelectDialog from './select-dialog.vue'
 
 export default {
@@ -51,9 +51,10 @@ export default {
     SelectDialog
   },
   data () {
-    const availableSoures = [{ description: 'Fakultät Informatik', title: 'aus der Informatik', path: 'i' },
+    const availableSoures = [
       { description: 'Fakultät Elektrotechnik', title: 'aus der E-Technik', path: 'e' },
       { description: 'Fakultät Recht', title: 'aus dem Recht', path: 'r' },
+      { description: 'Fakultät Versorgungstechnik', title: 'aus der Versorgungstechnik', path: 'v' },
       { description: 'Standort Wolfenbüttel', title: 'aus Wolfenbüttel', path: 'wf' },
       { description: 'Standort Wolfsburg', title: 'aus Wolfsburg', path: 'wob' },
       { description: 'Standort Suderburg', title: 'aus Suderburg', path: 'sud' }];
@@ -64,11 +65,8 @@ export default {
     }
   },
   computed: {
-    news () {
-      return Object.keys(this.facultyNews).length > 0 ? this.facultyNews[this.faculty] : [];
-    },
     selectedItem: {
-      get () { return this.availableSoures.filter(source => source.path == this.faculty)[0]; },
+      get () { return this.availableSoures.filter(source => source.path === this.faculty)[0]; },
       set (value) { this.setFaculty(value.path); }
     },
     ...mapState({
@@ -85,9 +83,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      loadNews: 'news/loadFacultyNews'
-    }),
-    ...mapMutations({
+      loadNews: 'news/loadFacultyNews',
       setFaculty: 'news/setFaculty'
     })
   }

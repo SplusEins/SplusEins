@@ -17,24 +17,23 @@ export const mutations = {
 }
 
 export const actions = {
-  async loadFacultyNews ({ commit }) {
-    const faculties = ['i', 'r', 'e', 'wf', 'wob', 'sud'];
+  async loadFacultyNews ({ commit, state }) {
     try {
-      const news = await this.$axios.$get('/api/news/faculty');
-
-      const newsMap = {};
-      faculties.forEach((faculty) => { newsMap[faculty] = news.filter((article) => article.source == faculty) });
-
-      commit('setFacultyNews', newsMap);
+      const news = await this.$axios.$get(`/api/news/${state.faculty}`, { params: { limit: 2 } });
+      commit('setFacultyNews', news);
     } catch (error) {
       commit('enqueueError', 'News: API-Verbindung fehlgeschlagen (Fakultät-News)', { root: true });
       console.error('error during News API call (Fakultät-News)', error.message);
     }
   },
+  async setFaculty ({ commit, dispatch }, faculty) {
+    commit('setFaculty', faculty);
+    dispatch('loadFacultyNews');
+  },
   async loadCampusNews ({ commit }) {
+    const campusSelectors = ['campus', 'campus38'];
     try {
-      const campusNews = await this.$axios.$get('/api/news/campus');
-
+      const campusNews = await this.$axios.$get(`/api/news/${campusSelectors.join(',')}`, { params: { limit: 5 } });
       commit('setCampusNews', campusNews);
     } catch (error) {
       commit('enqueueError', 'News: API-Verbindung fehlgeschlagen (Ostfalia-News)', { root: true });
