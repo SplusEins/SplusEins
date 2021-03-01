@@ -8,7 +8,7 @@
     <v-card-text>
       <v-list dense>
         <div
-          v-for="item in campusNews.slice(0, 5)"
+          v-for="item in campusNews"
           :key="item.link"
           class="list-tile"
         >
@@ -21,7 +21,7 @@
           </a>
           <br>
           <span :class="['grey--text', {'text--darken-1': !isDark, 'text--lighten-1': isDark }]">
-            {{ item.source }}.
+            {{ shortname(item.source) }}.
           </span>
           <span>{{ item.text }}</span>
           <br>
@@ -36,6 +36,15 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'CampusNewsCard',
+  data () {
+    const availableSources = [
+      { description: 'Campus 38', shortname: 'Campus38', path: 'campus38' },
+      { description: 'Ostfalia Campus', shortname: 'Ostfalia', path: 'campus' }
+    ];
+    return {
+      availableSources
+    }
+  },
   computed: {
     ...mapState({
       campusNews: (state) => state.news.campusNews,
@@ -50,6 +59,9 @@ export default {
     }
   },
   methods: {
+    shortname (path) {
+      return this.availableSources.filter(source => source.path === path)[0].shortname;
+    },
     ...mapActions({
       loadCampusNews: 'news/loadCampusNews'
     })
