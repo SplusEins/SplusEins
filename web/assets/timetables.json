@@ -855,6 +855,294 @@
     "degree": "Master"
   },
   {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_2.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lom_2.html",
+    "label": "Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lom_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lop_2.html",
+    "label": "Logistikmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lop_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_md_2.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_md_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mk_2.html",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mk_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mm_2.html",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mm_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mpm_2.html",
+    "label": "Mobilität und Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mpm_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_spm_2.html",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_spm_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_srm_2.html",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_srm_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tm_2.html",
+    "label": "Tourismusmangement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tm_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wmv_2.html",
+    "label": "Wirtschaftsingenieurwesen Mobilität und Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wmv_2_ss21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_4.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_md_4.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_md_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mk_4.html",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mk_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mm_4.html",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mm_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_pvm_4.html",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_pvm_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_spm_4.html",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_spm_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_srm_4.html",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_srm_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tm_4.html",
+    "label": "Tourismusmangement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tm_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tlm_4.html",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tlm_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wiv_4.html",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wiv_4_ss21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_4.html",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lip_4_6_ss21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_6.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_6_ss21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_pvm_6.html",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_pvm_6_ss21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tlm_6.html",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tlm_6_ss21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wiv_6.html",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wiv_6_ss21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_8.html",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lip_8_ss21",
+    "semester": 8,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_mvl_1.html",
+    "label": "Verkehr und Logistik",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_mvl_1_ss21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_2.html",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_fdu_2_ss21",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_2.html",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_km_2_ss21",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_4.html",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_fdu_4_ss21",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_4.html",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_km_4_ss21",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
     "skedPath": "v/stundenplan/bee/BEE_2020_SoSe_1_1. Sem..html",
     "label": "BEE",
     "faculty": "Versorgungstechnik",
