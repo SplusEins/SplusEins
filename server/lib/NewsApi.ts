@@ -88,6 +88,7 @@ async function campus38NewsRequest (): Promise<NewsElement[]> {
 /**
  * Helper function for cleaning news articles
  * @param news news to parse
+ * @param limit Limit the news elements to this number
  * @returns filtered and sorted news articles with truncated descriptions
  */
 function truncateAndSortNews (news: NewsElement[], limit: number): NewsElement[] {
@@ -126,10 +127,11 @@ function truncateAndSortNews (news: NewsElement[], limit: number): NewsElement[]
 }
 
 /**
- * Manages news requests
+ * Manages news requests including caching
  *
- * @param newsSelectors faculty
- * @returns NewsElement[]
+ * @param newsSelectors Array that specifies which news should be fetched
+ * @param limit Maximum number of news to return
+ * @returns NewsElement[] Sorted news for the specified `newsSelectors`
  */
 export default async function getNews (newsSelectors: string[], limit: number): Promise<NewsElement[]> {
   const facultySelectors = ['r', 'v', 'm', 'b', 'k', 'h', 'f', 'g', 'w', 'e', 's']; // all allowed faculties
@@ -137,13 +139,13 @@ export default async function getNews (newsSelectors: string[], limit: number): 
   const otherSelectors = ['campus', 'campus38']; // currently only ostfalia global news and Campus 38 news.
   const allowedSelectors = facultySelectors.concat(campusSelectors, otherSelectors);
 
-  const facultyNews = await Promise.all(
+  const news = await Promise.all(
     newsSelectors.map(async (newsSelector) => {
       if (!allowedSelectors.includes(newsSelector)) {
         throw new Error(`Selector "${newsSelector}" not supported`);
       }
       try {
-        const key = 'faculty-news-' + newsSelector;
+        const key = 'news-' + newsSelector;
         return await cache.wrap(key, async () => {
           let newsEls: NewsElement[] = newsSelector !== 'campus38'
             ? await ostfaliaNewsRequest(newsSelector)
@@ -152,10 +154,10 @@ export default async function getNews (newsSelectors: string[], limit: number): 
           return newsEls;
         }, { ttl: CACHE_SECONDS }) as Promise<NewsElement[]>;
       } catch (e) {
-        console.log(`Error while loading faculty news for "${newsSelector}": ${e.message}`)
+        console.log(`Error while loading news for "${newsSelector}": ${e.message}`)
         return [];
       }
     })
   ).then(flatten);
-  return truncateAndSortNews(facultyNews, limit);
+  return truncateAndSortNews(news, limit);
 }
