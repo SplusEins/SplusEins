@@ -96,29 +96,27 @@ function truncateAndSortNews (news: NewsElement[], limit: number): NewsElement[]
   news = news.filter(article => (moment(article.date).diff(moment(), 'days') < 3))
 
   // Truncate article descriptions
-  const truncateArticle = (article: NewsElement) => {
-    if (article.text.length == 0) {
-      return article;
-    }
-    const sentences = article.text.split('.'); // fixme this logic can be improved
-    let text = sentences.reduce((text, sentence) => text.length < 80 ? text + sentence + '.' : text, '');
-    if (text.length > 250) {
-      // hard cut-off in case the sentence was longer than expected
-      text = text.slice(0, 250) + '...';
+  news = news.map(article => {
+    const MAX_LEN = 130;
+    let text = article.text
+    // inspired by https://stackoverflow.com/a/40382963/4026792
+    if (text.length > MAX_LEN) {
+      const lastDotIndex = text.lastIndexOf('.', MAX_LEN);
+      if (lastDotIndex > MAX_LEN / 2) text = text.substr(0, lastDotIndex + 1); // cut text at end of sentence
+      else text = text.substr(0, text.lastIndexOf(' ', MAX_LEN)) + '...'; // no end of sentence exists or it's too early, cut text at end of word and add ...
     }
     return {
       ...article,
       text
     };
-  };
-  news = news.map(truncateArticle);
+  });
 
   // Sort articles by date, but rank "campus38" lower because they have much more news
   const scoreArticle = (article: NewsElement) => {
     const date = new Date(article.date).getTime();
     const now = new Date().getTime();
     const age = now - date;
-    const boost = article.source == 'campus38' ? 0.35 : 1.0;
+    const boost = article.source === 'campus38' ? 0.35 : 1.0;
     return age / boost;
   };
   news = news.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
@@ -147,7 +145,7 @@ export default async function getNews (newsSelectors: string[], limit: number): 
       try {
         const key = 'faculty-news-' + newsSelector;
         return await cache.wrap(key, async () => {
-          let newsEls: NewsElement[] = newsSelector != 'campus38'
+          let newsEls: NewsElement[] = newsSelector !== 'campus38'
             ? await ostfaliaNewsRequest(newsSelector)
             : await campus38NewsRequest();
           newsEls = newsEls.map((article) => ({ ...article, source: newsSelector }));
