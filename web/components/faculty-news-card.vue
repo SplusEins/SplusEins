@@ -57,7 +57,7 @@ export default {
       { description: 'Campus Suderburg', title: 'aus Suderburg', path: 'sud' },
       { description: 'Fakultät Elektrotechnik', title: 'aus der E-Technik', path: 'e' },
       { description: 'Fakultät Recht', title: 'aus dem Recht', path: 'r' },
-      { description: 'Fakultät Soziale Arbeit', title: 'aus der sozialen Arbeit', path: 'r' }];
+      { description: 'Fakultät Soziale Arbeit', title: 'aus der sozialen Arbeit', path: 's' }];
 
     return {
       dialogOpen: false,
