@@ -37,7 +37,7 @@ async function ostfaliaNewsRequest (newsSelector: string): Promise<NewsElement[]
     newsSelector = 'campus/' + newsSelector;
   }
   const query = new URLSearchParams();
-  query.append('itemsPerPage', '20');
+  query.append('itemsPerPage', '30');
   // Syntax of collectorParam very similar to https://documentation.opencms.org/opencms-documentation/more-opencms-features/solr-search-integration
   // so that param will probably be forwarded to Apache SOLR
   query.append('collectorParam',
@@ -89,12 +89,14 @@ async function campus38NewsRequest (): Promise<NewsElement[]> {
  * Helper function for cleaning news articles
  * @param news news to parse
  * @param limit Limit the news elements to this number
- * @returns filtered and sorted news articles with truncated descriptions
+ * @returns filtered (no duplicates or items with future date) and sorted news articles with truncated descriptions
  */
 function truncateAndSortNews (news: NewsElement[], limit: number): NewsElement[] {
   // don't show articles that are more than x days in the future,
   // can happen in some rare cases where news items = calendar items (like faculty S)
   news = news.filter(article => (moment(article.date).diff(moment(), 'days') < 3))
+  // Filter any duplicate entries (based on title+desc)
+  news = news.filter((v, i, a) => a.findIndex(t => (t.title === v.title && t.text === v.text)) === i)
 
   // Truncate article descriptions
   news = news.map(article => {
@@ -134,7 +136,7 @@ function truncateAndSortNews (news: NewsElement[], limit: number): NewsElement[]
  * @returns NewsElement[] Sorted news for the specified `newsSelectors`
  */
 export default async function getNews (newsSelectors: string[], limit: number): Promise<NewsElement[]> {
-  const facultySelectors = ['r', 'v', 'm', 'b', 'k', 'h', 'f', 'g', 'w', 'e', 's']; // all allowed faculties
+  const facultySelectors = ['r', 'b', 'k', 'h', 'f', 'g', 'w', 'e', 's']; // all allowed faculties
   const campusSelectors = ['wob', 'wf', 'sud', 'sz']; // all allowed campuses/standorte
   const otherSelectors = ['campus', 'campus38']; // currently only ostfalia global news and Campus 38 news.
   const allowedSelectors = facultySelectors.concat(campusSelectors, otherSelectors);

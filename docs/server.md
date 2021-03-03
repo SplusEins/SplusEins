@@ -119,7 +119,7 @@ Die Endpunkte zum Abfragen der News-Daten befinden sich in der Datei `controller
 
 **Parameter:**
 
-- newstypes: Komma getrennte Liste von News-Quellen. Unterstützte Quellen sind nahezu alle Fakultäten (`r`, `v`, `m`, `b`, `k`, `h`, `f`, `g`, `w`, `e`, `s`). Nur Informatik wird nicht unterstützt, da ein eigenes Format für die News genutzt wird. Weiterhin unterstützt sind alle Ostfalia-Standorte (`wob`, `wf`, `sud`, `sz`) sowie die Ostfalia-globalen News `campus` und die Campus38-News mittels `campus38`.
+- newstypes: Komma getrennte Liste von News-Quellen. Unterstützte Quellen sind die meisten Fakultäten: `r`, `b`, `k`, `h`, `f`, `g`, `w`, `e`, `s`. Weiterhin unterstützt sind alle Ostfalia-Standorte (`wob`, `wf`, `sud`, `sz`) sowie die Ostfalia-globalen News `campus` und die Campus38-News mittels `campus38`.
 - limit: Optional, limitiert die zurückgegebenen News auf diese Anzahl. Maximal zurückgegeben werden die 100 letzten News.
 
 **Rückgabe:**
