@@ -32,7 +32,7 @@ router.get('/:newstypes\.:ext?', async (req, res) => {
     return res.status(404).send(error.message);
   }
   res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
-  if (req.params.ext != 'rss') {
+  if (req.params.ext !== 'rss') {
     // Normal request, send news as JSON
     return res.json(news);
   } else {
