@@ -115,19 +115,23 @@ Liefert einen Plan der 5 nächsten Abfahrten des Nahverkehrs in Wolfenbüttel zw
 
 Die Endpunkte zum Abfragen der News-Daten befinden sich in der Datei `controller/news.ts`.
 
-### GET `/news/campus`
+### GET `/news/:newstypes?limit=NUMBER`
 
-**Parameter:** keine
+**Parameter:**
 
-**Rückgabe:**
-Liefert ein NewsElement-Array (siehe `model/SplusEinsModel.ts`), welches allgemeine Neuigkeiten über die Ostfalia enthält. Die Daten werden von der Ostfalia Website und von Campus38 bezogen.
-
-### GET `/news/faculty`
-
-**Parameter:** keine
+- newstypes: Komma getrennte Liste von News-Quellen. Unterstützte Quellen sind nahezu alle Fakultäten (`r`, `v`, `m`, `b`, `k`, `h`, `f`, `g`, `w`, `e`, `s`). Nur Informatik wird nicht unterstützt, da ein eigenes Format für die News genutzt wird. Weiterhin unterstützt sind alle Ostfalia-Standorte (`wob`, `wf`, `sud`, `sz`) sowie die Ostfalia-globalen News `campus` und die Campus38-News mittels `campus38`.
+- limit: Optional, limitiert die zurückgegebenen News auf diese Anzahl. Maximal zurückgegeben werden die 100 letzten News.
 
 **Rückgabe:**
-Liefert ein NewsElement-Array (siehe `model/SplusEinsModel.ts`), welches Neuigkeiten der Fakultäten Informatik, Recht und E-Technik sowie den Standorten Wolfenbüttel, Wolfsburg und Suderburg enthält. Die Daten stammen von den jeweiligen Ostfalia-Webseiten.
+Liefert ein NewsElement-Array (siehe `model/SplusEinsModel.ts`) mit den ausgewählten News zurück. Die Beschreibungen werden auf 130 Zeichen gekürzt und die News nach Datum sortiert. Einzige Ausnahme bei der Sortierung sind die `campus38`-News. Diese werden etwas geringer gewichtet, da diese deutlich häufiger erscheinen als die sonstigen News.
+
+### GET `/news/:newstypes.rss?limit=NUMBER`
+
+**Parameter:**
+Erwartet dieselben Parameter wie die normale News-API.
+
+**Rückgabe:**
+Gibt dieselben Daten als RSS-Feed zurück.
 
 ## Parser
 
