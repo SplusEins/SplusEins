@@ -34,7 +34,7 @@
 
     <select-dialog
       :open.sync="dialogOpen"
-      :items="availableSoures"
+      :items="availableSources"
       :selected.sync="selectedItem"
       title="Quelle auswählen"
     />
@@ -51,22 +51,30 @@ export default {
     SelectDialog
   },
   data () {
-    const availableSoures = [
+    const availableSources = [
+      { description: 'Campus Wolfenbüttel', title: 'aus Wolfenbüttel', path: 'wf' },
+      { description: 'Campus Wolfsburg', title: 'aus Wolfsburg', path: 'wob' },
+      { description: 'Campus Suderburg', title: 'aus Suderburg', path: 'sud' },
       { description: 'Fakultät Elektrotechnik', title: 'aus der E-Technik', path: 'e' },
       { description: 'Fakultät Recht', title: 'aus dem Recht', path: 'r' },
-      { description: 'Fakultät Versorgungstechnik', title: 'aus der Versorgungstechnik', path: 'v' },
-      { description: 'Standort Wolfenbüttel', title: 'aus Wolfenbüttel', path: 'wf' },
-      { description: 'Standort Wolfsburg', title: 'aus Wolfsburg', path: 'wob' },
-      { description: 'Standort Suderburg', title: 'aus Suderburg', path: 'sud' }];
+      { description: 'Fakultät Soziale Arbeit', title: 'aus der sozialen Arbeit', path: 'r' }];
 
     return {
       dialogOpen: false,
-      availableSoures
+      availableSources
     }
   },
   computed: {
     selectedItem: {
-      get () { return this.availableSoures.filter(source => source.path === this.faculty)[0]; },
+      get () {
+        let selectedItem = this.availableSources.filter(source => source.path === this.faculty)[0];
+        if (selectedItem == null) {
+          // Reset to default if invalid item is used for some reason. This way we avoid blocking the whole dashboard in edge cases.
+          selectedItem = this.availableSources[0];
+          this.setFaculty(selectedItem.path);
+        }
+        return selectedItem;
+      },
       set (value) { this.setFaculty(value.path); }
     },
     ...mapState({
