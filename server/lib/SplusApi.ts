@@ -103,8 +103,8 @@ export async function getUniqueEvents (timetable: TimetableRequest): Promise<Eve
   // Filter unique events
   const uniqueEvents = [...new Set(allEvents.map(obj => obj.id))] // search all unique IDs
     .map(id => {
-      // map IDs back to events
-      const matchingEvent = allEvents.find(evt => evt.id == id);
+      // map IDs back to events, but copy by value first so we don't modify existing cache objects!
+      const matchingEvent = allEvents.slice().find(evt => evt.id == id);
       // clear end and start since this is just one of the random events for this ID
       matchingEvent.start = null;
       matchingEvent.end = null;
