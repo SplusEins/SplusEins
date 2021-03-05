@@ -105,9 +105,11 @@ export async function getUniqueEvents (timetable: TimetableRequest): Promise<Eve
     .map(id => {
       // map IDs back to events, but copy by value first so we don't modify existing cache objects!
       const matchingEvent = allEvents.slice().find(evt => evt.id == id);
+      // TODO uncomment this, but make sure the events pass by value works
+      // For some reason https://github.com/SplusEins/SplusEins/pull/466 was NOT enough
       // clear end and start since this is just one of the random events for this ID
-      matchingEvent.start = null;
-      matchingEvent.end = null;
+      // matchingEvent.start = null;
+      // matchingEvent.end = null;
       return matchingEvent;
     });
   console.log(`Returning ${uniqueEvents.length} unique lecture metadata for ${timetable.id}`);
