@@ -4,6 +4,8 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { parseSkedCSV, parseSkedGraphical, parseSkedList } from './SkedParser';
+import * as sanitize from 'sanitize-html';
+import { ParsedLecture } from '../model/SplusModel';
 
 const SKED_BASE = process.env.SKED_URL || 'https://stundenplan.ostfalia.de/';
 
@@ -71,7 +73,7 @@ async function parseTimetable (timetable: TimetableRequest): Promise<Event[]> {
   return await cache.wrap(key, async () => {
     console.log(`Lectures cache miss for key ${key}`);
     const data = await skedRequest(timetable);
-    let lectures;
+    let lectures: ParsedLecture[];
     switch (timetable.type) {
       case 'graphical':
         lectures = parseSkedGraphical(data, timetable.faculty)
@@ -85,6 +87,21 @@ async function parseTimetable (timetable: TimetableRequest): Promise<Event[]> {
       default:
         throw new Error(`Unsupported timetable type detected: ${timetable.type}.`);
     }
+    lectures = lectures.map(lecture => {
+      if (lecture.room) {
+        // Allow only specific HTML attributes for the room since we directly render the HTML in the client
+        // Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
+        lecture.room = sanitize(lecture.room, {
+          allowedTags: ['a'],
+          allowedAttributes: {
+            a: ['href', 'target']
+          }
+        })
+      }
+      // Strip all html from dozent
+      lecture.lecturer = sanitize(lecture.lecturer, {})
+      return lecture
+    })
     console.log(`Storing ${lectures.length} parsed lectures for ${key} in cache`)
     return lectures.map((lecture) => new Event(lecture));
   }, { ttl: CACHE_SECONDS });

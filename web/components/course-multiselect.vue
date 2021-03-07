@@ -36,13 +36,13 @@
         </td>
         <td>
           {{ props.item.title }}
-          <span v-show="$vuetify.breakpoint.xs">{{ getShortMetadata(props.item) }}</span>
+          <span v-show="$vuetify.breakpoint.xs"><span v-html="getShortMetadata(props.item)" /> </span>
         </td>
         <td v-show="$vuetify.breakpoint.smAndUp">
           {{ props.item.lecturer }}
         </td>
         <td v-show="$vuetify.breakpoint.smAndUp">
-          {{ props.item.room }}
+          <span v-html="props.item.room" />
         </td>
       </template>
     </v-data-table>
