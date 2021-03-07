@@ -87,7 +87,9 @@ export default {
   ],
 
   env: {
-    team: ('PROTECTED_INFORMATION' in process.env ? JSON.parse(process.env.PROTECTED_INFORMATION) : PROTECTED_INFORMATION).team
+    team: ('PROTECTED_INFORMATION' in process.env ? JSON.parse(process.env.PROTECTED_INFORMATION) : PROTECTED_INFORMATION).team,
+    staging: process.env.STAGING === 'true' || false,
+    version: process.env.GIT_REV || ''
   },
 
   /*

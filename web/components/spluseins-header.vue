@@ -17,9 +17,16 @@
         class="header-text cursor-pointer"
         @click="$track('Menu', 'toDashboard', 'toolbar title')"
       >
+        <a
+          v-if="staging"
+          :href="commitUrl"
+        >
+          STAGING
+        </a>
         <nuxt-link
           tag="span"
           to="/"
+          v-else
         >
           SPLUSEINS
         </nuxt-link>
@@ -61,10 +68,15 @@ export default {
       isOffline: false,
       offlineNoticeOpen: false,
       mdiWifiOff,
-      mdiThemeLightDark
+      mdiThemeLightDark,
+      staging: process.env.staging,
+      version: process.env.version
     };
   },
   computed: {
+    commitUrl: function () {
+      return 'https://github.com/SplusEins/SplusEins/commit/' + this.version
+    },
     ...mapState({
       isDark: state => state.ui.isDark,
       allCookiesAccepted: state => state.privacy.allowAllCookies
