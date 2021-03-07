@@ -19,7 +19,7 @@
       Uhrzeit: {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() == 0? "00" : nextEvent.start.minute() }} Uhr
       <br>
       <span v-if="!!nextEvent.room">
-        Raum: {{ nextEvent.room }}
+        Raum: <span v-html="nextEvent.room" />
       </span>
     </v-card-text>
     <v-card-text v-else-if="hasSubscribableTimetables && nextEvent == undefined">
