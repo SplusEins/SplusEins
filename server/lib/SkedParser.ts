@@ -259,10 +259,17 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
           case 'Soziale Arbeit':
           case 'Verkehr-Sport-Tourismus-Medien':
           case 'Elektrotechnik':
-            dozent = parts[2];
-            veranstaltung = parts[1];
-            raum = parts[3]
-            anmerkung = parts.splice(4).join(', ') || ''
+            if (parts[2].includes('Tutorium')) {
+              veranstaltung = parts[1] + ' ' + parts[2];
+              dozent = parts[3];
+              raum = parts[4];
+              anmerkung = parts.splice(5).join(', ') || ''
+            } else {
+              dozent = parts[2];
+              veranstaltung = parts[1];
+              raum = parts[3]
+              anmerkung = parts.splice(4).join(', ') || ''
+            }
             break;
           default:
             console.log('No parser defined for faculty ' + faculty)
