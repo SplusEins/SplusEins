@@ -7,9 +7,9 @@
     </v-card-title>
     <v-card-text class="card-text-padding">
       <ul>
-        <li>Dieser Server wird jetzt von der Fakultät Informatik zur Verfügung gestellt, weshalb wir auch unter <a href="https://spluseins-i.ostfalia.de">spluseins-i.ostfalia.de</a> erreichbar sind.</li>
-        <li>Da die Serverkosten von der Fakultät getragen werden, haben wir die Spendenmöglichkeit entfernt. Trotzdem möchten wir uns hier nochmal bei Kevin, Florian H., Paul, Lea, Florian B. und den vielen anderen bedanken, die uns mit Spenden und freundlichen Nachrichten motiviert haben &lt;3</li>
-        <li>Wenn eure Fakultät die Pläne nur als PDF zur Verfügung stellt, können diese leider nicht in SplusEins angezeigt werden.</li>
+        <li>Wir sind jetzt auch unter <a href="https://spluseins-i.ostfalia.de">https://spluseins-i.ostfalia.de</a> verfügbar.</li>
+        <li>Wenn es eure Pläne nur als PDF gibt, können diese hier leider nicht angezeigt werden.</li>
+        <li>Danke an Kevin, Florian H., Paul, Lea, Florian B. und die vielen anderen, die uns anfangs mit Spenden und freundlichen Nachrichten motiviert haben &lt;3</li>
       </ul>
     </v-card-text>
   </v-card>
