@@ -1,5 +1,7 @@
 # SplusEins
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3bb6bb16e1cf495e86c7237dbdfa88cb)](https://app.codacy.com/gh/SplusEins/SplusEins?utm_source=github.com&utm_medium=referral&utm_content=SplusEins/SplusEins&utm_campaign=Badge_Grade_Settings)
+
 ![Server Build](https://github.com/SplusEins/SplusEins/workflows/Server%20Build/badge.svg?branch=master)
 ![Web Build](https://github.com/SplusEins/SplusEins/workflows/Web%20Build/badge.svg?branch=master)
 ![Deployment](https://github.com/SplusEins/SplusEins/workflows/Deploy/badge.svg?branch=master)
