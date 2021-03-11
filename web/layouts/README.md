@@ -6,5 +6,5 @@ More information about the usage of this directory in [the documentation](https:
 
 **Implemented Layouts**:
 
-  * default
-  * error
+- default
+- error

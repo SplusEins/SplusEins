@@ -8,9 +8,9 @@ More information about the usage of this directory in [the documentation](https:
 
 **Base Endpoints**:
 
-  * /api/splus
-  * /api/ics
-  * /api/mensa
-  * /api/news
+- /api/splus
+- /api/ics
+- /api/mensa
+- /api/news
 
 Detailed information about the endpoints are in the specific controller files.
