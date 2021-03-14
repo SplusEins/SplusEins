@@ -468,6 +468,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "h/wp/BAJ - SoSe 2021.html",
+    "label": "Berufspraktikum - ab WiSe 20/21 - BAJ - SoSe 21",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_baj_ss21",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%201.%20Sem%20Informatik.csv",
     "label": "Informatik",
     "faculty": "Informatik",
