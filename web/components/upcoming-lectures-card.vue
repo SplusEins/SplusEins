@@ -11,18 +11,18 @@
       </v-btn>
     </v-card-title>
 
-    <v-card-text v-if="nextEvent != undefined">
+    <v-card-text v-if="nextEvent !== undefined">
       <b>{{ nextEvent.title }} {{ nextEvent.lecturer }}</b>
       <br>
       Datum: {{ nextEvent.start.format('dddd, DD.MM.YYYY') }}
       <br>
-      Uhrzeit: {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() == 0? "00" : nextEvent.start.minute() }} Uhr
+      Uhrzeit: {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() === 0? "00" : nextEvent.start.minute() }} Uhr
       <br>
       <span v-if="!!nextEvent.room">
         Raum: <span v-html="nextEvent.room" />
       </span>
     </v-card-text>
-    <v-card-text v-else-if="hasSubscribableTimetables && nextEvent == undefined">
+    <v-card-text v-else-if="hasSubscribableTimetables && nextEvent === undefined">
       <i>Keine weiteren Vorlesungen in dieser Woche!</i>
     </v-card-text>
     <v-card-text v-else>
@@ -101,9 +101,10 @@ export default {
           lecturer: event.meta.organiserName,
           start: moment(event.start).hour(parseInt(event.begin / 1)).minute(event.begin % 1 * 60)
         }))
-        .filter(event => event.start.valueOf() - moment().valueOf() > 0)
+      // Find the next event or use the current event if it's only x minutes ago
+        .filter(event => event.start.valueOf() - moment().valueOf() > -10 * 60 * 1000)
         .sort((a, b) => a.start.valueOf() - b.start.valueOf());
-      return possibleEvents[0] != undefined ? possibleEvents[0] : undefined;
+      return possibleEvents[0] !== undefined ? possibleEvents[0] : undefined;
     },
     load () {
       this.setUpcomingLecturesTimetable(this.subscribedTimetable);
