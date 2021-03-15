@@ -10,7 +10,7 @@
       >
         <v-card>
           <v-card-title>
-            <div class="headline">
+            <div class="text-h5">
               {{ directionLabel[direction] }}
             </div>
           </v-card-title>

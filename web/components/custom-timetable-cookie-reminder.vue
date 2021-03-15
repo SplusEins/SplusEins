@@ -22,7 +22,6 @@
         Du hast Cookies zur Speicherung von Einstellung nicht aktiviert. Dein personalisierter Plan kann also nicht dauerhaft in deinem Browser gespeichert werden, sondern steht nur so lange zur Verfügung, wie du diese Seite besuchst.
         <v-layout
           justify-space-between
-          row
           class="layout"
         >
           <v-btn

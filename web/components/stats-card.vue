@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <span class="headline">Statistik</span>
+      <span class="text-h5">Statistik</span>
     </v-card-title>
     <vc-donut
       :sections="sections"

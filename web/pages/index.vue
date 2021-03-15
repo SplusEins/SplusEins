@@ -7,7 +7,6 @@
     grid-list-md
   >
     <v-layout
-      row
       wrap
     >
       <v-flex

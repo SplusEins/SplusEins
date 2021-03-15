@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <div class="headline">
+      <div class="text-h5">
         Neues von SplusEins
       </div>
     </v-card-title>

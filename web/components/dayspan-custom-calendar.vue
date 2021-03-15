@@ -6,7 +6,6 @@
     >
       <v-layout
         justify-space-between
-        row
       >
         <v-flex
           shrink

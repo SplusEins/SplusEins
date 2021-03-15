@@ -42,13 +42,13 @@
         <v-card-text>
           <div
             v-if="error.statusCode == 404"
-            class="text-xs-center"
+            class="text-center"
           >
             Diese Seite gibt es leider nicht...
           </div>
           <div
             v-if="error.statusCode == 403"
-            class="text-xs-center"
+            class="text-center"
           >
             Verbinde dich mit dem Ostfalia-WLAN, bevor du diesen Plan aufrufen
             kannst.
@@ -58,7 +58,7 @@
         <v-card-text>
           <div
             v-if="error.statusCode == 500"
-            class="text-xs-center"
+            class="text-center"
           >
             Internal Server Error
           </div>

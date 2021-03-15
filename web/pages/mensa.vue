@@ -44,7 +44,6 @@
             :key="dayPlan.date"
           >
             <v-layout
-              row
               class="carousel-delimiter-padding"
             >
               <mensa-dayplan :plan="dayPlan" />
@@ -57,7 +56,6 @@
             :key="dayPlanGroup[0].date"
           >
             <v-layout
-              row
               class="carousel-control-padding"
             >
               <mensa-dayplan

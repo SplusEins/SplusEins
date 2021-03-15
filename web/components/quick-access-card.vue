@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <div class="headline">
+      <div class="text-h5">
         Schnellzugriff
       </div>
     </v-card-title>

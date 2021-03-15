@@ -6,13 +6,12 @@
   >
     <v-layout
       justify-center
-      row
       wrap
     >
       <v-flex
         lighten-2
         py-3
-        text-xs-center
+        text-center
         xs12
         class="font-size"
       >

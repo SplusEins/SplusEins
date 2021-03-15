@@ -16,7 +16,6 @@
     >
       <template slot="no-data">
         <v-layout
-          row
           justify-center
         >
           <p>Keine Kurse sind geladen.</p>

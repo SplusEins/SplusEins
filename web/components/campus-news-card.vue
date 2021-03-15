@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <div class="headline">
+      <div class="text-h5">
         Neues vom Campus
       </div>
     </v-card-title>

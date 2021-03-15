@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title class="title-padding">
-      <div class="headline">
+      <div class="text-h5">
         Neues {{ selectedItem.title }}
       </div>
       <v-btn

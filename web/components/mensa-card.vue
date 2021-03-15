@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <div class="headline">
+      <div class="text-h5">
         Mensa Wolfenbüttel {{ isPlanOfToday? 'Heute' : 'Morgen' }}
       </div>
     </v-card-title>

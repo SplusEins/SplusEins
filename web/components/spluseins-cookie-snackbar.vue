@@ -9,7 +9,6 @@
     <v-layout
       justify-space-between
       fluid
-      row
     >
       <v-btn
         ref="btn-deny"

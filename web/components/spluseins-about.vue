@@ -9,7 +9,7 @@
     >
       <v-card>
         <v-card-title
-          class="headline primary"
+          class="text-h5 primary"
           primary-title
         >
           SplusEins
