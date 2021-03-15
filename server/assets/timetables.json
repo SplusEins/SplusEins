@@ -792,10 +792,10 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Semester/Semester-Liste/Alle WPF.html",
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Alle%20WPF.csv",
     "label": "Alle WPF",
     "faculty": "Informatik",
-    "type": "list",
+    "type": "csv",
     "id": "i_alle_wpf_ss21",
     "semester": "WPF",
     "degree": "Bachelor"
