@@ -117,7 +117,6 @@
 </template>
 
 <script>
-import { Sorts, Calendar } from 'dayspan';
 import { mapGetters } from 'vuex';
 
 export default {

@@ -71,17 +71,16 @@
 </template>
 
 <script>
-import { CalendarEvent, Calendar } from 'dayspan';
 export default {
   name: 'DsCustomCalendarEventPopover',
   props: {
     calendarEvent: {
-      required: true,
-      type: CalendarEvent
+      required: true
+      // type: CalendarEvent
     },
     calendar: {
-      required: true,
-      type: Calendar
+      required: true
+      // type: Calendar
     },
     close: {
       type: Function,

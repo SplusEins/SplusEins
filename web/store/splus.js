@@ -1,4 +1,3 @@
-import colors from 'vuetify/es5/util/colors';
 import * as moment from 'moment';
 import * as chroma from '../lib/chroma';
 
@@ -136,7 +135,7 @@ export const getters = {
       .sort());
 
     const colorScale = chroma
-      .scale([colors.lightBlue.darken4, colors.cyan.darken4])
+      .scale(['01579b', '006064'])
       .colors(uniqueIds.length);
 
     const eventsByStart = new Map();

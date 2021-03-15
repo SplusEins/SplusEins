@@ -26,7 +26,6 @@
 
 <script>
 import * as moment from 'moment';
-import { Calendar, Day, Units } from 'dayspan';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import CalendarActionBar from './calendar-action-bar.vue';
 import DayspanCustomEventPopover from './dayspan-custom-event-popover.vue';

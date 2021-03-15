@@ -1,6 +1,6 @@
-import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin';
 import webpack from 'webpack';
 import PROTECTED_INFORMATION from './assets/protected-information.json';
+// fixme import colors from 'vuetify/es5/util/colors'
 
 export default {
   telemetry: false,
@@ -41,7 +41,6 @@ export default {
   */
   css: [
     '~/assets/style/roboto.css',
-    'vuetify/src/stylus/app.styl',
     '@mdi/font/css/materialdesignicons.min.css'
   ],
 
@@ -49,8 +48,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    // https://vuetifyjs.com
-    '@/plugins/vuetify',
     // https://github.com/championswimmer/vuex-persist
     { src: '@/plugins/vuex-persist', mode: 'client' },
     // https://github.com/AmazingDreams/vue-matomo
@@ -77,6 +74,15 @@ export default {
   */
   axios: {
   },
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    // https://go.nuxtjs.dev/vuetify
+    '@nuxtjs/vuetify'
+  ],
 
   env: {
     team: ('PROTECTED_INFORMATION' in process.env ? JSON.parse(process.env.PROTECTED_INFORMATION) : PROTECTED_INFORMATION).team
@@ -87,25 +93,33 @@ export default {
   */
   build: {
     extend (config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        });
-      }
       if (ctx.isDev) {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     },
     plugins: [
-      new VuetifyLoaderPlugin(),
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de/)
     ],
-    extractCSS: true,
-    transpile: [/^vuetify/]
+    extractCSS: true
+  },
+
+  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+  vuetify: {
+    // customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: true
+      // themes: {
+      //   dark: {
+      //     primary: colors.blue.darken2,
+      //     accent: colors.grey.darken3,
+      //     secondary: colors.amber.darken3,
+      //     info: colors.teal.lighten1,
+      //     warning: colors.amber.base,
+      //     error: colors.deepOrange.accent4,
+      //     success: colors.green.accent3
+      //   }
+      // }
+    }
   },
 
   /*
