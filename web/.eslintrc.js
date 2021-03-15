@@ -25,6 +25,8 @@ module.exports = {
     quotes: 'warn', // don't error on double qoutes
     'comma-dangle': 'warn',
     'spaced-comment': 'warn',
-    semi: 'off' // no preference for semicolons at end
+    semi: 'off', // no preference for semicolons at end
+    complexity: ['warn', { max: 30 }],
+    'no-warning-comments': 'warn'
   }
 }
