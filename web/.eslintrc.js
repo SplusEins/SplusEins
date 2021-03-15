@@ -16,7 +16,7 @@ module.exports = {
     'standard'
   ],
   // required to lint *.vue files
-  plugins: ['vuetify'],
+  plugins: ['vue'],
   // add your custom rules here
   rules: {
     'multiline-ternary': 'warn',
@@ -27,7 +27,6 @@ module.exports = {
     'spaced-comment': 'warn',
     semi: 'off', // no preference for semicolons at end
     complexity: ['warn', { max: 30 }],
-    'no-warning-comments': 'warn',
-    'vuetify/no-deprecated-classes': 'error'
+    'no-warning-comments': 'warn'
   }
 }
