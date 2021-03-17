@@ -5,14 +5,14 @@
       subheader
       dense
     >
-      <v-list-tile @click="install()">
-        <v-list-tile-action>
+      <v-list-item @click="install()">
+        <v-list-item-action>
           <v-icon>mdi-download</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Als App installieren</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>Als App installieren</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
   </div>
 </template>

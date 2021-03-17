@@ -26,46 +26,46 @@
       </v-btn>
 
       <v-list>
-        <v-list-tile
+        <v-list-item
           v-show="isTinyMobile"
           v-if="!isCustomSchedule"
           @click="toggleFavorite"
         >
-          <v-list-tile-content>
-            <v-list-tile-title v-if="!isFavorite">
+          <v-list-item-content>
+            <v-list-item-title v-if="!isFavorite">
               Favorisieren
-            </v-list-tile-title>
-            <v-list-tile-title v-else>
+            </v-list-item-title>
+            <v-list-item-title v-else>
               Favorit entfernen
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile @click="share(); $track('Calendar', 'share', 'mobile')">
-          <v-list-tile-content>
-            <v-list-tile-title>Teilen</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'mobile')">
-          <v-list-tile-content>
-            <v-list-tile-title>Extern öffnen</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'mobile')">
-          <v-list-tile-content>
-            <v-list-tile-title v-if="isCustomSchedule">
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="share(); $track('Calendar', 'share', 'mobile')">
+          <v-list-item-content>
+            <v-list-item-title>Teilen</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'mobile')">
+          <v-list-item-content>
+            <v-list-item-title>Extern öffnen</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'mobile')">
+          <v-list-item-content>
+            <v-list-item-title v-if="isCustomSchedule">
               Bearbeiten
-            </v-list-tile-title>
-            <v-list-tile-title v-else>
+            </v-list-item-title>
+            <v-list-item-title v-else>
               Personalisieren
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item
           v-if="isCustomSchedule"
           @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'mobile')"
         >
-          <v-list-tile-title>Löschen</v-list-tile-title>
-        </v-list-tile>
+          <v-list-item-title>Löschen</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-menu>
 

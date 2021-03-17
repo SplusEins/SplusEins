@@ -6,7 +6,7 @@
       fixed
       app
     >
-      <v-toolbar-side-icon @click.stop="toggleSidenav()" />
+      <v-app-bar-nav-icon @click.stop="toggleSidenav()" />
       <v-spacer />
       <img
         src="../assets/img/headerLogo.png"
@@ -42,9 +42,8 @@
           <v-icon>mdi-theme-light-dark</v-icon>
         </v-btn>
       </v-toolbar-items>
-      </v-toolbar>
-      <spluseins-side-nav />
     </v-app-bar>
+    <spluseins-side-nav />
   </div>
 </template>
 

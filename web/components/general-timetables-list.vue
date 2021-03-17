@@ -10,9 +10,9 @@
       no-action
       @mouseover.native="$set(load, path, true)"
     >
-      <v-list-tile slot="activator">
+      <v-list-item slot="activator">
         {{ path }}
-      </v-list-tile>
+      </v-list-item>
 
       <template v-for="(schedules, semester) in semesters">
         <v-list-group
@@ -21,11 +21,11 @@
           no-action
           sub-group
         >
-          <v-list-tile slot="activator">
+          <v-list-item slot="activator">
             {{ semester == 'WPF' ? 'Wahlpflichtfächer' : !isNaN(Number(semester)) ? semester + '. Semester' : semester }}
-          </v-list-tile>
+          </v-list-item>
 
-          <v-list-tile
+          <v-list-item
             v-for="schedule in schedules"
             :key="schedule.id"
             :to="schedule.route"
@@ -33,10 +33,10 @@
             @click="$track('Calendar', 'sideMenu plan used', 'normal')"
           >
             {{ schedule.label }}
-          </v-list-tile>
+          </v-list-item>
         </v-list-group>
 
-        <v-list-tile
+        <v-list-item
           v-if="load[path] && schedules.length == 1 && isNaN(Number(semester))"
           :key="path + semester"
           :to="schedules[0].route"
@@ -44,7 +44,7 @@
           @click="$track('Calendar', 'sideMenu plan used', 'normal')"
         >
           {{ schedules[0].label }}
-        </v-list-tile>
+        </v-list-item>
       </template>
     </v-list-group>
   </v-list>

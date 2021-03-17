@@ -41,7 +41,7 @@
           <v-spacer />
           <v-btn
             icon
-            outline
+            outlined
             color="primary"
             target="_blank"
             href="https://github.com/SplusEins/SplusEins"

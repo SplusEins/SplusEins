@@ -1,7 +1,7 @@
 <template>
   <v-snackbar
     v-model="snackbarOpen"
-    :timeout="0"
+    :timeout="-1"
     color="error"
     right
   >

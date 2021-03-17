@@ -24,22 +24,22 @@
 
         <v-card-text class="card-text-padding">
           <v-list>
-            <v-list-tile
+            <v-list-item
               v-for="item in items"
               :key="!!item.description? item.description: item.label"
               @click="selectedItem = item, dialogOpen = false"
             >
-              <v-list-tile-action>
+              <v-list-item-action>
                 <v-icon
                   v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label"
                 >
                   mdi-check
                 </v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ !!item.description? item.description: item.label }}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{ !!item.description? item.description: item.label }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
           </v-list>
         </v-card-text>
       </v-card>

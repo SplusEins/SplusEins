@@ -7,7 +7,7 @@
     </v-card-title>
     <v-card-text class="card-text-padding">
       <v-list v-if="customSchedulesAsRoutes.length != 0">
-        <v-list-tile
+        <v-list-item
           v-for="route in customSchedulesAsRoutes"
           :key="route.query.name"
           :to="route"
@@ -16,11 +16,11 @@
           @click="$track('Calendar', 'dashboard plan used', 'custom')"
         >
           {{ route.query.name }}
-        </v-list-tile>
+        </v-list-item>
       </v-list>
       <v-divider v-if="displayDivider" />
       <v-list v-if="favorites.length != 0">
-        <v-list-tile
+        <v-list-item
           v-for="favorite in favorites"
           :key="favorite.id"
           :to="favorite.route"
@@ -29,7 +29,7 @@
           @click="$track('Calendar', 'dashboard plan used', 'favorite')"
         >
           {{ favorite.description }}
-        </v-list-tile>
+        </v-list-item>
       </v-list>
     </v-card-text>
   </v-card>

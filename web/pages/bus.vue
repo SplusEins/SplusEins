@@ -16,14 +16,14 @@
           </v-card-title>
 
           <v-list>
-            <v-list-tile
+            <v-list-item
               v-for="departure in departures[direction]"
               :key="departure.date"
             >
-              <v-list-tile-content>
+              <v-list-item-content>
                 <p>
                   <v-chip
-                    outline
+                    outlined
                     :color="lineColor(departure.line)"
                   >
                     Linie {{ departure.line }}
@@ -33,8 +33,8 @@
                     ({{ relativeDate(departure.date) }})
                   </template>
                 </p>
-              </v-list-tile-content>
-            </v-list-tile>
+              </v-list-item-content>
+            </v-list-item>
           </v-list>
         </v-card>
       </v-flex>

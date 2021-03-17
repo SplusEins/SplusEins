@@ -5,7 +5,7 @@
   >
     <v-btn
       slot="activator"
-      :outline="breakpoint"
+      :outlined="breakpoint"
       :icon="!breakpoint"
       :text="!breakpoint"
       @click="$emit('click')"

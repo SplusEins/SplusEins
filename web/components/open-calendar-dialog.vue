@@ -5,50 +5,50 @@
   >
     <v-list>
       <v-subheader>Extern öffnen</v-subheader>
-      <v-list-tile
+      <v-list-item
         :href="downloadLink"
         @click="open = false; $track('Calendar', 'ICS', 'download')"
       >
-        <v-list-tile-avatar>
+        <v-list-item-avatar>
           <v-avatar
             size="32px"
             tile
           >
             <v-icon>mdi-download</v-icon>
           </v-avatar>
-        </v-list-tile-avatar>
-        <v-list-tile-title>Aktuelle Daten herunterladen</v-list-tile-title>
-      </v-list-tile>
+        </v-list-item-avatar>
+        <v-list-item-title>Aktuelle Daten herunterladen</v-list-item-title>
+      </v-list-item>
 
-      <v-list-tile
+      <v-list-item
         v-clipboard="httpLink"
         @click="open = false; $track('Calendar', 'ICS', 'copy')"
       >
-        <v-list-tile-avatar>
+        <v-list-item-avatar>
           <v-avatar
             size="32px"
             tile
           >
             <v-icon>mdi-content-copy</v-icon>
           </v-avatar>
-        </v-list-tile-avatar>
-        <v-list-tile-title>Link in die Zwischenablage kopieren</v-list-tile-title>
-      </v-list-tile>
+        </v-list-item-avatar>
+        <v-list-item-title>Link in die Zwischenablage kopieren</v-list-item-title>
+      </v-list-item>
 
-      <v-list-tile
+      <v-list-item
         :href="webcalLink"
         @click="open = false; $track('Calendar', 'ICS', 'open')"
       >
-        <v-list-tile-avatar>
+        <v-list-item-avatar>
           <v-avatar
             size="32px"
             tile
           >
             <v-icon>mdi-open-in-app</v-icon>
           </v-avatar>
-        </v-list-tile-avatar>
-        <v-list-tile-title>Link in Kalender-App öffnen</v-list-tile-title>
-      </v-list-tile>
+        </v-list-item-avatar>
+        <v-list-item-title>Link in Kalender-App öffnen</v-list-item-title>
+      </v-list-item>
     </v-list>
   </v-bottom-sheet>
 </template>
