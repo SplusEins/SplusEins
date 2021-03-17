@@ -127,7 +127,7 @@ export default {
   {
     calendar:
     {
-      type: Calendar,
+      // type: Calendar,
       default () {
         return {}
       }
@@ -221,9 +221,9 @@ export default {
     },
 
     setState (state) {
-      state.eventSorter = state.listTimes
-        ? Sorts.List([Sorts.FullDay, Sorts.Start])
-        : Sorts.Start;
+      // state.eventSorter = state.listTimes
+      //  ? Sorts.List([Sorts.FullDay, Sorts.Start])
+      //  : Sorts.Start;
 
       this.calendar.set(state);
     },

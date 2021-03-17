@@ -40,28 +40,12 @@ export default {
     const week = moment()
       .isoWeek(this.$store.getters['splus/weekOrDefault'])
       .startOf('isoWeek');
-    const around = Day.fromMoment(week);
-    const weeklyCalendar = {
-      id: 'W',
-      label: 'Woche',
-      shortcut: 'W',
-      type: Units.DAY,
-      size: 7,
-      around,
-      focus: 0,
-      repeat: true,
-      listTimes: true,
-      updateRows: true,
-      schedule: false
-    };
-    const calendar = Calendar.days(7, around, 0);
 
     // computed properties are not available during client rendering yet, access the getter directly
     calendar.setEvents(this.$store.getters['splus/getCalendarEvents']);
 
     return {
-      calendar,
-      types: [weeklyCalendar]
+      calendar
     };
   },
   computed: {
