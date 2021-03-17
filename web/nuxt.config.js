@@ -40,8 +40,7 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/style/roboto.css',
-    '@mdi/font/css/materialdesignicons.min.css'
+    '~/assets/style/roboto.css'
   ],
 
   /*
@@ -73,6 +72,7 @@ export default {
   ** Axios module configuration
   */
   axios: {
+    baseURL: 'http://127.0.0.1:3001' // fixme just for testing
   },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -92,6 +92,7 @@ export default {
   ** Build configuration
   */
   build: {
+    standalone: true, // fixme, added to prevent memory leaks, see https://github.com/nuxt/nuxt.js/issues/6442
     extend (config, ctx) {
       if (ctx.isDev) {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
