@@ -1,10 +1,5 @@
 <template>
-  <v-container
-    fluid
-    fill-height
-  >
-    <spluseins-calendar />
-  </v-container>
+  <spluseins-calendar />
 </template>
 
 <script>

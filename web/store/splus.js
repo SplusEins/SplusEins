@@ -148,23 +148,12 @@ export const getters = {
 
       const startMoment = moment(event.start);
       return {
-        data: {
-          title: event.title,
-          color, // needs to be a hex string
-          description,
-          location: event.location,
-          concurrentCount: eventsByStart.get(event.start).length,
-          concurrentOffset: eventsByStart.get(event.start).indexOf(event)
-        },
-        schedule: {
-          on: startMoment,
-          times: [{
-            hour: startMoment.hour(),
-            minute: startMoment.minute()
-          }],
-          duration: event.duration,
-          durationUnit: 'hours'
-        }
+        name: event.title,
+        start: startMoment.format('YYYY-MM-DD hh:mm'),
+        end: startMoment.add(event.duration, 'hours').format('YYYY-MM-DD hh:mm'),
+        desc: description,
+        location: event.location,
+        color: color
       };
     });
   },
