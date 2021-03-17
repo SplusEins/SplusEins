@@ -76,10 +76,10 @@ export default {
           title: event.title,
           room: event.location,
           lecturer: event.meta.organiserName,
-          start: moment(event.start).hour(parseInt(event.begin / 1)).minute(event.begin % 1 * 60)
+          start: moment(event.start)
         }))
       // Find the next event or use the current event if it's only x minutes ago
-        .filter(event => event.start.valueOf() - this.now > -10 * 60 * 1000)
+        .filter(event => event.start.valueOf() - this.now > -15 * 60 * 1000)
         .sort((a, b) => a.start.valueOf() - b.start.valueOf());
       return possibleEvents[0] !== undefined ? possibleEvents[0] : undefined;
     }
@@ -95,7 +95,7 @@ export default {
     if (this.subscribedTimetable.id) {
       this.load();
     }
-    // Refresh current date so the nextEvent is reevaluated every now an then without a manual refresh from the user
+    // Refresh current date so the nextEvent is reevaluated every now and then without a manual refresh from the user
     this.refreshTimer = setInterval(() => (this.now = Date.now()), 60 * 1000)
   },
   destroyed () {
