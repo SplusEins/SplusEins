@@ -1,7 +1,7 @@
 <template>
   <v-snackbar
     :value="snackbarOpen"
-    :timeout="0"
+    :timeout="-1"
     vertical
     right
   >

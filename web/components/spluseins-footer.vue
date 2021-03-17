@@ -10,7 +10,7 @@
     >
       <v-flex
         lighten-2
-        py-3
+        py-4
         text-center
         xs12
         class="font-size"

@@ -2,7 +2,7 @@
   <v-container
     fluid
     grid-list-md
-    hide-overlay
+    :show-arrows="false"
     class="container-padding"
   >
     <h2>Mensa Wolfenbüttel</h2>
@@ -32,7 +32,7 @@
     <v-divider class="divider" />
     <no-ssr>
       <v-carousel
-        :hide-controls="$vuetify.breakpoint.smAndDown"
+        :show-arrows="!$vuetify.breakpoint.smAndDown"
         :hide-delimiters="!$vuetify.breakpoint.smAndDown"
         :light="!isDark"
         :cycle="false"
