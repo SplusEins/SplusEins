@@ -24,7 +24,7 @@
       <v-btn
         nuxt
         to="/mensa"
-        flat
+        text
         color="primary"
         @click="$track('MensaPlan', 'opened', 'dashboard')"
       >

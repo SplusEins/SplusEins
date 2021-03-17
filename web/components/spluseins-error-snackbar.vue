@@ -8,7 +8,7 @@
     [{{ errorQueue.length }}] {{ next }}
     <v-btn
       dark
-      flat
+      text
       @click="dequeueError()"
     >
       Schließen

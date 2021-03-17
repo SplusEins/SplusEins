@@ -54,7 +54,7 @@
             </v-icon>
           </v-btn>
           <v-btn
-            flat
+            text
             depressed
             color="primary"
             @click="dialogOpen = false"

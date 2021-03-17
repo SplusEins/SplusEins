@@ -7,7 +7,7 @@
       slot="activator"
       :outline="breakpoint"
       :icon="!breakpoint"
-      :flat="!breakpoint"
+      :text="!breakpoint"
       @click="$emit('click')"
     >
       <v-icon :left="breakpoint">

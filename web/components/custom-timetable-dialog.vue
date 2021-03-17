@@ -28,7 +28,7 @@
             <v-btn
               :disabled="!saveable"
               dark
-              flat
+              text
               @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true;
                              $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Pläne', selectedSchedules.length);
                              $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Kurse', selectedCourses.length)"

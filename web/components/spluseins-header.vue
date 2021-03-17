@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar
+    <v-app-bar
       clipped-left
       dark
       fixed
@@ -29,21 +29,22 @@
           v-show="isOffline"
           color="warning"
           icon
-          flat
+          text
           @click="enqueueError('Internetverbindung: Nicht verfügbar')"
         >
           <v-icon>mdi-wifi-off</v-icon>
         </v-btn>
         <v-btn
           icon
-          flat
+          text
           @click="toggleDark(allCookiesAccepted); $track('Menu', 'toggleDark', 'isDark: ' + isDark)"
         >
           <v-icon>mdi-theme-light-dark</v-icon>
         </v-btn>
       </v-toolbar-items>
-    </v-toolbar>
-    <spluseins-side-nav />
+      </v-toolbar>
+      <spluseins-side-nav />
+    </v-app-bar>
   </div>
 </template>
 

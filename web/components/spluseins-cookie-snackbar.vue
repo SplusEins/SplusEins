@@ -12,14 +12,14 @@
     >
       <v-btn
         ref="btn-deny"
-        flat
+        text
         @click="setAllCookiesDenied()"
       >
         Nichts
       </v-btn>
       <v-btn
         ref="btn-allow-necessary"
-        flat
+        text
         @click="setNecessaryCookiesAllowed()"
       >
         Einstellungen
@@ -27,7 +27,7 @@
       <v-btn
         ref="btn-allow-all"
         color="success"
-        flat
+        text
         @click="setAllCookiesAllowed()"
       >
         Einverstanden

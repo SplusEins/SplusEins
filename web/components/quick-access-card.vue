@@ -11,7 +11,7 @@
           v-for="route in customSchedulesAsRoutes"
           :key="route.query.name"
           :to="route"
-          flat
+          text
           nuxt
           @click="$track('Calendar', 'dashboard plan used', 'custom')"
         >
@@ -24,7 +24,7 @@
           v-for="favorite in favorites"
           :key="favorite.id"
           :to="favorite.route"
-          flat
+          text
           nuxt
           @click="$track('Calendar', 'dashboard plan used', 'favorite')"
         >

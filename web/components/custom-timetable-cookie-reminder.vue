@@ -25,13 +25,13 @@
           class="layout"
         >
           <v-btn
-            flat
+            text
             @click="dialogOpen=false; $emit('continue');"
           >
             Fortfahren
           </v-btn>
           <v-btn
-            flat
+            text
             color="success"
             @click="setNecessaryCookiesAllowed(); dialogOpen=false; $emit('continue');"
           >

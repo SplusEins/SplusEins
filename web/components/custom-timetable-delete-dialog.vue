@@ -11,13 +11,13 @@
         <v-spacer />
 
         <v-btn
-          flat
+          text
           @click="dialogOpen = false"
         >
           Abbrechen
         </v-btn>
         <v-btn
-          flat
+          text
           color="error"
           @click="confirmDelete()"
         >

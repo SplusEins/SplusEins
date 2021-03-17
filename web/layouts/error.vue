@@ -66,7 +66,7 @@
 
         <v-card-actions>
           <v-btn
-            flat
+            text
             to="/"
             nuxt
             color="primary"
