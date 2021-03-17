@@ -50,7 +50,8 @@ export default {
   },
   data () {
     return {
-      nextEvent: undefined,
+      now: Date.now(),
+      refreshTimer: undefined,
       dialogOpen: false
     }
   },
@@ -68,22 +69,37 @@ export default {
     ...mapGetters({
       subscribableTimetables: 'splus/subscribableTimetables',
       hasSubscribableTimetables: 'splus/hasSubscribableTimetables'
-    })
+    }),
+    nextEvent () {
+      const possibleEvents = this.upcomingEvents
+        .map(event => ({
+          title: event.title,
+          room: event.location,
+          lecturer: event.meta.organiserName,
+          start: moment(event.start).hour(parseInt(event.begin / 1)).minute(event.begin % 1 * 60)
+        }))
+      // Find the next event or use the current event if it's only x minutes ago
+        .filter(event => event.start.valueOf() - this.now > -10 * 60 * 1000)
+        .sort((a, b) => a.start.valueOf() - b.start.valueOf());
+      return possibleEvents[0] !== undefined ? possibleEvents[0] : undefined;
+    }
   },
   watch: {
     subscribedTimetable () {
       if (this.browserStateReady && !!this.subscribedTimetable.id) {
         this.load();
       }
-    },
-    upcomingEvents () {
-      this.nextEvent = this.findNextEvent();
     }
   },
   mounted () {
     if (this.subscribedTimetable.id) {
       this.load();
     }
+    // Refresh current date so the nextEvent is reevaluated every now an then without a manual refresh from the user
+    this.refreshTimer = setInterval(() => (this.now = Date.now()), 60 * 1000)
+  },
+  destroyed () {
+    clearInterval(this.refreshTimer)
   },
   methods: {
     ...mapMutations({
@@ -93,19 +109,6 @@ export default {
     ...mapActions({
       loadEvents: 'splus/loadUpcomingEvents'
     }),
-    findNextEvent () {
-      const possibleEvents = this.upcomingEvents
-        .map(event => ({
-          title: event.title,
-          room: event.location,
-          lecturer: event.meta.organiserName,
-          start: moment(event.start).hour(parseInt(event.begin / 1)).minute(event.begin % 1 * 60)
-        }))
-      // Find the next event or use the current event if it's only x minutes ago
-        .filter(event => event.start.valueOf() - moment().valueOf() > -10 * 60 * 1000)
-        .sort((a, b) => a.start.valueOf() - b.start.valueOf());
-      return possibleEvents[0] !== undefined ? possibleEvents[0] : undefined;
-    },
     load () {
       this.setUpcomingLecturesTimetable(this.subscribedTimetable);
       this.loadEvents();
