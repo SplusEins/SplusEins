@@ -149,8 +149,8 @@ export const getters = {
       const startMoment = moment(event.start);
       return {
         name: event.title,
-        start: startMoment.format('YYYY-MM-DD hh:mm'),
-        end: startMoment.add(event.duration, 'hours').format('YYYY-MM-DD hh:mm'),
+        start: startMoment.format('YYYY-MM-DD HH:mm'),
+        end: startMoment.add(event.duration, 'hours').format('YYYY-MM-DD HH:mm'),
         desc: description,
         location: event.location,
         color: color

@@ -11,6 +11,7 @@
       <img
         src="../assets/img/headerLogo.png"
         height="35px"
+        class="pr-4"
       >
       <v-toolbar-title
         class="header-text cursor-pointer"

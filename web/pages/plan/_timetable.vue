@@ -1,5 +1,9 @@
 <template>
-  <spluseins-calendar />
+  <v-container
+    fluid
+  >
+    <spluseins-calendar />
+  </v-container>
 </template>
 
 <script>

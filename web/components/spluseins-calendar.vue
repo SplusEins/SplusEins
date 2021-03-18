@@ -2,14 +2,12 @@
   <v-calendar
     ref="calendar"
     :events="events"
-    color="primary"
     type="week"
-    event-overlap-mode="stack"
     interval-width="40"
     locale="de"
-    first-time="08:00"
-    interval-count="12"
-    weekdays="[0,1,2,3,4]"
+    first-time="07:00"
+    interval-count="13"
+    interval-height="50"
   />
 </template>
 

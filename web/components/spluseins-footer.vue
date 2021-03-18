@@ -1,7 +1,6 @@
 <template>
   <v-footer
     dark
-    class="no-min-height"
     app
   >
     <v-layout
@@ -10,7 +9,6 @@
     >
       <v-flex
         lighten-2
-        py-4
         text-center
         xs12
         class="font-size"
@@ -78,7 +76,4 @@ export default {
   text-decoration: none;
 }
 
-.no-min-height{
-  min-height: unset;
-}
 </style>
