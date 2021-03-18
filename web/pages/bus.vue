@@ -15,16 +15,19 @@
             </div>
           </v-card-title>
 
-          <v-list>
+          <v-list dense>
             <v-list-item
               v-for="departure in departures[direction]"
               :key="departure.date"
             >
-              <v-list-item-content>
+              <v-list-item-content
+                class="pb-0"
+              >
                 <p>
                   <v-chip
                     outlined
                     :color="lineColor(departure.line)"
+                    class="mr-2"
                   >
                     Linie {{ departure.line }}
                   </v-chip>

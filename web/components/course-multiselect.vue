@@ -10,21 +10,18 @@
       v-model="selectedCourses"
       :headers="headers"
       :items="courses"
-      hide-headers
-      hide-actions
+      hide-default-header
+      hide-default-footer
       item-key="titleId"
     >
-      <template slot="no-data">
+      <template #no-data>
         <v-layout
           justify-center
         >
           <p>Keine Kurse sind geladen.</p>
         </v-layout>
       </template>
-      <template
-        slot="items"
-        slot-scope="props"
-      >
+      <template #items="props">
         <td>
           <v-checkbox
             v-model="props.selected"

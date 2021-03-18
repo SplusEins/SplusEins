@@ -40,7 +40,7 @@
       <v-btn
         :disabled="disableLoad"
         :loading="loading"
-        round
+        rounded
         depressed
         color="secondary"
         @click.native="submit()"

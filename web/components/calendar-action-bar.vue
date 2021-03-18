@@ -16,14 +16,15 @@
       bottom
       left
     >
-      <v-btn
-        slot="activator"
-        :small="$vuetify.breakpoint.xs"
-        class="cursor-pointer"
-        icon
-      >
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+      <template #activator>
+        <v-btn
+          :small="$vuetify.breakpoint.xs"
+          class="cursor-pointer"
+          icon
+        >
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+      </template>
 
       <v-list>
         <v-list-item

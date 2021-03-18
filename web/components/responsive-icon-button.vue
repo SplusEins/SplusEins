@@ -3,20 +3,21 @@
     :disabled="breakpoint"
     bottom
   >
-    <v-btn
-      slot="activator"
-      :outlined="breakpoint"
-      :icon="!breakpoint"
-      :text="!breakpoint"
-      @click="$emit('click')"
-    >
-      <v-icon :left="breakpoint">
-        {{ icon }}
-      </v-icon>
-      <span v-show="breakpoint">
-        {{ text }}
-      </span>
-    </v-btn>
+    <template #activator>
+      <v-btn
+        :outlined="breakpoint"
+        :icon="!breakpoint"
+        :text="!breakpoint"
+        @click="$emit('click')"
+      >
+        <v-icon :left="breakpoint">
+          {{ icon }}
+        </v-icon>
+        <span v-show="breakpoint">
+          {{ text }}
+        </span>
+      </v-btn>
+    </template>
     <span>{{ text }}</span>
   </v-tooltip>
 </template>

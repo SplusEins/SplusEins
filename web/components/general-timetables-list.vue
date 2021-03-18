@@ -10,9 +10,9 @@
       no-action
       @mouseover.native="$set(load, path, true)"
     >
-      <v-list-item slot="activator">
-        {{ path }}
-      </v-list-item>
+      <template #activator>
+        <v-list-item-title>{{ path }}</v-list-item-title>
+      </template>
 
       <template v-for="(schedules, semester) in semesters">
         <v-list-group
@@ -21,9 +21,11 @@
           no-action
           sub-group
         >
-          <v-list-item slot="activator">
-            {{ semester == 'WPF' ? 'Wahlpflichtfächer' : !isNaN(Number(semester)) ? semester + '. Semester' : semester }}
-          </v-list-item>
+          <template #activator>
+            <v-list-item-title>
+              {{ semester == 'WPF' ? 'Wahlpflichtfächer' : !isNaN(Number(semester)) ? semester + '. Semester' : semester }}
+            </v-list-item-title>
+          </template>
 
           <v-list-item
             v-for="schedule in schedules"
