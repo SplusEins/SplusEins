@@ -21,28 +21,30 @@
           <p>Keine Kurse sind geladen.</p>
         </v-layout>
       </template>
-      <template #items="props">
-        <td>
-          <v-checkbox
-            v-model="props.selected"
-            :disabled="!props.selected && selectedCourses.length > maxCourses"
-            :color="overlappingCourses.includes(props.item.title) ? 'warning' : 'secondary'"
-            hide-details
-          />
-        </td>
-        <td>
-          {{ props.item.title }}
-          <span
-            v-html="getShortMetadata(props.item)"
-            v-show="$vuetify.breakpoint.mobile"
-          />
-        </td>
-        <td v-show="!$vuetify.breakpoint.mobile">
-          {{ props.item.lecturer }}
-        </td>
-        <td v-show="!$vuetify.breakpoint.mobile">
-          <span v-html="props.item.room" />
-        </td>
+      <template #item="slotItem">
+        <tr>
+          <td>
+            <v-checkbox
+              v-model="slotItem.selected"
+              :disabled="!slotItem.selected && selectedCourses.length > maxCourses"
+              :color="overlappingCourses.includes(slotItem.item.title) ? 'warning' : 'secondary'"
+              hide-details
+            />
+          </td>
+          <td>
+            {{ slotItem.item.title }}
+            <span
+              v-html="getShortMetadata(slotItem.item)"
+              v-show="$vuetify.breakpoint.mobile"
+            />
+          </td>
+          <td v-show="!$vuetify.breakpoint.mobile">
+            {{ slotItem.item.lecturer }}
+          </td>
+          <td v-show="!$vuetify.breakpoint.mobile">
+            <span v-html="slotItem.item.room" />
+          </td>
+        </tr>
       </template>
     </v-data-table>
   </div>
