@@ -67,6 +67,15 @@ export default {
       allCookiesAccepted: state => state.privacy.allowAllCookies
     })
   },
+  watch: {
+    isDark: function () {
+      if (this.isDark === true) {
+        return (this.$vuetify.theme.dark = true);
+      } else {
+        return (this.$vuetify.theme.dark = false);
+      }
+    }
+  },
   mounted () {
     window.addEventListener('offline', () => { this.isOffline = true });
     window.addEventListener('online', () => { this.isOffline = false });

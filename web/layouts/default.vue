@@ -33,6 +33,9 @@ export default {
     ...mapState({
       isDark: state => state.ui.isDark
     })
+  },
+  mounted () {
+    this.$vuetify.theme.dark = this.isDark;
   }
 };
 </script>

@@ -62,11 +62,6 @@ export default {
       isDark: state => state.ui.isDark
     })
   },
-  watch: {
-    browserStateReady () {
-      this.setSidenav(this.$vuetify.breakpoint.mdAndUp);
-    }
-  },
   methods: {
     ...mapMutations({
       setSidenav: 'ui/setSidenav'
