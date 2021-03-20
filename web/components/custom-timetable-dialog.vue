@@ -5,7 +5,7 @@
   >
     <v-dialog
       v-model="dialogOpen"
-      :fullscreen="$vuetify.breakpoint.smAndDown"
+      :fullscreen="$vuetify.breakpoint.mobile"
       max-width="800px"
       hide-overlay
       transition="dialog-bottom-transition"

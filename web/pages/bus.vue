@@ -43,7 +43,7 @@
       </v-flex>
     </v-layout>
 
-    <span class="disclaimer">
+    <span class="pt-1 d-flex justify-end text-caption text--secondary">
       Quelle: Deutsche Bahn HAFAS
     </span>
   </v-container>
@@ -106,13 +106,3 @@ export default {
   middleware: 'cached'
 };
 </script>
-
-<style lang="scss">
-.disclaimer {
-  padding-top: 2px;
-  display: flex;
-  justify-content: flex-end;
-  opacity: 0.5;
-  font-size: 12px;
-}
-</style>

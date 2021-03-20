@@ -20,7 +20,7 @@
             {{ item.title }}
           </a>
           <br>
-          <span :class="['grey--text', {'text--darken-1': !isDark, 'text--lighten-1': isDark }]">
+          <span class="text--secondary">
             {{ shortname(item.source) }}.
           </span>
           <span>{{ item.text }}</span>

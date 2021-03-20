@@ -11,15 +11,18 @@
       </v-btn>
     </v-card-title>
 
-    <v-card-text v-if="nextEvent !== undefined">
+    <v-card-text
+      v-if="nextEvent !== undefined"
+      class="text--primary"
+    >
       <b>{{ nextEvent.title }} {{ nextEvent.lecturer }}</b>
       <br>
-      Datum: {{ nextEvent.start.format('dddd, DD.MM.YYYY') }}
+      <span class="text--secondary">Datum:</span> {{ nextEvent.start.format('dddd, DD.MM.YYYY') }}
       <br>
-      Uhrzeit: {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() === 0? "00" : nextEvent.start.minute() }} Uhr
+      <span class="text--secondary">Uhrzeit:</span> {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() === 0? "00" : nextEvent.start.minute() }} Uhr
       <br>
       <span v-if="!!nextEvent.room">
-        Raum: <span v-html="nextEvent.room" />
+        <span class="text--secondary">Raum:</span> <span v-html="nextEvent.room" />
       </span>
     </v-card-text>
     <v-card-text v-else-if="hasSubscribableTimetables && nextEvent === undefined">

@@ -32,12 +32,15 @@
         </td>
         <td>
           {{ props.item.title }}
-          <span v-show="$vuetify.breakpoint.xs"><span v-html="getShortMetadata(props.item)" /> </span>
+          <span
+            v-html="getShortMetadata(props.item)"
+            v-show="$vuetify.breakpoint.mobile"
+          />
         </td>
-        <td v-show="$vuetify.breakpoint.smAndUp">
+        <td v-show="!$vuetify.breakpoint.mobile">
           {{ props.item.lecturer }}
         </td>
-        <td v-show="$vuetify.breakpoint.smAndUp">
+        <td v-show="!$vuetify.breakpoint.mobile">
           <span v-html="props.item.room" />
         </td>
       </template>

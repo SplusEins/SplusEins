@@ -24,8 +24,8 @@
                 depressed
                 @click="setToday(); $track('Calendar', 'setToday')"
               >
-                <span v-show="$vuetify.breakpoint.smAndUp">{{ labels.today }}</span>
-                <v-icon v-show="!$vuetify.breakpoint.smAndUp">
+                <span v-show="!$vuetify.breakpoint.mobile">{{ labels.today }}</span>
+                <v-icon v-show="$vuetify.breakpoint.mobile">
                   {{ labels.todayIcon }}
                 </v-icon>
               </v-btn>
@@ -67,14 +67,14 @@
             </v-tooltip>
 
             <span
-              v-show="$vuetify.breakpoint.smAndUp"
+              v-show="!$vuetify.breakpoint.mobile"
               name="extendedDateSummary"
               class="ds-summary-text"
             >
               {{ longSummary }}
             </span>
             <span
-              v-show="!$vuetify.breakpoint.smAndUp"
+              v-show="$vuetify.breakpoint.mobile"
               name="shortDateSummary"
               class="ds-summary-text"
             >

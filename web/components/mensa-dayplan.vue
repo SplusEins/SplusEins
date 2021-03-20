@@ -23,7 +23,7 @@
           <br>
           <span>{{ item.name }}</span>
           <br>
-          <span class="price">Studenten: {{ getPriceLabel(item.prices.students) }} - Angestellte: {{ getPriceLabel(item.prices.employees) }}</span>
+          <span class="text-caption text--secondary">Studenten: {{ getPriceLabel(item.prices.students) }} - Angestellte: {{ getPriceLabel(item.prices.employees) }}</span>
         </div>
       </v-list>
     </v-card>
@@ -80,12 +80,6 @@ export default {
 .category {
   font-weight: bold;
 }
-
-.price{
-  font-size: 12px;
-  opacity: 0.5;
-}
-
 .icon{
   opacity: 0.7;
 }

@@ -14,8 +14,7 @@
         >
           SplusEins
         </v-card-title>
-
-        <v-card-text class="text-padding">
+        <v-card-text class="px-4 pt-2 pb-0">
           <p>
             Ein inoffizieller Stundenplan von Studenten für Studenten der Ostfalia.
           </p>
@@ -89,9 +88,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="scss">
-.text-padding{
-  padding: 10px 16px 0px 16px;
-}
-</style>

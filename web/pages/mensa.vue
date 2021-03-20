@@ -1,14 +1,13 @@
 <template>
   <v-container
     fluid
-    grid-list-md
     :show-arrows="false"
     class="container-padding"
   >
     <h2>Mensa Wolfenbüttel</h2>
     <span><a href="https://www.stw-on.de/wolfenbuettel/essen/mensa/#c2368">Offizielle Mensa-Seite mit Öffnungszeiten</a></span>
     <br>
-    <span class="explanation">
+    <span class="text--secondary">
       <span>
         Vegetarisch
         <v-icon
@@ -32,13 +31,13 @@
     <v-divider class="divider" />
     <no-ssr>
       <v-carousel
-        :show-arrows="!$vuetify.breakpoint.smAndDown"
-        :hide-delimiters="!$vuetify.breakpoint.smAndDown"
+        :show-arrows="!$vuetify.breakpoint.mobile"
+        :hide-delimiters="!$vuetify.breakpoint.mobile"
         :light="!isDark"
         :cycle="false"
         height="100%"
       >
-        <template v-if="$vuetify.breakpoint.smAndDown">
+        <template v-if="$vuetify.breakpoint.mobile">
           <v-carousel-item
             v-for="dayPlan in plans"
             :key="dayPlan.date"
@@ -50,7 +49,7 @@
             </v-layout>
           </v-carousel-item>
         </template>
-        <template v-if="!$vuetify.breakpoint.smAndDown">
+        <template v-if="!$vuetify.breakpoint.mobile">
           <v-carousel-item
             v-for="dayPlanGroup in groupedDayPlans"
             :key="dayPlanGroup[0].date"
@@ -74,7 +73,7 @@
         </template>
       </v-carousel>
     </no-ssr>
-    <span class="disclaimer">
+    <span class="pt-1 d-flex justify-end text-caption text--secondary">
       Quelle: openmensa.org
     </span>
   </v-container>
@@ -159,18 +158,6 @@ export default {
 
 .v-carousel__controls {
   height: 40px !important;
-}
-
-.explanation{
-  opacity: 0.5;
-}
-
-.disclaimer {
-  padding-top: 2px;
-  display: flex;
-  justify-content: flex-end;
-  opacity: 0.5;
-  font-size: 12px;
 }
 
 .container-padding{
