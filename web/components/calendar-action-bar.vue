@@ -4,7 +4,7 @@
       <responsive-icon-button
         v-if="!isCustomSchedule"
         :breakpoint="$vuetify.breakpoint.xl"
-        :icon="isFavorite ? 'mdi-heart' : 'mdi-heart-outline'"
+        :icon="isFavorite ? 'mdiHeart' : 'mdiHeartOutline'"
         :text="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
         @click="toggleFavorite"
       />
@@ -22,7 +22,7 @@
           class="cursor-pointer"
           icon
         >
-          <v-icon>mdi-dots-vertical</v-icon>
+          <v-icon>{{ mdiDotsVertical }}</v-icon>
         </v-btn>
       </template>
 
@@ -74,26 +74,26 @@
     <span v-show="!isMobile">
       <responsive-icon-button
         :breakpoint="$vuetify.breakpoint.xl"
-        icon="mdi-share-variant"
+        icon="mdiShareVariant"
         text="Teilen"
         @click="share(); $track('Calendar', 'share', 'desktop')"
       />
       <responsive-icon-button
         v-if="isCustomSchedule"
         :breakpoint="$vuetify.breakpoint.xl"
-        icon="mdi-delete"
+        icon="mdiDelete"
         text="Löschen"
         @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'desktop')"
       />
       <responsive-icon-button
         :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
         :breakpoint="$vuetify.breakpoint.xl"
-        icon="mdi-pencil"
+        icon="mdiPencil"
         @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'desktop')"
       />
       <responsive-icon-button
         :breakpoint="$vuetify.breakpoint.xl"
-        icon="mdi-calendar"
+        icon="mdiCalendar"
         text="Extern öffnen"
         @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'desktop')"
       />
@@ -127,6 +127,7 @@ import OpenCalendarDialog from './open-calendar-dialog.vue';
 import ResponsiveIconButton from './responsive-icon-button.vue';
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
+import { mdiHeart, mdiHeartOutline, mdiDotsVertical, mdiShareVariant, mdiDelete, mdiPencil, mdiCalendar } from '@mdi/js'
 
 export default {
   name: 'CalendarActionBar',
@@ -142,7 +143,14 @@ export default {
       editTimetableDialogOpen: false,
       openCalendarDialogOpen: false,
       deleteTimetableDialogOpen: false,
-      shareDialogOpen: false
+      shareDialogOpen: false,
+      mdiHeart,
+      mdiHeartOutline,
+      mdiDotsVertical,
+      mdiShareVariant,
+      mdiDelete,
+      mdiPencil,
+      mdiCalendar
     };
   },
   computed: {

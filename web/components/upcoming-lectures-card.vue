@@ -7,7 +7,7 @@
         icon
         @click="dialogOpen = true; $track('Calendar', 'openSelectTimetable')"
       >
-        <v-icon>mdi-bookmark-outline</v-icon>
+        <v-icon>{{ mdiBookmarkOutline }}</v-icon>
       </v-btn>
     </v-card-title>
 
@@ -45,6 +45,7 @@
 import * as moment from 'moment';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import SelectDialog from './select-dialog.vue'
+import { mdiBookmarkOutline } from '@mdi/js'
 
 export default {
   name: 'UpcomingLecturesCard',
@@ -55,7 +56,8 @@ export default {
     return {
       now: Date.now(),
       refreshTimer: undefined,
-      dialogOpen: false
+      dialogOpen: false,
+      mdiBookmarkOutline
     }
   },
   computed: {

@@ -20,7 +20,7 @@
             dark
             @click.native="dialogOpen = false"
           >
-            <v-icon>mdi-close</v-icon>
+            <v-icon>{{ mdiClose }}</v-icon>
           </v-btn>
           <v-toolbar-title>Neuer Stundenplan</v-toolbar-title>
           <v-spacer />
@@ -101,6 +101,7 @@ import { loadUniqueLectures, eventsAsLectures } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
 import CustomTimetableCookieReminder from './custom-timetable-cookie-reminder.vue'
+import { mdiClose } from '@mdi/js'
 
 export default {
   name: 'CustomTimetableDialog',
@@ -143,7 +144,8 @@ export default {
       // and a usable UI
       maxSchedules: 8,
       maxCourses: 20,
-      cookieReminderDialogOpen: false
+      cookieReminderDialogOpen: false,
+      mdiClose
     };
   },
   computed: {

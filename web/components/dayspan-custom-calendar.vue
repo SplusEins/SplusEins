@@ -44,7 +44,7 @@
                 depressed
                 @click="prev(); $track('Calendar', 'prevWeek', 'clicked')"
               >
-                <v-icon>mdi-chevron-left</v-icon>
+                <v-icon>{{ mdiChevronLeft }}</v-icon>
               </v-btn>
               <span>{{ prevLabel }}</span>
             </v-tooltip>
@@ -61,7 +61,7 @@
                 depressed
                 @click="next(); $track('Calendar', 'nextWeek', 'clicked')"
               >
-                <v-icon>mdi-chevron-right</v-icon>
+                <v-icon>{{ mdiChevronRight }}</v-icon>
               </v-btn>
               <span>{{ nextLabel }}</span>
             </v-tooltip>
@@ -118,6 +118,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { mdiChevronLeft, mdiChevronRight, mdiCalendarToday } from '@mdi/js'
 
 export default {
 
@@ -152,9 +153,16 @@ export default {
           next: 'Nächste Woche',
           prev: 'Vorherige Woche',
           today: 'Heute',
-          todayIcon: 'mdi-calendar-today'
+          todayIcon: mdiCalendarToday
         }
       }
+    }
+  },
+  data () {
+    return {
+      mdiChevronLeft,
+      mdiChevronRight,
+      mdiCalendarToday
     }
   },
   computed:

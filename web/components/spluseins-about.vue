@@ -49,7 +49,7 @@
               :color="isDark? 'white': 'black'"
               medium
             >
-              mdi-github
+              {{ mdiGithub }}
             </v-icon>
           </v-btn>
           <v-btn
@@ -68,6 +68,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import { mdiGithub } from '@mdi/js'
 
 export default {
   name: 'AboutDialog',
@@ -76,6 +77,11 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  data () {
+    return {
+      mdiGithub
+    };
   },
   computed: {
     dialogOpen: {

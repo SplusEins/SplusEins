@@ -13,7 +13,7 @@
           dark
           @click.native="dialogOpen = false"
         >
-          <v-icon>mdi-close</v-icon>
+          <v-icon>{{ mdiClose }}</v-icon>
         </v-btn>
         <v-toolbar-title>Cookies sind deaktiviert</v-toolbar-title>
       </v-toolbar>
@@ -45,6 +45,7 @@
 
 <script>
 import { mapMutations } from 'vuex';
+import { mdiClose } from '@mdi/js'
 
 export default {
   name: 'CustomTimetableCookieReminder',
@@ -53,6 +54,11 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  data () {
+    return {
+      mdiClose
+    };
   },
   computed: {
     dialogOpen: {

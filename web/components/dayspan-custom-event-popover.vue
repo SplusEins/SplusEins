@@ -19,7 +19,7 @@
           @click="close"
         >
           <v-icon color="white">
-            mdi-close
+            {{ mdiClose }}
           </v-icon>
         </v-btn>
       </v-toolbar>
@@ -28,7 +28,7 @@
         <v-list dense>
           <v-list-tile>
             <v-list-tile-avatar>
-              <v-icon>mdi-clock-outline</v-icon>
+              <v-icon>{{ mdiClockOutline }}</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
               <v-list-tile-title>{{ startDate }}</v-list-tile-title>
@@ -38,7 +38,7 @@
 
           <v-list-tile v-if="details.location">
             <v-list-tile-avatar>
-              <v-icon>mdi-map-marker</v-icon>
+              <v-icon>{{ mdiMapMarker }}</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
               <v-list-tile-title v-html="details.location" />
@@ -47,7 +47,7 @@
 
           <v-list-tile v-if="details.description">
             <v-list-tile-avatar>
-              <v-icon>mdi-text-subject</v-icon>
+              <v-icon>{{ mdiTextSubject }}</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
               <v-list-tile-title class="overflow-y">
@@ -71,6 +71,8 @@
 </template>
 
 <script>
+import { mdiClockOutline, mdiClose, mdiMapMarker, mdiTextSubject } from '@mdi/js'
+
 export default {
   name: 'DsCustomCalendarEventPopover',
   props: {
@@ -85,6 +87,14 @@ export default {
     close: {
       type: Function,
       default () {}
+    }
+  },
+  data () {
+    return {
+      mdiClockOutline,
+      mdiClose,
+      mdiMapMarker,
+      mdiTextSubject
     }
   },
   computed: {

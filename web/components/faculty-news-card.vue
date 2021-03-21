@@ -8,7 +8,7 @@
         icon
         @click="dialogOpen = true; $track('News', 'openSelectNews')"
       >
-        <v-icon>mdi-newspaper</v-icon>
+        <v-icon>{{ mdiNewspaper }}</v-icon>
       </v-btn>
     </v-card-title>
     <v-card-text class="card-text-padding">
@@ -44,6 +44,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import SelectDialog from './select-dialog.vue'
+import { mdiNewspaper } from '@mdi/js'
 
 export default {
   name: 'FacultyNewsCard',
@@ -61,7 +62,8 @@ export default {
 
     return {
       dialogOpen: false,
-      availableSources
+      availableSources,
+      mdiNewspaper
     }
   },
   computed: {

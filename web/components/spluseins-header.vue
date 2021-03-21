@@ -33,14 +33,14 @@
           text
           @click="enqueueError('Internetverbindung: Nicht verfügbar')"
         >
-          <v-icon>mdi-wifi-off</v-icon>
+          <v-icon>{{ mdiWifiOff }}</v-icon>
         </v-btn>
         <v-btn
           icon
           text
           @click="toggleDark(allCookiesAccepted); $track('Menu', 'toggleDark', 'isDark: ' + isDark)"
         >
-          <v-icon>mdi-theme-light-dark</v-icon>
+          <v-icon>{{ mdiThemeLightDark }}</v-icon>
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
@@ -51,6 +51,7 @@
 <script>
 import SpluseinsSideNav from './spluseins-side-nav';
 import { mapMutations, mapState } from 'vuex';
+import { mdiWifiOff, mdiThemeLightDark } from '@mdi/js'
 
 export default {
   name: 'SpluseinsHeader',
@@ -58,7 +59,9 @@ export default {
   data () {
     return {
       isOffline: false,
-      offlineNoticeOpen: false
+      offlineNoticeOpen: false,
+      mdiWifiOff,
+      mdiThemeLightDark
     };
   },
   computed: {

@@ -15,7 +15,7 @@
             size="32px"
             tile
           >
-            <v-icon>mdi-content-copy</v-icon>
+            <v-icon>{{ mdiContentCopy }}</v-icon>
           </v-avatar>
         </v-list-item-avatar>
         <v-list-item-title>Link in die Zwischenablage kopieren</v-list-item-title>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+
+import { mdiContentCopy } from '@mdi/js'
 
 export default {
   name: 'CopyTextDialog',
@@ -40,7 +42,8 @@ export default {
   },
   data () {
     return {
-      textFieldCopySuccessMessage: undefined
+      textFieldCopySuccessMessage: undefined,
+      mdiContentCopy
     };
   },
   computed: {

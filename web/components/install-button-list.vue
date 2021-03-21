@@ -7,7 +7,7 @@
     >
       <v-list-item @click="install()">
         <v-list-item-action>
-          <v-icon>mdi-download</v-icon>
+          <v-icon>{{ mdiDownload }}</v-icon>
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>Als App installieren</v-list-item-title>
@@ -18,11 +18,14 @@
 </template>
 
 <script>
+import { mdiDownload } from '@mdi/js'
+
 export default {
   name: 'InstallButtonList',
   data () {
     return {
-      deferredPrompt: undefined
+      deferredPrompt: undefined,
+      mdiDownload
     };
   },
   computed: {

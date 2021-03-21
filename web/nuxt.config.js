@@ -109,7 +109,11 @@ export default {
     // customVariables: ['~/assets/variables.scss'],
     breakpoint: {
       mobileBreakpoint: 'sm' // This is equivalent to a value of 960
-    }
+    },
+    icons: {
+      iconfont: 'mdiSvg'
+    },
+    defaultAssets: false
   },
 
   /*

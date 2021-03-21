@@ -27,6 +27,7 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
+    "@mdi/js": "^5.9.55",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/vuetify": "^1.11.3",
     "@types/chroma-js": "^2.1.3",

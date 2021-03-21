@@ -18,7 +18,7 @@
             class="icon"
             small
           >
-            mdi-leaf
+            {{ mdiLeaf }}
           </v-icon>
           <br>
           <span>{{ item.name }}</span>
@@ -33,6 +33,7 @@
 <script>
 import * as moment from 'moment';
 import { mapState } from 'vuex';
+import { mdiLeaf } from '@mdi/js'
 
 export default {
   name: 'MensaDayplanComponent',
@@ -41,6 +42,11 @@ export default {
       type: Object,
       default: () => {}
     }
+  },
+  data () {
+    return {
+      mdiLeaf
+    };
   },
   computed: {
     ...mapState({

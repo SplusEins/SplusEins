@@ -14,7 +14,7 @@
             size="32px"
             tile
           >
-            <v-icon>mdi-download</v-icon>
+            <v-icon>{{ mdiDownload }}</v-icon>
           </v-avatar>
         </v-list-item-avatar>
         <v-list-item-title>Aktuelle Daten herunterladen</v-list-item-title>
@@ -29,7 +29,7 @@
             size="32px"
             tile
           >
-            <v-icon>mdi-content-copy</v-icon>
+            <v-icon>{{ mdiContentCopy }}</v-icon>
           </v-avatar>
         </v-list-item-avatar>
         <v-list-item-title>Link in die Zwischenablage kopieren</v-list-item-title>
@@ -44,7 +44,7 @@
             size="32px"
             tile
           >
-            <v-icon>mdi-open-in-app</v-icon>
+            <v-icon>{{ mdiOpenInApp }}</v-icon>
           </v-avatar>
         </v-list-item-avatar>
         <v-list-item-title>Link in Kalender-App öffnen</v-list-item-title>
@@ -54,6 +54,8 @@
 </template>
 
 <script>
+
+import { mdiDownload, mdiContentCopy, mdiOpenInApp } from '@mdi/js'
 
 export default {
   name: 'OpenCalendarDialog',
@@ -73,7 +75,10 @@ export default {
   },
   data () {
     return {
-      textFieldCopySuccessMessage: undefined
+      textFieldCopySuccessMessage: undefined,
+      mdiDownload,
+      mdiContentCopy,
+      mdiOpenInApp
     };
   },
   computed: {

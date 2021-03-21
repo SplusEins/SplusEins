@@ -6,7 +6,7 @@
       @click="$track('Menu', 'goToHomepage', 'sideMenu')"
     >
       <v-list-item-action>
-        <v-icon>mdi-home</v-icon>
+        <v-icon>{{ mdiHome }}</v-icon>
       </v-list-item-action>
       <v-list-item-content>
         <v-list-item-title>
@@ -17,7 +17,7 @@
 
     <v-list-item @click="customTimetableDialogOpen = true; $track('CustomTimeTableDialog', 'opened', 'sideMenu')">
       <v-list-item-action>
-        <v-icon>mdi-plus</v-icon>
+        <v-icon>{{ mdiPlus }}</v-icon>
       </v-list-item-action>
       <v-list-item-content>
         <v-list-item-title>
@@ -32,7 +32,7 @@
       @click="$track('MensaPlan', 'opened', 'sideMenu')"
     >
       <v-list-item-action>
-        <v-icon>mdi-food-fork-drink</v-icon>
+        <v-icon>{{ mdiFoodForkDrink }}</v-icon>
       </v-list-item-action>
       <v-list-item-content>
         <v-list-item-title>
@@ -47,7 +47,7 @@
       @click="$track('BusPlan', 'opened', 'sideMenu')"
     >
       <v-list-item-action>
-        <v-icon>mdi-bus</v-icon>
+        <v-icon>{{ mdiBus }}</v-icon>
       </v-list-item-action>
       <v-list-item-content>
         <v-list-item-title>
@@ -62,6 +62,7 @@
 
 <script>
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
+import { mdiHome, mdiPlus, mdiFoodForkDrink, mdiBus } from '@mdi/js'
 
 export default {
   components: {
@@ -69,7 +70,11 @@ export default {
   },
   data () {
     return {
-      customTimetableDialogOpen: false
+      customTimetableDialogOpen: false,
+      mdiHome,
+      mdiPlus,
+      mdiFoodForkDrink,
+      mdiBus
     };
   }
 };

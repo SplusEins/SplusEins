@@ -17,7 +17,7 @@
             dark
             @click.native="dialogOpen = false"
           >
-            <v-icon>mdi-close</v-icon>
+            <v-icon>{{ mdiClose }}</v-icon>
           </v-btn>
           <v-toolbar-title>{{ title }}</v-toolbar-title>
         </v-toolbar>
@@ -33,7 +33,7 @@
                 <v-icon
                   v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label"
                 >
-                  mdi-check
+                  {{ mdiCheck }}
                 </v-icon>
               </v-list-item-action>
               <v-list-item-content>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-
+import { mdiClose, mdiCheck } from '@mdi/js'
 export default {
   name: 'SelectDialog',
   props: {
@@ -68,6 +68,12 @@ export default {
       type: Object,
       default: () => {}
     }
+  },
+  data () {
+    return {
+      mdiClose,
+      mdiCheck
+    };
   },
   computed: {
     dialogOpen: {

@@ -14,7 +14,7 @@
           :color="getIconColor()"
           small
         >
-          mdi-leaf
+          {{ mdiLeaf }}
         </v-icon>
       </span>
       &nbsp;
@@ -24,7 +24,7 @@
           color="green"
           small
         >
-          mdi-leaf
+          {{ mdiLeaf }}
         </v-icon>
       </span>
     </span>
@@ -82,6 +82,7 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
 import MensaDayplan from '../components/mensa-dayplan.vue';
+import { mdiLeaf } from '@mdi/js'
 
 export default {
   name: 'MensaPage',
@@ -93,6 +94,11 @@ export default {
         { hid: 'og:description', property: 'og:description', content: 'Mensaplan' }
       ]
     };
+  },
+  data () {
+    return {
+      mdiLeaf
+    }
   },
   components: {
     MensaDayplan
