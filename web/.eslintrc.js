@@ -24,6 +24,7 @@ module.exports = {
     'spaced-comment': 'warn',
     semi: 'off', // no preference for semicolons at end
     complexity: ['warn', { max: 30 }],
-    'no-warning-comments': 'warn'
+    'no-warning-comments': 'warn',
+    'vue/valid-v-slot': 'off' // false positives for vuetify
   }
 }

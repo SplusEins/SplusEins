@@ -4,10 +4,12 @@
     :events="events"
     type="week"
     interval-width="40"
+    event-overlap-mode="column"
     locale="de"
     first-time="07:00"
     interval-count="13"
     interval-height="50"
+    class="pb-2"
   />
 </template>
 
@@ -41,3 +43,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.v-calendar-daily__scroll-area {
+  overflow-y: hidden;
+}
+</style>

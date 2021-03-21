@@ -1,4 +1,3 @@
-import webpack from 'webpack';
 import PROTECTED_INFORMATION from './assets/protected-information.json';
 // fixme import colors from 'vuetify/es5/util/colors'
 
@@ -120,7 +119,8 @@ export default {
     locales: ['de'],
     defaultLocale: 'de',
     plugins: [
-      'isoWeek'
+      'isoWeek',
+      'weekOfYear'
     ]
   },
 

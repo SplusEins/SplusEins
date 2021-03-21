@@ -23,8 +23,8 @@
             <upcoming-lectures-card />
           </v-flex>
           <v-flex
-            v-show="$vuetify.breakpoint.mdAndUp"
-            :d-flex="$vuetify.breakpoint.mdAndUp"
+            v-show="!$vuetify.breakpoint.mobile"
+            :d-flex="!$vuetify.breakpoint.mobile"
           >
             <faculty-news-card />
           </v-flex>
@@ -42,8 +42,8 @@
       </v-flex>
 
       <v-flex
-        v-show="!$vuetify.breakpoint.mdAndUp"
-        :d-flex="!$vuetify.breakpoint.mdAndUp"
+        v-show="$vuetify.breakpoint.mobile"
+        :d-flex="$vuetify.breakpoint.mobile"
         order-xs7
         order-md7
       >
@@ -83,22 +83,6 @@
       >
         <quick-access-card />
       </v-flex>
-
-      <v-flex
-        d-flex
-        :md6="displayMensaCard"
-        :lg4="!displayMensaCard && hasSubscribableTimetables"
-        :lg6="displayMensaCard && !hasSubscribableTimetables"
-        :lg12="displayMensaCard && hasSubscribableTimetables"
-        order-xs5
-        order-md6
-      >
-        <v-layout :column="$vuetify.breakpoint.lgAndUp || $vuetify.breakpoint.xs">
-          <v-flex d-flex>
-            <last-changes-card />
-          </v-flex>
-        </v-layout>
-      </v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -106,7 +90,6 @@
 <script>
 import { mapState, mapGetters, mapMutations } from 'vuex';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
-import LastChangesCard from '../components/last-changes-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import CampusNewsCard from '../components/campus-news-card.vue';
@@ -117,7 +100,6 @@ export default {
   name: 'IndexPage',
   components: {
     UpcomingLecturesCard,
-    LastChangesCard,
     QuickAccessCard,
     MensaCard,
     CampusNewsCard,
