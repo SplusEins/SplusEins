@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="fill-height">
     <v-card-title class="title-padding">
       <div class="text-h5">
         Neues {{ selectedItem.title }}

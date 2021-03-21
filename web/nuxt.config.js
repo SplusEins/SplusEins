@@ -120,7 +120,8 @@ export default {
     defaultLocale: 'de',
     plugins: [
       'isoWeek',
-      'weekOfYear'
+      'weekOfYear',
+      'relativeTime'
     ]
   },
 

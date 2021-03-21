@@ -4,6 +4,7 @@
       right: () => setSidenav(true)
     }"
     fluid
+    class="px-4"
   >
     <v-row
       dense
@@ -21,7 +22,7 @@
             cols=12
             class="mb-md-1"
           >
-            <upcoming-lectures-card class="fill-height" />
+            <upcoming-lectures-card />
           </v-col>
 
           <v-col
@@ -29,7 +30,7 @@
             class="mt-md-1"
             v-show="!$vuetify.breakpoint.mobile"
           >
-            <faculty-news-card class="fill-height" />
+            <faculty-news-card />
           </v-col>
         </v-row>
       </v-col>
@@ -40,14 +41,14 @@
         order-md=2
         order=7
       >
-        <campus-news-card class="fill-height" />
+        <campus-news-card />
       </v-col>
 
       <v-col
         v-show="$vuetify.breakpoint.mobile"
         order=6
       >
-        <faculty-news-card class="fill-height" />
+        <faculty-news-card />
       </v-col>
 
       <v-col
@@ -58,7 +59,7 @@
         order=3
         order-md=3
       >
-        <mensa-card class="fill-height" />
+        <mensa-card />
       </v-col>
 
       <v-col
@@ -68,7 +69,7 @@
         lg=4
         order=4
       >
-        <stats-card class="fill-height" />
+        <stats-card />
       </v-col>
 
       <v-col
@@ -79,7 +80,7 @@
         order=2
         order-md=5
       >
-        <quick-access-card class="fill-height" />
+        <quick-access-card />
       </v-col>
     </v-row>
   </v-container>

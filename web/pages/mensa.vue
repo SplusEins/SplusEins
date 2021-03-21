@@ -2,7 +2,7 @@
   <v-container
     fluid
     :show-arrows="false"
-    class="container-padding"
+    class="pa-6"
   >
     <h2>Mensa Wolfenbüttel</h2>
     <span><a href="https://www.stw-on.de/wolfenbuettel/essen/mensa/#c2368">Offizielle Mensa-Seite mit Öffnungszeiten</a></span>

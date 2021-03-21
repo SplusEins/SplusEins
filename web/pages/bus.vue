@@ -2,6 +2,7 @@
   <v-container
     fluid
     grid-list-md
+    class="pa-6"
   >
     <v-layout wrap>
       <v-flex
