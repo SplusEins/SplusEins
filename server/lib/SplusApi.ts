@@ -43,8 +43,6 @@ async function skedRequest (timetable: TimetableRequest): Promise<string> {
   const token = Buffer.from(SKED_USER + ':' + SKED_PASSWORD).toString('base64');
   const headers = new Headers();
   headers.append('Authorization', 'Basic ' + token);
-  headers.append('User-Agent', 'spluseins.de backend with caching')
-  headers.append('From', 'team@spluseins.de')
 
   const url = SKED_BASE + timetable.skedPath;
   console.log(`Url for ${timetable.id} is ${url}`)
