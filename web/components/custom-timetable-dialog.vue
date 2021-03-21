@@ -66,6 +66,7 @@
                   :key="schedule.id"
                   close
                   @click:close="removeSchedule(schedule)"
+                  class="mr-1"
                 >
                   {{ getFormattedName(schedule) }}
                 </v-chip>

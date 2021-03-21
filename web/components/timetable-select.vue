@@ -1,20 +1,21 @@
 <template>
-  <v-layout
-    wrap
+  <v-row
+    dense
+    align="center"
   >
-    <v-flex
-      xs12
-      md5
+    <v-col
+      cols="12"
+      md="5"
     >
       <v-select
         v-model="selectedPath"
         :items="paths"
         label="Studiengang"
       />
-    </v-flex>
-    <v-flex
-      xs4
-      md2
+    </v-col>
+    <v-col
+      cols="4"
+      md="2"
     >
       <v-select
         v-model="selectedSemester"
@@ -22,10 +23,10 @@
         :disabled="selectedPath == undefined"
         label="Semester"
       />
-    </v-flex>
-    <v-flex
-      xs4
-      md3
+    </v-col>
+    <v-col
+      cols="5"
+      md="3"
     >
       <v-select
         v-model="selectedSchedule"
@@ -35,20 +36,19 @@
         item-text="label"
         return-object
       />
-    </v-flex>
-    <v-flex align-self-center>
+    </v-col>
+    <v-col>
       <v-btn
         :disabled="disableLoad"
         :loading="loading"
         rounded
-        depressed
         color="secondary"
         @click.native="submit()"
       >
         laden
       </v-btn>
-    </v-flex>
-  </v-layout>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

@@ -7,7 +7,7 @@
       :sections="sections"
       :size="230"
       :thickness="30"
-      :background="isDark ? '#424242' : 'white'"
+      :background="isDark ? '#1E1E1E' : 'white'"
       :total="totalHours"
       unit="px"
     >
