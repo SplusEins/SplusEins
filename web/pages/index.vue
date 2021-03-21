@@ -4,86 +4,84 @@
       right: () => setSidenav(true)
     }"
     fluid
-    grid-list-md
   >
-    <v-layout
-      wrap
+    <v-row
+      dense
     >
-      <v-flex
-        d-flex
-        md6
-        lg6
-        order-xs1
-        order-md1
+      <v-col
+        cols=12
+        md=6
+        order="first"
       >
-        <v-layout column>
-          <v-flex
-            d-flex
+        <v-row
+          no-gutters
+          class="fill-height"
+        >
+          <v-col
+            cols=12
+            class="mb-md-1"
           >
-            <upcoming-lectures-card />
-          </v-flex>
-          <v-flex
+            <upcoming-lectures-card class="fill-height" />
+          </v-col>
+
+          <v-col
+            cols=12
+            class="mt-md-1"
             v-show="!$vuetify.breakpoint.mobile"
-            :d-flex="!$vuetify.breakpoint.mobile"
           >
-            <faculty-news-card />
-          </v-flex>
-        </v-layout>
-      </v-flex>
+            <faculty-news-card class="fill-height" />
+          </v-col>
+        </v-row>
+      </v-col>
 
-      <v-flex
-        d-flex
-        md6
-        lg6
-        order-xs6
-        order-md2
+      <v-col
+        cols=12
+        md=6
+        order-md=2
+        order=7
       >
-        <campus-news-card />
-      </v-flex>
+        <campus-news-card class="fill-height" />
+      </v-col>
 
-      <v-flex
+      <v-col
         v-show="$vuetify.breakpoint.mobile"
-        :d-flex="$vuetify.breakpoint.mobile"
-        order-xs7
-        order-md7
+        order=6
       >
-        <faculty-news-card />
-      </v-flex>
+        <faculty-news-card class="fill-height" />
+      </v-col>
 
-      <v-flex
+      <v-col
         v-show="displayMensaCard"
-        :d-flex="displayMensaCard"
-        md6
-        :lg4="hasSubscribableTimetables"
-        :lg6="!hasSubscribableTimetables"
-        order-xs2
-        order-md3
+        cols=12
+        md=6
+        :lg="hasSubscribableTimetables ? 4 : 6"
+        order=3
+        order-md=3
       >
-        <mensa-card />
-      </v-flex>
+        <mensa-card class="fill-height" />
+      </v-col>
 
-      <v-flex
+      <v-col
         v-show="hasSubscribableTimetables"
-        :d-flex="hasSubscribableTimetables"
-        md6
-        lg4
-        order-xs4
-        order-md4
+        cols=12
+        md=6
+        lg=4
+        order=4
       >
-        <stats-card />
-      </v-flex>
+        <stats-card class="fill-height" />
+      </v-col>
 
-      <v-flex
+      <v-col
         v-show="hasSubscribableTimetables"
-        :d-flex="hasSubscribableTimetables"
-        md6
-        lg4
-        order-xs3
-        order-md5
+        cols=12
+        md=6
+        lg=4
+        order=2
+        order-md=5
       >
-        <quick-access-card />
-      </v-flex>
-    </v-layout>
+        <quick-access-card class="fill-height" />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -108,6 +106,9 @@ export default {
   },
   computed: {
     displayMensaCard () {
+      return true;
+      // fixme
+      // eslint-disable-next-line no-unreachable
       if (this.mensaPlans.length == 0) {
         return false;
       }

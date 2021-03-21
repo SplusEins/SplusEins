@@ -25,6 +25,7 @@ module.exports = {
     semi: 'off', // no preference for semicolons at end
     complexity: ['warn', { max: 30 }],
     'no-warning-comments': 'warn',
-    'vue/valid-v-slot': 'off' // false positives for vuetify
+    'vue/valid-v-slot': 'off', // false positives for vuetify
+    'vue/html-quotes': 'off' // doesn't work properly
   }
 }

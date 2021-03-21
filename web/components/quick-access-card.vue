@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 
 .card-text-padding{
   padding-top: 0px;

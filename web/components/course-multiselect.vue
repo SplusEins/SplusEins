@@ -14,16 +14,11 @@
       item-key="titleId"
       show-select
       mobile-breakpoint="0"
-      disable-filtering="true"
-      disable-pagination="true"
+      no-data-text="Keine Kurse sind geladen."
+      disable-pagination
+      disable-filtering
+      disable-sort
     >
-      <template #no-data>
-        <v-layout
-          justify-center
-        >
-          <p>Keine Kurse sind geladen.</p>
-        </v-layout>
-      </template>
       <template #item.room="{ item }">
         <span v-html="item.room" />
       </template>
