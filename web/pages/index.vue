@@ -105,7 +105,6 @@
 
 <script>
 import { mapState, mapGetters, mapMutations } from 'vuex';
-import * as moment from 'moment';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import LastChangesCard from '../components/last-changes-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
@@ -131,7 +130,7 @@ export default {
         return false;
       }
       // display if next plan is from today or from tomorrow
-      return moment().isSame(this.mensaPlans[0].date, 'day') || moment().add(1, 'days').isSame(this.mensaPlans[0].date, 'day');
+      return this.$dayjs().isSame(this.mensaPlans[0].date, 'day') || this.$dayjs().add(1, 'days').isSame(this.mensaPlans[0].date, 'day');
     },
     ...mapState({
       mensaPlans: (state) => state.mensa.plans

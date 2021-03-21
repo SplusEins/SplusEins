@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import * as moment from 'moment';
 import { mapState } from 'vuex';
 import { mdiLeaf } from '@mdi/js'
 
@@ -55,8 +54,8 @@ export default {
   },
   methods: {
     getDayHeader (dayPlan) {
-      const day = moment(dayPlan.date.toString());
-      return (day.isSame(moment(), 'day') ? 'Heute' : day.format('dddd')) + ' - ' + day.format('DD.MM.YYYY');
+      const day = this.$dayjs(dayPlan.date.toString());
+      return (day.isSame(this.$dayjs(), 'day') ? 'Heute' : day.format('dddd')) + ' - ' + day.format('DD.MM.YYYY');
     },
     getPriceLabel (price) {
       const euros = Math.floor(price);

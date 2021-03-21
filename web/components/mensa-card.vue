@@ -36,7 +36,6 @@
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex';
-import * as moment from 'moment';
 
 export default {
   name: 'MensaCard',
@@ -50,7 +49,7 @@ export default {
         .filter(({ category }) => category.startsWith('Essen '));
     },
     isPlanOfToday () {
-      return moment().isSame(this.getNextAvailablePlan.date, 'day');
+      return this.$dayjs().isSame(this.getNextAvailablePlan.date, 'day');
     },
     ...mapState({
       lazyLoad: (state) => state.lazyLoad,

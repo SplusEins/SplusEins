@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import * as moment from 'moment';
 
 export default {
   name: 'CourseMultiselect',
@@ -105,7 +104,7 @@ export default {
       // group all lectures by day because only they can conflict
       const lecturesByDay = new Map();
       selectedLectures.forEach((lecture) => {
-        const key = `${moment(lecture.start).week()} ${lecture.day}`;
+        const key = `${this.$dayjs(lecture.start).week()} ${lecture.day}`;
         const list = lecturesByDay.get(key) || [];
         list.push(lecture);
         lecturesByDay.set(key, list);

@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import * as moment from 'moment';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
 import SelectDialog from './select-dialog.vue'
 import { mdiBookmarkOutline } from '@mdi/js'
@@ -81,7 +80,7 @@ export default {
           title: event.title,
           room: event.location,
           lecturer: event.meta.organiserName,
-          start: moment(event.start)
+          start: this.$dayjs(event.start)
         }))
       // Find the next event or use the current event if it's only x minutes ago
         .filter(event => event.start.valueOf() - this.now > -15 * 60 * 1000)

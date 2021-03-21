@@ -23,7 +23,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import * as moment from 'moment';
 
 export default {
   name: 'StatsCard',
@@ -61,7 +60,7 @@ export default {
         } else {
           uniqueEvents.set(element.title, element.duration)
         }
-        if (!weekdays.includes(moment(element.start).day())) weekdays.push(moment(element.start).day())
+        if (!weekdays.includes(this.$dayjs(element.start).day())) weekdays.push(this.$dayjs(element.start).day())
       });
 
       this.totalWeekdays = weekdays.length;

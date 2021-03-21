@@ -66,7 +66,9 @@ export default {
     // https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // https://pwa.nuxtjs.org/
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    // https://github.com/nuxt-community/dayjs-module
+    '@nuxtjs/dayjs'
   ],
   /*
   ** Axios module configuration
@@ -98,9 +100,6 @@ export default {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     },
-    plugins: [
-      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de/)
-    ],
     extractCSS: true
   },
 
@@ -114,6 +113,15 @@ export default {
       iconfont: 'mdiSvg'
     },
     defaultAssets: false
+  },
+
+  // Moment js replacement https://github.com/nuxt-community/dayjs-module#usage
+  dayjs: {
+    locales: ['de'],
+    defaultLocale: 'de',
+    plugins: [
+      'isoWeek'
+    ]
   },
 
   /*

@@ -105,7 +105,8 @@ export default {
       };
     },
     startDate () {
-      return this.calendarEvent.start.toMoment().format('dddd, DD.MM.YY');
+      // fixme return this.$dayjs(this.calendarEvent.start).format('dddd, DD.MM.YY');
+      return ''
     },
     details () {
       return this.calendarEvent.event.data;

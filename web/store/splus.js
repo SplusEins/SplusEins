@@ -1,21 +1,21 @@
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 import * as chroma from '../lib/chroma';
 
 import TIMETABLES from '~/assets/timetables.json';
 import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customTimetableToRoute, scalarArraysEqual } from '~/lib/util';
 
 function defaultWeek () {
-  if (moment().isoWeek() < SEMESTER_WEEK_1 && (SEMESTER_WEEK_1 - moment().isoWeek()) < 8) {
+  if (dayjs().isoWeek() < SEMESTER_WEEK_1 && (SEMESTER_WEEK_1 - dayjs().isoWeek()) < 8) {
     // Use semester beginning instead of today if semester hasn't started yet
     // Do that only a few weeks before the semester so we avoid bugs with year wraparounds
     return SEMESTER_WEEK_1;
   }
 
   // if the user is looking at today and is on Sat/Sun, peek to the next week
-  if (moment().isoWeekday() == 6 || moment().isoWeekday() == 7) {
-    return moment().isoWeek() + 1;
+  if (dayjs().isoWeekday() == 6 || dayjs().isoWeekday() == 7) {
+    return dayjs().isoWeek() + 1;
   } else {
-    return moment().isoWeek();
+    return dayjs().isoWeek();
   }
 }
 
@@ -49,7 +49,7 @@ export async function loadUniqueLectures (timetable, $get) {
  */
 export function eventsAsLectures (events) {
   return events.map((event) => {
-    const startMoment = moment(event.start);
+    const startMoment = dayjs(event.start);
     return {
       title: event.title,
       day: startMoment.isoWeekday(),
@@ -121,7 +121,7 @@ export const getters = {
   },
   getHasEventsOnWeekend: (state) => {
     return state.events
-      .map(({ start }) => moment(start).isoWeekday())
+      .map(({ start }) => dayjs(start).isoWeekday())
       .filter((day) => day > 5) // 1: Monday, 5: Friday
       .length > 0;
   },
@@ -146,7 +146,7 @@ export const getters = {
       const color = colorScale[uniqueIds.indexOf(event.meta.organiserShortname)];
       const description = event.meta.organiserName ? `${event.meta.organiserName}\n${event.meta.description}` : `${event.meta.description}`;
 
-      const startMoment = moment(event.start);
+      const startMoment = dayjs(event.start);
       return {
         name: event.title,
         start: startMoment.format('YYYY-MM-DD HH:mm'),

@@ -38,11 +38,9 @@
           </v-toolbar-items>
         </v-toolbar>
         <v-form v-model="valid">
-          <v-container grid-list-md>
-            <v-layout
-              wrap
-            >
-              <v-flex xs12>
+          <v-container>
+            <v-row>
+              <v-col cols="12">
                 <v-text-field
                   v-model="selectedName"
                   :rules="[rules.required, rules.uniqueScheduleLabel, isNew ? rules.uniqueCustomScheduleLabel : true]"
@@ -51,37 +49,37 @@
                   required
                   autofocus
                 />
-              </v-flex>
+              </v-col>
 
-              <v-flex xs12>
+              <v-col cols="12">
                 <timetable-select
                   v-show="selectedSchedules.length <= maxSchedules"
                   :selected-schedules="selectedSchedules"
                   :loading="loading"
                   @input="addSchedule"
                 />
-              </v-flex>
+              </v-col>
 
-              <v-flex xs12>
+              <v-col cols="12">
                 <v-chip
                   v-for="schedule in selectedSchedules"
                   :key="schedule.id"
                   close
-                  @input="removeSchedule(schedule)"
+                  @click:close="removeSchedule(schedule)"
                 >
                   {{ getFormattedName(schedule) }}
                 </v-chip>
-              </v-flex>
+              </v-col>
 
-              <v-flex xs12>
+              <v-col cols="12">
                 <course-multiselect
                   v-show="selectedSchedules.length > 0"
                   v-model="selectedCourses"
                   :max-courses="maxCourses"
                   :lectures="allLectures"
                 />
-              </v-flex>
-            </v-layout>
+              </v-col>
+            </v-row>
           </v-container>
         </v-form>
       </v-card>

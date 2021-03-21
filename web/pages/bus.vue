@@ -51,7 +51,6 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
-import * as moment from 'moment';
 
 export default {
   name: 'BusPage',
@@ -72,9 +71,9 @@ export default {
         fhToExer: 'Fachhochschule zu Exer'
       },
       refreshTimer: undefined,
-      relativeDate: (str) => moment(str).fromNow(),
-      absoluteDate: (str) => moment(str).format('HH:mm'),
-      minutesUntilDate: (str) => moment(str).diff(moment(), 'minutes'),
+      relativeDate: (str) => this.$dayjs(str).fromNow(),
+      absoluteDate: (str) => this.$dayjs(str).format('HH:mm'),
+      minutesUntilDate: (str) => this.$dayjs(str).diff(this.$dayjs(), 'minutes'),
       lineColor: (line) => ['pink', 'purple', 'blue'][parseInt(line) % 4]
     }
   },
