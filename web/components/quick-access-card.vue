@@ -5,7 +5,7 @@
         Schnellzugriff
       </div>
     </v-card-title>
-    <v-card-text class="card-text-padding">
+    <v-card-text class="text-body-1">
       <v-list v-if="customSchedulesAsRoutes.length != 0">
         <v-list-item
           v-for="route in customSchedulesAsRoutes"
@@ -55,9 +55,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-.card-text-padding{
-  padding-top: 0px;
-}
 
 </style>

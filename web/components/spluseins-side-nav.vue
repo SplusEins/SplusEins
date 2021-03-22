@@ -76,11 +76,4 @@ export default {
   bottom: 0;
 }
 
-.light--background {
-  background: #fff;
-}
-
-.dark--background {
-  background: #424242;
-}
 </style>

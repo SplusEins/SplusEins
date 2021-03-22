@@ -79,8 +79,4 @@ export default {
   padding: 5px 0 5px 0px;
 }
 
-.card-text-padding{
-  padding-top: 0px;
-}
-
 </style>

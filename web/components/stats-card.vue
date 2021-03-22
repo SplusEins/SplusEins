@@ -83,7 +83,6 @@ export default {
 
 .card-text{
   text-align: center;
-  margin-top: 8px;
 }
 
 </style>

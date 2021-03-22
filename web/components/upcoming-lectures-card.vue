@@ -123,8 +123,4 @@ export default {
 
 <style lang="scss">
 
-.v-card__text{
-  padding-top: 0px;
-}
-
 </style>

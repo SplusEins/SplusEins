@@ -23,8 +23,4 @@ export default {
 
 <style lang="scss">
 
-.card-text-padding{
-  padding-top: 0px;
-}
-
 </style>

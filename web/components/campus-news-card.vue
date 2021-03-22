@@ -1,6 +1,6 @@
 <template>
   <v-card class="fill-height">
-    <v-card-title>
+    <v-card-title class="pb-1">
       <div class="text-h5">
         Neues vom Campus
       </div>
@@ -73,10 +73,6 @@ export default {
 
 .link{
   text-decoration: none;
-}
-
-.list-tile{
-  padding: 5px 0 5px 0px;
 }
 
 </style>

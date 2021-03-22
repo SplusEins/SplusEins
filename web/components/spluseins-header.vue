@@ -100,9 +100,9 @@ export default {
   }
   .header-text{
     font-family:Schluber;
-    font-size: 170%;
+    font-size: 150%;
     position: relative;
-    transform: translateY(6%);
+    transform: translateY(13%);
   }
   .cursor-pointer {
     cursor: pointer;
