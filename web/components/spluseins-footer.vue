@@ -2,6 +2,7 @@
   <v-footer
     dark
     app
+    class="text-body-2"
   >
     <v-layout
       justify-center
@@ -11,13 +12,8 @@
         lighten-2
         text-center
         xs12
-        class="font-size"
       >
         {{ new Date().getFullYear() }}
-        —
-        <strong>
-          SplusEins
-        </strong>
         —
         <a
           class="white--text"

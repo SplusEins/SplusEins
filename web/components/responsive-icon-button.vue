@@ -4,6 +4,7 @@
     :icon="!breakpoint"
     :text="!breakpoint"
     @click="$emit('click')"
+    class="ml-1"
   >
     <v-icon :left="breakpoint">
       {{ icon }}

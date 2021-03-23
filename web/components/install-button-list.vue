@@ -1,9 +1,14 @@
 <template>
-  <div v-show="visible">
-    <v-divider />
+  <v-footer
+    v-show="visible"
+    padless
+    tile
+  >
     <v-list
       subheader
       dense
+      class="pa-0"
+      style="width: 100%"
     >
       <v-list-item @click="install()">
         <v-list-item-action>
@@ -14,7 +19,7 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
-  </div>
+  </v-footer>
 </template>
 
 <script>

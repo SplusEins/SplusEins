@@ -6,7 +6,7 @@
         flat
       >
         <template #extension>
-          <v-toolbar-title class="ml-4 mb-6">
+          <v-toolbar-title class="ml-4 mb-6 white--text">
             {{ details.name }}
           </v-toolbar-title>
         </template>

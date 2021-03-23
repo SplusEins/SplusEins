@@ -6,13 +6,15 @@
     right
   >
     [{{ errorQueue.length }}] {{ next }}
-    <v-btn
-      dark
-      text
-      @click="dequeueError()"
-    >
-      Schließen
-    </v-btn>
+    <template #action="{ attrs }">
+      <v-btn
+        text
+        v-bind="attrs"
+        @click="dequeueError()"
+      >
+        Schließen
+      </v-btn>
+    </template>
   </v-snackbar>
 </template>
 

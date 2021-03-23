@@ -111,7 +111,10 @@ export default {
     icons: {
       iconfont: 'mdiSvg'
     },
-    defaultAssets: false
+    defaultAssets: false,
+    theme: {
+      options: { customProperties: true }
+    }
   },
 
   // Moment js replacement https://github.com/nuxt-community/dayjs-module#usage

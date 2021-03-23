@@ -1,13 +1,24 @@
 <template>
   <v-container
     fluid
+    class="pa-0 pa-md-3"
+    v-touch="{
+      right: () => prev(),
+      left: () => next()
+    }"
   >
     <v-row
       class="fill-height"
       no-gutters
     >
-      <v-col cols=12>
-        <v-toolbar flat>
+      <v-col
+        cols=12
+        class="mb-2 mb-md-4"
+      >
+        <v-toolbar
+          flat
+          class="inherit-background-color"
+        >
           <v-btn
             :outlined="!$vuetify.breakpoint.mobile"
             :small="$vuetify.breakpoint.mobile"
@@ -47,6 +58,7 @@
       </v-col>
       <v-col cols=12>
         <v-calendar
+          class="inherit-background-color"
           type="custom-daily"
           :events="events"
           :start="firstDate"
@@ -55,19 +67,27 @@
           :interval-format="formatInterval"
           first-time="07:00"
           interval-count="13"
-          :interval-height="$vuetify.breakpoint.mobile ? 40 : 50"
+          :interval-height="$vuetify.breakpoint.mobile ? 45 : 50"
           event-overlap-mode="column"
           locale="de"
           locale-first-day-of-year=4
           @click:event="showEvent"
-        />
+        >
+          <template #day-label-header="{day, present}">
+            <span
+              :class="['text-h5', present ? 'font-weight-bold':'']"
+            >
+              {{ day }}
+            </span>
+          </template>
+        </v-calendar>
         <v-menu
           v-model="selectedOpen"
           :close-on-content-click="false"
           :activator="selectedElement"
           offset-x
         >
-          <dayspan-custom-event-popover
+          <calendar-event-popover
             v-bind="{selectedEvent, selectedOpen}"
             @close="selectedOpen = false"
           />
@@ -177,6 +197,14 @@ export default {
 </script>
 
 <style lang="scss">
+.inherit-background-color {
+  background: inherit !important;
+}
+
+.v-calendar-daily_head-day-label {
+  cursor: auto;
+}
+
 .v-calendar-daily__scroll-area {
   overflow-y: hidden;
 }
@@ -187,5 +215,9 @@ export default {
 .v-event-timed {
   white-space: normal !important;
   word-wrap: break-word;
+  line-height: normal;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
+
 </style>

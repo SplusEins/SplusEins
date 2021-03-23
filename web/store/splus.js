@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import colors from 'vuetify/lib/util/colors'
 import * as chroma from '../lib/chroma';
 
 import TIMETABLES from '~/assets/timetables.json';
@@ -135,7 +136,7 @@ export const getters = {
       .sort());
 
     const colorScale = chroma
-      .scale(['01579b', '006064'])
+      .scale([colors.lightBlue.darken3, colors.teal.darken4])
       .colors(uniqueIds.length);
 
     const eventsByStart = new Map();

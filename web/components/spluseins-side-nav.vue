@@ -18,9 +18,7 @@
     <general-timetables-list />
     <no-ssr>
       <install-button-list
-        :class="['stick-bottom', {
-          'light--background': !this.$vuetify.theme.dark,
-          'dark--background': this.$vuetify.theme.dark }]"
+        class="stick-bottom"
       />
     </no-ssr>
   </v-navigation-drawer>
@@ -69,7 +67,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .stick-bottom {
   position: sticky;
   bottom: 0;

@@ -5,14 +5,15 @@
     vertical
     right
   >
-    Cookies für Einstellungen und Analytics erlauben?
-    <v-layout
-      justify-space-between
-      fluid
-    >
+    <span class="text-subtitle-1">
+      Cookies für Einstellungen und Analytics erlauben?
+    </span>
+    <template #action="{ attrs }">
       <v-btn
+        class="ml-2"
         ref="btn-deny"
         text
+        v-bind="attrs"
         @click="setAllCookiesDenied()"
       >
         Nichts
@@ -20,19 +21,22 @@
       <v-btn
         ref="btn-allow-necessary"
         text
+        v-bind="attrs"
         @click="setNecessaryCookiesAllowed()"
       >
         Einstellungen
       </v-btn>
       <v-btn
+        class="mr-1"
         ref="btn-allow-all"
         color="success"
         text
+        v-bind="attrs"
         @click="setAllCookiesAllowed()"
       >
         Einverstanden
       </v-btn>
-    </v-layout>
+    </template>
   </v-snackbar>
 </template>
 
