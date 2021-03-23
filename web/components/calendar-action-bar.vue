@@ -4,7 +4,7 @@
       <responsive-icon-button
         v-if="!isCustomSchedule"
         :breakpoint="$vuetify.breakpoint.xl"
-        :icon="isFavorite ? 'mdiHeart' : 'mdiHeartOutline'"
+        :icon="isFavorite ? mdiHeart : mdiHeartOutline"
         :text="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
         @click="toggleFavorite"
       />
@@ -12,15 +12,17 @@
 
     <!-- mobile action bar -->
     <v-menu
-      v-show="isMobile"
       bottom
       left
     >
-      <template #activator>
+      <template #activator="{ on, attrs }">
         <v-btn
           :small="$vuetify.breakpoint.xs"
           class="cursor-pointer"
           icon
+          v-bind="attrs"
+          v-on="on"
+          v-show="isMobile"
         >
           <v-icon>{{ mdiDotsVertical }}</v-icon>
         </v-btn>
@@ -74,26 +76,26 @@
     <span v-show="!isMobile">
       <responsive-icon-button
         :breakpoint="$vuetify.breakpoint.xl"
-        icon="mdiShareVariant"
+        :icon="mdiShareVariant"
         text="Teilen"
         @click="share(); $track('Calendar', 'share', 'desktop')"
       />
       <responsive-icon-button
         v-if="isCustomSchedule"
         :breakpoint="$vuetify.breakpoint.xl"
-        icon="mdiDelete"
+        :icon="mdiDelete"
         text="Löschen"
         @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'desktop')"
       />
       <responsive-icon-button
         :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
         :breakpoint="$vuetify.breakpoint.xl"
-        icon="mdiPencil"
+        :icon="mdiPencil"
         @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'desktop')"
       />
       <responsive-icon-button
         :breakpoint="$vuetify.breakpoint.xl"
-        icon="mdiCalendar"
+        :icon="mdiCalendar"
         text="Extern öffnen"
         @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'desktop')"
       />
@@ -155,7 +157,7 @@ export default {
   },
   computed: {
     isMobile () {
-      return !this.$vuetify.breakpoint.mdAndUp;
+      return this.$vuetify.breakpoint.mobile;
     },
     isTinyMobile () {
       return this.$vuetify.breakpoint.width <= 400;

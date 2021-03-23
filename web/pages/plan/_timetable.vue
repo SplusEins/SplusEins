@@ -1,9 +1,7 @@
 <template>
-  <v-container
-    fluid
-  >
+  <v-sheet class="fill-height">
     <spluseins-calendar />
-  </v-container>
+  </v-sheet>
 </template>
 
 <script>
