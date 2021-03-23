@@ -184,4 +184,8 @@ export default {
   border-left: none !important;
   border-top: none !important;
 }
+.v-event-timed {
+  white-space: normal !important;
+  word-wrap: break-word;
+}
 </style>
