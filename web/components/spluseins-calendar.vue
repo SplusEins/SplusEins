@@ -7,7 +7,7 @@
       no-gutters
     >
       <v-col cols=12>
-        <v-toolbar>
+        <v-toolbar flat>
           <v-btn
             :outlined="!$vuetify.breakpoint.mobile"
             :small="$vuetify.breakpoint.mobile"
@@ -47,19 +47,18 @@
       </v-col>
       <v-col cols=12>
         <v-calendar
-          ref="calendar"
-          :events="events"
           type="custom-daily"
+          :events="events"
           :start="firstDate"
           :end="lastDate"
-          interval-width="40"
+          interval-width="50"
+          :interval-format="formatInterval"
+          first-time="07:00"
+          interval-count="13"
+          :interval-height="$vuetify.breakpoint.mobile ? 40 : 50"
           event-overlap-mode="column"
           locale="de"
           locale-first-day-of-year=4
-          first-time="07:00"
-          interval-count="13"
-          interval-height="50"
-          class="pb-2"
           @click:event="showEvent"
         />
         <v-menu
@@ -152,6 +151,9 @@ export default {
       // Load the data and store the events in the calendar
       this.load();
     },
+    formatInterval (intervalObject) {
+      return intervalObject.time
+    },
     showEvent (event) {
       const open = () => {
         this.selectedEvent = event
@@ -177,5 +179,9 @@ export default {
 <style lang="scss">
 .v-calendar-daily__scroll-area {
   overflow-y: hidden;
+}
+.v-calendar-daily {
+  border-left: none !important;
+  border-top: none !important;
 }
 </style>
