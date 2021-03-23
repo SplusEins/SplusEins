@@ -60,7 +60,19 @@
           interval-count="13"
           interval-height="50"
           class="pb-2"
+          @click:event="showEvent"
         />
+        <v-menu
+          v-model="selectedOpen"
+          :close-on-content-click="false"
+          :activator="selectedElement"
+          offset-x
+        >
+          <dayspan-custom-event-popover
+            v-bind="{selectedEvent, selectedOpen}"
+            @close="selectedOpen = false"
+          />
+        </v-menu>
       </v-col>
     </v-row>
   </v-container>
@@ -76,7 +88,10 @@ export default {
     return {
       mdiChevronLeft,
       mdiChevronRight,
-      mdiCalendarToday
+      mdiCalendarToday,
+      selectedEvent: {},
+      selectedElement: null,
+      selectedOpen: false
     }
   },
   computed: {
@@ -99,7 +114,7 @@ export default {
     firstDate () {
       return this.$dayjs()
         .isoWeek(this.weekOrDefault)
-        .startOf('week').toDate();
+        .startOf('isoweek').toDate();
     },
     lastDate () {
       return this.$dayjs(this.firstDate).add(this.hasEventsOnWeekend ? 5 : 4, 'days').toDate();
@@ -136,6 +151,24 @@ export default {
     async refresh () {
       // Load the data and store the events in the calendar
       this.load();
+    },
+    showEvent (event) {
+      const open = () => {
+        this.selectedEvent = event
+        this.selectedElement = event.nativeEvent.target
+        setTimeout(() => {
+          this.selectedOpen = true
+        }, 10)
+      }
+
+      if (this.selectedOpen) {
+        this.selectedOpen = false
+        setTimeout(open, 10)
+      } else {
+        open()
+      }
+
+      event.nativeEvent.stopPropagation()
     }
   }
 };

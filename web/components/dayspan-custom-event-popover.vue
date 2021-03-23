@@ -1,22 +1,20 @@
 <template>
   <lazy-hydrate when-visible>
-    <v-card class="ds-calendar-event-popover-card">
+    <v-card>
       <v-toolbar
         :style="styleHeader"
         flat
       >
-        <v-toolbar-title
-          slot="extension"
-          class="toolbar-padding"
-        >
-          {{ details.title }}
-        </v-toolbar-title>
-
+        <template #extension>
+          <v-toolbar-title class="ml-4 mb-6">
+            {{ details.name }}
+          </v-toolbar-title>
+        </template>
         <v-spacer />
 
         <v-btn
           icon
-          @click="close"
+          @click="$emit('close')"
         >
           <v-icon color="white">
             {{ mdiClose }}
@@ -24,46 +22,37 @@
         </v-btn>
       </v-toolbar>
 
-      <v-card-text>
+      <v-card-text class="px-4">
         <v-list dense>
-          <v-list-tile>
-            <v-list-tile-avatar>
+          <v-list-item>
+            <v-list-item-icon>
               <v-icon>{{ mdiClockOutline }}</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ startDate }}</v-list-tile-title>
-              <v-list-tile-sub-title>{{ timeframe }}</v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>{{ startDate }}</v-list-item-title>
+              <v-list-item-subtitle>{{ timeframe }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
 
-          <v-list-tile v-if="details.location">
-            <v-list-tile-avatar>
+          <v-list-item v-if="details.location">
+            <v-list-item-icon>
               <v-icon>{{ mdiMapMarker }}</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title v-html="details.location" />
-            </v-list-tile-content>
-          </v-list-tile>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title v-html="details.location" />
+            </v-list-item-content>
+          </v-list-item>
 
-          <v-list-tile v-if="details.description">
-            <v-list-tile-avatar>
+          <v-list-item v-if="details.desc">
+            <v-list-item-icon>
               <v-icon>{{ mdiTextSubject }}</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title class="overflow-y">
-                {{ details.description }}
-              </v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-
-          <v-list-tile v-if="details.calendar">
-            <v-list-tile-avatar>
-              <v-icon>event</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ details.calendar }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title class="overflow-y">
+                {{ details.desc }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-card-text>
     </v-card>
@@ -76,17 +65,9 @@ import { mdiClockOutline, mdiClose, mdiMapMarker, mdiTextSubject } from '@mdi/js
 export default {
   name: 'DsCustomCalendarEventPopover',
   props: {
-    calendarEvent: {
-      required: true
-      // type: CalendarEvent
-    },
-    calendar: {
-      required: true
-      // type: Calendar
-    },
-    close: {
-      type: Function,
-      default () {}
+    selectedEvent: {
+      required: true,
+      type: Object
     }
   },
   data () {
@@ -100,61 +81,23 @@ export default {
   computed: {
     styleHeader () {
       return {
-        backgroundColor: this.details.color,
-        color: this.details.forecolor
+        backgroundColor: this.details.color
       };
     },
     startDate () {
-      // fixme return this.$dayjs(this.calendarEvent.start).format('dddd, DD.MM.YY');
-      return ''
+      return this.$dayjs(this.selectedEvent.eventParsed.start.date).format('dddd, DD.MM.YY');
     },
     details () {
-      return this.calendarEvent.event.data;
+      return this.selectedEvent.event;
     },
     timeframe () {
-      return this.$dayspan.getEventOccurrence(
-        this.calendarEvent.start,
-        this.calendarEvent.end
-      );
+      return this.selectedEvent.eventParsed.start.time + ' bis ' + this.selectedEvent.eventParsed.end.time + ' Uhr'
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.ds-calendar-event-popover-card {
-  .v-btn--floating.v-btn--left {
-    margin-left: 0px !important;
-    .v-icon {
-      height: auto;
-    }
-  }
-  .v-card__text {
-    padding: 16px 0;
-    .v-list {
-      .v-list__tile {
-        padding: 0px !important;
-        height: auto;
-        .v-list__tile__title{
-          white-space: pre-wrap;
-          height: auto;
-          line-height: normal;
-        }
-      }
-    }
-  }
-  .v-toolbar__extension {
-    .v-toolbar__title {
-      margin-left: 56px;
-      color: white;
-      white-space: normal;
-    }
-  }
-}
-
-.toolbar-padding {
-  padding: 0px 16px 20px 0px !important;
-}
 
 .overflow-y {
   overflow-y: auto;
