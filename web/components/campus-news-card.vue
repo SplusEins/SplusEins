@@ -48,8 +48,7 @@ export default {
   computed: {
     ...mapState({
       campusNews: (state) => state.news.campusNews,
-      lazyLoad: (state) => state.lazyLoad,
-      isDark: state => state.ui.isDark
+      lazyLoad: (state) => state.lazyLoad
     })
   },
   mounted () {

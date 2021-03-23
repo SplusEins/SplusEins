@@ -33,7 +33,7 @@
       <v-carousel
         :show-arrows="!$vuetify.breakpoint.mobile"
         :hide-delimiters="!$vuetify.breakpoint.mobile"
-        :light="!isDark"
+        :light="!this.$vuetify.theme.dark"
         :cycle="false"
         height="100%"
       >
@@ -106,8 +106,7 @@ export default {
   computed: {
     ...mapState({
       plans: (state) => state.mensa.plans,
-      lazyLoad: (state) => state.lazyLoad,
-      isDark: (state) => state.ui.isDark
+      lazyLoad: (state) => state.lazyLoad
     }),
     groupedDayPlans () {
       const grouped = [];
@@ -132,7 +131,7 @@ export default {
     }),
     getIconColor (item) {
       if (item == undefined || item.notes.includes('Vegetarisch')) {
-        return this.isDark ? 'white' : 'black';
+        return this.$vuetify.theme.dark ? 'white' : 'black';
       } else if (item.notes.includes('Vegan')) {
         return 'green';
       }

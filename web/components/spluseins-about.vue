@@ -46,7 +46,7 @@
             href="https://github.com/SplusEins/SplusEins"
           >
             <v-icon
-              :color="isDark? 'white': 'black'"
+              :color="this.$vuetify.theme.dark? 'white': 'black'"
               medium
             >
               {{ mdiGithub }}
@@ -67,7 +67,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import { mdiGithub } from '@mdi/js'
 
 export default {
@@ -87,10 +86,7 @@ export default {
     dialogOpen: {
       get () { return this.value; },
       set (value) { this.$emit('input', value); }
-    },
-    ...mapState({
-      isDark: (state) => state.ui.isDark
-    })
+    }
   }
 };
 </script>

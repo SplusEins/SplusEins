@@ -7,7 +7,7 @@
       :sections="sections"
       :size="230"
       :thickness="30"
-      :background="isDark ? '#1E1E1E' : 'white'"
+      :background="this.$vuetify.theme.dark ? '#1E1E1E' : 'white'"
       :total="totalHours"
       unit="px"
     >
@@ -36,7 +36,6 @@ export default {
   },
   computed: {
     ...mapState({
-      isDark: (state) => state.ui.isDark,
       upcomingEvents: (state) => state.splus.upcomingEvents,
       subscribedTimetable: (state) => state.splus.subscribedTimetable
     })

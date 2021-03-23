@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import { mdiLeaf } from '@mdi/js'
 
 export default {
@@ -47,11 +46,6 @@ export default {
       mdiLeaf
     };
   },
-  computed: {
-    ...mapState({
-      isDark: (state) => state.ui.isDark
-    })
-  },
   methods: {
     getDayHeader (dayPlan) {
       const day = this.$dayjs(dayPlan.date.toString());
@@ -65,7 +59,7 @@ export default {
     },
     getIconColor (item) {
       if (item == undefined || item.notes.includes('Vegetarisch')) {
-        return this.isDark ? 'white' : 'black';
+        return this.$vuetify.theme.dark ? 'white' : 'black';
       } else if (item.notes.includes('Vegan')) {
         return 'green';
       }

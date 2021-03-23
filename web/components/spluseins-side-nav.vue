@@ -19,8 +19,8 @@
     <no-ssr>
       <install-button-list
         :class="['stick-bottom', {
-          'light--background': !isDark,
-          'dark--background': isDark }]"
+          'light--background': !this.$vuetify.theme.dark,
+          'dark--background': this.$vuetify.theme.dark }]"
       />
     </no-ssr>
   </v-navigation-drawer>
@@ -58,8 +58,7 @@ export default {
       customSchedules: (state) => state.splus.customSchedules,
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
       sidenavIsOpen: (state) => state.ui.sidenavIsOpen,
-      browserStateReady: (state) => state.browserStateReady,
-      isDark: state => state.ui.isDark
+      browserStateReady: (state) => state.browserStateReady
     })
   },
   methods: {

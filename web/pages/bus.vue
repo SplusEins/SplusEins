@@ -81,8 +81,7 @@ export default {
   computed: {
     ...mapState({
       departures: (state) => state.bus.departures,
-      lazyLoad: (state) => state.lazyLoad,
-      isDark: (state) => state.ui.isDark
+      lazyLoad: (state) => state.lazyLoad
     })
   },
   mounted () {
