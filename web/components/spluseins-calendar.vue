@@ -1,7 +1,7 @@
 <template>
   <v-container
     fluid
-    class="pa-0 pa-md-3"
+    class="pa-1 pa-md-3"
     v-touch="{
       right: () => prev(),
       left: () => next()
@@ -63,11 +63,11 @@
           :events="events"
           :start="firstDate"
           :end="lastDate"
-          interval-width="50"
+          :interval-width="$vuetify.breakpoint.mobile ? 25 : 50"
           :interval-format="formatInterval"
           first-time="07:00"
           interval-count="13"
-          :interval-height="$vuetify.breakpoint.mobile ? 45 : 50"
+          interval-height="50"
           event-overlap-mode="column"
           locale="de"
           locale-first-day-of-year=4
@@ -80,19 +80,37 @@
               {{ day }}
             </span>
           </template>
+          <template #event="{event, eventParsed}">
+            <div :class="['pa-md-1','custom-event', {'mini-padding': $vuetify.breakpoint.mobile}]">
+              <div class="font-weight-bold">
+                {{ event.name }}
+              </div>
+              <div
+                class="pt-1"
+                v-if="!$vuetify.breakpoint.mobile"
+              >
+                {{ eventParsed.start.time + ' - ' + eventParsed.end.time + ' Uhr' }}
+              </div>
+            </div>
+          </template>
         </v-calendar>
         <v-menu
           v-model="selectedOpen"
           :close-on-content-click="false"
           :activator="selectedElement"
           offset-x
-          :max-width="$vuetify.breakpoint.mobile ? undefined : '30%'"
+          :max-width="$vuetify.breakpoint.mobile ? undefined : '35%'"
         >
           <lazy-calendar-event-popover
             v-bind="{selectedEvent, selectedOpen}"
             @close="selectedOpen = false"
           />
         </v-menu>
+      </v-col>
+      <v-col>
+        <span class="pt-1 d-flex justify-end text-caption text--secondary">
+          Quelle: stundenplan.ostfalia.de
+        </span>
       </v-col>
     </v-row>
   </v-container>
@@ -173,7 +191,11 @@ export default {
       this.load();
     },
     formatInterval (intervalObject) {
-      return intervalObject.time
+      if (this.$vuetify.breakpoint.mobile) {
+        return intervalObject.hour.toString().padStart(2, '0')
+      } else {
+        return intervalObject.time
+      }
     },
     showEvent (event) {
       const open = () => {
@@ -198,27 +220,33 @@ export default {
 </script>
 
 <style lang="scss">
-.inherit-background-color {
-  background: inherit !important;
-}
-
-.v-calendar-daily_head-day-label {
+.v-calendar .v-calendar-daily_head-day-label {
   cursor: auto;
 }
-
-.v-calendar-daily__scroll-area {
+.v-calendar .v-calendar-daily__scroll-area {
   overflow-y: hidden;
 }
-.v-calendar-daily {
+.v-calendar.v-calendar-daily {
   border-left: none !important;
   border-top: none !important;
 }
-.v-event-timed {
-  white-space: normal !important;
+.v-calendar .v-event-timed-container {
+  margin-right: -1px;
+}
+
+.inherit-background-color {
+  background: inherit !important;
+}
+.custom-event {
+  white-space: normal;
   word-wrap: break-word;
   line-height: normal;
+}
+.mini-padding {
   padding-top: 2px;
-  padding-bottom: 2px;
+  padding-bottom: 1px;
+  padding-left: 3px;
+  padding-right: 1px;
 }
 
 </style>

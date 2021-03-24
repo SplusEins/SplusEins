@@ -55,8 +55,7 @@ export default {
     // https://github.com/dumptyd/vue-css-donut-chart
     '@/plugins/vue-css-donut-chart'
   ],
-  // https://github.com/nuxt/components#features
-  components: true,
+
   /*
   ** Nuxt.js modules
   */
@@ -92,7 +91,6 @@ export default {
   ** Build configuration
   */
   build: {
-    standalone: true, // fixme, added to prevent memory leaks, see https://github.com/nuxt/nuxt.js/issues/6442
     extend (config, ctx) {
       if (ctx.isDev) {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
@@ -104,6 +102,7 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     // customVariables: ['~/assets/variables.scss'],
+    // treeshake: true,
     breakpoint: {
       mobileBreakpoint: 'sm' // This is equivalent to a value of 960
     },
