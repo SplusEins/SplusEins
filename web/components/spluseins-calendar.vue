@@ -86,6 +86,7 @@
           :close-on-content-click="false"
           :activator="selectedElement"
           offset-x
+          :max-width="$vuetify.breakpoint.mobile ? undefined : '30%'"
         >
           <calendar-event-popover
             v-bind="{selectedEvent, selectedOpen}"

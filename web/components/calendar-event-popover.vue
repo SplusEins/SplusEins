@@ -103,4 +103,7 @@ export default {
   overflow-y: auto;
   white-space: normal !important;
 }
+.v-toolbar__title {
+  white-space: normal;
+}
 </style>
