@@ -91,6 +91,7 @@ export default {
   ** Build configuration
   */
   build: {
+    standalone: true, // has some advantages, see https://github.com/nuxt/nuxt.js/pull/4661
     extend (config, ctx) {
       if (ctx.isDev) {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'

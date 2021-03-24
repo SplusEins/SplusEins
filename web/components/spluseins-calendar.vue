@@ -23,6 +23,7 @@
             :outlined="!$vuetify.breakpoint.mobile"
             :small="$vuetify.breakpoint.mobile"
             @click="setToday"
+            depressed
           >
             <span v-show="!$vuetify.breakpoint.mobile">Heute</span>
             <v-icon v-show="$vuetify.breakpoint.mobile">
@@ -35,6 +36,7 @@
             icon
             depressed
             @click="prev"
+            class="mr-2"
           >
             <v-icon>{{ mdiChevronLeft }}</v-icon>
           </v-btn>
@@ -44,6 +46,7 @@
             depressed
             :small="$vuetify.breakpoint.xs"
             @click="next"
+            class="mr-2"
           >
             <v-icon>{{ mdiChevronRight }}</v-icon>
           </v-btn>
