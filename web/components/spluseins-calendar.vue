@@ -88,7 +88,7 @@
           offset-x
           :max-width="$vuetify.breakpoint.mobile ? undefined : '30%'"
         >
-          <calendar-event-popover
+          <lazy-calendar-event-popover
             v-bind="{selectedEvent, selectedOpen}"
             @close="selectedOpen = false"
           />

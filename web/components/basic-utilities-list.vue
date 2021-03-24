@@ -56,18 +56,14 @@
       </v-list-item-content>
     </v-list-item>
 
-    <custom-timetable-dialog v-model="customTimetableDialogOpen" />
+    <lazy-custom-timetable-dialog v-model="customTimetableDialogOpen" />
   </v-list>
 </template>
 
 <script>
-import CustomTimetableDialog from './custom-timetable-dialog.vue';
 import { mdiHome, mdiPlus, mdiFoodForkDrink, mdiBus } from '@mdi/js'
 
 export default {
-  components: {
-    CustomTimetableDialog
-  },
   data () {
     return {
       customTimetableDialogOpen: false,

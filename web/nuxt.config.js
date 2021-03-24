@@ -53,11 +53,10 @@ export default {
     // https://github.com/Inndy/vue-clipboard2
     '@/plugins/vue-clipboard2',
     // https://github.com/dumptyd/vue-css-donut-chart
-    '@/plugins/vue-css-donut-chart',
-    // https://github.com/maoberlehner/vue-lazy-hydration
-    '@/plugins/lazy-hydrate'
+    '@/plugins/vue-css-donut-chart'
   ],
-
+  // https://github.com/nuxt/components#features
+  components: true,
   /*
   ** Nuxt.js modules
   */

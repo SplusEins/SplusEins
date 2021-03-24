@@ -39,18 +39,14 @@
         </nuxt-link>
       </v-flex>
     </v-layout>
-    <spluseins-about v-model="aboutDialogOpen" />
+    <lazy-spluseins-about v-model="aboutDialogOpen" />
   </v-footer>
 </template>
 
 <script>
-import SpluseinsAbout from './spluseins-about.vue'
 
 export default {
   name: 'SplusEinsFooter',
-  components: {
-    SpluseinsAbout
-  },
   data () {
     return {
       aboutDialogOpen: false

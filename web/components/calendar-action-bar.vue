@@ -106,7 +106,7 @@
       :custom-schedule="currentSchedule"
       @on-delete="routeToRoot()"
     />
-    <custom-timetable-dialog
+    <lazy-custom-timetable-dialog
       v-model="editTimetableDialogOpen"
       :custom-schedule="currentAsCustomSchedule"
     />
@@ -127,7 +127,6 @@ import { mapMutations, mapState, mapGetters } from 'vuex';
 import CopyTextDialog from './copy-text-dialog.vue';
 import OpenCalendarDialog from './open-calendar-dialog.vue';
 import ResponsiveIconButton from './responsive-icon-button.vue';
-import CustomTimetableDialog from './custom-timetable-dialog.vue';
 import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
 import { mdiHeart, mdiHeartOutline, mdiDotsVertical, mdiShareVariant, mdiDelete, mdiPencil, mdiCalendar } from '@mdi/js'
 
@@ -137,7 +136,6 @@ export default {
     CopyTextDialog,
     OpenCalendarDialog,
     ResponsiveIconButton,
-    CustomTimetableDialog,
     CustomTimetableDeleteDialog
   },
   data () {

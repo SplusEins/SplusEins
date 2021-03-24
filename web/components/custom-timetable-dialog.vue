@@ -1,96 +1,91 @@
 <template>
-  <lazy-hydrate
-    ssr-only
-    :trigger-hydration="dialogOpen"
+  <v-dialog
+    v-model="dialogOpen"
+    :fullscreen="$vuetify.breakpoint.mobile"
+    max-width="800px"
+    hide-overlay
+    transition="dialog-bottom-transition"
   >
-    <v-dialog
-      v-model="dialogOpen"
-      :fullscreen="$vuetify.breakpoint.mobile"
-      max-width="800px"
-      hide-overlay
-      transition="dialog-bottom-transition"
-    >
-      <v-card>
-        <v-toolbar
+    <v-card>
+      <v-toolbar
+        dark
+        color="primary"
+      >
+        <v-btn
+          icon
           dark
-          color="primary"
+          @click.native="dialogOpen = false"
         >
+          <v-icon>{{ mdiClose }}</v-icon>
+        </v-btn>
+        <v-toolbar-title>Neuer Stundenplan</v-toolbar-title>
+        <v-spacer />
+        <v-toolbar-items>
           <v-btn
-            icon
+            :disabled="!saveable"
             dark
-            @click.native="dialogOpen = false"
+            text
+            @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true;
+                           $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Pläne', selectedSchedules.length);
+                           $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Kurse', selectedCourses.length)"
           >
-            <v-icon>{{ mdiClose }}</v-icon>
+            Speichern
           </v-btn>
-          <v-toolbar-title>Neuer Stundenplan</v-toolbar-title>
-          <v-spacer />
-          <v-toolbar-items>
-            <v-btn
-              :disabled="!saveable"
-              dark
-              text
-              @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true;
-                             $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Pläne', selectedSchedules.length);
-                             $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Kurse', selectedCourses.length)"
-            >
-              Speichern
-            </v-btn>
-          </v-toolbar-items>
-        </v-toolbar>
-        <v-form v-model="valid">
-          <v-container>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field
-                  v-model="selectedName"
-                  :rules="[rules.required, rules.uniqueScheduleLabel, isNew ? rules.uniqueCustomScheduleLabel : true]"
-                  label="Plan benennen"
-                  single-line
-                  required
-                  autofocus
-                />
-              </v-col>
+        </v-toolbar-items>
+      </v-toolbar>
+      <v-form v-model="valid">
+        <v-container>
+          <v-row>
+            <v-col cols="12">
+              <v-text-field
+                v-model="selectedName"
+                :rules="[rules.required, rules.uniqueScheduleLabel, isNew ? rules.uniqueCustomScheduleLabel : true]"
+                label="Plan benennen"
+                single-line
+                required
+                autofocus
+              />
+            </v-col>
 
-              <v-col cols="12">
-                <timetable-select
-                  v-show="selectedSchedules.length <= maxSchedules"
-                  :selected-schedules="selectedSchedules"
-                  :loading="loading"
-                  @input="addSchedule"
-                />
-              </v-col>
+            <v-col cols="12">
+              <timetable-select
+                v-show="selectedSchedules.length <= maxSchedules"
+                :selected-schedules="selectedSchedules"
+                :loading="loading"
+                @input="addSchedule"
+              />
+            </v-col>
 
-              <v-col cols="12">
-                <v-chip
-                  v-for="schedule in selectedSchedules"
-                  :key="schedule.id"
-                  close
-                  @click:close="removeSchedule(schedule)"
-                  class="mr-1"
-                >
-                  {{ getFormattedName(schedule) }}
-                </v-chip>
-              </v-col>
+            <v-col cols="12">
+              <v-chip
+                v-for="schedule in selectedSchedules"
+                :key="schedule.id"
+                close
+                @click:close="removeSchedule(schedule)"
+                class="mr-1"
+              >
+                {{ getFormattedName(schedule) }}
+              </v-chip>
+            </v-col>
 
-              <v-col cols="12">
-                <course-multiselect
-                  v-show="selectedSchedules.length > 0"
-                  v-model="selectedCourses"
-                  :max-courses="maxCourses"
-                  :lectures="allLectures"
-                />
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-form>
-      </v-card>
+            <v-col cols="12">
+              <course-multiselect
+                v-show="selectedSchedules.length > 0"
+                v-model="selectedCourses"
+                :max-courses="maxCourses"
+                :lectures="allLectures"
+              />
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-form>
+    </v-card>
 
-      <custom-timetable-cookie-reminder
-        v-model="cookieReminderDialogOpen"
-        @continue="save()"
-      />
-    </v-dialog>
-  </lazy-hydrate>
+    <custom-timetable-cookie-reminder
+      v-model="cookieReminderDialogOpen"
+      @continue="save()"
+    />
+  </v-dialog>
 </template>
 
 <script>

@@ -32,7 +32,7 @@
       <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne, um diese Option nutzen zu können!</i>
     </v-card-text>
 
-    <select-dialog
+    <lazy-select-dialog
       :open.sync="dialogOpen"
       :items="subscribableTimetables"
       :selected.sync="selectedItem"
@@ -43,14 +43,10 @@
 
 <script>
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
-import SelectDialog from './select-dialog.vue'
 import { mdiBookmarkOutline } from '@mdi/js'
 
 export default {
   name: 'UpcomingLecturesCard',
-  components: {
-    SelectDialog
-  },
   data () {
     return {
       now: Date.now(),

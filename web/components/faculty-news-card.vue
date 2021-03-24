@@ -22,6 +22,7 @@
             :href="item.link"
             target="_blank"
             class="link"
+            rel="noopener"
           >
             {{ item.title }}
           </a>
@@ -32,7 +33,7 @@
       </v-list>
     </v-card-text>
 
-    <select-dialog
+    <lazy-select-dialog
       :open.sync="dialogOpen"
       :items="availableSources"
       :selected.sync="selectedItem"
@@ -43,14 +44,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import SelectDialog from './select-dialog.vue'
 import { mdiNewspaper } from '@mdi/js'
 
 export default {
   name: 'FacultyNewsCard',
-  components: {
-    SelectDialog
-  },
   data () {
     const availableSources = [
       { description: 'Campus Wolfenbüttel', title: 'aus Wolfenbüttel', path: 'wf' },

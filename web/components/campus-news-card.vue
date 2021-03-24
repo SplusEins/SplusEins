@@ -16,6 +16,7 @@
             :href="item.link"
             target="_blank"
             class="link"
+            rel="noopener"
           >
             {{ item.title }}
           </a>
