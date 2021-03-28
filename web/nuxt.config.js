@@ -1,5 +1,4 @@
 import PROTECTED_INFORMATION from './assets/protected-information.json';
-// fixme import colors from 'vuetify/es5/util/colors'
 
 export default {
   telemetry: false,
@@ -71,7 +70,7 @@ export default {
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'http://127.0.0.1:3001' // fixme just for testing
+
   },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

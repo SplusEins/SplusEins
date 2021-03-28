@@ -39,14 +39,14 @@
         cols=12
         md=6
         order-md=2
-        order=7
+        order="last"
       >
         <campus-news-card />
       </v-col>
 
       <v-col
         v-show="$vuetify.breakpoint.mobile"
-        order=6
+        order=4
       >
         <faculty-news-card />
       </v-col>
@@ -57,7 +57,7 @@
         md=6
         :lg="hasSubscribableTimetables ? 4 : 6"
         order=3
-        order-md=3
+        order-md=4
       >
         <mensa-card />
       </v-col>
@@ -66,8 +66,8 @@
         v-show="hasSubscribableTimetables"
         cols=12
         md=6
-        lg=4
-        order=4
+        :lg="displayMensaCard ? 4 : 6"
+        order=5
       >
         <stats-card />
       </v-col>
@@ -76,9 +76,9 @@
         v-show="hasSubscribableTimetables"
         cols=12
         md=6
-        lg=4
+        :lg="displayMensaCard ? 4 : 6"
         order=2
-        order-md=5
+        order-md=3
       >
         <quick-access-card />
       </v-col>
@@ -107,9 +107,6 @@ export default {
   },
   computed: {
     displayMensaCard () {
-      return true;
-      // fixme
-      // eslint-disable-next-line no-unreachable
       if (this.mensaPlans.length == 0) {
         return false;
       }
