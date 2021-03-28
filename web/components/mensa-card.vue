@@ -5,13 +5,13 @@
         Mensa Wolfenbüttel {{ isPlanOfToday? 'Heute' : 'Morgen' }}
       </div>
     </v-card-title>
-    <v-card-text class="card-text-padding">
+    <v-card-text>
       <v-list
         v-for="item in mensaMenus"
         :key="item.id"
         dense
       >
-        <div class="list-tile">
+        <div>
           <b>{{ item.category }}:</b>
           <br>
           <span>{{ item.name }}</span>
@@ -72,11 +72,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-
-.list-tile{
-  padding: 5px 0 5px 0px;
-}
-
-</style>

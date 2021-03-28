@@ -1,33 +1,37 @@
 <template>
-  <v-flex xs12>
-    <v-card height="100%">
-      <v-card-title>
-        <h3>{{ getDayHeader(plan) }}</h3>
-      </v-card-title>
-      <v-divider />
+  <v-card class="fill-height">
+    <v-card-title>
+      <span class="text-h6">{{ getDayHeader(plan) }}</span>
+    </v-card-title>
+    <v-divider />
+    <v-card-text class="py-1">
       <v-list
         v-for="item in plan.data"
         :key="item.id"
         dense
       >
-        <div class="list-tile">
-          <span class="category">{{ item.category }}:</span>
+        <div class="d-flex">
+          <div class="text-subtitle-1">
+            {{ item.category }}
+          </div>
           <v-icon
             v-if="displayIcon(item)"
             :color="getIconColor(item)"
-            class="icon"
+            class="icon ml-1 align-self-center"
             small
           >
             {{ mdiLeaf }}
           </v-icon>
-          <br>
-          <span>{{ item.name }}</span>
-          <br>
-          <span class="text-caption text--secondary">Studenten: {{ getPriceLabel(item.prices.students) }} - Angestellte: {{ getPriceLabel(item.prices.employees) }}</span>
+        </div>
+        <div>
+          {{ item.name }}
+        </div>
+        <div class="text-caption text--secondary">
+          Studenten: {{ getPriceLabel(item.prices.students) }} - Angestellte: {{ getPriceLabel(item.prices.employees) }}
         </div>
       </v-list>
-    </v-card>
-  </v-flex>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -72,13 +76,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.list-item{
-  padding: 5px 0 5px 15px;
-}
-
-.category {
-  font-weight: bold;
-}
 .icon{
   opacity: 0.7;
 }

@@ -7,34 +7,35 @@
     <h2>Mensa Wolfenbüttel</h2>
     <span><a href="https://www.stw-on.de/wolfenbuettel/essen/mensa/#c2368">Offizielle Mensa-Seite mit Öffnungszeiten</a></span>
     <br>
-    <span class="text--secondary">
-      <span>
+    <div class="text--secondary d-flex">
+      <div class="d-flex pr-4">
         Vegetarisch
         <v-icon
           :color="getIconColor()"
           small
+          class="align-self-center ml-1"
         >
           {{ mdiLeaf }}
         </v-icon>
-      </span>
-      &nbsp;
-      <span>
+      </div>
+      <div class="d-flex">
         Vegan
         <v-icon
           color="green"
           small
+          class="align-self-center ml-1"
         >
           {{ mdiLeaf }}
         </v-icon>
-      </span>
-    </span>
-    <v-divider class="divider" />
+      </div>
+    </div>
+    <v-divider class="py-1" />
     <no-ssr>
       <v-carousel
         :show-arrows="!$vuetify.breakpoint.mobile"
         :hide-delimiters="!$vuetify.breakpoint.mobile"
+        hide-delimiter-background
         :light="!this.$vuetify.theme.dark"
-        :cycle="false"
         height="100%"
       >
         <template v-if="$vuetify.breakpoint.mobile">
@@ -42,11 +43,11 @@
             v-for="dayPlan in plans"
             :key="dayPlan.date"
           >
-            <v-layout
+            <v-col
               class="carousel-delimiter-padding"
             >
               <mensa-dayplan :plan="dayPlan" />
-            </v-layout>
+            </v-col>
           </v-carousel-item>
         </template>
         <template v-if="!$vuetify.breakpoint.mobile">
@@ -54,21 +55,28 @@
             v-for="dayPlanGroup in groupedDayPlans"
             :key="dayPlanGroup[0].date"
           >
-            <v-layout
+            <v-row
+              dense
               class="carousel-control-padding"
             >
-              <mensa-dayplan
-                :plan="dayPlanGroup[0]"
-              />
-              <mensa-dayplan
-                v-if="dayPlanGroup[1]"
-                :plan="dayPlanGroup[1]"
-              />
-              <mensa-dayplan
-                v-if="dayPlanGroup[2]"
-                :plan="dayPlanGroup[2]"
-              />
-            </v-layout>
+              <v-col>
+                <mensa-dayplan
+                  :plan="dayPlanGroup[0]"
+                />
+              </v-col>
+              <v-col>
+                <mensa-dayplan
+                  v-if="dayPlanGroup[1]"
+                  :plan="dayPlanGroup[1]"
+                />
+              </v-col>
+              <v-col>
+                <mensa-dayplan
+                  v-if="dayPlanGroup[2]"
+                  :plan="dayPlanGroup[2]"
+                />
+              </v-col>
+            </v-row>
           </v-carousel-item>
         </template>
       </v-carousel>
@@ -156,20 +164,11 @@ export default {
   margin: 0px !important;
 }
 
-.v-window__container,
-.v-image {
-  height: 100% !important;
-}
-
 .v-carousel__controls {
   height: 40px !important;
 }
 
-.container-padding{
-  padding-bottom: 3px;
-}
-
-.divider {
-  padding: 5px;
+.v-window__prev, .v-window__next {
+  margin: 0 !important;
 }
 </style>
