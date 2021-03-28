@@ -1,13 +1,15 @@
 <template>
   <v-container
     fluid
-    grid-list-md
     class="pa-md-4"
   >
-    <v-layout wrap>
-      <v-flex
+    <v-row dense>
+      <v-col
         v-for="direction in directions"
         :key="direction"
+        cols=12
+        md=auto
+        class="flex-grow-1"
       >
         <v-card>
           <v-card-title>
@@ -41,8 +43,8 @@
             </v-list-item>
           </v-list>
         </v-card>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
 
     <span class="pt-1 d-flex justify-end text-caption text--secondary">
       Quelle: Deutsche Bahn HAFAS
