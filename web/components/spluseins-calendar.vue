@@ -247,8 +247,7 @@ export default {
 }
 .mini-padding {
   padding-top: 2px;
-  padding-bottom: 1px;
-  padding-left: 3px;
+  padding-left: 1px;
   padding-right: 1px;
 }
 
