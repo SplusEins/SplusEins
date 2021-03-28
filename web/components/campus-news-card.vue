@@ -10,7 +10,7 @@
         <div
           v-for="item in campusNews"
           :key="item.link"
-          class="list-tile"
+          class="py-1"
         >
           <a
             :href="item.link"

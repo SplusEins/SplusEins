@@ -5,8 +5,7 @@
   >
     <v-card>
       <v-card-title
-        class="text-h5 primary"
-        primary-title
+        class="text-h5 white--text primary px-4"
       >
         SplusEins
       </v-card-title>

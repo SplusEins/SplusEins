@@ -18,7 +18,7 @@
         <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
 
-      <v-card-text class="card-text-padding">
+      <v-card-text class="pa-0">
         <v-list>
           <v-list-item
             v-for="item in items"
@@ -82,11 +82,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="scss">
-
-.card-text-padding{
-  padding: 0px 5px;
-}
-
-</style>
