@@ -64,8 +64,8 @@
           class="inherit-background-color"
           type="custom-daily"
           :events="events"
-          :start="firstDate"
-          :end="lastDate"
+          :start="calendarStartDate"
+          :end="calendarEndDate"
           :interval-width="$vuetify.breakpoint.mobile ? 25 : 50"
           :interval-format="formatInterval"
           first-time="07:00"
@@ -132,12 +132,12 @@ export default {
       mdiCalendarToday,
       selectedEvent: {},
       selectedElement: null,
-      selectedOpen: false
+      selectedOpen: false,
+      calendarStartDate: this.$store.getters['splus/weekOrDefault']
     }
   },
   computed: {
     ...mapState({
-      currentWeek: (state) => state.splus.week,
       lazyLoad: (state) => state.lazyLoad,
       schedule: (state) => state.splus.schedule
     }),
@@ -152,26 +152,26 @@ export default {
     prevLabel () {
       return 'Vorherige Woche';
     },
-    firstDate () {
-      return this.$dayjs()
-        .isoWeek(this.weekOrDefault)
-        .startOf('isoweek').toDate();
-    },
-    lastDate () {
-      return this.$dayjs(this.firstDate).add(this.hasEventsOnWeekend ? 5 : 4, 'days').toDate();
+    calendarEndDate () {
+      return this.$dayjs(this.calendarStartDate).add(this.hasEventsOnWeekend ? 5 : 4, 'days').toDate();
     },
     longSummary () {
-      return this.$dayjs(this.firstDate).format('DD. MMMM') + ' – ' + this.$dayjs(this.lastDate).format('DD. MMMM YYYY');
+      return this.$dayjs(this.calendarStartDate).format('DD. MMMM') + ' – ' + this.$dayjs(this.calendarEndDate).format('DD. MMMM YYYY');
     },
     shortSummary () {
-      return this.$dayjs(this.firstDate).format('MMMM YYYY');
+      return this.$dayjs(this.calendarStartDate).format('MMMM YYYY');
     }
   },
   mounted () {
+    if (this.lazyLoad) {
+      // static build -> no events are in the store
+      this.refresh();
+    }
   },
   methods: {
     ...mapMutations({
-      setWeek: 'splus/setWeek',
+      incrementWeek: 'splus/incrementWeek',
+      decrementWeek: 'splus/decrementWeek',
       resetWeek: 'splus/resetWeek'
     }),
     ...mapActions({
@@ -182,16 +182,17 @@ export default {
       this.refresh();
     },
     prev () {
-      this.setWeek(this.$dayjs(this.firstDate).subtract('1', 'week').isoWeek());
+      this.decrementWeek();
       this.refresh();
     },
     next () {
-      this.setWeek(this.$dayjs(this.firstDate).add('1', 'week').isoWeek());
+      this.incrementWeek();
       this.refresh();
     },
     async refresh () {
-      // Load the data and store the events in the calendar
-      this.load();
+      // Load first and manually set start date afterwards so we avoid load flickering
+      await this.load();
+      this.calendarStartDate = this.weekOrDefault;
     },
     formatInterval (intervalObject) {
       if (this.$vuetify.breakpoint.mobile) {

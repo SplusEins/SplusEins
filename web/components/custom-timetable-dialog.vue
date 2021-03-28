@@ -160,11 +160,9 @@ export default {
       schedulesTree: 'splus/getTimetablesAsTree',
       customScheduleLabels: 'splus/customTimetableLabels',
       scheduleIds: 'splus/timetableIds',
-      getScheduleById: 'splus/getTimetableById',
-      weekOrDefault: 'splus/weekOrDefault'
+      getScheduleById: 'splus/getTimetableById'
     }),
     ...mapState({
-      week: (state) => state.splus.week,
       allowNecessaryCookies: (state) => state.privacy.allowNecessaryCookies
     })
   },

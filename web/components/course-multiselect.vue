@@ -14,7 +14,7 @@
       item-key="titleId"
       show-select
       mobile-breakpoint="0"
-      no-data-text="Keine Kurse sind geladen."
+      no-data-text="Keine Kurse geladen."
       disable-pagination
       disable-filtering
       disable-sort
