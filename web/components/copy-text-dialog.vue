@@ -4,20 +4,15 @@
     inset
   >
     <v-list>
-      <v-subheader>Link Teilen</v-subheader>
+      <v-subheader>Link teilen</v-subheader>
 
       <v-list-item
         v-clipboard="textToCopy"
         @click="open = false"
       >
-        <v-list-item-avatar>
-          <v-avatar
-            size="32px"
-            tile
-          >
-            <v-icon>{{ mdiContentCopy }}</v-icon>
-          </v-avatar>
-        </v-list-item-avatar>
+        <v-list-item-icon>
+          <v-icon>{{ mdiContentCopy }}</v-icon>
+        </v-list-item-icon>
         <v-list-item-title>Link in die Zwischenablage kopieren</v-list-item-title>
       </v-list-item>
     </v-list>
