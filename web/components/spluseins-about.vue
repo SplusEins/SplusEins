@@ -23,8 +23,8 @@
         </p>
         <p>
           Gebaut mit <a href="https://nuxtjs.org">Nuxt</a>, <a href="https://vuetifyjs.com">Vuetify</a>, <a href="https://github.com/ClickerMonkey/dayspan-vuetify">Dayspan-Vuetify</a>, Icons von <a href="https://materialdesignicons.com/">Material Design Icons</a> und der Schriftart <a href="https://fonts.google.com/specimen/Roboto">Roboto</a>.<br>
-          Alle Stundenpläne basieren auf den Inhalten von <a href="http://stundenplan.ostfalia.de/">stundenplan.ostfalia.de</a>.<br>
-          Die Mensapläne basieren auf den Inhalten von <a href="https://openmensa.org">OpenMensa</a>.<br>
+          Alle Stundenpläne basieren auf den Inhalten von <a href="http://stundenplan.ostfalia.de/">stundenplan.ostfalia.de</a>.
+          Die Mensapläne basieren auf den Inhalten von <a href="https://openmensa.org">OpenMensa</a>.
           Für Vollständigkeit wird keine Haftung übernommen.
         </p>
       </v-card-text>
