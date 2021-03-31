@@ -32,6 +32,7 @@
     <v-divider class="py-1" />
     <no-ssr>
       <v-carousel
+        v-if="hasAvailabePlans"
         :show-arrows="!$vuetify.breakpoint.mobile"
         :hide-delimiters="!$vuetify.breakpoint.mobile"
         hide-delimiter-background
@@ -80,7 +81,16 @@
           </v-carousel-item>
         </template>
       </v-carousel>
+      <v-alert
+        v-if="!hasAvailabePlans"
+        border="left"
+        class="my-4"
+        elevation="2"
+      >
+        Aktuell sind keine Pläne verfügbar.
+      </v-alert>
     </no-ssr>
+
     <span class="pt-1 d-flex justify-end text-caption text--secondary">
       Quelle: openmensa.org
     </span>
@@ -122,6 +132,9 @@ export default {
         grouped.push(this.plans.slice(i, i + 3));
       }
       return grouped;
+    },
+    hasAvailabePlans () {
+      return this.plans.length > 0;
     }
   },
   mounted () {
