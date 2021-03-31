@@ -4,7 +4,7 @@
     inset
   >
     <v-list>
-      <v-subheader>Link Teilen</v-subheader>
+      <v-subheader>Link teilen</v-subheader>
 
       <v-list-item
         v-clipboard="textToCopy"
@@ -12,7 +12,7 @@
       >
         <v-list-item-avatar>
           <v-avatar
-            size="32px"
+            size="24px"
             tile
           >
             <v-icon>{{ mdiContentCopy }}</v-icon>

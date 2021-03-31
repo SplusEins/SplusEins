@@ -11,7 +11,7 @@
       >
         <v-list-item-avatar>
           <v-avatar
-            size="32px"
+            size="24px"
             tile
           >
             <v-icon>{{ mdiDownload }}</v-icon>
@@ -26,13 +26,13 @@
       >
         <v-list-item-avatar>
           <v-avatar
-            size="32px"
+            size="24px"
             tile
           >
             <v-icon>{{ mdiContentCopy }}</v-icon>
           </v-avatar>
         </v-list-item-avatar>
-        <v-list-item-title>Link in die Zwischenablage kopieren</v-list-item-title>
+        <v-list-item-title>Link der Kalenderdatei kopieren</v-list-item-title>
       </v-list-item>
 
       <v-list-item
@@ -41,7 +41,7 @@
       >
         <v-list-item-avatar>
           <v-avatar
-            size="32px"
+            size="24px"
             tile
           >
             <v-icon>{{ mdiOpenInApp }}</v-icon>
