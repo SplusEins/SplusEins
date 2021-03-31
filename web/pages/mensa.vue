@@ -151,7 +151,7 @@ export default {
       setSidenav: 'ui/setSidenav'
     }),
     getIconColor (item) {
-      if (item == undefined || item.notes.includes('Vegetarisch')) {
+      if (item === undefined || item.notes.includes('Vegetarisch')) {
         return this.$vuetify.theme.dark ? 'white' : 'black';
       } else if (item.notes.includes('Vegan')) {
         return 'green';

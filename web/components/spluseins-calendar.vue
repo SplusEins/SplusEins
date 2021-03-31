@@ -26,23 +26,35 @@
             @click="setToday"
             class="ml-0"
           />
+          <v-tooltip bottom>
+            <template #activator="{ on, attrs }">
+              <v-btn
+                icon
+                @click="prev"
+                class="ml-1"
+                v-bind="attrs"
+                v-on="on"
+              >
+                <v-icon>{{ mdiChevronLeft }}</v-icon>
+              </v-btn>
+            </template>
+            <span>Vorherige Woche</span>
+          </v-tooltip>
 
-          <v-btn
-            icon
-            @click="prev"
-            class="ml-1"
-          >
-            <v-icon>{{ mdiChevronLeft }}</v-icon>
-          </v-btn>
-
-          <v-btn
-            icon
-            depressed
-            @click="next"
-            class="mr-1"
-          >
-            <v-icon>{{ mdiChevronRight }}</v-icon>
-          </v-btn>
+          <v-tooltip bottom>
+            <template #activator="{ on, attrs }">
+              <v-btn
+                icon
+                @click="next"
+                class="mr-1"
+                v-bind="attrs"
+                v-on="on"
+              >
+                <v-icon>{{ mdiChevronRight }}</v-icon>
+              </v-btn>
+            </template>
+            <span>Nächste Woche</span>
+          </v-tooltip>
 
           <v-toolbar-title>
             {{ monthSummary }}
@@ -217,7 +229,7 @@ export default {
 }
 .mini-padding {
   padding-top: 2px;
-  padding-left: 1px;
+  padding-left: 2px;
   padding-right: 1px;
 }
 
