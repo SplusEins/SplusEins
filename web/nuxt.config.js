@@ -1,5 +1,5 @@
 import PROTECTED_INFORMATION from './assets/protected-information.json';
-import de from 'vuetify/src/locale/de'
+import de from 'vuetify/lib/locale/de'
 
 export default {
   telemetry: false,
