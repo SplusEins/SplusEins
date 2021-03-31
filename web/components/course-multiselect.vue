@@ -17,7 +17,8 @@
       no-data-text="Keine Kurse geladen."
       disable-pagination
       disable-filtering
-      disable-sort
+      sort-by="title"
+      must-sort
     >
       <template #item.room="{ item }">
         <span v-html="item.room" />

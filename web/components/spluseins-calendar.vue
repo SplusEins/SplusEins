@@ -19,24 +19,18 @@
           flat
           class="inherit-background-color"
         >
-          <v-btn
-            :outlined="!$vuetify.breakpoint.mobile"
-            :small="$vuetify.breakpoint.mobile"
+          <responsive-icon-button
+            :breakpoint="!$vuetify.breakpoint.mobile"
+            :icon="mdiCalendarToday"
+            text="Heute"
             @click="setToday"
-            depressed
-          >
-            <span v-show="!$vuetify.breakpoint.mobile">Heute</span>
-            <v-icon v-show="$vuetify.breakpoint.mobile">
-              {{ mdiCalendarToday }}
-            </v-icon>
-          </v-btn>
+            class="ml-0"
+          />
 
           <v-btn
-            :small="$vuetify.breakpoint.xs"
             icon
-            depressed
             @click="prev"
-            class="mr-2"
+            class="ml-1"
           >
             <v-icon>{{ mdiChevronLeft }}</v-icon>
           </v-btn>
@@ -44,15 +38,14 @@
           <v-btn
             icon
             depressed
-            :small="$vuetify.breakpoint.xs"
             @click="next"
-            class="mr-2"
+            class="mr-1"
           >
             <v-icon>{{ mdiChevronRight }}</v-icon>
           </v-btn>
 
           <v-toolbar-title>
-            {{ $vuetify.breakpoint.mobile ? shortSummary : longSummary }}
+            {{ monthSummary }}
           </v-toolbar-title>
           <v-spacer />
 
@@ -64,7 +57,7 @@
           class="inherit-background-color"
           type="custom-daily"
           :events="events"
-          :start="calendarStartDate"
+          :start="weekOrDefault"
           :end="calendarEndDate"
           :interval-width="$vuetify.breakpoint.mobile ? 25 : 50"
           :interval-format="formatInterval"
@@ -132,8 +125,7 @@ export default {
       mdiCalendarToday,
       selectedEvent: {},
       selectedElement: null,
-      selectedOpen: false,
-      calendarStartDate: this.$store.getters['splus/weekOrDefault']
+      selectedOpen: false
     }
   },
   computed: {
@@ -146,20 +138,11 @@ export default {
       weekOrDefault: 'splus/weekOrDefault',
       hasEventsOnWeekend: 'splus/getHasEventsOnWeekend'
     }),
-    nextLabel () {
-      return 'Nächste Woche';
-    },
-    prevLabel () {
-      return 'Vorherige Woche';
-    },
     calendarEndDate () {
-      return this.$dayjs(this.calendarStartDate).add(this.hasEventsOnWeekend ? 5 : 4, 'days').toDate();
+      return this.$dayjs(this.weekOrDefault).add(this.hasEventsOnWeekend ? 5 : 4, 'days').toDate();
     },
-    longSummary () {
-      return this.$dayjs(this.calendarStartDate).format('DD. MMMM') + ' – ' + this.$dayjs(this.calendarEndDate).format('DD. MMMM YYYY');
-    },
-    shortSummary () {
-      return this.$dayjs(this.calendarStartDate).format('MMMM YYYY');
+    monthSummary () {
+      return this.$dayjs(this.weekOrDefault).format('MMMM YYYY');
     }
   },
   mounted () {
@@ -179,20 +162,15 @@ export default {
     }),
     setToday () {
       this.resetWeek(true);
-      this.refresh();
+      this.load();
     },
     prev () {
       this.decrementWeek();
-      this.refresh();
+      this.load();
     },
     next () {
       this.incrementWeek();
-      this.refresh();
-    },
-    async refresh () {
-      // Load first and manually set start date afterwards so we avoid load flickering
-      await this.load();
-      this.calendarStartDate = this.weekOrDefault;
+      this.load();
     },
     formatInterval (intervalObject) {
       if (this.$vuetify.breakpoint.mobile) {
@@ -202,20 +180,11 @@ export default {
       }
     },
     showEvent (event) {
-      const open = () => {
-        this.selectedEvent = event
-        this.selectedElement = event.nativeEvent.target
-        setTimeout(() => {
-          this.selectedOpen = true
-        }, 10)
-      }
-
-      if (this.selectedOpen) {
-        this.selectedOpen = false
-        setTimeout(open, 10)
-      } else {
-        open()
-      }
+      this.selectedEvent = event
+      this.selectedElement = event.nativeEvent.target
+      setTimeout(() => {
+        this.selectedOpen = true
+      }, 10)
 
       event.nativeEvent.stopPropagation()
     }

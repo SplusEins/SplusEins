@@ -107,3 +107,10 @@ export default {
   middleware: 'cached'
 };
 </script>
+<style lang="scss" scoped>
+.v-chip:hover::before {
+  // disable animation on hover, bc the chips are not selectable
+  // we can't use disabled prop because it changes the color as well
+  opacity: 0.0;
+}
+</style>

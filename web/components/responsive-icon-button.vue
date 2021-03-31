@@ -2,9 +2,10 @@
   <v-btn
     :outlined="breakpoint"
     :icon="!breakpoint"
-    :text="!breakpoint"
+    depressed
+    rounded
     @click="$emit('click')"
-    class="ml-1"
+    class="mr-0 mr-md-2"
   >
     <v-icon :left="breakpoint">
       {{ icon }}

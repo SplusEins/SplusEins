@@ -1,4 +1,5 @@
 import PROTECTED_INFORMATION from './assets/protected-information.json';
+import de from 'vuetify/src/locale/de'
 
 export default {
   telemetry: false,
@@ -112,6 +113,10 @@ export default {
     defaultAssets: false,
     theme: {
       options: { customProperties: true }
+    },
+    lang: {
+      locales: { de },
+      current: 'de'
     }
   },
 

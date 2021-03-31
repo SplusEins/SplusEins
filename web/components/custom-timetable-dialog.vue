@@ -33,7 +33,10 @@
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
-      <v-form v-model="valid">
+      <v-form
+        v-model="valid"
+        class="pa-2"
+      >
         <v-container>
           <v-row>
             <v-col cols="12">
