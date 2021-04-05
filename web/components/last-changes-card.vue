@@ -5,7 +5,7 @@
         Neues von SplusEins
       </div>
     </v-card-title>
-    <v-card-text class="card-text-padding">
+    <v-card-text>
       <ul>
         <li>Wir sind jetzt auch unter <a href="https://spluseins-i.ostfalia.de">https://spluseins-i.ostfalia.de</a> verfügbar.</li>
         <li>Wenn es eure Pläne nur als PDF gibt, können diese hier leider nicht angezeigt werden.</li>
@@ -20,7 +20,3 @@ export default {
   name: 'LastChangesCard'
 };
 </script>
-
-<style lang="scss">
-
-</style>

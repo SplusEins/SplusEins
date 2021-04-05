@@ -35,3 +35,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.theme--light.v-btn.v-btn--icon {
+  color: inherit !important;
+}
+</style>

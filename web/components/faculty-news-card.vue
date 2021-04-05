@@ -1,7 +1,7 @@
 <template>
   <v-card class="fill-height">
     <v-card-title class="pb-1">
-      <div class="text-h5">
+      <div class="text-h5 mr-1">
         Neues {{ selectedItem.title }}
       </div>
       <v-btn
@@ -11,7 +11,7 @@
         <v-icon>{{ mdiNewspaper }}</v-icon>
       </v-btn>
     </v-card-title>
-    <v-card-text class="card-text-padding">
+    <v-card-text>
       <v-list dense>
         <div
           v-for="item in facultyNews"

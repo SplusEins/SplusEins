@@ -2,12 +2,17 @@
   <v-footer
     dark
     app
+    class="px-1 text-body-2 font-size-mobile"
   >
     <v-col
       cols=12
-      class="pa-0 text-body-2 text-center"
+      class="pa-0 text-center"
     >
       {{ new Date().getFullYear() }}
+      —
+      <span class="font-weight-bold">
+        SplusEins
+      </span>
       —
       <a
         class="white--text"
@@ -50,9 +55,9 @@ export default {
 
 <style scoped lang="scss">
 
-@media screen and (max-width: 350px) {
-  .font-size{
-    font-size: 12px;
+@media screen and (max-width: 380px) {
+  .font-size-mobile {
+    font-size: 12px !important;
   }
 }
 
