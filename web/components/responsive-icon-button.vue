@@ -1,19 +1,29 @@
 <template>
-  <v-btn
-    :outlined="breakpoint"
-    :icon="!breakpoint"
-    depressed
-    rounded
-    @click="$emit('click')"
-    class="mr-0 mr-md-2"
+  <v-tooltip
+    :disabled="breakpoint"
+    bottom
   >
-    <v-icon :left="breakpoint">
-      {{ icon }}
-    </v-icon>
-    <span v-show="breakpoint">
-      {{ text }}
-    </span>
-  </v-btn>
+    <template #activator="{ on, attrs }">
+      <v-btn
+        :outlined="breakpoint"
+        :icon="!breakpoint"
+        depressed
+        rounded
+        @click="$emit('click')"
+        class="mr-0 mr-md-2"
+        v-bind="attrs"
+        v-on="on"
+      >
+        <v-icon :left="breakpoint">
+          {{ icon }}
+        </v-icon>
+        <span v-show="breakpoint">
+          {{ text }}
+        </span>
+      </v-btn>
+    </template>
+    <span>{{ text }}</span>
+  </v-tooltip>
 </template>
 
 <script>
