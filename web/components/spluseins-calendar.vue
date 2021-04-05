@@ -101,6 +101,11 @@
               </div>
             </div>
           </template>
+          <template #day>
+            <div>
+              ssadasd
+            </div>
+          </template>
         </v-calendar>
         <v-menu
           v-model="selectedOpen"

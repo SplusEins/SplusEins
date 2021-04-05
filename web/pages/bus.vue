@@ -1,7 +1,6 @@
 <template>
   <v-container
     fluid
-    class="pa-md-4"
   >
     <v-row dense>
       <v-col

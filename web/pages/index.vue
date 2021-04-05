@@ -4,7 +4,6 @@
       right: () => setSidenav(true)
     }"
     fluid
-    class="pa-md-4"
   >
     <v-row
       dense

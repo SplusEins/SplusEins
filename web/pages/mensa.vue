@@ -2,12 +2,15 @@
   <v-container
     fluid
     :show-arrows="false"
-    class="pa-md-4"
+    class="pa-md-7"
   >
-    <h2>Mensa Wolfenbüttel</h2>
-    <span><a href="https://www.stw-on.de/wolfenbuettel/essen/mensa/#c2368">Offizielle Mensa-Seite mit Öffnungszeiten</a></span>
-    <br>
-    <div class="text--secondary d-flex">
+    <div class="text-h5">
+      Mensa Wolfenbüttel
+    </div>
+    <div class="text-body-2">
+      <a href="https://www.stw-on.de/wolfenbuettel/essen/mensa/#c2368">Offizielle Mensa-Seite mit Öffnungszeiten</a>
+    </div>
+    <div class="text-body-2 text--secondary d-flex">
       <div class="d-flex pr-4">
         Vegetarisch
         <v-icon
@@ -29,7 +32,7 @@
         </v-icon>
       </div>
     </div>
-    <v-divider class="py-1" />
+    <v-divider class="my-1" />
     <no-ssr>
       <v-carousel
         v-if="hasAvailabePlans"
@@ -83,9 +86,8 @@
       </v-carousel>
       <v-alert
         v-if="!hasAvailabePlans"
-        border="left"
-        class="my-4"
-        elevation="2"
+        type="info"
+        class="my-6"
       >
         Aktuell sind keine Pläne verfügbar.
       </v-alert>

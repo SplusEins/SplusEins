@@ -137,7 +137,7 @@ export const getters = {
       .sort());
 
     const colorScale = chroma
-      .scale([colors.lightBlue.darken3, colors.teal.darken4])
+      .scale([colors.indigo.darken3, colors.teal.darken4])
       .colors(uniqueIds.length);
 
     const eventsByStart = new Map();
