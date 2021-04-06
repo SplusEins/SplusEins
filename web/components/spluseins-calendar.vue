@@ -69,7 +69,7 @@
           class="inherit-background-color"
           type="custom-daily"
           :events="events"
-          :start="weekOrDefault"
+          :start="calendarStartDate"
           :end="calendarEndDate"
           :interval-width="$vuetify.breakpoint.mobile ? 25 : 50"
           :interval-format="formatInterval"
@@ -99,11 +99,6 @@
               >
                 {{ eventParsed.start.time + ' - ' + eventParsed.end.time + ' Uhr' }}
               </div>
-            </div>
-          </template>
-          <template #day>
-            <div>
-              ssadasd
             </div>
           </template>
         </v-calendar>
@@ -142,7 +137,8 @@ export default {
       mdiCalendarToday,
       selectedEvent: {},
       selectedElement: null,
-      selectedOpen: false
+      selectedOpen: false,
+      calendarStartDate: this.$store.getters['splus/weekOrDefault']
     }
   },
   computed: {
@@ -156,10 +152,10 @@ export default {
       hasEventsOnWeekend: 'splus/getHasEventsOnWeekend'
     }),
     calendarEndDate () {
-      return this.$dayjs(this.weekOrDefault).add(this.hasEventsOnWeekend ? 5 : 4, 'days').toDate();
+      return this.$dayjs(this.calendarStartDate).add(this.hasEventsOnWeekend ? 5 : 4, 'days').toDate();
     },
     monthSummary () {
-      return this.$dayjs(this.weekOrDefault).format('MMMM YYYY');
+      return this.$dayjs(this.calendarStartDate).format('MMMM YYYY');
     }
   },
   mounted () {
@@ -179,15 +175,23 @@ export default {
     }),
     setToday () {
       this.resetWeek(true);
-      this.load();
+      this.refresh();
     },
     prev () {
       this.decrementWeek();
-      this.load();
+      this.refresh();
     },
     next () {
       this.incrementWeek();
-      this.load();
+      this.refresh();
+    },
+    async refresh () {
+      // Manually set loading bar, otherwise it isn't displayed properly because of await
+      this.$nuxt.$loading.start()
+      // Blocking load first and manually set start date afterwards so we avoid load flickering
+      await this.load();
+      this.calendarStartDate = this.weekOrDefault;
+      this.$nuxt.$loading.finish()
     },
     formatInterval (intervalObject) {
       if (this.$vuetify.breakpoint.mobile) {

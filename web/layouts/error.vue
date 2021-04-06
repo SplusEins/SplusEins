@@ -22,13 +22,6 @@
             position="right"
           />
           <v-img
-            v-else-if="error.statusCode == 403 || error.statusCode == 401"
-            class="ErrorImg"
-            src="/403_401.png"
-            position="right"
-          />
-
-          <v-img
             v-else-if="error.statusCode == 500"
             class="ErrorImg"
             src="/500.png"
@@ -40,11 +33,6 @@
               v-if="error.statusCode == 404"
             >
               Diese Seite gibt es leider nicht...
-            </div>
-            <div
-              v-if="error.statusCode == 403"
-            >
-              Verbinde dich mit dem Ostfalia-WLAN, bevor du diesen Plan aufrufen kannst.
             </div>
             <div
               v-if="error.statusCode == 500"

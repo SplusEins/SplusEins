@@ -28,10 +28,14 @@ export default {
   },
 
   /*
-  ** Customize the progress-bar color
+  ** Customize the automatic progress-bar
+  ** https://nuxtjs.org/docs/2.x/features/loading
   */
   loading: {
-    color: '#1565C0' // blue.darken3
+    color: '#1976D2', // blue.darken2
+    height: '3px',
+    duration: 1000,
+    continuous: true
   },
 
   /*
