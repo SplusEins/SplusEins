@@ -54,7 +54,9 @@ export default {
     // https://github.com/Inndy/vue-clipboard2
     '@/plugins/vue-clipboard2',
     // https://github.com/dumptyd/vue-css-donut-chart
-    '@/plugins/vue-css-donut-chart'
+    '@/plugins/vue-css-donut-chart',
+    // https://github.com/nuxt-community/pwa-module/issues/239#issuecomment-796807081
+    { src: '~/plugins/pwa-update.js', mode: 'client' }
   ],
 
   /*
