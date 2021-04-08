@@ -1,82 +1,99 @@
 <template>
   <v-container
     fluid
-    grid-list-md
-    hide-overlay
-    class="container-padding"
+    :show-arrows="false"
+    class="pa-md-7"
   >
-    <h2>Mensa Wolfenbüttel</h2>
-    <span><a href="https://www.stw-on.de/wolfenbuettel/essen/mensa/#c2368">Offizielle Mensa-Seite mit Öffnungszeiten</a></span>
-    <br>
-    <span class="explanation">
-      <span>
+    <div class="text-h5">
+      Mensa Wolfenbüttel
+    </div>
+    <div class="text-body-2">
+      <a href="https://www.stw-on.de/wolfenbuettel/essen/mensa/#c2368">Offizielle Mensa-Seite mit Öffnungszeiten</a>
+    </div>
+    <div class="text-body-2 text--secondary d-flex">
+      <div class="d-flex pr-4">
         Vegetarisch
         <v-icon
           :color="getIconColor()"
           small
+          class="align-self-center ml-1"
         >
-          mdi-leaf
+          {{ mdiLeaf }}
         </v-icon>
-      </span>
-      &nbsp;
-      <span>
+      </div>
+      <div class="d-flex">
         Vegan
         <v-icon
           color="green"
           small
+          class="align-self-center ml-1"
         >
-          mdi-leaf
+          {{ mdiLeaf }}
         </v-icon>
-      </span>
-    </span>
-    <v-divider class="divider" />
+      </div>
+    </div>
+    <v-divider class="my-1" />
     <no-ssr>
       <v-carousel
-        :hide-controls="$vuetify.breakpoint.smAndDown"
-        :hide-delimiters="!$vuetify.breakpoint.smAndDown"
-        :light="!isDark"
-        :cycle="false"
+        v-if="hasAvailabePlans"
+        :show-arrows="!$vuetify.breakpoint.mobile"
+        :hide-delimiters="!$vuetify.breakpoint.mobile"
+        hide-delimiter-background
+        :light="!this.$vuetify.theme.dark"
         height="100%"
       >
-        <template v-if="$vuetify.breakpoint.smAndDown">
+        <template v-if="$vuetify.breakpoint.mobile">
           <v-carousel-item
             v-for="dayPlan in plans"
             :key="dayPlan.date"
           >
-            <v-layout
-              row
+            <v-col
               class="carousel-delimiter-padding"
             >
               <mensa-dayplan :plan="dayPlan" />
-            </v-layout>
+            </v-col>
           </v-carousel-item>
         </template>
-        <template v-if="!$vuetify.breakpoint.smAndDown">
+        <template v-if="!$vuetify.breakpoint.mobile">
           <v-carousel-item
             v-for="dayPlanGroup in groupedDayPlans"
             :key="dayPlanGroup[0].date"
           >
-            <v-layout
-              row
+            <v-row
+              dense
               class="carousel-control-padding"
             >
-              <mensa-dayplan
-                :plan="dayPlanGroup[0]"
-              />
-              <mensa-dayplan
-                v-if="dayPlanGroup[1]"
-                :plan="dayPlanGroup[1]"
-              />
-              <mensa-dayplan
-                v-if="dayPlanGroup[2]"
-                :plan="dayPlanGroup[2]"
-              />
-            </v-layout>
+              <v-col>
+                <mensa-dayplan
+                  :plan="dayPlanGroup[0]"
+                />
+              </v-col>
+              <v-col>
+                <mensa-dayplan
+                  v-if="dayPlanGroup[1]"
+                  :plan="dayPlanGroup[1]"
+                />
+              </v-col>
+              <v-col>
+                <mensa-dayplan
+                  v-if="dayPlanGroup[2]"
+                  :plan="dayPlanGroup[2]"
+                />
+              </v-col>
+            </v-row>
           </v-carousel-item>
         </template>
       </v-carousel>
+      <v-alert
+        v-if="!hasAvailabePlans"
+        type="info"
+        class="my-6"
+      >
+        Aktuell sind keine Pläne verfügbar.
+      </v-alert>
     </no-ssr>
-    <span class="disclaimer">
+
+    <span class="pt-1 d-flex justify-end text-caption text--secondary">
       Quelle: openmensa.org
     </span>
   </v-container>
@@ -85,6 +102,7 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
 import MensaDayplan from '../components/mensa-dayplan.vue';
+import { mdiLeaf } from '@mdi/js'
 
 export default {
   name: 'MensaPage',
@@ -97,14 +115,18 @@ export default {
       ]
     };
   },
+  data () {
+    return {
+      mdiLeaf
+    }
+  },
   components: {
     MensaDayplan
   },
   computed: {
     ...mapState({
       plans: (state) => state.mensa.plans,
-      lazyLoad: (state) => state.lazyLoad,
-      isDark: (state) => state.ui.isDark
+      lazyLoad: (state) => state.lazyLoad
     }),
     groupedDayPlans () {
       const grouped = [];
@@ -112,6 +134,9 @@ export default {
         grouped.push(this.plans.slice(i, i + 3));
       }
       return grouped;
+    },
+    hasAvailabePlans () {
+      return this.plans.length > 0;
     }
   },
   mounted () {
@@ -128,8 +153,8 @@ export default {
       setSidenav: 'ui/setSidenav'
     }),
     getIconColor (item) {
-      if (item == undefined || item.notes.includes('Vegetarisch')) {
-        return this.isDark ? 'white' : 'black';
+      if (item === undefined || item.notes.includes('Vegetarisch')) {
+        return this.$vuetify.theme.dark ? 'white' : 'black';
       } else if (item.notes.includes('Vegan')) {
         return 'green';
       }
@@ -154,32 +179,11 @@ export default {
   margin: 0px !important;
 }
 
-.v-window__container,
-.v-image {
-  height: 100% !important;
-}
-
 .v-carousel__controls {
   height: 40px !important;
 }
 
-.explanation{
-  opacity: 0.5;
-}
-
-.disclaimer {
-  padding-top: 2px;
-  display: flex;
-  justify-content: flex-end;
-  opacity: 0.5;
-  font-size: 12px;
-}
-
-.container-padding{
-  padding-bottom: 3px;
-}
-
-.divider {
-  padding: 5px;
+.v-window__prev, .v-window__next {
+  margin: 0 !important;
 }
 </style>

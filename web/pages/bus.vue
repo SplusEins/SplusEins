@@ -1,30 +1,35 @@
 <template>
   <v-container
     fluid
-    grid-list-md
   >
-    <v-layout wrap>
-      <v-flex
+    <v-row dense>
+      <v-col
         v-for="direction in directions"
         :key="direction"
+        cols=12
+        md=auto
+        class="flex-grow-1"
       >
         <v-card>
           <v-card-title>
-            <div class="headline">
+            <div class="text-h5">
               {{ directionLabel[direction] }}
             </div>
           </v-card-title>
 
-          <v-list>
-            <v-list-tile
+          <v-list dense>
+            <v-list-item
               v-for="departure in departures[direction]"
               :key="departure.date"
             >
-              <v-list-tile-content>
+              <v-list-item-content
+                class="pb-0"
+              >
                 <p>
                   <v-chip
-                    outline
+                    outlined
                     :color="lineColor(departure.line)"
+                    class="mr-2"
                   >
                     Linie {{ departure.line }}
                   </v-chip>
@@ -33,14 +38,14 @@
                     ({{ relativeDate(departure.date) }})
                   </template>
                 </p>
-              </v-list-tile-content>
-            </v-list-tile>
+              </v-list-item-content>
+            </v-list-item>
           </v-list>
         </v-card>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
 
-    <span class="disclaimer">
+    <span class="pt-1 d-flex justify-end text-caption text--secondary">
       Quelle: Deutsche Bahn HAFAS
     </span>
   </v-container>
@@ -48,7 +53,6 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
-import * as moment from 'moment';
 
 export default {
   name: 'BusPage',
@@ -69,17 +73,16 @@ export default {
         fhToExer: 'Fachhochschule zu Exer'
       },
       refreshTimer: undefined,
-      relativeDate: (str) => moment(str).fromNow(),
-      absoluteDate: (str) => moment(str).format('HH:mm'),
-      minutesUntilDate: (str) => moment(str).diff(moment(), 'minutes'),
+      relativeDate: (str) => this.$dayjs(str).fromNow(),
+      absoluteDate: (str) => this.$dayjs(str).format('HH:mm'),
+      minutesUntilDate: (str) => this.$dayjs(str).diff(this.$dayjs(), 'minutes'),
       lineColor: (line) => ['pink', 'purple', 'blue'][parseInt(line) % 4]
     }
   },
   computed: {
     ...mapState({
       departures: (state) => state.bus.departures,
-      lazyLoad: (state) => state.lazyLoad,
-      isDark: (state) => state.ui.isDark
+      lazyLoad: (state) => state.lazyLoad
     })
   },
   mounted () {
@@ -103,13 +106,10 @@ export default {
   middleware: 'cached'
 };
 </script>
-
-<style lang="scss">
-.disclaimer {
-  padding-top: 2px;
-  display: flex;
-  justify-content: flex-end;
-  opacity: 0.5;
-  font-size: 12px;
+<style lang="scss" scoped>
+.v-chip:hover::before {
+  // disable animation on hover, bc the chips are not selectable
+  // we can't use disabled prop because it changes the color as well
+  opacity: 0.0;
 }
 </style>

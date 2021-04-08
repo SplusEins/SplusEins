@@ -1,35 +1,35 @@
 <template>
-  <v-card>
+  <v-card class="fill-height">
     <v-card-title>
-      <div class="headline">
+      <div class="text-h5">
         Schnellzugriff
       </div>
     </v-card-title>
-    <v-card-text class="card-text-padding">
+    <v-card-text class="text-body-1">
       <v-list v-if="customSchedulesAsRoutes.length != 0">
-        <v-list-tile
+        <v-list-item
           v-for="route in customSchedulesAsRoutes"
           :key="route.query.name"
           :to="route"
-          flat
+          text
           nuxt
           @click="$track('Calendar', 'dashboard plan used', 'custom')"
         >
           {{ route.query.name }}
-        </v-list-tile>
+        </v-list-item>
       </v-list>
       <v-divider v-if="displayDivider" />
       <v-list v-if="favorites.length != 0">
-        <v-list-tile
+        <v-list-item
           v-for="favorite in favorites"
           :key="favorite.id"
           :to="favorite.route"
-          flat
+          text
           nuxt
           @click="$track('Calendar', 'dashboard plan used', 'favorite')"
         >
           {{ favorite.description }}
-        </v-list-tile>
+        </v-list-item>
       </v-list>
     </v-card-text>
   </v-card>
@@ -54,10 +54,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
-
-.card-text-padding{
-  padding-top: 0px;
-}
+<style scoped lang="scss">
 
 </style>

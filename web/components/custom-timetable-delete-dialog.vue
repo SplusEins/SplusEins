@@ -4,20 +4,20 @@
     max-width="400"
   >
     <v-card>
-      <v-card-title class="headline">
+      <v-card-title class="text-h5">
         {{ customSchedule.label }} löschen?
       </v-card-title>
       <v-card-actions>
         <v-spacer />
 
         <v-btn
-          flat
+          text
           @click="dialogOpen = false"
         >
           Abbrechen
         </v-btn>
         <v-btn
-          flat
+          text
           color="error"
           @click="confirmDelete()"
         >

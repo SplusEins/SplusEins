@@ -8,49 +8,34 @@
     </v-alert>
     <v-data-table
       v-model="selectedCourses"
-      :headers="headers"
+      :headers="$vuetify.breakpoint.mobile ? headers_mobile : headers"
       :items="courses"
-      hide-headers
-      hide-actions
+      hide-default-footer
       item-key="titleId"
+      show-select
+      mobile-breakpoint="0"
+      no-data-text="Keine Kurse geladen."
+      disable-pagination
+      disable-filtering
+      sort-by="title"
+      must-sort
     >
-      <template slot="no-data">
-        <v-layout
-          row
-          justify-center
-        >
-          <p>Keine Kurse sind geladen.</p>
-        </v-layout>
+      <template #item.room="{ item }">
+        <span v-html="item.room" />
       </template>
-      <template
-        slot="items"
-        slot-scope="props"
-      >
-        <td>
-          <v-checkbox
-            v-model="props.selected"
-            :disabled="!props.selected && selectedCourses.length > maxCourses"
-            :color="overlappingCourses.includes(props.item.title) ? 'warning' : 'secondary'"
-            hide-details
-          />
-        </td>
-        <td>
-          {{ props.item.title }}
-          <span v-show="$vuetify.breakpoint.xs"><span v-html="getShortMetadata(props.item)" /> </span>
-        </td>
-        <td v-show="$vuetify.breakpoint.smAndUp">
-          {{ props.item.lecturer }}
-        </td>
-        <td v-show="$vuetify.breakpoint.smAndUp">
-          <span v-html="props.item.room" />
-        </td>
+      <template #item.data-table-select="{item, isSelected, select}">
+        <v-simple-checkbox
+          :value="isSelected"
+          @input="select"
+          :disabled="!isSelected && selectedCourses.length > maxCourses"
+          :color="overlappingCourses.includes(item.title) ? 'warning' : undefined"
+        />
       </template>
     </v-data-table>
   </div>
 </template>
 
 <script>
-import * as moment from 'moment';
 
 export default {
   name: 'CourseMultiselect',
@@ -71,9 +56,12 @@ export default {
   data () {
     return {
       headers: [
-        { value: 'title' },
-        { value: 'lecturer' },
-        { value: 'room' }
+        { value: 'title', text: 'Vorlesung' },
+        { value: 'lecturer', text: 'Dozent' },
+        { value: 'room', text: 'Raum' }
+      ],
+      headers_mobile: [
+        { value: 'title', text: 'Vorlesung' }
       ]
     };
   },
@@ -91,7 +79,7 @@ export default {
       // get all lectures which have their title selected
       let selectedLectures = this.lectures.filter(
         (lecture) => this.selectedCourses.some(
-          (course) => course.titleId == lecture.titleId));
+          (course) => course.titleId === lecture.titleId));
 
       // filter duplicates
       const key = (lecture) =>
@@ -104,7 +92,7 @@ export default {
       // group all lectures by day because only they can conflict
       const lecturesByDay = new Map();
       selectedLectures.forEach((lecture) => {
-        const key = `${moment(lecture.start).week()} ${lecture.day}`;
+        const key = `${this.$dayjs(lecture.start).week()} ${lecture.day}`;
         const list = lecturesByDay.get(key) || [];
         list.push(lecture);
         lecturesByDay.set(key, list);

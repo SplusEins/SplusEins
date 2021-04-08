@@ -1,54 +1,49 @@
 <template>
-  <lazy-hydrate
-    ssr-only
-    :trigger-hydration="dialogOpen"
+  <v-dialog
+    v-model="dialogOpen"
+    max-width="400"
   >
-    <v-dialog
-      v-model="dialogOpen"
-      max-width="400"
-    >
-      <v-card>
-        <v-toolbar
+    <v-card>
+      <v-toolbar
+        dark
+        color="primary"
+      >
+        <v-btn
+          icon
           dark
-          color="primary"
+          @click.native="dialogOpen = false"
         >
-          <v-btn
-            icon
-            dark
-            @click.native="dialogOpen = false"
-          >
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-          <v-toolbar-title>{{ title }}</v-toolbar-title>
-        </v-toolbar>
+          <v-icon>{{ mdiClose }}</v-icon>
+        </v-btn>
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
+      </v-toolbar>
 
-        <v-card-text class="card-text-padding">
-          <v-list>
-            <v-list-tile
-              v-for="item in items"
-              :key="!!item.description? item.description: item.label"
-              @click="selectedItem = item, dialogOpen = false"
-            >
-              <v-list-tile-action>
-                <v-icon
-                  v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label"
-                >
-                  mdi-check
-                </v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ !!item.description? item.description: item.label }}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-  </lazy-hydrate>
+      <v-card-text class="pa-0">
+        <v-list>
+          <v-list-item
+            v-for="item in items"
+            :key="!!item.description? item.description: item.label"
+            @click="selectedItem = item, dialogOpen = false"
+          >
+            <v-list-item-action>
+              <v-icon
+                v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label"
+              >
+                {{ mdiCheck }}
+              </v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>{{ !!item.description? item.description: item.label }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-card-text>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
-
+import { mdiClose, mdiCheck } from '@mdi/js'
 export default {
   name: 'SelectDialog',
   props: {
@@ -69,6 +64,12 @@ export default {
       default: () => {}
     }
   },
+  data () {
+    return {
+      mdiClose,
+      mdiCheck
+    };
+  },
   computed: {
     dialogOpen: {
       get () { return this.open; },
@@ -81,11 +82,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="scss">
-
-.card-text-padding{
-  padding: 0px 5px;
-}
-
-</style>

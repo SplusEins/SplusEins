@@ -18,9 +18,7 @@
     <general-timetables-list />
     <no-ssr>
       <install-button-list
-        :class="['stick-bottom', {
-          'light--background': !isDark,
-          'dark--background': isDark }]"
+        class="stick-bottom"
       />
     </no-ssr>
   </v-navigation-drawer>
@@ -58,14 +56,8 @@ export default {
       customSchedules: (state) => state.splus.customSchedules,
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
       sidenavIsOpen: (state) => state.ui.sidenavIsOpen,
-      browserStateReady: (state) => state.browserStateReady,
-      isDark: state => state.ui.isDark
+      browserStateReady: (state) => state.browserStateReady
     })
-  },
-  watch: {
-    browserStateReady () {
-      this.setSidenav(this.$vuetify.breakpoint.mdAndUp);
-    }
   },
   methods: {
     ...mapMutations({
@@ -75,17 +67,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .stick-bottom {
   position: sticky;
   bottom: 0;
 }
 
-.light--background {
-  background: #fff;
-}
-
-.dark--background {
-  background: #424242;
-}
 </style>

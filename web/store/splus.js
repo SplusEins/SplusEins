@@ -1,22 +1,24 @@
-import colors from 'vuetify/es5/util/colors';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
+import colors from 'vuetify/lib/util/colors'
 import * as chroma from '../lib/chroma';
 
 import TIMETABLES from '~/assets/timetables.json';
 import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customTimetableToRoute, scalarArraysEqual } from '~/lib/util';
 
+const formatDayjs = (date) => { return date.format('YYYY-MM-DD'); };
+
 function defaultWeek () {
-  if (moment().isoWeek() < SEMESTER_WEEK_1 && (SEMESTER_WEEK_1 - moment().isoWeek()) < 8) {
+  if (dayjs().isoWeek() < SEMESTER_WEEK_1 && (SEMESTER_WEEK_1 - dayjs().isoWeek()) < 8) {
     // Use semester beginning instead of today if semester hasn't started yet
     // Do that only a few weeks before the semester so we avoid bugs with year wraparounds
-    return SEMESTER_WEEK_1;
+    return formatDayjs(dayjs().isoWeek(SEMESTER_WEEK_1));
   }
 
   // if the user is looking at today and is on Sat/Sun, peek to the next week
-  if (moment().isoWeekday() == 6 || moment().isoWeekday() == 7) {
-    return moment().isoWeek() + 1;
+  if (dayjs().isoWeekday() === 6 || dayjs().isoWeekday() === 7) {
+    return formatDayjs(dayjs().startOf('isoweek').add('1', 'week'));
   } else {
-    return moment().isoWeek();
+    return formatDayjs(dayjs().startOf('isoweek'));
   }
 }
 
@@ -50,7 +52,7 @@ export async function loadUniqueLectures (timetable, $get) {
  */
 export function eventsAsLectures (events) {
   return events.map((event) => {
-    const startMoment = moment(event.start);
+    const startMoment = dayjs(event.start);
     return {
       title: event.title,
       day: startMoment.isoWeekday(),
@@ -80,7 +82,7 @@ export const state = () => ({
         params: { timetable: timetable.id }
       },
       description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
-      longDescription: timetable.degree == 'Räume'
+      longDescription: timetable.degree === 'Räume'
         ? `${timetable.semester} – Raum ${timetable.label}`
         : `${timetable.label} ${timetable.semester}. Semester ${shortenTimetableDegree(timetable)}`
     })),
@@ -105,8 +107,7 @@ export const state = () => ({
   events: [],
   lectures: [], // TODO deprecated in favor of events
   /**
-   * Currently viewed week.
-   * Week 53 of year 2018 equals week 1 of year 2019.
+   * Currently viewed week as a date string. The date string specifies the first day of that week.
    */
   week: undefined,
   /**
@@ -122,7 +123,7 @@ export const getters = {
   },
   getHasEventsOnWeekend: (state) => {
     return state.events
-      .map(({ start }) => moment(start).isoWeekday())
+      .map(({ start }) => dayjs(start).isoWeekday())
       .filter((day) => day > 5) // 1: Monday, 5: Friday
       .length > 0;
   },
@@ -136,7 +137,7 @@ export const getters = {
       .sort());
 
     const colorScale = chroma
-      .scale([colors.lightBlue.darken4, colors.cyan.darken4])
+      .scale([colors.blue.darken2, colors.teal.darken4])
       .colors(uniqueIds.length);
 
     const eventsByStart = new Map();
@@ -147,25 +148,14 @@ export const getters = {
       const color = colorScale[uniqueIds.indexOf(event.meta.organiserShortname)];
       const description = event.meta.organiserName ? `${event.meta.organiserName}\n${event.meta.description}` : `${event.meta.description}`;
 
-      const startMoment = moment(event.start);
+      const startMoment = dayjs(event.start);
       return {
-        data: {
-          title: event.title,
-          color, // needs to be a hex string
-          description,
-          location: event.location,
-          concurrentCount: eventsByStart.get(event.start).length,
-          concurrentOffset: eventsByStart.get(event.start).indexOf(event)
-        },
-        schedule: {
-          on: startMoment,
-          times: [{
-            hour: startMoment.hour(),
-            minute: startMoment.minute()
-          }],
-          duration: event.duration,
-          durationUnit: 'hours'
-        }
+        name: event.title,
+        start: startMoment.format('YYYY-MM-DD HH:mm'),
+        end: startMoment.add(event.duration, 'hours').format('YYYY-MM-DD HH:mm'),
+        desc: description,
+        location: event.location,
+        color: color
       };
     });
   },
@@ -196,7 +186,7 @@ export const getters = {
     return state.schedules.map(({ id }) => id);
   },
   getTimetableById: (state) => (timetableId) => {
-    return state.schedules.find(({ id }) => id == timetableId);
+    return state.schedules.find(({ id }) => id === timetableId);
   },
   customTimetablesAsRoutes: (state) => {
     return Object.values(state.customSchedules)
@@ -226,8 +216,11 @@ export const mutations = {
   setUpcomingEvents (state, events) {
     state.upcomingEvents = events;
   },
-  setWeek (state, week) {
-    state.week = week;
+  decrementWeek (state) {
+    state.week = formatDayjs(dayjs(state.week).subtract('1', 'week'));
+  },
+  incrementWeek (state) {
+    state.week = formatDayjs(dayjs(state.week).add('1', 'week'));
   },
   resetWeek (state, forceDefault) {
     if (forceDefault) {
@@ -247,11 +240,11 @@ export const mutations = {
     const customTimetableStored = state.customSchedules[label];
 
     // detect conflicts - never overwrite
-    if (customTimetableStored != undefined) {
+    if (customTimetableStored !== undefined) {
       const coursesGiven = customTimetable.whitelist;
       const coursesStored = customTimetableStored.whitelist;
 
-      if (customTimetable.id != customTimetableStored.id ||
+      if (customTimetable.id !== customTimetableStored.id ||
           !scalarArraysEqual(coursesGiven, coursesStored)) {
         console.log('not overwriting local custom timetable ' +
           'with different configuration');
@@ -267,13 +260,13 @@ export const mutations = {
   },
   deleteCustomSchedule (state, customTimetable) {
     this._vm.$delete(state.customSchedules, customTimetable.label);
-    if (state.subscribedTimetable.label == customTimetable.label) {
+    if (state.subscribedTimetable.label === customTimetable.label) {
       const subscribables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
-      state.subscribedTimetable = subscribables.length == 0 ? {} : subscribables[0];
+      state.subscribedTimetable = subscribables.length === 0 ? {} : subscribables[0];
     }
   },
   addFavoriteSchedule (state, favoriteTimetable) {
-    if (state.favoriteSchedules.filter(favorite => favorite.id == favoriteTimetable.id).length == 0) {
+    if (state.favoriteSchedules.filter(favorite => favorite.id === favoriteTimetable.id).length === 0) {
       state.favoriteSchedules.push(favoriteTimetable);
       if (Object.keys(state.subscribedTimetable).length === 0) {
         state.subscribedTimetable = favoriteTimetable;
@@ -282,10 +275,10 @@ export const mutations = {
   },
   removeFavoriteSchedule (state, favoriteTimetable) {
     state.favoriteSchedules = state.favoriteSchedules
-      .filter((timetable) => timetable.id != favoriteTimetable.id);
-    if (state.subscribedTimetable.id == favoriteTimetable.id) {
+      .filter((timetable) => timetable.id !== favoriteTimetable.id);
+    if (state.subscribedTimetable.id === favoriteTimetable.id) {
       const subscribables = [...Object.values(state.customSchedules), ...state.favoriteSchedules];
-      state.subscribedTimetable = subscribables.length == 0 ? {} : subscribables[0];
+      state.subscribedTimetable = subscribables.length === 0 ? {} : subscribables[0];
     }
   },
   setSubscribedTimetable (state, timetable) {
@@ -299,12 +292,12 @@ export const actions = {
    */
   async load ({ state, commit }) {
     try {
-      const events = await loadEvents(state.schedule, state.week, this.$axios.$get);
+      const events = await loadEvents(state.schedule, dayjs(state.week).isoWeek(), this.$axios.$get);
       const lectures = eventsAsLectures(events);
       commit('setLectures', lectures);
       commit('setEvents', events);
     } catch (error) {
-      if (error.response.status == 403) {
+      if (error.response.status === 403) {
         throw error;
       }
       commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', { root: true });
@@ -316,10 +309,10 @@ export const actions = {
    */
   async loadUpcomingEvents ({ state, commit }) {
     try {
-      const events = await loadEvents(state.upcomingLecturesTimetable, defaultWeek(), this.$axios.$get);
+      const events = await loadEvents(state.upcomingLecturesTimetable, dayjs(defaultWeek()).isoWeek(), this.$axios.$get);
       commit('setUpcomingEvents', events);
     } catch (error) {
-      if (error.response.status == 403) {
+      if (error.response.status === 403) {
         throw error;
       }
       commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', { root: true });
@@ -351,7 +344,7 @@ export const actions = {
         }
 
         const timetable = state.schedules
-          .find((timetable) => timetable.id == params.timetable);
+          .find((timetable) => timetable.id === params.timetable);
 
         // standard, no filters
         commit('setSchedule', timetable);

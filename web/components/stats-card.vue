@@ -1,13 +1,13 @@
 <template>
-  <v-card>
+  <v-card class="fill-height">
     <v-card-title>
-      <span class="headline">Statistik</span>
+      <span class="text-h5">Statistik</span>
     </v-card-title>
     <vc-donut
       :sections="sections"
       :size="230"
       :thickness="30"
-      :background="isDark ? '#424242' : 'white'"
+      :background="this.$vuetify.theme.dark ? '#1E1E1E' : 'white'"
       :total="totalHours"
       unit="px"
     >
@@ -23,7 +23,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import * as moment from 'moment';
 
 export default {
   name: 'StatsCard',
@@ -37,7 +36,6 @@ export default {
   },
   computed: {
     ...mapState({
-      isDark: (state) => state.ui.isDark,
       upcomingEvents: (state) => state.splus.upcomingEvents,
       subscribedTimetable: (state) => state.splus.subscribedTimetable
     })
@@ -61,7 +59,7 @@ export default {
         } else {
           uniqueEvents.set(element.title, element.duration)
         }
-        if (!weekdays.includes(moment(element.start).day())) weekdays.push(moment(element.start).day())
+        if (!weekdays.includes(this.$dayjs(element.start).day())) weekdays.push(this.$dayjs(element.start).day())
       });
 
       this.totalWeekdays = weekdays.length;
@@ -84,7 +82,6 @@ export default {
 
 .card-text{
   text-align: center;
-  margin-top: 8px;
 }
 
 </style>

@@ -1,13 +1,10 @@
 module.exports = {
   env: {
     browser: true,
-    node: true,
-    es2021: true
+    node: true
   },
   parserOptions: {
-    parser: 'babel-eslint',
-    ecmaVersion: 12,
-    sourceType: 'module'
+    parser: 'babel-eslint'
   },
   extends: [
     'eslint:recommended',
@@ -27,6 +24,8 @@ module.exports = {
     'spaced-comment': 'warn',
     semi: 'off', // no preference for semicolons at end
     complexity: ['warn', { max: 30 }],
-    'no-warning-comments': 'warn'
+    'no-warning-comments': 'warn',
+    'vue/valid-v-slot': 'off', // false positives for vuetify
+    'vue/html-quotes': 'off' // doesn't work properly
   }
 }

@@ -4,111 +4,90 @@
       right: () => setSidenav(true)
     }"
     fluid
-    grid-list-md
   >
-    <v-layout
-      row
-      wrap
+    <v-row
+      dense
     >
-      <v-flex
-        d-flex
-        md6
-        lg6
-        order-xs1
-        order-md1
+      <v-col
+        cols=12
+        md=6
+        order="first"
       >
-        <v-layout column>
-          <v-flex
-            d-flex
+        <v-row
+          no-gutters
+          class="fill-height"
+        >
+          <v-col
+            cols=12
+            class="mb-md-1"
           >
             <upcoming-lectures-card />
-          </v-flex>
-          <v-flex
-            v-show="$vuetify.breakpoint.mdAndUp"
-            :d-flex="$vuetify.breakpoint.mdAndUp"
+          </v-col>
+
+          <v-col
+            cols=12
+            class="mt-md-1"
+            v-show="!$vuetify.breakpoint.mobile"
           >
             <faculty-news-card />
-          </v-flex>
-        </v-layout>
-      </v-flex>
+          </v-col>
+        </v-row>
+      </v-col>
 
-      <v-flex
-        d-flex
-        md6
-        lg6
-        order-xs6
-        order-md2
+      <v-col
+        cols=12
+        md=6
+        order-md=2
+        order="last"
       >
         <campus-news-card />
-      </v-flex>
+      </v-col>
 
-      <v-flex
-        v-show="!$vuetify.breakpoint.mdAndUp"
-        :d-flex="!$vuetify.breakpoint.mdAndUp"
-        order-xs7
-        order-md7
+      <v-col
+        v-show="$vuetify.breakpoint.mobile"
+        order=4
       >
         <faculty-news-card />
-      </v-flex>
+      </v-col>
 
-      <v-flex
+      <v-col
         v-show="displayMensaCard"
-        :d-flex="displayMensaCard"
-        md6
-        :lg4="hasSubscribableTimetables"
-        :lg6="!hasSubscribableTimetables"
-        order-xs2
-        order-md3
+        cols=12
+        md=6
+        :lg="hasSubscribableTimetables ? 4 : 6"
+        order=3
+        order-md=4
       >
         <mensa-card />
-      </v-flex>
+      </v-col>
 
-      <v-flex
+      <v-col
         v-show="hasSubscribableTimetables"
-        :d-flex="hasSubscribableTimetables"
-        md6
-        lg4
-        order-xs4
-        order-md4
+        cols=12
+        md=6
+        :lg="displayMensaCard ? 4 : 6"
+        order=5
       >
         <stats-card />
-      </v-flex>
+      </v-col>
 
-      <v-flex
+      <v-col
         v-show="hasSubscribableTimetables"
-        :d-flex="hasSubscribableTimetables"
-        md6
-        lg4
-        order-xs3
-        order-md5
+        cols=12
+        md=6
+        :lg="displayMensaCard ? 4 : 6"
+        order=2
+        order-md=3
       >
         <quick-access-card />
-      </v-flex>
-
-      <v-flex
-        d-flex
-        :md6="displayMensaCard"
-        :lg4="!displayMensaCard && hasSubscribableTimetables"
-        :lg6="displayMensaCard && !hasSubscribableTimetables"
-        :lg12="displayMensaCard && hasSubscribableTimetables"
-        order-xs5
-        order-md6
-      >
-        <v-layout :column="$vuetify.breakpoint.lgAndUp || $vuetify.breakpoint.xs">
-          <v-flex d-flex>
-            <last-changes-card />
-          </v-flex>
-        </v-layout>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import { mapState, mapGetters, mapMutations } from 'vuex';
-import * as moment from 'moment';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
-import LastChangesCard from '../components/last-changes-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import CampusNewsCard from '../components/campus-news-card.vue';
@@ -119,7 +98,6 @@ export default {
   name: 'IndexPage',
   components: {
     UpcomingLecturesCard,
-    LastChangesCard,
     QuickAccessCard,
     MensaCard,
     CampusNewsCard,
@@ -132,7 +110,7 @@ export default {
         return false;
       }
       // display if next plan is from today or from tomorrow
-      return moment().isSame(this.mensaPlans[0].date, 'day') || moment().add(1, 'days').isSame(this.mensaPlans[0].date, 'day');
+      return this.$dayjs().isSame(this.mensaPlans[0].date, 'day') || this.$dayjs().add(1, 'days').isSame(this.mensaPlans[0].date, 'day');
     },
     ...mapState({
       mensaPlans: (state) => state.mensa.plans

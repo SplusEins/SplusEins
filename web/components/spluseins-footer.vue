@@ -1,63 +1,50 @@
 <template>
   <v-footer
     dark
-    class="no-min-height"
     app
+    class="px-1 text-body-2 font-size-mobile"
   >
-    <v-layout
-      justify-center
-      row
-      wrap
+    <v-col
+      cols=12
+      class="pa-0 text-center"
     >
-      <v-flex
-        lighten-2
-        py-3
-        text-xs-center
-        xs12
-        class="font-size"
+      {{ new Date().getFullYear() }}
+      —
+      <span class="font-weight-bold">
+        SplusEins
+      </span>
+      —
+      <a
+        class="white--text"
+        @click="aboutDialogOpen = true; $track('Footer', 'openAbout')"
       >
-        {{ new Date().getFullYear() }}
-        —
-        <strong>
-          SplusEins
-        </strong>
-        —
-        <a
-          class="white--text"
-          @click="aboutDialogOpen = true; $track('Footer', 'openAbout')"
-        >
-          Über
-        </a>
-        —
-        <nuxt-link
-          to="/impressum"
-          class="link"
-          @click="$track('Footer', 'openImpressum')"
-        >
-          Impressum
-        </nuxt-link>
-        —
-        <nuxt-link
-          to="/datenschutz"
-          class="link"
-          @click="$track('Footer', 'openDatenschutz')"
-        >
-          Datenschutz
-        </nuxt-link>
-      </v-flex>
-    </v-layout>
-    <spluseins-about v-model="aboutDialogOpen" />
+        Über
+      </a>
+      —
+      <nuxt-link
+        to="/impressum"
+        class="link"
+        @click="$track('Footer', 'openImpressum')"
+      >
+        Impressum
+      </nuxt-link>
+      —
+      <nuxt-link
+        to="/datenschutz"
+        class="link"
+        @click="$track('Footer', 'openDatenschutz')"
+      >
+        Datenschutz
+      </nuxt-link>
+    </v-col>
+    <lazy-spluseins-about v-model="aboutDialogOpen" />
   </v-footer>
 </template>
 
 <script>
-import SpluseinsAbout from './spluseins-about.vue'
 
 export default {
   name: 'SplusEinsFooter',
-  components: {
-    SpluseinsAbout
-  },
   data () {
     return {
       aboutDialogOpen: false
@@ -68,9 +55,9 @@ export default {
 
 <style scoped lang="scss">
 
-@media screen and (max-width: 350px) {
-  .font-size{
-    font-size: 12px;
+@media screen and (max-width: 380px) {
+  .font-size-mobile {
+    font-size: 12px !important;
   }
 }
 
@@ -79,7 +66,4 @@ export default {
   text-decoration: none;
 }
 
-.no-min-height{
-  min-height: unset;
-}
 </style>

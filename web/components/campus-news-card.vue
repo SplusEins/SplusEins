@@ -1,7 +1,7 @@
 <template>
-  <v-card>
-    <v-card-title>
-      <div class="headline">
+  <v-card class="fill-height">
+    <v-card-title class="pb-1">
+      <div class="text-h5 mr-1">
         Neues vom Campus
       </div>
     </v-card-title>
@@ -10,17 +10,18 @@
         <div
           v-for="item in campusNews"
           :key="item.link"
-          class="list-tile"
+          class="py-1"
         >
           <a
             :href="item.link"
             target="_blank"
             class="link"
+            rel="noopener"
           >
             {{ item.title }}
           </a>
           <br>
-          <span :class="['grey--text', {'text--darken-1': !isDark, 'text--lighten-1': isDark }]">
+          <span class="text--secondary">
             {{ shortname(item.source) }}.
           </span>
           <span>{{ item.text }}</span>
@@ -48,8 +49,7 @@ export default {
   computed: {
     ...mapState({
       campusNews: (state) => state.news.campusNews,
-      lazyLoad: (state) => state.lazyLoad,
-      isDark: state => state.ui.isDark
+      lazyLoad: (state) => state.lazyLoad
     })
   },
   mounted () {
@@ -73,10 +73,6 @@ export default {
 
 .link{
   text-decoration: none;
-}
-
-.list-tile{
-  padding: 5px 0 5px 0px;
 }
 
 </style>

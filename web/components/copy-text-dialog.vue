@@ -4,27 +4,29 @@
     inset
   >
     <v-list>
-      <v-subheader>Link Teilen</v-subheader>
+      <v-subheader>Link teilen</v-subheader>
 
-      <v-list-tile
+      <v-list-item
         v-clipboard="textToCopy"
         @click="open = false"
       >
-        <v-list-tile-avatar>
+        <v-list-item-avatar>
           <v-avatar
-            size="32px"
+            size="24px"
             tile
           >
-            <v-icon>mdi-content-copy</v-icon>
+            <v-icon>{{ mdiContentCopy }}</v-icon>
           </v-avatar>
-        </v-list-tile-avatar>
-        <v-list-tile-title>Link in die Zwischenablage kopieren</v-list-tile-title>
-      </v-list-tile>
+        </v-list-item-avatar>
+        <v-list-item-title>Link in die Zwischenablage kopieren</v-list-item-title>
+      </v-list-item>
     </v-list>
   </v-bottom-sheet>
 </template>
 
 <script>
+
+import { mdiContentCopy } from '@mdi/js'
 
 export default {
   name: 'CopyTextDialog',
@@ -40,7 +42,8 @@ export default {
   },
   data () {
     return {
-      textFieldCopySuccessMessage: undefined
+      textFieldCopySuccessMessage: undefined,
+      mdiContentCopy
     };
   },
   computed: {

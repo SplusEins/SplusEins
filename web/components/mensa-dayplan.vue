@@ -1,38 +1,41 @@
 <template>
-  <v-flex xs12>
-    <v-card height="100%">
-      <v-card-title>
-        <h3>{{ getDayHeader(plan) }}</h3>
-      </v-card-title>
-      <v-divider />
+  <v-card class="fill-height">
+    <v-card-title>
+      <span class="text-h6">{{ getDayHeader(plan) }}</span>
+    </v-card-title>
+    <v-divider />
+    <v-card-text class="py-1">
       <v-list
         v-for="item in plan.data"
         :key="item.id"
         dense
       >
-        <div class="list-tile">
-          <span class="category">{{ item.category }}:</span>
+        <div class="d-flex">
+          <div class="text-subtitle-1">
+            {{ item.category }}
+          </div>
           <v-icon
             v-if="displayIcon(item)"
             :color="getIconColor(item)"
-            class="icon"
+            class="icon ml-1 align-self-center"
             small
           >
-            mdi-leaf
+            {{ mdiLeaf }}
           </v-icon>
-          <br>
-          <span>{{ item.name }}</span>
-          <br>
-          <span class="price">Studenten: {{ getPriceLabel(item.prices.students) }} - Angestellte: {{ getPriceLabel(item.prices.employees) }}</span>
+        </div>
+        <div>
+          {{ item.name }}
+        </div>
+        <div class="text-caption text--secondary">
+          Studenten: {{ getPriceLabel(item.prices.students) }} - Angestellte: {{ getPriceLabel(item.prices.employees) }}
         </div>
       </v-list>
-    </v-card>
-  </v-flex>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
-import * as moment from 'moment';
-import { mapState } from 'vuex';
+import { mdiLeaf } from '@mdi/js'
 
 export default {
   name: 'MensaDayplanComponent',
@@ -42,15 +45,15 @@ export default {
       default: () => {}
     }
   },
-  computed: {
-    ...mapState({
-      isDark: (state) => state.ui.isDark
-    })
+  data () {
+    return {
+      mdiLeaf
+    };
   },
   methods: {
     getDayHeader (dayPlan) {
-      const day = moment(dayPlan.date.toString());
-      return (day.isSame(moment(), 'day') ? 'Heute' : day.format('dddd')) + ' - ' + day.format('DD.MM.YYYY');
+      const day = this.$dayjs(dayPlan.date.toString());
+      return (day.isSame(this.$dayjs(), 'day') ? 'Heute' : day.format('dddd')) + ' - ' + day.format('DD.MM.YYYY');
     },
     getPriceLabel (price) {
       const euros = Math.floor(price);
@@ -60,7 +63,7 @@ export default {
     },
     getIconColor (item) {
       if (item == undefined || item.notes.includes('Vegetarisch')) {
-        return this.isDark ? 'white' : 'black';
+        return this.$vuetify.theme.dark ? 'white' : 'black';
       } else if (item.notes.includes('Vegan')) {
         return 'green';
       }
@@ -73,19 +76,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.list-tile{
-  padding: 5px 0 5px 15px;
-}
-
-.category {
-  font-weight: bold;
-}
-
-.price{
-  font-size: 12px;
-  opacity: 0.5;
-}
-
 .icon{
   opacity: 0.7;
 }

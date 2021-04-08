@@ -6,7 +6,6 @@ More information about the usage of this directory in [the documentation](https:
 
 **Used Plugins**:
 
-- [dayspan-vuetify](https://github.com/ClickerMonkey/dayspan-vuetify)
 - [vue-clipboard2](https://github.com/Inndy/vue-clipboard2)
 - [vue-css-donut-chart](https://github.com/dumptyd/vue-css-donut-chart)
 - [vue-matomo](https://github.com/AmazingDreams/vue-matomo)

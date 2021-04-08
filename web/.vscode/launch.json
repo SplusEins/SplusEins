@@ -26,6 +26,7 @@
             "args": [
                 "dev"
             ],
+            "outputCapture": "std",
             "linux": {
                 "program": "${workspaceFolder}/node_modules/.bin/nuxt"
             },

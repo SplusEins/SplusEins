@@ -1,16 +1,17 @@
 <template>
   <div>
-    <v-toolbar
+    <v-app-bar
       clipped-left
       dark
       fixed
       app
     >
-      <v-toolbar-side-icon @click.stop="toggleSidenav()" />
+      <v-app-bar-nav-icon @click.stop="toggleSidenav()" />
       <v-spacer />
       <img
         src="../assets/img/headerLogo.png"
         height="35px"
+        class="pr-4"
       >
       <v-toolbar-title
         class="header-text cursor-pointer"
@@ -29,20 +30,20 @@
           v-show="isOffline"
           color="warning"
           icon
-          flat
+          text
           @click="enqueueError('Internetverbindung: Nicht verfügbar')"
         >
-          <v-icon>mdi-wifi-off</v-icon>
+          <v-icon>{{ mdiWifiOff }}</v-icon>
         </v-btn>
         <v-btn
           icon
-          flat
+          text
           @click="toggleDark(allCookiesAccepted); $track('Menu', 'toggleDark', 'isDark: ' + isDark)"
         >
-          <v-icon>mdi-theme-light-dark</v-icon>
+          <v-icon>{{ mdiThemeLightDark }}</v-icon>
         </v-btn>
       </v-toolbar-items>
-    </v-toolbar>
+    </v-app-bar>
     <spluseins-side-nav />
   </div>
 </template>
@@ -50,6 +51,7 @@
 <script>
 import SpluseinsSideNav from './spluseins-side-nav';
 import { mapMutations, mapState } from 'vuex';
+import { mdiWifiOff, mdiThemeLightDark } from '@mdi/js'
 
 export default {
   name: 'SpluseinsHeader',
@@ -57,7 +59,9 @@ export default {
   data () {
     return {
       isOffline: false,
-      offlineNoticeOpen: false
+      offlineNoticeOpen: false,
+      mdiWifiOff,
+      mdiThemeLightDark
     };
   },
   computed: {
@@ -65,6 +69,15 @@ export default {
       isDark: state => state.ui.isDark,
       allCookiesAccepted: state => state.privacy.allowAllCookies
     })
+  },
+  watch: {
+    isDark: function () {
+      if (this.isDark === true) {
+        return (this.$vuetify.theme.dark = true);
+      } else {
+        return (this.$vuetify.theme.dark = false);
+      }
+    }
   },
   mounted () {
     window.addEventListener('offline', () => { this.isOffline = true });
@@ -87,9 +100,9 @@ export default {
   }
   .header-text{
     font-family:Schluber;
-    font-size: 170%;
+    font-size: 150%;
     position: relative;
-    transform: translateY(6%);
+    transform: translateY(13%);
   }
   .cursor-pointer {
     cursor: pointer;

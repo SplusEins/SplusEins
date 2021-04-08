@@ -1,18 +1,20 @@
 <template>
   <v-snackbar
     v-model="snackbarOpen"
-    :timeout="0"
+    :timeout="-1"
     color="error"
     right
   >
     [{{ errorQueue.length }}] {{ next }}
-    <v-btn
-      dark
-      flat
-      @click="dequeueError()"
-    >
-      Schließen
-    </v-btn>
+    <template #action="{ attrs }">
+      <v-btn
+        text
+        v-bind="attrs"
+        @click="dequeueError()"
+      >
+        Schließen
+      </v-btn>
+    </template>
   </v-snackbar>
 </template>
 

@@ -1,39 +1,42 @@
 <template>
   <v-snackbar
     :value="snackbarOpen"
-    :timeout="0"
+    :timeout="-1"
     vertical
     right
   >
-    Cookies für Einstellungen und Analytics erlauben?
-    <v-layout
-      justify-space-between
-      fluid
-      row
-    >
+    <span class="text-subtitle-1">
+      Cookies für Einstellungen und Analytics erlauben?
+    </span>
+    <template #action="{ attrs }">
       <v-btn
+        class="ml-2"
         ref="btn-deny"
-        flat
+        text
+        v-bind="attrs"
         @click="setAllCookiesDenied()"
       >
         Nichts
       </v-btn>
       <v-btn
         ref="btn-allow-necessary"
-        flat
+        text
+        v-bind="attrs"
         @click="setNecessaryCookiesAllowed()"
       >
         Einstellungen
       </v-btn>
       <v-btn
+        class="mr-1"
         ref="btn-allow-all"
         color="success"
-        flat
+        text
+        v-bind="attrs"
         @click="setAllCookiesAllowed()"
       >
         Einverstanden
       </v-btn>
-    </v-layout>
+    </template>
   </v-snackbar>
 </template>
 

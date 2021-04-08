@@ -1,17 +1,17 @@
 <template>
-  <v-card>
+  <v-card class="fill-height">
     <v-card-title>
-      <div class="headline">
+      <div class="text-h5">
         Mensa Wolfenbüttel {{ isPlanOfToday? 'Heute' : 'Morgen' }}
       </div>
     </v-card-title>
-    <v-card-text class="card-text-padding">
+    <v-card-text>
       <v-list
         v-for="item in mensaMenus"
         :key="item.id"
         dense
       >
-        <div class="list-tile">
+        <div>
           <b>{{ item.category }}:</b>
           <br>
           <span>{{ item.name }}</span>
@@ -24,7 +24,7 @@
       <v-btn
         nuxt
         to="/mensa"
-        flat
+        text
         color="primary"
         @click="$track('MensaPlan', 'opened', 'dashboard')"
       >
@@ -36,7 +36,6 @@
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex';
-import * as moment from 'moment';
 
 export default {
   name: 'MensaCard',
@@ -50,7 +49,7 @@ export default {
         .filter(({ category }) => category.startsWith('Essen '));
     },
     isPlanOfToday () {
-      return moment().isSame(this.getNextAvailablePlan.date, 'day');
+      return this.$dayjs().isSame(this.getNextAvailablePlan.date, 'day');
     },
     ...mapState({
       lazyLoad: (state) => state.lazyLoad,
@@ -73,15 +72,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-
-.list-tile{
-  padding: 5px 0 5px 0px;
-}
-
-.card-text-padding{
-  padding-top: 0px;
-}
-
-</style>

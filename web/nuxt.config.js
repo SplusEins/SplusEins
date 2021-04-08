@@ -1,5 +1,3 @@
-import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin';
-import webpack from 'webpack';
 import PROTECTED_INFORMATION from './assets/protected-information.json';
 
 export default {
@@ -30,28 +28,27 @@ export default {
   },
 
   /*
-  ** Customize the progress-bar color
+  ** Customize the automatic progress-bar
+  ** https://nuxtjs.org/docs/2.x/features/loading
   */
   loading: {
-    color: '#1565C0' // blue.darken3
+    color: '#1976D2', // blue.darken2
+    height: '3px',
+    duration: 1000,
+    continuous: true
   },
 
   /*
   ** Global CSS
   */
   css: [
-    '~/assets/style/roboto.css',
-    'vuetify/src/stylus/app.styl',
-    'dayspan-vuetify/dist/lib/dayspan-vuetify.min.css',
-    '@mdi/font/css/materialdesignicons.min.css'
+    '~/assets/style/roboto.css'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    // https://vuetifyjs.com
-    '@/plugins/vuetify',
     // https://github.com/championswimmer/vuex-persist
     { src: '@/plugins/vuex-persist', mode: 'client' },
     // https://github.com/AmazingDreams/vue-matomo
@@ -59,9 +56,7 @@ export default {
     // https://github.com/Inndy/vue-clipboard2
     '@/plugins/vue-clipboard2',
     // https://github.com/dumptyd/vue-css-donut-chart
-    '@/plugins/vue-css-donut-chart',
-    // https://github.com/maoberlehner/vue-lazy-hydration
-    '@/plugins/lazy-hydrate'
+    '@/plugins/vue-css-donut-chart'
   ],
 
   /*
@@ -71,13 +66,25 @@ export default {
     // https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // https://pwa.nuxtjs.org/
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    // https://github.com/nuxt-community/dayjs-module
+    '@nuxtjs/dayjs'
   ],
   /*
   ** Axios module configuration
   */
   axios: {
+
   },
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    // https://go.nuxtjs.dev/vuetify
+    '@nuxtjs/vuetify'
+  ],
 
   env: {
     team: ('PROTECTED_INFORMATION' in process.env ? JSON.parse(process.env.PROTECTED_INFORMATION) : PROTECTED_INFORMATION).team
@@ -87,26 +94,40 @@ export default {
   ** Build configuration
   */
   build: {
+    standalone: true, // has some advantages, see https://github.com/nuxt/nuxt.js/pull/4661
     extend (config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        });
-      }
       if (ctx.isDev) {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     },
+    extractCSS: true
+  },
+
+  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+  vuetify: {
+    // customVariables: ['~/assets/variables.scss'],
+    // treeshake: true,
+    breakpoint: {
+      mobileBreakpoint: 'sm' // This is equivalent to a value of 960
+    },
+    icons: {
+      iconfont: 'mdiSvg'
+    },
+    defaultAssets: false,
+    theme: {
+      options: { customProperties: true }
+    }
+  },
+
+  // Moment js replacement https://github.com/nuxt-community/dayjs-module#usage
+  dayjs: {
+    locales: ['de'],
+    defaultLocale: 'de',
     plugins: [
-      new VuetifyLoaderPlugin(),
-      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de/)
-    ],
-    extractCSS: true,
-    transpile: [/^vuetify/]
+      'isoWeek',
+      'weekOfYear',
+      'relativeTime'
+    ]
   },
 
   /*

@@ -1,27 +1,28 @@
 <template>
-  <v-card>
-    <v-card-title class="title-padding">
-      <div class="headline">
+  <v-card class="fill-height">
+    <v-card-title class="pb-1">
+      <div class="text-h5 mr-1">
         Neues {{ selectedItem.title }}
       </div>
       <v-btn
         icon
         @click="dialogOpen = true; $track('News', 'openSelectNews')"
       >
-        <v-icon>mdi-newspaper</v-icon>
+        <v-icon>{{ mdiNewspaper }}</v-icon>
       </v-btn>
     </v-card-title>
-    <v-card-text class="card-text-padding">
+    <v-card-text>
       <v-list dense>
         <div
           v-for="item in facultyNews"
           :key="item.link"
-          class="list-tile"
+          class="py-1"
         >
           <a
             :href="item.link"
             target="_blank"
             class="link"
+            rel="noopener"
           >
             {{ item.title }}
           </a>
@@ -32,7 +33,7 @@
       </v-list>
     </v-card-text>
 
-    <select-dialog
+    <lazy-select-dialog
       :open.sync="dialogOpen"
       :items="availableSources"
       :selected.sync="selectedItem"
@@ -43,13 +44,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import SelectDialog from './select-dialog.vue'
+import { mdiNewspaper } from '@mdi/js'
 
 export default {
   name: 'FacultyNewsCard',
-  components: {
-    SelectDialog
-  },
   data () {
     const availableSources = [
       { description: 'Campus Wolfenbüttel', title: 'aus Wolfenbüttel', path: 'wf' },
@@ -61,7 +59,8 @@ export default {
 
     return {
       dialogOpen: false,
-      availableSources
+      availableSources,
+      mdiNewspaper
     }
   },
   computed: {
@@ -100,20 +99,8 @@ export default {
 
 <style lang="scss">
 
-.title-padding{
-  padding: 10px 16px 5px 16px;
-}
-
 .link{
   text-decoration: none;
-}
-
-.list-tile{
-  padding: 5px 0 5px 0px;
-}
-
-.card-text-padding{
-  padding-top: 0px;
 }
 
 </style>

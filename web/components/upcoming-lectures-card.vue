@@ -1,25 +1,28 @@
 <template>
-  <v-card>
+  <v-card class="fill-height">
     <v-card-title>
-      <span class="headline">Nächste Vorlesung</span>
+      <span class="text-h5">Nächste Vorlesung</span>
       <v-btn
         v-show="hasSubscribableTimetables"
         icon
         @click="dialogOpen = true; $track('Calendar', 'openSelectTimetable')"
       >
-        <v-icon>mdi-bookmark-outline</v-icon>
+        <v-icon>{{ mdiBookmarkOutline }}</v-icon>
       </v-btn>
     </v-card-title>
 
-    <v-card-text v-if="nextEvent !== undefined">
+    <v-card-text
+      v-if="nextEvent !== undefined"
+      class="text--primary"
+    >
       <b>{{ nextEvent.title }} {{ nextEvent.lecturer }}</b>
       <br>
-      Datum: {{ nextEvent.start.format('dddd, DD.MM.YYYY') }}
+      <span class="text--secondary">Datum:</span> {{ nextEvent.start.format('dddd, DD.MM.YYYY') }}
       <br>
-      Uhrzeit: {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() === 0? "00" : nextEvent.start.minute() }} Uhr
+      <span class="text--secondary">Uhrzeit:</span> {{ nextEvent.start.hour() }}:{{ nextEvent.start.minute() === 0? "00" : nextEvent.start.minute() }} Uhr
       <br>
       <span v-if="!!nextEvent.room">
-        Raum: <span v-html="nextEvent.room" />
+        <span class="text--secondary">Raum:</span> <span v-html="nextEvent.room" />
       </span>
     </v-card-text>
     <v-card-text v-else-if="hasSubscribableTimetables && nextEvent === undefined">
@@ -29,7 +32,7 @@
       <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne, um diese Option nutzen zu können!</i>
     </v-card-text>
 
-    <select-dialog
+    <lazy-select-dialog
       :open.sync="dialogOpen"
       :items="subscribableTimetables"
       :selected.sync="selectedItem"
@@ -39,20 +42,17 @@
 </template>
 
 <script>
-import * as moment from 'moment';
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
-import SelectDialog from './select-dialog.vue'
+import { mdiBookmarkOutline } from '@mdi/js'
 
 export default {
   name: 'UpcomingLecturesCard',
-  components: {
-    SelectDialog
-  },
   data () {
     return {
       now: Date.now(),
       refreshTimer: undefined,
-      dialogOpen: false
+      dialogOpen: false,
+      mdiBookmarkOutline
     }
   },
   computed: {
@@ -76,7 +76,7 @@ export default {
           title: event.title,
           room: event.location,
           lecturer: event.meta.organiserName,
-          start: moment(event.start)
+          start: this.$dayjs(event.start)
         }))
       // Find the next event or use the current event if it's only x minutes ago
         .filter(event => event.start.valueOf() - this.now > -15 * 60 * 1000)
@@ -118,9 +118,5 @@ export default {
 </script>
 
 <style lang="scss">
-
-.v-card__text{
-  padding-top: 0px;
-}
 
 </style>
