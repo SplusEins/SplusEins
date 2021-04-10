@@ -113,7 +113,7 @@ export default {
     }),
     removePastDepartures (departures) {
     // remove all departures older than 10 minutes ago
-      return departures.filter(dep => (this.minutesUntilDate(dep.date) > -10));
+      return departures ? departures.filter(dep => (this.minutesUntilDate(dep.date) > -10)) : null;
     }
   },
   middleware: 'cached'
