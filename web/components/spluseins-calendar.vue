@@ -149,7 +149,6 @@ export default {
   },
   computed: {
     ...mapState({
-      lazyLoad: (state) => state.lazyLoad,
       schedule: (state) => state.splus.schedule
     }),
     ...mapGetters({
@@ -165,10 +164,8 @@ export default {
     }
   },
   mounted () {
-    if (this.lazyLoad) {
-      // static build -> no events are in the store
-      this.refresh();
-    }
+    // force refresh to avoid using outdated cache
+    this.refresh();
   },
   methods: {
     ...mapMutations({
