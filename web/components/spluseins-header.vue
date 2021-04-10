@@ -15,7 +15,6 @@
       >
       <v-toolbar-title
         class="header-text cursor-pointer"
-        @click="$track('Menu', 'toDashboard', 'toolbar title')"
       >
         <a
           v-if="staging"
@@ -45,7 +44,7 @@
         <v-btn
           icon
           text
-          @click="toggleDark(allCookiesAccepted); $track('Menu', 'toggleDark', 'isDark: ' + isDark)"
+          @click="toggleDark(true)"
         >
           <v-icon>{{ mdiThemeLightDark }}</v-icon>
         </v-btn>
@@ -78,17 +77,12 @@ export default {
       return 'https://github.com/SplusEins/SplusEins/commit/' + this.version
     },
     ...mapState({
-      isDark: state => state.ui.isDark,
-      allCookiesAccepted: state => state.privacy.allowAllCookies
+      isDark: state => state.ui.isDark
     })
   },
   watch: {
     isDark: function () {
-      if (this.isDark === true) {
-        return (this.$vuetify.theme.dark = true);
-      } else {
-        return (this.$vuetify.theme.dark = false);
-      }
+      this.$vuetify.theme.dark = this.isDark;
     }
   },
   mounted () {

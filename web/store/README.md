@@ -10,6 +10,5 @@ More information about the usage of this directory in [the documentation](https:
 - index: _basic application state_
 - mensa: _fetch and organise mensa data_
 - news: _fetch and organise news data_
-- privacy: _user cookie settings_
 - splus: _fetch and organise timetable data_
 - ui: _global user interface settings_

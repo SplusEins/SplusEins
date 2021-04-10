@@ -25,9 +25,7 @@
             :disabled="!saveable"
             dark
             text
-            @click.native="allowNecessaryCookies? save(): cookieReminderDialogOpen = true;
-                           $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Pläne', selectedSchedules.length);
-                           $track('CustomTimeTableDialog', 'saveCustomTimetable', 'Kurse', selectedCourses.length)"
+            @click.native="save()"
           >
             Speichern
           </v-btn>
@@ -83,29 +81,22 @@
         </v-container>
       </v-form>
     </v-card>
-
-    <custom-timetable-cookie-reminder
-      v-model="cookieReminderDialogOpen"
-      @continue="save()"
-    />
   </v-dialog>
 </template>
 
 <script>
-import { mapMutations, mapGetters, mapState } from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 import { uniq, flatten, customTimetableToRoute } from '../lib/util';
 import { loadUniqueLectures, eventsAsLectures } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
-import CustomTimetableCookieReminder from './custom-timetable-cookie-reminder.vue'
 import { mdiClose } from '@mdi/js'
 
 export default {
   name: 'CustomTimetableDialog',
   components: {
     TimetableSelect,
-    CourseMultiselect,
-    CustomTimetableCookieReminder
+    CourseMultiselect
   },
   props: {
     value: {
@@ -141,7 +132,6 @@ export default {
       // and a usable UI
       maxSchedules: 8,
       maxCourses: 20,
-      cookieReminderDialogOpen: false,
       mdiClose
     };
   },
@@ -164,9 +154,6 @@ export default {
       customScheduleLabels: 'splus/customTimetableLabels',
       scheduleIds: 'splus/timetableIds',
       getScheduleById: 'splus/getTimetableById'
-    }),
-    ...mapState({
-      allowNecessaryCookies: (state) => state.privacy.allowNecessaryCookies
     })
   },
   watch: {

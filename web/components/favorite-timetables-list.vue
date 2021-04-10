@@ -9,7 +9,7 @@
       :to="schedule.route"
       nuxt
     >
-      <v-list-item-content @click="$track('Calendar', 'sideMenu plan used', 'favorite')">
+      <v-list-item-content>
         <v-list-item-title>{{ schedule.description }}</v-list-item-title>
       </v-list-item-content>
     </v-list-item>

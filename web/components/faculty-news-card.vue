@@ -6,7 +6,7 @@
       </div>
       <v-btn
         icon
-        @click="dialogOpen = true; $track('News', 'openSelectNews')"
+        @click="dialogOpen = true"
       >
         <v-icon>{{ mdiNewspaper }}</v-icon>
       </v-btn>

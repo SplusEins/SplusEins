@@ -7,8 +7,8 @@
   >
     <div>
       <h1>Datenschutzerklärung</h1>
-      <br>
-      <h3>SplusEins Team</h3>
+      <p>Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:</p>
+      <h4>SplusEins Team</h4>
       <br>
       <p><b>Vertreten durch:</b></p>
 
@@ -23,9 +23,6 @@
       <p><b>Kontakt:</b></p>
 
       <p>E-Mail: team (at) spluseins (Punkt) de </p>
-
-      <br>
-
       <h2>Ihre Betroffenenrechte</h2>
       <p>Unter den angegebenen Kontaktdaten unseres Datenschutzbeauftragten können Sie jederzeit folgende Rechte ausüben:</p>
       <ul>
@@ -36,74 +33,116 @@
         <li>Widerspruch gegen die Verarbeitung Ihrer Daten bei uns (Art. 21 DSGVO) und</li>
         <li>Datenübertragbarkeit, sofern Sie in die Datenverarbeitung eingewilligt haben oder einen Vertrag mit uns abgeschlossen haben (Art. 20 DSGVO).</li>
       </ul>
-      <br>
       <p>Sofern Sie uns eine Einwilligung erteilt haben, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
-
-      <h2>Cookies &#38; Browser Speicher</h2>
+      <p>Sie können sich jederzeit mit einer Beschwerde an eine Aufsichtsbehörde wenden, z. B. an die zuständige Aufsichtsbehörde des Bundeslands Ihres Wohnsitzes oder an die für uns als verantwortliche Stelle zuständige Behörde.</p>
+      <p>
+        Eine Liste der Aufsichtsbehörden (für den nichtöffentlichen Bereich) mit Anschrift finden Sie unter: <a
+          href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html"
+          target="_blank"
+          rel="nofollow noopener"
+        >https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html</a>.
+      </p>
+      <p /><h2>Erfassung allgemeiner Informationen beim Besuch unserer Website</h2>
       <h3>Art und Zweck der Verarbeitung:</h3>
-      <p>Wie viele andere Webseiten verwenden auch wir so genannte Cookies oder andere Speichermöglichkeiten des Browsers. Hierbei handelt es sich um kleine Datenpakete, die auf Ihrem Endgerät (Laptop, Tablet, Smartphone o.ä.) gespeichert werden, wenn Sie unsere Webseite besuchen. </p>
-      <p>Cookies oder der Browserspeicher können nicht verwendet werden, um Programme zu starten oder Viren auf einen Computer zu übertragen. Anhand der gespeicherten Informationen können wir Ihnen die Navigation erleichtern und die korrekte Anzeige unserer Webseiten ermöglichen.</p>
-      <p>In keinem Fall werden die von uns erfassten Daten an Dritte weitergegeben oder ohne Ihre Einwilligung eine Verknüpfung mit personenbezogenen Daten hergestellt.</p>
-      <p>Natürlich können Sie unsere Website grundsätzlich auch ohne Cookies bzw. ohne Verwendung des Browserspeichers betrachten.</p>
-
-      <h3>Zustimmung:</h3>
-      <p>Um diese Technologie verwenden zu dürfen müssen Sie uns die Erlaubnis erteilen, indem Sie beispielsweise beim erstmaligen Aufrufen der Seite der Speicherung von Daten im Browser zustimmen.</p>
-      <p>Im Allgemeinen können Sie die Verwendung von Cookies jederzeit über die Einstellungen Ihres Browsers deaktivieren. Bitte verwenden Sie die Hilfefunktionen Ihres Internetbrowsers, um zu erfahren, wie Sie diese Einstellungen ändern können. Bitte beachten Sie, dass einzelne Funktionen unserer Website möglicherweise nicht funktionieren, wenn Sie die Verwendung von Cookies deaktiviert haben.</p>
-
-      <h3>Gespeicherte Informationen:</h3>
-      <p>Soweit Sie uns durch Ihre Zustimmung die Speicherung von Daten im Browser erlauben, können folgende Informationen durch unseren Webseiten gespeichert werden:</p>
+      <p>Wenn Sie auf unsere Website zugreifen, d.h., wenn Sie sich nicht registrieren oder anderweitig Informationen übermitteln, werden automatisch Informationen allgemeiner Natur erfasst. Diese Informationen (Server-Logfiles) beinhalten etwa die Art des Webbrowsers, das verwendete Betriebssystem, den Domainnamen Ihres Internet-Service-Providers, Ihre IP-Adresse und ähnliches. </p>
+      <p>Sie werden insbesondere zu folgenden Zwecken verarbeitet:</p>
       <ul>
-        <li>personalisierte Stundenpläne</li>
-        <li>favorisierte Stundenpläne</li>
-        <li>ausgewählte Themes</li>
+        <li>Sicherstellung eines problemlosen Verbindungsaufbaus der Website,</li>
+        <li>Sicherstellung einer reibungslosen Nutzung unserer Website,</li>
+        <li>Auswertung der Systemsicherheit und -stabilität sowie</li>
+        <li>zur Optimierung unserer Website.</li>
       </ul>
-      <br>
-      <p>Sie können über Ihre Browsereinstellungen gespeicherte Daten löschen. Je nach Anbieter Ihres Browsers finden Sie die notwendigen Informationen auf deren Webseiten.</p>
-      <h2>Verwendung von Matomo</h2>
-      <h3>Art und Zweck der Verarbeitung:</h3>
-      <p>Diese Website benutzt Matomo (ehemals Piwik), eine Open-Source-Software zur statistischen Auswertung von Besucherzugriffen. Anbieter der Software Matomo ist die InnoCraft Ltd., 150 Willis St, 6011 Wellington, Neuseeland.</p>
-      <p>Matomo verwendet sog. Cookies, also Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglichen.</p>
-      <p>Die durch das Cookie erzeugten Informationen über Ihre Nutzung des Internetangebotes werden auf einem Server in Deutschland gespeichert.</p>
-      <p>Die IP-Adresse wird unmittelbar nach der Verarbeitung und vor deren Speicherung anonymisiert. Sie haben die Möglichkeit, die Installation der Cookies durch Änderung der Einstellung Ihrer Browser-Software zu verhindern. Wir weisen Sie darauf hin, dass bei entsprechender Einstellung eventuell nicht mehr alle Funktionen dieser Website zur Verfügung stehen.</p>
-      <p>Sie können sich entscheiden, ob in Ihrem Browser ein eindeutiger Webanalyse-Cookie abgelegt werden darf, um dem Betreiber der Webseite die Erfassung und Analyse verschiedener statistischer Daten zu ermöglichen.</p>
-      <h3>Getrackte Informationen:</h3>
-      <p>Soweit Sie uns durch Ihre Zustimmung die Analyse Ihres Nutzerverhaltens erlauben, können folgende Informationen durch unseren Webseiten gespeichert werden:</p>
-      <ul>
-        <li>verwendeter Internetbrowser</li>
-        <li>einfache Geräteinformationen</li>
-        <li>Seitenaufrufe</li>
-        <li>Nutzung von Navigationselementen</li>
-      </ul>
-      <br>
-      <h3>Zustimmung:</h3>
-      <p>Die Verarbeitung der Daten erfolgt auf Grundlage einer Einwilligung des Nutzers (Art. 6 Abs. 1 lit. a DSGVO).</p>
-      <p>Sie willigen ein, indem sie in einem Dialogfenster der Seite, welches überlicherweise beim ersten Aufruf angezeit wird, die Analyse von Daten akzeptieren.</p>
+      <p>Wir verwenden Ihre Daten nicht, um Rückschlüsse auf Ihre Person zu ziehen. Informationen dieser Art werden von uns ggfs. anonymisiert statistisch ausgewertet, um unseren Internetauftritt und die dahinterstehende Technik zu optimieren. </p>
+      <h3>Rechtsgrundlage und berechtigtes Interesse:</h3>
+      <p>Die Verarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. f DSGVO auf Basis unseres berechtigten Interesses an der Verbesserung der Stabilität und Funktionalität unserer Website.</p>
       <h3>Empfänger:</h3>
-      <p>Die Daten werden nicht an Dritte weitergegeben.</p>
-      <h3>Widerruf der Einwilligung:</h3>
-      <p>Sie können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern. Dazu zählt beispielsweise das Aktivieren der "Do Not Track" Einstellung. Wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können.</p>
-      <h3>Profiling:</h3>
-      <p>Mit Hilfe des Tracking-Tools Matomo kann das Verhalten der Besucher der Webseite bewertet und die Interessen analysiert werden. Hierzu erstellen wir ein pseudonymes Nutzerprofil.</p>
-      <h2>Zugriffsdaten</h2>
-      <p>Der Websitebetreiber bzw. Seitenprovider erhebt Daten über Zugriffe auf die Seite und speichert diese als „Server-Logfiles“ ab. Folgende Daten werden so protokolliert:</p>
+      <p>Empfänger der Daten sind ggf. technische Dienstleister, die für den Betrieb und die Wartung unserer Webseite als Auftragsverarbeiter tätig werden.</p>
+      <p /><h3>Speicherdauer:</h3>
+      <p>Die Daten werden gelöscht, sobald diese für den Zweck der Erhebung nicht mehr erforderlich sind. Dies ist für die Daten, die der Bereitstellung der Website dienen, grundsätzlich der Fall, wenn die jeweilige Sitzung beendet ist. </p>
+      <p> Im Falle der Speicherung der Daten in Logfiles ist dies nach spätestens 14 Tagen der Fall. Eine darüberhinausgehende Speicherung ist möglich. In diesem Fall werden die IP-Adressen der Nutzer anonymisiert, sodass eine  Zuordnung  des aufrufenden Clients nicht mehr möglich ist.</p>
+      <p /><h3>Bereitstellung vorgeschrieben oder erforderlich:</h3>
+      <p>Die Bereitstellung der vorgenannten personenbezogenen Daten ist weder gesetzlich noch vertraglich vorgeschrieben. Ohne die IP-Adresse ist jedoch der Dienst und die Funktionsfähigkeit unserer Website nicht gewährleistet. Zudem können einzelne Dienste und Services nicht verfügbar oder eingeschränkt sein. Aus diesem Grund ist ein Widerspruch ausgeschlossen. </p>
+      <p /><h2>Cookies</h2>
+      <p>Wie viele andere Webseiten verwenden wir auch so genannte „Cookies“. Bei Cookies handelt es sich um kleine Textdateien, die auf Ihrem Endgerät (Laptop, Tablet, Smartphone o.ä.) gespeichert werden, wenn Sie unsere Webseite besuchen. </p>
+      <p>Sie können Sie einzelne Cookies oder den gesamten Cookie-Bestand löschen. Darüber hinaus erhalten Sie Informationen und Anleitungen, wie diese Cookies gelöscht oder deren Speicherung vorab blockiert werden können. Je nach Anbieter Ihres Browsers finden Sie die notwendigen Informationen unter den nachfolgenden Links:</p>
       <ul>
-        <li>Besuchte Website</li>
-        <li>Uhrzeit zum Zeitpunkt des Zugriffes</li>
-        <li>Menge der gesendeten Daten in Byte</li>
-        <li>Verwendeter Browser</li>
-        <li>Verwendetes Betriebssystem</li>
-        <li>Verwendete IP-Adresse</li>
+        <li>
+          Mozilla Firefox: <a
+            href="https://support.mozilla.org/de/kb/cookies-loeschen-daten-von-websites-entfernen"
+            target="_blank"
+            rel="nofollow noopener"
+          >https://support.mozilla.org/de/kb/cookies-loeschen-daten-von-websites-entfernen</a>
+        </li>
+        <li>
+          Internet Explorer: <a
+            href="https://support.microsoft.com/de-de/help/17442/windows-internet-explorer-delete-manage-cookies"
+            target="_blank"
+            rel="nofollow noopener"
+          >https://support.microsoft.com/de-de/help/17442/windows-internet-explorer-delete-manage-cookies</a>
+        </li>
+        <li>
+          Google Chrome: <a
+            href="https://support.google.com/accounts/answer/61416?hl=de"
+            target="_blank"
+            rel="nofollow noopener"
+          >https://support.google.com/accounts/answer/61416?hl=de</a>
+        </li>
+        <li>
+          Opera: <a
+            href="http://www.opera.com/de/help"
+            target="_blank"
+            rel="nofollow noopener"
+          >http://www.opera.com/de/help</a>
+        </li>
+        <li>
+          Safari: <a
+            href="https://support.apple.com/kb/PH17191?locale=de_DE&viewlocale=de_DE"
+            target="_blank"
+            rel="nofollow noopener"
+          >https://support.apple.com/kb/PH17191?locale=de_DE&viewlocale=de_DE</a>
+        </li>
       </ul>
-      <br>
-      <p>Die erhobenen Daten dienen lediglich zur Verbesserung der Website. Der Websitebetreiber behält sich allerdings vor, die Server-Logfiles nachträglich zu überprüfen, sollten konkrete Anhaltspunkte auf eine rechtswidrige Nutzung hinweisen.</p>
-      <h2>SSL-Verschlüsselung</h2>
+      <h2>Technisch notwendige Cookies </h2>
+      <h3>Art und Zweck der Verarbeitung: </h3>
+      <p>Wir setzen Cookies ein, um unsere Website nutzerfreundlicher zu gestalten. Einige Elemente unserer Internetseite erfordern es, dass der aufrufende Browser auch nach einem Seitenwechsel identifiziert werden kann.</p>
+      <p>Der Zweck der Verwendung technisch notwendiger Cookies ist, die Nutzung von Websites für die Nutzer zu vereinfachen. Einige Funktionen unserer Internetseite können ohne den Einsatz von Cookies nicht angeboten werden. Für diese ist es erforderlich, dass der Browser auch nach einem Seitenwechsel wiedererkannt wird.</p>
+      <p>Für folgende Anwendungen benötigen wir Cookies:</p>
+      <p>
+        Welches Design verwendet wird (hell oder dunkel)
+        <br>Welche Pläne favorisiert wurden
+        <br>Personalisierte Pläne: Namen des Plans, gespeicherte Kurse, dafür verwendete Stundenpläne und Name des Plans
+        <br>Welche News-Art auf der Startseite angezeigt werden soll
+        <br>Welcher Stundenplan auf der Startseite angezeigt werden soll
+      </p>
+      <h3>Rechtsgrundlage und berechtigtes Interesse: </h3>
+      <p>Die Verarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. f DSGVO auf Basis unseres berechtigten Interesses an einer nutzerfreundlichen Gestaltung unserer Website.</p>
+      <h3>Empfänger: </h3>
+      <p>Empfänger der Daten sind ggf. technische Dienstleister, die für den Betrieb und die Wartung unserer Website als Auftragsverarbeiter tätig werden.</p>
+      <p /><h3>Bereitstellung vorgeschrieben oder erforderlich:</h3>
+      <p>Die Bereitstellung der vorgenannten personenbezogenen Daten ist weder gesetzlich noch vertraglich vorgeschrieben. Ohne diese Daten ist jedoch der Dienst und die Funktionsfähigkeit unserer Website nicht gewährleistet. Zudem können einzelne Dienste und Services nicht verfügbar oder eingeschränkt sein.</p>
+      <h3>Widerspruch</h3>
+      <p>Lesen Sie dazu die Informationen über Ihr Widerspruchsrecht nach Art. 21 DSGVO weiter unten.</p>
+      <p /><h2>SSL-Verschlüsselung</h2>
       <p>Um die Sicherheit Ihrer Daten bei der Übertragung zu schützen, verwenden wir dem aktuellen Stand der Technik entsprechende Verschlüsselungsverfahren (z. B. SSL) über HTTPS.</p>
+      <p /><hr>
+      <h2>Information über Ihr Widerspruchsrecht nach Art. 21 DSGVO</h2>
+      <h3>Einzelfallbezogenes Widerspruchsrecht</h3>
+      <p>Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten, die aufgrund Art. 6 Abs. 1 lit. f DSGVO (Datenverarbeitung auf der Grundlage einer Interessenabwägung) erfolgt, Widerspruch einzulegen; dies gilt auch für ein auf diese Bestimmung gestütztes Profiling im Sinne von Art. 4 Nr. 4 DSGVO.</p>
+      <p>Legen Sie Widerspruch ein, werden wir Ihre personenbezogenen Daten nicht mehr verarbeiten, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</p>
+      <h3>Empfänger eines Widerspruchs</h3>
+      <p /><hr>
       <h2>Änderung unserer Datenschutzbestimmungen</h2>
       <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen, z.B. bei der Einführung neuer Services. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
+      <h2>Fragen an den Datenschutzbeauftragten</h2>
+      <p>Wenn Sie Fragen zum Datenschutz haben, schreiben Sie uns bitte eine E-Mail oder wenden Sie sich direkt an die für den Datenschutz verantwortliche Person in unserer Organisation:</p>
       <p>
-        <em>Die Datenschutzerklärung wurde mit Hilfe des Datenschutzerklärungs-Generators der activeMind AG erstellt. Die Inhalte wurden auf spluseins.de angepasst.</em>
+        <em>Die Datenschutzerklärung wurde mit Hilfe des Datenschutzerklärungs-Generators der <a
+          href="https://www.activemind.de/datenschutz/datenschutzbeauftragter/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >activeMind AG</a>  erstellt. Die Inhalte wurden auf spluseins.de angepasst.</em>
       </p>
-      <i>Stand 26.11.2018</i>
+      <i>Stand 10.04.2020</i>
     </div>
   </v-container>
 </template>

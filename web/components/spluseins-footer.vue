@@ -16,7 +16,7 @@
       —
       <a
         class="white--text"
-        @click="aboutDialogOpen = true; $track('Footer', 'openAbout')"
+        @click="aboutDialogOpen = true"
       >
         Über
       </a>
@@ -24,7 +24,6 @@
       <nuxt-link
         to="/impressum"
         class="link"
-        @click="$track('Footer', 'openImpressum')"
       >
         Impressum
       </nuxt-link>
@@ -32,7 +31,6 @@
       <nuxt-link
         to="/datenschutz"
         class="link"
-        @click="$track('Footer', 'openDatenschutz')"
       >
         Datenschutz
       </nuxt-link>

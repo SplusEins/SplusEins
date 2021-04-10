@@ -11,7 +11,7 @@
       exact
       nuxt
     >
-      <v-list-item-content @click="$track('Calendar', 'plan used', 'custom')">
+      <v-list-item-content>
         <v-list-item-title>{{ route.query.name }}</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
