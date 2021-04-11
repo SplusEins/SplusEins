@@ -32,7 +32,6 @@
             :key="schedule.id"
             :to="schedule.route"
             nuxt
-            @click="$track('Calendar', 'sideMenu plan used', 'normal')"
           >
             {{ schedule.label }}
           </v-list-item>
@@ -43,7 +42,6 @@
           :key="path + semester"
           :to="schedules[0].route"
           nuxt
-          @click="$track('Calendar', 'sideMenu plan used', 'normal')"
         >
           {{ schedules[0].label }}
         </v-list-item>

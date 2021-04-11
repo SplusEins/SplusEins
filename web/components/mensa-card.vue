@@ -26,7 +26,6 @@
         to="/mensa"
         text
         color="primary"
-        @click="$track('MensaPlan', 'opened', 'dashboard')"
       >
         Mehr
       </v-btn>

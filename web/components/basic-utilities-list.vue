@@ -3,7 +3,6 @@
     <v-list-item
       to="/"
       nuxt
-      @click="$track('Menu', 'goToHomepage', 'sideMenu')"
     >
       <v-list-item-action>
         <v-icon>{{ mdiHome }}</v-icon>
@@ -15,7 +14,7 @@
       </v-list-item-content>
     </v-list-item>
 
-    <v-list-item @click="customTimetableDialogOpen = true; $track('CustomTimeTableDialog', 'opened', 'sideMenu')">
+    <v-list-item @click="customTimetableDialogOpen = true">
       <v-list-item-action>
         <v-icon>{{ mdiPlus }}</v-icon>
       </v-list-item-action>
@@ -29,7 +28,6 @@
     <v-list-item
       to="/mensa"
       nuxt
-      @click="$track('MensaPlan', 'opened', 'sideMenu')"
     >
       <v-list-item-action>
         <v-icon>{{ mdiFoodForkDrink }}</v-icon>
@@ -44,7 +42,6 @@
     <v-list-item
       to="/bus"
       nuxt
-      @click="$track('BusPlan', 'opened', 'sideMenu')"
     >
       <v-list-item-action>
         <v-icon>{{ mdiBus }}</v-icon>

@@ -53,8 +53,8 @@ export default {
       this.deferredPrompt.prompt();
 
       // Wait for the user to respond to the prompt
+      // eslint-disable-next-line no-unused-vars
       const choice = await this.deferredPrompt.userChoice;
-      this.$matomo.trackEvent('Application', 'installed', choice.outcome);
       this.deferredPrompt = undefined;
     }
   }

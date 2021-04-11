@@ -13,7 +13,6 @@
           :to="route"
           text
           nuxt
-          @click="$track('Calendar', 'dashboard plan used', 'custom')"
         >
           {{ route.query.name }}
         </v-list-item>
@@ -26,7 +25,6 @@
           :to="favorite.route"
           text
           nuxt
-          @click="$track('Calendar', 'dashboard plan used', 'favorite')"
         >
           {{ favorite.description }}
         </v-list-item>

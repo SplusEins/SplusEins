@@ -43,17 +43,17 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="share(); $track('Calendar', 'share', 'mobile')">
+        <v-list-item>
           <v-list-item-content>
             <v-list-item-title>Teilen</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'mobile')">
+        <v-list-item @click="openCalendarDialogOpen = true">
           <v-list-item-content>
             <v-list-item-title>Extern öffnen</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'mobile')">
+        <v-list-item @click="editTimetableDialogOpen = true">
           <v-list-item-content>
             <v-list-item-title v-if="isCustomSchedule">
               Bearbeiten
@@ -65,7 +65,7 @@
         </v-list-item>
         <v-list-item
           v-if="isCustomSchedule"
-          @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'mobile')"
+          @click="deleteTimetableDialogOpen = true"
         >
           <v-list-item-title>Löschen</v-list-item-title>
         </v-list-item>
@@ -78,26 +78,26 @@
         :breakpoint="$vuetify.breakpoint.xl"
         :icon="mdiShareVariant"
         text="Teilen"
-        @click="share(); $track('Calendar', 'share', 'desktop')"
+        @click="share()"
       />
       <responsive-icon-button
         v-if="isCustomSchedule"
         :breakpoint="$vuetify.breakpoint.xl"
         :icon="mdiDelete"
         text="Löschen"
-        @click="deleteTimetableDialogOpen = true; $track('Calendar', 'deleteCustomSchedule', 'desktop')"
+        @click="deleteTimetableDialogOpen = true"
       />
       <responsive-icon-button
         :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
         :breakpoint="$vuetify.breakpoint.xl"
         :icon="mdiPencil"
-        @click="editTimetableDialogOpen = true; $track('Calendar', isCustomSchedule ? 'editCustomSchedule' : 'editNormalSchedule', 'desktop')"
+        @click="editTimetableDialogOpen = true"
       />
       <responsive-icon-button
         :breakpoint="$vuetify.breakpoint.xl"
         :icon="mdiCalendar"
         text="Extern öffnen"
-        @click="openCalendarDialogOpen = true; $track('Calendar', 'ICS', 'desktop')"
+        @click="openCalendarDialogOpen = true"
       />
     </span>
 
@@ -196,10 +196,8 @@ export default {
     toggleFavorite () {
       if (this.isFavorite) {
         this.removeFavoriteSchedule(this.currentSchedule);
-        this.$track('Calendar', 'favorite', 'removed');
       } else {
         this.addFavoriteSchedule(this.currentSchedule);
-        this.$track('Calendar', 'favorite', 'added');
       }
     },
     currentUrl () {
@@ -211,10 +209,8 @@ export default {
         await navigator.share({
           url: this.currentUrl()
         });
-        this.$track('Calendar', 'share', 'share');
       } else {
         this.shareDialogOpen = true;
-        this.$track('Calendar', 'share', 'copy');
       }
     },
     ...mapMutations({

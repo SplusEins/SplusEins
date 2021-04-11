@@ -5,7 +5,7 @@
       <v-btn
         v-show="hasSubscribableTimetables"
         icon
-        @click="dialogOpen = true; $track('Calendar', 'openSelectTimetable')"
+        @click="dialogOpen = true"
       >
         <v-icon>{{ mdiBookmarkOutline }}</v-icon>
       </v-btn>

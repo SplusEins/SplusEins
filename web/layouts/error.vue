@@ -47,7 +47,6 @@
               to="/"
               nuxt
               color="primary"
-              @click="$track('Error', 'backToMain', 'error status', error.statusCode)"
             >
               Zurück zur Startseite
             </v-btn>

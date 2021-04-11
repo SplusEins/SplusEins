@@ -7,7 +7,7 @@
       <v-subheader>Extern öffnen</v-subheader>
       <v-list-item
         :href="downloadLink"
-        @click="open = false; $track('Calendar', 'ICS', 'download')"
+        @click="open = false"
       >
         <v-list-item-avatar>
           <v-avatar
@@ -22,7 +22,7 @@
 
       <v-list-item
         v-clipboard="httpLink"
-        @click="open = false; $track('Calendar', 'ICS', 'copy')"
+        @click="open = false"
       >
         <v-list-item-avatar>
           <v-avatar
@@ -37,7 +37,7 @@
 
       <v-list-item
         :href="webcalLink"
-        @click="open = false; $track('Calendar', 'ICS', 'open')"
+        @click="open = false"
       >
         <v-list-item-avatar>
           <v-avatar
