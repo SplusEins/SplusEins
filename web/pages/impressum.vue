@@ -3,11 +3,12 @@
     v-touch="{
       right: () => setSidenav(true)
     }"
-    class="container"
+    class="container pa-6"
   >
     <div>
-      <h1>Impressum</h1>
-      <br>
+      <h1 class="text-h4 my-6">
+        Impressum
+      </h1>
       <h3>SplusEins Team</h3>
       <br>
       <p><b>Vertreten durch:</b></p>

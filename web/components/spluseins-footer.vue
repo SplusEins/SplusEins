@@ -14,12 +14,12 @@
         SplusEins
       </span>
       —
-      <a
-        class="white--text"
-        @click="aboutDialogOpen = true"
+      <nuxt-link
+        to="/about"
+        class="link"
       >
         Über
-      </a>
+      </nuxt-link>
       —
       <nuxt-link
         to="/impressum"
@@ -35,19 +35,13 @@
         Datenschutz
       </nuxt-link>
     </v-col>
-    <lazy-spluseins-about v-model="aboutDialogOpen" />
   </v-footer>
 </template>
 
 <script>
 
 export default {
-  name: 'SplusEinsFooter',
-  data () {
-    return {
-      aboutDialogOpen: false
-    };
-  }
+  name: 'SplusEinsFooter'
 }
 </script>
 

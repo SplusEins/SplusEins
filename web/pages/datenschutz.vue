@@ -3,10 +3,12 @@
     v-touch="{
       right: () => setSidenav(true)
     }"
-    class="container"
+    class="container pa-6"
   >
     <div>
-      <h1>Datenschutzerklärung</h1>
+      <h1 class="text-h4 my-6">
+        Datenschutzerklärung
+      </h1>
       <p>Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:</p>
       <h4>SplusEins Team</h4>
       <br>
