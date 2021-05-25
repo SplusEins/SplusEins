@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
@@ -129,9 +129,15 @@ export default {
       ]
     };
   },
+  mounted () {
+    this.load();
+  },
   methods: {
     ...mapMutations({
       setSidenav: 'ui/setSidenav'
+    }),
+    ...mapActions({
+      load: 'mensa/load'
     })
   },
   middleware: 'cached'

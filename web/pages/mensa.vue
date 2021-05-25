@@ -140,10 +140,7 @@ export default {
     }
   },
   mounted () {
-    if (this.lazyLoad) {
-      // static build -> no mensa plan is in the store
-      this.load();
-    }
+    this.load();
   },
   methods: {
     ...mapActions({
