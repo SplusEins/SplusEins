@@ -130,14 +130,15 @@ export default {
     };
   },
   mounted () {
-    this.load();
+    // TODO WS21: sobald die Mensa wieder offen hat, auskommentieren damit Mensa-Pläne auch auf Startseite angezeigt werden
+    // this.loadMensa();
   },
   methods: {
     ...mapMutations({
       setSidenav: 'ui/setSidenav'
     }),
     ...mapActions({
-      load: 'mensa/load'
+      loadMensa: 'mensa/load'
     })
   },
   middleware: 'cached'
