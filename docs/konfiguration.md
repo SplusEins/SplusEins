@@ -11,7 +11,8 @@ Sowohl Frontend als auch Backend können bzw. müssen über Umgebungsvariablen k
 ### Frontend
 
 - `HOST`: Host (Domain oder IP) des Servers (Default: `127.0.0.1`)
-- `API_URL`: URL der API ohne /api Suffix (Default: `https://spluseins.de/`)
+- `API_URL`: (Lokale) URL der API ohne `/api` Suffix (z.B. `http://localhost:50001/`), alle Requests zu `/api` werden (von Nuxt als Proxy) zu dieser URL weitergeleitet.
+- `DOCS_URL`: (Lokale) URL der Dokumentation (z.B. `http://localhost:50002/`), alle Requests zu `/docs` werden (von Nuxt als Proxy) zu dieser URL weitergeleitet.
 - `PAGE_CACHE_SECONDS`: Cache-Dauer in Sekunden für gerenderte Nuxt-Seiten (Default: `600`)
 - `PROTECTED_INFORMATION`: Namen der Team-Mitglieder für das Impressum und die Datenschutz-Seite
 
