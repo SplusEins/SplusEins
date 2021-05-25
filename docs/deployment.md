@@ -32,6 +32,9 @@ Nach der Einrichtung des Dokku-Servers (siehe unten) muss zum Deployen bei neuen
    dokku network:set api attach-post-deploy spluseins
    dokku network:set docs attach-post-deploy spluseins
    dokku network:rebuildall
+   dokku config:set web HOST=0.0.0.0
+   dokku config:set api HOST=0.0.0.0
+   dokku config:set docs HOST=0.0.0.0
    dokku ps:restart web
    dokku ps:restart api
    dokku ps:restart docs
