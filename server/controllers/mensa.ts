@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import fetch from 'node-fetch';
 
 import { MensaDayPlan } from '../model/SplusEinsModel';
+import timeoutSignal = require('timeout-signal')
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -44,7 +45,7 @@ router.get('/', async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`mensa cache miss for key ${key}`);
 
-      const openDays = await fetch('https://openmensa.org/api/v2/canteens/166/days')
+      const openDays = await fetch('https://openmensa.org/api/v2/canteens/166/days', { signal: timeoutSignal(3000) })
         .then((res) => res.json());
 
       const weekdays = openDays
@@ -54,7 +55,7 @@ router.get('/', async (req, res, next) => {
       const result: MensaDayPlan[] = [];
 
       await Promise.all(weekdays.map(async (day) => {
-        const data = await fetch(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`)
+        const data = await fetch(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`, { signal: timeoutSignal(3000) })
           .then((res) => res.json());
         result.push(<MensaDayPlan>{ date: day.toDate(), data });
       }));
