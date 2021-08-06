@@ -162,11 +162,6 @@ export function parseSkedCSV (csvString: string): ParsedLecture[] {
     if (!start.isValid() || !end.isValid()) {
       return;
     }
-    if (veranstaltung === 'Information') {
-      // Ganztägige Informationsevents Fakultät I entfernen, da die im Kalender sehr schlecht aussehen
-      // todo ws21 diesen if-block entfernen, das ist nur ein workaround für ss21
-      return;
-    }
 
     events.push({
       info: anmerkung,

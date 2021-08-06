@@ -27,11 +27,11 @@ export default ({ store }) => {
         }
 
         // version 3-7: new semester
-        if (value.version < 7) { // TODO increment in WS21
+        if (value.version < 8) { // TODO increment in SS22
           value.splus.customSchedules = {};
           value.splus.favoriteSchedules = [];
           value.splus.subscribedTimetable = {};
-          value.version = 7; // TODO increment in WS21
+          value.version = 8; // TODO increment in SS22
         }
       }
 
