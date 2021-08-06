@@ -11,7 +11,7 @@ function defaultWeek () {
   if (dayjs().isoWeek() < SEMESTER_WEEK_1 && (SEMESTER_WEEK_1 - dayjs().isoWeek()) < 8) {
     // Use semester beginning instead of today if semester hasn't started yet
     // Do that only a few weeks before the semester so we avoid bugs with year wraparounds
-    return formatDayjs(dayjs().isoWeek(SEMESTER_WEEK_1));
+    return formatDayjs(dayjs().isoWeek(SEMESTER_WEEK_1).startOf('isoweek'));
   }
 
   // if the user is looking at today and is on Sat/Sun, peek to the next week
