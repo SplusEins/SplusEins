@@ -243,15 +243,6 @@
     "degree": "Master"
   },
   {
-    "skedPath": "g/wp/IVG1_WS2122.html",
-    "label": "IVG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_ivg_1_ws21",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "g/wp/KPG1_WS2122.html",
     "label": "KPG",
     "faculty": "Gesundheitswesen",
@@ -321,15 +312,6 @@
     "type": "graphical",
     "id": "g_bmr_m_2_ws21",
     "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/IVG3_WS2122.html",
-    "label": "IVG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_ivg_3_ws21",
-    "semester": 3,
     "degree": "Bachelor"
   },
   {
@@ -448,6 +430,24 @@
     "id": "g_wpf_mag5_ws21",
     "semester": "WPF",
     "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/IVG1_WS2122.html",
+    "label": "IVG",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_ivg_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "g/wp/IVG3_WS2122.html",
+    "label": "IVG",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_ivg_3_ws21",
+    "semester": 3,
+    "degree": "Master"
   },
   {
     "skedPath": "h/wp/h_stdgrp_hul_1.html",
@@ -621,15 +621,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "s/wp/MA/MA MSM_1_1. Sem..html",
-    "label": "Fernstudiengang Master Sozialmanagement",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_msm_1_ws21",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
     "skedPath": "s/wp/MA 2020 PSA_1_1. Sem.html",
     "label": "Master Präventive - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
@@ -645,15 +636,6 @@
     "type": "graphical",
     "id": "s_ma_psa_schwerpunkt_1_ws21",
     "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA/MA MSM_2_2. Sem.html",
-    "label": "Fernstudiengang Master Sozialmanagement",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_msm_2_ws21",
-    "semester": 2,
     "degree": "Master"
   },
   {
@@ -675,15 +657,6 @@
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/MA/MA MSM_3_3. Sem..html",
-    "label": "Fernstudiengang Master Sozialmanagement",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_msm_3_ws21",
-    "semester": 3,
-    "degree": "Master"
-  },
-  {
     "skedPath": "s/wp/Master PSA_3. Sem._Schwerpunkt 1.html",
     "label": "Master Präventive - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
@@ -702,15 +675,6 @@
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/MA/MA MSM_4_4. Sem.html",
-    "label": "Fernstudiengang Master Sozialmanagement",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_msm_4_ws21",
-    "semester": 4,
-    "degree": "Master"
-  },
-  {
     "skedPath": "s/wp/Master PSA_4. Sem._Schwerpunkt 1.html",
     "label": "Master Präventive - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
@@ -726,15 +690,6 @@
     "type": "graphical",
     "id": "s_master_psa_schwerpunkt_2_4_ws21",
     "semester": 4,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA/MA MSM_5_5. Sem..html",
-    "label": "Fernstudiengang Master Sozialmanagement",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_msm_5_ws21",
-    "semester": 5,
     "degree": "Master"
   }
 ]
