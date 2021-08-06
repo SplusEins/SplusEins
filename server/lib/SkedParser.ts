@@ -249,12 +249,18 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
             veranstaltung = parts[2];
             anmerkung = parts[1];
             break;
+          case 'Soziale Arbeit':
+            veranstaltung = parts[1];
+            raum = parts[2]
+            dozent = parts.pop() // dozent ist immer die letzte zeile
+            anmerkung = parts.splice(4).join(', ') || ''
+            break;
           case 'Fahrzeugtechnik':
           case 'Gesundheitswesen':
-          case 'Soziale Arbeit':
           case 'Verkehr-Sport-Tourismus-Medien':
           case 'Elektrotechnik':
             if (parts[2].includes('Tutorium')) {
+              // some special handling for faculty E tutorium entries
               veranstaltung = parts[1] + ' ' + parts[2];
               dozent = parts[3];
               raum = parts[4];
