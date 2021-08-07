@@ -22,7 +22,8 @@ export const actions = {
       const news = await this.$axios.$get(`/api/news/${state.faculty}`, { params: { limit: 2 } });
       commit('setFacultyNews', news);
     } catch (error) {
-      commit('enqueueError', 'News: API-Verbindung fehlgeschlagen (Fakultät-News)', { root: true });
+      const errorCode = error.response ? error.response.status : 'unknown error'
+      commit('enqueueError', `Fakultät-News konnten nicht geladen werden (${errorCode}).`, { root: true });
       console.error('error during News API call (Fakultät-News)', error.message);
     }
   },
@@ -36,7 +37,8 @@ export const actions = {
       const campusNews = await this.$axios.$get(`/api/news/${campusSelectors.join(',')}`, { params: { limit: 5 } });
       commit('setCampusNews', campusNews);
     } catch (error) {
-      commit('enqueueError', 'News: API-Verbindung fehlgeschlagen (Ostfalia-News)', { root: true });
+      const errorCode = error.response ? error.response.status : 'unknown error'
+      commit('enqueueError', `Campus-News konnten nicht geladen werden (${errorCode}).`, { root: true });
       console.error('error during News API call (Ostfalia-News)', error.message);
     }
   }
