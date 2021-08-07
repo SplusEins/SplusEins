@@ -46,19 +46,23 @@ async function skedRequest (timetable: TimetableRequest): Promise<string> {
 
   const url = SKED_BASE + timetable.skedPath;
   console.log(`Url for ${timetable.id} is ${url}`)
-  let error;
+  let errorMsg = '';
   for (let attempt = 0; attempt < 3; attempt++) {
     const res = await fetch(url, { headers });
     if (res.ok) {
       return res.text()
     }
 
-    error = `Sked error for ${timetable.id}: ${res.statusText} (attempt ${attempt})`;
-    console.error(error);
+    if (res.status < 500) {
+      // Client side error, throw directly
+      throw new Error(`${res.status}: Ostfalia Sked replied "${res.statusText}"`);
+    }
+    errorMsg = `${res.status} Sked error for ${timetable.id}: ${res.statusText} (attempt ${attempt})`;
+    console.error(errorMsg);
     await sleep(100);
   }
 
-  throw new Error(error);
+  throw new Error(errorMsg);
 }
 
 /**

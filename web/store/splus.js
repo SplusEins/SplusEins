@@ -297,10 +297,9 @@ export const actions = {
       commit('setLectures', lectures);
       commit('setEvents', events);
     } catch (error) {
-      if (error.response.status === 403) {
-        throw error;
-      }
-      commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', { root: true });
+      const errorCode = error.response ? error.response.status : 'unknown error'
+      if (errorCode === 404) throw error;
+      commit('enqueueError', `Stundenplan konnte nicht geladen werden (${errorCode}).`, { root: true });
       console.error('error during API call', error.message);
     }
   },
@@ -312,11 +311,9 @@ export const actions = {
       const events = await loadEvents(state.upcomingLecturesTimetable, dayjs(defaultWeek()).isoWeek(), this.$axios.$get);
       commit('setUpcomingEvents', events);
     } catch (error) {
-      if (error.response.status === 403) {
-        throw error;
-      }
-      commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', { root: true });
-      console.error('error during API call', error.message);
+      // don't show the error because this error is not critical on the start page and looks bad
+      // commit('enqueueError', 'Stundenplan: API-Verbindung fehlgeschlagen', { root: true });
+      console.error('Error during API call for upcoming events on index page', error.message);
     }
   },
   /**

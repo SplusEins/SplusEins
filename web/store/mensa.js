@@ -37,7 +37,8 @@ export const actions = {
       const response = await this.$axios.get('/api/mensa');
       result = response.data;
     } catch (error) {
-      commit('enqueueError', 'Mensa: API-Verbindung fehlgeschlagen', { root: true });
+      const errorCode = error.response ? error.response.status : 'unknown error'
+      commit('enqueueError', `Mensaplan konnte nicht geladen werden (${errorCode}).`, { root: true });
       console.error('error during Mensa API call', error.message);
     }
 

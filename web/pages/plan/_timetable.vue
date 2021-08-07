@@ -35,7 +35,7 @@ export default {
     store.commit('splus/resetWeek', process.static);
 
     if (store.state.splus.schedule == undefined) {
-      error({ statusCode: 404, message: 'Plan existiert nicht' });
+      error({ statusCode: 404, message: 'Not found', response: { data: 'Dieser Plan existiert nicht (mehr)' } });
       return;
     }
 

@@ -45,7 +45,7 @@ router.get('/:timetable/lectures', async (req, res, next) => {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(events);
   } catch (error) {
-    next(error);
+    handleSkedError(error, res, next);
   }
 });
 
@@ -67,7 +67,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
 
   if (!timetable || weeks.length == 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
-    res.sendStatus(404);
+    res.status(404).send('Stundenplan existiert nicht');
     return;
   }
 
@@ -99,7 +99,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(response);
   } catch (error) {
-    next(error);
+    handleSkedError(error, res, next);
   }
 });
 
@@ -129,7 +129,7 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
 
   if (timetables.length == 0 || weeks.length == 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
-    res.sendStatus(404);
+    res.status(404).send('Stundenplan existiert nicht');
     return;
   }
 
@@ -165,8 +165,19 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(timetable);
   } catch (error) {
-    next(error);
+    handleSkedError(error, res, next);
   }
 });
 
+function handleSkedError (error, res, next) {
+  if (error.message.startsWith('404')) {
+    res.status(404).send('Stundenplan nicht bei Ostfalia verfügbar');
+  } else if (error.message.startsWith('403') || error.message.startsWith('401')) {
+    res.status(500).send('Server Error: Can\'t authenticate to Sked. Please inform the SplusEins administrator.');
+  } else if (error.message.startsWith('50')) {
+    res.status(502).send(`Ostfalia-Server hat Probleme: ${error.message}`);
+  } else {
+    next(error);
+  }
+}
 export default router;

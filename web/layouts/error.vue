@@ -32,7 +32,8 @@
             <div
               v-if="error.statusCode == 404"
             >
-              Diese Seite gibt es leider nicht...
+              <span v-if="error.response"> {{ error.response.data }}  </span>
+              <span v-else> Diese Seite gibt es leider nicht...</span>
             </div>
             <div
               v-if="error.statusCode == 500"
