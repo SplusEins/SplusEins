@@ -45,8 +45,10 @@ router.get('/', async (req, res, next) => {
     const data = await cache.wrap(key, async () => {
       console.log(`mensa cache miss for key ${key}`);
 
-      const openDays = await fetch('https://openmensa.org/api/v2/canteens/166/days', { signal: timeoutSignal(3000) })
+      const signal = timeoutSignal(2000) // abort if openmensa is too slow to respond
+      const openDays = await fetch('https://openmensa.org/api/v2/canteens/166/days', { signal: signal })
         .then((res) => res.json());
+      timeoutSignal.clear(signal)
 
       const weekdays = openDays
         .slice(0, amountOfReturnedDays)
@@ -55,8 +57,10 @@ router.get('/', async (req, res, next) => {
       const result: MensaDayPlan[] = [];
 
       await Promise.all(weekdays.map(async (day) => {
-        const data = await fetch(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`, { signal: timeoutSignal(3000) })
+        const signal2 = timeoutSignal(4000) // abort if openmensa is too slow to respond
+        const data = await fetch(`https://openmensa.org/api/v2/canteens/166/days/${day.format('YYYY-MM-DD')}/meals`, { signal: signal2 })
           .then((res) => res.json());
+        timeoutSignal.clear(signal2)
         result.push(<MensaDayPlan>{ date: day.toDate(), data });
       }));
 
@@ -64,8 +68,16 @@ router.get('/', async (req, res, next) => {
     }, { ttl: CACHE_SECONDS });
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
-    res.json(data);
+    if (data.length === 0) {
+      res.sendStatus(204); // request ok, but no data
+    } else {
+      res.json(data);
+    }
   } catch (error) {
+    if (error.message === 'The user aborted a request.') {
+      res.status(504).send('OpenMensa request timed out'); // Gateway timeout, OpenMensa is down
+      return;
+    }
     next(error);
   }
 });
