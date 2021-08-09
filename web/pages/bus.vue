@@ -86,6 +86,9 @@ export default {
     })
   },
   mounted () {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+    })
     this.load()
     this.refreshTimer = setInterval(() => this.load(), 60000)
   },
