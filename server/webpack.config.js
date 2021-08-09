@@ -32,7 +32,6 @@ const serverConfig = {
 serverConfig.optimization = {
   minimizer: [
     new TerserPlugin({
-      cache: true,
       parallel: true,
       terserOptions: {
         keep_classnames: /AbortSignal/,

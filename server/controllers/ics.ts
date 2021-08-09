@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 import * as express from 'express';
-import * as ical from 'ical-generator';
+import ical from 'ical-generator';
 import { createHash } from 'crypto';
 
 import * as TIMETABLES from '../assets/timetables.json';
@@ -75,7 +75,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
       : allEvents;
     const events = filteredEvents.map((event) => eventToICSEvent(event));
 
-    const cal = ical({ domain: 'spluseins.de', events, timezone: 'Europe/Berlin' });
+    const cal = ical({ events, timezone: 'Europe/Berlin' });
 
     res.set('Content-Type', 'text/plain');
     res.set('Content-Disposition', 'attachment;filename="spluseins.ics"');
