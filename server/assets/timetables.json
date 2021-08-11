@@ -450,17 +450,8 @@
     "degree": "Master"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_hul_1.html",
-    "label": "Handel und Logistik  - Handel und Logistik",
-    "faculty": "Handel und Soziale Arbeit",
-    "type": "graphical",
-    "id": "h_hul_1_ws21",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "h/wp/h_stdgrp_soa_1_gruppe_a.html",
-    "label": "Soziale Arbeit Gruppe A",
+    "label": "Gruppe A - WiSe 21/22",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_gruppe_a_1_ws21",
@@ -469,7 +460,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_1_gruppe_b.html",
-    "label": "Soziale Arbeit Gruppe B",
+    "label": "Gruppe B - WiSe 21/22",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_gruppe_b_1_ws21",
@@ -477,8 +468,17 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "h/wp/h_stdgrp_hul_1.html",
+    "label": "Handel und Logistik - WiSe 21/22",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_hul_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "h/wp/h_stdgrp_hul_3.html",
-    "label": "Handel und Logistik - PO 2018 - Handel und Logistik",
+    "label": "Handel und Logistik - WiSe 21/22",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_3_ws21",
@@ -487,7 +487,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_3.html",
-    "label": "Soziale Arbeit",
+    "label": "WiSe 21/22",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_3_ws21",
@@ -496,7 +496,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_4.html",
-    "label": "Soziale Arbeit",
+    "label": "WiSe 21/22",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_4_ws21",
@@ -505,7 +505,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_hul_5.html",
-    "label": "Handel und Logistik - PO 2018 - Handel und Logistik",
+    "label": "Handel und Logistik - WiSe 21/22",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_5_ws21",
@@ -514,7 +514,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_5.html",
-    "label": "Soziale Arbeit",
+    "label": "WiSe 21/22",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_5_ws21",
@@ -523,7 +523,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_6.html",
-    "label": "Soziale Arbeit",
+    "label": "WiSe 21/22",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_6_ws21",
@@ -531,13 +531,346 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "h/wp/h_stdgrp_obwl.html",
+    "label": "BA OBWL - WiSe 21/22",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_obwl_ws21",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "h/wp/h_stdgrp_baj.html",
-    "label": "Berufsanerkennung - ab WiSe 20/21 - BAP- WiSe 21/22",
+    "label": "Berufsanerkennungsphase - WiSe 21/22",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_baj_ws21",
     "semester": "Sonstige",
     "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%201.%20Sem..csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%201.%20Sem%20Informatik.csv",
+    "label": "Informatik",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_informatik_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%201.%20Sem..csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%202.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%202.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%202.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%202.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%202.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%203.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%203.%20Sem..csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%203.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%203.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%203.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%203.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%203.%20Sem..csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%204.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%204.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%204.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%204.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%204.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%205.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%205.%20Sem..csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%205.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%205.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%205.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%205.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%205.%20Sem..csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Career%20Service.csv",
+    "label": "Career Service",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_career_service_ws21",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Sprachenzentrum.csv",
+    "label": "Sprachenzentrum",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sprachenzentrum_ws21",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Alle%20WPF.csv",
+    "label": "Alle WPF",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_alle_wpf_ws21",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(CHMI)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (CHMI)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_chmi_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(DITR)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (DITR)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_ditr_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(EMD)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (EMD)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_emd_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(MLBD)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (MLBD)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_mlbd_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(SCPS)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (SCPS)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_scps_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte).csv",
+    "label": "M.Sc. Informatik (Alle Sem.+Schwerpunkte)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_informatik_alle_schwerpunkte_ws21",
+    "semester": "Sonstige",
+    "degree": "Master"
   },
   {
     "skedPath": "s/wp/Bachelor Soziale Arbeit_1_1. Sem.html",
@@ -691,5 +1024,563 @@
     "id": "s_master_psa_schwerpunkt_2_4_ws21",
     "semester": 4,
     "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lim_1.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lom_1.html",
+    "label": "Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lom_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lop_1.html",
+    "label": "Logistikmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lop_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_mdba_1.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mdba_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_mdma_1.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mdma_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_mk_1.html",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mk_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_mm_1.html",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mm_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_mpm_1.html",
+    "label": "Mobilität und Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mpm_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_spm_1.html",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_spm_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_srm_1.html",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_srm_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_tm_1.html",
+    "label": "Tourismusmangement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tm_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_wmv_1.html",
+    "label": "Wirtschaftsingenieurwesen Mobilität und Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wmv_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lip_3.html",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lip_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lim_3.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_md_3.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_md_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_mk_3.html",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mk_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_mm_3.html",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mm_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_pvm_3.html",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_pvm_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_spm_3.html",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_spm_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_srm_3.html",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_srm_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_tm_3.html",
+    "label": "Tourismusmangement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tm_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_tlm_3.html",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tlm_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_wiv_3.html",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wiv_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lim_5.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_md_5.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_md_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_mk_5.html",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mk_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_mm_5.html",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mm_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_pvm_5.html",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_pvm_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_spm_5.html",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_spm_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_srm_5.html",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_srm_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_tm_5.html",
+    "label": "Tourismusmangement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tm_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_tlm_5.html",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tlm_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_wiv_5.html",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wiv_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lip_7.html",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lip_7_ws21",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_m_fdu_1.html",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_fdu_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_m_km_1.html",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_km_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_m_mvl_2.html",
+    "label": "Verkehr und Logistik",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_mvl_2_ws21",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_m_fdu_3.html",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_fdu_3_ws21",
+    "semester": 3,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_m_km_3.html",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_km_3_ws21",
+    "semester": 3,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "v/stundenplan/bee/BEE_2020_SoSe_1_1. Sem..html",
+    "label": "BEE",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_2020_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/egt/EGT_2020_SoSe_1_1. Sem..html",
+    "label": "EGT / EGTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_2020_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/ge/GE_1_1. Sem..html",
+    "label": "Green Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_ge_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/sce/SCE_1_1. Sem..html",
+    "label": "Smart City Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_sce_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_1_1. Sem..html",
+    "label": "WING E",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_wing_e_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/wing/WING Umwelt_2020_SoSe_1_1. Sem..html",
+    "label": "WING U",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_wing_2020_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_2_2. Sem..html",
+    "label": "BEE",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/dt/Digital Technologies (DT Energie)_2_2. Sem..html",
+    "label": "DT Energie",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_digital_technologies_dt_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_2_2. Sem..html",
+    "label": "EGT / EGTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/ge/Green Engineering_2_2. Sem..html",
+    "label": "Green Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_green_engineering_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/sce/Smart City Engineering_2_2. Sem..html",
+    "label": "Smart City Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_smart_city_engineering_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_2_2. Sem..html",
+    "label": "WING E",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_wing_e_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_2_2. Sem..html",
+    "label": "WING U",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_wing_u_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_4_4. Sem..html",
+    "label": "BEE",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_4_4. Sem..html",
+    "label": "EGT / EGTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_4_4. Sem..html",
+    "label": "WING E",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_wing_e_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_4_4. Sem..html",
+    "label": "WING U",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_wing_u_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_6_6. Sem..html",
+    "label": "BEE",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_6_ws21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_6_6. Sem. TGA.html",
+    "label": "EGT / EGTiP PO13",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_tga_6_ws21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_6_6. Sem. OeIV.html",
+    "label": "EGT / EGTiP TGA",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_oeiv_6_ws21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_6_6. Sem..html",
+    "label": "EGT / EGTiP ÖIV",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_6_ws21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_6_6. Semester.html",
+    "label": "WING E (PO 2018)",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_wing_e_6_ws21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_6_6. Sem..html",
+    "label": "WING U",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_wing_u_6_ws21",
+    "semester": 6,
+    "degree": "Bachelor"
   }
 ]
