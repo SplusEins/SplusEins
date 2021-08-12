@@ -1,5 +1,113 @@
 [
   {
+    "skedPath": "b/wp/ws21_b_stgrp_ai_3.html",
+    "label": "Angewandte Informatik",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_ai_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stdgrp_bau_3.html",
+    "label": "Bauingenieurwesen",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_bau_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stdgrp_u_3.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_u_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stdgrp_bau_4.html",
+    "label": "Bauingenieurwesen",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_bau_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stdgrp_u_4.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_u_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stgrp_ai_5.html",
+    "label": "Angewandte Informatik",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_ai_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stdgrp_bau_5.html",
+    "label": "Bauingenieurwesen",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_bau_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stgrp_bip_5.html",
+    "label": "Bauingenieurwesen im Praxisverbund",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_bip_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stdgrp_u_5.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_u_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stdgrp_bau_6.html",
+    "label": "Bauingenieurwesen",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_bau_6_ws21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stdgrp_u_6.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_u_6_ws21",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws21_b_stgrp_bip_7.html",
+    "label": "Bauingenieurwesen im Praxisverbund",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_bip_7_ws21",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "e/semester/E-EIT-GS-Sem1-neu.html",
     "label": "EIT",
     "faculty": "Elektrotechnik",
@@ -451,7 +559,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_hul_1.html",
-    "label": "Handel und Logistik  - Handel und Logistik",
+    "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_1_ws21",
@@ -460,7 +568,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_1_gruppe_a.html",
-    "label": "Soziale Arbeit Gruppe A",
+    "label": "Soziale Arbeit - Gruppe A",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_gruppe_a_1_ws21",
@@ -469,7 +577,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_soa_1_gruppe_b.html",
-    "label": "Soziale Arbeit Gruppe B",
+    "label": "Soziale Arbeit - Gruppe B",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_gruppe_b_1_ws21",
@@ -478,7 +586,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_hul_3.html",
-    "label": "Handel und Logistik - PO 2018 - Handel und Logistik",
+    "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_3_ws21",
@@ -505,7 +613,7 @@
   },
   {
     "skedPath": "h/wp/h_stdgrp_hul_5.html",
-    "label": "Handel und Logistik - PO 2018 - Handel und Logistik",
+    "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_5_ws21",
@@ -531,8 +639,17 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "h/wp/h_stdgrp_obwl.html",
+    "label": "BA OBWL",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_obwl_ws21",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "h/wp/h_stdgrp_baj.html",
-    "label": "Berufsanerkennung - ab WiSe 20/21 - BAP- WiSe 21/22",
+    "label": "Soziale Arbeit - Berufsanerkennungsphase",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_baj_ws21",
@@ -540,8 +657,332 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%201.%20Sem..csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%201.%20Sem%20Informatik.csv",
+    "label": "Informatik",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_informatik_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%201.%20Sem..csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_1_ws21",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%202.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%202.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%202.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%202.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%202.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_2_ws21",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%203.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%203.%20Sem..csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%203.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%203.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%203.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%203.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%203.%20Sem..csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_3_ws21",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%204.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%204.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%204.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%204.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%204.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_4_ws21",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%205.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%205.%20Sem..csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%205.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%205.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%205.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%205.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%205.%20Sem..csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_5_ws21",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Career%20Service.csv",
+    "label": "Career Service",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_career_service_ws21",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Sprachenzentrum.csv",
+    "label": "Sprachenzentrum",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sprachenzentrum_ws21",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Alle%20WPF.csv",
+    "label": "Alle WPF",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_alle_wpf_ws21",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(CHMI)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (CHMI)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_chmi_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(DITR)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (DITR)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_ditr_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(EMD)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (EMD)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_emd_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(MLBD)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (MLBD)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_mlbd_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(SCPS)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (SCPS)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_scps_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte).csv",
+    "label": "M.Sc. Informatik (Alle Sem.+Schwerpunkte)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_informatik_alle_schwerpunkte_ws21",
+    "semester": "Sonstige",
+    "degree": "Master"
+  },
+  {
     "skedPath": "s/wp/Bachelor Soziale Arbeit_1_1. Sem.html",
-    "label": "Bachelor",
+    "label": "Bachelor Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_1_ws21",
@@ -577,7 +1018,7 @@
   },
   {
     "skedPath": "s/wp/Bachelor Soziale Arbeit_2_2. Sem.html",
-    "label": "Bachelor",
+    "label": "Bachelor Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_2_ws21",
@@ -586,7 +1027,7 @@
   },
   {
     "skedPath": "s/wp/Bachelor Soziale Arbeit_3_3. Sem.html",
-    "label": "Bachelor",
+    "label": "Bachelor Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_3_ws21",
@@ -595,7 +1036,7 @@
   },
   {
     "skedPath": "s/wp/Bachelor Soziale Arbeit_4_4. Sem.html",
-    "label": "Bachelor",
+    "label": "Bachelor Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_4_ws21",
@@ -604,7 +1045,7 @@
   },
   {
     "skedPath": "s/wp/Bachelor Soziale Arbeit_5_5. Sem.html",
-    "label": "Bachelor",
+    "label": "Bachelor Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_5_ws21",
@@ -613,7 +1054,7 @@
   },
   {
     "skedPath": "s/wp/Bachelor Soziale Arbeit_6_6. Sem.html",
-    "label": "Bachelor",
+    "label": "Bachelor Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_6_ws21",
@@ -622,7 +1063,7 @@
   },
   {
     "skedPath": "s/wp/MA 2020 PSA_1_1. Sem.html",
-    "label": "Master Präventive - Schwerpunkt 1",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_ma_2020_psa_1_ws21",
@@ -631,7 +1072,7 @@
   },
   {
     "skedPath": "s/wp/MA PSA_1_1. Sem. - Schwerpunkt 1.html",
-    "label": "Master Präventive - Schwerpunkt 2",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_ma_psa_schwerpunkt_1_ws21",
@@ -640,7 +1081,7 @@
   },
   {
     "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 2_Kopie.html",
-    "label": "Master Präventive - Schwerpunkt 1",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_ma_psa_schwerpunkt_kopie_2_ws21",
@@ -649,7 +1090,7 @@
   },
   {
     "skedPath": "s/wp/MA PSA_2_Schwerpunkt 1.html",
-    "label": "Master Präventive - Schwerpunkt 2",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_ma_psa_schwerpunkt_1_2_ws21",
@@ -658,7 +1099,7 @@
   },
   {
     "skedPath": "s/wp/Master PSA_3. Sem._Schwerpunkt 1.html",
-    "label": "Master Präventive - Schwerpunkt 1",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_master_psa_schwerpunkt_1_3_ws21",
@@ -667,7 +1108,7 @@
   },
   {
     "skedPath": "s/wp/MA PSA_3. Semester_Schwerpunkt 2.html",
-    "label": "Master Präventive - Schwerpunkt 2",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_ma_psa_schwerpunkt_2_3_ws21",
@@ -676,7 +1117,7 @@
   },
   {
     "skedPath": "s/wp/Master PSA_4. Sem._Schwerpunkt 1.html",
-    "label": "Master Präventive - Schwerpunkt 1",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_master_psa_schwerpunkt_1_4_ws21",
@@ -685,7 +1126,7 @@
   },
   {
     "skedPath": "s/wp/Master PSA_4. Sem._Schwerpunkt 2.html",
-    "label": "Master Präventive - Schwerpunkt 2",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_master_psa_schwerpunkt_2_4_ws21",
