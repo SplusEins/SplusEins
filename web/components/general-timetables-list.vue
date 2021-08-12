@@ -16,14 +16,14 @@
 
       <template v-for="(schedules, semester) in semesters">
         <v-list-group
-          v-if="load[path] && (schedules.length > 1 || !isNaN(Number(semester)))"
+          v-if="load[path] && !isNaN(Number(semester))"
           :key="path + semester"
           no-action
           sub-group
         >
           <template #activator>
             <v-list-item-title>
-              {{ semester == 'WPF' ? 'Wahlpflichtfächer' : !isNaN(Number(semester)) ? semester + '. Semester' : semester }}
+              {{ semester + '. Semester' }}
             </v-list-item-title>
           </template>
 
@@ -38,12 +38,13 @@
         </v-list-group>
 
         <v-list-item
-          v-if="load[path] && schedules.length == 1 && isNaN(Number(semester))"
-          :key="path + semester"
-          :to="schedules[0].route"
+          v-else
+          v-for="schedule in schedules"
+          :key="schedule.id"
+          :to="schedule.route"
           nuxt
         >
-          {{ schedules[0].label }}
+          {{ schedule.label }}
         </v-list-item>
       </template>
     </v-list-group>

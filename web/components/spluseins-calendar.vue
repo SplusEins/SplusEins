@@ -116,9 +116,15 @@
         </v-menu>
       </v-col>
       <v-col>
-        <span class="pt-1 d-flex justify-end text-caption text--secondary">
-          Quelle: stundenplan.ostfalia.de
-        </span>
+        <a
+          v-if="schedule"
+          :href="'https://stundenplan.ostfalia.de/'+ schedule.skedPath"
+          class="pt-1 d-flex justify-end text-caption text--secondary"
+          target="_blank"
+          rel="nofollow noopener"
+        >
+          Originalen Stundenplan anzeigen
+        </a>
       </v-col>
     </v-row>
   </v-container>
