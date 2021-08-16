@@ -6,13 +6,13 @@
     <v-divider />
     <v-card-text class="py-1">
       <v-list
-        v-for="item in plan.data"
+        v-for="item in plan.meals"
         :key="item.id"
         dense
       >
         <div class="d-flex">
           <div class="text-subtitle-1">
-            {{ item.category }}
+            {{ item.lane }}
           </div>
           <v-icon
             v-if="displayIcon(item)"
@@ -27,7 +27,7 @@
           {{ item.name }}
         </div>
         <div class="text-caption text--secondary">
-          Studenten: {{ getPriceLabel(item.prices.students) }} - Angestellte: {{ getPriceLabel(item.prices.employees) }}
+          Studenten: {{ getPriceLabel(item.price.student) }} - Angestellte: {{ getPriceLabel(item.price.employee) }}
         </div>
       </v-list>
     </v-card-text>
@@ -62,14 +62,14 @@ export default {
       return euros + ',' + cents + '€';
     },
     getIconColor (item) {
-      if (item == undefined || item.notes.includes('Vegetarisch')) {
+      if (item.categories.includes('Vegetarisch')) {
         return this.$vuetify.theme.dark ? 'white' : 'black';
-      } else if (item.notes.includes('Vegan')) {
+      } else if (item.categories.includes('Vegan')) {
         return 'green';
       }
     },
     displayIcon (item) {
-      return item.notes.includes('Vegetarisch') || item.notes.includes('Vegan');
+      return this.getIconColor(item) != null
     }
   }
 }

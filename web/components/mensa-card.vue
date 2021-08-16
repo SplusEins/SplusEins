@@ -12,7 +12,7 @@
         dense
       >
         <div>
-          <b>{{ item.category }}:</b>
+          <b>{{ item.lane }}:</b>
           <br>
           <span>{{ item.name }}</span>
           <br>
@@ -40,19 +40,14 @@ export default {
   name: 'MensaCard',
   computed: {
     mensaMenus () {
-      if (this.plans.length == 0) {
-        return [];
-      }
-
-      return Object.values(this.getNextAvailablePlan.data)
-        .filter(({ category }) => category.startsWith('Essen '));
+      return Object.values(this.getNextAvailablePlan.meals)
+        .filter(({ lane }) => lane.startsWith('Essen '));
     },
     isPlanOfToday () {
       return this.$dayjs().isSame(this.getNextAvailablePlan.date, 'day');
     },
     ...mapState({
-      lazyLoad: (state) => state.lazyLoad,
-      plans: (state) => state.mensa.plans
+      lazyLoad: (state) => state.lazyLoad
     }),
     ...mapGetters({
       getNextAvailablePlan: 'mensa/getNextAvailablePlan'
