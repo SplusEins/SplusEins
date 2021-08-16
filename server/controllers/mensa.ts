@@ -59,7 +59,7 @@ router.get('/', async (req, res, next) => {
       const endDate = moment().add(1, 'weeks').isoWeekday(5).format('YYYY-MM-DD')
 
       const signal = timeoutSignal(3000) // abort if openmensa is too slow to respond
-      const response = await fetch(`https://sls.api.stw-on.de/v1/location/101/menu/${startDate}/${endDate}`, { signal })
+      const response = await fetch(`https://sls.api.stw-on.de/v1/location/130/menu/${startDate}/${endDate}`, { signal })
         .then((res) => res.json());
       const meals:MensaMeal[] = response.meals.map(itm => {
         return {
