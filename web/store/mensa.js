@@ -3,7 +3,7 @@ export const state = () => ({
   /**
    * List of MensaDayPlan objects
    */
-  plans: []
+  plans: null
 });
 
 export const mutations = {
@@ -14,8 +14,8 @@ export const mutations = {
 
 export const getters = {
   getNextAvailablePlan: (state) => {
-    if (state.plans.length == 0) {
-      return {};
+    if (!state.plans || state.plans.length === 0) {
+      return { meals: [] };
     }
 
     // A plan is old if today is not friday, the mensa was open today and it's after 15 o'clock
@@ -27,7 +27,7 @@ export const getters = {
 
 export const actions = {
   async load ({ state, commit }) {
-    if (state.plans[0] != undefined && dayjs().isSame(state.plans[0].date, 'day')) {
+    if (state.plans != null && state.plans.length > 0 && dayjs().isSame(state.plans[0].date, 'day')) {
       return; // If weekPlan is not empty and data is up-to-date don't fetch
     }
 
@@ -40,6 +40,7 @@ export const actions = {
       const errorCode = error.response ? error.response.status : 'unknown error'
       commit('enqueueError', `Mensaplan konnte nicht geladen werden (${errorCode}).`, { root: true });
       console.error('error during Mensa API call', error.message);
+      return
     }
 
     commit('setPlans', result);

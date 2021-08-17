@@ -9,9 +9,17 @@ export interface NewsElement {
   source?: string;
 }
 
+export interface MensaMeal {
+  name: string,
+  date: string,
+  price: Record<string, string>;
+  lane: string,
+  categories: string[]
+}
+
 export interface MensaDayPlan {
-  date: Date;
-  data: Record<string, unknown>;
+  date: string;
+  meals: MensaMeal[];
 }
 
 export interface TimetableRequest {

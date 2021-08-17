@@ -106,7 +106,7 @@ export default {
   },
   computed: {
     displayMensaCard () {
-      if (this.mensaPlans.length == 0) {
+      if (!this.mensaPlans || this.mensaPlans.length == 0) {
         return false;
       }
       // display if next plan is from today or from tomorrow

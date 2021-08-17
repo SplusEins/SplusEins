@@ -1,8 +1,7 @@
 <template>
   <v-container
     fluid
-    :show-arrows="false"
-    class="pa-md-7"
+    class="pa-4 pa-md-7"
   >
     <div class="text-h5">
       Mensa Wolfenbüttel
@@ -14,7 +13,7 @@
       <div class="d-flex pr-4">
         Vegetarisch
         <v-icon
-          :color="getIconColor()"
+          :color="$vuetify.theme.dark ? 'white' : 'black'"
           small
           class="align-self-center ml-1"
         >
@@ -34,66 +33,61 @@
     </div>
     <v-divider class="my-1" />
     <no-ssr>
-      <v-carousel
-        v-if="hasAvailabePlans"
-        :show-arrows="!$vuetify.breakpoint.mobile"
-        :hide-delimiters="!$vuetify.breakpoint.mobile"
-        hide-delimiter-background
-        :light="!this.$vuetify.theme.dark"
-        height="100%"
-      >
-        <template v-if="$vuetify.breakpoint.mobile">
-          <v-carousel-item
-            v-for="dayPlan in plans"
-            :key="dayPlan.date"
-          >
-            <v-col
-              class="carousel-delimiter-padding"
-            >
-              <mensa-dayplan :plan="dayPlan" />
-            </v-col>
-          </v-carousel-item>
-        </template>
-        <template v-if="!$vuetify.breakpoint.mobile">
-          <v-carousel-item
-            v-for="dayPlanGroup in groupedDayPlans"
-            :key="dayPlanGroup[0].date"
-          >
-            <v-row
-              dense
-              class="carousel-control-padding"
-            >
-              <v-col>
-                <mensa-dayplan
-                  :plan="dayPlanGroup[0]"
-                />
-              </v-col>
-              <v-col>
-                <mensa-dayplan
-                  v-if="dayPlanGroup[1]"
-                  :plan="dayPlanGroup[1]"
-                />
-              </v-col>
-              <v-col>
-                <mensa-dayplan
-                  v-if="dayPlanGroup[2]"
-                  :plan="dayPlanGroup[2]"
-                />
-              </v-col>
-            </v-row>
-          </v-carousel-item>
-        </template>
-      </v-carousel>
       <v-alert
-        v-if="!hasAvailabePlans"
+        v-if="noMealsAvailable"
         type="info"
         class="my-6"
       >
         Aktuell sind keine Pläne verfügbar.
       </v-alert>
+      <div
+        class="py-2"
+        v-else
+      >
+        <v-row v-if="$vuetify.breakpoint.mobile">
+          <v-col
+            v-for="dayPlan in plans"
+            :key="dayPlan.date"
+            cols=12
+          >
+            <mensa-dayplan :plan="dayPlan" />
+          </v-col>
+        </v-row>
+
+        <v-carousel
+          v-else
+          show-arrows
+          hide-delimiters
+          hide-delimiter-background
+          :light="!$vuetify.theme.dark"
+          height="100%"
+        >
+          <template>
+            <v-carousel-item
+              v-for="dayPlanGroup in groupedDayPlans"
+              :key="dayPlanGroup[0].date"
+            >
+              <v-row
+                dense
+                class="carousel-control-padding"
+              >
+                <v-col
+                  v-for="(_, i) in 3"
+                  :key="i"
+                >
+                  <mensa-dayplan
+                    v-if="dayPlanGroup[i]"
+                    :plan="dayPlanGroup[i]"
+                  />
+                </v-col>
+              </v-row>
+            </v-carousel-item>
+          </template>
+        </v-carousel>
+      </div>
     </no-ssr>
 
-    <span class="pt-1 d-flex justify-end text-caption text--secondary">
+    <span class="d-flex justify-end text-caption text--secondary">
       Quelle: openmensa.org
     </span>
   </v-container>
@@ -129,17 +123,22 @@ export default {
       lazyLoad: (state) => state.lazyLoad
     }),
     groupedDayPlans () {
+      if (!this.plans) return [];
       const grouped = [];
       for (let i = 0; i < this.plans.length; i += 3) {
         grouped.push(this.plans.slice(i, i + 3));
       }
       return grouped;
     },
-    hasAvailabePlans () {
-      return this.plans.length > 0;
+    noMealsAvailable () {
+      // If plans have been loaded successfully and no plans were available
+      return (this.plans != null && this.plans.length === 0);
     }
   },
   mounted () {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+    })
     this.load();
   },
   methods: {
@@ -148,14 +147,7 @@ export default {
     }),
     ...mapMutations({
       setSidenav: 'ui/setSidenav'
-    }),
-    getIconColor (item) {
-      if (item === undefined || item.notes.includes('Vegetarisch')) {
-        return this.$vuetify.theme.dark ? 'white' : 'black';
-      } else if (item.notes.includes('Vegan')) {
-        return 'green';
-      }
-    }
+    })
   },
   middleware: 'cached'
 };
