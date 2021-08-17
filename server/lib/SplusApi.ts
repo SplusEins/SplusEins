@@ -6,6 +6,7 @@ import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { parseSkedCSV, parseSkedGraphical, parseSkedList } from './SkedParser';
 import * as sanitize from 'sanitize-html';
 import { ParsedLecture } from '../model/SplusModel';
+import * as iconv from 'iconv-lite';
 
 const SKED_BASE = process.env.SKED_URL || 'https://stundenplan.ostfalia.de/';
 
@@ -50,6 +51,10 @@ async function skedRequest (timetable: TimetableRequest): Promise<string> {
   for (let attempt = 0; attempt < 3; attempt++) {
     const res = await fetch(url, { headers });
     if (res.ok) {
+      if (timetable.type === 'csv') {
+        // CSV files are stored windows1252 encoded, convert them
+        return iconv.decode(await res.buffer(), 'windows1252');
+      }
       return res.text()
     }
 
