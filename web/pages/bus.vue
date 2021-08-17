@@ -1,29 +1,35 @@
 <template>
   <v-container
     fluid
+    class="mt-3 px-4"
   >
-    <v-row dense>
+    <v-row
+      justify="center"
+    >
       <v-col
         v-for="direction in directions"
         :key="direction"
         cols=12
-        md=auto
-        class="flex-grow-1"
+        md=5
+        xl=3
       >
-        <v-card>
+        <v-card
+          v-if="departures"
+          class="pa-2"
+        >
           <v-card-title>
             <div class="text-h5">
               {{ directionLabel[direction] }}
             </div>
           </v-card-title>
 
-          <v-list dense>
+          <v-list>
             <v-list-item
               v-for="departure in departures[direction]"
               :key="departure.date"
             >
               <v-list-item-content
-                class="pb-0"
+                class="pb-0 pt-1"
               >
                 <p>
                   <v-chip
@@ -42,10 +48,14 @@
             </v-list-item>
           </v-list>
         </v-card>
+        <v-skeleton-loader
+          v-else
+          type="article"
+        />
       </v-col>
     </v-row>
 
-    <span class="pt-1 d-flex justify-end text-caption text--secondary">
+    <span class="pt-4 d-flex justify-end text-caption text--secondary">
       Quelle: Deutsche Bahn HAFAS
     </span>
   </v-container>
