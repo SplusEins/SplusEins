@@ -972,6 +972,15 @@
     "degree": "Master"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%201.%20Sem..csv",
+    "label": "VFH-M.Sc. WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_m_wi_1_ws21",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte).csv",
     "label": "M.Sc. Informatik (Alle Sem.+Schwerpunkte)",
     "faculty": "Informatik",
@@ -1062,17 +1071,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "s/wp/MA 2020 PSA_1_1. Sem.html",
-    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_2020_psa_1_ws21",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
     "skedPath": "s/wp/MA PSA_1_1. Sem. - Schwerpunkt 1.html",
-    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_ma_psa_schwerpunkt_1_ws21",
@@ -1080,17 +1080,17 @@
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 2_Kopie.html",
-    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
+    "skedPath": "s/wp/MA PSA_1_1. Sem. - Schwerpunkt 2.html",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_kopie_2_ws21",
-    "semester": 2,
+    "id": "s_ma_psa_schwerpunkt_2_1_ws21",
+    "semester": 1,
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/MA PSA_2_Schwerpunkt 1.html",
-    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
+    "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 1.html",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_ma_psa_schwerpunkt_1_2_ws21",
@@ -1098,16 +1098,25 @@
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/Master PSA_3. Sem._Schwerpunkt 1.html",
+    "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 2.html",
+    "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_ma_psa_schwerpunkt_2_ws21",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_3_3. Sem. - Schwerpunkt 1.html",
     "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_master_psa_schwerpunkt_1_3_ws21",
+    "id": "s_ma_psa_schwerpunkt_1_3_ws21",
     "semester": 3,
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/MA PSA_3. Semester_Schwerpunkt 2.html",
+    "skedPath": "s/wp/MA PSA_3_3. Sem. - Schwerpunkt 2.html",
     "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1116,20 +1125,20 @@
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/Master PSA_4. Sem._Schwerpunkt 1.html",
+    "skedPath": "s/wp/MA PSA_4_4. Sem. - Schwerpunkt 1.html",
     "label": "Master Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_master_psa_schwerpunkt_1_4_ws21",
+    "id": "s_ma_psa_schwerpunkt_1_4_ws21",
     "semester": 4,
     "degree": "Master"
   },
   {
-    "skedPath": "s/wp/Master PSA_4. Sem._Schwerpunkt 2.html",
+    "skedPath": "s/wp/MA PSA_4_4. Sem. - Schwerpunkt 2.html",
     "label": "Master Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_master_psa_schwerpunkt_2_4_ws21",
+    "id": "s_ma_psa_schwerpunkt_2_4_ws21",
     "semester": 4,
     "degree": "Master"
   }
