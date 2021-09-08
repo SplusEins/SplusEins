@@ -224,19 +224,10 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
             anmerkung = parts.splice(4).join(', ') || ''
             break;
           case 'Recht':
-            // Sometimes has the room in the second row and sometimes not.
-            // This regex detects it based on the fact that it either starts with digits and only has non whitespace chars until EOL or next comma
-            // or it starts with 1-3 letters followed by digits and non whitespace chars.
-            if (parts[1].match(/^\w{0,3}\d+\S*(,|$)/)) {
-              dozent = parts[3];
-              veranstaltung = parts[2];
-              raum = parts[1]
-              anmerkung = parts.splice(4).join(', ') || ''
-            } else {
-              dozent = parts[2];
-              veranstaltung = parts[1];
-              anmerkung = parts.splice(3).join(', ') || ''
-            }
+            dozent = parts[3];
+            veranstaltung = parts[2] + ' ' + parts[1];
+            raum = parts[4]
+            anmerkung = parts.splice(5).join(', ') || ''
             break;
           case 'Bau-Wasser-Boden':
             dozent = parts[3];
