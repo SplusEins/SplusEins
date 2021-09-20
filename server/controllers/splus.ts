@@ -133,7 +133,7 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
     return;
   }
 
-  const name = req.params.name;
+  const name = decodeURIComponent(req.params.name);
 
   try {
     const requests = <TimetableRequest[]>flatten(timetables.map((timetable) => weeks.map((week) => (<TimetableRequest> {

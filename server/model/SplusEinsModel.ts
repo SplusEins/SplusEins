@@ -45,7 +45,7 @@ export interface TimetableMetadata {
 }
 
 export interface Timetable {
-  name: string,
+  name?: string,
   // eslint-disable-next-line no-use-before-define
   events: Event[];
   meta: TimetableMetadata;
