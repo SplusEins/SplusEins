@@ -131,7 +131,7 @@ export default {
       // reasonable limits to ensure good performance
       // and a usable UI
       maxSchedules: 8,
-      maxCourses: 20,
+      maxCourses: 30,
       mdiClose
     };
   },
