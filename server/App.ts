@@ -25,6 +25,16 @@ class App {
     this.app.use(this.basePath + '/news', newsController);
     this.app.use(this.basePath + '/ics', icsController);
     this.app.use(this.basePath + '/bus', busController);
+
+    // express default route handler => 404
+    this.app.use(function (req, res, _next) {
+      return res.status(404).type('txt').send('Not a valid API call: ' + req.url);
+    });
+    // Any unhandled server error => 500
+    this.app.use(function (err, _req, res, next) {
+      if (res.headersSent) return next(err); // already handled
+      return res.status(500).type('txt').send('A server error occured. Please inform team@spluseins.de (Error is ' + err.message + ').');
+    });
   }
 }
 
