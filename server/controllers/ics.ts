@@ -75,7 +75,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
       : allEvents;
     const events = filteredEvents.map((event) => eventToICSEvent(event));
 
-    const cal = ical({ events, timezone: 'Europe/Berlin' });
+    const cal = ical({ events });
 
     res.set('Content-Type', 'text/plain');
     res.set('Content-Disposition', 'attachment;filename="spluseins.ics"');

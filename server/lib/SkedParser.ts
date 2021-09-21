@@ -92,8 +92,8 @@ export function parseSkedList (html: string): ParsedLecture[] {
       room: raum,
       lecturer: dozent,
       title: veranstaltung.replace(/^I-/, ''),
-      start: start.toDate(),
-      end: end.toDate(),
+      start: start.utc().toDate(),
+      end: end.utc().toDate(),
       duration: end.diff(start, 'hours', true)
     } as ParsedLecture);
   });
@@ -168,8 +168,8 @@ export function parseSkedCSV (csvString: string): ParsedLecture[] {
       room: raum,
       lecturer: dozent,
       title: veranstaltung,
-      start: start.toDate(),
-      end: end.toDate(),
+      start: start.utc().toDate(),
+      end: end.utc().toDate(),
       duration: end.diff(start, 'hours', true)
     } as ParsedLecture);
   });
@@ -281,8 +281,8 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
           room: raum || '',
           lecturer: dozent || '',
           title: veranstaltung || '',
-          start: start.toDate(),
-          end: end.toDate(),
+          start: start.utc().toDate(),
+          end: end.utc().toDate(),
           duration: end.diff(start, 'hours', true)
         } as ParsedLecture);
       })
