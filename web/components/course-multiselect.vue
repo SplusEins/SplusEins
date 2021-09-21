@@ -2,7 +2,7 @@
   <div>
     <v-alert
       :value="overlappingCourses.length > 0"
-      type="info"
+      type="warning"
     >
       Kurse überschneiden sich: {{ overlappingCourses.join(', ') }}
     </v-alert>
@@ -23,11 +23,12 @@
       <template #item.room="{ item }">
         <span v-html="item.room" />
       </template>
-      <template #item.data-table-select="{isSelected, select}">
+      <template #item.data-table-select="{item, isSelected, select}">
         <v-simple-checkbox
           :value="isSelected"
           @input="select"
           :disabled="!isSelected && selectedCourses.length > maxCourses"
+          :color="overlappingCourses.includes(item.title) ? 'warning' : undefined"
         />
       </template>
     </v-data-table>

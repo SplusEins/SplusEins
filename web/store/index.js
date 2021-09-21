@@ -14,8 +14,7 @@ export const state = () => ({
    * true if frontend is a static build.
    */
   lazyLoad: false,
-  errorQueue: [],
-  completedSetup: false
+  errorQueue: []
 });
 
 export const mutations = {
@@ -27,9 +26,6 @@ export const mutations = {
   },
   dequeueError (state) {
     state.errorQueue.shift();
-  },
-  setSetupCompleted (state, newValue) {
-    state.completedSetup = newValue;
   }
 };
 

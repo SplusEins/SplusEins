@@ -43,7 +43,6 @@ export default ({ store }) => {
     reducer: (state) => ({
       /* select items to be persisted - must not change the structure! */
       version: state.version,
-      completedSetup: state.completedSetup,
       ui: {
         isDark: state.ui.isDark
       },

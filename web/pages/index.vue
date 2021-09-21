@@ -5,9 +5,7 @@
     }"
     fluid
   >
-    <introduction-stepper v-if="showSetupScreen" />
     <v-row
-      v-else
       dense
     >
       <v-col
@@ -114,15 +112,8 @@ export default {
       // display if next plan is from today or from tomorrow
       return this.$dayjs().isSame(this.mensaPlans[0].date, 'day') || this.$dayjs().add(1, 'days').isSame(this.mensaPlans[0].date, 'day');
     },
-    showSetupScreen () {
-      if (this.completedSetup) return false
-      if (this.hasSubscribableTimetables) return false;
-      return true; // only return true if user hasn't setup any plans manually or completed the setup
-    },
     ...mapState({
-      mensaPlans: (state) => state.mensa.plans,
-      completedSetup: (state) => state.completedSetup,
-      faculty: (state) => state.faculty
+      mensaPlans: (state) => state.mensa.plans
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
