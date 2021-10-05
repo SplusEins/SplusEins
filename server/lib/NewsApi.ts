@@ -97,6 +97,9 @@ function truncateAndSortNews (news: NewsElement[], limit: number): NewsElement[]
   news = news.filter(article => (moment(article.date).diff(moment(), 'days') < 3))
   // Filter any duplicate entries (based on title+desc)
   news = news.filter((v, i, a) => a.findIndex(t => (t.title === v.title && t.text === v.text)) === i)
+  // a simple hack to filter out any job adverts
+  // todo one day fix it with a better collectorParam above
+  news = news.filter(article => !article.title.includes('(m/w/d)'))
 
   // Truncate article descriptions
   news = news.map(article => {
