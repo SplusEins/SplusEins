@@ -12,26 +12,11 @@ export default ({ store }) => {
 
       // version migration
       if (value.version) {
-        // version 2: new semester -> new timetable ids + theme property -> ui property
-        if (value.version < 2) {
+        if (value.version < 9) { // TODO increment in WS22
           value.splus.customSchedules = {};
           value.splus.favoriteSchedules = [];
           value.splus.subscribedTimetable = {};
-          if (Object.getOwnPropertyDescriptor(value, 'theme') != undefined) {
-            Object.defineProperty(value, 'ui', Object.getOwnPropertyDescriptor(value, 'theme'));
-            delete value.theme;
-          } else {
-            Object.defineProperty(value, 'ui', { isDark: false });
-          }
-          value.version = 2;
-        }
-
-        // version 3-7: new semester
-        if (value.version < 8) { // TODO increment in SS22
-          value.splus.customSchedules = {};
-          value.splus.favoriteSchedules = [];
-          value.splus.subscribedTimetable = {};
-          value.version = 8; // TODO increment in SS22
+          value.version = 9; // TODO increment in WS22
         }
       }
 
