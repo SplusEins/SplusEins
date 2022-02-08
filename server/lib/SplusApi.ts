@@ -97,18 +97,17 @@ async function parseTimetable (timetable: TimetableRequest): Promise<Event[]> {
         throw new Error(`Unsupported timetable type detected: ${timetable.type}.`);
     }
     lectures = lectures.map(lecture => {
-      if (lecture.room) {
-        // Allow only specific HTML attributes for the room since we directly render the HTML in the client
-        // Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
-        lecture.room = sanitize(lecture.room, {
-          allowedTags: ['a'],
-          allowedAttributes: {
-            a: ['href', 'target']
-          }
-        })
+      const allowLinksConfig: sanitize.IOptions = {
+        allowedTags: ['a'],
+        allowedAttributes: { a: ['href', 'target'] }
       }
-      // Strip all html from dozent
-      lecture.lecturer = sanitize(lecture.lecturer, {})
+      // Allow only specific HTML attributes for the room since we directly render the HTML in the client
+      // Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
+      lecture.room = sanitize(lecture.room, allowLinksConfig).replace('&amp;', '&')
+      lecture.info = sanitize(lecture.info, allowLinksConfig).replace('&amp;', '&')
+      // Strip all html
+      lecture.lecturer = sanitize(lecture.lecturer, {}).replace('&amp;', '&')
+      lecture.title = sanitize(lecture.title, {}).replace('&amp;', '&')
       return lecture
     })
     console.log(`Storing ${lectures.length} parsed lectures for ${key} in cache`)
