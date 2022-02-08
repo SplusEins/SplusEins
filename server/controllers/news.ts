@@ -28,6 +28,7 @@ router.get('/:newstypes\.:ext?', async (req, res) => {
   try {
     news = await getNews(newstypes, limit);
   } catch (error) {
+    if (!(error instanceof Error)) throw error
     console.log(`Error while fetching news: ${error.message}`)
     return res.status(404).send(error.message);
   }
