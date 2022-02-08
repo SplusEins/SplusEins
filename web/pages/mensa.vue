@@ -7,7 +7,7 @@
       Mensa Wolfenbüttel
     </div>
     <div class="text-body-2">
-      <a href="https://www.stw-on.de/wolfenbuettel/essen/mensa/#c2368">Offizielle Mensa-Seite mit Öffnungszeiten</a>
+      <a href="https://www.stw-on.de/wolfenbüttel/essen/mensa/">Offizielle Mensa-Seite mit Öffnungszeiten</a>
     </div>
     <div class="text-body-2 text--secondary d-flex">
       <div class="d-flex pr-4">
@@ -86,10 +86,6 @@
         </v-carousel>
       </div>
     </no-ssr>
-
-    <span class="d-flex justify-end text-caption text--secondary">
-      Quelle: openmensa.org
-    </span>
   </v-container>
 </template>
 

@@ -117,7 +117,7 @@
       </v-col>
       <v-col>
         <a
-          v-if="schedule"
+          v-if="schedule && schedule.skedPath"
           :href="'https://stundenplan.ostfalia.de/'+ schedule.skedPath"
           class="pt-1 d-flex justify-end text-caption text--secondary"
           target="_blank"
@@ -160,7 +160,13 @@ export default {
       return this.$dayjs(this.calendarStartDate).add(this.hasEventsOnWeekend ? 5 : 4, 'days').toDate();
     },
     monthSummary () {
-      return this.$dayjs(this.calendarStartDate).format('MMMM YYYY');
+      const startDate = this.$dayjs(this.calendarStartDate)
+      const endDate = this.$dayjs(this.calendarEndDate)
+      if (startDate.isSame(endDate, 'month')) {
+        return startDate.format('MMMM YYYY')
+      } else {
+        return startDate.format('MMMM') + '/' + endDate.format('MMMM YYYY')
+      }
     }
   },
   mounted () {
