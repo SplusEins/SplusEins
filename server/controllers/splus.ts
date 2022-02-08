@@ -169,7 +169,8 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
   }
 });
 
-function handleSkedError (error, res, next) {
+function handleSkedError (error:unknown, res, next) {
+  if (!(error instanceof Error)) throw error
   if (error.message.startsWith('404')) {
     res.status(404).send('Stundenplan nicht bei Ostfalia verfügbar');
   } else if (error.message.startsWith('403') || error.message.startsWith('401')) {

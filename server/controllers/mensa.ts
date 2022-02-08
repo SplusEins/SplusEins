@@ -91,7 +91,7 @@ router.get('/', async (req, res, next) => {
       res.json(data);
     }
   } catch (error) {
-    if (error.message === 'The user aborted a request.') {
+    if (error instanceof Error && error.message === 'The user aborted a request.') {
       res.status(504).send('Mensa request to STW-ON timed out'); // Gateway timeout, STW-ON API is down
       return;
     }

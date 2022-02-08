@@ -159,6 +159,7 @@ export default async function getNews (newsSelectors: string[], limit: number): 
           return newsEls;
         }, { ttl: CACHE_SECONDS }) as Promise<NewsElement[]>;
       } catch (e) {
+        if (!(e instanceof Error)) throw e
         console.log(`Error while loading news for "${newsSelector}": ${e.message}`)
         return [];
       }
