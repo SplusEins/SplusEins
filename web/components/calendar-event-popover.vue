@@ -47,9 +47,10 @@
             <v-icon>{{ mdiTextSubject }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title class="overflow-y">
-              {{ details.desc }}
-            </v-list-item-title>
+            <v-list-item-title
+              class="overflow-y"
+              v-html="details.desc"
+            />
           </v-list-item-content>
         </v-list-item>
       </v-list>

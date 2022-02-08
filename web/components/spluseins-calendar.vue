@@ -196,7 +196,7 @@ export default {
     },
     async refresh () {
       // Manually set loading bar, otherwise it isn't displayed properly because of await
-      this.$nuxt.$loading.start()
+      this.$nextTick(() => { this.$nuxt.$loading.start() })
       // Blocking load first and manually set start date afterwards so we avoid load flickering
       await this.load();
       this.calendarStartDate = this.weekOrDefault;
