@@ -241,21 +241,28 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
             anmerkung = parts[1];
             break;
           case 'Soziale Arbeit':
-            veranstaltung = parts[1];
-            raum = parts[2]
-            dozent = parts.pop() // dozent ist immer die letzte zeile
-            anmerkung = parts.splice(4).join(', ') || ''
+            parts.shift() // remove first uhrzeit entry
+            while (!parts[0].startsWith('S-')) {
+              anmerkung += parts.shift() + ', '
+            }
+            veranstaltung = parts.shift();
+            anmerkung += parts.shift() + ', '
+            dozent = parts.shift();
+            raum = parts.pop();
+            anmerkung += parts.join(', ') || ''
+            anmerkung = anmerkung.replace(/(, ?)+$/, ''); // remove trailing ,
+
+            // einige veranstaltungen enthalten den dozenten im titel
+            veranstaltung = veranstaltung.replace(` - ${dozent}`, '').replace(` ${dozent}`, '')
             break;
           case 'Fahrzeugtechnik':
           case 'Gesundheitswesen':
           case 'Verkehr-Sport-Tourismus-Medien':
           case 'Elektrotechnik':
-            if (parts[2].includes('Tutorium')) {
-              // some special handling for faculty E tutorium entries
-              veranstaltung = parts[1] + ' ' + parts[2];
-              dozent = parts[3];
-              raum = parts[4];
-              anmerkung = parts.splice(5).join(', ') || ''
+            if (parts.length === 3) {
+              // some special handling for faculty E entries
+              veranstaltung = parts[1];
+              raum = parts[2];
             } else {
               dozent = parts[2];
               veranstaltung = parts[1];
@@ -272,7 +279,7 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
         const start = moment.tz(datum + ' ' + uhrzeitStart, dateFormat, 'Europe/Berlin');
         const end = moment.tz(datum + ' ' + uhrzeitEnde, dateFormat, 'Europe/Berlin');
 
-        if (!start.isValid() || !end.isValid()) {
+        if (!start.isValid() || !end.isValid() || veranstaltung === '') {
           return;
         }
 

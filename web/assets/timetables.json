@@ -198,6 +198,231 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "e/semester/E-EIT-GS-Sem1.html",
+    "label": "EIT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_gs_1_ss22",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT-Sem1.html",
+    "label": "WEIT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_1_ss22",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT-GS-Sem2-alt.html",
+    "label": "EIT (PO 2013) alt",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_gs_alt_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT-GS-Sem2-neu.html",
+    "label": "EIT (PO 2021)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_gs_neu_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EITiP-GS-Sem2-alt.html",
+    "label": "EITiP (PO 2013) alt",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eitip_gs_alt_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EITiP-GS-Sem2-neu.html",
+    "label": "EITiP (PO 2021)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eitip_gs_neu_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT-Sem2-alt.html",
+    "label": "WEIT (PO 2015) alt",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_alt_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT-Sem2-neu.html",
+    "label": "WEIT (PO 2021)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_neu_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEITiP-Sem2-alt.html",
+    "label": "WEITiP (PO 2015) alt",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weitip_alt_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEITiP-Sem2-neu.html",
+    "label": "WEITiP (PO 2021)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weitip_neu_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-GS-Sem3.html",
+    "label": "EIT(iP)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_gs_3_ss22",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT(iP)-Sem3.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_ip_3_ss22",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-AT-Sem4.html",
+    "label": "EIT(iP)-AT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_at_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-EE-Sem4.html",
+    "label": "EIT(iP)-EE",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_ee_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-IT-Sem4.html",
+    "label": "EIT(iP)-IT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_it_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT(iP)-Sem4.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_ip_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-AT-Sem5.html",
+    "label": "EIT(iP)-AT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_at_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-EE-Sem5.html",
+    "label": "EIT(iP)-EE",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_ee_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-IT-Sem5.html",
+    "label": "EIT(iP)-IT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_it_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT(iP)-Sem5.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_ip_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-AT-Sem6.html",
+    "label": "EIT(iP)-AT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_at_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-EE-Sem6.html",
+    "label": "EIT(iP)-EE",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_ee_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-IT-Sem6.html",
+    "label": "EIT(iP)-IT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_it_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT(iP)-Sem6.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_ip_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-IST.html",
+    "label": "IST",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_ist_ss22",
+    "semester": "Sonstige",
+    "degree": "Master"
+  },
+  {
     "skedPath": "g/wp/APP1_SOSE2022.html",
     "label": "APP",
     "faculty": "Gesundheitswesen",
@@ -637,6 +862,69 @@
     "id": "r_m_rpp_2_ss22",
     "semester": 2,
     "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/SS2022/Fakultaetstermine_1_1. Sem_SS2022.html",
+    "label": "Fakultätstermine SS 2022 - Gremienzeiten",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_fakultaetstermine_1_ss22",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_1_1. Sem_SS2022.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_1_ss22",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_2_2. Sem_SS2022.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_3_3. Sem_SS2022.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_3_ss22",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_4_4. Sem_SS2022.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_5_5. Sem_SS2022.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_6_6. Sem_SS2022.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
   },
   {
     "skedPath": "v/stundenplan/bee/BEE_2020_SoSe_1_1. Sem..html",
