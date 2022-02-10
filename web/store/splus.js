@@ -146,7 +146,7 @@ export const getters = {
 
     return state.events.map((event) => {
       const color = colorScale[uniqueIds.indexOf(event.meta.organiserShortname)];
-      const description = event.meta.organiserName ? `${event.meta.organiserName}\n${event.meta.description}` : `${event.meta.description}`;
+      const description = event.meta.organiserName ? `Dozent: ${event.meta.organiserName}<br>${event.meta.description}` : `${event.meta.description}`;
 
       const startMoment = dayjs(event.start);
       return {

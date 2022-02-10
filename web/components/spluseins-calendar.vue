@@ -251,4 +251,8 @@ export default {
   padding-right: 1px;
 }
 
+.v-calendar .v-event-timed{
+  overflow-y: hidden;
+}
+
 </style>
