@@ -702,6 +702,312 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%201.%20Sem%20Informatik.csv",
+    "label": "Informatik",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_informatik_1_ss22",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%202.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%202.%20Sem..csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%202.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%202.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%202.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%202.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%202.%20Sem..csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%203.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_3_ss22",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%203.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_3_ss22",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%203.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_3_ss22",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%203.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_3_ss22",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%203.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_3_ss22",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%204.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%204.%20Sem..csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%204.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%204.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%204.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%204.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%204.%20Sem..csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%205.%20Sem.%20(PO18).csv",
+    "label": "CE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ce_po18_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%205.%20Sem.%20(PO18).csv",
+    "label": "IE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_ie_po18_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20MEI%205.%20Sem.%20(PO18).csv",
+    "label": "MEI (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_mei_po18_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SOE%205.%20Sem.%20(PO18).csv",
+    "label": "SOE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_soe_po18_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20SYE%205.%20Sem.%20(PO18).csv",
+    "label": "SYE (PO18)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sye_po18_5_ss22",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Career%20Service.csv",
+    "label": "Career Service",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_career_service_ss22",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Sprachenzentrum.csv",
+    "label": "Sprachenzentrum",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sprachenzentrum_ss22",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Alle%20WPF.csv",
+    "label": "Alle WPF",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_alle_wpf_ss22",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(CHMI)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (CHMI)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_chmi_1_ss22",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(DITR)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (DITR)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_ditr_1_ss22",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(EMD)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (EMD)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_emd_1_ss22",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(MLBD)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (MLBD)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_mlbd_1_ss22",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(SCPS)%201.%20Sem..csv",
+    "label": "M.Sc. Digital Technologies (SCPS)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_digital_technologies_scps_1_ss22",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte).csv",
+    "label": "M.Sc. Informatik (Alle Sem.+Schwerpunkte)",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_m_informatik_alle_schwerpunkte_ss22",
+    "semester": "Sonstige",
+    "degree": "Master"
+  },
+  {
     "skedPath": "r/studentenset/R-B-RFS_1_1. Sem..html",
     "label": "RFS (PO 2020)",
     "faculty": "Recht",
