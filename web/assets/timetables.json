@@ -1175,7 +1175,7 @@
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_fakultaetstermine_1_ss22",
-    "semester": "Sonstige",
+    "semester": 1,
     "degree": "Bachelor"
   },
   {
@@ -1188,7 +1188,34 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_1_1. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_1_ss22",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/Weiterbindlung Erlebnispaedagogok_1_1. Sem.html",
+    "label": "Weiterbindlung Erlebnispädagogok",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_weiterbindlung_erlebnispaedagogok_1_ss22",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_2_2. Sem_SS2022.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_2_2. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1206,12 +1233,39 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_3_3. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_3_ss22",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_4_4. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_4_4. Sem_SS2022.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_4_ss22",
     "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_5_5. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_5_ss22",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
@@ -1231,6 +1285,402 @@
     "id": "s_6_ss22",
     "semester": 6,
     "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/Bachelor Soziale Arbeit_6_6. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_1_1. Sem. - Schwerpunkt 1.html",
+    "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_ma_psa_schwerpunkt_1_ss22",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_1_1. Sem. - Schwerpunkt 2.html",
+    "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_ma_psa_schwerpunkt_2_1_ss22",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 1.html",
+    "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_ma_psa_schwerpunkt_1_2_ss22",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 2.html",
+    "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_ma_psa_schwerpunkt_2_ss22",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_3_3. Sem. - Schwerpunkt 1.html",
+    "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_ma_psa_schwerpunkt_1_3_ss22",
+    "semester": 3,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_3_3. Sem. - Schwerpunkt 2.html",
+    "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_ma_psa_schwerpunkt_2_3_ss22",
+    "semester": 3,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_4_4. Sem. - Schwerpunkt 1.html",
+    "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_ma_psa_schwerpunkt_1_4_ss22",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "s/wp/MA PSA_4_4. Sem. - Schwerpunkt 2.html",
+    "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_ma_psa_schwerpunkt_2_4_ss22",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_2.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_2.html",
+    "label": "Logistik- und Informationsmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lip_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lom_2.html",
+    "label": "Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lom_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lop_2.html",
+    "label": "Logistikmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lop_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_md_1.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_md_1_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mk_1.html",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mk_1_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mm_1.html",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mm_1_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mpm_2.html",
+    "label": "Mobilität und Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mpm_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_spm_2.html",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_spm_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_srm_2.html",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_srm_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tm_2.html",
+    "label": "Tourismusmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tm_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wmv_2.html",
+    "label": "Wirtschaftsingenieurwesen Mobilität und Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wmv_2_ss22",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_4.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lom_4.html",
+    "label": "Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lom_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lop_4.html",
+    "label": "Logistikmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lop_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_md_3.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_md_3_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mk_3.html",
+    "label": "Medienkommunikation",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mk_3_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mm_3.html",
+    "label": "Medienmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mm_3_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mpm_4.html",
+    "label": "Mobilität und Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mpm_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_spm_4.html",
+    "label": "Sportmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_spm_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_srm_4.html",
+    "label": "Stadt- und Regionalmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_srm_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tm_4.html",
+    "label": "Tourismusmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tm_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wmv_4.html",
+    "label": "Wirtschaftsingenieurwesen Mobilität und Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wmv_4_ss22",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_6.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_pvm_6.html",
+    "label": "Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_pvm_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_tlm_6.html",
+    "label": "Transport- und Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_tlm_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wiv_6.html",
+    "label": "Wirtschaftsingenieurwesen Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wiv_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lip_8.html",
+    "label": "Logistik im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lip_8_ss22",
+    "semester": 8,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/MVL 1 SS 2022.html",
+    "label": "Verkehr und Logistik",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mvl_1_ss22",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_2.html",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_fdu_2_ss22",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_1.html",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_km_1_2_ss22",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_md_1.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_md_1_2_ss22",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_4.html",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_fdu_4_ss22",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_3.html",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_km_3_4_ss22",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_md_3.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_md_3_4_ss22",
+    "semester": 4,
+    "degree": "Master"
   },
   {
     "skedPath": "v/stundenplan/bee/BEE_2020_SoSe_1_1. Sem..html",
