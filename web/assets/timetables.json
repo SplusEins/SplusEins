@@ -1175,7 +1175,7 @@
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_fakultaetstermine_1_ss22",
-    "semester": 1,
+    "semester": "Sonstige",
     "degree": "Bachelor"
   },
   {
@@ -1188,34 +1188,7 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_1_1. Sem.html",
-    "label": "Soziale Arbeit",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_1_ss22",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/Weiterbindlung Erlebnispaedagogok_1_1. Sem.html",
-    "label": "Weiterbindlung Erlebnispädagogok",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_weiterbindlung_erlebnispaedagogok_1_ss22",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_2_2. Sem_SS2022.html",
-    "label": "Soziale Arbeit",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_2_ss22",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_2_2. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1233,39 +1206,12 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_3_3. Sem.html",
-    "label": "Soziale Arbeit",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_3_ss22",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_4_4. Sem.html",
-    "label": "Soziale Arbeit",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_4_ss22",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "s/wp/SS2022/Bachelor Soziale Arbeit_4_4. Sem_SS2022.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_4_ss22",
     "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_5_5. Sem.html",
-    "label": "Soziale Arbeit",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_5_ss22",
-    "semester": 5,
     "degree": "Bachelor"
   },
   {
@@ -1285,87 +1231,6 @@
     "id": "s_6_ss22",
     "semester": 6,
     "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/Bachelor Soziale Arbeit_6_6. Sem.html",
-    "label": "Soziale Arbeit",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_6_ss22",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "s/wp/MA PSA_1_1. Sem. - Schwerpunkt 1.html",
-    "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_1_ss22",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA PSA_1_1. Sem. - Schwerpunkt 2.html",
-    "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_2_1_ss22",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 1.html",
-    "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_1_2_ss22",
-    "semester": 2,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA PSA_2_2. Sem. - Schwerpunkt 2.html",
-    "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_2_ss22",
-    "semester": 2,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA PSA_3_3. Sem. - Schwerpunkt 1.html",
-    "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_1_3_ss22",
-    "semester": 3,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA PSA_3_3. Sem. - Schwerpunkt 2.html",
-    "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_2_3_ss22",
-    "semester": 3,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA PSA_4_4. Sem. - Schwerpunkt 1.html",
-    "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_1_4_ss22",
-    "semester": 4,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "s/wp/MA PSA_4_4. Sem. - Schwerpunkt 2.html",
-    "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
-    "faculty": "Soziale Arbeit",
-    "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_2_4_ss22",
-    "semester": 4,
-    "degree": "Master"
   },
   {
     "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_2.html",
