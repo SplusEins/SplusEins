@@ -981,6 +981,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%206.%20Sem..csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_6_ss22",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Career%20Service.csv",
     "label": "Career Service",
     "faculty": "Informatik",
