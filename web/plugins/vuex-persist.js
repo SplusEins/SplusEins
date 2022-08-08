@@ -12,11 +12,11 @@ export default ({ store }) => {
 
       // version migration
       if (value.version) {
-        if (value.version < 9) { // TODO increment in WS22
+        if (value.version < 10) { // TODO SS23 increment this
           value.splus.customSchedules = {};
           value.splus.favoriteSchedules = [];
           value.splus.subscribedTimetable = {};
-          value.version = 9; // TODO increment in WS22
+          value.version = 10; // TODO SS23 increment this
         }
       }
 
