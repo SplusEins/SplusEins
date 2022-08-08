@@ -44,7 +44,7 @@
 
         <v-list-item v-if="details.desc">
           <v-list-item-icon>
-            <v-icon>{{ mdiTextSubject }}</v-icon>
+            <v-icon>{{ mdiText }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { mdiClockOutline, mdiClose, mdiMapMarker, mdiTextSubject } from '@mdi/js'
+import { mdiClockOutline, mdiClose, mdiMapMarker, mdiText } from '@mdi/js'
 
 export default {
   name: 'DsCustomCalendarEventPopover',
@@ -74,7 +74,7 @@ export default {
       mdiClockOutline,
       mdiClose,
       mdiMapMarker,
-      mdiTextSubject
+      mdiText
     }
   },
   computed: {
