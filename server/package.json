@@ -25,7 +25,7 @@
     "ical-generator": "^3.5.1",
     "iconv-lite": "^0.6.3",
     "moment": "^2.29.4",
-    "moment-timezone": "^0.5.34",
+    "moment-timezone": "^0.5.35",
     "node-fetch": "^2.6.7",
     "rss": "^1.2.2",
     "sanitize-html": "^2.7.1",
