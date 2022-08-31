@@ -531,6 +531,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "h/wp/h_stdgrp_bap_wise 22_23.html",
+    "label": "Soziale Arbeit - Berufsanerkennungsphase - WiSe 22/23",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_bap_wise_22_23_ws23",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%201.%20Sem..csv",
     "label": "Digital Technologies",
     "faculty": "Informatik",
@@ -630,6 +639,24 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%202.%20Sem..csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_2_ws23",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%202.%20Sem..csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_2_ws23",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%203.%20Sem.%20(PO18).csv",
     "label": "CE (PO18)",
     "faculty": "Informatik",
@@ -680,6 +707,24 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_sye_po18_3_ws23",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%203.%20Sem..csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_3_ws23",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%203.%20Sem..csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_3_ws23",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -738,6 +783,24 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%204.%20Sem..csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_4_ws23",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%204.%20Sem..csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_4_ws23",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%205.%20Sem.%20(PO18).csv",
     "label": "CE (PO18)",
     "faculty": "Informatik",
@@ -792,12 +855,48 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%205.%20Sem..csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_5_ws23",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%205.%20Sem..csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_5_ws23",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%205.%20Sem..csv",
     "label": "WI",
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_wi_5_ws23",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%206.%20Sem..csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_6_ws23",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%206.%20Sem..csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_6_ws23",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -888,6 +987,186 @@
     "type": "csv",
     "id": "i_m_informatik_alle_schwerpunkte_ws23",
     "semester": "Sonstige",
+    "degree": "Master"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-RFS (2022)_1_1. Sem..html",
+    "label": "RFS (PO 2022)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_rfs_2022_1_ws23",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-RPP (2022)_1_1. Sem..html",
+    "label": "RPP (PO 2022)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_rpp_2022_1_ws23",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-WR_1_1. Sem..html",
+    "label": "WR (PO 2022)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_wr_1_ws23",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-RFS_2_2. Sem..html",
+    "label": "RFS (PO 2020)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_rfs_2_ws23",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-RPP_2_2. Sem..html",
+    "label": "RPP (PO 2020)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_rpp_2_ws23",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-WR_2_2. Sem..html",
+    "label": "WR (PO 2020)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_wr_2_ws23",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-RFS_3_3. Sem..html",
+    "label": "RFS (PO 2020)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_rfs_3_ws23",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-RPP_3_3. Sem..html",
+    "label": "RPP (PO 2020)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_rpp_3_ws23",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-WR_3_3. Sem..html",
+    "label": "WR (PO 2020)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_wr_3_ws23",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-RFS_4_4. Sem..html",
+    "label": "RFS (PO 2020)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_rfs_4_ws23",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-RPP_5_5. Sem..html",
+    "label": "RPP (PO 2020)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_rpp_5_ws23",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-B-WR_5_5. Sem..html",
+    "label": "WR (PO 2020)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_b_wr_5_ws23",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/Erstsemesterveranstaltungen_6_6. Sem..html",
+    "label": "Erstsemesterveranstaltungen alt",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_erstsemesterveranstaltungen_6_ws23",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-RFS_6_6. Sem..html",
+    "label": "RFS (PO 2014)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_rfs_6_ws23",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-RPP_6_6. Sem..html",
+    "label": "RPP (PO 2014)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_rpp_6_ws23",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-WR_6_6. Sem..html",
+    "label": "WR (PO 2014)",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_wr_6_ws23",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-WPF-WF-Tutorien_6_6. Sem..html",
+    "label": "Wahlpflichtfächer und Tutorien",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_wpf_wf_tutorien_6_6_ws23",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/R-M-FTC_1_1. Sem..html",
+    "label": "FTC (PO 2022) - nur im WS",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_m_ftc_1_ws23",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "r/studentenset/R-M-ILB_1_1. Sem..html",
+    "label": "ILB (PO 2022) - nur im WS",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_m_ilb_1_ws23",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "r/studentenset/R-M-RPP_1_1. Sem..html",
+    "label": "RPP-M (PO 2022) - nur im WS",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_m_rpp_1_ws23",
+    "semester": 1,
     "degree": "Master"
   },
   {
