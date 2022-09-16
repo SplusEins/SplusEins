@@ -909,6 +909,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-Sprachenzentrum_1_Alle%20Semester.csv",
+    "label": "Sprachenzentrum_Alle",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_sprachenzentrum_1_alle_ws23",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/Alle%20WPF.csv",
     "label": "Alle WPF",
     "faculty": "Informatik",
@@ -969,15 +978,6 @@
     "type": "csv",
     "id": "i_vfh_m_wi_1_ws23",
     "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%202.%20Sem..csv",
-    "label": "VFH-M.Sc. WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_m_wi_2_ws23",
-    "semester": 2,
     "degree": "Master"
   },
   {
@@ -1143,11 +1143,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/R-WPF-WF-Tutorien_6_6. Sem..html",
+    "skedPath": "r/studentenset/R-WPF-WF-Tutorien_7_7. Sem..html",
     "label": "Wahlpflichtfächer und Tutorien",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_wpf_wf_tutorien_6_6_ws23",
+    "id": "r_wpf_wf_tutorien_7_7_ws23",
     "semester": "WPF",
     "degree": "Bachelor"
   },
