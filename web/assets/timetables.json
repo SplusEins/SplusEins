@@ -540,15 +540,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%201.%20Sem..csv",
-    "label": "Digital Technologies",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_digital_technologies_1_ws23",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%201.%20Sem.csv",
     "label": "Digital Technologies",
     "faculty": "Informatik",
@@ -576,38 +567,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_1_1.%20Sem..csv",
-    "label": "VFH-IT-Sicherheit",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_it_sicherheit_1_ws23",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%201.%20Sem..csv",
-    "label": "VFH-MA MEI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_ma_mei_1_ws23",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%201.%20Sem.csv",
     "label": "VFH-MA MEI",
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_ma_mei_1_ws23",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%201.%20Sem..csv",
-    "label": "VFH-MI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_mi_1_ws23",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -630,25 +594,7 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%201.%20Sem..csv",
-    "label": "VFH-WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_wi_1_ws23",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%201.%20Sem.csv",
-    "label": "WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_wi_1_ws23",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%201.%20Sem..csv",
     "label": "WI",
     "faculty": "Informatik",
     "type": "csv",
@@ -702,15 +648,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%202.%20Sem..csv",
-    "label": "VFH-MI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_mi_2_ws23",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%202.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
@@ -720,29 +657,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%202.%20Sem..csv",
-    "label": "VFH-WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_wi_2_ws23",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%202.%20Sem.csv",
     "label": "VFH-WI",
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_wi_2_ws23",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%202.%20Sem..csv",
-    "label": "WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_wi_2_ws23",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -766,15 +685,6 @@
   },
   {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%203.%20Sem.csv",
-    "label": "Digital Technologies",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_digital_technologies_3_ws23",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%203.%20Sem..csv",
     "label": "Digital Technologies",
     "faculty": "Informatik",
     "type": "csv",
@@ -828,38 +738,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%203.%20Sem..csv",
-    "label": "VFH-MI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_mi_3_ws23",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%203.%20Sem..csv",
-    "label": "VFH-WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_wi_3_ws23",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%203.%20Sem.csv",
     "label": "VFH-WI",
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_wi_3_ws23",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%203.%20Sem..csv",
-    "label": "WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_wi_3_ws23",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -918,15 +801,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%204.%20Sem..csv",
-    "label": "VFH-MI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_mi_4_ws23",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%204.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
@@ -945,25 +819,7 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%204.%20Sem..csv",
-    "label": "VFH-WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_wi_4_ws23",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%204.%20Sem.csv",
-    "label": "WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_wi_4_ws23",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%204.%20Sem..csv",
     "label": "WI",
     "faculty": "Informatik",
     "type": "csv",
@@ -982,15 +838,6 @@
   },
   {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%205.%20Sem.csv",
-    "label": "Digital Technologies",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_digital_technologies_5_ws23",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%205.%20Sem..csv",
     "label": "Digital Technologies",
     "faculty": "Informatik",
     "type": "csv",
@@ -1035,29 +882,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%205.%20Sem..csv",
-    "label": "VFH-MI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_mi_5_ws23",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%205.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_mi_5_ws23",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%205.%20Sem..csv",
-    "label": "VFH-WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_wi_5_ws23",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1080,25 +909,7 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%205.%20Sem..csv",
-    "label": "WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_wi_5_ws23",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%206.%20Sem.csv",
-    "label": "VFH-MI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_mi_6_ws23",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%206.%20Sem..csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
     "type": "csv",
@@ -1112,24 +923,6 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_wi_6_ws23",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%206.%20Sem..csv",
-    "label": "VFH-WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_wi_6_ws23",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%206.%20Sem..csv",
-    "label": "WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_wi_6_ws23",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -1170,29 +963,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(CHMI)%201.%20Sem..csv",
-    "label": "M.Sc. Digital Technologies (CHMI)",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_m_digital_technologies_chmi_1_ws23",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(CHMI)%201.%20Sem.csv",
     "label": "M.Sc. Digital Technologies (CHMI)",
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_m_digital_technologies_chmi_1_ws23",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(DITR)%201.%20Sem..csv",
-    "label": "M.Sc. Digital Technologies (DITR)",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_m_digital_technologies_ditr_1_ws23",
     "semester": 1,
     "degree": "Master"
   },
@@ -1215,24 +990,6 @@
     "degree": "Master"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(EMD)%201.%20Sem..csv",
-    "label": "M.Sc. Digital Technologies (EMD)",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_m_digital_technologies_emd_1_ws23",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(MLBD)%201.%20Sem..csv",
-    "label": "M.Sc. Digital Technologies (MLBD)",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_m_digital_technologies_mlbd_1_ws23",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(MLBD)%201.%20Sem.csv",
     "label": "M.Sc. Digital Technologies (MLBD)",
     "faculty": "Informatik",
@@ -1248,33 +1005,6 @@
     "type": "csv",
     "id": "i_m_digital_technologies_scps_1_ws23",
     "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Digital%20Technologies%20(SCPS)%201.%20Sem..csv",
-    "label": "M.Sc. Digital Technologies (SCPS)",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_m_digital_technologies_scps_1_ws23",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%201.%20Sem..csv",
-    "label": "VFH-M.Sc. WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_m_wi_1_ws23",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%203.%20Sem..csv",
-    "label": "VFH-M.Sc. WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_m_wi_3_ws23",
-    "semester": 3,
     "degree": "Master"
   },
   {
