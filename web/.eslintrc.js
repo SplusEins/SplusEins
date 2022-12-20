@@ -3,9 +3,6 @@ module.exports = {
     browser: true,
     node: true
   },
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
   extends: [
     'eslint:recommended',
     'plugin:vue/strongly-recommended',
@@ -26,6 +23,9 @@ module.exports = {
     complexity: ['warn', { max: 30 }],
     'no-warning-comments': 'warn',
     'vue/valid-v-slot': 'off', // false positives for vuetify
-    'vue/html-quotes': 'off' // doesn't work properly
+    'vue/html-quotes': 'off', // doesn't work properly
+    'vue/multi-word-component-names': 'warn', // fixme at some point
+    'vue/no-v-text-v-html-on-component': 'warn' // we like to use this
+
   }
 }
