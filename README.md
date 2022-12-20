@@ -1,8 +1,8 @@
 # SplusEins
 
-![GitHub API Workflow Status](https://img.shields.io/github/workflow/status/SplusEins/SplusEins/Server%20Build?label=api%20build)
-![GitHub Web Workflow Status](https://img.shields.io/github/workflow/status/SplusEins/SplusEins/Web%20Build?label=web%20build)
-![GitHub Deploy Workflow Status](https://img.shields.io/github/workflow/status/SplusEins/SplusEins/Deploy?label=deploy)
+![GitHub API Workflow Status](https://img.shields.io/github/actions/workflow/status/SplusEins/SplusEins/build-server.yml?branch=master&label=api%20build)
+![GitHub Web Workflow Status](https://img.shields.io/github/actions/workflow/status/SplusEins/SplusEins/build-web.yml?branch=master&label=web%20build)
+![GitHub Deploy Workflow Status](https://img.shields.io/github/actions/workflow/status/SplusEins/SplusEins/deploy.yml?branch=master&label=deploy)
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m787659430-7cab3eb7b484e1a13fd30a69?label=uptime)
 
 [SplusEins documentation](https://spluseins.de/docs/)
