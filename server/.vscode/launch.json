@@ -4,8 +4,9 @@
         {
             "name": "Launch API",
             "request": "launch",
-            "type": "pwa-node",
+            "type": "node",
             "runtimeExecutable": "npm",
+            "runtimeVersion": "16.16.0",
             "runtimeArgs": [
                 "run",
                 "dev"

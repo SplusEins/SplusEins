@@ -25,14 +25,14 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@mdi/js": "^7.0.96",
-    "@nuxtjs/eslint-module": "^3.0.2",
+    "@mdi/js": "^7.1.96",
+    "@nuxtjs/eslint-module": "^3.1.0",
     "@nuxtjs/vuetify": "^1.12.3",
     "@types/chroma-js": "^2.1.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-promise": "^5.1.0",
