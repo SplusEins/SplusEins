@@ -29,6 +29,7 @@ jobs:
           token: ${{ github.token }}
           commit-message: Updated timetables with sked-parser
           branch: actions/update-timetables
+          author: actions-user <actions@github.com>
           title: 'Sync timetables.json with Ostfalia'
           body: |
             Updated timetables with sked-parser automatically using [sked-parser](https://github.com/SplusEins/sked_parser).
