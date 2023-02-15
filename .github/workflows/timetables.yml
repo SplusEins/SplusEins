@@ -1,21 +1,22 @@
 name: Timetable sync
 
 on:
- schedule:
-   - cron: '0 18 * * *' # once per day so we don't spam ostfalia servers too much
- workflow_dispatch:
+  schedule:
+    - cron: "0 18 * * *" # once per day so we don't spam ostfalia servers too much
+  workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+concurrency: timetable-sync
+
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
-      - name: Install python dependencies
-        run: python -m pip install --upgrade pip setuptools wheel
+          python-version: "3.x"
       - name: Install sked-parser
         run: python -m pip install git+https://github.com/SplusEins/sked_parser.git
       - name: Run sked-parser
@@ -30,7 +31,7 @@ jobs:
           commit-message: Updated timetables with sked-parser
           branch: actions/update-timetables
           author: actions-user <actions@github.com>
-          title: 'Sync timetables.json with Ostfalia'
+          title: "Sync timetables.json with Ostfalia"
           body: |
             Updated timetables with sked-parser automatically using [sked-parser](https://github.com/SplusEins/sked_parser).
             Check the Action output for any warnings that occured while parsing.
