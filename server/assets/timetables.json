@@ -612,6 +612,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_2_VFH-B.Sc.%20ITS%202.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_vfh_its_2_ss23",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_2_VFH-B.Sc.%20ITS%202.%20Sem..csv",
     "label": "VFH-IT-Sicherheit_VFH- ITS",
     "faculty": "Informatik",
@@ -783,6 +792,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_4_VFH-B.Sc.%20ITS%204.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_vfh_its_4_ss23",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%204.%20Sem.csv",
     "label": "VFH-MA MEI",
     "faculty": "Informatik",
@@ -901,6 +919,15 @@
   },
   {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_6_6.%20Sem..csv",
+    "label": "VFH-IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_6_ss23",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_6_6.%20Sem.csv",
     "label": "VFH-IT-Sicherheit",
     "faculty": "Informatik",
     "type": "csv",
