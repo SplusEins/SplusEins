@@ -1,6 +1,8 @@
 import { ParsedLecture } from './SplusModel';
 import * as crypto from 'crypto';
 
+const CENSOR_DISABLE = !!process.env.CENSOR_DISABLE;
+
 export interface NewsElement {
   title: string;
   link: string;
@@ -89,8 +91,8 @@ export class Event {
     this.duration = lecture.duration;
     this.location = lecture.room;
     this.meta = {
-      organiserShortname: this.generateOrganiserShortname(this.censorOrganiserName(lecture.lecturer)),
-      organiserName: this.censorOrganiserName(lecture.lecturer),
+      organiserShortname: this.generateOrganiserShortname(CENSOR_DISABLE ? lecture.lecturer : this.censorOrganiserName(lecture.lecturer)),
+      organiserName: CENSOR_DISABLE ? lecture.lecturer : this.censorOrganiserName(lecture.lecturer),
       description: lecture.info
     };
   }
