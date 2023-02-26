@@ -18,6 +18,14 @@ export function customTimetableToRoute (customTimetable) {
   return { name: 'plan-timetable', params: {}, query };
 }
 
+export function deepEqual (x, y) {
+  if (typeof x === 'object' && typeof x === typeof y) {
+    return Object.keys(x).length === Object.keys(y).length && Object.keys(x).every(key => deepEqual(x[key], y[key]));
+  }
+
+  return x === y;
+}
+
 export function timetableToRoute (timetable) {
   return {
     name: 'plan-timetable',

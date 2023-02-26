@@ -86,7 +86,7 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex';
-import { uniq, flatten, customTimetableToRoute } from '../lib/util';
+import { uniq, flatten, customTimetableToRoute, deepEqual } from '../lib/util';
 import { loadUniqueLectures, eventsAsLectures } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
@@ -153,7 +153,8 @@ export default {
       schedulesTree: 'splus/getTimetablesAsTree',
       customScheduleLabels: 'splus/customTimetableLabels',
       scheduleIds: 'splus/timetableIds',
-      getScheduleById: 'splus/getTimetableById'
+      getScheduleById: 'splus/getTimetableById',
+      customTimetablesAsRoutes: 'splus/customTimetablesAsRoutes'
     })
   },
   watch: {
@@ -220,8 +221,16 @@ export default {
       });
 
       if (!this.isNew) {
-        this.deleteCustomSchedule(this.customSchedule);
-        this.$router.replace(customScheduleRoute);
+        let wasChanged = true;
+        for (const route of this.customTimetablesAsRoutes) {
+          if (deepEqual(route, customScheduleRoute)) {
+            wasChanged = false;
+          }
+        }
+        if (wasChanged) {
+          this.$router.replace(customScheduleRoute);
+          this.deleteCustomSchedule(this.customSchedule);
+        }
       } else {
         this.$router.push(customScheduleRoute);
       }
