@@ -24,6 +24,9 @@ Follow the next steps if you want to develop/build locally.
 `cd web/`
 
 ```bash
+# install correct node version
+nvm install
+
 # install dependencies
 npm install
 
