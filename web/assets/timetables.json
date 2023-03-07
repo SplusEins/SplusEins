@@ -513,6 +513,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "h/wp/h_stdgrp_bap_sose 23.html",
+    "label": "Soziale Arbeit - Berufsanerkennung - SoSe 23",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_bap_ss23",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%201.%20Sem%20Informatik.csv",
     "label": "Informatik",
     "faculty": "Informatik",
