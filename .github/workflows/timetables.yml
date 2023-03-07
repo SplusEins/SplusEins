@@ -38,4 +38,3 @@ jobs:
             More Information can be found [in the docs](https://spluseins-i.ostfalia.de/docs/semesterbeginn.html#aktualisierung-der-plane)
             *This PR will be force-pushed everytime new changes are available or when the master branch has been updated.*
           labels: automated
-          assignees: l3d00m
