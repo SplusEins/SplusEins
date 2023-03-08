@@ -954,30 +954,12 @@
     "degree": "Master"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%201.%20Sem.csv",
-    "label": "VFH-M.Sc. WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_m_wi_1_ss23",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%202.%20Sem.csv",
     "label": "VFH-M.Sc. WI",
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_m_wi_2_ss23",
     "semester": 2,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%203.%20Sem.csv",
-    "label": "VFH-M.Sc. WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_m_wi_3_ss23",
-    "semester": 3,
     "degree": "Master"
   },
   {
