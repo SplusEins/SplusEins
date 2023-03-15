@@ -130,12 +130,12 @@ function roomToLocation(rooms: string): string {
       // match rooms of the exer address, https://regex101.com/r/gGmwbl/1
       const matchExer = /^(?<building>\d+)\/(?<room>\d+)(?<room_extra>-\w+)?(\s+\((?<room_name>.+)\))?/.exec(room);
       if (matchExer) {
-        return `${room}, Am Exer ${matchExer['building']} Wolfenbüttel, Germany`;
+        return `${room}, Am Exer ${parseInt(matchExer['building'])} 38302 Wolfenbüttel Germany`;
       }
       // match rooms of the main address, https://regex101.com/r/krwu5H/1
       const matchMain = /^([A-FL]\d{3})\s+(.+)/.exec(room);
       if (matchMain) {
-        return `${room}, Salzdahlumer Str. 46/48 Wolfenbüttel, Germany`;
+        return `${room}, Salzdahlumer Str. 46/48 38302 Wolfenbüttel Germany`;
       }
       return room;
     })
