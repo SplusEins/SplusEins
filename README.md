@@ -21,9 +21,9 @@ Follow the next steps if you want to develop/build locally.
 
 ### Setup frontend
 
-`cd web/`
-
 ```bash
+cd web/
+
 # install correct node version
 nvm install
 
@@ -45,7 +45,9 @@ npm run generate
 
 ### Setup backend
 
-`cd server/`
+```bash
+cd server/
+```
 
 Add your ostfalia credentials as environment variables, preferably in a `.env`-file.
 
