@@ -139,7 +139,7 @@ function roomToLocation (rooms: string): string {
       }
       return room;
     })
-    .join(', ');
+    .join(' / ');
 }
 
 /**
