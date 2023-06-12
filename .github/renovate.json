@@ -9,6 +9,7 @@
     "helpers:pinGitHubActionDigests",
     "schedule:weekends"
   ],
+  "ignorePaths": ["app/**"],
   "packageRules": [
     {
       "matchPackageNames": [
@@ -19,11 +20,6 @@
         "ts-loader"
       ],
       "matchUpdateTypes": ["major"],
-      "enabled": false
-    },
-    {
-      "description": "Disable app",
-      "matchPaths": ["app/**"],
       "enabled": false
     }
   ]
