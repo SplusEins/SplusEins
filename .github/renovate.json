@@ -20,6 +20,11 @@
       ],
       "matchUpdateTypes": ["major"],
       "enabled": false
+    },
+    {
+      "description": "Disable app",
+      "matchPaths": ["app/**"],
+      "enabled": false
     }
   ]
 }
