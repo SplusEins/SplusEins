@@ -11,10 +11,10 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@bd6b4b6205c4dbad673328db7b31b7fab9e241c0 # v4
         with:
           python-version: "3.x"
       - name: Install sked-parser
@@ -25,7 +25,7 @@ jobs:
           OSTFALIA_USER: ${{ secrets.OSTFALIA_USER }}
           OSTFALIA_PASS: ${{ secrets.OSTFALIA_PASS }}
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38 # v5
         with:
           token: ${{ github.token }}
           commit-message: Updated timetables with sked-parser
