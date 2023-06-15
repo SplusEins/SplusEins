@@ -10,6 +10,6 @@
   },
   "dependencies": {
     "http-server": "14.1.1",
-    "vuepress": "1.9.7"
+    "vuepress": "1.9.9"
   }
 }
