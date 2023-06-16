@@ -10,8 +10,8 @@ on:
       - "web/**"
     branches: [master]
   pull_request:
-    paths:
-      - "web/**"
+  merge_group:
+
 
 defaults:
   run:
