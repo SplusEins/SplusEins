@@ -10,8 +10,7 @@ on:
       - "server/**"
     branches: [master]
   pull_request:
-    paths:
-      - "server/**"
+  merge_group:
 
 defaults:
   run:

@@ -6,8 +6,18 @@
     ":dependencyDashboard",
     ":prHourlyLimitNone",
     ":separateMajorReleases",
+    ":approveMajorUpdates",
     "helpers:pinGitHubActionDigests",
-    "schedule:weekends"
+    "schedule:weekends",
+    ":automergePatch",
+    ":automergeLinters",
+    ":automergeTesters",
+    ":automergeTypes",
+    ":automergePr"
+  ],
+  "platformAutomerge": true,
+  "automergeSchedule": [
+    "after 2pm on Saturday"
   ],
   "ignorePaths": ["app/**"],
   "packageRules": [
@@ -15,9 +25,7 @@
       "matchPackageNames": [
         "vue",
         "nuxt",
-        "webpack",
-        "nuxt-route-meta",
-        "ts-loader"
+        "webpack"
       ],
       "matchUpdateTypes": ["major"],
       "enabled": false
