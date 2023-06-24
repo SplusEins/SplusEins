@@ -52,7 +52,7 @@
     "babel-loader": "9.1.2",
     "babel-preset-env": "1.7.0",
     "encoding": "0.1.13",
-    "eslint": "8.42.0",
+    "eslint": "8.43.0",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-n": "16.0.0",
