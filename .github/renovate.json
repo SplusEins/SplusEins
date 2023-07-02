@@ -1,28 +1,6 @@
-{
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+{  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:js-app",
-    "npm:unpublishSafe",
-    ":dependencyDashboard",
-    ":prHourlyLimitNone",
-    ":separateMajorReleases",
-    ":approveMajorUpdates",
-    "helpers:pinGitHubActionDigests",
-    "schedule:weekends",
-    ":automergePatch",
-    ":automergeLinters",
-    ":automergeTesters",
-    ":automergeTypes",
-    ":automergeDigest",
-    ":automergePr",
-    "group:test",
-    "group:linters",
-    "group:recommended",
-    "group:definitelyTyped"
-  ],
-  "platformAutomerge": true,
-  "automergeSchedule": [
-    "after 2pm on Saturday"
+    "github>reims2/renovate"
   ],
   "ignorePaths": ["app/**"],
   "packageRules": [
@@ -34,12 +12,6 @@
       ],
       "matchUpdateTypes": ["major"],
       "enabled": false
-    },
-    {
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true
     }
   ]
 }
