@@ -423,15 +423,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "g/wp/APIP9_SOSE23.html",
-    "label": "APIP",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_apip_9_ss23",
-    "semester": 9,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "g/wp/IVG2_SOSE23.html",
     "label": "IVG",
     "faculty": "Gesundheitswesen",
