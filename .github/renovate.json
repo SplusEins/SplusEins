@@ -1,6 +1,7 @@
 {  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>reims2/renovate"
+    "github>reims2/renovate",
+    ":approveMajorUpdates"
   ],
   "ignorePaths": ["app/**"],
   "packageRules": [
