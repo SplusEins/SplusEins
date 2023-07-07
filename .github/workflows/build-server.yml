@@ -6,8 +6,6 @@ name: "Server Build"
 # events but only for the master branch
 on:
   push:
-    paths:
-      - "server/**"
     branches: [master]
   pull_request:
   merge_group:
