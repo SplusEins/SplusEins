@@ -29,7 +29,7 @@
     "node-fetch": "2.6.12",
     "rss": "1.2.2",
     "sanitize-html": "2.11.0",
-    "timeout-signal": "1.1.0"
+    "timeout-signal": "2.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.22.6",
