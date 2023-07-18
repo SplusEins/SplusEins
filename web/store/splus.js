@@ -8,7 +8,7 @@ import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customTimetableToRoute, 
 const formatDayjs = (date) => { return date.format('YYYY-MM-DD'); };
 
 function defaultWeek () {
-  if (dayjs().isoWeek() < SEMESTER_WEEK_1 && (SEMESTER_WEEK_1 - dayjs().isoWeek()) < 8) {
+  if (dayjs().isoWeek() < SEMESTER_WEEK_1 && (SEMESTER_WEEK_1 - dayjs().isoWeek()) < 10) {
     // Use semester beginning instead of today if semester hasn't started yet
     // Do that only a few weeks before the semester so we avoid bugs with year wraparounds
     return formatDayjs(dayjs().isoWeek(SEMESTER_WEEK_1).startOf('isoweek'));
