@@ -6,10 +6,8 @@ name: "Web Build"
 # events but only for the web directory
 on:
   push:
-    branches: [master]
   pull_request:
   merge_group:
-
 
 defaults:
   run:
