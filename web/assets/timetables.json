@@ -1062,6 +1062,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_2_2. Sem.html",
+    "label": "BEE",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_2_ws2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "v/stundenplan/dt/Digital Technologies (DT Energie)_2_2. Sem.html",
     "label": "DT Energie",
     "faculty": "Versorgungstechnik",
