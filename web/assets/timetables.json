@@ -1044,6 +1044,24 @@
     "degree": "Master"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%201.%20Sem.csv",
+    "label": "VFH-M.Sc. WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_m_wi_1_ws2324",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%203.%20Sem.csv",
+    "label": "VFH-M.Sc. WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_m_wi_3_ws2324",
+    "semester": 3,
+    "degree": "Master"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte).csv",
     "label": "M.Sc. Informatik (Alle Sem.+Schwerpunkte)",
     "faculty": "Informatik",
