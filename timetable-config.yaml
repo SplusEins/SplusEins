@@ -15,9 +15,8 @@ timetable_blacklist:
   - "..csv" # weird informatik duplicated tables with double dot
 
 plans:
-  # Pläne sind woanders abgelegt (nicht unter stundenplan.ostfalia.de), geht nicht
-  # - url: https://www.ostfalia.de/cms/de/b/studium/stundenplaene/
-  #   faculty: Bau-Wasser-Boden
+  - url: https://stundenplan.ostfalia.de/b/wp/index.html
+    faculty: Bau-Wasser-Boden
   - url: https://stundenplan.ostfalia.de/e/
     faculty: Elektrotechnik
   # Pläne sind zwar online, aber Formatierung mit der Uhrzeit mittendrin ist zu kompliziert
