@@ -20,7 +20,7 @@ jobs:
       - name: Install sked-parser
         run: python -m pip install git+https://github.com/SplusEins/sked_parser.git
       - name: Run sked-parser
-        run: sked-parser -o web/assets/timetables.json -o server/assets/timetables.json -c timetable-config.yml
+        run: sked-parser -o web/assets/timetables.json -o server/assets/timetables.json -c timetable-config.yaml
         env:
           OSTFALIA_USER: ${{ secrets.OSTFALIA_USER }}
           OSTFALIA_PASS: ${{ secrets.OSTFALIA_PASS }}
