@@ -20,7 +20,7 @@ jobs:
       - name: Install sked-parser
         run: python -m pip install git+https://github.com/SplusEins/sked_parser.git
       - name: Run sked-parser
-        run: sked-parser -o web/assets/timetables.json -o server/assets/timetables.json
+        run: sked-parser -o web/assets/timetables.json -o server/assets/timetables.json -c timetable-config.yml
         env:
           OSTFALIA_USER: ${{ secrets.OSTFALIA_USER }}
           OSTFALIA_PASS: ${{ secrets.OSTFALIA_PASS }}
@@ -33,8 +33,8 @@ jobs:
           author: actions-user <actions@github.com>
           title: "Sync timetables.json with Ostfalia"
           body: |
-            Updated timetables with sked-parser automatically using [sked-parser](https://github.com/SplusEins/sked_parser).
-            Check the Action output for any warnings that occured while parsing.
-            More Information can be found [in the docs](https://spluseins-i.ostfalia.de/docs/semesterbeginn.html#aktualisierung-der-plane)
-            *This PR will be force-pushed everytime new changes are available or when the master branch has been updated.*
+            Updated timetables automatically using [sked-parser](https://github.com/SplusEins/sked_parser).
+            More Information [in the docs](https://spluseins-i.ostfalia.de/docs/semesterbeginn.html#aktualisierung-der-plane).
+
+            [Link to action output](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}). Please check it for any warnings.
           labels: automated

@@ -1,0 +1,65 @@
+# Siehe Dokumentation in https://github.com/SplusEins/sked_parser
+
+current_sem: "ws2324"
+# timetables with the following strings in the URL or description will be filtered out (use lowercase only)
+timetable_blacklist:
+  # TODO im naechsten Semester austauschen
+  - "ss2023"
+  - "ss 23"
+  - "sose"
+  - "/ss/"
+
+  - "pruefung"
+  - "klausur"
+  - "prüfung"
+  - "..csv" # weird informatik duplicated tables with double dot
+
+plans:
+  # Pläne sind woanders abgelegt (nicht unter stundenplan.ostfalia.de), geht nicht
+  # - url: https://www.ostfalia.de/cms/de/b/studium/stundenplaene/
+  #   faculty: Bau-Wasser-Boden
+  - url: https://stundenplan.ostfalia.de/e/
+    faculty: Elektrotechnik
+  # Pläne sind zwar online, aber Formatierung mit der Uhrzeit mittendrin ist zu kompliziert
+  # - url: https://stundenplan.ostfalia.de/f/wp/index.html
+  #   faculty: Fahrzeugtechnik
+  - url: https://stundenplan.ostfalia.de/g/wp/index.html
+    faculty: Gesundheitswesen
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/h/wp/index.html
+    faculty: Handel und Soziale Arbeit
+  - url: https://stundenplan.ostfalia.de/i/Alle%20Daten%20im%20CSV-Format/Semester/
+    faculty: Informatik
+    type: "csv"
+  - url: https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/
+    faculty: Verkehr-Sport-Tourismus-Medien
+  - url: https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/
+    faculty: Verkehr-Sport-Tourismus-Medien
+  # Die Timetables haben keine Uhrzeit in den einzelnen Elementen => zu hart für SplusEins
+  # - url: https://stundenplan.ostfalia.de/m/sem/index.html
+  #  faculty: Maschinenbau
+  - url: https://stundenplan.ostfalia.de/r/studentenset/index.html
+    faculty: Recht
+  - url: https://stundenplan.ostfalia.de/s/wp/index.html
+    faculty: Soziale Arbeit
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/bee/
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/egt/
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/wing/
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/dt/
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/ge/
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/sce/
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  # Haben exakt einen einzigen Stundenplan:
+  # - url: https://stundenplan.ostfalia.de/w/wp/index.html
+  #   faculty: Wirtschaft
