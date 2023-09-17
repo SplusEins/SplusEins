@@ -1,6 +1,7 @@
 {
-    "editor.formatOnSave": true,
-    "[md]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+  "editor.formatOnSave": true,
+  "[md]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "ltex.language": "de-DE"
 }

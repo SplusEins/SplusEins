@@ -1,46 +1,47 @@
 ---
-title: Semesterbeginn
+title: Wartung
 ---
 
-# Aufgaben zu Semesterbeginn
+# Wartung
 
 ## Aktualisierung der Pläne
 
-Jedes Semester ändern sich die Pläne in Sked. Zu Beginn müssen deshalb alle existierenden Pläne herausgesucht und in die Datei `timetables.json` in `server/assets/` und `web/assets/` eingetragen werden.
+Wenn sich die Pläne oder deren URLs ändern, wird automatisch ein PR erstellt, der die Datei `assets/timetables.json` (sowohl in `/web` als auch `/server`) aktualisiert. Dieser PR sollte grob überprüft werden und zeitnah gemerged werden.
+
+Für diese Aktualisierung wird [sked_parser](https://github.com/SplusEins/sked_parser) verwendet. Der Aufbau der `timetables.json` ist [hier](./server.md#struktur-der-stundenplane) beschrieben.
 
 ::: tip
-Um diesen Vorgang zu vereinfachen, wurde [`sked-parser`](https://github.com/SplusEins/sked_parser) geschrieben, welches die notwendige `timetables.json` erstellt. In der README des Projektes befindet sich eine ausführliche Erklärung.
+Bei Semesterbeginn sollte darauf geachtet werden, dass möglicherweise noch alte Stundenplane in dem PR enthalten sind, wenn einige Fakultäten die neuen Stundenpläne noch nicht veröffentlicht haben und andere schon (gerade Informatik ist häufig später dran als andere).
+
+Dann kann es sinnvoll sein, die alten Pläne aus dem PR manuell zu entfernen und dann zu mergen. Oder man wartet, bis alle Fakultäten ihre Pläne veröffentlicht haben, das dauert aber meist ziemlich lange.
 :::
 
-Für jeden Plan muss ein JSON-Objekt in der Datei definiert werden.
-Diese müssen folgende Struktur besitzen:
+## Aufgaben zu Semesterbeginn
 
-```json
-{
-  "id": "informatik-1",
-  "label": "Informatik",
-  "faculty": "Informatik",
-  "degree": "Bachelor of Science",
-  "semester": "1",
-  "raumplan": false,
-  "type": "list",
-  "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html"
-}
-```
+Alle relevanten Stellen im Code können auch gefunden werden, indem man nach `TODO Semesterwechsel` sucht. Im Folgenden werden diese kurz beschrieben.
 
-- `id` ist eine selbstgewählter, lesbarer Identifier welcher im Pfad einer SplusEins URL enthalten ist z.B. `https://spluseins.de/plan/informatik-1`
-- `label` ist ein Bezeichner welcher zum Beispiel die Vertiefungsrichtung bzw. Studienrichtung kennzeichnet
-- `faculty` gibt die Fakultät an
-- `degree` gibt den angestrebten Studienabschluss an
-- `semester` gibt über­ra­schen­der­wei­se das Semester an
-- `raumplan` ist ein Boolean-Wert welcher angibt, ob es sich um einen Raumplan handelt
-- `type` ist ein String welcher angibt, ob es sich um einen grafischen Plan (`graphical`, der häufigste Fall), einen Listenplan (`list`) oder einen CSV-Plan handelt (`csv`)
-- `skedPath` gibt den Pfad an, über welchen der Plan in der Sked Anwendung abgerufen werden kann (z.B. `http://stundenplan.ostfalia.de/i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html`)
+### Semesterstart setzen
 
-Siehe auch [Erklärungen zum serverseitigen Parser](./server.md#parser).
+Im Frontend muss gesetzt werde, welche Woche die erste Vorlesungswoche ist. Das wird in der Variable `SEMESTER_WEEK_1` in [`web/store/splus.js`](https://github.com/SplusEins/SplusEins/blob/master/web/store/splus.js) gesetzt. Der Vorlesungsbeginn der Ostfalia wird in [diesem PDF](https://www.ostfalia.de/cms/de/ostfalia/semestertermine/) veröffentlicht, woraus man die ISO-Woche berechnen kann.
 
-## Semesterstart setzen
+### `sked-parser` Konfiguration aktualisieren
 
-Für das Frontend muss die Variable `SEMESTER_WEEK_1` in [`web/store/splus.js`](https://github.com/SplusEins/SplusEins/blob/master/web/store/splus.js) auf die ISO-Woche der ersten Semesterwoche des aktuellen Semesters gesetzt werden. Der Beginn der Vorlesungen wird in [diesem PDF](https://www.ostfalia.de/cms/de/ostfalia/semestertermine/) veröffentlicht.
+Die oben erwähnte Aktualisierung der Pläne nutzt die Datei `timetable-config.yaml` als Konfiguration. Zu Semesterstart müssen zum einen die Blacklist Strings aktualisiert werden. Diese sollten den Namen des vorherigen Semesters in unterschiedlichen Variationen enthalten (da einige Fakultäten die Stundenpläne des vorherigen Semesters manchmal nicht richtig löschen).
 
-Zudem muss für das `vuex-persist`-Plugin die Storage-Version erhöht werden, damit alte (personalisierte) Pläne des vorherigen Semesters aus dem `Local Storage` der Nutzer gelöscht werden. Dies passiert in [`web/plugins/vuex-persist.js`](https://github.com/SplusEins/SplusEins/blob/master/web/plugins/vuex-persist.js), die Zeilen sind mit TODOs markiert.
+Weiterhin sollten kurz überprüft werden, ob die Stundenplan-URLs in der Datei noch aktuell sind.
+
+Die tägliche Github Action, die den PR erstellt, kann auch [hier](https://github.com/SplusEins/SplusEins/actions/workflows/timetables.yml) mit `Run workflow` manuell ausgeführt werden, um das Ergebnis zu überprüfen.
+
+### Überprüfen der einzelnen Stundenpläne
+
+Zu Semesterbeginn sollten zudem von jeder Fakultät mindestens ein Stundenplan in der UI angeschaut werden, um zu überprüfen, dass die Daten richtig geparst wurden. Wichtig ist, dass die Dozierenden richtig geparst werden und zensiert angezeigt werden. Außerdem sollte der Raumname richtig angezeigt werden.
+
+Wenn in Spluseins gar keine Vorlesungen angezeigt werden, bei der Ostfalia aber schon, kann es sein, dass der serverseitige Parser [in dieser Datei](https://github.com/SplusEins/SplusEins/blob/master/server/lib/SkedParser.ts) angepasst werden muss, das ist aber eher selten der Fall.
+
+### Gespeicherte Pläne löschen
+
+Zudem muss bei dem `vuex-persist`-Plugin die Storage-Version erhöht werden, damit Pläne des vorherigen Semesters aus dem Local Storage der Nutzer gelöscht werden. Dies passiert in [`web/plugins/vuex-persist.js`](https://github.com/SplusEins/SplusEins/blob/master/web/plugins/vuex-persist.js), die Zeilen sind mit TODOs markiert.
+
+## Aktualisierung der Dependencies
+
+Der `renovate`-Bot öffnet automatisch PRs, sobald es Updates für Dependencies gibt. Diese können einfach gemerged werden, solange im Changelog in der PR-Beschreibung keine kritischen Breaking Changes angezeigt werden.

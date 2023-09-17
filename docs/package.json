@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Spluseins Docs",
   "author": "schneefux",
+  "engines": {
+    "node": "18.17.1"
+  },
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build",
