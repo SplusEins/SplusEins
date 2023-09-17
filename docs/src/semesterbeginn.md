@@ -22,15 +22,19 @@ Im Frontend muss gesetzt werde, welche Woche die erste Vorlesungswoche ist. Das 
 
 ### `sked-parser` Konfiguration aktualisieren
 
-Die oben erwähnte Aktualisierung der Pläne nutzt die Datei [`timetable-config.yaml`](https://github.com/SplusEins/SplusEins/blob/master/timetable-config.yaml) als Konfiguration. Zu Semesterstart müssen zum einen die Blacklist Strings aktualisiert werden. Diese sollten den Namen des vorherigen Semesters in unterschiedlichen Variationen enthalten (da einige Fakultäten die Stundenpläne des vorherigen Semesters manchmal nicht richtig löschen).
+Die oben erwähnte Aktualisierung der Pläne nutzt die Datei [`timetable-config.yaml`](https://github.com/SplusEins/SplusEins/blob/master/timetable-config.yaml) als Konfiguration. Zu Semesterstart muss diese Datei aktualisiert werden:
 
-Weiterhin sollten kurz überprüft werden, ob die Stundenplan-URLs in der Datei noch aktuell sind.
+1. Der String für das aktuelle Semester muss aktualisiert werden.
+2. Die Blacklist Strings müssen aktualisiert werden. Diese sollten den Namen des vorherigen Semesters in unterschiedlichen Variationen enthalten (da einige Fakultäten die Stundenpläne des vorherigen Semesters manchmal nicht richtig löschen).
+3. Die Stundenplan-URLs in der Datei sollten überprüft werden, ob diese noch aktuell sind. Die Übersichtsseite der Ostfalia findet sich [hier](https://stundenplan.ostfalia.de).
 
-Die tägliche Github Action, die den PR erstellt, kann auch [hier](https://github.com/SplusEins/SplusEins/actions/workflows/timetables.yml) mit `Run workflow` manuell ausgeführt werden, um das Ergebnis zu überprüfen.
+::: tip
+Die tägliche Github Action, die den PR erstellt, kann auch [hier](https://github.com/SplusEins/SplusEins/actions/workflows/timetables.yml) mit `Run workflow` manuell ausgeführt werden, um die veränderte Konfiguration zu überprüfen.
+:::
 
 ### Überprüfen der einzelnen Stundenpläne
 
-Zu Semesterbeginn sollten zudem von jeder Fakultät mindestens ein Stundenplan in der UI angeschaut werden, um zu überprüfen, dass die Daten richtig geparst wurden. Wichtig ist, dass die Dozierenden richtig geparst werden und zensiert angezeigt werden. Außerdem sollte der Raumname richtig angezeigt werden.
+Zu Semesterbeginn sollte zudem von jeder Fakultät mindestens ein Stundenplan in der UI angeschaut werden, um zu überprüfen, dass die Daten richtig geparst wurden. Wichtig ist, dass die Dozierenden richtig geparst werden und zensiert angezeigt werden. Außerdem sollte der Raumname richtig angezeigt werden.
 
 Wenn in Spluseins gar keine Vorlesungen angezeigt werden, bei der Ostfalia aber schon, kann es sein, dass der serverseitige Parser [in dieser Datei](https://github.com/SplusEins/SplusEins/blob/master/server/lib/SkedParser.ts) angepasst werden muss, das ist aber eher selten der Fall.
 
