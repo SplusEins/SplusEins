@@ -36,15 +36,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ma_glob_1.html",
-    "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 1",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ma_glob_1_ws2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "b/wp/ws23_b_stgrp_ai_2.html",
     "label": "Angewandte Informatik - 2",
     "faculty": "Bau-Wasser-Boden",
@@ -68,15 +59,6 @@
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_2_ws2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stgrp_ma_glob_2.html",
-    "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 2",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ma_glob_2_ws2324",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -214,6 +196,24 @@
     "id": "b_argentinien_kooperation_2023_ws2324",
     "semester": "Sonstige",
     "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ws23_b_stgrp_ma_glob_1.html",
+    "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 1",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_ma_glob_1_ws2324",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "b/wp/ws23_b_stgrp_ma_glob_2.html",
+    "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 2",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_ma_glob_2_ws2324",
+    "semester": 2,
+    "degree": "Master"
   },
   {
     "skedPath": "e/semester/E-EIT-GS-Sem1.html",
