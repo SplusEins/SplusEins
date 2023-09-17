@@ -1,7 +1,3 @@
----
-title: Benutzerdokumentation
----
-
 # Benutzerdokumentation
 
 ## Hardware- und Softwareanforderungen

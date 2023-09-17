@@ -1,7 +1,3 @@
----
-title: Server
----
-
 # Server
 
 Beim Server bzw. Backend handelt es sich um eine [NodeJS](https://nodejs.org) Anwendung, welche unter Verwendung des Web-Application-Frameworks [ExpressJS](https://expressjs.com) implementiert wurde.

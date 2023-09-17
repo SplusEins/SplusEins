@@ -1,7 +1,3 @@
----
-title: Konfiguration
----
-
 # Konfiguration
 
 ## Umgebungsvariablen

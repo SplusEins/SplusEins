@@ -1,7 +1,3 @@
----
-title: Grundlagen
----
-
 # Grundlagen
 
 ## Architektur

@@ -5,12 +5,14 @@ export default defineConfig({
   title: "SplusEins",
   description: "Dokumentation von spluseins.de",
   base: "/docs",
+  lang: "de-DE",
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     search: {
       provider: "local",
     },
+    logo: "/logo.png",
 
     sidebar: [
       {

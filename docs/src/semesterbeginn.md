@@ -1,7 +1,3 @@
----
-title: Wartung
----
-
 # Wartung
 
 ## Aktualisierung der Pläne
@@ -26,7 +22,7 @@ Im Frontend muss gesetzt werde, welche Woche die erste Vorlesungswoche ist. Das 
 
 ### `sked-parser` Konfiguration aktualisieren
 
-Die oben erwähnte Aktualisierung der Pläne nutzt die Datei `timetable-config.yaml` als Konfiguration. Zu Semesterstart müssen zum einen die Blacklist Strings aktualisiert werden. Diese sollten den Namen des vorherigen Semesters in unterschiedlichen Variationen enthalten (da einige Fakultäten die Stundenpläne des vorherigen Semesters manchmal nicht richtig löschen).
+Die oben erwähnte Aktualisierung der Pläne nutzt die Datei [`timetable-config.yaml`](https://github.com/SplusEins/SplusEins/blob/master/timetable-config.yaml) als Konfiguration. Zu Semesterstart müssen zum einen die Blacklist Strings aktualisiert werden. Diese sollten den Namen des vorherigen Semesters in unterschiedlichen Variationen enthalten (da einige Fakultäten die Stundenpläne des vorherigen Semesters manchmal nicht richtig löschen).
 
 Weiterhin sollten kurz überprüft werden, ob die Stundenplan-URLs in der Datei noch aktuell sind.
 
