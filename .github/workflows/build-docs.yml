@@ -1,7 +1,7 @@
-name: "Web Build"
+name: "Docs Build"
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the web directory
+# events but only for the master branch
 on:
   push:
   pull_request:
@@ -9,17 +9,16 @@ on:
 
 defaults:
   run:
-    working-directory: ./web
+    working-directory: ./docs
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build-web:
+  build-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
       - uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3
         with:
-          node-version-file: "web/.nvmrc"
+          node-version-file: "docs/.nvmrc"
       - run: npm ci
-      - run: npm run lint
       - run: npm run build

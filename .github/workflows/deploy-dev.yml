@@ -1,6 +1,6 @@
 name: Dev Deploy
 
-# Only allow the staging builds to be triggered manually
+# Allow the staging builds to be triggered manually
 on: workflow_dispatch
 
 # Define common variables for all jobs since all use the dokku action
