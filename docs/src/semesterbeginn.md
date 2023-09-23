@@ -45,3 +45,11 @@ Zudem muss bei dem `vuex-persist`-Plugin die Storage-Version erhöht werden, dam
 ## Aktualisierung der Dependencies
 
 Der `renovate`-Bot öffnet automatisch PRs, sobald es Updates für Dependencies gibt. Diese können einfach gemerged werden, solange im Changelog in der PR-Beschreibung keine kritischen Breaking Changes angezeigt werden.
+
+## Updates auf dem Ubuntu-Server
+
+Der Ubuntu-Server, der uns von der Fakultaet I zur Verfuegung gestellt wird, sollte auch gelegentlich aktualisiert werden. Dies kann mit dem Befehl `apt-get dist-upgrade` geschehen. Sicherheitsupdates werden allerdings automatisch installiert, weshalb das nicht sehr regelmaessig geschehen muss. 
+
+Falls irgendwelche Abfragen vom `dokku`-Paket kommen, koennen diese in der Regel einfach mit dem Default bestaetigt werden. Nach dem Upgrade muss der Server wegen `dokku` in der Regel neugestartet werden, damit SplusEins wieder funktioniert.
+
+Ausserdem muss alle paar Jahre die Ubuntu-Version mit dem Befehl `do-release-upgrade` aktualisiert werden.
