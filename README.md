@@ -3,9 +3,9 @@
 ![GitHub API Workflow Status](https://img.shields.io/github/actions/workflow/status/SplusEins/SplusEins/build-server.yml?branch=master&label=api%20build)
 ![GitHub Web Workflow Status](https://img.shields.io/github/actions/workflow/status/SplusEins/SplusEins/build-web.yml?branch=master&label=web%20build)
 ![GitHub Deploy Workflow Status](https://img.shields.io/github/actions/workflow/status/SplusEins/SplusEins/deploy.yml?branch=master&label=deploy)
-![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m787659430-7cab3eb7b484e1a13fd30a69?label=uptime)
+![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m795347002-a5e4975288ba00e8715fe00b?label=uptime)
 
-[SplusEins documentation](https://spluseins.de/docs/)
+[SplusEins documentation](https://spluseins.de/docs/benutzer.html)
 
 ## Issues
 
