@@ -74,7 +74,7 @@
           :interval-width="$vuetify.breakpoint.mobile ? 25 : 50"
           :interval-format="formatInterval"
           first-time="07:00"
-          interval-count="13"
+          interval-count="15"
           interval-height="50"
           event-overlap-mode="column"
           locale="de"
