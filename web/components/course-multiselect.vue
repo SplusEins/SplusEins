@@ -105,8 +105,16 @@ export default {
       }) => ({
         begin: otherBegin,
         duration: otherDuration
-      }) => (thisBegin >= otherBegin && thisBegin <= otherBegin + otherDuration) ||
-           (thisBegin + thisDuration >= otherBegin && thisBegin + thisDuration <= otherBegin + otherDuration);
+      }) => {
+        const thisEnd = thisBegin + thisDuration;
+        const otherEnd = otherBegin + otherDuration;
+        return (thisBegin == otherBegin || thisEnd == otherEnd ||
+          (thisBegin > otherBegin && thisBegin < otherEnd) ||
+          (thisEnd > otherBegin && thisEnd < otherEnd) ||
+          (otherBegin > thisBegin && otherBegin < thisEnd) ||
+          (otherEnd > thisBegin && otherEnd < thisEnd)
+        );
+      };
 
       const withoutAt = (list, at) => list.filter((el, index) => index != at);
 
