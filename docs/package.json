@@ -4,9 +4,6 @@
   "description": "Spluseins Docs",
   "author": "schneefux",
   "type": "module",
-  "engines": {
-    "node": "20.7.0"
-  },
   "scripts": {
     "dev": "vitepress dev src",
     "build": "vitepress build src",
