@@ -25,7 +25,7 @@ plans:
   - url: https://stundenplan.ostfalia.de/g/wp/index.html
     faculty: Gesundheitswesen
     shorthand_syntax: True
-  - url: https://stundenplan.ostfalia.de/h/wp/index.html
+  - url: https://stundenplan.ostfalia.de/h/lvp/wp/index.html
     faculty: Handel und Soziale Arbeit
   - url: https://stundenplan.ostfalia.de/i/Alle%20Daten%20im%20CSV-Format/Semester/
     faculty: Informatik
