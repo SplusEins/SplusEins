@@ -181,7 +181,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stgrp_bip_9.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 7",
+    "label": "Bauingenieurwesen im Praxisverbund WS23/24 - 7",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bip_9_ws2324",
@@ -738,8 +738,8 @@
     "degree": "Master"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_hul_1.html",
-    "label": "Handel und Logistik - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_hul_1.html",
+    "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_1_ws2324",
@@ -747,8 +747,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_soa_1.html",
-    "label": "Soziale Arbeit - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_soa_1.html",
+    "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_1_ws2324",
@@ -756,8 +756,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_soa_2.html",
-    "label": "Soziale Arbeit - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_soa_2.html",
+    "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_2_ws2324",
@@ -765,8 +765,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_hul_3.html",
-    "label": "Handel und Logistik - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_hul_3.html",
+    "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_3_ws2324",
@@ -774,8 +774,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_soa_3.html",
-    "label": "Soziale Arbeit - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_soa_3.html",
+    "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_3_ws2324",
@@ -783,8 +783,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_hul_5.html",
-    "label": "Handel und Logistik - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_hul_5.html",
+    "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_5_ws2324",
@@ -792,8 +792,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_soa_5.html",
-    "label": "Soziale Arbeit - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_soa_5.html",
+    "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_5_ws2324",
@@ -801,8 +801,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_soa_6+.html",
-    "label": "Soziale Arbeit - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_soa_6+.html",
+    "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_6_ws2324",
@@ -810,8 +810,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_bwl_ba.html",
-    "label": "BA OBWL - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_bwl_ba.html",
+    "label": "BA OBWL",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_bwl_ba_ws2324",
@@ -819,11 +819,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/wp/h_stdgrp_bap_wise 23.html",
-    "label": "Soziale Arbeit - Berufsanerkennung - WiSe 23",
+    "skedPath": "h/lvp/wp/h_stdgrp_bap.html",
+    "label": "Soziale Arbeit - Berufsanerkennung",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_bap_wise_23_ws2324",
+    "id": "h_bap_ws2324",
     "semester": "Sonstige",
     "degree": "Bachelor"
   },
@@ -1845,11 +1845,29 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lip_5.html",
+    "label": "Logistik und Informationsmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lip_5_ws2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lom_5.html",
     "label": "Logistikmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_lom_5_ws2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lop_5.html",
+    "label": "Logistikmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lop_5_ws2324",
     "semester": 5,
     "degree": "Bachelor"
   },
