@@ -945,6 +945,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%202.%20Sem.csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_2_ws2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%203.%20Sem.%20(PO18).csv",
     "label": "CE (PO18)",
     "faculty": "Informatik",
@@ -1094,6 +1103,15 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_wi_4_ws2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%204.%20Sem.csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_4_ws2324",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1841,15 +1859,6 @@
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_lim_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lip_5.html",
-    "label": "Logistik und Informationsmanagement im Praxisverbund",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_lip_5_ws2324",
     "semester": 5,
     "degree": "Bachelor"
   },
