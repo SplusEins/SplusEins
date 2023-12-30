@@ -1,7 +1,7 @@
 [
   {
     "skedPath": "b/wp/ws23_b_stgrp_ai_1.html",
-    "label": "Angewandte Informatik - 1",
+    "label": "Angewandte Informatik - 1. bis 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_1_ws2324",
@@ -10,7 +10,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stgrp_bau_1.html",
-    "label": "Bauingenieurwesen - 1",
+    "label": "Bauingenieurwesen - 1. bis 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_1_ws2324",
@@ -19,7 +19,7 @@
   },
   {
     "skedPath": "b/wp/China_Kooperation_2023_1.html",
-    "label": "China_Kooperation_2023_1 - 1",
+    "label": "China_Kooperation_2023_1 - 1. bis 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_china_kooperation_2023_1_ws2324",
@@ -28,7 +28,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stgrp_u_1.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 1",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 1. bis 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_1_ws2324",
@@ -37,7 +37,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stgrp_ai_2.html",
-    "label": "Angewandte Informatik - 2",
+    "label": "Angewandte Informatik - 2. bis 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_2_ws2324",
@@ -46,7 +46,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_bau_2.html",
-    "label": "Bauingenieurwesen - 2",
+    "label": "Bauingenieurwesen - 2. bis 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_2_ws2324",
@@ -55,7 +55,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_u_2.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 2",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 2. bis 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_2_ws2324",
@@ -64,7 +64,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stgrp_ai_3.html",
-    "label": "Angewandte Informatik - 3",
+    "label": "Angewandte Informatik - 3. bis 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_3_ws2324",
@@ -73,7 +73,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_bau_3.html",
-    "label": "Bauingenieurwesen - 3",
+    "label": "Bauingenieurwesen - 3. bis 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_3_ws2324",
@@ -82,7 +82,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stgrp_bip_3.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 3",
+    "label": "Bauingenieurwesen im Praxisverbund - 3. bis 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bip_3_ws2324",
@@ -91,7 +91,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_u_3.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 3",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 3. bis 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_3_ws2324",
@@ -100,7 +100,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_bau_4.html",
-    "label": "Bauingenieurwesen - 4",
+    "label": "Bauingenieurwesen - 4. bis 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_4_ws2324",
@@ -109,7 +109,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_u_4.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 4",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 4. bis 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_4_ws2324",
@@ -118,7 +118,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stgrp_ai_5.html",
-    "label": "Angewandte Informatik - 5",
+    "label": "Angewandte Informatik - 5. bis 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_5_ws2324",
@@ -127,7 +127,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_bau_5.html",
-    "label": "Bauingenieurwesen - 5",
+    "label": "Bauingenieurwesen - 5. bis 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_5_ws2324",
@@ -136,7 +136,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stgrp_bip_5.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 5",
+    "label": "Bauingenieurwesen im Praxisverbund - 5. bis 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bip_5_ws2324",
@@ -145,7 +145,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_u_5.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 5",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 5. bis 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_5_ws2324",
@@ -154,7 +154,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_bau_6.html",
-    "label": "Bauingenieurwesen - 6",
+    "label": "Bauingenieurwesen - 6. bis 7",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_6_ws2324",
@@ -163,7 +163,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stdgrp_u_6.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 6",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 6. bis 7",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_6_ws2324",
@@ -172,7 +172,7 @@
   },
   {
     "skedPath": "b/wp/ws23_b_stgrp_bip_7.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 5",
+    "label": "Bauingenieurwesen im Praxisverbund - 5. bis 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bip_7_ws2324",
@@ -198,8 +198,17 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "b/wp/ss24_b_stgrp_ma_glob_1.html",
+    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018 _neu - 1",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_ma_glob_1_ws2324",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
     "skedPath": "b/wp/ws23_b_stgrp_ma_glob_1.html",
-    "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 1",
+    "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 1. bis 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ma_glob_1_ws2324",
@@ -1728,15 +1737,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "k/prod/vorlesungsplaene/wp/ws/DT 2.html",
-    "label": "DT 2",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_dt_2_3_ws2324",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lim_3.html",
     "label": "Logistik und Informationsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
@@ -1845,20 +1845,20 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "k/prod/vorlesungsplaene/wp/ws/DT 4.html",
-    "label": "DT 4",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_dt_4_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lim_5.html",
     "label": "Logistik und Informationsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_lim_5_ws2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ws/stjg_lip_5.html",
+    "label": "Logistik und Informationsmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lip_5_ws2324",
     "semester": 5,
     "degree": "Bachelor"
   },
