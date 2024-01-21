@@ -1,7 +1,7 @@
 [
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ai_1.html",
-    "label": "Angewandte Informatik - 1. bis 2",
+    "skedPath": "b/wp/ss24_b_stgrp_ai_1.html",
+    "label": "Angewandte Informatik - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_1_ws2324",
@@ -9,8 +9,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_bau_1.html",
-    "label": "Bauingenieurwesen - 1. bis 2",
+    "skedPath": "b/wp/ss24_b_stgrp_bau_1.html",
+    "label": "Bauingenieurwesen - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_1_ws2324",
@@ -18,17 +18,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/China_Kooperation_2023_1.html",
-    "label": "China_Kooperation_2023_1 - 1. bis 2",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_china_kooperation_2023_1_ws2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stgrp_u_1.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 1. bis 2",
+    "skedPath": "b/wp/ss24_b_stgrp_u_1.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) PO 2022 - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_1_ws2324",
@@ -36,8 +27,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ai_2.html",
-    "label": "Angewandte Informatik - 2. bis 3",
+    "skedPath": "b/wp/ss24_b_stgrp_ai_2.html",
+    "label": "Angewandte Informatik - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_2_ws2324",
@@ -45,26 +36,35 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_2.html",
-    "label": "Bauingenieurwesen - 2. bis 3",
+    "skedPath": "b/wp/ss24_b_stgrp_bau_2.html",
+    "label": "Bauingenieurwesen - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_bau_2_ws2324",
+    "id": "b_stgrp_bau_2_ws2324",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_2.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 2. bis 3",
+    "skedPath": "b/wp/China_Kooperation_2023_2.html",
+    "label": "China_Kooperation_2023_2 - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_u_2_ws2324",
+    "id": "b_china_kooperation_2023_2_ws2324",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ai_3.html",
-    "label": "Angewandte Informatik - 3. bis 4",
+    "skedPath": "b/wp/ss24_b_stgrp_u_2.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 2",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_u_2_ws2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ss24_b_stgrp_ai_3.html",
+    "label": "Angewandte Informatik - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_3_ws2324",
@@ -72,8 +72,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_3.html",
-    "label": "Bauingenieurwesen - 3. bis 4",
+    "skedPath": "b/wp/ss24_b_stdgrp_bau_3.html",
+    "label": "Bauingenieurwesen - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_3_ws2324",
@@ -81,17 +81,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_bip_3.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 3. bis 4",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_3_ws2324",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_3.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 3. bis 4",
+    "skedPath": "b/wp/ss24_b_stdgrp_u_3.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_3_ws2324",
@@ -99,8 +90,17 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_4.html",
-    "label": "Bauingenieurwesen - 4. bis 5",
+    "skedPath": "b/wp/ss24_b_stgrp_ai_4.html",
+    "label": "Angewandte Informatik - 4",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_ai_4_ws2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ss24_b_stdgrp_bau_4.html",
+    "label": "Bauingenieurwesen - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_4_ws2324",
@@ -108,8 +108,17 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_4.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 4. bis 5",
+    "skedPath": "b/wp/ss24_b_stgrp_bip_4.html",
+    "label": "Bauingenieurwesen im Praxisverbund - 4",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_bip_4_ws2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ss24_b_stdgrp_u_4.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_4_ws2324",
@@ -117,17 +126,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ai_5.html",
-    "label": "Angewandte Informatik - 5. bis 6",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ai_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_5.html",
-    "label": "Bauingenieurwesen - 5. bis 6",
+    "skedPath": "b/wp/ss24_b_stdgrp_bau_5.html",
+    "label": "Bauingenieurwesen - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_5_ws2324",
@@ -135,17 +135,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_bip_5.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 5. bis 6",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_5.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 5. bis 6",
+    "skedPath": "b/wp/ss24_b_stdgrp_u_5.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_5_ws2324",
@@ -153,8 +144,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_6.html",
-    "label": "Bauingenieurwesen - 6. bis 7",
+    "skedPath": "b/wp/ss24_b_stdgrp_bau_6.html",
+    "label": "Bauingenieurwesen - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_6_ws2324",
@@ -162,8 +153,17 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_6.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 6. bis 7",
+    "skedPath": "b/wp/ss24_b_stgrp_bip_6.html",
+    "label": "Bauingenieurwesen im Praxisverbund - 6",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_bip_6_ws2324",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ss24_b_stdgrp_u_6.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_6_ws2324",
@@ -171,35 +171,17 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_bip_7.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 5. bis 6",
+    "skedPath": "b/wp/ss24_b_stgrp_bip_8.html",
+    "label": "Bauingenieurwesen im Praxisverbund - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_bip_7_ws2324",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stgrp_bip_9.html",
-    "label": "Bauingenieurwesen im Praxisverbund WS23/24 - 7",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_9_ws2324",
-    "semester": 9,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/Argentinien_Kooperation_2023.html",
-    "label": "Argentinien_Kooperation_2023 - 1",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_argentinien_kooperation_2023_ws2324",
-    "semester": "Sonstige",
+    "id": "b_stgrp_bip_8_ws2324",
+    "semester": 8,
     "degree": "Bachelor"
   },
   {
     "skedPath": "b/wp/ss24_b_stgrp_ma_glob_1.html",
-    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018 _neu - 1",
+    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018 - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ma_glob_1_ws2324",
@@ -207,16 +189,7 @@
     "degree": "Master"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ma_glob_1.html",
-    "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 1. bis 2",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ma_glob_1_ws2324",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stgrp_ma_glob_2.html",
+    "skedPath": "b/wp/ss24_b_stgrp_ma_glob_2.html",
     "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
@@ -864,6 +837,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%201.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_1_ws2324",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%201.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
@@ -932,6 +914,15 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_sye_po18_2_ws2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%202.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_2_ws2324",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1017,6 +1008,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%203.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_3_ws2324",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%203.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
@@ -1098,6 +1098,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%204.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_4_ws2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%204.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
@@ -1175,6 +1184,15 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_sye_po18_5_ws2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_5_VFH-B.Sc.%20ITS%205.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_vfh_its_5_ws2324",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1503,7 +1521,25 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_1_1. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_1_ws2324",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "s/wp/WS202324/Bachelor Soziale Arbeit_2_2. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_2_ws2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_2_2. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1521,6 +1557,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_3_3. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_3_ws2324",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "s/wp/WS202324/Bachelor Soziale Arbeit_4_4. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
@@ -1530,12 +1575,39 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_4_4. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_4_ws2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_5_5. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_5_ws2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "s/wp/WS202324/Bachelor Soziale Arbeit_5_5. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_5_ws2324",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_6_6. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_6_ws2324",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
