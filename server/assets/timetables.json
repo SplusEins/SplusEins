@@ -1,7 +1,7 @@
 [
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ai_1.html",
-    "label": "Angewandte Informatik - 1. bis 2",
+    "skedPath": "b/wp/ss24_b_stgrp_ai_1.html",
+    "label": "Angewandte Informatik - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_1_ws2324",
@@ -9,8 +9,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_bau_1.html",
-    "label": "Bauingenieurwesen - 1. bis 2",
+    "skedPath": "b/wp/ss24_b_stgrp_bau_1.html",
+    "label": "Bauingenieurwesen - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_1_ws2324",
@@ -18,17 +18,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/China_Kooperation_2023_1.html",
-    "label": "China_Kooperation_2023_1 - 1. bis 2",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_china_kooperation_2023_1_ws2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stgrp_u_1.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 1. bis 2",
+    "skedPath": "b/wp/ss24_b_stgrp_u_1.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) PO 2022 - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_1_ws2324",
@@ -36,8 +27,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ai_2.html",
-    "label": "Angewandte Informatik - 2. bis 3",
+    "skedPath": "b/wp/ss24_b_stgrp_ai_2.html",
+    "label": "Angewandte Informatik - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_2_ws2324",
@@ -45,26 +36,35 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_2.html",
-    "label": "Bauingenieurwesen - 2. bis 3",
+    "skedPath": "b/wp/ss24_b_stgrp_bau_2.html",
+    "label": "Bauingenieurwesen - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_bau_2_ws2324",
+    "id": "b_stgrp_bau_2_ws2324",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_2.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 2. bis 3",
+    "skedPath": "b/wp/China_Kooperation_2023_2.html",
+    "label": "China_Kooperation_2023_2 - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_u_2_ws2324",
+    "id": "b_china_kooperation_2023_2_ws2324",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ai_3.html",
-    "label": "Angewandte Informatik - 3. bis 4",
+    "skedPath": "b/wp/ss24_b_stgrp_u_2.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 2",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_u_2_ws2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ss24_b_stgrp_ai_3.html",
+    "label": "Angewandte Informatik - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_3_ws2324",
@@ -72,8 +72,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_3.html",
-    "label": "Bauingenieurwesen - 3. bis 4",
+    "skedPath": "b/wp/ss24_b_stdgrp_bau_3.html",
+    "label": "Bauingenieurwesen - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_3_ws2324",
@@ -81,17 +81,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_bip_3.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 3. bis 4",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_3_ws2324",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_3.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 3. bis 4",
+    "skedPath": "b/wp/ss24_b_stdgrp_u_3.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_3_ws2324",
@@ -99,8 +90,17 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_4.html",
-    "label": "Bauingenieurwesen - 4. bis 5",
+    "skedPath": "b/wp/ss24_b_stgrp_ai_4.html",
+    "label": "Angewandte Informatik - 4",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_ai_4_ws2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ss24_b_stdgrp_bau_4.html",
+    "label": "Bauingenieurwesen - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_4_ws2324",
@@ -108,8 +108,17 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_4.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 4. bis 5",
+    "skedPath": "b/wp/ss24_b_stgrp_bip_4.html",
+    "label": "Bauingenieurwesen im Praxisverbund - 4",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_bip_4_ws2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ss24_b_stdgrp_u_4.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_4_ws2324",
@@ -117,17 +126,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ai_5.html",
-    "label": "Angewandte Informatik - 5. bis 6",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ai_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_5.html",
-    "label": "Bauingenieurwesen - 5. bis 6",
+    "skedPath": "b/wp/ss24_b_stdgrp_bau_5.html",
+    "label": "Bauingenieurwesen - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_5_ws2324",
@@ -135,17 +135,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_bip_5.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 5. bis 6",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_5.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 5. bis 6",
+    "skedPath": "b/wp/ss24_b_stdgrp_u_5.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_5_ws2324",
@@ -153,8 +144,8 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_bau_6.html",
-    "label": "Bauingenieurwesen - 6. bis 7",
+    "skedPath": "b/wp/ss24_b_stdgrp_bau_6.html",
+    "label": "Bauingenieurwesen - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_bau_6_ws2324",
@@ -162,8 +153,17 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stdgrp_u_6.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 6. bis 7",
+    "skedPath": "b/wp/ss24_b_stgrp_bip_6.html",
+    "label": "Bauingenieurwesen im Praxisverbund - 6",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_bip_6_ws2324",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "b/wp/ss24_b_stdgrp_u_6.html",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_u_6_ws2324",
@@ -171,44 +171,17 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_bip_7.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 5. bis 6",
+    "skedPath": "b/wp/ss24_b_stgrp_bip_8.html",
+    "label": "Bauingenieurwesen im Praxisverbund - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_bip_7_ws2324",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stgrp_bip_9.html",
-    "label": "Bauingenieurwesen im Praxisverbund WS23/24 - 7",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_9_ws2324",
-    "semester": 9,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/Argentinien_Kooperation_2023.html",
-    "label": "Argentinien_Kooperation_2023 - 1",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_argentinien_kooperation_2023_ws2324",
-    "semester": "Sonstige",
+    "id": "b_stgrp_bip_8_ws2324",
+    "semester": 8,
     "degree": "Bachelor"
   },
   {
     "skedPath": "b/wp/ss24_b_stgrp_ma_glob_1.html",
-    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018 _neu - 1",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ma_glob_1_ws2324_neu",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "b/wp/ws23_b_stgrp_ma_glob_1.html",
-    "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 1. bis 2",
+    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018 - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ma_glob_1_ws2324",
@@ -216,7 +189,7 @@
     "degree": "Master"
   },
   {
-    "skedPath": "b/wp/ws23_b_stgrp_ma_glob_2.html",
+    "skedPath": "b/wp/ss24_b_stgrp_ma_glob_2.html",
     "label": "Wasserwirtschaft im globalen Wandel - PO 2018 - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
@@ -486,267 +459,6 @@
     "degree": "Master"
   },
   {
-    "skedPath": "g/wp/KPG1_WS2324.html",
-    "label": "KPG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_kpg_1_ws2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/MAG1_A_WS2324.html",
-    "label": "MAG - Gruppe A",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_mag_a_1_ws2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/MAG1_B_WS2324.html",
-    "label": "MAG - Gruppe B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_mag_b_1_ws2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/APP2_WS2324.html",
-    "label": "APP",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_app_2_ws2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMP2_B_WS2324.html",
-    "label": "BMP - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmp_b_2_ws2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMP2_M_WS2324.html",
-    "label": "BMP - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmp_m_2_ws2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMR2_B_WS2324.html",
-    "label": "BMR - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmr_b_2_ws2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMR2_M_WS2324.html",
-    "label": "BMR - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmr_m_2_ws2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BPG3_WS2324.html",
-    "label": "BPG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bpg_3_ws2324",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/KPG3_WS2324.html",
-    "label": "KPG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_kpg_3_ws2324",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/MAG3_WS2324.html",
-    "label": "MAG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_mag_3_ws2324",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/APP4_WS2324.html",
-    "label": "APP",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_app_4_ws2324",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMP4_B_WS2324.html",
-    "label": "BMP - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmp_b_4_ws2324",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMP4_M_WS2324.html",
-    "label": "BMP - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmp_m_4_ws2324",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMR4_B_WS2324.html",
-    "label": "BMR - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmr_b_4_ws2324",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMR4_M_WS2324.html",
-    "label": "BMR - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmr_m_4_ws2324",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/KPG5_WS2324.html",
-    "label": "KPG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_kpg_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/MAG5_KH_WS2324.html",
-    "label": "MAG - Schwerpunkt KH",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_mag_kh_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/MAG5_KV_WS2324.html",
-    "label": "MAG - Schwerpunkt KV",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_mag_kv_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/MAG5_PH_WS2324.html",
-    "label": "MAG - Schwerpunkt PH",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_mag_ph_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/APP6_WS2324.html",
-    "label": "APP",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_app_6_ws2324",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMP6_B_WS2324.html",
-    "label": "BMP - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmp_b_6_ws2324",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMP6_M_WS2324.html",
-    "label": "BMP - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmp_m_6_ws2324",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMR6_B_WS2324.html",
-    "label": "BMR - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmr_b_6_ws2324",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/BMR6_M_WS2324.html",
-    "label": "BMR - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmr_m_6_ws2324",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/APP8_WS2324.html",
-    "label": "APP",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_app_8_ws2324",
-    "semester": 8,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/MAG5_WPF_WS2324.html",
-    "label": "MAG und höher - Wahlpflicht",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_mag5_wpf_ws2324",
-    "semester": "WPF",
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "g/wp/IVG1_WS2324.html",
-    "label": "IVG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_ivg_1_ws2324",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "g/wp/IVG3_WS2324.html",
-    "label": "IVG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_ivg_3_ws2324",
-    "semester": 3,
-    "degree": "Master"
-  },
-  {
     "skedPath": "h/lvp/wp/h_stdgrp_hul_1.html",
     "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
@@ -765,21 +477,21 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "h/lvp/wp/h_stdgrp_hul_2.html",
+    "label": "Handel und Logistik",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_hul_2_ws2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "h/lvp/wp/h_stdgrp_soa_2.html",
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_soa_2_ws2324",
     "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "h/lvp/wp/h_stdgrp_hul_3.html",
-    "label": "Handel und Logistik",
-    "faculty": "Handel und Soziale Arbeit",
-    "type": "graphical",
-    "id": "h_hul_3_ws2324",
-    "semester": 3,
     "degree": "Bachelor"
   },
   {
@@ -792,25 +504,34 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/lvp/wp/h_stdgrp_hul_5.html",
+    "skedPath": "h/lvp/wp/h_stdgrp_hul_4.html",
     "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_hul_5_ws2324",
-    "semester": 5,
+    "id": "h_hul_4_ws2324",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/lvp/wp/h_stdgrp_soa_5.html",
+    "skedPath": "h/lvp/wp/h_stdgrp_soa_4.html",
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_soa_5_ws2324",
-    "semester": 5,
+    "id": "h_soa_4_ws2324",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "h/lvp/wp/h_stdgrp_soa_6+.html",
+    "skedPath": "h/lvp/wp/h_stdgrp_hul_6.html",
+    "label": "Handel und Logistik",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_hul_6_ws2324",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "h/lvp/wp/h_stdgrp_soa_6.html",
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
@@ -824,15 +545,6 @@
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_bwl_ba_ws2324",
-    "semester": "Sonstige",
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "h/lvp/wp/h_stdgrp_bap.html",
-    "label": "Soziale Arbeit - Berufsanerkennung",
-    "faculty": "Handel und Soziale Arbeit",
-    "type": "graphical",
-    "id": "h_bap_ws2324",
     "semester": "Sonstige",
     "degree": "Bachelor"
   },
@@ -860,6 +572,15 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_it_sicherheit_1_ws2324",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%201.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_1_ws2324",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -932,6 +653,15 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_sye_po18_2_ws2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%202.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_2_ws2324",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1017,6 +747,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%203.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_3_ws2324",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%203.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
@@ -1098,6 +837,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%204.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_4_ws2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%204.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
@@ -1175,6 +923,15 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_sye_po18_5_ws2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_5_VFH-B.Sc.%20ITS%205.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_vfh_its_5_ws2324",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1503,7 +1260,25 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_1_1. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_1_ws2324",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "s/wp/WS202324/Bachelor Soziale Arbeit_2_2. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_2_ws2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_2_2. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1521,6 +1296,24 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_3_3. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_3_ws2324",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_4_4. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_4_ws2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "s/wp/WS202324/Bachelor Soziale Arbeit_4_4. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
@@ -1530,12 +1323,30 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_5_5. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_5_ws2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "s/wp/WS202324/Bachelor Soziale Arbeit_5_5. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
     "id": "s_5_ws2324",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_6_6. Sem.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_6_ws2324",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -2115,174 +1926,102 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_3_3. Sem.html",
+    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_4_4. Sem.html",
     "label": "BEE",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_bee_3_3_4_ws2324",
+    "id": "v_bee_4_ws2324",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_3_3. Sem.html",
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_4_4. Sem.html",
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_egt_egtip_3_3_4_ws2324",
+    "id": "v_egt_egtip_4_ws2324",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/ge/Green Engineering_3_3. Sem.html",
+    "skedPath": "v/stundenplan/ge/Green Engineering_4_4. Sem.html",
     "label": "Green Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_3_3_4_ws2324",
+    "id": "v_green_engineering_4_ws2324",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/sce/Smart City Engineering_3_3. Sem.html",
+    "skedPath": "v/stundenplan/sce/Smart City Engineering_4_4. Sem.html",
     "label": "Smart City Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_smart_city_engineering_3_3_4_ws2324",
+    "id": "v_smart_city_engineering_4_ws2324",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_3_3. Sem.html",
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_4_4. Sem.html",
     "label": "WING E",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_e_3_3_4_ws2324",
+    "id": "v_wing_e_4_ws2324",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_3_3. Sem.html",
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_4_4. Sem.html",
     "label": "WING U",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_u_3_3_4_ws2324",
+    "id": "v_wing_u_4_ws2324",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_5_5. Semester.html",
+    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_6_6. Sem.html",
     "label": "BEE",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_bee_5_ws2324",
-    "semester": 5,
+    "id": "v_bee_6_ws2324",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_5_5. Sem.2.html",
-    "label": "EGT / EGTiP",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_egt_egtip_2_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/ge/Green Engineering_5_5. Sem.html",
+    "skedPath": "v/stundenplan/ge/Green Engineering_6_6. Semester.html",
     "label": "Green Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_5_ws2324",
-    "semester": 5,
+    "id": "v_green_engineering_6_ws2324",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/sce/Smart City Engineering_5_5. Sem.html",
+    "skedPath": "v/stundenplan/sce/Smart City Engineering_6_6. Semester.html",
     "label": "Smart City Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_smart_city_engineering_5_ws2324",
-    "semester": 5,
+    "id": "v_smart_city_engineering_6_ws2324",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_5_5. Sem.html",
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_6_6. Semester.html",
     "label": "WING E",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_e_5_ws2324",
-    "semester": 5,
+    "id": "v_wing_e_6_ws2324",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_5_5. Semester.html",
+    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_6_6. Sem.html",
     "label": "WING U",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_u_5_ws2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_7_7. Sem.html",
-    "label": "BEE Option 1",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_bee_7_ws2324",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_7_7. Semester Option 1.html",
-    "label": "BEE Option 2",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_bee_option_1_7_ws2324",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_7_7. Sem.html",
-    "label": "EGT / EGTiP",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_egt_egtip_7_ws2324",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/ge/Green Engineering_7_7. Semester.html",
-    "label": "Green Engineering",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_green_engineering_7_ws2324",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/sce/Smart City Engineering_7_7. Semester.html",
-    "label": "Smart City Engineering",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_smart_city_engineering_7_ws2324",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_7_7. Sem.html",
-    "label": "WING E",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_wing_e_7_ws2324",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_7_7. Sem.html",
-    "label": "WING U",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_wing_u_7_ws2324",
-    "semester": 7,
+    "id": "v_wing_u_6_ws2324",
+    "semester": 6,
     "degree": "Bachelor"
   }
 ]
