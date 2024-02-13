@@ -242,7 +242,7 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
             break;
           case 'Soziale Arbeit':
             parts.shift() // remove first uhrzeit entry
-            while (!parts[0].startsWith('S-')) {
+            while (parts[0] !== undefined && !parts[0].startsWith('S-')) {
               anmerkung += parts.shift() + ', '
             }
             veranstaltung = parts.shift();
