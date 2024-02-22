@@ -783,15 +783,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%201.%20Sem.csv",
-    "label": "Digital Technologies",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_digital_technologies_1_ss2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%201.%20Sem%20Informatik.csv",
     "label": "Informatik",
     "faculty": "Informatik",
@@ -860,6 +851,33 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_sye_po18_2_ss2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_2_VFH-B.Sc.%20ITS%202.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_vfh_its_2_ss2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%202.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_2_ss2324",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%202.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_2_ss2324",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -972,6 +990,42 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_4_VFH-B.Sc.%20ITS%204.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_vfh_its_4_ss2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%204.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_4_ss2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%204.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_4_ss2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%204.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_4_ss2324",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%204.%20Sem.csv",
     "label": "WI",
     "faculty": "Informatik",
@@ -1032,6 +1086,60 @@
     "type": "csv",
     "id": "i_sye_po18_5_ss2324",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_5_VFH-B.Sc.%20ITS%205.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_vfh_its_5_ss2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%205.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_5_ss2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%205.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_5_ss2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_6_6.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_6_ss2324",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%206.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_6_ss2324",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%206.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_6_ss2324",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -1116,12 +1224,30 @@
     "degree": "Master"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%202.%20Sem.csv",
+    "label": "VFH-M.Sc. WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_m_wi_2_ss2324",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%203.%20Sem.csv",
     "label": "VFH-M.Sc. WI",
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_m_wi_3_ss2324",
     "semester": 3,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%204.%20Sem.csv",
+    "label": "VFH-M.Sc. WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_m_wi_4_ss2324",
+    "semester": 4,
     "degree": "Master"
   },
   {
@@ -1134,157 +1260,184 @@
     "degree": "Master"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rfs-1.html",
+    "skedPath": "r/studentenset/24-03-r-b-rfs-1.html",
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rfs_1_ss2324",
+    "id": "r_24_03_r_b_rfs_1_ss2324",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rpp-1.html",
+    "skedPath": "r/studentenset/24-03-r-b-rpp-1.html",
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rpp_1_ss2324",
+    "id": "r_24_03_r_b_rpp_1_ss2324",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-wr-1.html",
+    "skedPath": "r/studentenset/24-03-r-b-wr-1.html",
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_wr_1_ss2324",
+    "id": "r_24_03_r_b_wr_1_ss2324",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rfs-2.html",
+    "skedPath": "r/studentenset/24-03-r-b-rfs-2.html",
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rfs_2_ss2324",
+    "id": "r_24_03_r_b_rfs_2_ss2324",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rpp-2.html",
+    "skedPath": "r/studentenset/24-03-r-b-rpp-2.html",
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rpp_2_ss2324",
+    "id": "r_24_03_r_b_rpp_2_ss2324",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-wr-2.html",
+    "skedPath": "r/studentenset/24-03-r-b-wr-2.html",
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_wr_2_ss2324",
+    "id": "r_24_03_r_b_wr_2_ss2324",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rfs-3.html",
+    "skedPath": "r/studentenset/24-03-r-b-rfs-3.html",
     "label": "RFS (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rfs_3_ss2324",
+    "id": "r_24_03_r_b_rfs_3_ss2324",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rpp-3.html",
+    "skedPath": "r/studentenset/24-03-r-b-rpp-3.html",
     "label": "RPP (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rpp_3_ss2324",
+    "id": "r_24_03_r_b_rpp_3_ss2324",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-wr-3.html",
+    "skedPath": "r/studentenset/24-03-r-b-wr-3.html",
     "label": "WR (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_wr_3_ss2324",
+    "id": "r_24_03_r_b_wr_3_ss2324",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rfs-4.html",
+    "skedPath": "r/studentenset/24-03-r-b-rfs-4.html",
     "label": "RFS (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rfs_4_ss2324",
+    "id": "r_24_03_r_b_rfs_4_ss2324",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rpp-5.html",
+    "skedPath": "r/studentenset/24-03-r-b-rpp-5.html",
     "label": "RPP (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rpp_5_ss2324",
+    "id": "r_24_03_r_b_rpp_5_ss2324",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-wr-5.html",
+    "skedPath": "r/studentenset/24-03-r-b-wr-5.html",
     "label": "WR (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_wr_5_ss2324",
+    "id": "r_24_03_r_b_wr_5_ss2324",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rfs-6.html",
+    "skedPath": "r/studentenset/24-03-r-b-rfs-6.html",
     "label": "RFS (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rfs_6_ss2324",
+    "id": "r_24_03_r_b_rfs_6_ss2324",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-rpp-6.html",
+    "skedPath": "r/studentenset/24-03-r-b-rpp-6.html",
     "label": "RPP (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_rpp_6_ss2324",
+    "id": "r_24_03_r_b_rpp_6_ss2324",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-wr-6.html",
+    "skedPath": "r/studentenset/24-03-r-b-wr-6.html",
     "label": "WR (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_wr_6_ss2324",
+    "id": "r_24_03_r_b_wr_6_ss2324",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-erstsemesterveranstaltungen.html",
+    "skedPath": "r/studentenset/24-03-r-erstsemesterveranstaltungen.html",
     "label": "Erstsemesterveranstaltungen alt",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_erstsemesterveranstaltungen_ss2324",
+    "id": "r_24_03_r_erstsemesterveranstaltungen_ss2324",
     "semester": "Sonstige",
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/23-09-r-b-wpf.html",
+    "skedPath": "r/studentenset/24-03-r-b-wpf.html",
     "label": "Wahlpflichtfächer und Tutorien",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_23_09_r_b_wpf_ss2324",
+    "id": "r_24_03_r_b_wpf_ss2324",
     "semester": "WPF",
     "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/24-03-r-m-ftc-2.html",
+    "label": "FTC (PO 2022) - nur im SoSe",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_24_03_r_m_ftc_2_ss2324",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "r/studentenset/24-03-r-m-ilb-2.html",
+    "label": "ILB (PO 2022) - nur im SoSe",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_24_03_r_m_ilb_2_ss2324",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "r/studentenset/24-03-r-m-rpp-2.html",
+    "label": "RPP-M (PO 2022) - nur im SoSe",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_24_03_r_m_rpp_2_ss2324",
+    "semester": 2,
+    "degree": "Master"
   },
   {
     "skedPath": "s/wp/SS2024/Bachelor Soziale Arbeit_1_1. Sem.html",
@@ -1931,6 +2084,24 @@
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_6_ss2324",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_6_6. Sem. OeIV.html",
+    "label": "EGT / EGTiP TGA",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_oeiv_6_ss2324",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_6_6. Sem.html",
+    "label": "EGT / EGTiP ÖIV",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_6_ss2324",
     "semester": 6,
     "degree": "Bachelor"
   },
