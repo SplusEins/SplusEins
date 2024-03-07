@@ -202,7 +202,7 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
           return;
         }
         const datum = col[0].split(', ')[1]
-        const parts = entry.split('<br>');
+        const parts = entry.split('<br>').map(part => part.replace(/<a.+>(.+)<\/a>/, '$1'));
         if (parts.length < 3) {
           // Should at least have time & name, otherwise no valid column
           return;
