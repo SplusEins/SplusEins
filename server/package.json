@@ -20,7 +20,7 @@
     "cors": "2.8.5",
     "cross-env": "7.0.3",
     "csv-string": "4.1.1",
-    "express": "4.18.3",
+    "express": "4.19.2",
     "hafas-client": "5.26.5",
     "ical-generator": "5.0.1",
     "iconv-lite": "0.6.3",
