@@ -28,6 +28,7 @@ module.exports = {
     semi: 'off', // no preference for semicolons at end
     'max-len': ['warn', { code: 160 }],
     complexity: ['warn', { max: 30 }],
-    'no-warning-comments': 'warn'
+    'no-warning-comments': 'warn',
+    '@typescript-eslint/no-unused-vars': 'warn',
   }
 }
