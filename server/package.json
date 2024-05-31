@@ -63,7 +63,7 @@
     "nodemon": "2.0.22",
     "rrule": "2.8.1",
     "supertest": "6.3.4",
-    "ts-jest": "29.1.2",
+    "ts-jest": "29.1.4",
     "ts-loader": "9.5.1",
     "ts-node": "10.9.2",
     "typescript": "5.4.5",
