@@ -1,212 +1,5 @@
 [
   {
-    "skedPath": "b/wp/ss24_b_stgrp_ai_1.html",
-    "label": "Angewandte Informatik",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ai_1_ss2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_bau_1.html",
-    "label": "Bauingenieurwesen",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bau_1_ss2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_u_1.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_u_1_ss2324",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_ai_2.html",
-    "label": "Angewandte Informatik",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ai_2_ss2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_bau_2.html",
-    "label": "Bauingenieurwesen",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bau_2_ss2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/China_Kooperation_2023_2.html",
-    "label": "Kooperation China",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_china_kooperation_2023_2_ss2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_u_2.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_u_2_ss2324",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_ai_3.html",
-    "label": "Angewandte Informatik",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ai_3_ss2324",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stdgrp_bau_3.html",
-    "label": "Bauingenieurwesen",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_bau_3_ss2324",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stdgrp_u_3.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_u_3_ss2324",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_ai_4.html",
-    "label": "Angewandte Informatik",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ai_4_ss2324",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_bau_4.html",
-    "label": "Bauingenieurwesen",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bau_4_ss2324",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_bip_4.html",
-    "label": "Bauingenieurwesen im Praxisverbund",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_4_ss2324",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stdgrp_u_4.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_u_4_ss2324",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_bau_5.html",
-    "label": "Bauingenieurwesen",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bau_5_ss2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stdgrp_u_5.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_u_5_ss2324",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_ai_6.html",
-    "label": "Angewandte Informatik",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ai_6_ss2324",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_bau_6.html",
-    "label": "Bauingenieurwesen",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bau_6_ss2324",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_bip_6.html",
-    "label": "Bauingenieurwesen im Praxisverbund",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_6_ss2324",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stdgrp_u_6.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_u_6_ss2324",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_bip_8.html",
-    "label": "Bauingenieurwesen im Praxisverbund",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_8_ss2324",
-    "semester": 8,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_ma_glob_1.html",
-    "label": "Wasserwirtschaft im Globalen Wandel",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ma_glob_1_ss2324",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "b/wp/ss24_b_stgrp_ma_glob_2.html",
-    "label": "Wasserwirtschaft im Globalen Wandel",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_ma_glob_2_ss2324",
-    "semester": 2,
-    "degree": "Master"
-  },
-  {
     "skedPath": "e/semester/E-EIT-GS-Sem1.html",
     "label": "EIT",
     "faculty": "Elektrotechnik",
@@ -981,6 +774,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%203.%20Sem.csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_3_ss2324",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%204.%20Sem.%20(PO18).csv",
     "label": "CE (PO18)",
     "faculty": "Informatik",
@@ -1157,6 +959,15 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_wi_5_ss2324",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%205.%20Sem.csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_5_ss2324",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1931,15 +1742,6 @@
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_m_fdu_4_ss2324",
-    "semester": 4,
-    "degree": "Master"
-  },
-  {
-    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_4.html",
-    "label": "Kommunikationsmanagement",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_m_km_4_ss2324",
     "semester": 4,
     "degree": "Master"
   },
