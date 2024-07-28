@@ -5,12 +5,11 @@ current_sem: "ws24"
 # timetables with the following strings in the URL or description will be filtered out (use lowercase only)
 timetable_blacklist:
   # TODO Semesterwechsel: Aktualisieren auf Strings vom vorherigen Semester
-  - "ws2324"
   - "ss 24"
   - "ss24"
   - "sose"
   - "/ss/"
-  - "ws202324"
+  - "ss2024"
   - "nur im ss"
 
   - "pruefung"
