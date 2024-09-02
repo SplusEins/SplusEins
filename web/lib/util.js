@@ -5,7 +5,7 @@ export const scalarArraysEqual = (array1, array2) =>
   array1.every((value, index) => value === array2[index]);
 export const range = (lower, upper) => Array.from(Array(upper - lower), (x, i) => lower + i);
 
-export const SEMESTER_WEEK_1 = 8; // TODO Semesterwechsel set to first calendar week of the semester
+export const SEMESTER_WEEK_1 = 36; // TODO Semesterwechsel set to first calendar week of the semester
 
 export function customTimetableToRoute (customTimetable) {
   const query = {
