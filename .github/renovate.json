@@ -13,6 +13,10 @@
       ],
       "matchUpdateTypes": ["major"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["cheerio"],
+      "enabled": false
     }
   ]
 }
