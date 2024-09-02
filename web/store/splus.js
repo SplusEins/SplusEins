@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import colors from 'vuetify/lib/util/colors'
-import * as chroma from '../lib/chroma';
+import chroma from 'chroma-js';
 
 import TIMETABLES from '~/assets/timetables.json';
 import { SEMESTER_WEEK_1, shortenTimetableDegree, uniq, customTimetableToRoute, scalarArraysEqual } from '~/lib/util';
