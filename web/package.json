@@ -17,7 +17,7 @@
     "@nuxtjs/dayjs": "1.4.1",
     "@nuxtjs/proxy": "2.1.0",
     "@nuxtjs/pwa": "3.3.5",
-    "chroma-js": "2.4.2",
+    "chroma-js": "2.6.0",
     "nuxt": "2.18.1",
     "vue": "2.7.16",
     "vue-clipboard2": "0.3.3",
