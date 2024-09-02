@@ -16,9 +16,11 @@
 			]
 		}
 	},
+	"runArgs": [
+		"--env-file", "${localWorkspaceFolder}/.devcontainer/.env"
+	],
 	"remoteEnv": {
-		"SKED_USER": "${localEnv:SKED_USER}",
-		"SKED_PASSWORD": "${localEnv:SKED_PASSWORD}",
+		"DEVCONTAINER": "true"
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
