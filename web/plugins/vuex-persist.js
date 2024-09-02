@@ -12,11 +12,11 @@ export default ({ store }) => {
 
       // version migration
       if (value.version) {
-        if (value.version < 13) { // TODO Semesterwechsel increment this
+        if (value.version < 14) { // TODO Semesterwechsel increment this
           value.splus.customSchedules = {};
           value.splus.favoriteSchedules = [];
           value.splus.subscribedTimetable = {};
-          value.version = 13; // TODO Semesterwechsel increment this
+          value.version = 14; // TODO Semesterwechsel increment this
         }
       }
 
