@@ -207,6 +207,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "e/semester/E-EITiP-GS-Sem1.html",
+    "label": "EITiP",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eitip_gs_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "e/semester/E-WEIT-Sem1.html",
     "label": "WEIT",
     "faculty": "Elektrotechnik",
@@ -216,38 +225,29 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT-GS-Sem2.html",
-    "label": "EIT",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eit_gs_2_ws24",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-EITiP-GS-Sem2.html",
-    "label": "EITiP",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eitip_gs_2_ws24",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-WEIT-Sem2.html",
-    "label": "WEIT",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_weit_2_ws24",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-WEITiP-Sem2.html",
+    "skedPath": "e/semester/E-WEITiP-Sem1.html",
     "label": "WEITiP",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weitip_2_ws24",
+    "id": "e_weitip_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)-GS-Sem2.html",
+    "label": "EIT(iP)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_gs_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT(iP)-Sem2.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_ip_2_ws24",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -270,111 +270,102 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_AT-Sem4_PO2021.html",
+    "skedPath": "e/semester/E-EIT(iP)_AT-Sem4.html",
     "label": "EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_at_po2021_4_ws24",
+    "id": "e_eit_ip_at_4_ws24",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_EE-Sem4_PO2021.html",
+    "skedPath": "e/semester/E-EIT(iP)_EE-Sem4.html",
     "label": "EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_ee_po2021_4_ws24",
+    "id": "e_eit_ip_ee_4_ws24",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_IT-Sem4_PO2021.html",
+    "skedPath": "e/semester/E-EIT(iP)_IT-Sem4.html",
     "label": "EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_it_po2021_4_ws24",
+    "id": "e_eit_ip_it_4_ws24",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-WEIT(iP)-Sem4_PO2021.html",
+    "skedPath": "e/semester/E-EIT(iP)_TI-Sem4.html",
+    "label": "EIT(iP)-TI",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_ti_4_ws24",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT(iP)-Sem4.html",
     "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weit_ip_po2021_4_ws24",
+    "id": "e_weit_ip_4_ws24",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_AT-Sem5_PO2013.html",
+    "skedPath": "e/semester/E-EIT(iP)_AT-Sem5.html",
     "label": "EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_at_po2013_5_ws24",
+    "id": "e_eit_ip_at_5_ws24",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_AT-Sem5_PO2021.html",
+    "skedPath": "e/semester/E-EIT(iP)_EE-Sem5.html",
+    "label": "EIT(iP)-EE",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_ee_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)_IT-Sem5.html",
+    "label": "EIT(iP)-IT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_it_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)_TI-Sem5.html",
+    "label": "EIT(iP)-TI",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_ti_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT(iP)-Sem5.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_ip_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-EIT(iP)_AT-Sem6.html",
     "label": "EIT(iP)-AT",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_at_po2021_5_ws24",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-EIT(iP)_EE-Sem5_PO2013.html",
-    "label": "EIT(iP)-EE",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eit_ip_ee_po2013_5_ws24",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-EIT(iP)_EE-Sem5_PO2021.html",
-    "label": "EIT(iP)-EE",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eit_ip_ee_po2021_5_ws24",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-EIT(iP)_IT-Sem5_PO2013.html",
-    "label": "EIT(iP)-IT",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eit_ip_it_po2013_5_ws24",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-EIT(iP)_IT-Sem5_PO2021.html",
-    "label": "EIT(iP)-IT",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eit_ip_it_po2021_5_ws24",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-WEIT(iP)-Sem5_PO2015.html",
-    "label": "WEIT(iP)",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_weit_ip_po2015_5_ws24",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-WEIT(iP)-Sem5_PO2021.html",
-    "label": "WEIT(iP)",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_weit_ip_po2021_5_ws24",
-    "semester": 5,
+    "id": "e_eit_ip_at_6_ws24",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -387,11 +378,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_AT-Sem6_PO2021.html",
-    "label": "EIT(iP)-AT",
+    "skedPath": "e/semester/E-EIT(iP)_EE-Sem6.html",
+    "label": "EIT(iP)-EE",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_at_po2021_6_ws24",
+    "id": "e_eit_ip_ee_6_ws24",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -405,11 +396,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_EE-Sem6_PO2021.html",
-    "label": "EIT(iP)-EE",
+    "skedPath": "e/semester/E-EIT(iP)_IT-Sem6.html",
+    "label": "EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_ee_po2021_6_ws24",
+    "id": "e_eit_ip_it_6_ws24",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -423,11 +414,20 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_IT-Sem6_PO2021.html",
-    "label": "EIT(iP)-IT",
+    "skedPath": "e/semester/E-EIT(iP)_TI-Sem6.html",
+    "label": "EIT(iP)-TI",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_it_po2021_6_ws24",
+    "id": "e_eit_ip_ti_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT(iP)-Sem6.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_ip_6_ws24",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -441,25 +441,7 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-WEIT(iP)-Sem6_PO2021.html",
-    "label": "WEIT(iP)",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_weit_ip_po2021_6_ws24",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-WPF.html",
-    "label": "Wahlpflichtfächer WEIT(iP)",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_wpf_ws24",
-    "semester": "WPF",
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-IST.html",
+    "skedPath": "e/E-IST.html",
     "label": "IST",
     "faculty": "Elektrotechnik",
     "type": "graphical",
@@ -846,6 +828,33 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_1_1.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%201.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%201.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%201.%20Sem.csv",
     "label": "WI",
     "faculty": "Informatik",
@@ -909,6 +918,33 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_2_VFH-B.Sc.%20ITS%202.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_vfh_its_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%202.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%202.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%203.%20Sem.%20(PO18).csv",
     "label": "CE (PO18)",
     "faculty": "Informatik",
@@ -959,6 +995,24 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_sye_po18_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%203.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%203.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_3_ws24",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1026,6 +1080,24 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%204.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_4_ws24",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%204.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_4_ws24",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%204.%20Sem.csv",
     "label": "WI",
     "faculty": "Informatik",
@@ -1089,12 +1161,66 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_5_VFH-B.Sc.%20ITS%205.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_vfh_its_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%205.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%205.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%205.%20Sem.csv",
     "label": "WI",
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_wi_5_ws24",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_6_6.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_it_sicherheit_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%206.%20Sem.csv",
+    "label": "VFH-MI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_mi_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-WI%206.%20Sem.csv",
+    "label": "VFH-WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_wi_6_ws24",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -1927,7 +2053,7 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_1_1. Sem.html",
-    "label": "WING E",
+    "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_e_1_ws24",
@@ -1936,7 +2062,7 @@
   },
   {
     "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_2_2. Sem.html",
-    "label": "BEE",
+    "label": "BEE / BEEiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_2_ws24",
@@ -1981,7 +2107,7 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_2_2. Sem.html",
-    "label": "WING E",
+    "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_e_2_ws24",
@@ -1990,7 +2116,7 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_2_2. Sem.html",
-    "label": "WING U",
+    "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_u_2_ws24",
@@ -1999,7 +2125,7 @@
   },
   {
     "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_3_3. Sem.html",
-    "label": "BEE",
+    "label": "BEE / BEEiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_3_3_4_ws24",
@@ -2035,7 +2161,7 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_3_3. Sem.html",
-    "label": "WING E",
+    "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_e_3_3_4_ws24",
@@ -2044,7 +2170,7 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_3_3. Sem.html",
-    "label": "WING U",
+    "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_u_3_3_4_ws24",
@@ -2053,7 +2179,7 @@
   },
   {
     "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_5_5. Semester.html",
-    "label": "BEE",
+    "label": "BEE / BEEiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_5_ws24",
@@ -2089,7 +2215,7 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_5_5. Sem.html",
-    "label": "WING E",
+    "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_e_5_ws24",
@@ -2098,7 +2224,7 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_5_5. Semester.html",
-    "label": "WING U",
+    "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_u_5_ws24",
@@ -2107,7 +2233,7 @@
   },
   {
     "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_7_7. Sem.html",
-    "label": "BEE Option 1",
+    "label": "BEE / BEEiP Option 1",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_7_ws24",
@@ -2116,7 +2242,7 @@
   },
   {
     "skedPath": "v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_7_7. Semester Option 1.html",
-    "label": "BEE Option 2",
+    "label": "BEE / BEEiP Option 2",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_option_1_7_ws24",
@@ -2152,7 +2278,7 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Energie (WING E)_7_7. Sem.html",
-    "label": "WING E",
+    "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_e_7_ws24",
@@ -2161,7 +2287,7 @@
   },
   {
     "skedPath": "v/stundenplan/wing/Wirtschaftsingenieur Umwelt (WING U)_7_7. Sem.html",
-    "label": "WING U",
+    "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_u_7_ws24",
