@@ -1,16 +1,40 @@
-{  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>reims2/renovate",
+    "config:base",
+    "npm:unpublishSafe",
+    ":dependencyDashboard",
+    ":prHourlyLimitNone",
+    ":separateMajorReleases",
+    "helpers:pinGitHubActionDigests",
+    "docker:pinDigests",
+    ":automergePatch",
+    ":automergeLinters",
+    ":automergeTesters",
+    ":automergeTypes",
+    ":automergeDigest",
+    ":automergePr",
+    "group:test",
+    "group:linters",
+    "group:definitelyTyped",
+    "schedule:automergeWeekends",
     ":approveMajorUpdates"
   ],
+  "labels": ["dependencies"],
   "ignorePaths": ["app/**"],
+  "platformAutomerge": true,
   "packageRules": [
     {
-      "matchPackageNames": [
-        "vue",
-        "nuxt",
-        "webpack"
-      ],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    },
+    {
+      "extends": ["packages:test", "packages:linters", "schedule:monthly"]
+    },
+    {
+      "matchPackageNames": ["vue", "nuxt", "webpack"],
       "matchUpdateTypes": ["major"],
       "enabled": false
     },
@@ -18,5 +42,19 @@
       "matchPackageNames": ["cheerio"],
       "enabled": false
     }
-  ]
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^Dockerfile$", "^.github/.+/*\\.ya?ml$"],
+      "matchStrings": [
+        "renovate:? datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_(?:VERSION|version)=(?<currentValue>.*)\\s"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
+  ],
+  "schedule": ["before 2pm on Saturday"],
+  "timezone": "Europe/Berlin",
+  "npm": {
+    "extends": [":pinAllExceptPeerDependencies"]
+  }
 }
