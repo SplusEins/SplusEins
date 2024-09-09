@@ -1323,157 +1323,184 @@
     "degree": "Master"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rfs-1.html",
+    "skedPath": "r/studentenset/24-09-r-b-rfs-1.html",
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rfs_1_ws24",
+    "id": "r_24_09_r_b_rfs_1_ws24",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rpp-1.html",
+    "skedPath": "r/studentenset/24-09-r-b-rpp-1.html",
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rpp_1_ws24",
+    "id": "r_24_09_r_b_rpp_1_ws24",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-wr-1.html",
+    "skedPath": "r/studentenset/24-09-r-b-wr-1.html",
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_wr_1_ws24",
+    "id": "r_24_09_r_b_wr_1_ws24",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rfs-2.html",
+    "skedPath": "r/studentenset/24-09-r-b-rfs-2.html",
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rfs_2_ws24",
+    "id": "r_24_09_r_b_rfs_2_ws24",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rpp-2.html",
+    "skedPath": "r/studentenset/24-09-r-b-rpp-2.html",
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rpp_2_ws24",
+    "id": "r_24_09_r_b_rpp_2_ws24",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-wr-2.html",
+    "skedPath": "r/studentenset/24-09-r-b-wr-2.html",
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_wr_2_ws24",
+    "id": "r_24_09_r_b_wr_2_ws24",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rfs-3.html",
+    "skedPath": "r/studentenset/24-09-r-b-rfs-3.html",
     "label": "RFS (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rfs_3_ws24",
+    "id": "r_24_09_r_b_rfs_3_ws24",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rpp-3.html",
+    "skedPath": "r/studentenset/24-09-r-b-rpp-3.html",
     "label": "RPP (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rpp_3_ws24",
+    "id": "r_24_09_r_b_rpp_3_ws24",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-wr-3.html",
+    "skedPath": "r/studentenset/24-09-r-b-wr-3.html",
     "label": "WR (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_wr_3_ws24",
+    "id": "r_24_09_r_b_wr_3_ws24",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rfs-4.html",
+    "skedPath": "r/studentenset/24-09-r-b-rfs-4.html",
     "label": "RFS (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rfs_4_ws24",
+    "id": "r_24_09_r_b_rfs_4_ws24",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rpp-5.html",
+    "skedPath": "r/studentenset/24-09-r-b-rpp-5.html",
     "label": "RPP (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rpp_5_ws24",
+    "id": "r_24_09_r_b_rpp_5_ws24",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-wr-5.html",
+    "skedPath": "r/studentenset/24-09-r-b-wr-5.html",
     "label": "WR (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_wr_5_ws24",
+    "id": "r_24_09_r_b_wr_5_ws24",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rfs-6.html",
+    "skedPath": "r/studentenset/24-09-r-b-rfs-6.html",
     "label": "RFS (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rfs_6_ws24",
+    "id": "r_24_09_r_b_rfs_6_ws24",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-rpp-6.html",
+    "skedPath": "r/studentenset/24-09-r-b-rpp-6.html",
     "label": "RPP (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_rpp_6_ws24",
+    "id": "r_24_09_r_b_rpp_6_ws24",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-wr-6.html",
+    "skedPath": "r/studentenset/24-09-r-b-wr-6.html",
     "label": "WR (PO 2020)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_wr_6_ws24",
+    "id": "r_24_09_r_b_wr_6_ws24",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-erstsemesterveranstaltungen.html",
+    "skedPath": "r/studentenset/24-09-r-erstsemesterveranstaltungen.html",
     "label": "Erstsemesterveranstaltungen alt",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_erstsemesterveranstaltungen_ws24",
+    "id": "r_24_09_r_erstsemesterveranstaltungen_ws24",
     "semester": "Sonstige",
     "degree": "Bachelor"
   },
   {
-    "skedPath": "r/studentenset/24-03-r-b-wpf.html",
+    "skedPath": "r/studentenset/24-09-r-b-wpf.html",
     "label": "Wahlpflichtfächer und Tutorien",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_24_03_r_b_wpf_ws24",
+    "id": "r_24_09_r_b_wpf_ws24",
     "semester": "WPF",
     "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/24-09-r-m-ftc-1.html",
+    "label": "FTC (PO 2022) - nur im WS",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_24_09_r_m_ftc_1_ws24",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "r/studentenset/24-09-r-m-ilb-1.html",
+    "label": "ILB (PO 2022) - nur im WS",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_24_09_r_m_ilb_1_ws24",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "r/studentenset/24-09-r-m-rpp-1.html",
+    "label": "RPP-M (PO 2022) - nur im WS",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_24_09_r_m_rpp_1_ws24",
+    "semester": 1,
+    "degree": "Master"
   },
   {
     "skedPath": "s/wp/WS202425/Bachelor Soziale Arbeit_1_1. Sem.html",
