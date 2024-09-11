@@ -1,7 +1,7 @@
 [
   {
     "skedPath": "b/wp/ws24_b_stgrp_ai_1.html",
-    "label": "Angewandte Informatik",
+    "label": "Angewandte Informatik - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_1_ws24",
@@ -10,7 +10,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_bau_1.html",
-    "label": "Bauingenieurwesen",
+    "label": "Bauingenieurwesen - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_1_ws24",
@@ -19,7 +19,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_u_1.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_1_ws24",
@@ -28,7 +28,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_ai_2.html",
-    "label": "Angewandte Informatik",
+    "label": "Angewandte Informatik - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_2_ws24",
@@ -37,7 +37,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_bau_2.html",
-    "label": "Bauingenieurwesen",
+    "label": "Bauingenieurwesen - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_2_ws24",
@@ -46,7 +46,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_u_2.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_2_ws24",
@@ -55,7 +55,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_ai_3.html",
-    "label": "Angewandte Informatik",
+    "label": "Angewandte Informatik - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_3_ws24",
@@ -64,7 +64,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_bau_3.html",
-    "label": "Bauingenieurwesen",
+    "label": "Bauingenieurwesen - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_3_ws24",
@@ -73,7 +73,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_bip_3.html",
-    "label": "Bauingenieurwesen im Praxisverbund",
+    "label": "Bauingenieurwesen im Praxisverbund - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bip_3_ws24",
@@ -82,7 +82,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_u_3.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_3_ws24",
@@ -91,7 +91,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_ai_4.html",
-    "label": "Angewandte Informatik",
+    "label": "Angewandte Informatik - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_4_ws24",
@@ -100,7 +100,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_bau_4.html",
-    "label": "Bauingenieurwesen",
+    "label": "Bauingenieurwesen - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_4_ws24",
@@ -109,7 +109,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_u_4.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_4_ws24",
@@ -118,7 +118,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_ai_5.html",
-    "label": "Angewandte Informatik",
+    "label": "Angewandte Informatik - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_5_ws24",
@@ -127,7 +127,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_bau_5.html",
-    "label": "Bauingenieurwesen",
+    "label": "Bauingenieurwesen - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_5_ws24",
@@ -136,7 +136,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_bip_5.html",
-    "label": "Bauingenieurwesen im Praxisverbund",
+    "label": "Bauingenieurwesen im Praxisverbund - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bip_5_ws24",
@@ -145,7 +145,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_u_5.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2022 - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_5_ws24",
@@ -154,7 +154,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_bau_6.html",
-    "label": "Bauingenieurwesen",
+    "label": "Bauingenieurwesen - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_6_ws24",
@@ -163,7 +163,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_u_6.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - PO 2018 - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_6_ws24",
@@ -172,7 +172,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_bip_7.html",
-    "label": "Bauingenieurwesen im Praxisverbund",
+    "label": "Bauingenieurwesen im Praxisverbund - 7",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bip_7_ws24",
@@ -181,7 +181,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_ma_glob_1.html",
-    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018",
+    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018 - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ma_glob_1_ws24",
@@ -190,7 +190,7 @@
   },
   {
     "skedPath": "b/wp/ws24_b_stgrp_ma_glob_2.html",
-    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018",
+    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018 - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ma_glob_2_ws24",
@@ -828,7 +828,7 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_1_1.%20Sem.csv",
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit%201.%20Sem.csv",
     "label": "VFH-IT-Sicherheit",
     "faculty": "Informatik",
     "type": "csv",
@@ -918,11 +918,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_2_VFH-B.Sc.%20ITS%202.%20Sem.csv",
-    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit%202.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit",
     "faculty": "Informatik",
     "type": "csv",
-    "id": "i_vfh_it_sicherheit_vfh_its_2_ws24",
+    "id": "i_vfh_it_sicherheit_2_ws24",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1071,11 +1071,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_4_VFH-B.Sc.%20ITS%204.%20Sem.csv",
-    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit%204.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit",
     "faculty": "Informatik",
     "type": "csv",
-    "id": "i_vfh_it_sicherheit_vfh_its_4_ws24",
+    "id": "i_vfh_it_sicherheit_4_ws24",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1161,11 +1161,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_5_VFH-B.Sc.%20ITS%205.%20Sem.csv",
-    "label": "VFH-IT-Sicherheit_VFH- ITS",
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit%205.%20Sem.csv",
+    "label": "VFH-IT-Sicherheit",
     "faculty": "Informatik",
     "type": "csv",
-    "id": "i_vfh_it_sicherheit_vfh_its_5_ws24",
+    "id": "i_vfh_it_sicherheit_5_ws24",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1197,7 +1197,7 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit_6_6.%20Sem.csv",
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-IT-Sicherheit%206.%20Sem.csv",
     "label": "VFH-IT-Sicherheit",
     "faculty": "Informatik",
     "type": "csv",
@@ -1296,15 +1296,6 @@
     "degree": "Master"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%202.%20Sem.csv",
-    "label": "VFH-M.Sc. WI",
-    "faculty": "Informatik",
-    "type": "csv",
-    "id": "i_vfh_m_wi_2_ws24",
-    "semester": 2,
-    "degree": "Master"
-  },
-  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-M.Sc.%20WI%203.%20Sem.csv",
     "label": "VFH-M.Sc. WI",
     "faculty": "Informatik",
@@ -1314,7 +1305,7 @@
     "degree": "Master"
   },
   {
-    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte).csv",
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-M.Sc.%20Informatik%20(Alle%20Sem.+Schwerpunkte).csv",
     "label": "M.Sc. Informatik (Alle Sem.+Schwerpunkte)",
     "faculty": "Informatik",
     "type": "csv",
@@ -1463,6 +1454,15 @@
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_24_09_r_erstsemesterveranstaltungen_ws24",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "r/studentenset/24-09-r-ibls.html",
+    "label": "IBLS Lectures",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_24_09_r_ibls_ws24",
     "semester": "Sonstige",
     "degree": "Bachelor"
   },
