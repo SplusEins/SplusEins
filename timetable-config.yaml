@@ -22,9 +22,8 @@ plans:
     faculty: Bau-Wasser-Boden
   - url: https://stundenplan.ostfalia.de/e/
     faculty: Elektrotechnik
-  # Pläne sind zwar online, aber Formatierung mit der Uhrzeit mittendrin ist zu kompliziert
-  # - url: https://stundenplan.ostfalia.de/f/wp/index.html
-  #   faculty: Fahrzeugtechnik
+  - url: https://stundenplan.ostfalia.de/f/wp/index.html
+    faculty: Fahrzeugtechnik
   - url: https://stundenplan.ostfalia.de/g/wp/index.html
     faculty: Gesundheitswesen
     shorthand_syntax: True
@@ -62,6 +61,5 @@ plans:
   - url: https://stundenplan.ostfalia.de/v/stundenplan/sce/
     faculty: Versorgungstechnik
     shorthand_syntax: True
-  # Haben exakt einen einzigen Stundenplan:
-  # - url: https://stundenplan.ostfalia.de/w/wp/index.html
-  #   faculty: Wirtschaft
+  - url: https://stundenplan.ostfalia.de/w/
+    faculty: Wirtschaft
