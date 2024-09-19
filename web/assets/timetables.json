@@ -450,6 +450,186 @@
     "degree": "Master"
   },
   {
+    "skedPath": "f/wp/1_Semester_AE.html",
+    "label": "1. Fachsemester Automotive Engineering",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_ae_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/1_Semester_FIF.html",
+    "label": "1. Fachsemester Fahrzeuginformatik",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_fif_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/1_Semester_SVS.html",
+    "label": "1. Fachsemester Smart Vehicle Systems",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_svs_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/1_Semester_MuTD.html",
+    "label": "Material + Technisches Design",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_mutd_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/2_Semester_AE.html",
+    "label": "2. Fachsemester Automotive Engineering",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_ae_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/2_Semester_FIF.html",
+    "label": "2. Fachsemester Fahrzeuginformatik",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_fif_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/2_Semester_SVS.html",
+    "label": "2. Fachsemester Smart Vehicle Systems",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_svs_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/3_Semester_AE.html",
+    "label": "3. Fachsemester Automotive Engineering",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_ae_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/3_Semester_FIF.html",
+    "label": "3. Fachsemester Fahrzeuginformatik",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_fif_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/3_Semester_SVS.html",
+    "label": "3. Fachsemester Smart Vehicle Systems",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_svs_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/3_Semester_MuTD.html",
+    "label": "Material + Technisches Design",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_mutd_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/5_Semester_MuTD.html",
+    "label": "Material + Technisches Design",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_mutd_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/6_Semester_AGF.html",
+    "label": "6. Fachsemester Aggregate- und Fahrwerkentwicklung",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_agf_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/6_Semester_ABE.html",
+    "label": "6. Fachsemester Aufbauentwicklung",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_abe_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/6_Semester_IuE.html",
+    "label": "6. Fachsemester Informatik und Elektronik",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_iue_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/6_Semester_MET.html",
+    "label": "6. Fachsemester Mechatronik",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_met_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/6_Semester_PU.html",
+    "label": "6. Fachsemester Produktion und Umwelt",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_pu_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/6_Semester_STP.html",
+    "label": "6. Fachsemester Servicetechnik und Prozesse",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_stp_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "f/wp/2_Semester_Master_Elektromobilitaet.html",
+    "label": "Elektromobilität",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_master_elektromobilitaet_2_ws24",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "f/wp/2_Semester_Master_Smart_Factory.html",
+    "label": "Smart Factory",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_master_smart_factory_2_ws24",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
     "skedPath": "g/wp/BMRD1_WS2425.html",
     "label": "BMRD",
     "faculty": "Gesundheitswesen",
@@ -1035,6 +1215,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%204.%20Sem.csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_4_ws24",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20IE%204.%20Sem.%20(PO18).csv",
     "label": "IE (PO18)",
     "faculty": "Informatik",
@@ -1194,6 +1383,24 @@
     "type": "csv",
     "id": "i_wi_5_ws24",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Digital%20Technologies%206.%20Sem.csv",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_digital_technologies_6_ws24",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20Informatik%206.%20Sem.csv",
+    "label": "Informatik",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_informatik_6_ws24",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -2310,6 +2517,177 @@
     "type": "graphical",
     "id": "v_wing_u_7_ws24",
     "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor BWL_1_2024-25 WS 1. Sem. - Gruppe 1.html",
+    "label": "BWL - Gruppe 1",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2024_25_gruppe_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor BWL_1_2024-25 WS 1. Sem. - Gruppe 2.html",
+    "label": "BWL - Gruppe 2",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2024_25_gruppe_2_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Master SM_1_2024-25 WS 1. Sem..html",
+    "label": "Strategisches Management",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_master_sm_2024_25_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor Winf_1_2024-25 WS 1. Sem..html",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_winf_2024_25_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor Wing_1_2024-25 WS 1. Sem. - Gruppe 1.html",
+    "label": "Wirtschaftsingenieurswesen - Gruppe 1",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_wing_2024_25_gruppe_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor Wing_1_2024-25 WS 1. Sem. - Gruppe 2.html",
+    "label": "Wirtschaftsingenieurswesen - Gruppe 2",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_wing_2024_25_gruppe_2_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor BWL_2_2024-25 WS 2. Sem..html",
+    "label": "BWL",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2024_25_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor BWL_3_2024-25 WS 3. Sem. - Gruppe 1.html",
+    "label": "BWL - Gruppe 1",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2024_25_gruppe_1_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor BWL_3_2024-25 WS 3. Sem. - Gruppe 2.html",
+    "label": "BWL - Gruppe 2",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2024_25_gruppe_2_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Master SM_3_2024-25 WS 3. Sem..html",
+    "label": "Strategisches Management",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_master_sm_2024_25_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor Winf_3_2024-25 WS 3. Sem..html",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_winf_2024_25_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor Wing_3_2024-25 WS 3. Sem. - Gruppe 1.html",
+    "label": "Wirtschaftsingenieurswesen - Gruppe 1",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_wing_2024_25_gruppe_1_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor Wing_3_2024-25 WS 3. Sem. - Gruppe 2.html",
+    "label": "Wirtschaftsingenieurswesen - Gruppe 2",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_wing_2024_25_gruppe_2_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor BWL_4_2024-25 WS 4. Sem..html",
+    "label": "BWL",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2024_25_4_ws24",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor BWL_5_2024-25 WS 5. Sem..html",
+    "label": "BWL",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2024_25_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor Winf_5_2024-25 WS 5. Sem..html",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_winf_2024_25_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor Wing_5_2024-25 WS 5. Sem. - Gruppe 1.html",
+    "label": "Wirtschaftsingenieurswesen - Gruppe 1",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_wing_2024_25_gruppe_1_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Bachelor Wing_5_2024-25 WS 5. Sem. - Gruppe 2.html",
+    "label": "Wirtschaftsingenieurswesen - Gruppe 2",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_wing_2024_25_gruppe_2_5_ws24",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "w/Wahlpflichtfaecher_5_WS 2024-25.html",
+    "label": "Wahlpflichtfächer Wahlpflichtfächer - WS 2024/25",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_wahlpflichtfaecher_5_ws24",
+    "semester": "WPF",
     "degree": "Bachelor"
   }
 ]

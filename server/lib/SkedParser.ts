@@ -208,8 +208,8 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
           return;
         }
         const time = parts[0].split('Uhr')[0].split(' - ')
-        const uhrzeitStart = time[0];
-        const uhrzeitEnde = time[1];
+        let uhrzeitStart = time[0];
+        let uhrzeitEnde = time[1];
 
         let dozent = ''
         let veranstaltung = ''
@@ -240,6 +240,10 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
             veranstaltung = parts[2];
             anmerkung = parts[1];
             break;
+          case 'Wirtschaft':
+            // Leider ohne Dozent / Raum, da die Zeilen in dieser Fakultät zu unterschiedlich genutzt werden
+            veranstaltung = parts[1];
+            break;
           case 'Soziale Arbeit':
             parts.shift() // remove first uhrzeit entry
             while (parts[0] !== undefined && !parts[0].startsWith('S-')) {
@@ -256,6 +260,12 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
             veranstaltung = veranstaltung.replace(` - ${dozent}`, '').replace(` ${dozent}`, '')
             break;
           case 'Fahrzeugtechnik':
+            raum = parts[0];
+            uhrzeitStart = parts[1];
+            uhrzeitEnde = parts[2];
+            dozent = parts[3];
+            veranstaltung = parts[4];
+            break;
           case 'Gesundheitswesen':
           case 'Verkehr-Sport-Tourismus-Medien':
           case 'Elektrotechnik':
@@ -278,7 +288,6 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
         const dateFormat = 'DD.MM.YYYY H:m'
         const start = moment.tz(datum + ' ' + uhrzeitStart, dateFormat, 'Europe/Berlin');
         const end = moment.tz(datum + ' ' + uhrzeitEnde, dateFormat, 'Europe/Berlin');
-
         if (!start.isValid() || !end.isValid() || veranstaltung === '') {
           return;
         }
