@@ -441,7 +441,7 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/E-IST.html",
+    "skedPath": "e/semester/E-IST.html",
     "label": "IST",
     "faculty": "Elektrotechnik",
     "type": "graphical",
@@ -2291,15 +2291,6 @@
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_2_ws24",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "v/stundenplan/dt/Digital Technologies (DT Energie)_2_2. Sem.html",
-    "label": "DT Energie",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_digital_technologies_dt_2_ws24",
     "semester": 2,
     "degree": "Bachelor"
   },
