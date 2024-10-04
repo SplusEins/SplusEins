@@ -459,6 +459,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "f/wp/1_Semester_Mathe-Lift.html",
+    "label": "Automotive Engineering/Mathe-Lift",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_mathe_lift_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "f/wp/1_Semester_FIF.html",
     "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
@@ -2264,6 +2273,15 @@
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_ge_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "v/stundenplan/ksm/Klimaschutzmanagement (KSM)_1_1. Sem..html",
+    "label": "KSM",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_klimaschutzmanagement_ksm_1_ws24",
     "semester": 1,
     "degree": "Bachelor"
   },
