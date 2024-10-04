@@ -43,22 +43,22 @@ plans:
     faculty: Recht
   - url: https://stundenplan.ostfalia.de/s/wp/index.html
     faculty: Soziale Arbeit
-  - url: https://stundenplan.ostfalia.de/v/stundenplan/bee/
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/wing/index.html
     faculty: Versorgungstechnik
     shorthand_syntax: True
-  - url: https://stundenplan.ostfalia.de/v/stundenplan/egt/
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/sce/index.html
     faculty: Versorgungstechnik
     shorthand_syntax: True
-  - url: https://stundenplan.ostfalia.de/v/stundenplan/wing/
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/ksm/index.html
     faculty: Versorgungstechnik
     shorthand_syntax: True
-  - url: https://stundenplan.ostfalia.de/v/stundenplan/dt/
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/ge/index.html
     faculty: Versorgungstechnik
     shorthand_syntax: True
-  - url: https://stundenplan.ostfalia.de/v/stundenplan/ge/
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/egt/index.html
     faculty: Versorgungstechnik
     shorthand_syntax: True
-  - url: https://stundenplan.ostfalia.de/v/stundenplan/sce/
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/bee/index.html
     faculty: Versorgungstechnik
     shorthand_syntax: True
   - url: https://stundenplan.ostfalia.de/w/
