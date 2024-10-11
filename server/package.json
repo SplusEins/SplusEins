@@ -16,7 +16,7 @@
     "cache-manager": "4.1.0",
     "cache-manager-fs-hash": "1.1.0",
     "cheerio": "1.0.0-rc.12",
-    "cookie-parser": "1.4.6",
+    "cookie-parser": "1.4.7",
     "cors": "2.8.5",
     "cross-env": "7.0.3",
     "csv-string": "4.1.1",
