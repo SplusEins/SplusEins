@@ -28,7 +28,7 @@
     "moment-timezone": "0.5.45",
     "node-fetch": "2.7.0",
     "rss": "1.2.2",
-    "sanitize-html": "2.13.0",
+    "sanitize-html": "2.13.1",
     "timeout-signal": "1.1.0"
   },
   "devDependencies": {
