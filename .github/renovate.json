@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
     "npm:unpublishSafe",
     ":dependencyDashboard",
     ":prHourlyLimitNone",
@@ -20,41 +20,70 @@
     "schedule:automergeWeekends",
     ":approveMajorUpdates"
   ],
-  "labels": ["dependencies"],
-  "ignorePaths": ["app/**"],
+  "labels": [
+    "dependencies"
+  ],
+  "ignorePaths": [
+    "app/**"
+  ],
   "platformAutomerge": true,
   "packageRules": [
     {
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
     },
     {
-      "extends": ["packages:test", "packages:linters", "schedule:monthly"]
+      "extends": [
+        "packages:test",
+        "packages:linters",
+        "schedule:monthly"
+      ]
     },
     {
-      "matchPackageNames": ["vue", "nuxt", "webpack"],
-      "matchUpdateTypes": ["major"],
+      "matchPackageNames": [
+        "vue",
+        "nuxt",
+        "webpack"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "enabled": false
     },
     {
-      "matchPackageNames": ["cheerio"],
+      "matchPackageNames": [
+        "cheerio"
+      ],
       "enabled": false
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["^Dockerfile$", "^.github/.+/*\\.ya?ml$"],
+      "customType": "regex",
+      "fileMatch": [
+        "^Dockerfile$",
+        "^.github/.+/*\\.ya?ml$"
+      ],
       "matchStrings": [
         "renovate:? datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_(?:VERSION|version)=(?<currentValue>.*)\\s"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
   ],
-  "schedule": ["before 2pm on Saturday"],
+  "schedule": [
+    "before 2pm on Saturday"
+  ],
   "timezone": "Europe/Berlin",
   "npm": {
-    "extends": [":pinAllExceptPeerDependencies"]
+    "extends": [
+      ":pinAllExceptPeerDependencies"
+    ]
   }
 }
