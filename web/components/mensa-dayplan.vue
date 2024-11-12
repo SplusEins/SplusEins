@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { mdiLeaf, mdiFood, mdiPigVariantOutline, mdiCarrot, mdiAlertDecagramOutline, mdiNewBox, mdiCow, mdiInformationBoxOutline } from '@mdi/js'
+import { mdiLeaf, mdiFood, mdiPig, mdiCarrot, mdiAlertDecagramOutline, mdiNewBox, mdiCow, mdiInformationBoxOutline, mdiTurkey, mdiHomeSiloOutline, mdiFish, mdiSheep } from '@mdi/js'
 
 export default {
   name: 'MensaDayplanComponent',
@@ -63,12 +63,16 @@ export default {
     return {
       mdiLeaf,
       mdiFood,
-      mdiPigVariantOutline,
+      mdiPig,
       mdiCarrot,
       mdiAlertDecagramOutline,
       mdiNewBox,
       mdiCow,
-      mdiInformationBoxOutline
+      mdiInformationBoxOutline,
+      mdiTurkey,
+      mdiHomeSiloOutline,
+      mdiFish,
+      mdiSheep
     };
   },
   methods: {
@@ -89,10 +93,22 @@ export default {
         let color = this.$vuetify.theme.dark ? 'white' : 'black';
         switch (e) {
           case 'Schwein':
-            icon = mdiPigVariantOutline;
+            icon = mdiPig;
             break;
           case 'Rind':
             icon = mdiCow;
+            break;
+          case 'Geflügel':
+            icon = mdiTurkey;
+            break;
+          case 'Fisch':
+            icon = mdiFish;
+            break;
+          case 'Lamm':
+            icon = mdiSheep;
+            break;
+          case 'Artgerechte Tierhaltung':
+            icon = mdiHomeSiloOutline;
             break;
           case 'Aktion':
             icon = mdiAlertDecagramOutline;
