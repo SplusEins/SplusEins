@@ -24,6 +24,23 @@ export interface MensaDayPlan {
   meals: MensaMeal[];
 }
 
+export interface MensaAddress {
+  line1: string,
+  line2: string,
+  street: string,
+  zip: number,
+  city: string
+}
+
+export interface Mensa {
+  name: string,
+  id: number,
+  opening_hours: Object[],
+  address: MensaAddress,
+  dayPlans: MensaDayPlan[],
+  url: string
+}
+
 export interface TimetableRequest {
   id: string;
   week: number;
