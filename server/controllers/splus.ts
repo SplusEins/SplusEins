@@ -74,7 +74,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
   try {
     const requests = weeks.map((week) => (<TimetableRequest> {
       id: timetable.id,
-      week: week,
+      week,
       skedPath: timetable.skedPath,
       faculty: timetable.faculty,
       type: timetable.type
@@ -92,8 +92,8 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
       name: timetable.degree == 'Räume'
         ? `${timetable.semester} ${timetable.label}`
         : `${(timetable.degree)} ${timetable.label} - ${timetable.semester}. Semester`,
-      events: events,
-      meta: meta
+      events,
+      meta
     };
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
@@ -138,7 +138,7 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
   try {
     const requests = <TimetableRequest[]>flatten(timetables.map((timetable) => weeks.map((week) => (<TimetableRequest> {
       id: timetable.id,
-      week: week,
+      week,
       skedPath: timetable.skedPath,
       faculty: timetable.faculty,
       type: timetable.type
@@ -157,9 +157,9 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
     };
 
     const timetable: Timetable = <Timetable> {
-      name: name,
+      name,
       events: filteredEvents,
-      meta: meta
+      meta
     };
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);

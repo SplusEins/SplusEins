@@ -1,5 +1,9 @@
 <template>
-  <v-card class="fill-height" outlined elevation="1">
+  <v-card
+    class="fill-height"
+    outlined
+    elevation="1"
+  >
     <v-card-title>
       <span class="text-h6">{{ getDayHeader(plan) }}</span>
     </v-card-title>
@@ -14,19 +18,23 @@
           <div class="text-subtitle-1">
             {{ item.lane }}
           </div>
-          <v-tooltip bottom v-for="icon in getIcons(item)" :key="icon.text">
-              <template v-slot:activator="{ on }">
-                <span v-on="on">
-                  <v-icon
+          <v-tooltip
+            bottom
+            v-for="icon in getIcons(item)"
+            :key="icon.text"
+          >
+            <template #activator="{ on }">
+              <span v-on="on">
+                <v-icon
                   :color="icon.color"
                   class="icon ml-1 align-self-center"
                   small
                 >
                   {{ icon.icon }}
                 </v-icon>
-                </span>
-              </template>
-              <span>{{ icon.text }}</span>
+              </span>
+            </template>
+            <span>{{ icon.text }}</span>
           </v-tooltip>
         </div>
         <div>
@@ -75,10 +83,10 @@ export default {
       return euros + ',' + cents + '€';
     },
     getIcons (item) {
-      var icons = [];
+      const icons = [];
       item.categories.forEach(e => {
-        var icon = mdiInformationBoxOutline;
-        var color = this.$vuetify.theme.dark ? 'white' : 'black';
+        let icon = mdiInformationBoxOutline;
+        let color = this.$vuetify.theme.dark ? 'white' : 'black';
         switch (e) {
           case 'Schwein':
             icon = mdiPigVariantOutline;
@@ -88,11 +96,11 @@ export default {
             break;
           case 'Aktion':
             icon = mdiAlertDecagramOutline;
-            color = "purple";
+            color = 'purple';
             break;
           case 'NEU bei uns':
             icon = mdiNewBox;
-            color = "blue";
+            color = 'blue';
             break;
           case 'Vegan':
             icon = mdiLeaf;
@@ -108,8 +116,8 @@ export default {
             break;
         }
         icons.push({
-          icon: icon,
-          color: color,
+          icon,
+          color,
           text: e
         });
       });

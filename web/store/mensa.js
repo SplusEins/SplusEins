@@ -34,7 +34,7 @@ export const actions = {
     let result = [];
 
     try {
-      const response = await this.$axios.get(`/api/mensa`);
+      const response = await this.$axios.get('/api/mensa');
       result = response.data;
     } catch (error) {
       const errorCode = error.response ? error.response.status : 'unknown error'

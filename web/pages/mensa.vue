@@ -2,17 +2,19 @@
   <v-container
     fluid
   >
-  <div>
-    <v-tabs
-    >
-      <v-tab
-        v-for="item in plans"
-        :key="item.id"
-        ripple
-      >
-        {{ item.name }}
-        <v-tooltip bottom v-if="isOpen(item.opening_hours)">
-            <template v-slot:activator="{ on }">
+    <div>
+      <v-tabs>
+        <v-tab
+          v-for="item in plans"
+          :key="item.id"
+          ripple
+        >
+          {{ item.name }}
+          <v-tooltip
+            bottom
+            v-if="isOpen(item.opening_hours)"
+          >
+            <template #activator="{ on }">
               <span v-on="on">
                 <v-chip
                   class="ml-2"
@@ -26,62 +28,71 @@
               </span>
             </template>
             <span>Aktuell geöffnet</span>
-        </v-tooltip>
-
-      </v-tab>
-      <v-tab-item
-        v-for="item in plans"
-        class="pa-1 pa-md-1"
-        :key="item.id"
-      >
-        <v-container grid-list-md>
-          <v-layout row wrap>
-            <v-flex md4 xs12>
-              <v-card flat>
-                <div class="text-body-2">
-                  <v-icon
+          </v-tooltip>
+        </v-tab>
+        <v-tab-item
+          v-for="item in plans"
+          class="pa-1 pa-md-1"
+          :key="item.id"
+        >
+          <v-container grid-list-md>
+            <v-layout
+              row
+              wrap
+            >
+              <v-flex
+                md4
+                xs12
+              >
+                <v-card flat>
+                  <div class="text-body-2">
+                    <v-icon
                       color="indigo"
                       class="align-self-center"
                     >
                       {{ mdiFolderInformation }}
                     </v-icon>
-                  <a :href="getMensaURL(item.url)" style="text-decoration: none;" target="_blank">Offizielle Mensa-Seite mit Öffnungszeiten</a>
-                </div>
-                <div class="text-body-2 text--secondary d-flex">
-                  <div class="d-flex pr-2">
-                    Vegetarisch
-                    <v-icon
-                      color="green"
-                      small
-                      class="align-self-center ml-1"
-                    >
-                      {{ mdiCarrot }}
-                    </v-icon>
+                    <a
+                      :href="getMensaURL(item.url)"
+                      style="text-decoration: none;"
+                      target="_blank"
+                    >Offizielle Mensa-Seite mit Öffnungszeiten</a>
                   </div>
-                  <div class="d-flex pr-2">
-                    Vegan
-                    <v-icon
-                      color="green"
-                      small
-                      class="align-self-center ml-1"
-                    >
-                      {{ mdiLeaf }}
-                    </v-icon>
+                  <div class="text-body-2 text--secondary d-flex">
+                    <div class="d-flex pr-2">
+                      Vegetarisch
+                      <v-icon
+                        color="green"
+                        small
+                        class="align-self-center ml-1"
+                      >
+                        {{ mdiCarrot }}
+                      </v-icon>
+                    </div>
+                    <div class="d-flex pr-2">
+                      Vegan
+                      <v-icon
+                        color="green"
+                        small
+                        class="align-self-center ml-1"
+                      >
+                        {{ mdiLeaf }}
+                      </v-icon>
+                    </div>
+                    <div class="d-flex">
+                      Niedersachsen Menü
+                      <v-icon
+                        color="red"
+                        small
+                        class="align-self-center ml-1"
+                      >
+                        {{ mdiFood }}
+                      </v-icon>
+                    </div>
                   </div>
-                  <div class="d-flex">
-                    Niedersachsen Menü
-                    <v-icon
-                      color="red"
-                      small
-                      class="align-self-center ml-1"
-                    >
-                      {{ mdiFood }}
-                    </v-icon>
-                  </div>
-                </div>
-              </v-card>
-            </v-flex>
-            <!--<v-flex md2 xs12>
+                </v-card>
+              </v-flex>
+              <!--<v-flex md2 xs12>
               <v-card flat>
                 <div class="text-body-2">
                   <v-icon
@@ -99,100 +110,115 @@
                 </div>
               </v-card>
             </v-flex>-->
-            <v-flex md8 xs12>
-              <v-card flat>
-                <div class="text-body-2">
-                  <v-icon
+              <v-flex
+                md8
+                xs12
+              >
+                <v-card flat>
+                  <div class="text-body-2">
+                    <v-icon
                       color="indigo"
                       class="align-self-center"
                     >
                       {{ mdiClockOutline }}
                     </v-icon>
                     Öffnungszeiten:
-                </div>
-                <div class="text-body-2 text--secondary d-flex chip-container" v-if="item.opening_hours.length > 0">
-                  <div class="d-flex pr-2" v-for="(opening, key) in item.opening_hours" :key="key">
-                    <v-chip
-                      outlined
-                      small
-                    >
-                      <v-icon left small>
-                        {{ openingTimeIcon(opening) }}
-                      </v-icon>
-                      {{ openingTimeFormat(opening) }}
-                    </v-chip>
                   </div>
-                </div>
-                <div class="text-body-2 text--secondary d-flex chip-container" v-else>
-                  Bitte vor Ort informieren.
-                </div>
-              </v-card>
-            </v-flex>
-            <v-flex xs12>
-              <v-card flat>
-                <v-divider class="my-1" />
-                <no-ssr>
-                  <v-alert
-                    v-if="noMealsAvailable(item.dayPlans)"
-                    type="info"
-                    class="my-6"
-                  >
-                    Aktuell sind keine Pläne verfügbar.
-                  </v-alert>
                   <div
-                    class="py-2"
+                    class="text-body-2 text--secondary d-flex chip-container"
+                    v-if="item.opening_hours.length > 0"
+                  >
+                    <div
+                      class="d-flex pr-2"
+                      v-for="(opening, key) in item.opening_hours"
+                      :key="key"
+                    >
+                      <v-chip
+                        outlined
+                        small
+                      >
+                        <v-icon
+                          left
+                          small
+                        >
+                          {{ openingTimeIcon(opening) }}
+                        </v-icon>
+                        {{ openingTimeFormat(opening) }}
+                      </v-chip>
+                    </div>
+                  </div>
+                  <div
+                    class="text-body-2 text--secondary d-flex chip-container"
                     v-else
                   >
-                    <v-row v-if="$vuetify.breakpoint.mobile">
-                      <v-col
-                        v-for="dayPlan in item.dayPlans"
-                        :key="dayPlan.date"
-                        cols=12
-                      >
-                        <mensa-dayplan :plan="dayPlan" />
-                      </v-col>
-                    </v-row>
-
-                    <v-carousel
-                      v-else
-                      show-arrows
-                      hide-delimiters
-                      hide-delimiter-background
-                      :light="!$vuetify.theme.dark"
-                      height="100%"
-                    >
-                      <template>
-                        <v-carousel-item
-                          v-for="dayPlanGroup in groupedDayPlans(item.dayPlans)"
-                          :key="dayPlanGroup[0].date"
-                        >
-                          <v-row
-                            dense
-                            class="carousel-control-padding"
-                          >
-                            <v-col
-                              v-for="(_, i) in 3"
-                              :key="i"
-                            >
-                              <mensa-dayplan
-                                v-if="dayPlanGroup[i]"
-                                :plan="dayPlanGroup[i]"
-                              />
-                            </v-col>
-                          </v-row>
-                        </v-carousel-item>
-                      </template>
-                    </v-carousel>
+                    Bitte vor Ort informieren.
                   </div>
-                </no-ssr>
-              </v-card>
+                </v-card>
+              </v-flex>
+              <v-flex xs12>
+                <v-card flat>
+                  <v-divider class="my-1" />
+                  <no-ssr>
+                    <v-alert
+                      v-if="noMealsAvailable(item.dayPlans)"
+                      type="info"
+                      class="my-6"
+                    >
+                      Aktuell sind keine Pläne verfügbar.
+                    </v-alert>
+                    <div
+                      class="py-2"
+                      v-else
+                    >
+                      <v-row v-if="$vuetify.breakpoint.mobile">
+                        <v-col
+                          v-for="dayPlan in item.dayPlans"
+                          :key="dayPlan.date"
+                          cols=12
+                        >
+                          <mensa-dayplan :plan="dayPlan" />
+                        </v-col>
+                      </v-row>
 
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-tab-item>
-    </v-tabs>
-  </div>
+                      <v-carousel
+                        v-else
+                        show-arrows
+                        hide-delimiters
+                        hide-delimiter-background
+                        :light="!$vuetify.theme.dark"
+                        height="100%"
+                      >
+                        <template>
+                          <v-carousel-item
+                            v-for="dayPlanGroup in groupedDayPlans(item.dayPlans)"
+                            :key="dayPlanGroup[0].date"
+                          >
+                            <v-row
+                              dense
+                              class="carousel-control-padding"
+                            >
+                              <v-col
+                                v-for="(_, i) in 3"
+                                :key="i"
+                              >
+                                <mensa-dayplan
+                                  v-if="dayPlanGroup[i]"
+                                  :plan="dayPlanGroup[i]"
+                                />
+                              </v-col>
+                            </v-row>
+                          </v-carousel-item>
+                        </template>
+                      </v-carousel>
+                    </div>
+                  </no-ssr>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-tab-item>
+      </v-tabs>
+    </div>
   </v-container>
 </template>
 
@@ -258,7 +284,7 @@ export default {
     isOpen (opening_hours) {
       const now = moment();
       const currentDay = now.isoWeekday();
-      const currentTime = now.format("HH:mm:ss");
+      const currentTime = now.format('HH:mm:ss');
 
       return opening_hours.some(({ start_day, end_day, start_time, end_time }) =>
         currentDay >= start_day &&
@@ -277,7 +303,7 @@ export default {
     },
     openingTimeFormat (hours) {
       moment.locale('de');
-      const formatDay = (day) => moment().isoWeekday(day).format("dddd");
+      const formatDay = (day) => moment().isoWeekday(day).format('dddd');
       const dayRange = hours.start_day === hours.end_day ? formatDay(hours.start_day) : `${formatDay(hours.start_day)} - ${formatDay(hours.end_day)}`;
       return `${dayRange}, ${hours.start_time.slice(0, 5)}-${hours.end_time.slice(0, 5)}`;
     },

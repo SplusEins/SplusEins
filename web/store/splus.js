@@ -155,7 +155,7 @@ export const getters = {
         end: startMoment.add(event.duration, 'hours').format('YYYY-MM-DD HH:mm'),
         desc: description,
         location: event.location,
-        color: color
+        color
       };
     });
   },

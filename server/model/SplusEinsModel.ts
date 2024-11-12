@@ -32,10 +32,18 @@ export interface MensaAddress {
   city: string
 }
 
+export interface MensaOpening {
+  time: string,
+  start_day: number,
+  end_day: number,
+  start_time: string,
+  end_time: string
+}
+
 export interface Mensa {
   name: string,
   id: number,
-  opening_hours: Object[],
+  opening_hours: MensaOpening[],
   address: MensaAddress,
   dayPlans: MensaDayPlan[],
   url: string

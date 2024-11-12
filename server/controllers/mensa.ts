@@ -46,7 +46,7 @@ router.options('/');
  *
  * @return MensaDayPlan[]
  */
-async function getDayPlan(id) : Promise<MensaDayPlan[]> {
+async function getDayPlan (id) : Promise<MensaDayPlan[]> {
   const key = 'mensa-' + id + '-' + moment().format('YYYY-MM-DD');
   const amountOfReturnedDays = 6;
 
@@ -87,8 +87,7 @@ async function getDayPlan(id) : Promise<MensaDayPlan[]> {
 
     return data;
   } catch (error) {
-    console.log("Error");
-    return;
+    console.log('Error');
   }
 }
 
@@ -100,20 +99,20 @@ router.get('/', async (req, res, next) => {
     try {
       const data = await cache.wrap(key, async () => {
         console.log(`mensa cache miss for key ${key}`);
-        
+
         const dayPlans = await getDayPlan(mensaID);
 
         const signal = timeoutSignal(3000) // abort if openmensa is too slow to respond
-  
+
         const response = await fetch(`https://sls.api.stw-on.de/v1/location/${mensaID}`, { signal }) // 130 is WF mensa
           .then((res) => res.json());
-        
+
         let url;
         switch (response.id) {
           case 112:
             url = 'bistro4u';
             break;
-        
+
           default:
             url = 'mensa';
             break;
@@ -123,9 +122,9 @@ router.get('/', async (req, res, next) => {
           // copy only neccessary fields
           name: response.name,
           id: response.id,
-          dayPlans: dayPlans,
+          dayPlans,
           url: `${response.address.city.toLowerCase()}/essen/${url}`,
-          opening_hours: response.opening_hours/*.map(({ ['time']: _, ...rest }) => rest)*/.filter((obj, index, self) => 
+          opening_hours: response.opening_hours/* .map(({ ['time']: _, ...rest }) => rest) */.filter((obj, index, self) =>
             index === self.findIndex((t) => JSON.stringify(t) === JSON.stringify(obj))
           ),
           address: response.address
@@ -146,7 +145,7 @@ router.get('/', async (req, res, next) => {
   Promise.all(mensaPromises).then(results => {
     // Filter out any null results due to errors
     mensaList = results.filter(mensa => mensa !== null) as Mensa[];
-    //console.log(mensaList); // mensaList should now contain all loaded mensa data
+    // console.log(mensaList); // mensaList should now contain all loaded mensa data
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     if (mensaList.length === 0) {
@@ -154,7 +153,6 @@ router.get('/', async (req, res, next) => {
     } else {
       res.json(mensaList);
     }
-    return;
   });
 });
 
