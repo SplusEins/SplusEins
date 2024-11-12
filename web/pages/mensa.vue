@@ -92,24 +92,6 @@
                   </div>
                 </v-card>
               </v-flex>
-              <!--<v-flex md2 xs12>
-              <v-card flat>
-                <div class="text-body-2">
-                  <v-icon
-                      color="indigo"
-                      class="align-self-center"
-                    >
-                      {{ mdiMapMarkerOutline }}
-                    </v-icon>
-                    Standort:
-                </div>
-                <div class="text-body-2 text--secondary d-flex">
-                  <div class="d-flex pr-2">
-                    {{ item.address.street }},<br />{{ item.address.zip }} {{ item.address.city }}
-                  </div>
-                </div>
-              </v-card>
-            </v-flex>-->
               <v-flex
                 md8
                 xs12
@@ -225,8 +207,13 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
 import MensaDayplan from '../components/mensa-dayplan.vue';
-import { mdiLeaf, mdiFood, mdiCarrot, mdiMapMarkerOutline, mdiFoodOutline, mdiFoodForkDrink, mdiClockOutline, mdiFolderInformation, mdiCoffeeOutline, mdiWeatherNight } from '@mdi/js';
-import * as moment from 'moment';
+import { mdiLeaf, mdiFood, mdiCarrot, mdiFoodOutline, mdiFoodForkDrink, mdiClockOutline, mdiFolderInformation, mdiCoffeeOutline, mdiWeatherNight } from '@mdi/js';
+import dayjs from 'dayjs';
+import isoWeek from 'dayjs/plugin/isoWeek';
+import 'dayjs/locale/de';
+
+dayjs.extend(isoWeek);
+dayjs.locale('de'); // Setzt die Sprache global auf Deutsch
 
 export default {
   name: 'MensaPage',
@@ -244,7 +231,6 @@ export default {
       mdiLeaf,
       mdiFood,
       mdiCarrot,
-      mdiMapMarkerOutline,
       mdiFoodForkDrink,
       mdiClockOutline,
       mdiFolderInformation,
@@ -282,9 +268,9 @@ export default {
       return (plans != null && plans.length === 0);
     },
     isOpen (opening_hours) {
-      const now = moment();
-      const currentDay = now.isoWeekday();
-      const currentTime = now.format('HH:mm:ss');
+      const now = dayjs();
+      const currentDay = now.isoWeekday(); // Gibt den ISO-Wochentag zurück (1 = Montag, 7 = Sonntag)
+      const currentTime = now.format('HH:mm:ss'); // Gibt die Uhrzeit im Format HH:mm:ss zurück
 
       return opening_hours.some(({ start_day, end_day, start_time, end_time }) =>
         currentDay >= start_day &&
@@ -302,9 +288,10 @@ export default {
       return grouped;
     },
     openingTimeFormat (hours) {
-      moment.locale('de');
-      const formatDay = (day) => moment().isoWeekday(day).format('dddd');
-      const dayRange = hours.start_day === hours.end_day ? formatDay(hours.start_day) : `${formatDay(hours.start_day)} - ${formatDay(hours.end_day)}`;
+      const formatDay = (day) => dayjs().isoWeekday(day).format('dddd');
+      const dayRange = hours.start_day === hours.end_day
+        ? formatDay(hours.start_day)
+        : `${formatDay(hours.start_day)} - ${formatDay(hours.end_day)}`;
       return `${dayRange}, ${hours.start_time.slice(0, 5)}-${hours.end_time.slice(0, 5)}`;
     },
     openingTimeIcon (hours) {

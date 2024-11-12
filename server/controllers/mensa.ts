@@ -93,7 +93,7 @@ async function getDayPlan (id) : Promise<MensaDayPlan[]> {
 
 router.get('/', async (req, res, next) => {
   let mensaList:Mensa[] = [];
-  const mensaIDs = [130, 112, 200, 134, 132]; // list of ostfalia mensas
+  const mensaIDs = [130, 112, 200, 134]; // list of ostfalia mensas
   const mensaPromises = mensaIDs.map(async mensaID => {
     const key = 'mensa-' + mensaID;
     try {
@@ -145,7 +145,6 @@ router.get('/', async (req, res, next) => {
   Promise.all(mensaPromises).then(results => {
     // Filter out any null results due to errors
     mensaList = results.filter(mensa => mensa !== null) as Mensa[];
-    // console.log(mensaList); // mensaList should now contain all loaded mensa data
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     if (mensaList.length === 0) {
