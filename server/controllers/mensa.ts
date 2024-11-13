@@ -4,12 +4,12 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import fetch from 'node-fetch';
 
-import { MensaDayPlan, MensaMeal, Mensa } from '../model/SplusEinsModel';
+import { MensaDayPlan, MensaMeal, Mensa, MensaOpening } from '../model/SplusEinsModel';
 import timeoutSignal = require('timeout-signal')
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
-const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
+const CACHE_DISABLE = true; //!!process.env.CACHE_DISABLE;
 const CACHE_SECONDS = parseInt(process.env.MENSA_CACHE_SECONDS || '1800');
 
 const router = express.Router();
@@ -91,6 +91,25 @@ async function getDayPlan (id) : Promise<MensaDayPlan[]> {
   }
 }
 
+function filterMensaOpenings (entries: MensaOpening[]) : MensaOpening[] {
+  return entries.filter(entry => {
+    // Filter alle Einträge, die nur am Wochenende sind
+    if(entry.start_day in [6,0] && entry.end_day in [6,0]) {
+      return false;
+    }
+
+    // Remappe die Einträge auf Woche
+    if(entry.start_day in [6,0]) {
+      entry.start_day = 1;
+    }
+    if(entry.end_day in [6,0]) {
+      entry.end_day = 5;
+    }
+
+    return true;
+  });
+}
+
 router.get('/', async (req, res, next) => {
   let mensaList:Mensa[] = [];
   const mensaIDs = [130, 112, 200, 134]; // list of ostfalia mensas
@@ -124,7 +143,7 @@ router.get('/', async (req, res, next) => {
           id: response.id,
           dayPlans,
           url: `${response.address.city.toLowerCase()}/essen/${url}`,
-          opening_hours: response.opening_hours/* .map(({ ['time']: _, ...rest }) => rest) */.filter((obj, index, self) =>
+          opening_hours: filterMensaOpenings(response.opening_hours)/* .map(({ ['time']: _, ...rest }) => rest) */.filter((obj, index, self) =>
             index === self.findIndex((t) => JSON.stringify(t) === JSON.stringify(obj))
           ),
           address: response.address

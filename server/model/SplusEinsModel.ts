@@ -33,7 +33,7 @@ export interface MensaAddress {
 }
 
 export interface MensaOpening {
-  time: string,
+  time: 'morning' | 'noon' | 'evening',
   start_day: number,
   end_day: number,
   start_time: string,
