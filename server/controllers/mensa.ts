@@ -9,7 +9,7 @@ import timeoutSignal = require('timeout-signal')
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
-const CACHE_DISABLE = true; //!!process.env.CACHE_DISABLE;
+const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
 const CACHE_SECONDS = parseInt(process.env.MENSA_CACHE_SECONDS || '1800');
 
 const router = express.Router();
@@ -94,15 +94,15 @@ async function getDayPlan (id) : Promise<MensaDayPlan[]> {
 function filterMensaOpenings (entries: MensaOpening[]) : MensaOpening[] {
   return entries.filter(entry => {
     // Filter alle Einträge, die nur am Wochenende sind
-    if(entry.start_day in [6,0] && entry.end_day in [6,0]) {
+    if (entry.start_day in [6, 0] && entry.end_day in [6, 0]) {
       return false;
     }
 
     // Remappe die Einträge auf Woche
-    if(entry.start_day in [6,0]) {
+    if (entry.start_day in [6, 0]) {
       entry.start_day = 1;
     }
-    if(entry.end_day in [6,0]) {
+    if (entry.end_day in [6, 0]) {
       entry.end_day = 5;
     }
 
