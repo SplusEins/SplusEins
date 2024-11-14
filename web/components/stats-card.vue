@@ -71,7 +71,7 @@ export default {
       this.totalHours = totalHoursCalc > 0 ? totalHoursCalc : 1;
 
       uniqueEvents.forEach((value, key) => {
-        this.sections.push({ label: key + ' - ' + value.toLocaleString() + ' Stunden', value: value });
+        this.sections.push({ label: key + ' - ' + value.toLocaleString() + ' Stunden', value });
       });
     }
   }

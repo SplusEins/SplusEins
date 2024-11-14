@@ -79,9 +79,9 @@ Diese Infokarte zeigt die neusten Nachrichten der Ostfalia Homepage zur gewählt
 
 Mit einem Klick auf das Zeitung-Symbol können die gewünschte Fakultät bzw. der gewünschte Standort ausgewählt werden. Zur Verfügung stehen hierbei die Fakultäten Informatik, Elektrotechnik und Recht und die Standorte Wolfenbüttel, Wolfsburg und Suderburg.
 
-#### Mensa Wolfenbüttel
+#### Mensa
 
-Diese Infokarte zeigt den Speiseplan der Mensa in Wolfenbüttel für den aktuellen bzw. den morgigen Tag an.
+Diese Infokarte zeigt den Speiseplan aller Mensen der Ostfalia für den aktuellen bzw. den morgigen Tag an.
 
 <!-- ![img](./img/spluseins_start_full_d.png) Mensaplan ist gerade nicht auf der Startseite -->
 
@@ -136,12 +136,12 @@ Der Plan kann:
 
 Durch einen Klick auf eine beliebigen Veranstaltungsblock öffnet sich eine Detailanzeige zu dieser. Hier werden zusätzliche Informationen (Dozent, genaue Uhrzeit, Raum) dargestellt.
 
-### Mensa Wolfenbüttel
+### Mensa
 
-Diese Seite zeigt den Speiseplan der Mensa in Wolfenbüttel für den aktuellen bzw. den morgigen Tag an. Je nach Verfügbarkeit können Speisepläne bis zu 6 Tage im Voraus eingesehen werden.
+Diese Seite zeigt den Speiseplan der Mensen der Ostfalia für den aktuellen bzw. den morgigen Tag an. Je nach Verfügbarkeit können Speisepläne bis zu 6 Tage im Voraus eingesehen werden.
 ![img](./img/spluseins_start_mensa.png)
 
-Außerdem werden Öffnungszeiten angezeigt, sowie vegetarische oder vegane Gerichte mit einem farblich unterschiedlichem Blatt-Symbol gekennzeichnet.
+Außerdem werden Öffnungszeiten angezeigt, sowie die Addresse und Gerichte mit Symbolen versehen, welche weitere Informationen hinterlegen.
 
 ### Busse Wolfenbüttel
 

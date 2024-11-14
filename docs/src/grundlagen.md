@@ -14,7 +14,7 @@ Das Grundprinizip der Anwendung ist wie folgt: Dem Client liegt eine Liste von v
 
 ### Mensaplan
 
-Die Anwendung kann den Mensplan des Standortes Wolfenbüttel darstellen. Dazu werden die Informationen der [OpenMensa-API](https://openmensa.org/) verwendet. Sobald im Frotnend der Mensaplan abgerufen wird, wird diese Anfrage an den Server weitergeleitet. Auch für die Mensaplan-Informationen liegt ein Caching-Mechanismus vor. Sind die Daten im Cache vorhanden werden diese sofort an den Client zurückgeliefert. Andernfalls wird eine Anfrage an die OpenMensa-API gestellt und der neuste Mensplan für den Standort Wolfenbüttel abgerufen sowie im Anschluss an den Client geschickt.
+Die Anwendung kann den Mensplan der Standorte der Ostfalia darstellen. Dazu werden die Informationen der [OpenMensa-API](https://openmensa.org/) verwendet. Sobald im Frontend der Mensaplan abgerufen wird, wird diese Anfrage an den Server weitergeleitet. Auch für die Mensaplan-Informationen liegt ein Caching-Mechanismus vor. Sind die Daten im Cache vorhanden werden diese sofort an den Client zurückgeliefert. Andernfalls wird eine Anfrage an die OpenMensa-API gestellt und der neuste Mensplan für die Standorte abgerufen sowie im Anschluss an den Client geschickt.
 
 ### News
 

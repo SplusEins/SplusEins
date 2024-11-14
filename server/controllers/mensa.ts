@@ -4,7 +4,7 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import fetch from 'node-fetch';
 
-import { MensaDayPlan, MensaMeal } from '../model/SplusEinsModel';
+import { MensaDayPlan, MensaMeal, Mensa, MensaOpening } from '../model/SplusEinsModel';
 import timeoutSignal = require('timeout-signal')
 
 // default must be in /tmp because the rest is RO on AWS Lambda
@@ -46,8 +46,8 @@ router.options('/');
  *
  * @return MensaDayPlan[]
  */
-router.get('/', async (req, res, next) => {
-  const key = 'mensa-' + moment().format('YYYY-MM-DD');
+async function getDayPlan (id) : Promise<MensaDayPlan[]> {
+  const key = 'mensa-' + id + '-' + moment().format('YYYY-MM-DD');
   const amountOfReturnedDays = 6;
 
   try {
@@ -59,7 +59,8 @@ router.get('/', async (req, res, next) => {
       const endDate = moment().add(1, 'weeks').isoWeekday(5).format('YYYY-MM-DD')
 
       const signal = timeoutSignal(3000) // abort if openmensa is too slow to respond
-      const response = await fetch(`https://sls.api.stw-on.de/v1/location/130/menu/${startDate}/${endDate}`, { signal })
+
+      const response = await fetch(`https://sls.api.stw-on.de/v1/location/${id}/menu/${startDate}/${endDate}`, { signal }) // 130 is WF mensa
         .then((res) => res.json());
       const meals:MensaMeal[] = response.meals.map(itm => {
         return {
@@ -84,19 +85,93 @@ router.get('/', async (req, res, next) => {
       return result.sort((a, b) => moment(a.date).isBefore(moment(b.date)) ? -1 : 1).slice(0, amountOfReturnedDays);
     }, { ttl: CACHE_SECONDS });
 
+    return data;
+  } catch (error) {
+    console.log('Error');
+  }
+}
+
+function filterMensaOpenings (entries: MensaOpening[]) : MensaOpening[] {
+  return entries.filter(entry => {
+    // Filter alle Einträge, die nur am Wochenende sind
+    if (entry.start_day in [6, 0] && entry.end_day in [6, 0]) {
+      return false;
+    }
+
+    // Remappe die Einträge auf Woche
+    if (entry.start_day in [6, 0]) {
+      entry.start_day = 1;
+    }
+    if (entry.end_day in [6, 0]) {
+      entry.end_day = 5;
+    }
+
+    return true;
+  });
+}
+
+router.get('/', async (req, res, next) => {
+  let mensaList:Mensa[] = [];
+  const mensaIDs = [130, 112, 200, 134]; // list of ostfalia mensas
+  const mensaPromises = mensaIDs.map(async mensaID => {
+    const key = 'mensa-' + mensaID;
+    try {
+      const data = await cache.wrap(key, async () => {
+        console.log(`mensa cache miss for key ${key}`);
+
+        const dayPlans = await getDayPlan(mensaID);
+
+        const signal = timeoutSignal(3000) // abort if openmensa is too slow to respond
+
+        const response = await fetch(`https://sls.api.stw-on.de/v1/location/${mensaID}`, { signal }) // 130 is WF mensa
+          .then((res) => res.json());
+
+        let url;
+        switch (response.id) {
+          case 112:
+            url = 'bistro4u';
+            break;
+
+          default:
+            url = 'mensa';
+            break;
+        }
+
+        const mensa:Mensa = {
+          // copy only neccessary fields
+          name: response.name,
+          id: response.id,
+          dayPlans,
+          url: `${response.address.city.toLowerCase()}/essen/${url}`,
+          opening_hours: filterMensaOpenings(response.opening_hours)/* .map(({ ['time']: _, ...rest }) => rest) */.filter((obj, index, self) =>
+            index === self.findIndex((t) => JSON.stringify(t) === JSON.stringify(obj))
+          ),
+          address: response.address
+        }
+        timeoutSignal.clear(signal)
+        return mensa;
+      }, { ttl: CACHE_SECONDS });
+      return data;
+    } catch (error) {
+      if (error instanceof Error && error.message === 'The user aborted a request.') {
+        res.status(504).send('Mensa request to STW-ON timed out'); // Gateway timeout, STW-ON API is down
+        return;
+      }
+      next(error);
+    }
+  });
+
+  Promise.all(mensaPromises).then(results => {
+    // Filter out any null results due to errors
+    mensaList = results.filter(mensa => mensa !== null) as Mensa[];
+
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
-    if (data.length === 0) {
+    if (mensaList.length === 0) {
       res.sendStatus(204); // request ok, but no data
     } else {
-      res.json(data);
+      res.json(mensaList);
     }
-  } catch (error) {
-    if (error instanceof Error && error.message === 'The user aborted a request.') {
-      res.status(504).send('Mensa request to STW-ON timed out'); // Gateway timeout, STW-ON API is down
-      return;
-    }
-    next(error);
-  }
+  });
 });
 
 export default router;

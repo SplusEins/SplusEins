@@ -1,5 +1,9 @@
 <template>
-  <v-card class="fill-height">
+  <v-card
+    class="fill-height"
+    outlined
+    elevation="1"
+  >
     <v-card-title>
       <span class="text-h6">{{ getDayHeader(plan) }}</span>
     </v-card-title>
@@ -14,14 +18,24 @@
           <div class="text-subtitle-1">
             {{ item.lane }}
           </div>
-          <v-icon
-            v-if="displayIcon(item)"
-            :color="getIconColor(item)"
-            class="icon ml-1 align-self-center"
-            small
+          <v-tooltip
+            bottom
+            v-for="icon in getIcons(item)"
+            :key="icon.text"
           >
-            {{ mdiLeaf }}
-          </v-icon>
+            <template #activator="{ on }">
+              <span v-on="on">
+                <v-icon
+                  :color="icon.color"
+                  class="icon ml-1 align-self-center"
+                  small
+                >
+                  {{ icon.icon }}
+                </v-icon>
+              </span>
+            </template>
+            <span>{{ icon.text }}</span>
+          </v-tooltip>
         </div>
         <div>
           {{ item.name }}
@@ -35,7 +49,7 @@
 </template>
 
 <script>
-import { mdiLeaf } from '@mdi/js'
+import { mdiLeaf, mdiFood, mdiPig, mdiCarrot, mdiAlertDecagramOutline, mdiNewBox, mdiCow, mdiInformationBoxOutline, mdiTurkey, mdiHomeSiloOutline, mdiFish, mdiSheep } from '@mdi/js'
 
 export default {
   name: 'MensaDayplanComponent',
@@ -47,7 +61,18 @@ export default {
   },
   data () {
     return {
-      mdiLeaf
+      mdiLeaf,
+      mdiFood,
+      mdiPig,
+      mdiCarrot,
+      mdiAlertDecagramOutline,
+      mdiNewBox,
+      mdiCow,
+      mdiInformationBoxOutline,
+      mdiTurkey,
+      mdiHomeSiloOutline,
+      mdiFish,
+      mdiSheep
     };
   },
   methods: {
@@ -61,15 +86,58 @@ export default {
       cents = cents >= 10 ? cents : '0' + cents;
       return euros + ',' + cents + '€';
     },
-    getIconColor (item) {
-      if (item.categories.includes('Vegetarisch')) {
-        return this.$vuetify.theme.dark ? 'white' : 'black';
-      } else if (item.categories.includes('Vegan')) {
-        return 'green';
-      }
-    },
-    displayIcon (item) {
-      return this.getIconColor(item) != null
+    getIcons (item) {
+      const icons = [];
+      item.categories.forEach(e => {
+        let icon = mdiInformationBoxOutline;
+        let color = this.$vuetify.theme.dark ? 'white' : 'black';
+        switch (e) {
+          case 'Schwein':
+            icon = mdiPig;
+            break;
+          case 'Rind':
+            icon = mdiCow;
+            break;
+          case 'Geflügel':
+            icon = mdiTurkey;
+            break;
+          case 'Fisch':
+            icon = mdiFish;
+            break;
+          case 'Lamm':
+            icon = mdiSheep;
+            break;
+          case 'Artgerechte Tierhaltung':
+            icon = mdiHomeSiloOutline;
+            break;
+          case 'Aktion':
+            icon = mdiAlertDecagramOutline;
+            color = 'purple';
+            break;
+          case 'NEU bei uns':
+            icon = mdiNewBox;
+            color = 'blue';
+            break;
+          case 'Vegan':
+            icon = mdiLeaf;
+            color = 'green';
+            break;
+          case 'Vegetarisch':
+            icon = mdiCarrot;
+            color = 'green';
+            break;
+          case 'Niedersachsen Menü':
+            icon = mdiFood;
+            color = 'red';
+            break;
+        }
+        icons.push({
+          icon,
+          color,
+          text: e
+        });
+      });
+      return icons;
     }
   }
 }

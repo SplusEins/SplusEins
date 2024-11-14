@@ -93,7 +93,7 @@ Der Endpunkt zum Abfragen der Mensa-Plan Daten befindet sich in der Datei `contr
 **Parameter:** keine
 
 **Rückgabe:**
-Liefert ein MensaDayPlan-Array (siehe `model/SplusEinsModel.ts`), aus 6 Tagesplänen (falls verfügbar) der Mensa in Wolfenbüttel. Die Pläne werden von der OpenMensa-API abgerufen.
+Liefert ein Mensa Objekt mit einem MensaDayPlan-Array (siehe `model/SplusEinsModel.ts`), aus 6 Tagesplänen (falls verfügbar) der aller eingetragenden Mensen. Die Pläne werden von der OpenMensa-API abgerufen.
 Die Mensa in Wolfenbüttel besitzt die ID `166`.
 
 ## Bus

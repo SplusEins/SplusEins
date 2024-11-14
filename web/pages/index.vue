@@ -109,8 +109,9 @@ export default {
       if (!this.mensaPlans || this.mensaPlans.length == 0) {
         return false;
       }
+      const mensaPlan = this.mensaPlans[0].dayPlans;
       // display if next plan is from today or from tomorrow
-      return this.$dayjs().isSame(this.mensaPlans[0].date, 'day') || this.$dayjs().add(1, 'days').isSame(this.mensaPlans[0].date, 'day');
+      return this.$dayjs().isSame(mensaPlan[0].date, 'day') || this.$dayjs().add(1, 'days').isSame(mensaPlan[0].date, 'day');
     },
     ...mapState({
       mensaPlans: (state) => state.mensa.plans
