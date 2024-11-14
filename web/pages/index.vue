@@ -131,7 +131,7 @@ export default {
     };
   },
   mounted () {
-    // this.loadMensa();
+    this.loadMensa();
   },
   methods: {
     ...mapMutations({
