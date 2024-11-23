@@ -6,6 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
+    "dev:remote": "API_URL=https://spluseins.de/ nuxt",
+    "dev:local": "API_URL=http://127.0.0.1:3001 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
