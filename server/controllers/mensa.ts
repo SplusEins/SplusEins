@@ -4,7 +4,7 @@ import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import fetch from 'node-fetch';
 
-import { MensaDayPlan, MensaMeal, Mensa, MensaOpening } from '../model/SplusEinsModel';
+import { MensaDayPlan, MensaMeal, Mensa, MensaOpening, StwMensaMeal } from '../model/SplusEinsModel';
 import timeoutSignal = require('timeout-signal')
 
 // default must be in /tmp because the rest is RO on AWS Lambda
@@ -60,8 +60,8 @@ async function getDayPlan (id) : Promise<MensaDayPlan[]> {
 
       const signal = timeoutSignal(3000) // abort if openmensa is too slow to respond
 
-      const response = await fetch(`https://sls.api.stw-on.de/v1/location/${id}/menu/${startDate}/${endDate}`, { signal }) // 130 is WF mensa
-        .then((res) => res.json());
+      const response = await fetch(`https://sls.api.stw-on.de/v1/location/${id}/menu/${startDate}/${endDate}`, { signal })
+        .then((res) => res.json()) as { meals: StwMensaMeal[] };
       const meals:MensaMeal[] = response.meals.map(itm => {
         return {
           // copy only neccessary fields
@@ -123,8 +123,8 @@ router.get('/', async (req, res, next) => {
 
         const signal = timeoutSignal(3000) // abort if openmensa is too slow to respond
 
-        const response = await fetch(`https://sls.api.stw-on.de/v1/location/${mensaID}`, { signal }) // 130 is WF mensa
-          .then((res) => res.json());
+        const response : Mensa = await fetch(`https://sls.api.stw-on.de/v1/location/${mensaID}`, { signal }) // 130 is WF mensa
+          .then((res) => res.json()) as Mensa;
 
         let url;
         switch (response.id) {

@@ -11,10 +11,16 @@ export interface NewsElement {
   source?: string;
 }
 
+export interface MensaPrice {
+  student: string
+  employee: string
+  guest: string
+}
+
 export interface MensaMeal {
   name: string,
   date: string,
-  price: Record<string, string>;
+  price: MensaPrice,
   lane: string,
   categories: string[]
 }
@@ -47,6 +53,21 @@ export interface Mensa {
   address: MensaAddress,
   dayPlans: MensaDayPlan[],
   url: string
+}
+
+export interface StwMensaTags {
+  categories: {name:string}[]
+  allergens: {name:string}[]
+}
+
+export interface StwMensaMeal {
+  id: number
+  date: string
+  name: string
+  price: MensaPrice
+  time: string
+  lane: {name:string}
+  tags: StwMensaTags
 }
 
 export interface TimetableRequest {
