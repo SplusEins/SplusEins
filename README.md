@@ -24,23 +24,17 @@ Follow the next steps if you want to develop/build locally.
 ```bash
 cd web/
 
-# install correct node version
+# install correct node version (might be optional)
 nvm install
 
 # install dependencies
 npm install
 
-# Set environment variables to use the remote api
-API_URL=https://spluseins.de/ #Linux/Unix
-set API_URL=https://spluseins.de/ #Windows
-# If you want to use your own backend (see below in backend setup), set this instead:
-API_URL="http://127.0.0.1:3001"
+# Either run with the remote API (at spluseins.de/api)
+npm run dev:remote
+# Or use the local API, when developing the backend (see below)
+npm run dev:local
 
-# serve with hot reload at localhost:3000
-npm run dev
-
-# Optional: generate static project inside dist/
-npm run generate
 ```
 
 ### Setup backend
@@ -60,6 +54,9 @@ SKED_PASSWORD=your_ostfalia_pw
 ```bash
 # install dependencies
 npm install
+
+# install correct node version (might be optional)
+nvm install
 
 # Set environment variables
 CACHE_PATH=spluseins-cache # Linux/Unix
