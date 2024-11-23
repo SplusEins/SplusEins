@@ -1,6 +1,7 @@
 import PROTECTED_INFORMATION from './assets/protected-information.json';
+import { defineNuxtConfig } from '@nuxt/bridge'
 
-export default {
+export default defineNuxtConfig({
   ...(process.env.DEVCONTAINER === 'true'
     ? {
         server: {
@@ -8,6 +9,9 @@ export default {
         }
       }
     : {}),
+  bridge: {
+    nitro: true,
+  },
   telemetry: false,
   modern: process.env.NODE_ENV == 'development' ? false : 'server',
 
@@ -72,21 +76,16 @@ export default {
   modules: [
     // https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
     // https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
     // https://github.com/nuxt-community/dayjs-module
     '@nuxtjs/dayjs'
   ],
-  /*
-  ** Axios module configuration
-  */
-  axios: {
-    proxy: true
-  },
-  proxy: { // https://axios.nuxtjs.org/options/#proxy
-    '/api': { target: process.env.API_URL },
-    '/docs': { target: process.env.DOCS_URL, pathRewrite: { '^/docs': '' } }
+  nitro: {
+    devProxy: {
+      '/api': { target: 'http://127.0.0.1:3001/api' },
+      // '/docs': { target: process.env.DOCS_URL, pathRewrite: { '^/docs': '' } }
+    }
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -115,7 +114,8 @@ export default {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     },
-    extractCSS: true
+    extractCSS: true,
+    transpile: ['cookie-es']
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -152,4 +152,4 @@ export default {
     fallback: true,
     routes: []
   }
-};
+});
