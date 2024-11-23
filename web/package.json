@@ -9,7 +9,7 @@
     "dev:remote": "API_URL=https://spluseins.de/ nuxi dev",
     "dev:local": "API_URL=http://127.0.0.1:3001 nuxi dev",
     "build": "nuxi build",
-    "start": "nuxi start",
+    "start": "node .output/server/index.mjs",
     "lint": "eslint --ext .js,.vue .",
     "lintfix": "eslint --fix --ext .js,.vue ."
   },
