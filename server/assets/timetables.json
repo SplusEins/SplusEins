@@ -1134,6 +1134,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20WI%202.%20Sem.csv",
+    "label": "WI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_wi_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-B.Sc.%20CE%203.%20Sem.%20(PO18).csv",
     "label": "CE (PO18)",
     "faculty": "Informatik",
@@ -2691,11 +2700,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "w/Wahlpflichtfaecher_5_WS 2024-25.html",
+    "skedPath": "w/Bachelor Wahlpflichtfächer_5_2024-25 WS.html",
     "label": "Wahlpflichtfächer Wahlpflichtfächer - WS 2024/25",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_wahlpflichtfaecher_5_ws24",
+    "id": "w_wahlpflichtf_cher_5_2024_25_ws_ws24",
     "semester": "WPF",
     "degree": "Bachelor"
   }
