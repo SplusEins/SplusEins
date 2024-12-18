@@ -1026,6 +1026,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%201.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%201.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
