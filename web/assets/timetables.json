@@ -1026,6 +1026,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%201.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_1_ws24",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%201.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
@@ -1116,6 +1125,15 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%202.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_2_ws24",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MI%202.%20Sem.csv",
     "label": "VFH-MI",
     "faculty": "Informatik",
@@ -1193,6 +1211,15 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_sye_po18_3_ws24",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%203.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_3_ws24",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1283,6 +1310,15 @@
     "faculty": "Informatik",
     "type": "csv",
     "id": "i_vfh_it_sicherheit_4_ws24",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "i/Alle%20Daten%20im%20CSV-Format/Semester/I-VFH-MA%20MEI%204.%20Sem.csv",
+    "label": "VFH-MA MEI",
+    "faculty": "Informatik",
+    "type": "csv",
+    "id": "i_vfh_ma_mei_4_ws24",
     "semester": 4,
     "degree": "Bachelor"
   },
