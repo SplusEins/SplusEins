@@ -9,7 +9,7 @@ timetable_blacklist:
   - "ws24"
   - "wiese"
   - "/ws/"
-  - "ss202"
+  - "ws202"
   - "nur im ws"
 
   - "pruefung"
