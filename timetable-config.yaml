@@ -1,16 +1,16 @@
 # Siehe Dokumentation in https://github.com/SplusEins/sked_parser
 
 # TODO Semesterwechsel: Aktualisieren auf das aktuelle Semester
-current_sem: "ws24"
+current_sem: "ss25"
 # timetables with the following strings in the URL or description will be filtered out (use lowercase only)
 timetable_blacklist:
   # TODO Semesterwechsel: Aktualisieren auf Strings vom vorherigen Semester
-  - "ss 24"
-  - "ss24"
-  - "sose"
-  - "/ss/"
+  - "ws 24"
+  - "ws24"
+  - "wiese"
+  - "/ws/"
   - "ss202"
-  - "nur im ss"
+  - "nur im ws"
 
   - "pruefung"
   - "klausur"
