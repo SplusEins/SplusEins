@@ -225,15 +225,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EITiP-GS-Sem1.html",
-    "label": "EITiP",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eitip_gs_1_ss25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "e/semester/E-WEIT-Sem1.html",
     "label": "WEIT",
     "faculty": "Elektrotechnik",
@@ -243,29 +234,38 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-WEITiP-Sem1.html",
-    "label": "WEITiP",
+    "skedPath": "e/semester/E-EIT-GS-Sem2.html",
+    "label": "EIT",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weitip_1_ss25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-EIT(iP)-GS-Sem2.html",
-    "label": "EIT(iP)",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eit_ip_gs_2_ss25",
+    "id": "e_eit_gs_2_ss25",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-WEIT(iP)-Sem2.html",
-    "label": "WEIT(iP)",
+    "skedPath": "e/semester/E-EITiP-GS-Sem2.html",
+    "label": "EITiP",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weit_ip_2_ss25",
+    "id": "e_eitip_gs_2_ss25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEIT-Sem2.html",
+    "label": "WEIT",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weit_2_ss25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "e/semester/E-WEITiP-Sem2.html",
+    "label": "WEITiP",
+    "faculty": "Elektrotechnik",
+    "type": "graphical",
+    "id": "e_weitip_2_ss25",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -387,15 +387,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_AT-Sem6_PO2013.html",
-    "label": "EIT(iP)-AT",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eit_ip_at_po2013_6_ss25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "e/semester/E-EIT(iP)_EE-Sem6.html",
     "label": "EIT(iP)-EE",
     "faculty": "Elektrotechnik",
@@ -405,29 +396,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "e/semester/E-EIT(iP)_EE-Sem6_PO2013.html",
-    "label": "EIT(iP)-EE",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eit_ip_ee_po2013_6_ss25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "e/semester/E-EIT(iP)_IT-Sem6.html",
     "label": "EIT(iP)-IT",
     "faculty": "Elektrotechnik",
     "type": "graphical",
     "id": "e_eit_ip_it_6_ss25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-EIT(iP)_IT-Sem6_PO2013.html",
-    "label": "EIT(iP)-IT",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_eit_ip_it_po2013_6_ss25",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -446,15 +419,6 @@
     "faculty": "Elektrotechnik",
     "type": "graphical",
     "id": "e_weit_ip_6_ss25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "e/semester/E-WEIT(iP)-Sem6_PO2015.html",
-    "label": "WEIT(iP)",
-    "faculty": "Elektrotechnik",
-    "type": "graphical",
-    "id": "e_weit_ip_po2015_6_ss25",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -960,15 +924,6 @@
     "type": "graphical",
     "id": "h_soa_4_ss25",
     "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "skedPath": "h/lvp/wp/h_stdgrp_hul_5.html",
-    "label": "Handel und Logistik",
-    "faculty": "Handel und Soziale Arbeit",
-    "type": "graphical",
-    "id": "h_hul_5_ss25",
-    "semester": 5,
     "degree": "Bachelor"
   },
   {
