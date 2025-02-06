@@ -720,6 +720,24 @@
     "degree": "Bachelor"
   },
   {
+    "skedPath": "g/wp/KPG2_SOSE25.html",
+    "label": "KPG",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_kpg_2_ss25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/KPG2_E_SOSE25.html",
+    "label": "KPG - Erzieher & Erzieherinnen",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_kpg_e_2_ss25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "g/wp/MAG2_SOSE25.html",
     "label": "MAG",
     "faculty": "Gesundheitswesen",
@@ -780,6 +798,15 @@
     "type": "graphical",
     "id": "g_bpg_3_ss25",
     "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/KPG4_SOSE25.html",
+    "label": "KPG",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_kpg_4_ss25",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
@@ -852,6 +879,15 @@
     "type": "graphical",
     "id": "g_bmr_m_5_ss25",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "g/wp/KPG6_SOSE25.html",
+    "label": "KPG",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_kpg_6_ss25",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -1566,6 +1602,42 @@
     "degree": "Master"
   },
   {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_namo_1.html",
+    "label": "Nachhaltige Mobilität",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_namo_1_ss25",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_sts_1.html",
+    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_sts_1_ss25",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/DT 2 23.09.2024.html",
+    "label": "DT 2",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_dt_23_09_2024_2_ss25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_ds_1.html",
+    "label": "Digitales Storytelling",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_ds_1_2_ss25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_2.html",
     "label": "Logistik und Informationsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
@@ -1629,11 +1701,20 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_mpm_2.html",
-    "label": "Mobilität und Personenverkehrsmanagement",
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_namo_2.html",
+    "label": "Nachhaltige Mobilität",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_mpm_2_ss25",
+    "id": "k_namo_2_ss25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_sts_2.html",
+    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_sts_2_ss25",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1665,15 +1746,6 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_wmv_2.html",
-    "label": "Wirtschaftsingenieurwesen Mobilität und Verkehr",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_wmv_2_ss25",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
     "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lim_4.html",
     "label": "Logistik und Informationsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
@@ -1692,11 +1764,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lom_4.html",
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lom_3.html",
     "label": "Logistikmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lom_4_ss25",
+    "id": "k_lom_3_4_ss25",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1877,6 +1949,15 @@
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_m_fdu_4_ss25",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_m_km_4.html",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_km_4_ss25",
     "semester": 4,
     "degree": "Master"
   },
