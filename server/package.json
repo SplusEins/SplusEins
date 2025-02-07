@@ -22,7 +22,7 @@
     "csv-string": "4.1.1",
     "express": "4.21.2",
     "hafas-client": "5.26.5",
-    "ical-generator": "7.2.0",
+    "ical-generator": "8.1.1",
     "iconv-lite": "0.6.3",
     "moment": "2.30.1",
     "moment-timezone": "0.5.46",
