@@ -1629,11 +1629,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_ds_1.html",
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_ds_2.html",
     "label": "Digitales Storytelling",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_ds_1_2_ss25",
+    "id": "k_ds_2_ss25",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1764,11 +1764,11 @@
     "degree": "Bachelor"
   },
   {
-    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lom_3.html",
+    "skedPath": "k/prod/vorlesungsplaene/wp/ss/stjg_lom_4.html",
     "label": "Logistikmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lom_3_4_ss25",
+    "id": "k_lom_4_ss25",
     "semester": 4,
     "degree": "Bachelor"
   },
