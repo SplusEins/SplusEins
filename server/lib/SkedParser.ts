@@ -313,5 +313,5 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
 
 export function parseTimetableIntranet (html: string): ParsedLecture[] {
   // TODO: Implement intranet timetable parsing
-  return [];
+  throw new Error('Das neue Stundenplanformat für Informatik ist noch nicht in SplusEins implementiert. Bitte habt noch etwas Geduld.');
 }
