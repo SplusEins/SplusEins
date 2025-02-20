@@ -73,7 +73,7 @@ export interface StwMensaMeal {
 export interface TimetableRequest {
   id: string;
   week: number;
-  skedPath: string;
+  timetablePath: string;
   faculty: string;
   type: string
 }

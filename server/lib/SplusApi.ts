@@ -3,12 +3,10 @@ import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 import * as moment from 'moment';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
-import { parseSkedCSV, parseSkedGraphical, parseSkedList } from './SkedParser';
+import { parseSkedCSV, parseSkedGraphical, parseTimetableIntranet, parseSkedList } from './SkedParser';
 import * as sanitize from 'sanitize-html';
 import { ParsedLecture } from '../model/SplusModel';
 import * as iconv from 'iconv-lite';
-
-const SKED_BASE = process.env.SKED_URL || 'https://stundenplan.ostfalia.de/';
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
@@ -36,16 +34,16 @@ function sleep (ms) {
 }
 
 /**
- * Fetch sked-timetable from stundenplan.ostfalia.de
+ * Fetch timetable from ostfalia.de
  * @param timetable request
  * @returns HTML-string
  */
-async function skedRequest (timetable: TimetableRequest): Promise<string> {
+async function timetableRequest (timetable: TimetableRequest): Promise<string> {
   const token = Buffer.from(SKED_USER + ':' + SKED_PASSWORD).toString('base64');
   const headers = new Headers();
   headers.append('Authorization', 'Basic ' + token);
 
-  const url = SKED_BASE + timetable.skedPath;
+  const url = timetable.timetablePath;
   console.log(`Url for ${timetable.id} is ${url}`)
   let errorMsg = '';
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -81,7 +79,7 @@ async function parseTimetable (timetable: TimetableRequest): Promise<Event[]> {
 
   return await cache.wrap(key, async () => {
     console.log(`Lectures cache miss for key ${key}`);
-    const data = await skedRequest(timetable);
+    const data = await timetableRequest(timetable);
     let lectures: ParsedLecture[];
     switch (timetable.type) {
       case 'graphical':
@@ -92,6 +90,9 @@ async function parseTimetable (timetable: TimetableRequest): Promise<Event[]> {
         break;
       case 'csv':
         lectures = parseSkedCSV(data);
+        break;
+      case 'intranet':
+        lectures = parseTimetableIntranet(data);
         break;
       default:
         throw new Error(`Unsupported timetable type detected: ${timetable.type}.`);

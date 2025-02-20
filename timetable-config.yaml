@@ -29,9 +29,9 @@ plans:
     shorthand_syntax: True
   - url: https://stundenplan.ostfalia.de/h/lvp/wp/index.html
     faculty: Handel und Soziale Arbeit
-  - url: https://stundenplan.ostfalia.de/i/Alle%20Daten%20im%20CSV-Format/Semester/
+  - url: https://intranet-i.ostfalia.de/fips/stundenplan/
     faculty: Informatik
-    type: "csv"
+    type: "intranet"
   - url: https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/
     faculty: Verkehr-Sport-Tourismus-Medien
   - url: https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/

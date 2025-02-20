@@ -117,8 +117,8 @@
       </v-col>
       <v-col>
         <a
-          v-if="schedule && schedule.skedPath"
-          :href="'https://stundenplan.ostfalia.de/'+ schedule.skedPath"
+          v-if="schedule && schedule.timetablePath"
+          :href="schedule.timetablePath"
           class="pt-1 d-flex justify-end text-caption text--secondary"
           target="_blank"
           rel="nofollow noopener"

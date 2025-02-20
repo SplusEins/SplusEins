@@ -18,7 +18,6 @@ Sowohl Frontend als auch Backend können bzw. müssen über Umgebungsvariablen k
 - `PORT`: Port des Servers (Default: `3001`)
 - `SKED_USER`: stundenplan.ostfalia.de Benutzername
 - `SKED_PASSWORD`: stundenplan.ostfalia.de Passwort
-- `SKED_URL`: Ostfalia Stundenplan/Sked URL (Default: `https://stundenplan.ostfalia.de`)
 - `COOKIE_SECRET`: Token, welcher genutzt wird um Cookies zu signieren
 - `CACHE_PATH`: Pfad welcher angibt wo gecachte Daten gespeichert werden sollen (Default: `/tmp/spluseins-cache`)
 - `CACHE_DISABLE`: Boolean-Wert welche den Cache aktivieren/deaktivieren kann (Default `true`)

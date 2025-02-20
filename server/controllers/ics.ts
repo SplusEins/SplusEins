@@ -66,7 +66,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
       week,
       type: timetable.type,
       faculty: timetable.faculty,
-      skedPath: timetable.skedPath
+      timetablePath: timetable.timetablePath
     })));
 
     const allEvents: Event[] = await getEvents(requests);

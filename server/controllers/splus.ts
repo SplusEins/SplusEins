@@ -36,7 +36,7 @@ router.get('/:timetable/lectures', async (req, res, next) => {
     // Don't set week in request since it's not used anyway
     const request: TimetableRequest = <TimetableRequest>{
       id: timetable.id,
-      skedPath: timetable.skedPath,
+      timetablePath: timetable.timetablePath,
       faculty: timetable.faculty,
       type: timetable.type
     };
@@ -75,7 +75,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
     const requests = weeks.map((week) => (<TimetableRequest> {
       id: timetable.id,
       week,
-      skedPath: timetable.skedPath,
+      timetablePath: timetable.timetablePath,
       faculty: timetable.faculty,
       type: timetable.type
     }));
@@ -139,7 +139,7 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
     const requests = <TimetableRequest[]>flatten(timetables.map((timetable) => weeks.map((week) => (<TimetableRequest> {
       id: timetable.id,
       week,
-      skedPath: timetable.skedPath,
+      timetablePath: timetable.timetablePath,
       faculty: timetable.faculty,
       type: timetable.type
     }))));

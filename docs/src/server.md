@@ -165,7 +165,7 @@ Diese müssen folgende Struktur besitzen:
   "semester": "1",
   "raumplan": false,
   "type": "list",
-  "skedPath": "i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html"
+  "timetablePath": "https://stundenplan.ostfalia.de/i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html"
 }
 ```
 
@@ -176,4 +176,4 @@ Diese müssen folgende Struktur besitzen:
 - `semester` gibt über­ra­schen­der­wei­se das Semester an
 - `raumplan` ist ein Boolean-Wert welcher angibt, ob es sich um einen Raumplan handelt
 - `type` ist ein String welcher angibt, ob es sich um einen grafischen Plan (`graphical`, der häufigste Fall), einen Listenplan (`list`) oder einen CSV-Plan handelt (`csv`)
-- `skedPath` gibt den Pfad an, über welchen der Plan in der Sked Anwendung abgerufen werden kann (z.B. `http://stundenplan.ostfalia.de/i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html`)
+- `timetablePath` gibt den Pfad an, über welchen der Plan in der Sked Anwendung abgerufen werden kann (z.B. `http://stundenplan.ostfalia.de/i/Semester/Semester-Liste/I-B.Sc. Informatik 1. Sem.html`)
