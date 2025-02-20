@@ -310,6 +310,5 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
 
 export function parseTimetableIntranet (html: string): ParsedLecture[] {
   // TODO: Implement intranet timetable parsing
-  const $ = load(html);
   return [];
 }
