@@ -33,6 +33,7 @@ class App {
     // Any unhandled server error => 500
     this.app.use(function (err, _req, res, next) {
       if (res.headersSent) return next(err); // already handled
+      console.error(err.stack);
       return res.status(500).type('txt').send('A server error occured. Please inform team@spluseins.de (Error is ' + err.message + ').');
     });
   }

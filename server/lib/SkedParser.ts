@@ -245,14 +245,17 @@ export function parseSkedGraphical (html: string, faculty: string): ParsedLectur
             veranstaltung = parts[1];
             break;
           case 'Soziale Arbeit':
-            parts.shift() // remove first uhrzeit entry
-            while (parts[0] !== undefined && !parts[0].startsWith('S-')) {
+            if (parts[0].endsWith('Uhr')) {
+              parts.shift() // remove first uhrzeit entry
+            }
+            while (parts[0] !== undefined && !parts[0].startsWith('S-') && !parts[0].startsWith('Ringveranstaltung')) {
               anmerkung += parts.shift() + ', '
             }
-            veranstaltung = parts.shift();
-            anmerkung += parts.shift() + ', '
-            dozent = parts.shift();
-            raum = parts.pop();
+            if (parts.length > 3) {
+              anmerkung += parts.shift() + ', '
+              dozent = parts.shift();
+              raum = parts.pop();
+            }
             anmerkung += parts.join(', ') || ''
             anmerkung = anmerkung.replace(/(, ?)+$/, ''); // remove trailing ,
 
