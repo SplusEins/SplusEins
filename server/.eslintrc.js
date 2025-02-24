@@ -22,7 +22,7 @@ module.exports = {
     eqeqeq: 'warn', // don't error on wrong equality signs
     camelcase: 'warn', // don't error on non camel case
     quotes: 'warn', // don't error on double qoutes
-    'comma-dangle': 'warn',
+    'comma-dangle': 'off',
     'spaced-comment': 'warn',
     'prefer-regex-literals': 'warn',
     semi: 'off', // no preference for semicolons at end
@@ -30,5 +30,6 @@ module.exports = {
     complexity: ['warn', { max: 30 }],
     'no-warning-comments': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
+    'space-before-function-paren': 'off'
   }
-}
+};
