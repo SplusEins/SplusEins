@@ -320,13 +320,30 @@ export function parseTimetableIntranet(html: string): ParsedLecture[] {
     const jsDate = moment(date, 'DD.MM.YYYY').toDate();
 
     $(day).find('.day-event').each(function (i, event) {
-      const styleTop = parseInt($(event).css('top'));
-      const styleHeight = parseInt($(event).css('height'));
+      const styleTopString = $(event).css('top');
+      const styleHeightString = $(event).css('height');
+      const styleUsesPercentage = styleTopString.includes('%');
+      let startTimeSince8: number | undefined;
+      let endTimeSince8: number | undefined;
+      if (styleUsesPercentage) {
+        // 0% = 8:00, 100% = 20:00
+        const styleTop = parseFloat(styleTopString);
+        const styleHeight = parseFloat(styleHeightString);
+        startTimeSince8 = styleTop / 100 * 12 * 60;
+        endTimeSince8 = (styleTop + styleHeight) / 100 * 12 * 60;
+      } else {
+        const styleTop = parseInt(styleTopString);
+        const styleHeight = parseInt(styleHeightString);
 
-      // timetable starts at 8:00
-      // 100px height = 60 minutes
-      const startTimeSince8 = styleTop / 100 * 60;
-      const endTimeSince8 = (styleTop + styleHeight) / 100 * 60;
+        // timetable starts at 8:00
+        // 100px height = 60 minutes
+        startTimeSince8 = styleTop / 100 * 60;
+        endTimeSince8 = (styleTop + styleHeight) / 100 * 60;
+      }
+
+      if (startTimeSince8 === undefined || endTimeSince8 === undefined) {
+        throw new Error('Invalid time styles');
+      }
 
       const eventStart = new Date(jsDate);
       eventStart.setHours(8 + Math.floor(startTimeSince8 / 60));
@@ -343,7 +360,7 @@ export function parseTimetableIntranet(html: string): ParsedLecture[] {
       const start = moment.tz(date + ' ' + eventStart.toTimeString(), dateFormat, 'Europe/Berlin');
       const end = moment.tz(date + ' ' + eventEnd.toTimeString(), dateFormat, 'Europe/Berlin');
       if (!start.isValid() || !end.isValid()) {
-        return;
+        throw new Error('Invalid date' + start + ' ' + end);
       }
 
       events.push({
