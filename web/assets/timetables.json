@@ -972,20 +972,20 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_5.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_soa_5_ss25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_hul_6.html",
     "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_6_ss25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_6.html",
-    "label": "Soziale Arbeit",
-    "faculty": "Handel und Soziale Arbeit",
-    "type": "graphical",
-    "id": "h_soa_6_ss25",
     "semester": 6,
     "degree": "Bachelor"
   },
