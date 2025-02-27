@@ -648,6 +648,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_StiP_ABE.html",
+    "label": "StiP Fahrzeugtechnik / Aufbau und Entwicklung",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_stip_abe_6_ss25",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_StiP_PU.html",
     "label": "StiP Fahrzeugtechnik / Produktion und Umwelt",
     "faculty": "Fahrzeugtechnik",
@@ -986,6 +995,15 @@
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_6_ss25",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_6.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_soa_6_ss25",
     "semester": 6,
     "degree": "Bachelor"
   },
