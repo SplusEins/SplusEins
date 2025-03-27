@@ -16,6 +16,8 @@ timetable_blacklist:
   - "klausur"
   - "prüfung"
   - "..csv" # weird informatik duplicated tables with double dot
+  - "231402.html" # workaround for informatik, remove next semester
+  - "231404.html" # workaround for informatik, remove next semester
 
 plans:
   - url: https://stundenplan.ostfalia.de/b/wp/index.html

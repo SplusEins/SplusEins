@@ -1044,6 +1044,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261422.html",
+    "label": "IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_2_ss25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111812.html",
     "label": "Informatik - CE",
     "faculty": "Informatik",
@@ -1085,6 +1094,15 @@
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_informatik_sys_2_ss25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211302.html",
+    "label": "Medieninformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_2_ss25",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1152,6 +1170,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261424.html",
+    "label": "IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_4_ss25",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111814.html",
     "label": "Informatik - CE",
     "faculty": "Informatik",
@@ -1197,12 +1224,30 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211304.html",
+    "label": "Medieninformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_4_ss25",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/131804.html",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_wirtschaftsinformatik_4_ss25",
     "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261425.html",
+    "label": "IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
@@ -1251,12 +1296,30 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211305.html",
+    "label": "Medieninformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_5_ss25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/131805.html",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_wirtschaftsinformatik_5_ss25",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211306.html",
+    "label": "Medieninformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_6_ss25",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
