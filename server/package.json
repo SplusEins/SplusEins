@@ -46,7 +46,7 @@
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "babel-core": "7.0.0-bridge.0",
-    "@babel/eslint-parser": "7.26.10",
+    "@babel/eslint-parser": "7.27.0",
     "babel-loader": "9.2.1",
     "babel-preset-env": "1.7.0",
     "encoding": "0.1.13",
