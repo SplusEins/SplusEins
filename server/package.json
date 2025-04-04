@@ -42,7 +42,7 @@
     "@types/jest": "29.5.14",
     "@types/node": "18.19.83",
     "@types/rss": "0.0.32",
-    "@types/sanitize-html": "2.13.0",
+    "@types/sanitize-html": "2.15.0",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "babel-core": "7.0.0-bridge.0",
