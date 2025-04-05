@@ -6,7 +6,7 @@
 	"image": "mcr.microsoft.com/devcontainers/base:jammy",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
-			"version": "18.19.1"
+			"version": "18.20.8"
 		}
 	},
 	"customizations": {
