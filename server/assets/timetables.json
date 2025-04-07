@@ -1377,6 +1377,15 @@
     "degree": "Master"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261401.html",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_wirtschaftsinformatik_1_ss25",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-03-r-b-rfs-1.html",
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
@@ -1521,8 +1530,8 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-03-r-ibls.html",
-    "label": "IBLS Lectures",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/ibls/25-03-r-ibls.html",
+    "label": "IBLS Lectures and exams",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_03_r_ibls_ss25",
