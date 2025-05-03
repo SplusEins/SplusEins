@@ -251,7 +251,8 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
             while (parts[0] !== undefined && !parts[0].startsWith('S-') && !parts[0].startsWith('Ringveranstaltung')) {
               anmerkung += parts.shift() + ', ';
             }
-            if (parts.length > 3) {
+            veranstaltung = parts.shift();
+            if (parts.length >= 3) {
               anmerkung += parts.shift() + ', ';
               dozent = parts.shift();
               raum = parts.pop();
