@@ -1,5 +1,8 @@
 <template>
-  <v-card class="fill-height">
+  <v-card
+    class="fill-height"
+    :loading="facultyNews.length === 0"
+  >
     <v-card-title class="pb-1">
       <div class="text-h5 mr-1">
         Neues {{ selectedItem.title }}

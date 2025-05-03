@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'MensaCard',
@@ -46,18 +46,12 @@ export default {
     isPlanOfToday () {
       return this.$dayjs().isSame(this.getNextAvailablePlan.date, 'day');
     },
-    ...mapState({
-      lazyLoad: (state) => state.lazyLoad
-    }),
     ...mapGetters({
       getNextAvailablePlan: 'mensa/getNextAvailablePlan'
     })
   },
   mounted () {
-    if (this.lazyLoad) {
-      // static build -> no mensa plan is in the store
-      this.load();
-    }
+    this.load();
   },
   methods: {
     ...mapActions({

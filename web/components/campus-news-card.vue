@@ -1,5 +1,8 @@
 <template>
-  <v-card class="fill-height">
+  <v-card
+    class="fill-height"
+    :loading="campusNews.length === 0"
+  >
     <v-card-title class="pb-1">
       <div class="text-h5 mr-1">
         Neues vom Campus
@@ -48,15 +51,11 @@ export default {
   },
   computed: {
     ...mapState({
-      campusNews: (state) => state.news.campusNews,
-      lazyLoad: (state) => state.lazyLoad
+      campusNews: (state) => state.news.campusNews
     })
   },
   mounted () {
-    if (this.lazyLoad) {
-      // static build -> no news are in the store
-      this.loadCampusNews();
-    }
+    this.loadCampusNews();
   },
   methods: {
     shortname (path) {

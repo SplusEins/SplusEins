@@ -39,9 +39,7 @@ export default {
       return;
     }
 
-    if (!store.state.lazyLoad) {
-      await store.dispatch('splus/load');
-    }
+    await store.dispatch('splus/load');
   },
   middleware: 'cached',
   watchQuery: ['id', 'name', 'course'], // rerender page when query params change

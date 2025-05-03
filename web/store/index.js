@@ -30,23 +30,10 @@ export const mutations = {
 };
 
 export const actions = {
-  async nuxtServerInit ({ commit, dispatch }) {
-    /*
-    // TODO disables web -> API communication
-    // browser cookies cannot be transfered
-    // so authentication would fail
-    commit('enableLazyLoad');
-    return;
-    */
-
-    if (process.static) {
-      commit('enableLazyLoad');
-      return;
-    }
-
-    await Promise.all([
-      dispatch('news/loadCampusNews'),
-      dispatch('news/loadFacultyNews')
-    ]);
+  async nuxtServerInit ({ commit }) {
+    // await Promise.all([
+    //   dispatch('news/loadCampusNews'),
+    //   dispatch('news/loadFacultyNews')
+    // ]);
   }
 }
