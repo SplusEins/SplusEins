@@ -1017,6 +1017,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/161901.html",
+    "label": "Digital Technologies",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_digital_technologies_1_ss25",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111801.html",
     "label": "Informatik",
     "faculty": "Informatik",
@@ -2066,15 +2075,6 @@
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_m_km_4_ss25",
-    "semester": 4,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_md_4.html",
-    "label": "Mediendesign",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_m_md_4_ss25",
     "semester": 4,
     "degree": "Master"
   },
