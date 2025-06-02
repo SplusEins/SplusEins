@@ -67,9 +67,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "^Dockerfile$",
-        "^.github/.+/*\\.ya?ml$"
+      "managerFilePatterns": [
+        "/^Dockerfile$/",
+        "/^.github/.+/*\\.ya?ml$/"
       ],
       "matchStrings": [
         "renovate:? datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_(?:VERSION|version)=(?<currentValue>.*)\\s"
