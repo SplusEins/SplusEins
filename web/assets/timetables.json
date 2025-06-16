@@ -441,7 +441,7 @@
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Semester_AE.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_AE.html",
     "label": "Automotive Engineering",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
@@ -450,7 +450,16 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Semester_FIF.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_Mathe-Lift.html",
+    "label": "Automotive Engineering/Mathe-Lift",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_mathe_lift_1_ss25",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_FIF.html",
     "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
@@ -459,7 +468,16 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Semester_SVS.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_MuTD.html",
+    "label": "Material + Technisches Design",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_mutd_1_ss25",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_SVS.html",
     "label": "Smart Vehicle Systems",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
@@ -468,7 +486,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_AE.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_AE.html",
     "label": "Automotive Engineering",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
@@ -477,16 +495,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_Mathe-Lift.html",
-    "label": "Automotive Engineering/Mathe-Lift",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_mathe_lift_2_ss25",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_FIF.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_FIF.html",
     "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
@@ -495,16 +504,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_MuTD.html",
-    "label": "Material + Technisches Design",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_mutd_2_ss25",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_SVS.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_SVS.html",
     "label": "Smart Vehicle Systems",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
@@ -513,7 +513,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Semester_AE.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_AE.html",
     "label": "Automotive Engineering",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
@@ -522,7 +522,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Semester_FIF.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_FIF.html",
     "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
@@ -531,7 +531,16 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Semester_SVS.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_MuTD.html",
+    "label": "Material + Technisches Design",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_mutd_3_ss25",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_SVS.html",
     "label": "Smart Vehicle Systems",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
@@ -540,138 +549,192 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_AE-ASM.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Sem_AE-ASM.html",
     "label": "Automotive Engineering - After Sales, Service and Mobility (ASM)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_asm_4_ss25",
-    "semester": 4,
+    "id": "f_4_ae_asm_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_AE-PCS.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Sem_AE-PCS.html",
     "label": "Automotive Engineering - Powertrain and Chassis Systems (PCS)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_pcs_4_ss25",
-    "semester": 4,
+    "id": "f_4_ae_pcs_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_AE-SAD.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Sem_AE-SAD.html",
     "label": "Automotive Engineering - Smart Automotive Development (SAD)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_sad_4_ss25",
-    "semester": 4,
+    "id": "f_4_ae_sad_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_AE-SPIE.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Sem_AE-SPIE.html",
     "label": "Automotive Engineering - Smart Production and Industrial Engineering (SPIE)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_spie_4_ss25",
-    "semester": 4,
+    "id": "f_4_ae_spie_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_FIF.html",
-    "label": "Fahrzeuginformatik",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-ASO.html",
+    "label": "Fahrzeuginformatik - Automotive Software (ASO)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_fif_4_ss25",
-    "semester": 4,
+    "id": "f_fif_aso_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_IuE.html",
-    "label": "Fahrzeugmechatronik und -informatik / Informatik und Elektronik",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-ASY.html",
+    "label": "Fahrzeuginformatik - Automotive Systems (ASY)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_iue_4_ss25",
-    "semester": 4,
+    "id": "f_fif_asy_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_MET.html",
-    "label": "Fahrzeugmechatronik und -informatik / Mechatronik",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-AMO.html",
+    "label": "Fahrzeuginformatik - Autonome Mobilität (AMO)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_met_4_ss25",
-    "semester": 4,
+    "id": "f_fif_amo_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_MuTD.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-IoT.html",
+    "label": "Fahrzeuginformatik - Industrial IoT (IOT)",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_fif_iot_5_ss25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_MuTD.html",
     "label": "Material + Technisches Design",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_mutd_4_ss25",
-    "semester": 4,
+    "id": "f_mutd_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_SVS.html",
-    "label": "Smart Vehicle Systems",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-EMO.html",
+    "label": "Smart Vehicle Systems - Elektromobilität (EMO)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_svs_4_ss25",
-    "semester": 4,
+    "id": "f_svs_emo_5_ss25",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_StiP_IuE.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-IAS.html",
+    "label": "Smart Vehicle Systems - Intelligente autonome Systeme (IAS)",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_svs_ias_5_ss25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-MSY.html",
+    "label": "Smart Vehicle Systems - Mechatronische Systeme (MSY)",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_svs_msy_5_ss25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-MAS.html",
+    "label": "Smart Vehicle Systems - Mobilitätskonzepte im Aftersales (MAS)",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_svs_mas_5_ss25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Sem_IuE.html",
+    "label": "Fahrzeugmechatronik und -informatik / Informatik und Elektronik",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_iue_6_ss25",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Sem_MET.html",
+    "label": "Fahrzeugmechatronik und -informatik / Mechatronik",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_met_6_ss25",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/7_Semester_StiP_IuE.html",
     "label": "StiP Fahrzeugmechatronik und -informatik / Informatik und Elektronik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_stip_iue_6_ss25",
-    "semester": 6,
+    "id": "f_stip_iue_7_ss25",
+    "semester": 7,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_StiP_MET.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/7_Sem_StiP_MET.html",
     "label": "StiP Fahrzeugmechatronik und -informatik / Mechatronik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_stip_met_6_ss25",
-    "semester": 6,
+    "id": "f_stip_met_7_ss25",
+    "semester": 7,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_StiP_AGF.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/7_Sem_StiP_AGF.html",
     "label": "StiP Fahrzeugtechnik / Aggregate- und Fahrwerkentwicklung",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_stip_agf_6_ss25",
-    "semester": 6,
+    "id": "f_stip_agf_7_ss25",
+    "semester": 7,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_StiP_ABE.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/7_Sem_StiP_ABE.html",
     "label": "StiP Fahrzeugtechnik / Aufbau und Entwicklung",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_stip_abe_6_ss25",
-    "semester": 6,
+    "id": "f_stip_abe_7_ss25",
+    "semester": 7,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_StiP_PU.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/7_Sem_StiP_PU.html",
     "label": "StiP Fahrzeugtechnik / Produktion und Umwelt",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_stip_pu_6_ss25",
-    "semester": 6,
+    "id": "f_stip_pu_7_ss25",
+    "semester": 7,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Semester_Master_FZT.html",
-    "label": "Fahrzeugtechnik",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_Master_Smart_Factory.html",
+    "label": "Smart Factory",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_master_fzt_1_ss25",
-    "semester": 1,
+    "id": "f_master_smart_factory_2_ss25",
+    "semester": 2,
     "degree": "Master"
   },
   {
@@ -1166,6 +1229,15 @@
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_informatik_sys_3_ss25",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/131803.html",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_wirtschaftsinformatik_3_ss25",
     "semester": 3,
     "degree": "Bachelor"
   },
