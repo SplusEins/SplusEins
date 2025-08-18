@@ -15,16 +15,32 @@ jobs:
         with:
           ssh-key: ${{ secrets.SSH_GITHUB_PRIVATE_KEY }}
           fetch-depth: 0
+
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.x"
+
       - name: Install sked-parser
         run: python -m pip install git+https://github.com/SplusEins/sked_parser.git
+
       - name: Run sked-parser
-        run: sked-parser -o web/assets/timetables.json -o server/assets/timetables.json -c timetable-config.yaml
+        shell: bash
         env:
           OSTFALIA_USER: ${{ secrets.OSTFALIA_USER }}
           OSTFALIA_PASS: ${{ secrets.OSTFALIA_PASS }}
+        run: |
+          set -o pipefail
+          sked-parser -o web/assets/timetables.json -o server/assets/timetables.json -c timetable-config.yaml 2>&1 | tee sked-parser-full.log
+
+      - name: Extract WARN lines
+        id: warns
+        shell: bash
+        run: |
+          grep '^WARN' sked-parser-full.log > sked-parser-warn.txt
+          echo "warns<<EOF" >> $GITHUB_OUTPUT
+          cat sked-parser-warn.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7
         with:
@@ -33,10 +49,16 @@ jobs:
           branch: actions/update-timetables
           author: actions-user <actions@github.com>
           committer: actions-user <actions@github.com>
+          labels: automated
           title: "Sync timetables.json with Ostfalia"
           body: |
-            Updated timetables automatically using [sked-parser](https://github.com/SplusEins/sked_parser).
-            More Information [in the docs](https://spluseins-i.ostfalia.de/docs/semesterbeginn.html#aktualisierung-der-plane).
+            Timetables updated via [sked-parser](https://github.com/SplusEins/sked_parser).
+            Docs: https://spluseins-i.ostfalia.de/docs/semesterbeginn.html#aktualisierung-der-plane
 
-            [Link to action output](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}). Please check it for any warnings.
-          labels: automated
+            Full logs:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Warnings:
+            ```
+            ${{ steps.warns.outputs.warns }}
+            ```
