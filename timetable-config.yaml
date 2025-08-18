@@ -1,16 +1,16 @@
 # Siehe Dokumentation in https://github.com/SplusEins/sked_parser
 
 # TODO Semesterwechsel: Aktualisieren auf das aktuelle Semester
-current_sem: "ss25"
+current_sem: "ws25"
 # timetables with the following strings in the URL or description will be filtered out (use lowercase only)
 timetable_blacklist:
   # TODO Semesterwechsel: Aktualisieren auf Strings vom vorherigen Semester
-  - "ws 24"
-  - "ws24"
-  - "wiese"
-  - "/ws/"
-  - "ws202"
-  - "nur im ws"
+  - "ss 25"
+  - "ss25"
+  - "sose"
+  - "/ss/"
+  - "ss202"
+  - "nur im ss"
 
   - "pruefung"
   - "klausur"
@@ -45,7 +45,16 @@ plans:
     faculty: Recht
   - url: https://stundenplan.ostfalia.de/s/wp/index.html
     faculty: Soziale Arbeit
-  - url: https://stundenplan.ostfalia.de/v/stundenplan/wing/index.html
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/wing/B/index.html
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/wing/E/index.html
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/wing/G/index.html
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/wing/U/index.html
     faculty: Versorgungstechnik
     shorthand_syntax: True
   - url: https://stundenplan.ostfalia.de/v/stundenplan/sce/index.html
