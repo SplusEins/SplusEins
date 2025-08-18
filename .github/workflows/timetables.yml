@@ -36,9 +36,10 @@ jobs:
         id: warns
         shell: bash
         run: |
-          grep '^WARN' sked-parser-full.log > sked-parser-warn.txt
+          touch warn.txt
+          grep '^WARN' sked-parser-full.log > warn.txt || true
           echo "warns<<EOF" >> $GITHUB_OUTPUT
-          cat sked-parser-warn.txt >> $GITHUB_OUTPUT
+          cat warn.txt >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
@@ -49,8 +50,10 @@ jobs:
           branch: actions/update-timetables
           author: actions-user <actions@github.com>
           committer: actions-user <actions@github.com>
-          labels: automated
           title: "Sync timetables.json with Ostfalia"
+          labels: automated
+          add-paths: |
+            **/timetables.json
           body: |
             Timetables updated via [sked-parser](https://github.com/SplusEins/sked_parser).
             Docs: https://spluseins-i.ostfalia.de/docs/semesterbeginn.html#aktualisierung-der-plane
