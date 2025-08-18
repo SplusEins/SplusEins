@@ -1,0 +1,29 @@
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_AT-Sem5.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_TI-Sem6.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_IT-Sem5.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_EE-Sem6.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_AT-Sem4.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem5.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_IT-Sem6.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_EE-Sem5.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem4.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem6.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_TI-Sem4.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_EE-Sem4.html is empty, using unqiue ID as label.
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "IST" mit sked path "e/semester/E-IST.html"
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_IT-Sem4.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_AT-Sem6.html is empty, using unqiue ID as label.
+WARNING (app.py:75) Label for https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_TI-Sem5.html is empty, using unqiue ID as label.
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "BA OBWL" mit sked path "h/lvp/wp/h_stdgrp_bwl.html"
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "PO 2014/2020/2022" mit sked path "r/studentenset/pruefungen\25-03-r-p-b-rpp.html"
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "PO 2014/2020/2022" mit sked path "r/studentenset/pruefungen\25-03-r-p-b-wr.html"
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "PO 2020/2022" mit sked path "r/studentenset/pruefungen\25-03-r-p-m-ilb.html"
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "PO 2020/2022" mit sked path "r/studentenset/pruefungen\25-03-r-p-m-rpp.html"
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "Erstsemesterveranstaltungen" mit sked path "r/studentenset/25-03-r-erstsemesterveranstaltungen.html"
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "IBLS Lectures and exams" mit sked path "r/studentenset/ibls/25-03-r-ibls.html"
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "PO 2014/2020/2022" mit sked path "r/studentenset/pruefungen\25-03-r-p-b-rfs.html"
+WARNING (scraper.py:129) Kein Semester bestimmbar bei "PO 2020/2022" mit sked path "r/studentenset/pruefungen\25-03-r-p-m-ftc.html"
+WARNING (app.py:58) URL https://stundenplan.ostfalia.de/v/stundenplan/ksm/index.html hat keine Pläne.
+WARNING (app.py:58) URL https://stundenplan.ostfalia.de/v/stundenplan/ge/index.html hat keine Pläne.
+WARNING (app.py:58) URL https://stundenplan.ostfalia.de/v/stundenplan/egt/index.html hat keine Pläne.
+WARNING (app.py:58) URL https://stundenplan.ostfalia.de/v/stundenplan/bee/index.html hat keine Pläne.
