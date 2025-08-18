@@ -21,10 +21,16 @@ jobs:
       - name: Install sked-parser
         run: python -m pip install git+https://github.com/SplusEins/sked_parser.git
       - name: Run sked-parser
-        run: sked-parser -o web/assets/timetables.json -o server/assets/timetables.json -c timetable-config.yaml
+        run: sked-parser -o web/assets/timetables.json -o server/assets/timetables.json -c timetable-config.yaml 2>&1 | grep '^WARN' > sked-parser-warn.txt
         env:
           OSTFALIA_USER: ${{ secrets.OSTFALIA_USER }}
           OSTFALIA_PASS: ${{ secrets.OSTFALIA_PASS }}
+      - name: Get sked-parser WARN output
+        id: skedoutput
+        run: |
+          echo "warns<<EOF" >> $GITHUB_OUTPUT
+          cat sked-parser-warn.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7
         with:
@@ -38,5 +44,10 @@ jobs:
             Updated timetables automatically using [sked-parser](https://github.com/SplusEins/sked_parser).
             More Information [in the docs](https://spluseins-i.ostfalia.de/docs/semesterbeginn.html#aktualisierung-der-plane).
 
-            [Link to action output](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}). Please check it for any warnings.
+            [Link to action output](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+
+            **Warnings that occured during this sked-parser run:**
+            ```
+            ${{ steps.skedoutput.outputs.warns }}
+            ```
           labels: automated
