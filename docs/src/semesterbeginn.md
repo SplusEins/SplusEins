@@ -18,7 +18,7 @@ Alle relevanten Stellen im Code können auch gefunden werden, indem man nach `TO
 
 ### Semesterstart setzen
 
-Im Frontend muss gesetzt werde, welche Woche die erste Vorlesungswoche ist. Das wird in der Variable `SEMESTER_WEEK_1` in [`web/store/splus.js`](https://github.com/SplusEins/SplusEins/blob/master/web/store/splus.js) gesetzt. Der Vorlesungsbeginn der Ostfalia wird in [diesem PDF](https://www.ostfalia.de/cms/de/ostfalia/semestertermine/) veröffentlicht, woraus man die ISO-Woche berechnen kann.
+Im Frontend muss gesetzt werde, welche Woche die erste Vorlesungswoche ist. Das wird in der Variable `SEMESTER_WEEK_1` in [`web/store/splus.js`](https://github.com/SplusEins/SplusEins/blob/master/web/store/splus.js) gesetzt. Der Vorlesungsbeginn der Ostfalia wird in [diesem PDF](https://www.ostfalia.de/studieren/im-studium/studienorganisation/semestertermine) veröffentlicht, woraus man die ISO-Woche berechnen kann.
 
 ### `sked-parser` Konfiguration aktualisieren
 
