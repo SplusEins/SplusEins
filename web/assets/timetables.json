@@ -1089,11 +1089,38 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_1.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_soa_1_ws25",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_2.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_soa_2_ws25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_hul_3.html",
     "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_hul_3_ws25",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_3.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_soa_3_ws25",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1107,6 +1134,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_4.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_soa_4_ws25",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_hul_5.html",
     "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
@@ -1116,11 +1152,38 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_5.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_soa_5_ws25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_6.html",
+    "label": "Soziale Arbeit",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_soa_6_ws25",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_bwl.html",
     "label": "BA OBWL",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
     "id": "h_bwl_ws25",
+    "semester": "Sonstige",
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_bap.html",
+    "label": "Soziale Arbeit - Berufsanerkennung",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_bap_ws25",
     "semester": "Sonstige",
     "degree": "Bachelor"
   },
@@ -2205,6 +2268,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_2_2. Sem.html",
+    "label": "BEE / BEEiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_2_ws25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/E/Wirtschaftsingenieur Energie (WING E)_2_2. Sem.html",
     "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
@@ -2220,6 +2292,15 @@
     "type": "graphical",
     "id": "v_wing_u_2_ws25",
     "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_3_3. Sem.html",
+    "label": "BEE / BEEiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_3_3_4_ws25",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
@@ -2241,6 +2322,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_5_5. Semester.html",
+    "label": "BEE / BEEiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_5_ws25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/E/Wirtschaftsingenieur Energie (WING E)_5_5. Sem.html",
     "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
@@ -2256,6 +2346,24 @@
     "type": "graphical",
     "id": "v_wing_u_5_ws25",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_7_7. Sem.html",
+    "label": "BEE / BEEiP Option 1",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_7_ws25",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_7_7. Semester Option 1.html",
+    "label": "BEE / BEEiP Option 2",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_option_1_7_ws25",
+    "semester": 7,
     "degree": "Bachelor"
   },
   {
