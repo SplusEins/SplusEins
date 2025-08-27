@@ -1377,15 +1377,6 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/131804.html",
-    "label": "Wirtschaftsinformatik",
-    "faculty": "Informatik",
-    "type": "intranet",
-    "id": "i_wirtschaftsinformatik_4_ws25",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/161905.html",
     "label": "Digital Technologies - DITR",
     "faculty": "Informatik",
@@ -2187,11 +2178,20 @@
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m-md_1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m_md_1.html",
     "label": "Mediendesign",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_m_md_1_ws25",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/MVL 1 WS 2025-26.html",
+    "label": "Verkehr und Logistik",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mvl_1_ws25",
     "semester": 1,
     "degree": "Master"
   },
@@ -2230,6 +2230,24 @@
     "id": "k_m_md_3_ws25",
     "semester": 3,
     "degree": "Master"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/GE_1_1. Sem.html",
+    "label": "Green Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_ge_1_ws25",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ksm/Klimaschutzmanagement (KSM)_1_1. Sem..html",
+    "label": "KSM",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_klimaschutzmanagement_ksm_1_ws25",
+    "semester": 1,
+    "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/SCE_1_1. Sem.html",
@@ -2277,6 +2295,42 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_2_2. Sem.html",
+    "label": "EGT / EGTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_2_ws25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green Engineering_2_2. Sem.html",
+    "label": "Green Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_green_engineering_2_ws25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ksm/Klimaschutzmanagement (KSM)_2_2. Sem..html",
+    "label": "KSM",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_klimaschutzmanagement_ksm_2_ws25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/Smart City Engineering_2_2. Sem.html",
+    "label": "Smart City Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_smart_city_engineering_2_ws25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/E/Wirtschaftsingenieur Energie (WING E)_2_2. Sem.html",
     "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
@@ -2295,11 +2349,47 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ksm/Klimaschutzmanagement (KSM)_3_3. Sem..html",
+    "label": "KSM",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_klimaschutzmanagement_ksm_3_ws25",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/bee/Bio- und Umwelttechnik (BEE )_3_3. Sem.html",
     "label": "BEE / BEEiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_3_3_4_ws25",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_3_3. Sem.html",
+    "label": "EGT / EGTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_3_3_4_ws25",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green Engineering_3_3. Sem.html",
+    "label": "Green Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_green_engineering_3_3_4_ws25",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/Smart City Engineering_3_3. Sem.html",
+    "label": "Smart City Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_smart_city_engineering_3_3_4_ws25",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -2327,6 +2417,33 @@
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_5_ws25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_5_5. Sem.2.html",
+    "label": "EGT / EGTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_2_5_ws25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green Engineering_5_5. Sem.html",
+    "label": "Green Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_green_engineering_5_ws25",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/Smart City Engineering_5_5. Sem.html",
+    "label": "Smart City Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_smart_city_engineering_5_ws25",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -2363,6 +2480,33 @@
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_option_1_7_ws25",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_7_7. Sem.html",
+    "label": "EGT / EGTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_egt_egtip_7_ws25",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green Engineering_7_7. Semester.html",
+    "label": "Green Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_green_engineering_7_ws25",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/Smart City Engineering_7_7. Semester.html",
+    "label": "Smart City Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_smart_city_engineering_7_ws25",
     "semester": 7,
     "degree": "Bachelor"
   },
