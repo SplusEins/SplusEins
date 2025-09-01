@@ -8,6 +8,7 @@
     fixed
     app
     width="350"
+    :class="{'mobile-scroll-drawer': isMobile}"
   >
     <basic-utilities-list />
     <v-divider v-if="hasCustomTimetables" />
@@ -52,6 +53,9 @@ export default {
     hasFavoriteTimetables () {
       return this.favoriteSchedules.length > 0;
     },
+    isMobile () {
+      return this.$vuetify.breakpoint.mobile;
+    },
     ...mapState({
       customSchedules: (state) => state.splus.customSchedules,
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
@@ -68,6 +72,14 @@ export default {
 </script>
 
 <style lang="scss">
+.mobile-scroll-drawer {
+  max-height: 100%;
+
+  @supports (height: 100dvh) {
+    max-height: 100dvh;
+  }
+}
+
 .stick-bottom {
   position: sticky;
   bottom: 0;
