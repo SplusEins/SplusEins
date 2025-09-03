@@ -2,11 +2,14 @@ import * as express from 'express';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
-import * as createClient from 'hafas-client';
-import * as dbProfile from 'hafas-client/p/db'
+import {createClient} from '@motis-project/motis-fptf-client'
+import {profile} from '@motis-project/motis-fptf-client/p/transitous'
+
+// import * as createClient from 'hafas-client';
+// import * as dbProfile from 'hafas-client/p/db'
 
 // create a client with Deutsche Bahn profile
-const hafasClient = createClient(dbProfile, 'spluseins.de')
+const hafasClient = createClient(profile, 'spluseins.de')
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -34,17 +37,17 @@ router.get('/', async (req, res, next) => {
     startWithWalking: false
   }
 
-  const exer = '891011' // await hafasClient.locations('Wolfenbüttel Exer Süd')
-  const fh = '891038'
+  const exer = 'de-DELFI_de:03158:599:0:1' // await hafasClient.locations('Wolfenbüttel Exer Süd')
+  const fh = 'de-DELFI_de:03158:598:0:1'
 
   try {
     const data = await cache.wrap('bus', async () => {
       console.log('bus cache miss for key bus');
-
+      
       const exerToFh = await hafasClient.journeys(exer, fh, hafasOpts)
       const fhToExer = await hafasClient.journeys(fh, exer, hafasOpts)
       const extractDateAndLine = (journeys) => journeys
-        .map(({ legs }) => legs)
+      .map(({ legs }) => legs)
         .filter(legs => legs.length == 1)
         .map(legs => legs[0])
         .map(leg => ({

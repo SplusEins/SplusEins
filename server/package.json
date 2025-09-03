@@ -13,6 +13,8 @@
     "lintfix": "eslint --fix --ext .ts ."
   },
   "dependencies": {
+    "@motis-project/motis-client": "^2.1.2",
+    "@motis-project/motis-fptf-client": "^6.1.0",
     "cache-manager": "4.1.0",
     "cache-manager-fs-hash": "1.1.0",
     "cheerio": "1.0.0-rc.12",
@@ -21,7 +23,6 @@
     "cross-env": "7.0.3",
     "csv-string": "4.1.1",
     "express": "4.21.2",
-    "hafas-client": "5.26.5",
     "ical-generator": "8.1.1",
     "iconv-lite": "0.6.3",
     "moment": "2.30.1",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.28.3",
+    "@babel/eslint-parser": "7.27.5",
     "@babel/plugin-transform-object-assign": "7.27.1",
     "@babel/preset-env": "7.28.3",
     "@types/cheerio": "1.0.0",
@@ -46,7 +48,6 @@
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "babel-core": "7.0.0-bridge.0",
-    "@babel/eslint-parser": "7.27.5",
     "babel-loader": "9.2.1",
     "babel-preset-env": "1.7.0",
     "encoding": "0.1.13",
