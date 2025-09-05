@@ -6,7 +6,7 @@ import { createClient } from '@motis-project/motis-fptf-client'
 import { profile } from '@motis-project/motis-fptf-client/p/transitous'
 
 // create a client with Transitous profile
-const motisClient = createClient(profile, 'spluseins.de')
+const motisClient = createClient(profile, 'spluseins.de/team@spluseins.de/05.09.25') // in case of changes, adjust the version date accordingly
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
