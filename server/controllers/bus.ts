@@ -54,8 +54,11 @@ router.get('/', async (req, res, next) => {
         .sort((a, b) => Date.parse(a) - Date.parse(b));
 
       return {
-        exerToFh: extractDateAndLine(exerToFh.journeys),
-        fhToExer: extractDateAndLine(fhToExer.journeys)
+        departures: {
+          exerToFh: extractDateAndLine(exerToFh.journeys),
+          fhToExer: extractDateAndLine(fhToExer.journeys)
+        },
+        lastUpdated: Date.now()
       }
     }, { ttl: CACHE_SECONDS });
 
