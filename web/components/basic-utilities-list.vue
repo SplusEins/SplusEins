@@ -40,19 +40,19 @@
     </v-list-item>
 
     <!-- Broke for now: https://github.com/SplusEins/SplusEins/issues/949 -->
-    <!-- <v-list-item -->
-    <!--   to="/bus" -->
-    <!--   nuxt -->
-    <!-- > -->
-    <!--   <v-list-item-action> -->
-    <!--     <v-icon>{{ mdiBus }}</v-icon> -->
-    <!--   </v-list-item-action> -->
-    <!--   <v-list-item-content> -->
-    <!--     <v-list-item-title> -->
-    <!--       Busse Wolfenbüttel -->
-    <!--     </v-list-item-title> -->
-    <!--   </v-list-item-content> -->
-    <!-- </v-list-item> -->
+    <v-list-item
+      to="/bus"
+      nuxt
+    >
+      <v-list-item-action>
+        <v-icon>{{ mdiBus }}</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>
+          Busse Wolfenbüttel
+        </v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
 
     <lazy-custom-timetable-dialog v-model="customTimetableDialogOpen" />
   </v-list>
