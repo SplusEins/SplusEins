@@ -459,15 +459,6 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/\\\\stundenplan.ostfalia.de\\sked\\f\\wp-online\\1_Sem_FT-Online.html",
-    "label": "FT-Online",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_stundenplan_ostfalia_de_sked_f_wp_online_ft_online_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_FIF.html",
     "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
@@ -527,15 +518,6 @@
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_ae_3_ws25",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/\\\\stundenplan.ostfalia.de\\sked\\f\\wp-online\\3_Sem_FT-Online.html",
-    "label": "FT-Online",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_stundenplan_ostfalia_de_sked_f_wp_online_ft_online_3_ws25",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -726,15 +708,6 @@
     "type": "graphical",
     "id": "f_pu_6_ws25",
     "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/\\\\stundenplan.ostfalia.de\\sked\\f\\wp-online\\7_Sem_FT-Online.html",
-    "label": "FT-Online",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_stundenplan_ostfalia_de_sked_f_wp_online_ft_online_7_ws25",
-    "semester": 7,
     "degree": "Bachelor"
   },
   {
