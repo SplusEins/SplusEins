@@ -25,9 +25,9 @@
 
           <v-list>
             <v-list-item
-              v-for="departure in removePastDepartures(departures[direction])"
-              :key="departure.date"
-            >
+              v-for="(departure, index) in removePastDepartures(departures[direction])"
+              :key="departure.date + '-' + departure.line + '-' + index"
+            > <!-- use composite key to ensure we have only unique keys (date only won't be unique if a bus is late) -->
               <v-list-item-content
                 class="pb-0 pt-1"
               >
@@ -56,7 +56,13 @@
     </v-row>
 
     <span class="pt-4 d-flex justify-end text-caption text--secondary">
-      Quelle: Deutsche Bahn HAFAS
+      Quelle:
+      <a
+        href="https://transitous.org/"
+        class="link"
+      >
+        MOTIS
+      </a>
     </span>
   </v-container>
 </template>
