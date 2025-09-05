@@ -39,7 +39,6 @@
       </v-list-item-content>
     </v-list-item>
 
-    <!-- Broke for now: https://github.com/SplusEins/SplusEins/issues/949 -->
     <v-list-item
       to="/bus"
       nuxt
