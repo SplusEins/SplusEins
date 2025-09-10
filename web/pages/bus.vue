@@ -11,7 +11,7 @@
         :key="direction"
         cols=12
         md=5
-        xl=4
+        xl=3
       >
         <v-card
           v-if="departures"
@@ -24,10 +24,9 @@
           </v-card-title>
 
           <v-list>
-            <!-- use composite key to ensure we have only unique keys (date only won't be unique if a bus is late) -->
             <v-list-item
-              v-for="(departure, index) in removePastDepartures(departures[direction])"
-              :key="departure.date + '-' + departure.line + '-' + index"
+              v-for="departure in removePastDepartures(departures[direction])"
+              :key="departure.date"
             >
               <v-list-item-content
                 class="pb-0 pt-1"
@@ -55,21 +54,9 @@
         />
       </v-col>
     </v-row>
+
     <span class="pt-4 d-flex justify-end text-caption text--secondary">
-      Quelle:&nbsp;
-      <a
-        href="https://transitous.org/"
-        class="link"
-      >
-        Transitous
-      </a>
-    </span>
-    <span
-      v-if="lastUpdated"
-      class="d-flex justify-end text-caption text--secondary"
-    >
-      Zuletzt aktualisiert:
-      {{ $dayjs(lastUpdated).format('HH:mm:ss') }} Uhr
+      Quelle: Deutsche Bahn HAFAS
     </span>
   </v-container>
 </template>
@@ -104,8 +91,7 @@ export default {
   },
   computed: {
     ...mapState({
-      departures: (state) => state.bus.departures,
-      lastUpdated: (state) => state.bus.lastUpdated
+      departures: (state) => state.bus.departures
     })
   },
   mounted () {

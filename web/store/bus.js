@@ -1,30 +1,26 @@
 export const state = () => ({
-  departures: null,
-  lastUpdated: null
+  departures: null
 });
 
 export const mutations = {
   setDepartures (state, data) {
-    state.departures = data.departures;
-    state.lastUpdated = data.lastUpdated;
+    state.departures = data;
   }
 }
 
 export const actions = {
   async load ({ commit }) {
-    let departures = [];
-    let lastUpdated = null;
+    let result = [];
 
     try {
       const response = await this.$axios.get('/api/bus');
-      departures = response.data.departures;
-      lastUpdated = response.data.lastUpdated;
+      result = response.data;
     } catch (error) {
       const errorCode = error.response ? error.response.status : 'unknown error'
       commit('enqueueError', `Busplan konnte nicht geladen werden (${errorCode}).`, { root: true });
       console.error('error during Bus API call', error.message);
     }
 
-    commit('setDepartures', { departures, lastUpdated });
+    commit('setDepartures', result);
   }
 };
