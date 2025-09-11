@@ -1468,7 +1468,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rfs-1.html",
-    "label": "RFS (PO 2022)",
+    "label": "RFS (PO 2025)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_rfs_1_ws25",
@@ -1486,7 +1486,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wr-1.html",
-    "label": "WR (PO 2022)",
+    "label": "WR (PO 2025)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_wr_1_ws25",
@@ -1522,7 +1522,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rfs-3.html",
-    "label": "RFS (PO 2020)",
+    "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_rfs_3_ws25",
@@ -1531,7 +1531,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rpp-3.html",
-    "label": "RPP (PO 2020)",
+    "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_rpp_3_ws25",
@@ -1540,7 +1540,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wr-3.html",
-    "label": "WR (PO 2020)",
+    "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_wr_3_ws25",
@@ -1549,7 +1549,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rfs-4.html",
-    "label": "RFS (PO 2020)",
+    "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_rfs_4_ws25",
@@ -1558,7 +1558,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rpp-5.html",
-    "label": "RPP (PO 2020)",
+    "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_rpp_5_ws25",
@@ -1567,7 +1567,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wr-5.html",
-    "label": "WR (PO 2020)",
+    "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_wr_5_ws25",
@@ -1576,7 +1576,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rfs-6.html",
-    "label": "RFS (PO 2020)",
+    "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_rfs_6_ws25",
@@ -1585,7 +1585,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rpp-6.html",
-    "label": "RPP (PO 2020)",
+    "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_rpp_6_ws25",
@@ -1594,7 +1594,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wr-6.html",
-    "label": "WR (PO 2020)",
+    "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_b_wr_6_ws25",
@@ -1630,7 +1630,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-m-ilb-1-25.html",
-    "label": "ILB PO 202 (PO 2025) - nur im WS (Plan fÃŒr ILB-Studierende, die im Wintersemester 2025/2026 im sind)",
+    "label": "ILB PO 202 (PO 2025) - nur im WS (Plan für ILB-Studierende, die im Wintersemester 2025/2026 im sind)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_m_ilb_25_1_ws25",
@@ -1648,7 +1648,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-m-ilb-1-22.html",
-    "label": "ILB PO 202 (PO 2022) - nur im WS (Plan fÃŒr ILB-Studierende, die im Wintersemester 2025/2026 im sind)",
+    "label": "ILB PO 202 (PO 2022) - nur im WS (Plan für ILB-Studierende, die im Wintersemester 2025/2026 im sind)",
     "faculty": "Recht",
     "type": "graphical",
     "id": "r_25_09_r_m_ilb_1_22_2_ws25",
@@ -2322,7 +2322,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ksm/Klimaschutzmanagement (KSM)_2_2. Sem..html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ksm/Klimaschutzmanagement (KSM)_2_2. Sem.html",
     "label": "KSM",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
@@ -2358,7 +2358,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ksm/Klimaschutzmanagement (KSM)_3_3. Sem..html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ksm/Klimaschutzmanagement (KSM)_3_3. Sem.html",
     "label": "KSM",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
