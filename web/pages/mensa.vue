@@ -3,10 +3,13 @@
     fluid
   >
     <div>
-      <v-tabs>
+      <v-tabs
+        v-model="activeTab"
+      >
         <v-tab
-          v-for="item in plans"
+          v-for="(item, idx) in plans"
           :key="item.id"
+          :value="idx"
           ripple
         >
           {{ item.name }}
@@ -211,6 +214,7 @@ import { mdiLeaf, mdiFood, mdiCarrot, mdiFoodOutline, mdiFoodForkDrink, mdiClock
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import 'dayjs/locale/de';
+import { locationMap } from '~/lib/mensa-location-map.js';
 
 dayjs.extend(isoWeek);
 dayjs.locale('de'); // Setzt die Sprache global auf Deutsch
@@ -236,7 +240,8 @@ export default {
       mdiFolderInformation,
       mdiCoffeeOutline,
       mdiWeatherNight,
-      mdiFoodOutline
+      mdiFoodOutline,
+      activeTab: null
     }
   },
   components: {
@@ -252,13 +257,36 @@ export default {
       this.$nuxt.$loading.start()
     })
     this.load();
+
+    const location = this.$route.query.location;
+    if (location && this.plans && this.plans.length > 0) {
+      this.setLocation(location);
+      // find index of plan wit name mapped from location
+      const mappedName = locationMap[location] || locationMap.wf;
+      const idx = this.plans.findIndex(p => p.name === mappedName);
+      this.activeTab = idx !== -1 ? idx : 0;
+    } else {
+      this.activeTab = 0;
+    }
+  },
+  watch: {
+    plans (newPlans) {
+      // in case the plans were loaded after the initial check in mounted
+      const location = this.$route.query.location;
+      if (location && newPlans && newPlans.length > 0) {
+        const mappedName = locationMap[location] || locationMap.wf;
+        const idx = newPlans.findIndex(p => p.name === mappedName);
+        this.activeTab = idx !== -1 ? idx : 0;
+      }
+    }
   },
   methods: {
     ...mapActions({
       load: 'mensa/load'
     }),
     ...mapMutations({
-      setSidenav: 'ui/setSidenav'
+      setSidenav: 'ui/setSidenav',
+      setLocation: 'mensa/setLocation'
     }),
     getMensaURL (url) {
       return `https://www.stw-on.de/${url}`;
