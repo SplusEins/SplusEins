@@ -196,6 +196,7 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
       .replace(/\s\[\d+\]/g, ''))); // replace footnote links: e.g. [1]
 
     cols.forEach(col => {
+      // eslint-disable-next-line complexity
       col.forEach((entry, index) => {
         if (index === 0) {
           // is date
@@ -236,9 +237,10 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
             anmerkung = parts[1];
             break;
           case 'Handel und Soziale Arbeit':
-            // Leider ohne Dozent / Raum, da die Zeilen in dieser Fakultät zu unterschiedlich genutzt werden
-            veranstaltung = parts[2];
-            anmerkung = parts[1];
+            veranstaltung = parts.at(2) || '';
+            anmerkung = parts.at(1) || '';
+            raum = parts.at(-1) || '';
+            dozent = parts.at(-2) || '';
             break;
           case 'Wirtschaft':
             // Leider ohne Dozent / Raum, da die Zeilen in dieser Fakultät zu unterschiedlich genutzt werden
