@@ -113,20 +113,35 @@ export class Event {
     return crypto.createHash('sha1').update(title).digest('base64').replace(/[/+=]/g, '').slice(0, 5);
   }
 
-  private censorOrganiserName (name: string): string {
-    return name.split(' ').map(part =>
-      (new RegExp('Prof|Dr|Dipl|Ing|Inform|Herr|Frau|MA|BA|rer.|nat.|Master|Bachelor', 'g').test(part)) || part.length < 3 ? part : part.charAt(0) + '.')
-      .join(' ')
+  private censorOrganiserName(name: string): string {
+    const titles = /^(Prof\.?|Dr\.?|Dipl\.?|Ing\.?|Inform\.?|Herr|Frau|MA|BA|rer\.|nat\.|Master|Bachelor)$/i;
+    return name
+      .split(',')
+      .map(part => part.trim().split(/\s+/)
+        .map(word => titles.test(word) || word.length < 3 ? word : word[0] + '.')
+        .join(' ')
+      )
+      .join(', ');
   }
 
-  private generateOrganiserShortname (lecturer: string): string {
+  private generateOrganiserShortname(lecturer: string): string {
+    const titles = /^(Prof\.?|Dr\.?|Dipl\.?|Ing\.?|Inform\.?|Herr|Frau|MA|BA|rer\.|nat\.|Master|Bachelor)$/i;
     return lecturer
-      .replace(/Prof|Dr|Dipl|Ing|Inform|Herr|Frau|MA|BA|rer.|nat.|Master|Bachelor/g, '')
-      .replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue').replace('ß', 'ss')
-      .replace(/[^a-z]/gi, ' ')
-      .split(' ')
-      .filter((w) => ![' ', ''].includes(w))
-      .join(' ');
+      .split(',')
+      .map(part => part.trim().split(/\s+/)
+        .filter(word => !titles.test(word) && word.length > 0)
+        .map(word => word
+          .replace(/[äÄ]/g, 'ae')
+          .replace(/[öÖ]/g, 'oe')
+          .replace(/[üÜ]/g, 'ue')
+          .replace(/ß/g, 'ss')
+          .replace(/[^a-zA-Z]/g, '')
+        )
+        .filter(Boolean)
+        .map(word => word[0])
+        .join(' ')
+      )
+      .join(', ');
   }
 
   constructor (lecture: ParsedLecture) {
