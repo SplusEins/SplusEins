@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { mdiLeaf, mdiFood, mdiPig, mdiCarrot, mdiAlertDecagramOutline, mdiNewBox, mdiCow, mdiInformationBoxOutline, mdiTurkey, mdiHomeSiloOutline, mdiFish, mdiSheep } from '@mdi/js'
+import { mdiFoodApple, mdiLeaf, mdiFood, mdiPig, mdiSprout, mdiAlertDecagramOutline, mdiNewBox, mdiCow, mdiInformationBoxOutline, mdiTurkey, mdiHomeSiloOutline, mdiFish, mdiSheep } from '@mdi/js'
 
 export default {
   name: 'MensaDayplanComponent',
@@ -61,10 +61,11 @@ export default {
   },
   data () {
     return {
+      mdiFoodApple,
       mdiLeaf,
       mdiFood,
       mdiPig,
-      mdiCarrot,
+      mdiSprout,
       mdiAlertDecagramOutline,
       mdiNewBox,
       mdiCow,
@@ -123,12 +124,16 @@ export default {
             color = 'green';
             break;
           case 'Vegetarisch':
-            icon = mdiCarrot;
+            icon = mdiFoodApple;
             color = 'green';
             break;
-          case 'Niedersachsen Menü':
+          case 'StudiDeal':
             icon = mdiFood;
             color = 'red';
+            break;
+          case 'Klimaessen':
+            icon = mdiSprout;
+            color = 'light-green';
             break;
         }
         icons.push({

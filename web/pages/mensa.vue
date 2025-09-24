@@ -66,7 +66,7 @@
                         small
                         class="align-self-center ml-1"
                       >
-                        {{ mdiCarrot }}
+                        {{ mdiFoodApple }}
                       </v-icon>
                     </div>
                     <div class="d-flex pr-2">
@@ -80,7 +80,7 @@
                       </v-icon>
                     </div>
                     <div class="d-flex">
-                      Niedersachsen Menü
+                      StudiDeal
                       <v-icon
                         color="red"
                         small
@@ -207,7 +207,7 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
 import MensaDayplan from '../components/mensa-dayplan.vue';
-import { mdiLeaf, mdiFood, mdiCarrot, mdiFoodOutline, mdiFoodForkDrink, mdiClockOutline, mdiFolderInformation, mdiCoffeeOutline, mdiWeatherNight } from '@mdi/js';
+import { mdiLeaf, mdiFood, mdiFoodApple, mdiFoodOutline, mdiFoodForkDrink, mdiClockOutline, mdiFolderInformation, mdiCoffeeOutline, mdiWeatherNight } from '@mdi/js';
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import 'dayjs/locale/de';
@@ -230,7 +230,7 @@ export default {
     return {
       mdiLeaf,
       mdiFood,
-      mdiCarrot,
+      mdiFoodApple,
       mdiFoodForkDrink,
       mdiClockOutline,
       mdiFolderInformation,
