@@ -73,16 +73,35 @@ async function ostfaliaNewsRequest (newsSelector: string): Promise<NewsElement[]
  * @returns NewsElement[]
  */
 async function campus38NewsRequest (): Promise<NewsElement[]> {
-  const response = await fetch('https://www.campus38.de/newsfeed.xml').then((res) => res.text());
-  const $ = cheerio.load(response, { xmlMode: true });
-  return $('entry').map(function () {
-    return <NewsElement>{
-      title: $('title', this).text().trim(),
-      link: $('link', this).attr('href'),
-      text: $('summary', this).text().trim(),
-      date: moment($('published', this).text().trim().split('T')[0]).utcOffset('+0100').toDate()
-    };
-  }).slice(0, 10).get();
+  console.log('campus38NewsRequest called');
+  const response = await fetch('https://campus38.de/wp-json/wp/v2/posts').then((res) => res.json());
+  console.log('campus38 response:', response.length, 'posts');
+
+  const posts = response.slice(0, 10);
+  const newsElements: NewsElement[] = [];
+
+  for (const post of posts) {
+    let image: string | undefined;
+    if (post.featured_media) {
+      try {
+        const mediaResponse = await fetch(`https://campus38.de/wp-json/wp/v2/media/${post.featured_media}`);
+        const media = await mediaResponse.json();
+        image = media.media_details?.sizes?.medium?.source_url || media.source_url;
+      } catch (e) {
+        console.log(`Error fetching media for post ${post.id}:`, e);
+      }
+    }
+
+    newsElements.push({
+      title: post.title.rendered,
+      link: post.link,
+      text: post.excerpt.rendered.trim(),
+      date: moment(post.date).utcOffset('+0100').toDate(),
+      image
+    });
+  }
+
+  return newsElements;
 }
 
 /**

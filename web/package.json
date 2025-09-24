@@ -6,8 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "dev:remote": "API_URL=https://spluseins.de/ nuxt",
-    "dev:local": "API_URL=http://127.0.0.1:3001 nuxt",
+    "dev:remote": "cross-env API_URL=https://spluseins.de/ nuxt",
+    "dev:local": "cross-env API_URL=http://127.0.0.1:3001 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -33,6 +33,7 @@
     "@nuxtjs/eslint-module": "3.1.0",
     "@nuxtjs/vuetify": "1.12.3",
     "@types/chroma-js": "3.1.1",
+    "cross-env": "7.0.3",
     "eslint": "8.57.1",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.32.0",

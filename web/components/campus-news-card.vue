@@ -9,27 +9,30 @@
       </div>
     </v-card-title>
     <v-card-text>
-      <v-list dense>
-        <div
-          v-for="item in campusNews"
-          :key="item.link"
-          class="py-1"
-        >
-          <a
-            :href="item.link"
-            target="_blank"
-            class="link"
-            rel="noopener"
-          >
-            {{ item.title }}
-          </a>
-          <br>
-          <span class="text--secondary">
-            {{ shortname(item.source) }}.
-          </span>
-          <span>{{ item.text }}</span>
-          <br>
-        </div>
+      <v-list two-line>
+        <template v-for="(item, index) in campusNews">
+          <v-list-item :key="item.link" :href="item.link" target="_blank" rel="noopener">
+            <v-list-item-avatar v-if="item.image" tile size="80">
+              <v-img :src="item.image" cover></v-img>
+            </v-list-item-avatar>
+
+            <v-list-item-content>
+              <v-list-item-title class="text-wrap font-weight-bold">{{ item.title }}</v-list-item-title>
+              <v-list-item-subtitle class="text-wrap">{{ item.text }}</v-list-item-subtitle>
+              <div class="d-flex mt-2">
+                <div class="d-flex align-center mr-4">
+                  <v-icon small class="mr-1">mdi-newspaper</v-icon>
+                  <span class="text-caption">{{ shortname(item.source) }}</span>
+                </div>
+                <div class="d-flex align-center">
+                  <v-icon small class="mr-1">mdi-calendar</v-icon>
+                  <span class="text-caption">{{ formatDate(item.date) }}</span>
+                </div>
+              </div>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider v-if="index < campusNews.length - 1" :key="index"></v-divider>
+        </template>
       </v-list>
     </v-card-text>
   </v-card>
@@ -61,6 +64,9 @@ export default {
     shortname (path) {
       return this.availableSources.filter(source => source.path === path)[0].shortname;
     },
+    formatDate (date) {
+      return new Date(date).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    },
     ...mapActions({
       loadCampusNews: 'news/loadCampusNews'
     })
@@ -68,10 +74,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
-
-.link{
+<style lang="scss" scoped>
+.link {
   text-decoration: none;
+  color: inherit;
 }
-
 </style>

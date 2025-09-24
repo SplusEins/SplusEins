@@ -2,15 +2,20 @@ import * as express from 'express';
 import * as cacheManager from 'cache-manager';
 import * as fsStore from 'cache-manager-fs-hash';
 
-import { createClient } from '@motis-project/motis-fptf-client'
-import { profile } from '@motis-project/motis-fptf-client/p/transitous'
-
 // create a client with Transitous profile (disable station enrichment to avoid import/path issues with db-hafas-stations)
-const motisClient = createClient(
-  profile,
-  'spluseins.de/team@spluseins.de/05.11.25',
-  { enrichStations: false }
-); // in case of changes, adjust the version date accordingly
+let motisClient: any = null;
+const getMotisClient = async () => {
+  if (!motisClient) {
+    const { createClient } = await import('@motis-project/motis-fptf-client');
+    const { profile } = await import('@motis-project/motis-fptf-client/p/transitous');
+    motisClient = createClient(
+      profile,
+      'spluseins.de/team@spluseins.de/05.11.25',
+      { enrichStations: false }
+    );
+  }
+  return motisClient;
+};
 
 // default must be in /tmp because the rest is RO on AWS Lambda
 const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
@@ -45,8 +50,9 @@ router.get('/', async (req, res, next) => {
     const data = await cache.wrap('bus', async () => {
       console.log('bus cache miss for key bus');
 
-      const exerToFh = await motisClient.journeys(exer, fh, motisOpts)
-      const fhToExer = await motisClient.journeys(fh, exer, motisOpts)
+      const client = await getMotisClient();
+      const exerToFh = await client.journeys(exer, fh, motisOpts)
+      const fhToExer = await client.journeys(fh, exer, motisOpts)
       const extractDateAndLine = (journeys) => journeys
         .map(({ legs }) => legs)
         .filter(legs => legs.length === 1)

@@ -9,6 +9,7 @@ export interface NewsElement {
   text: string;
   date?: Date;
   source?: string;
+  image?: string;
 }
 
 export interface MensaPrice {

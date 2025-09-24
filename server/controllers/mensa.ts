@@ -60,7 +60,7 @@ async function getDayPlan (id) : Promise<MensaDayPlan[]> {
 
       const signal = timeoutSignal(3000) // abort if openmensa is too slow to respond
 
-      const response = await fetch(`https://sls.api.stw-on.de/v1/location/${id}/menu/${startDate}/${endDate}`, { signal })
+      const response = await fetch(`https://sls.api.stw-on.de/v1/location/${id}/menu/${startDate}/${endDate}`, { signal: signal as any })
         .then((res) => res.json()) as { meals: StwMensaMeal[] };
       const meals:MensaMeal[] = response.meals.map(itm => {
         return {
@@ -123,7 +123,7 @@ router.get('/', async (req, res, next) => {
 
         const signal = timeoutSignal(3000) // abort if openmensa is too slow to respond
 
-        const response : Mensa = await fetch(`https://sls.api.stw-on.de/v1/location/${mensaID}`, { signal }) // 130 is WF mensa
+        const response : Mensa = await fetch(`https://sls.api.stw-on.de/v1/location/${mensaID}`, { signal: signal as any }) // 130 is WF mensa
           .then((res) => res.json()) as Mensa;
 
         let url;
