@@ -1350,6 +1350,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/131804.html",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_wirtschaftsinformatik_4_ws25",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/161905.html",
     "label": "Digital Technologies - DITR",
     "faculty": "Informatik",
