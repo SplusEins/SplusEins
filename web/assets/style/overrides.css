@@ -1,0 +1,9 @@
+.theme--light.v-card > .v-card__text,
+.theme--light .meal-card > .text--secondary {
+  color: #272727 !important;
+}
+
+/* Ensure icons keep intended colors but not dimmed too much */
+.theme--light .mensa-day-card .v-icon {
+  opacity: 1;
+}

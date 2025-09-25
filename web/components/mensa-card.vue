@@ -1,5 +1,5 @@
 <template>
-  <v-card class="fill-height">
+  <v-card class="fill-height mensa-card">
     <v-card-title>
       <div class="text-h5">
         Mensa Wolfenbüttel {{ isPlanOfToday? 'Heute' : 'Morgen' }}

@@ -80,7 +80,7 @@
                       </v-icon>
                     </div>
                     <div class="d-flex">
-                      Niedersachsen Menü
+                      StudiDeal
                       <v-icon
                         color="red"
                         small
@@ -148,50 +148,71 @@
                     >
                       Aktuell sind keine Pläne verfügbar.
                     </v-alert>
-                    <div
-                      class="py-2"
-                      v-else
-                    >
-                      <v-row v-if="$vuetify.breakpoint.mobile">
-                        <v-col
-                          v-for="dayPlan in item.dayPlans"
-                          :key="dayPlan.date"
-                          cols=12
-                        >
-                          <mensa-dayplan :plan="dayPlan" />
+                    <div v-else>
+                      <v-row align="center" no-gutters class="py-2 px-2">
+                        <v-col cols="12" md="6" class="pr-md-2 mb-2 mb-md-0">
+                          <div class="d-flex align-center day-picker">
+                            <v-btn icon small @click="prevDay(item)" :disabled="!hasPrev(item)">
+                              <v-icon>{{ mdiChevronLeft }}</v-icon>
+                            </v-btn>
+                            <div class="day-chip-container flex-grow-1 mx-2">
+                              <v-chip-group v-model="selectedDay[item.id]" mandatory row>
+                                <v-chip
+                                  v-for="dp in item.dayPlans"
+                                  :key="dp.date"
+                                  :value="dp.date"
+                                  :color="isToday(dp.date) ? 'primary' : undefined"
+                                  :outlined="selectedDay[item.id] !== dp.date"
+                                  small
+                                  class="mr-1 mb-1"
+                                >
+                                  {{ dayShortLabel(dp.date) }}
+                                </v-chip>
+                              </v-chip-group>
+                            </div>
+                            <v-btn icon small @click="nextDay(item)" :disabled="!hasNext(item)">
+                              <v-icon>{{ mdiChevronRight }}</v-icon>
+                            </v-btn>
+                            <v-btn small text class="ml-2" @click="goToday(item)" :disabled="!hasToday(item)">
+                              <v-icon left small>{{ mdiCalendarToday }}</v-icon>
+                              Heute
+                            </v-btn>
+                          </div>
+                        </v-col>
+                        <v-col cols="12" md="6" class="pl-md-2">
+                          <div class="d-flex align-center group-toggle">
+                            <span class="mr-3 text-body-2 text--secondary">Gruppieren nach:</span>
+                            <v-btn-toggle
+                              v-model="groupBy[item.id]"
+                              dense
+                              mandatory
+                            >
+                              <v-btn
+                                small
+                                :value="'lane'"
+                                title="Typ (Essen, Beilage, Dessert...)"
+                              >
+                                Typ
+                              </v-btn>
+                              <v-btn
+                                small
+                                :value="'meat'"
+                                title="Ernährungsart (Vegan, Rind, Geflügel...)"
+                              >
+                                Ernährungsart
+                              </v-btn>
+                            </v-btn-toggle>
+                          </div>
                         </v-col>
                       </v-row>
 
-                      <v-carousel
-                        v-else
-                        show-arrows
-                        hide-delimiters
-                        hide-delimiter-background
-                        :light="!$vuetify.theme.dark"
-                        height="100%"
-                      >
-                        <template>
-                          <v-carousel-item
-                            v-for="dayPlanGroup in groupedDayPlans(item.dayPlans)"
-                            :key="dayPlanGroup[0].date"
-                          >
-                            <v-row
-                              dense
-                              class="carousel-control-padding"
-                            >
-                              <v-col
-                                v-for="(_, i) in 3"
-                                :key="i"
-                              >
-                                <mensa-dayplan
-                                  v-if="dayPlanGroup[i]"
-                                  :plan="dayPlanGroup[i]"
-                                />
-                              </v-col>
-                            </v-row>
-                          </v-carousel-item>
-                        </template>
-                      </v-carousel>
+                      <div class="py-2">
+                        <mensa-dayplan
+                          v-if="getSelectedPlan(item)"
+                          :plan="getSelectedPlan(item)"
+                          :group-by="groupBy[item.id]"
+                        />
+                      </div>
                     </div>
                   </no-ssr>
                 </v-card>
@@ -207,7 +228,7 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
 import MensaDayplan from '../components/mensa-dayplan.vue';
-import { mdiLeaf, mdiFood, mdiCarrot, mdiFoodOutline, mdiFoodForkDrink, mdiClockOutline, mdiFolderInformation, mdiCoffeeOutline, mdiWeatherNight } from '@mdi/js';
+import { mdiLeaf, mdiFood, mdiCarrot, mdiFoodOutline, mdiFoodForkDrink, mdiClockOutline, mdiFolderInformation, mdiCoffeeOutline, mdiWeatherNight, mdiChevronLeft, mdiChevronRight, mdiCalendarToday } from '@mdi/js';
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import 'dayjs/locale/de';
@@ -236,7 +257,12 @@ export default {
       mdiFolderInformation,
       mdiCoffeeOutline,
       mdiWeatherNight,
-      mdiFoodOutline
+      mdiFoodOutline,
+      mdiChevronLeft,
+      mdiChevronRight,
+      mdiCalendarToday,
+      selectedDay: {},
+      groupBy: {}
     }
   },
   components: {
@@ -287,6 +313,69 @@ export default {
       }
       return grouped;
     },
+    getDayOptions (dayPlans) {
+      if (!dayPlans) return [];
+      return dayPlans.map(dp => ({
+        label: this.dayLabel(dp.date),
+        value: dp.date
+      }));
+    },
+    dayLabel (dateStr) {
+      const day = this.$dayjs(dateStr.toString());
+      const prefix = day.isSame(this.$dayjs(), 'day') ? 'Heute' : day.format('dddd');
+      return `${prefix} - ${day.format('DD.MM.YYYY')}`;
+    },
+    dayShortLabel (dateStr) {
+      const day = this.$dayjs(dateStr.toString());
+      const isToday = day.isSame(this.$dayjs(), 'day');
+      return isToday ? `Heute • ${day.format('DD.MM')}` : `${day.format('dd')} • ${day.format('DD.MM')}`;
+    },
+    isToday (dateStr) {
+      return this.$dayjs(dateStr.toString()).isSame(this.$dayjs(), 'day');
+    },
+    ensureDefaultsFor (item) {
+      if (!this.groupBy[item.id]) this.$set(this.groupBy, item.id, 'lane');
+      if (!this.selectedDay[item.id]) {
+        const first = item.dayPlans && item.dayPlans[0];
+        if (first) this.$set(this.selectedDay, item.id, first.date);
+      }
+    },
+    getSelectedPlan (item) {
+      this.ensureDefaultsFor(item);
+      const sel = this.selectedDay[item.id];
+      if (!sel) return null;
+      return (item.dayPlans || []).find(dp => dp.date === sel) || null;
+    },
+    indexOfSelected (item) {
+      const list = item.dayPlans || [];
+      return list.findIndex(dp => dp.date === this.selectedDay[item.id]);
+    },
+    hasPrev (item) {
+      const idx = this.indexOfSelected(item);
+      return idx > 0;
+    },
+    hasNext (item) {
+      const idx = this.indexOfSelected(item);
+      const list = item.dayPlans || [];
+      return idx !== -1 && idx < list.length - 1;
+    },
+    hasToday (item) {
+      return (item.dayPlans || []).some(dp => this.isToday(dp.date)) && !this.isToday(this.selectedDay[item.id] || '');
+    },
+    prevDay (item) {
+      const list = item.dayPlans || [];
+      const idx = this.indexOfSelected(item);
+      if (idx > 0) this.$set(this.selectedDay, item.id, list[idx - 1].date);
+    },
+    nextDay (item) {
+      const list = item.dayPlans || [];
+      const idx = this.indexOfSelected(item);
+      if (idx !== -1 && idx < list.length - 1) this.$set(this.selectedDay, item.id, list[idx + 1].date);
+    },
+    goToday (item) {
+      const today = (item.dayPlans || []).find(dp => this.isToday(dp.date));
+      if (today) this.$set(this.selectedDay, item.id, today.date);
+    },
     openingTimeFormat (hours) {
       const formatDay = (day) => dayjs().isoWeekday(day).format('dddd');
       const dayRange = hours.start_day === hours.end_day
@@ -330,6 +419,19 @@ export default {
 
 .v-window__prev, .v-window__next {
   margin: 0 !important;
+}
+
+.group-toggle .v-btn--active {
+  background-color: var(--v-primary-base) !important;
+  color: white !important;
+}
+
+.day-picker .day-chip-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.day-picker .v-chip-group {
+  display: inline-flex;
 }
 
 .chip-container {

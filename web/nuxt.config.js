@@ -1,92 +1,100 @@
-import PROTECTED_INFORMATION from './assets/protected-information.json';
+import PROTECTED_INFORMATION from "./assets/protected-information.json";
 
 export default {
-  ...(process.env.DEVCONTAINER === 'true'
+  ...(process.env.DEVCONTAINER === "true"
     ? {
         server: {
-          host: '0.0.0.0'
-        }
+          host: "0.0.0.0",
+        },
       }
     : {}),
   telemetry: false,
-  modern: process.env.NODE_ENV == 'development' ? false : 'server',
+  modern: process.env.NODE_ENV == "development" ? false : "server",
 
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
-    titleTemplate: '%s - SplusEins',
+    titleTemplate: "%s - SplusEins",
     meta: [
-      { hid: 'keywords', name: 'keywords', content: 'SplusEins, Splus1, splus1, Sommersemester 2020, SS20, Ostfalia, Stundenplan, Busplan, Bus, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Suderburg, Wolfsburg, Salzgitter, Informatik, Bau, Wasser, Boden, Fahrzeugtechnik, Gesundheitswesen, Verkehr, Sport, Tourismus, Medien, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Wahlfächer, Wahlpflichtfächer' },
-      { hid: 'google-site-verification', name: 'google-site-verification', content: 'EBsrsgaLbFe2iWIzVaE77k6bO0BtpcgBVLXm5DJzgUc' }
-    ]
+      {
+        hid: "keywords",
+        name: "keywords",
+        content:
+          "SplusEins, Splus1, splus1, Sommersemester 2020, SS20, Ostfalia, Stundenplan, Busplan, Bus, Mensaplan, Mensa, Semesterplan, Plan, Wolfenbüttel, Suderburg, Wolfsburg, Salzgitter, Informatik, Bau, Wasser, Boden, Fahrzeugtechnik, Gesundheitswesen, Verkehr, Sport, Tourismus, Medien, Soziale Arbeit, Elektrotechnik, Recht, Versorgungstechnik, Wahlfächer, Wahlpflichtfächer",
+      },
+      {
+        hid: "google-site-verification",
+        name: "google-site-verification",
+        content: "EBsrsgaLbFe2iWIzVaE77k6bO0BtpcgBVLXm5DJzgUc",
+      },
+    ],
   },
 
   /*
-  ** Meta of the page
-  */
+   ** Meta of the page
+   */
   meta: {
     nativeUI: true,
-    lang: 'de',
-    name: 'SplusEins',
-    author: 'SplusEins-Team',
-    ogHost: 'https://spluseins.de',
-    ogImage: '/logo.png'
+    lang: "de",
+    name: "SplusEins",
+    author: "SplusEins-Team",
+    ogHost: "https://spluseins.de",
+    ogImage: "/logo.png",
   },
 
   /*
-  ** Customize the automatic progress-bar
-  ** https://nuxtjs.org/docs/2.x/features/loading
-  */
+   ** Customize the automatic progress-bar
+   ** https://nuxtjs.org/docs/2.x/features/loading
+   */
   loading: {
-    color: '#1976D2', // blue.darken2
-    height: '3px',
+    color: "#1976D2", // blue.darken2
+    height: "3px",
     duration: 1000,
-    continuous: true
+    continuous: true,
   },
 
   /*
-  ** Global CSS
-  */
-  css: [
-    '~/assets/style/roboto.css'
-  ],
+   ** Global CSS
+   */
+  css: ["~/assets/style/roboto.css", "~/assets/style/overrides.css"],
 
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: [
     // https://github.com/championswimmer/vuex-persist
-    { src: '@/plugins/vuex-persist', mode: 'client' },
+    { src: "@/plugins/vuex-persist", mode: "client" },
     // https://github.com/Inndy/vue-clipboard2
-    '@/plugins/vue-clipboard2',
+    "@/plugins/vue-clipboard2",
     // https://github.com/dumptyd/vue-css-donut-chart
-    '@/plugins/vue-css-donut-chart',
+    "@/plugins/vue-css-donut-chart",
     // https://github.com/nuxt-community/pwa-module/issues/239#issuecomment-796807081
-    { src: '~/plugins/pwa-update.js', mode: 'client' }
+    { src: "~/plugins/pwa-update.js", mode: "client" },
   ],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy',
+    "@nuxtjs/axios",
+    "@nuxtjs/proxy",
     // https://pwa.nuxtjs.org/
-    '@nuxtjs/pwa',
+    "@nuxtjs/pwa",
     // https://github.com/nuxt-community/dayjs-module
-    '@nuxtjs/dayjs'
+    "@nuxtjs/dayjs",
   ],
   /*
-  ** Axios module configuration
-  */
+   ** Axios module configuration
+   */
   axios: {
-    proxy: true
+    proxy: true,
   },
-  proxy: { // https://axios.nuxtjs.org/options/#proxy
-    '/api': { target: process.env.API_URL },
-    '/docs': { target: process.env.DOCS_URL, pathRewrite: { '^/docs': '' } }
+  proxy: {
+    // https://axios.nuxtjs.org/options/#proxy
+    "/api": { target: process.env.API_URL },
+    "/docs": { target: process.env.DOCS_URL, pathRewrite: { "^/docs": "" } },
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -94,28 +102,31 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/eslint-module',
+    "@nuxtjs/eslint-module",
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify'
+    "@nuxtjs/vuetify",
   ],
 
   env: {
-    team: ('PROTECTED_INFORMATION' in process.env ? JSON.parse(process.env.PROTECTED_INFORMATION) : PROTECTED_INFORMATION).team,
-    staging: process.env.STAGING === 'true' || false,
-    version: process.env.GIT_REV || ''
+    team: ("PROTECTED_INFORMATION" in process.env
+      ? JSON.parse(process.env.PROTECTED_INFORMATION)
+      : PROTECTED_INFORMATION
+    ).team,
+    staging: process.env.STAGING === "true" || false,
+    version: process.env.GIT_REV || "",
   },
 
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     standalone: true, // has some advantages, see https://github.com/nuxt/nuxt.js/pull/4661
-    extend (config, ctx) {
+    extend(config, ctx) {
       if (ctx.isDev) {
-        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+        config.devtool = ctx.isClient ? "source-map" : "inline-source-map";
       }
     },
-    extractCSS: true
+    extractCSS: true,
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -123,33 +134,29 @@ export default {
     // customVariables: ['~/assets/variables.scss'],
     // treeshake: true,
     breakpoint: {
-      mobileBreakpoint: 'sm' // This is equivalent to a value of 960
+      mobileBreakpoint: "sm", // This is equivalent to a value of 960
     },
     icons: {
-      iconfont: 'mdiSvg'
+      iconfont: "mdiSvg",
     },
     defaultAssets: false,
     theme: {
-      options: { customProperties: true }
-    }
+      options: { customProperties: true },
+    },
   },
 
   // Moment js replacement https://github.com/nuxt-community/dayjs-module#usage
   dayjs: {
-    locales: ['de'],
-    defaultLocale: 'de',
-    plugins: [
-      'isoWeek',
-      'weekOfYear',
-      'relativeTime'
-    ]
+    locales: ["de"],
+    defaultLocale: "de",
+    plugins: ["isoWeek", "weekOfYear", "relativeTime"],
   },
 
   /*
-  ** Generate configuration
-  */
+   ** Generate configuration
+   */
   generate: {
     fallback: true,
-    routes: []
-  }
+    routes: [],
+  },
 };
