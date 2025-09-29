@@ -5,6 +5,8 @@
     <div>
       <v-tabs
         v-model="activeTab"
+        center-active
+        show-arrows
       >
         <v-tab
           v-for="(item, idx) in plans"
@@ -61,36 +63,38 @@
                       target="_blank"
                     >Offizielle Mensa-Seite mit Öffnungszeiten</a>
                   </div>
-                  <div class="text-body-2 text--secondary d-flex">
-                    <div class="d-flex pr-2">
-                      Vegetarisch
-                      <v-icon
-                        color="green"
-                        small
-                        class="align-self-center ml-1"
-                      >
-                        {{ mdiCarrot }}
-                      </v-icon>
-                    </div>
-                    <div class="d-flex pr-2">
-                      Vegan
-                      <v-icon
-                        color="green"
-                        small
-                        class="align-self-center ml-1"
-                      >
-                        {{ mdiLeaf }}
-                      </v-icon>
-                    </div>
-                    <div class="d-flex">
-                      Niedersachsen Menü
-                      <v-icon
-                        color="red"
-                        small
-                        class="align-self-center ml-1"
-                      >
-                        {{ mdiFood }}
-                      </v-icon>
+                  <div class="text-body-2 text--secondary menu-labels">
+                    <div class="d-flex flex-row flex-wrap align-center">
+                      <div class="d-flex align-center mr-2">
+                        Vegetarisch
+                        <v-icon
+                          color="green"
+                          small
+                          class="ml-1"
+                        >
+                          {{ mdiCarrot }}
+                        </v-icon>
+                      </div>
+                      <div class="d-flex align-center mr-2">
+                        Vegan
+                        <v-icon
+                          color="green"
+                          small
+                          class="ml-1"
+                        >
+                          {{ mdiLeaf }}
+                        </v-icon>
+                      </div>
+                      <div class="d-flex align-center">
+                        <span>Niedersachsen Menü</span>
+                        <v-icon
+                          color="red"
+                          small
+                          class="ml-1"
+                        >
+                          {{ mdiFood }}
+                        </v-icon>
+                      </div>
                     </div>
                   </div>
                 </v-card>
