@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@motis-project/motis-client": "2.1.2",
-    "@motis-project/motis-fptf-client": "6.1.0",
+    "@motis-project/motis-fptf-client": "6.2.0",
     "cache-manager": "4.1.0",
     "cache-manager-fs-hash": "1.1.0",
     "cheerio": "1.0.0-rc.12",
