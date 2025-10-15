@@ -1,4 +1,4 @@
-import * as OSM_ROOMS_DATA from "../assets/overpassOSMRoomsData.json";
+import * as OSM_ROOMS_DATA from '../assets/overpassOSMRoomsData.json';
 
 export function getRoomLocation(room: string) {
   let result = room;
@@ -6,7 +6,6 @@ export function getRoomLocation(room: string) {
   /**
    * If the room starts with WF-EX-, it is at the Am Exer address
    * E. g. WF-EX-2/252 -> Am Exer 2, Am Exer 2, 38302 Wolfenbüttel
-   * 
    * Regex explanation:
    * ^WF-EX-     : Room starts with WF-EX-
    * (\d+)       : Capture building number (one or more digits) -> this is used for the street number
@@ -20,7 +19,7 @@ export function getRoomLocation(room: string) {
     const buildingNumber = exerRegexMatch ? exerRegexMatch[1] : '';
     result += ` (Am Exer ${buildingNumber}, 38302 Wolfenbüttel)`;
   } else if (mainRegexMatch) {
-    result += ` (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel)`;
+    result += ' (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel)';
   }
 
   /**
