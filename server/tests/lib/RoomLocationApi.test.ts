@@ -1,4 +1,4 @@
-import { getRoomLocation } from "../../lib/RoomLocationApi";
+import { getLectureRoomsLocation, getRoomLocation } from "../../lib/RoomLocationApi";
 
 describe('RoomLocationApi', () => {
   describe('getRoomLocation', () => {
@@ -18,6 +18,14 @@ describe('RoomLocationApi', () => {
         expect(getRoomLocation('WF-EX-XYZ')).toBe('WF-EX-XYZ');
         expect(getRoomLocation('WF-EX-/252')).toBe('WF-EX-/252');
       });
+    });
+  });
+
+  describe('getLectureRoomsLocation', () => {
+    it('should return full addresses for multiple Am Exer campus rooms', () => {
+      const rooms = ['WF-EX-2/252', 'WF-EX-3/101', 'WF-EX-4/303'];
+      const expected = 'WF-EX-2/252 (Am Exer 2, 38302 Wolfenbüttel) / WF-EX-3/101 (Am Exer 3, 38302 Wolfenbüttel) / WF-EX-4/303 (Am Exer 4, 38302 Wolfenbüttel)';
+      expect(getLectureRoomsLocation(rooms)).toBe(expected);
     });
   });
 });
