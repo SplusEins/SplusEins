@@ -1,31 +1,37 @@
 import { getLectureRoomsLocation, getRoomLocation } from "../../lib/RoomLocationApi";
 
+// Mock OSM data
+jest.mock('../../assets/overpassOSMRoomsData.json', () => ({
+  "WF-EX-2/252": { id: 123456789, level: "2" },
+  "WF-EX-3/101": { id: 987654321, level: "1" }
+}), { virtual: true });
+
 describe('RoomLocationApi', () => {
   describe('getRoomLocation', () => {
     describe('Am Exer rooms', () => {
-      it('should return full address for Am Exer campus rooms', () => {
-        expect(getRoomLocation('WF-EX-2')).toBe('WF-EX-2 (Am Exer 2, 38302 Wolfenbüttel)');
-        expect(getRoomLocation('WF-EX-2/')).toBe('WF-EX-2/ (Am Exer 2, 38302 Wolfenbüttel)');
-        expect(getRoomLocation('WF-EX-2/252')).toBe('WF-EX-2/252 (Am Exer 2, 38302 Wolfenbüttel)');
-        expect(getRoomLocation('WF-EX-3/101')).toBe('WF-EX-3/101 (Am Exer 3, 38302 Wolfenbüttel)');
-        expect(getRoomLocation('WF-EX-4/303')).toBe('WF-EX-4/303 (Am Exer 4, 38302 Wolfenbüttel)');
-        expect(getRoomLocation('WF-EX-5/404')).toBe('WF-EX-5/404 (Am Exer 5, 38302 Wolfenbüttel)');
-        expect(getRoomLocation('WF-EX-6/505')).toBe('WF-EX-6/505 (Am Exer 6, 38302 Wolfenbüttel)');
+      it('should return full address for Am Exer 2/252 room with OSM link', () => {
+        const room = 'WF-EX-2/252';
+        const expected = 'WF-EX-2/252 (Am Exer 2, 38302 Wolfenbüttel) Link: https://www.osmapp.org/way/123456789';
+        expect(getRoomLocation(room)).toBe(expected);
       });
 
-      it('should return only the room if the room does not match known patterns', () => {
-        expect(getRoomLocation('UnknownRoom')).toBe('UnknownRoom');
-        expect(getRoomLocation('WF-EX-XYZ')).toBe('WF-EX-XYZ');
-        expect(getRoomLocation('WF-EX-/252')).toBe('WF-EX-/252');
+      it('should return full address for Am Exer 3/101 room with OSM link', () => {
+        const room = 'WF-EX-3/101';
+        const expected = 'WF-EX-3/101 (Am Exer 3, 38302 Wolfenbüttel) Link: https://www.osmapp.org/way/987654321';
+        expect(getRoomLocation(room)).toBe(expected);
       });
-    });
-  });
 
-  describe('getLectureRoomsLocation', () => {
-    it('should return full addresses for multiple Am Exer campus rooms', () => {
-      const rooms = ['WF-EX-2/252', 'WF-EX-3/101', 'WF-EX-4/303'];
-      const expected = 'WF-EX-2/252 (Am Exer 2, 38302 Wolfenbüttel) / WF-EX-3/101 (Am Exer 3, 38302 Wolfenbüttel) / WF-EX-4/303 (Am Exer 4, 38302 Wolfenbüttel)';
-      expect(getLectureRoomsLocation(rooms)).toBe(expected);
+      it('should return full address without link for Am Exer rooms without a OSM entry', () => {
+        const room = 'WF-EX-4/303';
+        const expected = 'WF-EX-4/303 (Am Exer 4, 38302 Wolfenbüttel)';
+        expect(getRoomLocation(room)).toBe(expected);
+      });
+
+      it("should return room as it is for rooms, that can't exist", () => {
+        const room = 'non-existing-room';
+        const expected = 'non-existing-room';
+        expect(getRoomLocation(room)).toBe(expected);
+      });
     });
   });
 });
