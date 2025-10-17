@@ -106,7 +106,7 @@ export default {
   },
   computed: {
     displayMensaCard () {
-      if (!this.mensaPlans || this.mensaPlans.length == 0) {
+      if (!this.mensaPlans || this.mensaPlans.length === 0 || !this.mensaPlans[0].dayPlans || this.mensaPlans[0].dayPlans.length === 0) {
         return false;
       }
       const mensaPlan = this.mensaPlans[0].dayPlans;
