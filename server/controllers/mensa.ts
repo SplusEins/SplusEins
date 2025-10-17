@@ -86,25 +86,26 @@ async function getDayPlan (id) : Promise<MensaDayPlan[]> {
     }, { ttl: CACHE_SECONDS });
 
     return data;
-  } catch (error) {
-    console.log('Error');
+  } catch (error: unknown) {
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error('Error getDayPlan:', msg, error);
   }
 }
 
 function filterMensaOpenings (entries: MensaOpening[], mensaId?: number) : MensaOpening[] {
   // special handling for Suderburg, since the API returns multiple opening hours (only one is correct)
   if (mensaId === 134) {
-    // correct entry is Mo-Fr 12:00-13:30, source: https://stw-on.de/suderburg/essen/mensa
+    // Suderburg: prefer 12:00–13:30 entries (source: stw-on.de/suderburg/essen/mensa)
     const filtered = entries.filter(entry =>
       entry.start_time === '12:00:00' &&
-      entry.end_time === '13:30:00'
+      entry.end_time === '13:30:00' &&
+      entry.end_day !== 0
     );
 
-    // fallback: if the opening hours are changed at some point, just continue with the default filtering below
     if (filtered.length > 0) {
-      filtered[0].start_day = 1; // monday
-      return [filtered[0]];
+      return filtered.map(entry => ({ ...entry, start_day: 1 }));
     }
+    // fallback: if the opening hours are changed at some point, just continue with the default filtering below
   }
 
   return entries.filter(entry => {
