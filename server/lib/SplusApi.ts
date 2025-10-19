@@ -7,6 +7,7 @@ import { parseSkedCSV, parseSkedGraphical, parseTimetableIntranet, parseSkedList
 import * as sanitize from 'sanitize-html';
 import { ParsedLecture } from '../model/SplusModel';
 import * as iconv from 'iconv-lite';
+import { getLectureRoomsLocation } from './RoomLocationApi';
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
@@ -105,7 +106,7 @@ async function parseTimetable (timetable: TimetableRequest): Promise<Event[]> {
       // Allow only specific HTML attributes for the room since we directly render the HTML in the client
       // Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
       lecture.room = sanitize(lecture.room, allowLinksConfig).replace('&amp;', '&')
-      lecture.room = roomToLocation(lecture.room)
+      lecture.room = getLectureRoomsLocation(lecture.room.split(','))
       lecture.info = sanitize(lecture.info, allowLinksConfig).replace('&amp;', '&')
       // Strip all html
       lecture.lecturer = sanitize(lecture.lecturer, {}).replace('&amp;', '&')
@@ -115,32 +116,6 @@ async function parseTimetable (timetable: TimetableRequest): Promise<Event[]> {
     console.log(`Storing ${lectures.length} parsed lectures for ${key} in cache`)
     return lectures.map((lecture) => new Event(lecture));
   }, { ttl: CACHE_SECONDS });
-}
-
-/**
- * Adds the full address to the room, where available.
- *
- * @param string the old room string
- * @returns string the enhanced room name as an address
- */
-function roomToLocation (rooms: string): string {
-  return rooms
-    .split(', ')
-    .map((room: string) => room.trim())
-    .map((room: string): string => {
-      // match rooms of the exer address, https://regex101.com/r/gGmwbl/1
-      const matchExer = /^(?<building>\d+)\/(?<room>\d+)(?<room_extra>-\w+)?(\s+\((?<room_name>.+)\))?/.exec(room);
-      if (matchExer) {
-        return `${room}, Am Exer ${parseInt(matchExer.groups.building)} 38302 Wolfenbüttel Germany`;
-      }
-      // match rooms of the main address, https://regex101.com/r/krwu5H/1
-      const matchMain = /^([A-FL]\d{3})\s+(.+)/.exec(room);
-      if (matchMain) {
-        return `${room}, Salzdahlumer Str. 46/48 38302 Wolfenbüttel Germany`;
-      }
-      return room;
-    })
-    .join(' / ');
 }
 
 /**
