@@ -46,101 +46,122 @@
               wrap
             >
               <v-flex
-                md4
+                md6
                 xs12
+                style="max-width: 100%; flex-basis: 100%"
               >
                 <v-card flat>
-                  <div class="text-body-2">
-                    <v-icon
-                      color="indigo"
-                      class="align-self-center"
-                    >
-                      {{ mdiFolderInformation }}
-                    </v-icon>
-                    <a
-                      :href="getMensaURL(item.url)"
-                      style="text-decoration: none;"
-                      target="_blank"
-                    >Offizielle Mensa-Seite mit Öffnungszeiten</a>
-                  </div>
-                  <div class="text-body-2 text--secondary menu-labels">
-                    <div class="d-flex flex-row flex-wrap align-center">
-                      <div class="d-flex align-center mr-2">
-                        Vegetarisch
-                        <v-icon
-                          color="green"
-                          small
-                          class="ml-1"
-                        >
-                          {{ mdiCarrot }}
-                        </v-icon>
-                      </div>
-                      <div class="d-flex align-center mr-2">
-                        Vegan
-                        <v-icon
-                          color="green"
-                          small
-                          class="ml-1"
-                        >
-                          {{ mdiLeaf }}
-                        </v-icon>
-                      </div>
-                      <div class="d-flex align-center">
-                        <span>Niedersachsen Menü</span>
-                        <v-icon
-                          color="red"
-                          small
-                          class="ml-1"
-                        >
-                          {{ mdiFood }}
-                        </v-icon>
-                      </div>
-                    </div>
-                  </div>
-                </v-card>
-              </v-flex>
-              <v-flex
-                md8
-                xs12
-              >
-                <v-card flat>
-                  <div class="text-body-2">
-                    <v-icon
-                      color="indigo"
-                      class="align-self-center"
-                    >
-                      {{ mdiClockOutline }}
-                    </v-icon>
-                    Öffnungszeiten:
-                  </div>
                   <div
-                    class="text-body-2 text--secondary d-flex chip-container"
-                    v-if="item.opening_hours.length > 0"
+                    class="d-flex align-start flex-wrap"
+                    style="row-gap: 8px;"
                   >
                     <div
-                      class="d-flex pr-2"
-                      v-for="(opening, key) in item.opening_hours"
-                      :key="key"
+                      class="d-flex flex-column pr-4"
+                      style="min-width:0; max-width: 420px;"
                     >
-                      <v-chip
-                        outlined
-                        small
+                      <div class="d-flex align-center text-body-2 mb-1">
+                        <v-icon
+                          color="indigo"
+                          class="mr-2"
+                        >
+                          {{ mdiFolderInformation }}
+                        </v-icon>
+                        <a
+                          :href="getMensaURL(item.url)"
+                          class="text-decoration-none"
+                          target="_blank"
+                        >Offizielle Mensa-Seite mit Öffnungszeiten</a>
+                      </div>
+
+                      <div class="d-flex flex-wrap align-center text-body-2 text--secondary">
+                        <v-chip
+                          class="ma-1"
+                          small
+                          outlined
+                        >
+                          <v-icon
+                            left
+                            small
+                            color="orange"
+                          >
+                            {{ mdiCarrot }}
+                          </v-icon>
+                          Vegetarisch
+                        </v-chip>
+                        <v-chip
+                          class="ma-1"
+                          small
+                          outlined
+                        >
+                          <v-icon
+                            left
+                            small
+                            color="green"
+                          >
+                            {{ mdiSprout }}
+                          </v-icon>
+                          Vegan
+                        </v-chip>
+                        <v-chip
+                          class="ma-1"
+                          small
+                          outlined
+                        >
+                          <v-icon
+                            left
+                            small
+                            color="red"
+                          >
+                            {{ mdiCurrencyEur }}
+                          </v-icon>
+                          StudiDeal
+                        </v-chip>
+                      </div>
+                    </div>
+
+                    <div
+                      class="flex-grow-1"
+                      style="min-width:0;"
+                    >
+                      <div
+                        class="d-flex align-center text-body-2 mb-1"
                       >
                         <v-icon
-                          left
+                          color="indigo"
+                          class="mr-2"
+                        >
+                          {{ mdiClockOutline }}
+                        </v-icon>
+                        Öffnungszeiten:
+                      </div>
+                      <div
+                        v-if="item.opening_hours.length > 0"
+                        class="d-flex flex-wrap text-body-2 text--secondary"
+                      >
+                        <v-chip
+                          v-for="(opening, key) in item.opening_hours"
+                          :key="key"
+                          class="ma-1"
+                          outlined
                           small
                         >
-                          {{ openingTimeIcon(opening) }}
-                        </v-icon>
-                        {{ openingTimeFormat(opening) }}
-                      </v-chip>
+                          <v-icon
+                            left
+                            small
+                            class="mr-1"
+                          >
+                            {{ openingTimeIcon(opening) }}
+                          </v-icon>
+                          {{ openingTimeFormat(opening) }}
+                        </v-chip>
+                      </div>
+                      <div
+                        v-else
+                        class="text-body-2 text--secondary"
+                      >
+                        Bitte vor Ort informieren.
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="text-body-2 text--secondary d-flex chip-container"
-                    v-else
-                  >
-                    Bitte vor Ort informieren.
                   </div>
                 </v-card>
               </v-flex>
@@ -214,7 +235,7 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
 import MensaDayplan from '../components/mensa-dayplan.vue';
-import { mdiLeaf, mdiFood, mdiCarrot, mdiFoodOutline, mdiFoodForkDrink, mdiClockOutline, mdiFolderInformation, mdiCoffeeOutline, mdiWeatherNight } from '@mdi/js';
+import { mdiSprout, mdiCurrencyEur, mdiCarrot, mdiFoodOutline, mdiFoodForkDrink, mdiClockOutline, mdiFolderInformation, mdiCoffeeOutline, mdiWeatherNight } from '@mdi/js';
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import 'dayjs/locale/de';
@@ -236,8 +257,8 @@ export default {
   },
   data () {
     return {
-      mdiLeaf,
-      mdiFood,
+      mdiSprout,
+      mdiCurrencyEur,
       mdiCarrot,
       mdiFoodForkDrink,
       mdiClockOutline,
@@ -368,13 +389,12 @@ export default {
   display: flex;
   flex-wrap: nowrap; /* Verhindert das Umbruch von Chips */
   overflow-x: auto; /* Aktiviert das horizontale Scrollen */
-  padding: 5px 0;
+  padding-bottom: 10px;
 }
 
 .chip-container .v-chip {
   white-space: nowrap; /* Verhindert den Umbruch innerhalb der Chips */
 }
-
 /* Styling der Scrollleiste - Standard: Sichtbar auf Desktops */
 .chip-container::-webkit-scrollbar {
   height: 4px; /* Höhe der horizontalen Scrollleiste */
