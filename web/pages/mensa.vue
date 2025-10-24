@@ -4,7 +4,7 @@
   >
     <div>
       <v-tabs
-        v-model="activeTab"
+        :value="activeTab"
         center-active
         show-arrows
       >
@@ -265,8 +265,7 @@ export default {
       mdiFolderInformation,
       mdiCoffeeOutline,
       mdiWeatherNight,
-      mdiFoodOutline,
-      activeTab: null
+      mdiFoodOutline
     }
   },
   components: {
@@ -274,36 +273,18 @@ export default {
   },
   computed: {
     ...mapState({
-      plans: (state) => state.mensa.plans
-    })
+      plans: (state) => state.mensa.plans,
+      location: (state) => state.mensa.location
+    }),
+    activeTab () {
+      if (!this.plans || this.plans.length === 0) return 0;
+      const mappedName = locationMap[this.location] || locationMap.wf;
+      const idx = this.plans.findIndex(p => p.name === mappedName);
+      return idx !== -1 ? idx : 0;
+    }
   },
   mounted () {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-    })
     this.load();
-
-    const location = this.$route.query.location;
-    if (location && this.plans && this.plans.length > 0) {
-      this.setLocation(location);
-      // find index of plan wit name mapped from location
-      const mappedName = locationMap[location] || locationMap.wf;
-      const idx = this.plans.findIndex(p => p.name === mappedName);
-      this.activeTab = idx !== -1 ? idx : 0;
-    } else {
-      this.activeTab = 0;
-    }
-  },
-  watch: {
-    plans (newPlans) {
-      // in case the plans were loaded after the initial check in mounted
-      const location = this.$route.query.location;
-      if (location && newPlans && newPlans.length > 0) {
-        const mappedName = locationMap[location] || locationMap.wf;
-        const idx = newPlans.findIndex(p => p.name === mappedName);
-        this.activeTab = idx !== -1 ? idx : 0;
-      }
-    }
   },
   methods: {
     ...mapActions({
@@ -317,7 +298,6 @@ export default {
       return `https://www.stw-on.de/${url}`;
     },
     noMealsAvailable (plans) {
-      // If plans have been loaded successfully and no plans were available
       return (plans != null && plans.length === 0);
     },
     isOpen (opening_hours) {
@@ -359,7 +339,7 @@ export default {
     }
   },
   middleware: 'cached'
-};
+}
 </script>
 
 <style lang="scss">
