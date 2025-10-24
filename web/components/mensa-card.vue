@@ -2,18 +2,19 @@
   <v-card class="fill-height">
     <v-card-title class="pb-1">
       <div class="text-h5 mr-1">
-        Mensa {{ selectedLocation.title }} {{ isPlanOfToday? 'Heute' : 'Morgen' }}
+        {{ selectedLocation.description }} {{ isPlanOfToday ? 'Heute' : 'Morgen' }}
       </div>
-      <v-tooltip right>
+      <v-tooltip
+        right
+        v-if="availableLocations.length > 0"
+      >
         <template #activator="{ on }">
           <v-btn
             icon
             v-on="on"
             @click="dialogOpen = true"
           >
-            <v-icon
-              v-on="on"
-            >
+            <v-icon>
               {{ mdiFood }}
             </v-icon>
           </v-btn>
@@ -44,7 +45,7 @@
       <v-spacer />
       <v-btn
         nuxt
-        :to="`/mensa?location=${selectedLocation.path}`"
+        to="/mensa"
         text
         color="primary"
       >
@@ -61,63 +62,78 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations } from 'vuex';
-import { mdiFood } from '@mdi/js'
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
+import { mdiFood } from '@mdi/js';
+
+const CITY_TO_KEY = {
+  wolfenbüttel: 'wf',
+  wolfsburg: 'wob',
+  salzgitter: 'sz',
+  suderburg: 'sud'
+};
 
 export default {
   name: 'MensaCard',
   data () {
-    const availableLocations = [
-      { title: 'Wolfenbüttel', description: 'Mensa Wolfenbüttel', path: 'wf' },
-      { title: 'Wolfsburg', description: 'Bistro 4U Wolfsburg', path: 'wob' },
-      { title: 'Suderburg', description: 'Mensa Suderburg', path: 'sud' },
-      { title: 'Salzgitter', description: 'Mensa Salzgitter', path: 'sz' }
-    ];
     return {
       dialogOpen: false,
-      availableLocations,
       mdiFood
-    }
+    };
   },
   computed: {
+    ...mapState('mensa', ['plans', 'location']),
+    ...mapGetters('mensa', ['getNextAvailablePlan']),
+
+    availableLocations () {
+      if (!this.plans) return [];
+
+      const seen = new Set();
+      return this.plans
+        .map(plan => {
+          const city = plan?.address?.city?.toLowerCase();
+          const key = CITY_TO_KEY[city];
+          if (!key || seen.has(key)) return null;
+
+          seen.add(key);
+          const title = plan?.address?.line1 || plan.name || 'Mensa Wolfenbüttel';
+
+          return { key, description: title };
+        })
+        .filter(Boolean);
+    },
+
     selectedLocation: {
       get () {
-        let selected = this.availableLocations.find(loc => loc.path === this.location);
-        if (!selected) {
-          selected = this.availableLocations[0];
-          this.setLocation(selected.path);
-        }
-        return selected;
+        const found = this.availableLocations.find(l => l.key === this.location);
+        return found || this.availableLocations[0] || { key: 'wf', description: 'Mensa Wolfenbüttel' };
       },
-      set (value) { this.setLocation(value.path); }
+      set (value) {
+        this.setLocation(value.key);
+      }
     },
+
     mensaMenus () {
-      return Object.values(this.getNextAvailablePlan.meals)
-        .filter(({ lane }) => lane.startsWith('Essen '));
+      return (this.getNextAvailablePlan?.meals || [])
+        .filter(m => m?.lane?.startsWith('Essen '));
     },
+
     isPlanOfToday () {
-      return this.$dayjs().isSame(this.getNextAvailablePlan.date, 'day');
-    },
-    ...mapGetters({
-      getNextAvailablePlan: 'mensa/getNextAvailablePlan',
-      location: 'mensa/location'
-    })
-  },
-  mounted () {
-    this.load();
-  },
-  watch: {
-    location () {
-      this.load();
+      return this.getNextAvailablePlan?.date
+        ? this.$dayjs().isSame(this.getNextAvailablePlan.date, 'day')
+        : false;
     }
   },
+
+  async mounted () {
+    await this.load();
+    if (!this.location && this.availableLocations.length > 0) {
+      this.setLocation(this.availableLocations[0].key);
+    }
+  },
+
   methods: {
-    ...mapActions({
-      load: 'mensa/load'
-    }),
-    ...mapMutations({
-      setLocation: 'mensa/setLocation'
-    })
+    ...mapActions('mensa', ['load']),
+    ...mapMutations('mensa', ['setLocation'])
   }
 };
 </script>
