@@ -86,12 +86,28 @@ async function getDayPlan (id) : Promise<MensaDayPlan[]> {
     }, { ttl: CACHE_SECONDS });
 
     return data;
-  } catch (error) {
-    console.log('Error');
+  } catch (error: unknown) {
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error('Error getDayPlan:', msg, error);
   }
 }
 
-function filterMensaOpenings (entries: MensaOpening[]) : MensaOpening[] {
+function filterMensaOpenings (entries: MensaOpening[], mensaId?: number) : MensaOpening[] {
+  // special handling for Suderburg, since the API returns multiple opening hours (only one is correct)
+  if (mensaId === 134) {
+    // Suderburg: prefer 12:00–13:30 entries (source: stw-on.de/suderburg/essen/mensa)
+    const filtered = entries.filter(entry =>
+      entry.start_time === '12:00:00' &&
+      entry.end_time === '13:30:00' &&
+      entry.end_day !== 0
+    );
+
+    if (filtered.length > 0) {
+      return filtered.map(entry => ({ ...entry, start_day: 1 }));
+    }
+    // fallback: if the opening hours are changed at some point, just continue with the default filtering below
+  }
+
   return entries.filter(entry => {
     // Filter alle Einträge, die nur am Wochenende sind
     if (entry.start_day in [6, 0] && entry.end_day in [6, 0]) {
@@ -143,7 +159,7 @@ router.get('/', async (req, res, next) => {
           id: response.id,
           dayPlans,
           url: `${response.address.city.toLowerCase()}/essen/${url}`,
-          opening_hours: filterMensaOpenings(response.opening_hours)/* .map(({ ['time']: _, ...rest }) => rest) */.filter((obj, index, self) =>
+          opening_hours: filterMensaOpenings(response.opening_hours, response.id)/* .map(({ ['time']: _, ...rest }) => rest) */.filter((obj, index, self) =>
             index === self.findIndex((t) => JSON.stringify(t) === JSON.stringify(obj))
           ),
           address: response.address

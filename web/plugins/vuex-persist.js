@@ -38,6 +38,9 @@ export default ({ store }) => {
       },
       news: {
         faculty: state.news.faculty
+      },
+      mensa: {
+        location: state.mensa.location
       }
     })
   }).plugin(store));
