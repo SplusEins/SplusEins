@@ -33,12 +33,12 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item v-if="details.location">
+        <v-list-item v-if="location">
           <v-list-item-icon>
             <v-icon>{{ mdiMapMarker }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title v-html="details.location" />
+            <v-list-item-title v-html="location" />
           </v-list-item-content>
         </v-list-item>
 
@@ -88,6 +88,28 @@ export default {
     },
     details () {
       return this.selectedEvent.event;
+    },
+    location () {
+      const rawLocation = this.selectedEvent.event.location;
+      if (!rawLocation) return '';
+
+      const locations = rawLocation.split(' / ');
+
+      const formattedLocations = locations.map(location => {
+        const trimmed = location.trim();
+        const [textPart, linkPart] = trimmed.split(' Link: ');
+
+        if (!linkPart) return trimmed;
+
+        const url = linkPart.trim();
+        const [displayText, extraInfo] = textPart.split(' ('); // the extra info includes the trailing )
+
+        if (extraInfo) {
+          return `<a href="${url}" target="_blank">${displayText.trim()}</a> (${extraInfo.trim()}`;
+        }
+        return `<a href="${url}" target="_blank">${textPart.trim()}</a>`;
+      });
+      return formattedLocations.join('<br>');
     },
     timeframe () {
       return this.selectedEvent.eventParsed.start.time + ' bis ' + this.selectedEvent.eventParsed.end.time + ' Uhr'
