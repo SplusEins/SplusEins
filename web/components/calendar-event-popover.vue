@@ -93,8 +93,16 @@ export default {
       const rawLocation = this.selectedEvent.event.location;
       if (!rawLocation) return '';
 
+      // If there are multiple locations separated by ' / '
       const locations = rawLocation.split(' / ');
 
+      /**
+       * The rawLocation is in the form "WF-EX-2/252 (Am Exer 2, 38302 Wolfenbüttel) Link: https://..."
+       * Explanation:
+       * The WF-EX-2/252 is the text to display as link text
+       * The (Am Exer 2, 38302 Wolfenbüttel) is optional and should be displayed after the link in parentheses
+       * The URL after "Link: " is the href of the link
+       */
       const formattedLocations = locations.map(location => {
         const trimmed = location.trim();
         const [textPart, linkPart] = trimmed.split(' Link: ');
