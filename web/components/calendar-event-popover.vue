@@ -38,7 +38,25 @@
             <v-icon>{{ mdiMapMarker }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title v-html="location" />
+            <v-list-item-title>
+              <div
+                v-for="(loc, index) in location"
+                :key="index"
+              >
+                <span v-if="loc.url">
+                  <a
+                    :href="loc.url"
+                    target="_blank"
+                  >
+                    {{ loc.text }}
+                  </a>
+                  <span v-if="loc.extraInfo"> ({{ loc.extraInfo }})</span>
+                </span>
+                <span v-else>
+                  {{ loc.text }}
+                </span>
+              </div>
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -89,6 +107,10 @@ export default {
     details () {
       return this.selectedEvent.event;
     },
+    /**
+     * Parses the location string into an array of objects with text and url
+     * @returns { text: string, url?: string, extraInfo?: string}>}
+     */
     location () {
       const rawLocation = this.selectedEvent.event.location;
       if (!rawLocation) return '';
@@ -103,21 +125,21 @@ export default {
        * The (Am Exer 2, 38302 Wolfenbüttel) is optional and should be displayed after the link in parentheses
        * The URL after "Link: " is the href of the link
        */
-      const formattedLocations = locations.map(location => {
+      const locationObject = locations.map(location => {
         const trimmed = location.trim();
-        const [textPart, linkPart] = trimmed.split(' Link: ');
+        const [nameAndInfoPart, linkPart] = trimmed.split(' Link: ');
 
-        if (!linkPart) return trimmed;
+        if (!linkPart) return { text: nameAndInfoPart.trim() };
 
         const url = linkPart.trim();
-        const [displayText, extraInfo] = textPart.split(' ('); // the extra info includes the trailing )
+        const [displayText, extraInfo] = nameAndInfoPart.split(' (');
 
         if (extraInfo) {
-          return `<a href="${url}" target="_blank">${displayText.trim()}</a> (${extraInfo.trim()}`;
+          return { text: displayText.trim(), url, extraInfo: extraInfo.trim().slice(0, -1) /* remove trailing ) */ };
         }
-        return `<a href="${url}" target="_blank">${textPart.trim()}</a>`;
+        return { text: nameAndInfoPart.trim(), url };
       });
-      return formattedLocations.join('<br>');
+      return locationObject;
     },
     timeframe () {
       return this.selectedEvent.eventParsed.start.time + ' bis ' + this.selectedEvent.eventParsed.end.time + ' Uhr'
