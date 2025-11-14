@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { mdiSprout, mdiCurrencyEur, mdiPig, mdiCarrot, mdiAlertDecagramOutline, mdiNewBox, mdiCow, mdiInformationBoxOutline, mdiTurkey, mdiHomeSiloOutline, mdiFish, mdiSheep } from '@mdi/js'
+import { mdiSprout, mdiCurrencyEur, mdiPig, mdiCarrot, mdiAlertDecagramOutline, mdiNewBox, mdiCow, mdiInformationBoxOutline, mdiTurkey, mdiHomeSiloOutline, mdiFish, mdiSheep, mdiEarth } from '@mdi/js'
 
 export default {
   name: 'MensaDayplanComponent',
@@ -72,7 +72,8 @@ export default {
       mdiTurkey,
       mdiHomeSiloOutline,
       mdiFish,
-      mdiSheep
+      mdiSheep,
+      mdiEarth
     };
   },
   methods: {
@@ -129,6 +130,10 @@ export default {
           case 'StudiDeal':
             icon = mdiCurrencyEur;
             color = 'red';
+            break;
+          case 'Klimaessen':
+            icon = mdiEarth;
+            color = 'blue';
             break;
         }
         icons.push({
