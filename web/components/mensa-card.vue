@@ -14,8 +14,8 @@
             v-on="on"
             @click="dialogOpen = true"
           >
-            <v-icon>
-              {{ mdiFood }}
+            <v-icon size="32px">
+              {{ mdiMenuDown }}
             </v-icon>
           </v-btn>
         </template>
@@ -63,7 +63,7 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
-import { mdiFood } from '@mdi/js';
+import { mdiMenuDown } from '@mdi/js';
 
 const CITY_TO_KEY = {
   wolfenbüttel: 'wf',
@@ -77,7 +77,7 @@ export default {
   data () {
     return {
       dialogOpen: false,
-      mdiFood
+      mdiMenuDown
     };
   },
   computed: {
