@@ -23,31 +23,7 @@
           >
             <upcoming-lectures-card />
           </v-col>
-
-          <v-col
-            cols=12
-            class="mt-md-1"
-            v-show="!$vuetify.breakpoint.mobile"
-          >
-            <faculty-news-card />
-          </v-col>
         </v-row>
-      </v-col>
-
-      <v-col
-        cols=12
-        md=6
-        order-md=2
-        order="last"
-      >
-        <campus-news-card />
-      </v-col>
-
-      <v-col
-        v-show="$vuetify.breakpoint.mobile"
-        order=4
-      >
-        <faculty-news-card />
       </v-col>
 
       <v-col
@@ -90,8 +66,6 @@ import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
-import CampusNewsCard from '../components/campus-news-card.vue';
-import FacultyNewsCard from '../components/faculty-news-card.vue';
 import StatsCard from '../components/stats-card.vue';
 
 export default {
@@ -100,8 +74,6 @@ export default {
     UpcomingLecturesCard,
     QuickAccessCard,
     MensaCard,
-    CampusNewsCard,
-    FacultyNewsCard,
     StatsCard
   },
   computed: {
