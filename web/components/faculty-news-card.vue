@@ -11,7 +11,9 @@
         icon
         @click="dialogOpen = true"
       >
-        <v-icon>{{ mdiNewspaper }}</v-icon>
+        <v-icon size="32px">
+          {{ mdiMenuDown }}
+        </v-icon>
       </v-btn>
     </v-card-title>
     <v-card-text>
@@ -47,7 +49,7 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
-import { mdiNewspaper } from '@mdi/js'
+import { mdiMenuDown } from '@mdi/js';
 
 export default {
   name: 'FacultyNewsCard',
@@ -63,7 +65,7 @@ export default {
     return {
       dialogOpen: false,
       availableSources,
-      mdiNewspaper
+      mdiMenuDown
     }
   },
   computed: {
