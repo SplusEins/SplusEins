@@ -1179,6 +1179,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261426.html",
+    "label": "IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_1_ws25",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261448.html",
     "label": "Informatik",
     "faculty": "Informatik",
@@ -1238,6 +1247,15 @@
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_informatik_sys_2_ws25",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/131802.html",
+    "label": "Wirtschaftsinformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_wirtschaftsinformatik_2_ws25",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1445,6 +1463,15 @@
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_master_digital_technologies_mlbd_1_ws25",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/182141.html",
+    "label": "Digital Technologies - SCPS",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_digital_technologies_scps_1_ws25",
     "semester": 1,
     "degree": "Master"
   },
