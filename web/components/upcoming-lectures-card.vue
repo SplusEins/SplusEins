@@ -7,7 +7,9 @@
         icon
         @click="dialogOpen = true"
       >
-        <v-icon>{{ mdiBookmarkOutline }}</v-icon>
+        <v-icon size="32px">
+          {{ mdiMenuDown }}
+        </v-icon>
       </v-btn>
     </v-card-title>
 
@@ -29,7 +31,7 @@
       <i>Keine weiteren Vorlesungen in dieser Woche!</i>
     </v-card-text>
     <v-card-text v-else>
-      <i>Markiere bitte Favoriten oder erstelle personalisierte Pläne, um diese Option nutzen zu können!</i>
+      <i>Markiere einen Stundenplan als Favoriten, um ihn hier anzuzeigen. Alternativ kannst du auch einen personalisierten Plan erstellen.</i>
     </v-card-text>
 
     <lazy-select-dialog
@@ -43,7 +45,7 @@
 
 <script>
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
-import { mdiBookmarkOutline } from '@mdi/js'
+import { mdiMenuDown } from '@mdi/js'
 
 export default {
   name: 'UpcomingLecturesCard',
@@ -52,7 +54,7 @@ export default {
       now: Date.now(),
       refreshTimer: undefined,
       dialogOpen: false,
-      mdiBookmarkOutline
+      mdiMenuDown
     }
   },
   computed: {
