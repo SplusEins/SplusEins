@@ -23,6 +23,7 @@ timetable_blacklist:
   - "klausur"
   - "prüfung"
   - "231401.html" # workaround for informatik (might be removable next semester)
+  - "231405.html" # workaround for informatik (might be removable next semester)
 
 plans:
   - url: https://stundenplan.ostfalia.de/b/wp/index.html
