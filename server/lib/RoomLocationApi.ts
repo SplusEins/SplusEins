@@ -4,7 +4,7 @@ export function getRoomLocation(room: string) {
   let result = room;
 
   /**
-   * If the room starts with WF-EX-, it is at the Am Exer address
+   * If the room ref starts with WF-EX-, it is at the Am Exer address
    * E. g. WF-EX-2/252 -> Am Exer 2, Am Exer 2, 38302 Wolfenbüttel
    * Regex explanation:
    * ^WF-EX-     : Room starts with WF-EX-
@@ -13,13 +13,13 @@ export function getRoomLocation(room: string) {
   const exerRegexMatch = /^WF-EX-(\d+)/.exec(room);
 
   /**
-   * If the room starts with A, B or C followed by a digit, it is at the main building address
+   * If the room ref starts with A, B or C followed by a digit, it is at the main building address
    * E. g. A068 -> Salzdahlumer Str. 46/48, 38302 Wolfenbüttel
    * Regex explanation:
-   * ^[ABC]      : Room starts with A, B or C
+   * ^[A-Z]      : Room starts with a capital letter A-Z
    * \d+         : followed by one or more digits
    */
-  const mainRegexMatch = /^[ABC]\d+/.exec(room);
+  const mainRegexMatch = /^[A-Z]\d+/.exec(room);
 
   if (exerRegexMatch) {
     const buildingNumber = exerRegexMatch ? exerRegexMatch[1] : '';
