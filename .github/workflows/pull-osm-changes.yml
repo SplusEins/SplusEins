@@ -1,0 +1,51 @@
+name: Pull OSM Changes
+
+on:
+  schedule:
+    - cron: "0 05 * * *" # once per day so we don't spam osm servers too much
+  workflow_dispatch:
+
+concurrency: osm-sync
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+        with:
+          ssh-key: ${{ secrets.SSH_GITHUB_PRIVATE_KEY }}
+          fetch-depth: 0
+
+      - name: Run getLocationLinks
+        shell: bash
+        run: |
+          set -o pipefail
+          server/scripts/getLocationLinks.sh 2>&1 | tee osm-fetch.log
+
+      - name: Check for errors
+        shell: bash
+        run: |
+          if grep -qi "error\|failed" osm-fetch.log; then
+            echo "[!!!] Errors detected in OSM fetch:"
+            grep -i "error\|failed" osm-fetch.log
+            exit 1
+          fi
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7
+        with:
+          token: ${{ github.token }}
+          commit-message: Updated OpenStreetMaps Roomdata via OverpassAPI
+          branch: actions/update-osm-data
+          author: actions-user <actions@github.com>
+          committer: actions-user <actions@github.com>
+          title: "Sync overpassOSMRoomsData.json with OSM"
+          labels: automated
+          add-paths: |
+            **/overpassOSMRoomsData.json
+          body: |
+            Room Data updated via [Overpass Turbo](https://overpass-turbo.eu/).
+            Docs: https://spluseins-i.ostfalia.de/docs/semesterbeginn.html#aktualisierung-der-osm-raumdaten
+
+            Full logs:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
