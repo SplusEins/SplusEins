@@ -2178,6 +2178,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mpm_6.html",
+    "label": "Mobilität und Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mpm_6_ws25",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lip_7.html",
     "label": "Logistik und Informationsmanagement im Praxisverbund",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
