@@ -24,6 +24,7 @@ export default defineConfig({
           { text: "Konfiguration", link: "/konfiguration" },
           { text: "Deployment", link: "/deployment" },
           { text: "Server", link: "/server" },
+          { text: "OSM Anbindung", link: "/osm_anbindung" },
         ],
       },
     ],
