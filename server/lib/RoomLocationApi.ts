@@ -19,14 +19,15 @@ export function getRoomLocation(room: string) {
    * ^[A-C]      : Room starts with a capital letter A-C
    * \d+         : followed by one or more digits
    */
-  const mainRegexMatch = /^[A-C]\d+/.exec(room);
+  //const mainRegexMatch = /^[A-C]\d+/.exec(room);
 
   if (exerRegexMatch) {
     const buildingNumber = exerRegexMatch ? exerRegexMatch[1] : '';
     result += ` (Am Exer ${buildingNumber}, 38302 Wolfenbüttel)`;
-  } else if (mainRegexMatch) {
-    result += ' (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel)';
   }
+  // } else if (mainRegexMatch) {
+  //   result += ' (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel)';
+  // }
 
   /**
    * Check if we have OSM data for this room
