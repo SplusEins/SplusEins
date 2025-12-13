@@ -32,11 +32,11 @@ export function getRoomLocation(room: string) {
   /**
    * Check if we have OSM data for this room
    * If so, add a link to the OSM way
-   * Example: Link: https://www.osmapp.org/way/123456789
+   * Example: Link: https://osmapp.org/way/123456789
    */
   const osmData = OSM_ROOMS_DATA[room];
   if (osmData) {
-    result += ` Link: https://www.osmapp.org/way/${osmData.id}`;
+    result += ` Link: https://osmapp.org/way/${osmData.id}`;
   }
 
   return result;
