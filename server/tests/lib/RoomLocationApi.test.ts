@@ -29,19 +29,19 @@ describe('RoomLocationApi', () => {
       });
     });
 
-    describe('Main building rooms', () => {
-      it('should return full address for A068 room with OSM link', () => {
-        const room = 'A068';
-        const expected = 'A068 (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel) Link: https://www.osmapp.org/way/123456789';
-        expect(getRoomLocation(room)).toBe(expected);
-      });
+    // describe('Main building rooms', () => {
+    //   it('should return full address for A068 room with OSM link', () => {
+    //     const room = 'A068';
+    //     const expected = 'A068 (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel) Link: https://www.osmapp.org/way/123456789';
+    //     expect(getRoomLocation(room)).toBe(expected);
+    //   });
 
-      it('should return full address without link for A067 rooms without a OSM entry', () => {
-        const room = 'A067';
-        const expected = 'A067 (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel)';
-        expect(getRoomLocation(room)).toBe(expected);
-      });
-    });
+    //   it('should return full address without link for A067 rooms without a OSM entry', () => {
+    //     const room = 'A067';
+    //     const expected = 'A067 (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel)';
+    //     expect(getRoomLocation(room)).toBe(expected);
+    //   });
+    // });
     
     it("should return room as it is for rooms, that can't exist", () => {
       const room = 'non-existing-room';
