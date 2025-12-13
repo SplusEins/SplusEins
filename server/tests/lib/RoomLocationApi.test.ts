@@ -12,13 +12,13 @@ describe('RoomLocationApi', () => {
     describe('Am Exer rooms', () => {
       it('should return full address for Am Exer 2/252 room with OSM link', () => {
         const room = 'WF-EX-2/252';
-        const expected = 'WF-EX-2/252 (Am Exer 2, 38302 Wolfenbüttel) Link: https://www.osmapp.org/way/123456789';
+        const expected = 'WF-EX-2/252 (Am Exer 2, 38302 Wolfenbüttel) Link: https://osmapp.org/way/123456789';
         expect(getRoomLocation(room)).toBe(expected);
       });
 
       it('should return full address for Am Exer 3/101 room with OSM link', () => {
         const room = 'WF-EX-3/101';
-        const expected = 'WF-EX-3/101 (Am Exer 3, 38302 Wolfenbüttel) Link: https://www.osmapp.org/way/987654321';
+        const expected = 'WF-EX-3/101 (Am Exer 3, 38302 Wolfenbüttel) Link: https://osmapp.org/way/987654321';
         expect(getRoomLocation(room)).toBe(expected);
       });
 
@@ -32,7 +32,7 @@ describe('RoomLocationApi', () => {
     // describe('Main building rooms', () => {
     //   it('should return full address for A068 room with OSM link', () => {
     //     const room = 'A068';
-    //     const expected = 'A068 (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel) Link: https://www.osmapp.org/way/123456789';
+    //     const expected = 'A068 (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel) Link: https://osmapp.org/way/123456789';
     //     expect(getRoomLocation(room)).toBe(expected);
     //   });
 
