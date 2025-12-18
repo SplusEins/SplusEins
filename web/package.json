@@ -11,6 +11,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "fmt": "prettier . --write",
+    "fmt:check": "prettier . --check",
     "lint": "eslint --ext .js,.vue .",
     "lintfix": "eslint --fix --ext .js,.vue ."
   },
@@ -34,11 +36,13 @@
     "@nuxtjs/vuetify": "1.12.3",
     "@types/chroma-js": "3.1.2",
     "eslint": "8.57.1",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-n": "16.6.2",
     "eslint-plugin-nuxt": "4.0.0",
     "eslint-plugin-promise": "6.6.0",
-    "eslint-plugin-vue": "9.33.0"
+    "eslint-plugin-vue": "9.33.0",
+    "prettier": "3.7.4"
   }
 }
