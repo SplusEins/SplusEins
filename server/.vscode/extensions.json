@@ -1,5 +1,3 @@
 {
-  "recommendations": [
-    "prettier.prettier-vscode"
-  ]
+  "recommendations": ["prettier.prettier-vscode"]
 }

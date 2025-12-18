@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "vitepress dev src",
     "build": "vitepress build src",
+    "fmt": "prettier . --write",
+    "fmt:check": "prettier . --check",
     "preview": "vitepress preview src",
     "start": "http-server ./src/.vitepress/dist/ -p $PORT"
   },

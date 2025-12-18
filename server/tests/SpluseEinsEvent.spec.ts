@@ -3,9 +3,11 @@ import { Event } from '../model/SplusEinsModel';
 import * as moment from 'moment';
 
 describe('Test Event', () => {
-  function testLecture(title = 'Test - VL',
-                       lecturer = 'Prof. Dr. tst. S. Eins'): ParsedLecture {
-    return <ParsedLecture> {
+  function testLecture(
+    title = 'Test - VL',
+    lecturer = 'Prof. Dr. tst. S. Eins',
+  ): ParsedLecture {
+    return <ParsedLecture>{
       title,
       start: moment('2019-03-19T07:15:00.000Z').toDate(),
       end: moment('2019-03-19T08:45:00.000Z').toDate(),
@@ -28,10 +30,13 @@ describe('Test Event', () => {
   it('should generate a unique title id', () => {
     function expectAllLecturesHaveDifferentTitleIds(titleVariations) {
       const lectures = titleVariations.map(
-        (title) => new Event(testLecture(title)));
-      lectures.forEach(
-        (lecture1, index) => lectures.slice(index + 1).forEach(
-          (lecture2) => expect(lecture1.id).not.toBe(lecture2.id)));
+        (title) => new Event(testLecture(title)),
+      );
+      lectures.forEach((lecture1, index) =>
+        lectures
+          .slice(index + 1)
+          .forEach((lecture2) => expect(lecture1.id).not.toBe(lecture2.id)),
+      );
     }
 
     expectAllLecturesHaveDifferentTitleIds([
@@ -61,19 +66,28 @@ describe('Test Event', () => {
   });
 
   it('should generate a unique lecturer id', () => {
-    function expectAllLecturesHaveDifferentOrganiserShortnames(lecturerVariations) {
+    function expectAllLecturesHaveDifferentOrganiserShortnames(
+      lecturerVariations,
+    ) {
       const lectures = lecturerVariations.map(
-        (lecturer) => new Event(testLecture('', lecturer)));
-      lectures.forEach(
-        (lecture1, index) => lectures.slice(index + 1).forEach(
-          (lecture2) => expect(lecture1.meta.organiserShortname).not.toBe(lecture2.meta.organiserShortname)));
+        (lecturer) => new Event(testLecture('', lecturer)),
+      );
+      lectures.forEach((lecture1, index) =>
+        lectures
+          .slice(index + 1)
+          .forEach((lecture2) =>
+            expect(lecture1.meta.organiserShortname).not.toBe(
+              lecture2.meta.organiserShortname,
+            ),
+          ),
+      );
     }
 
     expectAllLecturesHaveDifferentOrganiserShortnames([
       'Prof. Dr. P. Riegler',
       'Prof. Dr. F. Seutter',
       'Herr Brodowski',
-      'Prof. Dr. M. Huhn'
+      'Prof. Dr. M. Huhn',
     ]);
   });
 

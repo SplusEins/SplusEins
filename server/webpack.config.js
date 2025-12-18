@@ -5,25 +5,25 @@ const serverConfig = {
   mode: process.env.NODE_ENV,
   target: 'node',
   entry: {
-    server: './server.ts'
+    server: './server.ts',
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, './dist/server')
+    path: path.resolve(__dirname, './dist/server'),
   },
   module: {
-    rules: [{
-      test: /\.ts$/,
-      use: [
-        { loader: 'ts-loader' }
-      ],
-      exclude: /node_modules/
-    }]
+    rules: [
+      {
+        test: /\.ts$/,
+        use: [{ loader: 'ts-loader' }],
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
     extensions: ['.ts', '.js'],
-    mainFields: ['main']
-  }
+    mainFields: ['main'],
+  },
 };
 
 // from https://github.com/node-fetch/node-fetch/issues/784#issuecomment-786305770
@@ -35,10 +35,10 @@ serverConfig.optimization = {
       parallel: true,
       terserOptions: {
         keep_classnames: /AbortSignal/,
-        keep_fnames: /AbortSignal/
-      }
-    })
-  ]
+        keep_fnames: /AbortSignal/,
+      },
+    }),
+  ],
 };
 
 module.exports = [serverConfig];

@@ -48,7 +48,7 @@ Der `renovate`-Bot öffnet automatisch PRs, sobald es Updates für Dependencies 
 
 ## Updates auf dem Ubuntu-Server
 
-Der Ubuntu-Server, der uns von der Fakultaet I zur Verfuegung gestellt wird, sollte auch gelegentlich aktualisiert werden. Dies kann mit dem Befehl `apt-get dist-upgrade` geschehen. Sicherheitsupdates werden allerdings automatisch installiert, weshalb das nicht sehr regelmaessig geschehen muss. 
+Der Ubuntu-Server, der uns von der Fakultaet I zur Verfuegung gestellt wird, sollte auch gelegentlich aktualisiert werden. Dies kann mit dem Befehl `apt-get dist-upgrade` geschehen. Sicherheitsupdates werden allerdings automatisch installiert, weshalb das nicht sehr regelmaessig geschehen muss.
 
 Falls irgendwelche Abfragen vom `dokku`-Paket kommen, koennen diese in der Regel einfach mit dem Default bestaetigt werden. Nach dem Upgrade muss der Server wegen `dokku` in der Regel neugestartet werden, damit SplusEins wieder funktioniert.
 
