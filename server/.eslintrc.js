@@ -8,7 +8,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'standard'
+    'standard',
+    'prettier'
   ],
 
   parserOptions: {
@@ -21,12 +22,8 @@ module.exports = {
   rules: {
     eqeqeq: 'warn', // don't error on wrong equality signs
     camelcase: 'warn', // don't error on non camel case
-    quotes: 'warn', // don't error on double qoutes
-    'comma-dangle': 'off',
     'spaced-comment': 'warn',
     'prefer-regex-literals': 'warn',
-    semi: 'off', // no preference for semicolons at end
-    'max-len': ['warn', { code: 160 }],
     complexity: ['warn', { max: 30 }],
     'no-warning-comments': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
