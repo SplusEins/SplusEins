@@ -1,25 +1,19 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Launch API",
-            "request": "launch",
-            "type": "node",
-            "runtimeExecutable": "npm",
-            "runtimeVersion": "16.16.0",
-            "runtimeArgs": [
-                "run",
-                "dev"
-            ],
-            "internalConsoleOptions": "openOnSessionStart",
-            "env": {
-                "CACHE_DISABLE": "true"
-            },
-            "skipFiles": [
-                "<node_internals>/**",
-                "node_modules/**"
-            ],
-            "envFile": "${workspaceFolder}/.env"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch API",
+      "request": "launch",
+      "type": "node",
+      "runtimeExecutable": "npm",
+      "runtimeVersion": "16.16.0",
+      "runtimeArgs": ["run", "dev"],
+      "internalConsoleOptions": "openOnSessionStart",
+      "env": {
+        "CACHE_DISABLE": "true"
+      },
+      "skipFiles": ["<node_internals>/**", "node_modules/**"],
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
 }
