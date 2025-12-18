@@ -1,28 +1,16 @@
 <template>
-  <v-card
-    class="fill-height"
-    outlined
-    elevation="1"
-  >
+  <v-card class="fill-height" outlined elevation="1">
     <v-card-title>
       <span class="text-h6">{{ getDayHeader(plan) }}</span>
     </v-card-title>
     <v-divider />
     <v-card-text class="py-1">
-      <v-list
-        v-for="item in plan.meals"
-        :key="item.id"
-        dense
-      >
+      <v-list v-for="item in plan.meals" :key="item.id" dense>
         <div class="d-flex">
           <div class="text-subtitle-1">
             {{ item.lane }}
           </div>
-          <v-tooltip
-            bottom
-            v-for="icon in getIcons(item)"
-            :key="icon.text"
-          >
+          <v-tooltip bottom v-for="icon in getIcons(item)" :key="icon.text">
             <template #activator="{ on }">
               <span v-on="on">
                 <v-icon
@@ -41,7 +29,8 @@
           {{ item.name }}
         </div>
         <div class="text-caption text--secondary">
-          Studenten: {{ getPriceLabel(item.price.student) }} - Angestellte: {{ getPriceLabel(item.price.employee) }}
+          Studenten: {{ getPriceLabel(item.price.student) }} - Angestellte:
+          {{ getPriceLabel(item.price.employee) }}
         </div>
       </v-list>
     </v-card-text>
@@ -49,17 +38,31 @@
 </template>
 
 <script>
-import { mdiSprout, mdiCurrencyEur, mdiPig, mdiCarrot, mdiAlertDecagramOutline, mdiNewBox, mdiCow, mdiInformationBoxOutline, mdiTurkey, mdiHomeSiloOutline, mdiFish, mdiSheep, mdiEarth } from '@mdi/js'
+import {
+  mdiSprout,
+  mdiCurrencyEur,
+  mdiPig,
+  mdiCarrot,
+  mdiAlertDecagramOutline,
+  mdiNewBox,
+  mdiCow,
+  mdiInformationBoxOutline,
+  mdiTurkey,
+  mdiHomeSiloOutline,
+  mdiFish,
+  mdiSheep,
+  mdiEarth,
+} from '@mdi/js';
 
 export default {
   name: 'MensaDayplanComponent',
   props: {
     plan: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
-  data () {
+  data() {
     return {
       mdiSprout,
       mdiCurrencyEur,
@@ -73,23 +76,27 @@ export default {
       mdiHomeSiloOutline,
       mdiFish,
       mdiSheep,
-      mdiEarth
+      mdiEarth,
     };
   },
   methods: {
-    getDayHeader (dayPlan) {
+    getDayHeader(dayPlan) {
       const day = this.$dayjs(dayPlan.date.toString());
-      return (day.isSame(this.$dayjs(), 'day') ? 'Heute' : day.format('dddd')) + ' - ' + day.format('DD.MM.YYYY');
+      return (
+        (day.isSame(this.$dayjs(), 'day') ? 'Heute' : day.format('dddd')) +
+        ' - ' +
+        day.format('DD.MM.YYYY')
+      );
     },
-    getPriceLabel (price) {
+    getPriceLabel(price) {
       const euros = Math.floor(price);
       let cents = Math.round((price - euros) * 100);
       cents = cents >= 10 ? cents : '0' + cents;
       return euros + ',' + cents + '€';
     },
-    getIcons (item) {
+    getIcons(item) {
       const icons = [];
-      item.categories.forEach(e => {
+      item.categories.forEach((e) => {
         let icon = mdiInformationBoxOutline;
         let color = this.$vuetify.theme.dark ? 'white' : 'black';
         switch (e) {
@@ -139,17 +146,17 @@ export default {
         icons.push({
           icon,
           color,
-          text: e
+          text: e,
         });
       });
       return icons;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.icon{
+.icon {
   opacity: 0.7;
 }
 </style>

@@ -1,18 +1,8 @@
 <template>
-  <v-dialog
-    v-model="dialogOpen"
-    max-width="400"
-  >
+  <v-dialog v-model="dialogOpen" max-width="400">
     <v-card>
-      <v-toolbar
-        dark
-        color="primary"
-      >
-        <v-btn
-          icon
-          dark
-          @click.native="dialogOpen = false"
-        >
+      <v-toolbar dark color="primary">
+        <v-btn icon dark @click.native="dialogOpen = false">
           <v-icon>{{ mdiClose }}</v-icon>
         </v-btn>
         <v-toolbar-title>{{ title }}</v-toolbar-title>
@@ -22,18 +12,24 @@
         <v-list>
           <v-list-item
             v-for="item in items"
-            :key="!!item.description? item.description: item.label"
-            @click="selectedItem = item, dialogOpen = false"
+            :key="!!item.description ? item.description : item.label"
+            @click="((selectedItem = item), (dialogOpen = false))"
           >
             <v-list-item-action>
               <v-icon
-                v-if="!!item.description? item.description == selectedItem.description: item.label == selectedItem.label"
+                v-if="
+                  !!item.description
+                    ? item.description == selectedItem.description
+                    : item.label == selectedItem.label
+                "
               >
                 {{ mdiCheck }}
               </v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>{{ !!item.description? item.description: item.label }}</v-list-item-title>
+              <v-list-item-title>{{
+                !!item.description ? item.description : item.label
+              }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -43,42 +39,50 @@
 </template>
 
 <script>
-import { mdiClose, mdiCheck } from '@mdi/js'
+import { mdiClose, mdiCheck } from '@mdi/js';
 export default {
   name: 'SelectDialog',
   props: {
     open: {
       type: Boolean,
-      default: false
+      default: false,
     },
     title: {
       type: String,
-      default: 'Titel'
+      default: 'Titel',
     },
     items: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     selected: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
-  data () {
+  data() {
     return {
       mdiClose,
-      mdiCheck
+      mdiCheck,
     };
   },
   computed: {
     dialogOpen: {
-      get () { return this.open; },
-      set (value) { this.$emit('update:open', value); }
+      get() {
+        return this.open;
+      },
+      set(value) {
+        this.$emit('update:open', value);
+      },
     },
     selectedItem: {
-      get () { return this.selected; },
-      set (value) { this.$emit('update:selected', value); }
-    }
-  }
+      get() {
+        return this.selected;
+      },
+      set(value) {
+        this.$emit('update:selected', value);
+      },
+    },
+  },
 };
 </script>

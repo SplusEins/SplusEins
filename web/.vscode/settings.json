@@ -1,6 +1,6 @@
 {
-    "editor.formatOnSave": true,
-    "[vue,js]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    }
+  "editor.formatOnSave": true,
+  "[vue,js]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  }
 }

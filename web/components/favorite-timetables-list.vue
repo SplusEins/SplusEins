@@ -1,8 +1,6 @@
 <template>
   <v-list subheader>
-    <v-subheader>
-      Favoriten
-    </v-subheader>
+    <v-subheader> Favoriten </v-subheader>
     <v-list-item
       v-for="schedule in favoriteSchedules"
       :key="schedule.id"
@@ -23,8 +21,8 @@ export default {
   name: 'FavoriteTimetablesList',
   computed: {
     ...mapState({
-      favoriteSchedules: (state) => state.splus.favoriteSchedules
-    })
-  }
+      favoriteSchedules: (state) => state.splus.favoriteSchedules,
+    }),
+  },
 };
 </script>

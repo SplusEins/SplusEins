@@ -1,14 +1,14 @@
 module.exports = {
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   extends: [
     'eslint:recommended',
     'plugin:vue/strongly-recommended',
     'plugin:nuxt/recommended',
     'standard',
-    'prettier'
+    'prettier',
   ],
   // required to lint *.vue files
   plugins: ['vue'],
@@ -23,7 +23,6 @@ module.exports = {
     'vue/valid-v-slot': 'off', // false positives for vuetify
     'vue/html-quotes': 'off', // doesn't work properly
     'vue/multi-word-component-names': 'warn', // fixme at some point
-    'vue/no-v-text-v-html-on-component': 'warn' // we like to use this
-
-  }
-}
+    'vue/no-v-text-v-html-on-component': 'warn', // we like to use this
+  },
+};

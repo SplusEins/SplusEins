@@ -4,21 +4,12 @@
     class="pa-1 pa-md-3"
     v-touch="{
       right: () => prev(),
-      left: () => next()
+      left: () => next(),
     }"
   >
-    <v-row
-      class="fill-height"
-      no-gutters
-    >
-      <v-col
-        cols=12
-        class="mb-2 mb-md-4"
-      >
-        <v-toolbar
-          flat
-          class="inherit-background-color"
-        >
+    <v-row class="fill-height" no-gutters>
+      <v-col cols="12" class="mb-2 mb-md-4">
+        <v-toolbar flat class="inherit-background-color">
           <responsive-icon-button
             :breakpoint="!$vuetify.breakpoint.mobile"
             :icon="mdiCalendarToday"
@@ -28,13 +19,7 @@
           />
           <v-tooltip bottom>
             <template #activator="{ on, attrs }">
-              <v-btn
-                icon
-                @click="prev"
-                class="ml-1"
-                v-bind="attrs"
-                v-on="on"
-              >
+              <v-btn icon @click="prev" class="ml-1" v-bind="attrs" v-on="on">
                 <v-icon>{{ mdiChevronLeft }}</v-icon>
               </v-btn>
             </template>
@@ -43,13 +28,7 @@
 
           <v-tooltip bottom>
             <template #activator="{ on, attrs }">
-              <v-btn
-                icon
-                @click="next"
-                class="mr-1"
-                v-bind="attrs"
-                v-on="on"
-              >
+              <v-btn icon @click="next" class="mr-1" v-bind="attrs" v-on="on">
                 <v-icon>{{ mdiChevronRight }}</v-icon>
               </v-btn>
             </template>
@@ -64,7 +43,7 @@
           <calendar-action-bar />
         </v-toolbar>
       </v-col>
-      <v-col cols=12>
+      <v-col cols="12">
         <v-calendar
           class="inherit-background-color"
           type="custom-daily"
@@ -78,26 +57,29 @@
           interval-height="50"
           event-overlap-mode="column"
           locale="de"
-          locale-first-day-of-year=4
+          locale-first-day-of-year="4"
           @click:event="showEvent"
         >
-          <template #day-label-header="{day, present}">
-            <span
-              :class="['text-h5', present ? 'font-weight-bold':'']"
-            >
+          <template #day-label-header="{ day, present }">
+            <span :class="['text-h5', present ? 'font-weight-bold' : '']">
               {{ day }}
             </span>
           </template>
-          <template #event="{event, eventParsed}">
-            <div :class="['pa-md-1','custom-event', {'mini-padding': $vuetify.breakpoint.mobile}]">
+          <template #event="{ event, eventParsed }">
+            <div
+              :class="[
+                'pa-md-1',
+                'custom-event',
+                { 'mini-padding': $vuetify.breakpoint.mobile },
+              ]"
+            >
               <div class="font-weight-bold">
                 {{ event.name }}
               </div>
-              <div
-                class="pt-1"
-                v-if="!$vuetify.breakpoint.mobile"
-              >
-                {{ eventParsed.start.time + ' - ' + eventParsed.end.time + ' Uhr' }}
+              <div class="pt-1" v-if="!$vuetify.breakpoint.mobile">
+                {{
+                  eventParsed.start.time + ' - ' + eventParsed.end.time + ' Uhr'
+                }}
               </div>
             </div>
           </template>
@@ -110,7 +92,7 @@
           :max-width="$vuetify.breakpoint.mobile ? undefined : '35%'"
         >
           <lazy-calendar-event-popover
-            v-bind="{selectedEvent, selectedOpen}"
+            v-bind="{ selectedEvent, selectedOpen }"
             @close="selectedOpen = false"
           />
         </v-menu>
@@ -132,11 +114,11 @@
 
 <script>
 import { mapMutations, mapState, mapGetters, mapActions } from 'vuex';
-import { mdiChevronLeft, mdiChevronRight, mdiCalendarToday } from '@mdi/js'
+import { mdiChevronLeft, mdiChevronRight, mdiCalendarToday } from '@mdi/js';
 
 export default {
   name: 'SpluseinsCalendar',
-  data () {
+  data() {
     return {
       mdiChevronLeft,
       mdiChevronRight,
@@ -144,32 +126,34 @@ export default {
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
-      calendarStartDate: this.$store.getters['splus/weekOrDefault']
-    }
+      calendarStartDate: this.$store.getters['splus/weekOrDefault'],
+    };
   },
   computed: {
     ...mapState({
-      schedule: (state) => state.splus.schedule
+      schedule: (state) => state.splus.schedule,
     }),
     ...mapGetters({
       events: 'splus/getCalendarEvents',
       weekOrDefault: 'splus/weekOrDefault',
-      hasEventsOnWeekend: 'splus/getHasEventsOnWeekend'
+      hasEventsOnWeekend: 'splus/getHasEventsOnWeekend',
     }),
-    calendarEndDate () {
-      return this.$dayjs(this.calendarStartDate).add(this.hasEventsOnWeekend ? 5 : 4, 'days').toDate();
+    calendarEndDate() {
+      return this.$dayjs(this.calendarStartDate)
+        .add(this.hasEventsOnWeekend ? 5 : 4, 'days')
+        .toDate();
     },
-    monthSummary () {
-      const startDate = this.$dayjs(this.calendarStartDate)
-      const endDate = this.$dayjs(this.calendarEndDate)
+    monthSummary() {
+      const startDate = this.$dayjs(this.calendarStartDate);
+      const endDate = this.$dayjs(this.calendarEndDate);
       if (startDate.isSame(endDate, 'month')) {
-        return startDate.format('MMMM YYYY')
+        return startDate.format('MMMM YYYY');
       } else {
-        return startDate.format('MMMM') + '/' + endDate.format('MMMM YYYY')
+        return startDate.format('MMMM') + '/' + endDate.format('MMMM YYYY');
       }
-    }
+    },
   },
-  mounted () {
+  mounted() {
     // force refresh to avoid using outdated cache
     this.refresh();
   },
@@ -177,48 +161,50 @@ export default {
     ...mapMutations({
       incrementWeek: 'splus/incrementWeek',
       decrementWeek: 'splus/decrementWeek',
-      resetWeek: 'splus/resetWeek'
+      resetWeek: 'splus/resetWeek',
     }),
     ...mapActions({
-      load: 'splus/load'
+      load: 'splus/load',
     }),
-    setToday () {
+    setToday() {
       this.resetWeek(true);
       this.refresh();
     },
-    prev () {
+    prev() {
       this.decrementWeek();
       this.refresh();
     },
-    next () {
+    next() {
       this.incrementWeek();
       this.refresh();
     },
-    async refresh () {
+    async refresh() {
       // Manually set loading bar, otherwise it isn't displayed properly because of await
-      this.$nextTick(() => { this.$nuxt.$loading.start() })
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
+      });
       // Blocking load first and manually set start date afterwards so we avoid load flickering
       await this.load();
       this.calendarStartDate = this.weekOrDefault;
-      this.$nuxt.$loading.finish()
+      this.$nuxt.$loading.finish();
     },
-    formatInterval (intervalObject) {
+    formatInterval(intervalObject) {
       if (this.$vuetify.breakpoint.mobile) {
-        return intervalObject.hour.toString().padStart(2, '0')
+        return intervalObject.hour.toString().padStart(2, '0');
       } else {
-        return intervalObject.time
+        return intervalObject.time;
       }
     },
-    showEvent (event) {
-      this.selectedEvent = event
-      this.selectedElement = event.nativeEvent.target
+    showEvent(event) {
+      this.selectedEvent = event;
+      this.selectedElement = event.nativeEvent.target;
       setTimeout(() => {
-        this.selectedOpen = true
-      }, 10)
+        this.selectedOpen = true;
+      }, 10);
 
-      event.nativeEvent.stopPropagation()
-    }
-  }
+      event.nativeEvent.stopPropagation();
+    },
+  },
 };
 </script>
 
@@ -251,8 +237,7 @@ export default {
   padding-right: 1px;
 }
 
-.v-calendar .v-event-timed{
+.v-calendar .v-event-timed {
   overflow-y: hidden;
 }
-
 </style>

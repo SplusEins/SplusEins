@@ -11,10 +11,7 @@
     </span>
 
     <!-- mobile action bar -->
-    <v-menu
-      bottom
-      left
-    >
+    <v-menu bottom left>
       <template #activator="{ on, attrs }">
         <v-btn
           :small="$vuetify.breakpoint.xs"
@@ -38,9 +35,7 @@
             <v-list-item-title v-if="!isFavorite">
               Favorisieren
             </v-list-item-title>
-            <v-list-item-title v-else>
-              Favorit entfernen
-            </v-list-item-title>
+            <v-list-item-title v-else> Favorit entfernen </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
@@ -58,9 +53,7 @@
             <v-list-item-title v-if="isCustomSchedule">
               Bearbeiten
             </v-list-item-title>
-            <v-list-item-title v-else>
-              Personalisieren
-            </v-list-item-title>
+            <v-list-item-title v-else> Personalisieren </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item
@@ -110,10 +103,7 @@
       v-model="editTimetableDialogOpen"
       :custom-schedule="currentAsCustomSchedule"
     />
-    <copy-text-dialog
-      v-model="shareDialogOpen"
-      :text-to-copy="currentUrl()"
-    />
+    <copy-text-dialog v-model="shareDialogOpen" :text-to-copy="currentUrl()" />
     <open-calendar-dialog
       v-model="openCalendarDialogOpen"
       :timetable-ids="timetableIds"
@@ -128,7 +118,15 @@ import CopyTextDialog from './copy-text-dialog.vue';
 import OpenCalendarDialog from './open-calendar-dialog.vue';
 import ResponsiveIconButton from './responsive-icon-button.vue';
 import CustomTimetableDeleteDialog from './custom-timetable-delete-dialog.vue';
-import { mdiHeart, mdiHeartOutline, mdiDotsVertical, mdiShareVariant, mdiDelete, mdiPencil, mdiCalendar } from '@mdi/js'
+import {
+  mdiHeart,
+  mdiHeartOutline,
+  mdiDotsVertical,
+  mdiShareVariant,
+  mdiDelete,
+  mdiPencil,
+  mdiCalendar,
+} from '@mdi/js';
 
 export default {
   name: 'CalendarActionBar',
@@ -136,9 +134,9 @@ export default {
     CopyTextDialog,
     OpenCalendarDialog,
     ResponsiveIconButton,
-    CustomTimetableDeleteDialog
+    CustomTimetableDeleteDialog,
   },
-  data () {
+  data() {
     return {
       editTimetableDialogOpen: false,
       openCalendarDialogOpen: false,
@@ -150,26 +148,32 @@ export default {
       mdiShareVariant,
       mdiDelete,
       mdiPencil,
-      mdiCalendar
+      mdiCalendar,
     };
   },
   computed: {
-    isMobile () {
+    isMobile() {
       return this.$vuetify.breakpoint.mobile;
     },
-    isTinyMobile () {
+    isTinyMobile() {
       return this.$vuetify.breakpoint.width <= 400;
     },
-    isFavorite () {
-      return this.favoriteSchedules.filter(favorite => favorite.id == this.currentSchedule.id).length != 0;
+    isFavorite() {
+      return (
+        this.favoriteSchedules.filter(
+          (favorite) => favorite.id == this.currentSchedule.id,
+        ).length != 0
+      );
     },
-    timetableIds () {
-      return this.isCustomSchedule ? this.currentSchedule.id : [this.currentSchedule.id];
+    timetableIds() {
+      return this.isCustomSchedule
+        ? this.currentSchedule.id
+        : [this.currentSchedule.id];
     },
-    titleIds () {
+    titleIds() {
       return this.isCustomSchedule ? this.currentSchedule.whitelist : [];
     },
-    currentAsCustomSchedule () {
+    currentAsCustomSchedule() {
       if (this.isCustomSchedule) {
         return this.currentSchedule;
       } else {
@@ -177,37 +181,37 @@ export default {
         return {
           label: '',
           id: [this.currentSchedule.id],
-          whitelist: []
+          whitelist: [],
         };
       }
     },
     ...mapState({
       currentSchedule: (state) => state.splus.schedule,
-      favoriteSchedules: (state) => state.splus.favoriteSchedules
+      favoriteSchedules: (state) => state.splus.favoriteSchedules,
     }),
     ...mapGetters({
-      isCustomSchedule: 'splus/isCustomTimetable'
-    })
+      isCustomSchedule: 'splus/isCustomTimetable',
+    }),
   },
   methods: {
-    routeToRoot () {
+    routeToRoot() {
       this.$router.replace('/');
     },
-    toggleFavorite () {
+    toggleFavorite() {
       if (this.isFavorite) {
         this.removeFavoriteSchedule(this.currentSchedule);
       } else {
         this.addFavoriteSchedule(this.currentSchedule);
       }
     },
-    currentUrl () {
+    currentUrl() {
       return global.window ? window.location.href : '';
     },
-    async share () {
+    async share() {
       // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
       if (navigator.share) {
         await navigator.share({
-          url: this.currentUrl()
+          url: this.currentUrl(),
         });
       } else {
         this.shareDialogOpen = true;
@@ -215,8 +219,8 @@ export default {
     },
     ...mapMutations({
       addFavoriteSchedule: 'splus/addFavoriteSchedule',
-      removeFavoriteSchedule: 'splus/removeFavoriteSchedule'
-    })
-  }
+      removeFavoriteSchedule: 'splus/removeFavoriteSchedule',
+    }),
+  },
 };
 </script>

@@ -14,26 +14,26 @@ export const state = () => ({
    * true if frontend is a static build.
    */
   lazyLoad: false,
-  errorQueue: []
+  errorQueue: [],
 });
 
 export const mutations = {
-  enableLazyLoad (state) {
+  enableLazyLoad(state) {
     state.lazyLoad = true;
   },
-  enqueueError (state, message) {
+  enqueueError(state, message) {
     state.errorQueue.push(message);
   },
-  dequeueError (state) {
+  dequeueError(state) {
     state.errorQueue.shift();
-  }
+  },
 };
 
 export const actions = {
-  async nuxtServerInit ({ commit }) {
+  async nuxtServerInit({ commit }) {
     // await Promise.all([
     //   dispatch('news/loadCampusNews'),
     //   dispatch('news/loadFacultyNews')
     // ]);
-  }
-}
+  },
+};
