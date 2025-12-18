@@ -28,10 +28,7 @@ class App {
 
     // express default route handler => 404
     this.app.use(function (req, res, _next) {
-      return res
-        .status(404)
-        .type('txt')
-        .send('Not a valid API call: ' + req.url);
+      return res.status(404).type('txt').send('Invalid API called');
     });
     // Any unhandled server error => 500
     this.app.use(function (err, _req, res, next) {
