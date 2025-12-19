@@ -1,6 +1,4 @@
 {
-    "editor.formatOnSave": true,
-    "[vue,js]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    }
+  "editor.defaultFormatter": "prettier.prettier-vscode",
+  "editor.formatOnSave": true
 }

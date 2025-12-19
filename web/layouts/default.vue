@@ -21,15 +21,15 @@ export default {
   components: {
     SpluseinsHeader,
     SpluseinsFooter,
-    SpluseinsErrorSnackbar
+    SpluseinsErrorSnackbar,
   },
   computed: {
     ...mapState({
-      isDark: state => state.ui.isDark
-    })
+      isDark: (state) => state.ui.isDark,
+    }),
   },
-  mounted () {
+  mounted() {
     this.$vuetify.theme.dark = this.isDark;
-  }
+  },
 };
 </script>

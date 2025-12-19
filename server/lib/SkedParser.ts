@@ -22,8 +22,10 @@ export function parseSkedList(html: string): ParsedLecture[] {
 
   // format "Liste"
   $('body table.tbl tbody tr[class^="tr"]').each(function () {
-    const cols = $(this).children('td').get()
-      .map(col => $(col).text().replace(/-\s*$/, '').trim());
+    const cols = $(this)
+      .children('td')
+      .get()
+      .map((col) => $(col).text().replace(/-\s*$/, '').trim());
 
     switch (cols.length) {
       case 11:
@@ -94,7 +96,7 @@ export function parseSkedList(html: string): ParsedLecture[] {
       title: veranstaltung.replace(/^I-/, ''),
       start: start.utc().toDate(),
       end: end.utc().toDate(),
-      duration: end.diff(start, 'hours', true)
+      duration: end.diff(start, 'hours', true),
     } as ParsedLecture);
   });
 
@@ -170,32 +172,48 @@ export function parseSkedCSV(csvString: string): ParsedLecture[] {
       title: veranstaltung,
       start: start.utc().toDate(),
       end: end.utc().toDate(),
-      duration: end.diff(start, 'hours', true)
+      duration: end.diff(start, 'hours', true),
     } as ParsedLecture);
   });
 
   return events;
 }
 
-export function parseSkedGraphical(html: string, faculty: string): ParsedLecture[] {
+export function parseSkedGraphical(
+  html: string,
+  faculty: string,
+): ParsedLecture[] {
   const $ = load(html);
   const events = [] as ParsedLecture[];
 
   $('body table').each(function () {
-    let cols = parseTable(load(this, { decodeEntities: false }), true, true, false);
+    let cols = parseTable(
+      load(this, { decodeEntities: false }),
+      true,
+      true,
+      false,
+    );
 
-    cols = cols.filter(c => c[0].length > 0); // filter pseudo columns -> first entry is not date string
-    cols = cols.map(col => col.filter(text =>
-      !/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/g.test(text) && // filter time entries
-      text.length > 1 && // filter empty entries and empty tags -> 1
-      !text.startsWith('['))); // filter footnotes
-    cols = cols.filter(col => col.length > 1); // filter empty
-    cols = cols.map(col => [...new Set(col)]); // filter duplicates
-    cols = cols.map(col => col.map(text => text
-      .replace(/<span.+>.+<\/span>/g, '') // remove <span>
-      .replace(/\s\[\d+\]/g, ''))); // replace footnote links: e.g. [1]
+    cols = cols.filter((c) => c[0].length > 0); // filter pseudo columns -> first entry is not date string
+    cols = cols.map((col) =>
+      col.filter(
+        (text) =>
+          !/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/g.test(text) && // filter time entries
+          text.length > 1 && // filter empty entries and empty tags -> 1
+          !text.startsWith('['),
+      ),
+    ); // filter footnotes
+    cols = cols.filter((col) => col.length > 1); // filter empty
+    cols = cols.map((col) => [...new Set(col)]); // filter duplicates
+    cols = cols.map((col) =>
+      col.map((text) =>
+        text
+          .replace(/<span.+>.+<\/span>/g, '') // remove <span>
+          .replace(/\s\[\d+\]/g, ''),
+      ),
+    ); // replace footnote links: e.g. [1]
 
-    cols.forEach(col => {
+    cols.forEach((col) => {
       // eslint-disable-next-line complexity
       col.forEach((entry, index) => {
         if (index === 0) {
@@ -203,7 +221,9 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
           return;
         }
         const datum = col[0].split(', ')[1];
-        const parts = entry.split('<br>').map(part => part.replace(/<a.+>(.+)<\/a>/, '$1'));
+        const parts = entry
+          .split('<br>')
+          .map((part) => part.replace(/<a.+>(.+)<\/a>/, '$1'));
         if (parts.length < 3) {
           // Should at least have time & name, otherwise no valid column
           return;
@@ -250,7 +270,11 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
             if (parts[0].endsWith('Uhr')) {
               parts.shift(); // remove first uhrzeit entry
             }
-            while (parts[0] !== undefined && !parts[0].startsWith('S-') && !parts[0].startsWith('Ringveranstaltung')) {
+            while (
+              parts[0] !== undefined &&
+              !parts[0].startsWith('S-') &&
+              !parts[0].startsWith('Ringveranstaltung')
+            ) {
               anmerkung += parts.shift() + ', ';
             }
             veranstaltung = parts.shift();
@@ -263,7 +287,9 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
             anmerkung = anmerkung.replace(/(, ?)+$/, ''); // remove trailing ,
 
             // einige veranstaltungen enthalten den dozenten im titel
-            veranstaltung = veranstaltung.replace(` - ${dozent}`, '').replace(` ${dozent}`, '');
+            veranstaltung = veranstaltung
+              .replace(` - ${dozent}`, '')
+              .replace(` ${dozent}`, '');
             break;
           case 'Fahrzeugtechnik':
             raum = parts[0];
@@ -292,8 +318,16 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
         }
 
         const dateFormat = 'DD.MM.YYYY H:m';
-        const start = moment.tz(datum + ' ' + uhrzeitStart, dateFormat, 'Europe/Berlin');
-        const end = moment.tz(datum + ' ' + uhrzeitEnde, dateFormat, 'Europe/Berlin');
+        const start = moment.tz(
+          datum + ' ' + uhrzeitStart,
+          dateFormat,
+          'Europe/Berlin',
+        );
+        const end = moment.tz(
+          datum + ' ' + uhrzeitEnde,
+          dateFormat,
+          'Europe/Berlin',
+        );
         if (!start.isValid() || !end.isValid() || veranstaltung === '') {
           return;
         }
@@ -305,7 +339,7 @@ export function parseSkedGraphical(html: string, faculty: string): ParsedLecture
           title: veranstaltung || '',
           start: start.utc().toDate(),
           end: end.utc().toDate(),
-          duration: end.diff(start, 'hours', true)
+          duration: end.diff(start, 'hours', true),
         } as ParsedLecture);
       });
     });
@@ -322,60 +356,70 @@ export function parseTimetableIntranet(html: string): ParsedLecture[] {
     const date = $(day).find('.day').html().split('<br>')[1];
     const jsDate = moment(date, 'DD.MM.YYYY').toDate();
 
-    $(day).find('.day-event').each(function (i, event) {
-      const styleTopString = $(event).css('top');
-      const styleHeightString = $(event).css('height');
-      const styleUsesPercentage = styleTopString.includes('%');
-      let startTimeSince8: number | undefined;
-      let endTimeSince8: number | undefined;
-      if (styleUsesPercentage) {
-        // 0% = 8:00, 100% = 20:00
-        const styleTop = parseFloat(styleTopString);
-        const styleHeight = parseFloat(styleHeightString);
-        startTimeSince8 = styleTop / 100 * 12 * 60;
-        endTimeSince8 = (styleTop + styleHeight) / 100 * 12 * 60;
-      } else {
-        const styleTop = parseInt(styleTopString);
-        const styleHeight = parseInt(styleHeightString);
+    $(day)
+      .find('.day-event')
+      .each(function (i, event) {
+        const styleTopString = $(event).css('top');
+        const styleHeightString = $(event).css('height');
+        const styleUsesPercentage = styleTopString.includes('%');
+        let startTimeSince8: number | undefined;
+        let endTimeSince8: number | undefined;
+        if (styleUsesPercentage) {
+          // 0% = 8:00, 100% = 20:00
+          const styleTop = parseFloat(styleTopString);
+          const styleHeight = parseFloat(styleHeightString);
+          startTimeSince8 = (styleTop / 100) * 12 * 60;
+          endTimeSince8 = ((styleTop + styleHeight) / 100) * 12 * 60;
+        } else {
+          const styleTop = parseInt(styleTopString);
+          const styleHeight = parseInt(styleHeightString);
 
-        // timetable starts at 8:00
-        // 100px height = 60 minutes
-        startTimeSince8 = styleTop / 100 * 60;
-        endTimeSince8 = (styleTop + styleHeight) / 100 * 60;
-      }
+          // timetable starts at 8:00
+          // 100px height = 60 minutes
+          startTimeSince8 = (styleTop / 100) * 60;
+          endTimeSince8 = ((styleTop + styleHeight) / 100) * 60;
+        }
 
-      if (startTimeSince8 === undefined || endTimeSince8 === undefined) {
-        throw new Error('Invalid time styles');
-      }
+        if (startTimeSince8 === undefined || endTimeSince8 === undefined) {
+          throw new Error('Invalid time styles');
+        }
 
-      const eventStart = new Date(jsDate);
-      eventStart.setHours(8 + Math.floor(startTimeSince8 / 60));
-      eventStart.setMinutes(startTimeSince8 % 60);
+        const eventStart = new Date(jsDate);
+        eventStart.setHours(8 + Math.floor(startTimeSince8 / 60));
+        eventStart.setMinutes(startTimeSince8 % 60);
 
-      const eventEnd = new Date(jsDate);
-      eventEnd.setHours(8 + Math.floor(endTimeSince8 / 60));
-      eventEnd.setMinutes(endTimeSince8 % 60);
+        const eventEnd = new Date(jsDate);
+        eventEnd.setHours(8 + Math.floor(endTimeSince8 / 60));
+        eventEnd.setMinutes(endTimeSince8 % 60);
 
-      const title = $(event).find('.text').text();
-      const room = $(event).find('.rooms').text();
+        const title = $(event).find('.text').text();
+        const room = $(event).find('.rooms').text();
 
-      const dateFormat = 'DD.MM.YYYY H:m';
-      const start = moment.tz(date + ' ' + eventStart.toTimeString(), dateFormat, 'Europe/Berlin');
-      const end = moment.tz(date + ' ' + eventEnd.toTimeString(), dateFormat, 'Europe/Berlin');
-      if (!start.isValid() || !end.isValid()) {
-        throw new Error('Invalid date' + start + ' ' + end);
-      }
+        const dateFormat = 'DD.MM.YYYY H:m';
+        const start = moment.tz(
+          date + ' ' + eventStart.toTimeString(),
+          dateFormat,
+          'Europe/Berlin',
+        );
+        const end = moment.tz(
+          date + ' ' + eventEnd.toTimeString(),
+          dateFormat,
+          'Europe/Berlin',
+        );
+        if (!start.isValid() || !end.isValid()) {
+          throw new Error('Invalid date' + start + ' ' + end);
+        }
 
-      events.push({
-        info: '',
-        room,
-        lecturer: '',
-        title,
-        start: start.utc().toDate(),
-        end: end.utc().toDate(),
-        duration: end.diff(start, 'hours', true)
+        events.push({
+          info: '',
+          room,
+          lecturer: '',
+          title,
+          start: start.utc().toDate(),
+          end: end.utc().toDate(),
+          duration: end.diff(start, 'hours', true),
+        });
       });
-    });
   });
 
   return events;

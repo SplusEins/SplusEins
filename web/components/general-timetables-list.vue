@@ -1,8 +1,6 @@
 <template>
   <v-list subheader>
-    <v-subheader>
-      Alle Pläne
-    </v-subheader>
+    <v-subheader> Alle Pläne </v-subheader>
 
     <v-list-group
       v-for="(semesters, path) in schedulesTree"
@@ -56,15 +54,15 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'GeneralTimetablesList',
-  data () {
+  data() {
     return {
-      load: {}
+      load: {},
     };
   },
   computed: {
     ...mapGetters({
-      schedulesTree: 'splus/getTimetablesAsTree'
-    })
-  }
+      schedulesTree: 'splus/getTimetablesAsTree',
+    }),
+  },
 };
 </script>

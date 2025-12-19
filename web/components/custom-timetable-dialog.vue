@@ -7,40 +7,29 @@
     transition="dialog-bottom-transition"
   >
     <v-card>
-      <v-toolbar
-        dark
-        color="primary"
-      >
-        <v-btn
-          icon
-          dark
-          @click.native="dialogOpen = false"
-        >
+      <v-toolbar dark color="primary">
+        <v-btn icon dark @click.native="dialogOpen = false">
           <v-icon>{{ mdiClose }}</v-icon>
         </v-btn>
         <v-toolbar-title>Neuer Stundenplan</v-toolbar-title>
         <v-spacer />
         <v-toolbar-items>
-          <v-btn
-            :disabled="!saveable"
-            dark
-            text
-            @click.native="save()"
-          >
+          <v-btn :disabled="!saveable" dark text @click.native="save()">
             Speichern
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
-      <v-form
-        v-model="valid"
-        class="pa-2"
-      >
+      <v-form v-model="valid" class="pa-2">
         <v-container>
           <v-row>
             <v-col cols="12">
               <v-text-field
                 v-model="selectedName"
-                :rules="[rules.required, rules.uniqueScheduleLabel, isNew ? rules.uniqueCustomScheduleLabel : true]"
+                :rules="[
+                  rules.required,
+                  rules.uniqueScheduleLabel,
+                  isNew ? rules.uniqueCustomScheduleLabel : true,
+                ]"
                 label="Plan benennen"
                 single-line
                 required
@@ -90,25 +79,25 @@ import { uniq, flatten, customTimetableToRoute, deepEqual } from '../lib/util';
 import { loadUniqueLectures, eventsAsLectures } from '../store/splus';
 import TimetableSelect from './timetable-select.vue';
 import CourseMultiselect from './course-multiselect.vue';
-import { mdiClose } from '@mdi/js'
+import { mdiClose } from '@mdi/js';
 
 export default {
   name: 'CustomTimetableDialog',
   components: {
     TimetableSelect,
-    CourseMultiselect
+    CourseMultiselect,
   },
   props: {
     value: {
       type: Boolean,
-      default: false
+      default: false,
     },
     customSchedule: {
       type: Object,
-      default: () => undefined
-    }
+      default: () => undefined,
+    },
   },
-  data () {
+  data() {
     return {
       /* user data */
       selectedName: '',
@@ -121,32 +110,34 @@ export default {
       /* constants */
       rules: {
         required: (value) => !!value || 'Pflichtfeld',
-        uniqueScheduleLabel:
-          (value) => !this.scheduleIds.includes(value) ||
-                     'Bereits vergeben',
-        uniqueCustomScheduleLabel:
-          (value) => !this.customScheduleLabels.includes(value) ||
-                     'Bereits vergeben'
+        uniqueScheduleLabel: (value) =>
+          !this.scheduleIds.includes(value) || 'Bereits vergeben',
+        uniqueCustomScheduleLabel: (value) =>
+          !this.customScheduleLabels.includes(value) || 'Bereits vergeben',
       },
       // reasonable limits to ensure good performance
       // and a usable UI
       maxSchedules: 8,
       maxCourses: 20,
-      mdiClose
+      mdiClose,
     };
   },
   computed: {
     dialogOpen: {
-      get () { return this.value; },
-      set (value) { this.$emit('input', value); }
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit('input', value);
+      },
     },
-    saveable () {
+    saveable() {
       return this.valid && this.selectedCourses.length > 0;
     },
-    isNew () {
+    isNew() {
       return !this.customSchedule;
     },
-    allLectures () {
+    allLectures() {
       return flatten(Object.values(this.lectures));
     },
     ...mapGetters({
@@ -154,28 +145,31 @@ export default {
       customScheduleLabels: 'splus/customTimetableLabels',
       scheduleIds: 'splus/timetableIds',
       getScheduleById: 'splus/getTimetableById',
-      customTimetablesAsRoutes: 'splus/customTimetablesAsRoutes'
-    })
+      customTimetablesAsRoutes: 'splus/customTimetablesAsRoutes',
+    }),
   },
   watch: {
-    dialogOpen () {
+    dialogOpen() {
       if (this.dialogOpen) {
         if (!this.isNew) {
           this.load();
         }
       }
-    }
+    },
   },
   methods: {
-    getFormattedName (schedule) {
+    getFormattedName(schedule) {
       for (const element of this.selectedSchedules) {
-        if ((schedule.label == element.label) && (schedule.semester != element.semester)) {
+        if (
+          schedule.label == element.label &&
+          schedule.semester != element.semester
+        ) {
           return schedule.label + ' (' + schedule.semester + '. Sem)';
         }
       }
       return schedule.label;
     },
-    async addSchedule (schedule) {
+    async addSchedule(schedule) {
       if (this.selectedSchedules.includes(schedule)) {
         return;
       }
@@ -183,15 +177,16 @@ export default {
       this.selectedSchedules.push(schedule);
       await this.loadLectures(schedule);
     },
-    removeSchedule (schedule) {
+    removeSchedule(schedule) {
       const index = this.selectedSchedules.indexOf(schedule);
       this.selectedSchedules.splice(index, 1);
-      const titles = this.lectures[schedule.id].map(lecture => lecture.title)
+      const titles = this.lectures[schedule.id].map((lecture) => lecture.title);
       this.$set(this.lectures, schedule.id, []);
       this.selectedCourses = this.selectedCourses.filter(
-        (course) => !titles.includes(course.title));
+        (course) => !titles.includes(course.title),
+      );
     },
-    async loadLectures (schedule) {
+    async loadLectures(schedule) {
       this.loading = true;
 
       try {
@@ -208,7 +203,7 @@ export default {
     /**
      * Store the edited schedule.
      */
-    save () {
+    save() {
       this.dialogOpen = false;
 
       // Set the base schedule and filters matching the given courses.
@@ -217,7 +212,7 @@ export default {
       const customScheduleRoute = customTimetableToRoute({
         id: this.selectedSchedules.map(({ id }) => id),
         label: this.selectedName,
-        whitelist: titleIds
+        whitelist: titleIds,
       });
 
       if (!this.isNew) {
@@ -238,21 +233,25 @@ export default {
     /**
      * Load the state from a passed schedule.
      */
-    async load () {
+    async load() {
       this.selectedName = this.customSchedule.label;
 
-      await Promise.all(this.customSchedule.id.map(async (id) =>
-        await this.addSchedule(this.getScheduleById(id)))
+      await Promise.all(
+        this.customSchedule.id.map(
+          async (id) => await this.addSchedule(this.getScheduleById(id)),
+        ),
       );
 
-      const getCourseById = (id) => flatten(Object.values(this.lectures)).find(
-        ({ titleId }) => titleId == id);
+      const getCourseById = (id) =>
+        flatten(Object.values(this.lectures)).find(
+          ({ titleId }) => titleId == id,
+        );
       this.selectedCourses = this.customSchedule.whitelist.map(getCourseById);
     },
     ...mapMutations({
       enqueueError: 'enqueueError',
-      deleteCustomSchedule: 'splus/deleteCustomSchedule'
-    })
-  }
+      deleteCustomSchedule: 'splus/deleteCustomSchedule',
+    }),
+  },
 };
 </script>

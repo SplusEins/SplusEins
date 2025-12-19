@@ -1,9 +1,7 @@
 <template>
   <v-card class="fill-height">
     <v-card-title>
-      <div class="text-h5">
-        Schnellzugriff
-      </div>
+      <div class="text-h5">Schnellzugriff</div>
     </v-card-title>
     <v-card-text class="text-body-1">
       <v-list v-if="customSchedulesAsRoutes.length != 0">
@@ -40,18 +38,18 @@ export default {
   name: 'QuickAccessCard',
   computed: {
     ...mapState({
-      favorites: (state) => state.splus.favoriteSchedules
+      favorites: (state) => state.splus.favoriteSchedules,
     }),
     ...mapGetters({
-      customSchedulesAsRoutes: 'splus/customTimetablesAsRoutes'
+      customSchedulesAsRoutes: 'splus/customTimetablesAsRoutes',
     }),
-    displayDivider () {
-      return this.favorites.length != 0 && this.customSchedulesAsRoutes.length != 0;
-    }
-  }
+    displayDivider() {
+      return (
+        this.favorites.length != 0 && this.customSchedulesAsRoutes.length != 0
+      );
+    },
+  },
 };
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

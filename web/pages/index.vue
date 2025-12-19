@@ -1,26 +1,14 @@
 <template>
   <v-container
     v-touch="{
-      right: () => setSidenav(true)
+      right: () => setSidenav(true),
     }"
     fluid
   >
-    <v-row
-      dense
-    >
-      <v-col
-        cols=12
-        md=6
-        order="first"
-      >
-        <v-row
-          no-gutters
-          class="fill-height"
-        >
-          <v-col
-            cols=12
-            class="mb-md-1"
-          >
+    <v-row dense>
+      <v-col cols="12" md="6" order="first">
+        <v-row no-gutters class="fill-height">
+          <v-col cols="12" class="mb-md-1">
             <upcoming-lectures-card />
           </v-col>
         </v-row>
@@ -28,32 +16,32 @@
 
       <v-col
         v-show="displayMensaCard"
-        cols=12
-        md=6
+        cols="12"
+        md="6"
         :lg="hasSubscribableTimetables ? 4 : 6"
-        order=3
-        order-md=4
+        order="3"
+        order-md="4"
       >
         <mensa-card />
       </v-col>
 
       <v-col
         v-show="hasSubscribableTimetables"
-        cols=12
-        md=6
+        cols="12"
+        md="6"
         :lg="displayMensaCard ? 4 : 6"
-        order=5
+        order="5"
       >
         <stats-card />
       </v-col>
 
       <v-col
         v-show="hasSubscribableTimetables"
-        cols=12
-        md=6
+        cols="12"
+        md="6"
         :lg="displayMensaCard ? 4 : 6"
-        order=2
-        order-md=3
+        order="2"
+        order-md="3"
       >
         <quick-access-card />
       </v-col>
@@ -74,45 +62,63 @@ export default {
     UpcomingLecturesCard,
     QuickAccessCard,
     MensaCard,
-    StatsCard
+    StatsCard,
   },
   computed: {
-    displayMensaCard () {
-      if (!this.mensaPlans || this.mensaPlans.length === 0 || !this.mensaPlans[0].dayPlans || this.mensaPlans[0].dayPlans.length === 0) {
+    displayMensaCard() {
+      if (
+        !this.mensaPlans ||
+        this.mensaPlans.length === 0 ||
+        !this.mensaPlans[0].dayPlans ||
+        this.mensaPlans[0].dayPlans.length === 0
+      ) {
         return false;
       }
       const mensaPlan = this.mensaPlans[0].dayPlans;
       // display if next plan is from today or from tomorrow
-      return this.$dayjs().isSame(mensaPlan[0].date, 'day') || this.$dayjs().add(1, 'days').isSame(mensaPlan[0].date, 'day');
+      return (
+        this.$dayjs().isSame(mensaPlan[0].date, 'day') ||
+        this.$dayjs().add(1, 'days').isSame(mensaPlan[0].date, 'day')
+      );
     },
     ...mapState({
-      mensaPlans: (state) => state.mensa.plans
+      mensaPlans: (state) => state.mensa.plans,
     }),
     ...mapGetters({
       customSchedulesAsRoutes: 'splus/customSchedulesAsRoutes',
-      hasSubscribableTimetables: 'splus/hasSubscribableTimetables'
-    })
+      hasSubscribableTimetables: 'splus/hasSubscribableTimetables',
+    }),
   },
-  head () {
+  head() {
     return {
       title: 'Startseite',
       meta: [
-        { hid: 'description', name: 'description', content: 'SplusEins – Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.' },
-        { hid: 'og:description', property: 'og:description', content: 'SplusEins – Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.' }
-      ]
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'SplusEins – Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'SplusEins – Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.',
+        },
+      ],
     };
   },
-  mounted () {
+  mounted() {
     this.loadMensa();
   },
   methods: {
     ...mapMutations({
-      setSidenav: 'ui/setSidenav'
+      setSidenav: 'ui/setSidenav',
     }),
     ...mapActions({
-      loadMensa: 'mensa/load'
-    })
+      loadMensa: 'mensa/load',
+    }),
   },
-  middleware: 'cached'
+  middleware: 'cached',
 };
 </script>

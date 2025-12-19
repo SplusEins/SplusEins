@@ -43,6 +43,6 @@ export function getRoomLocation(room: string) {
 }
 
 export function getLectureRoomsLocation(rooms: string[]) {
-  const locations = rooms.map(room => getRoomLocation(room.trim()));
+  const locations = rooms.map((room) => getRoomLocation(room.trim()));
   return locations.join(' / ');
 }

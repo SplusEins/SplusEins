@@ -1,15 +1,6 @@
 <template>
-  <v-footer
-    v-show="visible"
-    padless
-    tile
-  >
-    <v-list
-      subheader
-      dense
-      class="pa-0"
-      style="width: 100%"
-    >
+  <v-footer v-show="visible" padless tile>
+    <v-list subheader dense class="pa-0" style="width: 100%">
       <v-list-item @click="install()">
         <v-list-item-action>
           <v-icon>{{ mdiDownload }}</v-icon>
@@ -23,22 +14,22 @@
 </template>
 
 <script>
-import { mdiDownload } from '@mdi/js'
+import { mdiDownload } from '@mdi/js';
 
 export default {
   name: 'InstallButtonList',
-  data () {
+  data() {
     return {
       deferredPrompt: undefined,
-      mdiDownload
+      mdiDownload,
     };
   },
   computed: {
-    visible () {
+    visible() {
       return !!this.deferredPrompt;
-    }
+    },
   },
-  mounted () {
+  mounted() {
     // See https://developers.google.com/web/fundamentals/app-install-banners/
     window.addEventListener('beforeinstallprompt', (e) => {
       // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -48,7 +39,7 @@ export default {
     });
   },
   methods: {
-    async install () {
+    async install() {
       // Show the prompt
       this.deferredPrompt.prompt();
 
@@ -56,7 +47,7 @@ export default {
       // eslint-disable-next-line no-unused-vars
       const choice = await this.deferredPrompt.userChoice;
       this.deferredPrompt = undefined;
-    }
-  }
+    },
+  },
 };
 </script>

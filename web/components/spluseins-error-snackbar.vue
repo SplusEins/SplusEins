@@ -1,19 +1,8 @@
 <template>
-  <v-snackbar
-    v-model="snackbarOpen"
-    :timeout="-1"
-    color="error"
-    right
-  >
+  <v-snackbar v-model="snackbarOpen" :timeout="-1" color="error" right>
     [{{ errorQueue.length }}] {{ next }}
     <template #action="{ attrs }">
-      <v-btn
-        text
-        v-bind="attrs"
-        @click="dequeueError()"
-      >
-        Schließen
-      </v-btn>
+      <v-btn text v-bind="attrs" @click="dequeueError()"> Schließen </v-btn>
     </template>
   </v-snackbar>
 </template>
@@ -25,24 +14,24 @@ export default {
   name: 'SpluseinsErrorSnackbar',
   computed: {
     snackbarOpen: {
-      get () {
+      get() {
         return this.errorQueue.length != 0;
       },
-      set () {
+      set() {
         this.dequeueError();
-      }
+      },
     },
     ...mapState({
-      errorQueue: state => state.errorQueue
+      errorQueue: (state) => state.errorQueue,
     }),
-    next () {
+    next() {
       return this.errorQueue[0];
-    }
+    },
   },
   methods: {
     ...mapMutations({
-      dequeueError: 'dequeueError'
-    })
-  }
+      dequeueError: 'dequeueError',
+    }),
+  },
 };
 </script>

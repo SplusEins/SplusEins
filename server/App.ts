@@ -12,14 +12,14 @@ const COOKIE_SECRET = process.env.COOKIE_SECRET;
 class App {
   public app: express.Application;
 
-  constructor (private basePath: string = '/api') {
+  constructor(private basePath: string = '/api') {
     this.app = express();
     this.app.use(cookieParser(COOKIE_SECRET));
-    this.app.use(cors())
+    this.app.use(cors());
     this.routes();
   }
 
-  private routes (): void {
+  private routes(): void {
     this.app.use(this.basePath + '/splus', splusController);
     this.app.use(this.basePath + '/mensa', mensaController);
     this.app.use(this.basePath + '/news', newsController);
@@ -34,7 +34,14 @@ class App {
     this.app.use(function (err, _req, res, next) {
       if (res.headersSent) return next(err); // already handled
       console.error(err.stack);
-      return res.status(500).type('txt').send('A server error occured. Please inform team@spluseins.de (Error is ' + err.message + ').');
+      return res
+        .status(500)
+        .type('txt')
+        .send(
+          'A server error occured. Please inform team@spluseins.de (Error is ' +
+            err.message +
+            ').',
+        );
     });
   }
 }

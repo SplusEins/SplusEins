@@ -8,17 +8,13 @@
     "downlevelIteration": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./*"
-      ],
+      "~/*": ["./*"]
     },
     "strict": true,
     // TODO remove these
     "noImplicitAny": false,
     "noImplicitThis": false,
-    "strictNullChecks": false,
+    "strictNullChecks": false
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

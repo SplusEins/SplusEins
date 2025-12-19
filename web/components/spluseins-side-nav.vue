@@ -2,13 +2,13 @@
   <v-navigation-drawer
     v-model="drawer"
     v-touch="{
-      left: () => drawer = false
+      left: () => (drawer = false),
     }"
     clipped
     fixed
     app
     width="350"
-    :class="{'mobile-scroll-drawer': isMobile}"
+    :class="{ 'mobile-scroll-drawer': isMobile }"
   >
     <basic-utilities-list />
     <v-divider v-if="hasCustomTimetables" />
@@ -18,9 +18,7 @@
     <v-divider />
     <general-timetables-list />
     <no-ssr>
-      <install-button-list
-        class="stick-bottom"
-      />
+      <install-button-list class="stick-bottom" />
     </no-ssr>
   </v-navigation-drawer>
 </template>
@@ -40,34 +38,38 @@ export default {
     FavoriteTimetablesList,
     CustomTimetablesList,
     InstallButtonList,
-    BasicUtilitiesList
+    BasicUtilitiesList,
   },
   computed: {
     drawer: {
-      get () { return this.sidenavIsOpen; },
-      set (val) { this.setSidenav(val) }
+      get() {
+        return this.sidenavIsOpen;
+      },
+      set(val) {
+        this.setSidenav(val);
+      },
     },
-    hasCustomTimetables () {
+    hasCustomTimetables() {
       return JSON.stringify(this.customSchedules) != '{}';
     },
-    hasFavoriteTimetables () {
+    hasFavoriteTimetables() {
       return this.favoriteSchedules.length > 0;
     },
-    isMobile () {
+    isMobile() {
       return this.$vuetify.breakpoint.mobile;
     },
     ...mapState({
       customSchedules: (state) => state.splus.customSchedules,
       favoriteSchedules: (state) => state.splus.favoriteSchedules,
       sidenavIsOpen: (state) => state.ui.sidenavIsOpen,
-      browserStateReady: (state) => state.browserStateReady
-    })
+      browserStateReady: (state) => state.browserStateReady,
+    }),
   },
   methods: {
     ...mapMutations({
-      setSidenav: 'ui/setSidenav'
-    })
-  }
+      setSidenav: 'ui/setSidenav',
+    }),
+  },
 };
 </script>
 
@@ -84,5 +86,4 @@ export default {
   position: sticky;
   bottom: 0;
 }
-
 </style>

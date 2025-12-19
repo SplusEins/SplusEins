@@ -1,16 +1,11 @@
 <template>
   <v-list>
-    <v-list-item
-      to="/"
-      nuxt
-    >
+    <v-list-item to="/" nuxt>
       <v-list-item-action>
         <v-icon>{{ mdiHome }}</v-icon>
       </v-list-item-action>
       <v-list-item-content>
-        <v-list-item-title>
-          Startseite
-        </v-list-item-title>
+        <v-list-item-title> Startseite </v-list-item-title>
       </v-list-item-content>
     </v-list-item>
 
@@ -19,37 +14,25 @@
         <v-icon>{{ mdiPlus }}</v-icon>
       </v-list-item-action>
       <v-list-item-content>
-        <v-list-item-title>
-          Personalisierter Plan
-        </v-list-item-title>
+        <v-list-item-title> Personalisierter Plan </v-list-item-title>
       </v-list-item-content>
     </v-list-item>
 
-    <v-list-item
-      to="/mensa"
-      nuxt
-    >
+    <v-list-item to="/mensa" nuxt>
       <v-list-item-action>
         <v-icon>{{ mdiFoodForkDrink }}</v-icon>
       </v-list-item-action>
       <v-list-item-content>
-        <v-list-item-title>
-          Mensa
-        </v-list-item-title>
+        <v-list-item-title> Mensa </v-list-item-title>
       </v-list-item-content>
     </v-list-item>
 
-    <v-list-item
-      to="/bus"
-      nuxt
-    >
+    <v-list-item to="/bus" nuxt>
       <v-list-item-action>
         <v-icon>{{ mdiBus }}</v-icon>
       </v-list-item-action>
       <v-list-item-content>
-        <v-list-item-title>
-          Busse Wolfenbüttel
-        </v-list-item-title>
+        <v-list-item-title> Busse Wolfenbüttel </v-list-item-title>
       </v-list-item-content>
     </v-list-item>
 
@@ -58,17 +41,17 @@
 </template>
 
 <script>
-import { mdiHome, mdiPlus, mdiFoodForkDrink, mdiBus } from '@mdi/js'
+import { mdiHome, mdiPlus, mdiFoodForkDrink, mdiBus } from '@mdi/js';
 
 export default {
-  data () {
+  data() {
     return {
       customTimetableDialogOpen: false,
       mdiHome,
       mdiPlus,
       mdiFoodForkDrink,
-      mdiBus
+      mdiBus,
     };
-  }
+  },
 };
 </script>

@@ -1,9 +1,8 @@
-{	
-	"team": 
-  {	
-		"member1": "Teammitglied1",
-		"member2": "Teammitglied2",
-		"member3": "Teammitglied3",
-		"member4": "Teammitglied4"
-	}
+{
+  "team": {
+    "member1": "Teammitglied1",
+    "member2": "Teammitglied2",
+    "member3": "Teammitglied3",
+    "member4": "Teammitglied4"
+  }
 }

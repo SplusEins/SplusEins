@@ -1,9 +1,6 @@
 <template>
   <div>
-    <v-alert
-      :value="overlappingCourses.length > 0"
-      type="warning"
-    >
+    <v-alert :value="overlappingCourses.length > 0" type="warning">
       Kurse überschneiden sich: {{ overlappingCourses.join(', ') }}
     </v-alert>
     <v-data-table
@@ -23,12 +20,14 @@
       <template #item.room="{ item }">
         <span v-html="item.room" />
       </template>
-      <template #item.data-table-select="{item, isSelected, select}">
+      <template #item.data-table-select="{ item, isSelected, select }">
         <v-simple-checkbox
           :value="isSelected"
           @input="select"
           :disabled="!isSelected && selectedCourses.length > maxCourses"
-          :color="overlappingCourses.includes(item.title) ? 'warning' : undefined"
+          :color="
+            overlappingCourses.includes(item.title) ? 'warning' : undefined
+          "
         />
       </template>
     </v-data-table>
@@ -36,57 +35,64 @@
 </template>
 
 <script>
-
 export default {
   name: 'CourseMultiselect',
   props: {
     maxCourses: {
       type: Number,
-      default: () => Infinity
+      default: () => Infinity,
     },
     lectures: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     value: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
-  data () {
+  data() {
     return {
       headers: [
         { value: 'title', text: 'Vorlesung' },
         { value: 'lecturer', text: 'Dozent' },
-        { value: 'room', text: 'Raum' }
+        { value: 'room', text: 'Raum' },
       ],
-      headers_mobile: [
-        { value: 'title', text: 'Vorlesung' }
-      ]
+      headers_mobile: [{ value: 'title', text: 'Vorlesung' }],
     };
   },
   computed: {
-    courses () {
+    courses() {
       const lecturesById = new Map();
-      this.lectures.forEach((lecture) => lecturesById.set(lecture.titleId, lecture));
+      this.lectures.forEach((lecture) =>
+        lecturesById.set(lecture.titleId, lecture),
+      );
       return [...lecturesById.values()];
     },
     selectedCourses: {
-      get () { return this.value; },
-      set (value) { this.$emit('input', value); }
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit('input', value);
+      },
     },
-    overlappingCourses () {
+    overlappingCourses() {
       // get all lectures which have their title selected
-      let selectedLectures = this.lectures.filter(
-        (lecture) => this.selectedCourses.some(
-          (course) => course.titleId === lecture.titleId));
+      let selectedLectures = this.lectures.filter((lecture) =>
+        this.selectedCourses.some(
+          (course) => course.titleId === lecture.titleId,
+        ),
+      );
 
       // filter duplicates
       const key = (lecture) =>
         `${lecture.organiserShortname} ${lecture.titleId} ${lecture.room} ` +
         `${lecture.start} ${lecture.duration}`;
       const lecturesByKey = new Map();
-      selectedLectures.forEach((lecture) => lecturesByKey.set(key(lecture), lecture));
+      selectedLectures.forEach((lecture) =>
+        lecturesByKey.set(key(lecture), lecture),
+      );
       selectedLectures = [...lecturesByKey.values()];
 
       // group all lectures by day because only they can conflict
@@ -99,48 +105,50 @@ export default {
       });
 
       // given two lectures, return true if they overlap
-      const overlapsWith = ({
-        begin: thisBegin,
-        duration: thisDuration
-      }) => ({
-        begin: otherBegin,
-        duration: otherDuration
-      }) => {
-        const thisEnd = thisBegin + thisDuration;
-        const otherEnd = otherBegin + otherDuration;
-        return (thisBegin == otherBegin || thisEnd == otherEnd ||
-          (thisBegin > otherBegin && thisBegin < otherEnd) ||
-          (thisEnd > otherBegin && thisEnd < otherEnd) ||
-          (otherBegin > thisBegin && otherBegin < thisEnd) ||
-          (otherEnd > thisBegin && otherEnd < thisEnd)
-        );
-      };
+      const overlapsWith =
+        ({ begin: thisBegin, duration: thisDuration }) =>
+        ({ begin: otherBegin, duration: otherDuration }) => {
+          const thisEnd = thisBegin + thisDuration;
+          const otherEnd = otherBegin + otherDuration;
+          return (
+            thisBegin == otherBegin ||
+            thisEnd == otherEnd ||
+            (thisBegin > otherBegin && thisBegin < otherEnd) ||
+            (thisEnd > otherBegin && thisEnd < otherEnd) ||
+            (otherBegin > thisBegin && otherBegin < thisEnd) ||
+            (otherEnd > thisBegin && otherEnd < thisEnd)
+          );
+        };
 
       const withoutAt = (list, at) => list.filter((el, index) => index != at);
 
       // find conflicts
-      const overlapLectures = [].concat(...[...lecturesByDay.values()].map(
-        // for every day…
-        (lectures) => lectures.filter(
-          // …get those two lectures…
-          (oneLecture, index, self) =>
-          // …where there is an overlap
-            withoutAt(self, index).some(overlapsWith(oneLecture)))
-      )
+      const overlapLectures = [].concat(
+        ...[...lecturesByDay.values()].map(
+          // for every day…
+          (lectures) =>
+            lectures.filter(
+              // …get those two lectures…
+              (oneLecture, index, self) =>
+                // …where there is an overlap
+                withoutAt(self, index).some(overlapsWith(oneLecture)),
+            ),
+        ),
       );
 
       // get the titles of the overlaps
       const overlapTitles = new Map();
-      overlapLectures.forEach(
-        (lecture) => overlapTitles.set(lecture.titleId, lecture.title));
+      overlapLectures.forEach((lecture) =>
+        overlapTitles.set(lecture.titleId, lecture.title),
+      );
 
-      return [...overlapTitles.values()]
-    }
+      return [...overlapTitles.values()];
+    },
   },
   methods: {
-    getShortMetadata (data) {
+    getShortMetadata(data) {
       if (data.organiserShortname && data.room) {
-        return `(${data.organiserShortname}, ${data.room})`
+        return `(${data.organiserShortname}, ${data.room})`;
       } else if (data.organiserShortname) {
         return `(${data.organiserShortname})`;
       } else if (data.room) {
@@ -148,7 +156,7 @@ export default {
       } else {
         return '';
       }
-    }
-  }
+    },
+  },
 };
 </script>

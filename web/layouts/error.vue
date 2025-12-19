@@ -5,15 +5,11 @@
     }"
     class="fill-height"
   >
-    <v-row
-      align="center"
-    >
-      <v-col
-        align="center"
-      >
+    <v-row align="center">
+      <v-col align="center">
         <v-card
           class="pa-2 ma-2"
-          :width="$vuetify.breakpoint.mobile ? undefined: '50%'"
+          :width="$vuetify.breakpoint.mobile ? undefined : '50%'"
         >
           <v-img
             v-if="error.statusCode == 404"
@@ -29,26 +25,15 @@
           />
 
           <v-card-text class="text-center text-h6">
-            <div
-              v-if="error.statusCode == 404"
-            >
-              <span v-if="error.response"> {{ error.response.data }}  </span>
+            <div v-if="error.statusCode == 404">
+              <span v-if="error.response"> {{ error.response.data }} </span>
               <span v-else> Diese Seite gibt es leider nicht...</span>
             </div>
-            <div
-              v-if="error.statusCode == 500"
-            >
-              Internal Server Error
-            </div>
+            <div v-if="error.statusCode == 500">Internal Server Error</div>
           </v-card-text>
 
           <v-card-actions class="pt-5">
-            <v-btn
-              text
-              to="/"
-              nuxt
-              color="primary"
-            >
+            <v-btn text to="/" nuxt color="primary">
               Zurück zur Startseite
             </v-btn>
           </v-card-actions>
@@ -59,22 +44,21 @@
 </template>
 
 <script>
-
 export default {
   props: {
     error: {
       type: Object,
-      default: null
-    }
-  }
-}
+      default: null,
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
-.ErrorImg{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+.ErrorImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
 }
 </style>

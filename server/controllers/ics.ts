@@ -9,7 +9,8 @@ import { getEvents } from '../lib/SplusApi';
 
 const router = express.Router();
 const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
-const range = (lower: number, upper: number) => Array.from(Array(upper - lower), (x, i) => lower + i);
+const range = (lower: number, upper: number) =>
+  Array.from(Array(upper - lower), (x, i) => lower + i);
 
 const ICS_PRELOAD_WEEKS = parseInt(process.env.ICS_PRELOAD_WEEKS || '4');
 const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
@@ -18,7 +19,7 @@ const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
  * @param lecture lecture
  * @returns ical event
  */
-function eventToICSEvent (lecture: Event) {
+function eventToICSEvent(lecture: Event) {
   const uid = sha256(JSON.stringify(lecture)).substr(0, 16);
   return {
     uid,
@@ -26,8 +27,11 @@ function eventToICSEvent (lecture: Event) {
     end: lecture.end,
     timestamp: moment().toDate(),
     summary: lecture.title,
-    description: lecture.meta.organiserName + (lecture.meta.description != '' ? ' - ' : '') + lecture.meta.description,
-    location: lecture.location
+    description:
+      lecture.meta.organiserName +
+      (lecture.meta.description != '' ? ' - ' : '') +
+      lecture.meta.description,
+    location: lecture.location,
   };
 }
 
@@ -42,9 +46,11 @@ function eventToICSEvent (lecture: Event) {
  */
 router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
   const timetableIds = <string[]>req.params.timetables.split(',');
-  const titleIds = <string[]>(req.params.lectures || '')
-    .split(',')
-    .filter((titleId) => titleId.length > 0);
+  const titleIds = <string[]>(
+    (req.params.lectures || '')
+      .split(',')
+      .filter((titleId) => titleId.length > 0)
+  );
 
   const timetables = timetableIds
     .map((timetableId) => TIMETABLES.find(({ id }) => id == timetableId))
@@ -61,18 +67,23 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
 
   try {
     const requests: TimetableRequest[] = [];
-    weeks.forEach((week) => timetables.forEach((timetable) => requests.push(<TimetableRequest>{
-      id: timetable.id,
-      week,
-      type: timetable.type,
-      faculty: timetable.faculty,
-      timetablePath: timetable.timetablePath
-    })));
+    weeks.forEach((week) =>
+      timetables.forEach((timetable) =>
+        requests.push(<TimetableRequest>{
+          id: timetable.id,
+          week,
+          type: timetable.type,
+          faculty: timetable.faculty,
+          timetablePath: timetable.timetablePath,
+        }),
+      ),
+    );
 
     const allEvents: Event[] = await getEvents(requests);
-    const filteredEvents = titleIds.length > 0
-      ? allEvents.filter(({ id }) => titleIds.includes(id))
-      : allEvents;
+    const filteredEvents =
+      titleIds.length > 0
+        ? allEvents.filter(({ id }) => titleIds.includes(id))
+        : allEvents;
     const events = filteredEvents.map((event) => eventToICSEvent(event));
 
     const cal = ical({ events });

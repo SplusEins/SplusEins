@@ -1,22 +1,9 @@
 <template>
-  <v-row
-    dense
-    align="center"
-  >
-    <v-col
-      cols="12"
-      md="5"
-    >
-      <v-select
-        v-model="selectedPath"
-        :items="paths"
-        label="Studiengang"
-      />
+  <v-row dense align="center">
+    <v-col cols="12" md="5">
+      <v-select v-model="selectedPath" :items="paths" label="Studiengang" />
     </v-col>
-    <v-col
-      cols="4"
-      md="2"
-    >
+    <v-col cols="4" md="2">
       <v-select
         v-model="selectedSemester"
         :items="semesters"
@@ -24,10 +11,7 @@
         label="Semester"
       />
     </v-col>
-    <v-col
-      cols="5"
-      md="3"
-    >
+    <v-col cols="5" md="3">
       <v-select
         v-model="selectedSchedule"
         :items="schedules"
@@ -59,65 +43,70 @@ export default {
   props: {
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     selectedSchedules: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
-  data () {
+  data() {
     return {
       selectedSchedule: undefined,
       selectedPath: undefined,
-      selectedSemester: undefined
+      selectedSemester: undefined,
     };
   },
   computed: {
-    paths () {
-      return Object.keys(this.schedulesTree)
-        .filter((path) => !path.includes('Räume'));
+    paths() {
+      return Object.keys(this.schedulesTree).filter(
+        (path) => !path.includes('Räume'),
+      );
     },
-    semesters () {
+    semesters() {
       return this.schedulesTree[this.selectedPath] != undefined
         ? Object.keys(this.schedulesTree[this.selectedPath])
         : [];
     },
-    schedules () {
+    schedules() {
       return this.schedulesTree[this.selectedPath] != undefined
         ? this.schedulesTree[this.selectedPath][this.selectedSemester] || []
         : [];
     },
-    hasMultipleSchedules () {
+    hasMultipleSchedules() {
       return this.schedules && this.schedules.length > 1;
     },
-    disableLoad () {
-      return this.loading || this.selectedSchedule == undefined || this.selectedSchedules.includes(this.selectedSchedule);
+    disableLoad() {
+      return (
+        this.loading ||
+        this.selectedSchedule == undefined ||
+        this.selectedSchedules.includes(this.selectedSchedule)
+      );
     },
     ...mapGetters({
-      schedulesTree: 'splus/getTimetablesAsTree'
-    })
+      schedulesTree: 'splus/getTimetablesAsTree',
+    }),
   },
   watch: {
-    selectedPath () {
+    selectedPath() {
       if (this.semesters.length == 1) {
         this.selectedSemester = this.semesters[0];
       } else {
         this.selectedSemester = undefined;
       }
     },
-    selectedSemester () {
+    selectedSemester() {
       if (this.schedules.length == 1) {
         this.selectedSchedule = this.schedules[0];
       } else {
         this.selectedSchedule = undefined;
       }
-    }
+    },
   },
   methods: {
-    submit () {
+    submit() {
       this.$emit('input', this.selectedSchedule);
-    }
-  }
+    },
+  },
 };
 </script>

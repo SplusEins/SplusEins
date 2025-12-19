@@ -1,8 +1,12 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target" : {
-    "namespace": "android_app",
-    "package_name": "de.spluseins.app",
-    "sha256_cert_fingerprints": ["39:28:DC:2C:CC:5E:E3:0B:9D:B1:F6:D8:A6:F3:77:47:00:97:22:24:4D:E2:60:1C:28:62:87:B1:55:CD:02:5F"]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "de.spluseins.app",
+      "sha256_cert_fingerprints": [
+        "39:28:DC:2C:CC:5E:E3:0B:9D:B1:F6:D8:A6:F3:77:47:00:97:22:24:4D:E2:60:1C:28:62:87:B1:55:CD:02:5F"
+      ]
+    }
   }
-}]
+]

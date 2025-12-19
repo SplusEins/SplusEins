@@ -1,7 +1,11 @@
 import * as express from 'express';
 import * as TIMETABLES from '../assets/timetables.json';
 
-import { TimetableRequest, TimetableMetadata, Timetable } from '../model/SplusEinsModel';
+import {
+  TimetableRequest,
+  TimetableMetadata,
+  Timetable,
+} from '../model/SplusEinsModel';
 import { getEvents, getUniqueEvents } from '../lib/SplusApi';
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
@@ -38,7 +42,7 @@ router.get('/:timetable/lectures', async (req, res, next) => {
       id: timetable.id,
       timetablePath: timetable.timetablePath,
       faculty: timetable.faculty,
-      type: timetable.type
+      type: timetable.type,
     };
     const events = await getUniqueEvents(request);
 
@@ -72,28 +76,32 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
   }
 
   try {
-    const requests = weeks.map((week) => (<TimetableRequest> {
-      id: timetable.id,
-      week,
-      timetablePath: timetable.timetablePath,
-      faculty: timetable.faculty,
-      type: timetable.type
-    }));
+    const requests = weeks.map(
+      (week) =>
+        <TimetableRequest>{
+          id: timetable.id,
+          week,
+          timetablePath: timetable.timetablePath,
+          faculty: timetable.faculty,
+          type: timetable.type,
+        },
+    );
     const events = await getEvents(requests);
 
-    const meta: TimetableMetadata = <TimetableMetadata> {
+    const meta: TimetableMetadata = <TimetableMetadata>{
       id: timetable.id,
       faculty: timetable.faculty,
       degree: timetable.degree,
       specialisation: timetable.label,
-      semester: Number(timetable.semester)
+      semester: Number(timetable.semester),
     };
-    const response: Timetable = <Timetable> {
-      name: timetable.degree == 'Räume'
-        ? `${timetable.semester} ${timetable.label}`
-        : `${(timetable.degree)} ${timetable.label} - ${timetable.semester}. Semester`,
+    const response: Timetable = <Timetable>{
+      name:
+        timetable.degree == 'Räume'
+          ? `${timetable.semester} ${timetable.label}`
+          : `${timetable.degree} ${timetable.label} - ${timetable.semester}. Semester`,
       events,
-      meta
+      meta,
     };
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
@@ -114,9 +122,11 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
  */
 router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
   const timetableIds = <string[]>req.params.timetables.split(',');
-  const titleIds = <string[]>(req.params.lectures || '')
-    .split(',')
-    .filter((titleId) => titleId.length > 0);
+  const titleIds = <string[]>(
+    (req.params.lectures || '')
+      .split(',')
+      .filter((titleId) => titleId.length > 0)
+  );
 
   const timetables = timetableIds
     .map((timetableId) => TIMETABLES.find(({ id }) => id == timetableId))
@@ -136,30 +146,38 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
   const name = decodeURIComponent(req.params.name);
 
   try {
-    const requests = <TimetableRequest[]>flatten(timetables.map((timetable) => weeks.map((week) => (<TimetableRequest> {
-      id: timetable.id,
-      week,
-      timetablePath: timetable.timetablePath,
-      faculty: timetable.faculty,
-      type: timetable.type
-    }))));
+    const requests = <TimetableRequest[]>flatten(
+      timetables.map((timetable) =>
+        weeks.map(
+          (week) =>
+            <TimetableRequest>{
+              id: timetable.id,
+              week,
+              timetablePath: timetable.timetablePath,
+              faculty: timetable.faculty,
+              type: timetable.type,
+            },
+        ),
+      ),
+    );
     const allEvents = await getEvents(requests);
-    const filteredEvents = titleIds.length > 0
-      ? allEvents.filter(({ id }) => titleIds.includes(id))
-      : allEvents;
+    const filteredEvents =
+      titleIds.length > 0
+        ? allEvents.filter(({ id }) => titleIds.includes(id))
+        : allEvents;
 
-    const meta: TimetableMetadata = <TimetableMetadata> {
+    const meta: TimetableMetadata = <TimetableMetadata>{
       id: timetableIds,
       faculty: timetables.map((x) => x.faculty),
       degree: timetables.map((x) => x.degree),
       specialisation: timetables.map((x) => x.label),
-      semester: timetables.map((x) => Number(x.semester))
+      semester: timetables.map((x) => Number(x.semester)),
     };
 
-    const timetable: Timetable = <Timetable> {
+    const timetable: Timetable = <Timetable>{
       name,
       events: filteredEvents,
-      meta
+      meta,
     };
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
@@ -169,12 +187,19 @@ router.get('/:timetables/:weeks/:lectures?/:name', async (req, res, next) => {
   }
 });
 
-function handleSkedError (error:unknown, res, next) {
-  if (!(error instanceof Error)) throw error
+function handleSkedError(error: unknown, res, next) {
+  if (!(error instanceof Error)) throw error;
   if (error.message.startsWith('404')) {
     res.status(404).send('Stundenplan nicht bei Ostfalia verfügbar');
-  } else if (error.message.startsWith('403') || error.message.startsWith('401')) {
-    res.status(500).send('Server Error: Can\'t authenticate to Sked. Please inform the SplusEins administrator.');
+  } else if (
+    error.message.startsWith('403') ||
+    error.message.startsWith('401')
+  ) {
+    res
+      .status(500)
+      .send(
+        "Server Error: Can't authenticate to Sked. Please inform the SplusEins administrator.",
+      );
   } else if (error.message.startsWith('50')) {
     res.status(502).send(`Ostfalia-Server hat Probleme: ${error.message}`);
   } else {

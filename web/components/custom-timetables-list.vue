@@ -1,8 +1,6 @@
 <template>
   <v-list subheader>
-    <v-subheader class="subheader-block">
-      Personalisierte Pläne
-    </v-subheader>
+    <v-subheader class="subheader-block"> Personalisierte Pläne </v-subheader>
 
     <v-list-item
       v-for="route in customSchedulesAsRoutes"
@@ -25,8 +23,8 @@ export default {
   name: 'CustomTimetablesList',
   computed: {
     ...mapGetters({
-      customSchedulesAsRoutes: 'splus/customTimetablesAsRoutes'
-    })
-  }
+      customSchedulesAsRoutes: 'splus/customTimetablesAsRoutes',
+    }),
+  },
 };
 </script>

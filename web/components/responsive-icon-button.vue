@@ -1,8 +1,5 @@
 <template>
-  <v-tooltip
-    :disabled="breakpoint"
-    bottom
-  >
+  <v-tooltip :disabled="breakpoint" bottom>
     <template #activator="{ on, attrs }">
       <v-btn
         :outlined="breakpoint"
@@ -32,17 +29,17 @@ export default {
   props: {
     breakpoint: {
       required: true,
-      type: Boolean
+      type: Boolean,
     },
     icon: {
       required: true,
-      type: String
+      type: String,
     },
     text: {
       required: true,
-      type: String
-    }
-  }
+      type: String,
+    },
+  },
 };
 </script>
 

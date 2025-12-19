@@ -6,17 +6,17 @@ export const state = () => ({
    * List of Mensa objects
    */
   plans: null,
-  location: 'wf'
+  location: 'wf',
 });
 
 export const mutations = {
-  setPlans (state, data) {
+  setPlans(state, data) {
     state.plans = data;
   },
-  setLocation (state, location) {
+  setLocation(state, location) {
     state.location = location;
-  }
-}
+  },
+};
 
 export const getters = {
   getNextAvailablePlan: (state) => {
@@ -24,13 +24,13 @@ export const getters = {
       return { meals: [] };
     }
     const mappedName = locationMap[state.location] || locationMap.wf;
-    const plan = state.plans.find(p => p.name === mappedName);
+    const plan = state.plans.find((p) => p.name === mappedName);
     if (!plan || !plan.dayPlans || plan.dayPlans.length === 0) {
       return { meals: [] };
     }
 
     const today = dayjs().format('YYYY-MM-DD');
-    const todayIdx = plan.dayPlans.findIndex(dp => dp.date === today);
+    const todayIdx = plan.dayPlans.findIndex((dp) => dp.date === today);
     let dayPlan = plan.dayPlans[todayIdx];
 
     // A plan is old if today is not friday, the mensa was open today and it's after 15 o'clock
@@ -52,12 +52,16 @@ export const getters = {
 
     return dayPlan || { meals: [] };
   },
-  location: (state) => state.location
-}
+  location: (state) => state.location,
+};
 
 export const actions = {
-  async load ({ state, commit }) {
-    if (state.plans != null && state.plans[0].length > 0 && dayjs().isSame(state.plans[0].dayPlan[0].date, 'day')) {
+  async load({ state, commit }) {
+    if (
+      state.plans != null &&
+      state.plans[0].length > 0 &&
+      dayjs().isSame(state.plans[0].dayPlan[0].date, 'day')
+    ) {
       return; // If weekPlan is not empty and data is up-to-date don't fetch
     }
 
@@ -67,12 +71,18 @@ export const actions = {
       const response = await this.$axios.get('/api/mensa');
       result = response.data;
     } catch (error) {
-      const errorCode = error.response ? error.response.status : 'unknown error'
-      commit('enqueueError', `Mensaplan konnte nicht geladen werden (${errorCode}).`, { root: true });
+      const errorCode = error.response
+        ? error.response.status
+        : 'unknown error';
+      commit(
+        'enqueueError',
+        `Mensaplan konnte nicht geladen werden (${errorCode}).`,
+        { root: true },
+      );
       console.error('error during Mensa API call', error.message);
-      return
+      return;
     }
 
     commit('setPlans', result);
-  }
+  },
 };

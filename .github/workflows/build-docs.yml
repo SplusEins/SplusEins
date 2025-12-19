@@ -22,3 +22,4 @@ jobs:
           node-version-file: "docs/.nvmrc"
       - run: npm ci
       - run: npm run build
+      - run: npm run fmt:check

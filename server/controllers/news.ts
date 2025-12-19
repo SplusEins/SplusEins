@@ -1,8 +1,8 @@
 /* eslint-disable no-useless-escape */
 import * as express from 'express';
 import * as RSS from 'rss';
-import { } from 'rss';
-import getNews from '../lib/NewsApi'
+import {} from 'rss';
+import getNews from '../lib/NewsApi';
 import { NewsElement } from '~/model/SplusEinsModel';
 import * as crypto from 'crypto';
 
@@ -28,8 +28,8 @@ router.get('/:newstypes\.:ext?', async (req, res) => {
   try {
     news = await getNews(newstypes, limit);
   } catch (error) {
-    if (!(error instanceof Error)) throw error
-    console.log(`Error while fetching news: ${error.message}`)
+    if (!(error instanceof Error)) throw error;
+    console.log(`Error while fetching news: ${error.message}`);
     return res.status(404).send(error.message);
   }
   res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
@@ -43,17 +43,24 @@ router.get('/:newstypes\.:ext?', async (req, res) => {
     const feed = new RSS({
       title: `SplusEins news feed (for ${req.params.newstypes})`,
       feed_url: hostUrl + req.originalUrl,
-      site_url: hostUrl
+      site_url: hostUrl,
     });
     // Map news items to rss feed items
-    news.map((newsEl: NewsElement) => ({
-      title: newsEl.title,
-      description: newsEl.text,
-      url: newsEl.link,
-      categories: [newsEl.source],
-      date: newsEl.date,
-      guid: crypto.createHash('sha1').update(newsEl.title + newsEl.date).digest('base64').replace(/\W/g, '').slice(0, 8)
-    })).forEach(feedItem => feed.item(feedItem));
+    news
+      .map((newsEl: NewsElement) => ({
+        title: newsEl.title,
+        description: newsEl.text,
+        url: newsEl.link,
+        categories: [newsEl.source],
+        date: newsEl.date,
+        guid: crypto
+          .createHash('sha1')
+          .update(newsEl.title + newsEl.date)
+          .digest('base64')
+          .replace(/\W/g, '')
+          .slice(0, 8),
+      }))
+      .forEach((feedItem) => feed.item(feedItem));
     res.set('Content-Type', 'application/rss+xml');
     return res.send(feed.xml());
   }
