@@ -15,7 +15,7 @@
     "lintfix": "eslint --fix --ext .ts ."
   },
   "dependencies": {
-    "@motis-project/motis-client": "2.7.6",
+    "@motis-project/motis-client": "2.8.0",
     "@motis-project/motis-fptf-client": "6.3.2",
     "cache-manager": "4.1.0",
     "cache-manager-fs-hash": "1.1.0",
