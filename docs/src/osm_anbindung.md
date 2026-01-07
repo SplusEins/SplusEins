@@ -36,6 +36,8 @@ id      1446092724
 
 Die Refs und Ids erhalten wir mit einem API Request an [OverpassTurbo Query](https://overpass-turbo.eu/s/2g5Y) – eine Seite, die ermöglicht Queries über die OSM Daten laufen zu lassen.
 
+Da manche Räume an unterschiedlichen Standorten gleich heißen wird für jeden Standort eine Query genutzt und die daten in einer eigenen Datei für jeden Standort gespeichert.
+
 ### Links erstellen
 
 Setzt man die Id in "https://osmapp.org/way/:id" ein, kommt man direkt zu dem Raum (z. B. WF-EX-2/252: https://osmapp.org/way/1435503585).
@@ -48,6 +50,6 @@ Es ist beim Mapping wichtig, dass die "ref" des Raums mit dem Namen übereinstim
 
 ## Github Actions Workflow
 
-Jeden Tag werden von einer GitHub Action über die Overpass API die Raumdaten angefragt und falls sie sich verändert haben, wird ein Pull-Request erstellt. Die Raumdaten sind im JSON-Format unter `/server/assets/overpassOSMRoomsData.json` gespeichert. Der Workflow ruft den script `/server/scripts/getLocationLinks.sh` auf.
+Jeden Tag werden von einer GitHub Action über die Overpass API die Raumdaten angefragt und falls sie sich verändert haben, wird ein Pull-Request erstellt. Die Raumdaten sind im JSON-Format unter `/server/assets/overpass_osm` gespeichert. Der Workflow ruft den script `/server/scripts/getRoomIds.sh` auf.
 
 Der Workflow sorgt also dafür, dass jeden Tag um 05:00 die OSM-Daten aktualisiert werden, also kann es bis zu 24 Stunden dauern, bis gelöschte Räume nicht mehr im Kalender verlinkt werden oder neu gemappte Räume im Kalender erscheinen.
