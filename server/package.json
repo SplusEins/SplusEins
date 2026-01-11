@@ -26,7 +26,7 @@
     "csv-string": "4.1.1",
     "express": "4.22.1",
     "ical-generator": "10.0.0",
-    "iconv-lite": "0.7.0",
+    "iconv-lite": "0.7.2",
     "moment": "2.30.1",
     "moment-timezone": "0.6.0",
     "node-fetch": "2.7.0",
