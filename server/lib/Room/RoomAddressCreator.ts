@@ -40,7 +40,7 @@ function createRoomAddressWolfenbuettel(room: string): string | null {
    * If the room ref starts with A, B or C followed by a digit, it is at the main building address
    * E. g. A068 -> Salzdahlumer Str. 46/48, 38302 Wolfenbüttel
    * Regex explanation:
-   * ^[A-Z]      : Room starts with a capital letter A-C
+   * ^[A-Z]      : Room starts with a capital letter A-Z
    * \d+         : followed by one or more digits
    */
   const mainRegexMatch = /^[A-Z]\d+/.exec(room);
