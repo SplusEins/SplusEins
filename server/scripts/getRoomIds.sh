@@ -52,11 +52,18 @@ fetch_osm_data() {
   echo "Fetching ${campus_name}..."
   
   for ((i=1; i<=max_retries; i++)); do
-    local response=$(curl -s --data "data=${query}" "https://overpass-api.de/api/interpreter")
+    local response=$(curl -s --data-urlencode "data=${query}" "https://overpass-api.de/api/interpreter")
     
     # Check if response is valid JSON
     if echo "$response" | jq empty 2>/dev/null; then
-      echo "$response" | jq '.elements | map({id: .id, level: .tags.level, ref: .tags.ref}) | map({(.ref): {id: .id, level: .level}}) | add' > "$output_file"
+      # Process response and ensure empty object if no data
+      processed=$(echo "$response" | jq '
+        .elements
+        | map({id: .id, level: .tags.level, ref: .tags.ref})
+        | map({ (.ref): { id: .id, level: .level } })
+        | add // {} # ensure empty object if no data
+      ')
+      echo "$processed" > "$output_file"
       echo "✓ Successfully saved room data to ${output_file}"
       return 0
     else
