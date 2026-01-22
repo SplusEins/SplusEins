@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 
 set -e # Fail if errors occur
 set -o pipefail
