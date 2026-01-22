@@ -20,16 +20,16 @@ export function createOSMLink(
   // Select the correct OSM data based on the faculty location
   switch (facultyLocation) {
     case 'WF':
-      osmData = OSM_ROOMS_DATA_WF[room];
+      osmData = OSM_ROOMS_DATA_WF?.[room] ?? null;
       break;
     case 'SZ':
-      osmData = OSM_ROOMS_DATA_SZ[room];
+      osmData = OSM_ROOMS_DATA_SZ?.[room] ?? null;
       break;
     case 'WOB':
-      osmData = OSM_ROOMS_DATA_WOB[room];
+      osmData = OSM_ROOMS_DATA_WOB?.[room] ?? null;
       break;
     case 'SUD':
-      osmData = OSM_ROOMS_DATA_SUD[room];
+      osmData = OSM_ROOMS_DATA_SUD?.[room] ?? null;
       break;
   }
 
