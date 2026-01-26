@@ -50,6 +50,6 @@ Es ist beim Mapping wichtig, dass die "ref" des Raums mit dem Namen übereinstim
 
 ## Github Actions Workflow
 
-Jeden Tag werden von einer GitHub Action über die Overpass API die Raumdaten angefragt und falls sie sich verändert haben, wird ein Pull-Request erstellt. Die Raumdaten sind im JSON-Format unter `/server/assets/overpass_osm` gespeichert. Der Workflow ruft das Skript `/server/scripts/getRoomIds.sh` auf.
+Jeden Tag werden von einer GitHub Action über die Overpass API die Raumdaten angefragt und falls sie sich verändert haben, wird ein Pull-Request erstellt. Die Raumdaten sind im JSON-Format unter `/server/assets/overpass_osm/{Standort}.json` (WF, SZ, SUD, WOB) gespeichert. Der Workflow ruft das Skript `/server/scripts/getRoomIds.sh` auf.
 
 Der Workflow sorgt also dafür, dass jeden Tag um 05:00 die OSM-Daten aktualisiert werden, also kann es bis zu 24 Stunden dauern, bis gelöschte Räume nicht mehr im Kalender verlinkt werden oder neu gemappte Räume im Kalender erscheinen.
