@@ -9,8 +9,7 @@ set -o pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Define output file path
-OUTPUT_FILE="${SCRIPT_DIR}/../assets/overpass_osm/"
-
+OUTPUT_DIR="${SCRIPT_DIR}/../assets/overpass_osm/"
 
 ## SAMPLE DATA_QUERY='[out:json][timeout:25]; nwr["indoor"="room"]["ref"~""](52.174312,10.542111,52.183790,10.564728); out tags geom;'
 
@@ -36,15 +35,13 @@ BBOX_SUD='52.896564,10.443470,52.898713,10.448105'
 echo "Fetching OSM data..."
 
 # Ensure the assets directory exists
-mkdir -p -- "$OUTPUT_FILE"
-
-# TODO: Für Wolfenbüttel, Suderburg, Wolfsburg, Salzgitter
+mkdir -p -- "$OUTPUT_DIR"
 
 # Function to fetch and process OSM data with retry logic
 fetch_osm_data() {
   local campus_name=$1
   local bbox=$2
-  local output_file="${OUTPUT_FILE}${campus_name}.json"
+  local output_file="${OUTPUT_DIR}${campus_name}.json"
   local query="${QUERY_BEGINNING}${bbox}${QUERY_END}"
   local max_retries=3
   local retry_delay=5
