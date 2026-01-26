@@ -36,7 +36,7 @@ BBOX_SUD='52.896564,10.443470,52.898713,10.448105'
 echo "Fetching OSM data..."
 
 # Ensure the assets directory exists
-mkdir -p "$(dirname "$OUTPUT_FILE")"
+mkdir -p -- "$OUTPUT_FILE"
 
 # TODO: Für Wolfenbüttel, Suderburg, Wolfsburg, Salzgitter
 
