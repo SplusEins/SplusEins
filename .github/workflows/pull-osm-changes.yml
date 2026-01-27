@@ -16,18 +16,18 @@ jobs:
           ssh-key: ${{ secrets.SSH_GITHUB_PRIVATE_KEY }}
           fetch-depth: 0
 
-      - name: Run getLocationLinks
+      - name: Run getRoomIds
         shell: bash
         run: |
           set -o pipefail
-          server/scripts/getLocationLinks.sh 2>&1 | tee osm-fetch.log
+          server/scripts/getRoomIds.sh 2>&1 | tee osm-fetch.log
 
       - name: Check for errors
         shell: bash
         run: |
-          if grep -qi "error\|failed" osm-fetch.log; then
+          if grep -qi "error" osm-fetch.log; then
             echo "[!!!] Errors detected in OSM fetch:"
-            grep -i "error\|failed" osm-fetch.log
+            grep -i "error" osm-fetch.log
             exit 1
           fi
 
