@@ -25,6 +25,8 @@ timetable_blacklist:
   - "prüfung"
   - "231401.html" # workaround for informatik (might be removable next semester)
   - "231405.html" # workaround for informatik (might be removable next semester)
+  - "131803.html" # workaround for i_wirtschaftsinformatik_3, added in SS 26 (might be removable next semester)
+
 
 plans:
   - url: https://stundenplan.ostfalia.de/b/wp/index.html
