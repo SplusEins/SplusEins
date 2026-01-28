@@ -1,217 +1,208 @@
 [
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_ai_1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_ai_1.html",
     "label": "Angewandte Informatik - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_ai_1_ws25",
+    "id": "b_stgrp_ai_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_bau_1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_bau_1.html",
     "label": "Bauingenieurwesen - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_bau_1_ws25",
+    "id": "b_stgrp_bau_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_u_1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_u_1.html",
     "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_u_1_ws25",
+    "id": "b_stgrp_u_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_ai_2.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_ai_2.html",
     "label": "Angewandte Informatik - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_ai_2_ws25",
+    "id": "b_stgrp_ai_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_bau_2.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_bau_2.html",
     "label": "Bauingenieurwesen - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_bau_2_ws25",
+    "id": "b_stgrp_bau_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_stgrp_china_2.html",
-    "label": "China Kooperation WS 2025_26 - 2",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_china_2_ws25",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_u_2.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_u_2.html",
     "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_u_2_ws25",
+    "id": "b_stgrp_u_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_ai_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_ai_3.html",
     "label": "Angewandte Informatik - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_ai_3_ws25",
+    "id": "b_stgrp_ai_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_bau_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_bau_3.html",
     "label": "Bauingenieurwesen - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_bau_3_ws25",
+    "id": "b_stgrp_bau_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_bip_3.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 3",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_3_ws25",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_u_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_u_3.html",
     "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 3",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_u_3_ws25",
+    "id": "b_stgrp_u_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_ai_4.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_ai_4.html",
     "label": "Angewandte Informatik - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_ai_4_ws25",
+    "id": "b_stgrp_ai_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_bau_4.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_bau_4.html",
     "label": "Bauingenieurwesen - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_bau_4_ws25",
+    "id": "b_stgrp_bau_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_u_4.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_bauip_4.html",
+    "label": "Bauingenieurwesen im Praxisverbund - 4",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_bauip_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_u_4.html",
     "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 4",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_u_4_ws25",
+    "id": "b_stgrp_u_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_ai_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_ai_5.html",
     "label": "Angewandte Informatik - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_ai_5_ws25",
+    "id": "b_stgrp_ai_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_bau_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_bau_5.html",
     "label": "Bauingenieurwesen - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_bau_5_ws25",
+    "id": "b_stgrp_bau_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_bip_5.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 5",
-    "faculty": "Bau-Wasser-Boden",
-    "type": "graphical",
-    "id": "b_stgrp_bip_5_ws25",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_u_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_u_5.html",
     "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 5",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_u_5_ws25",
+    "id": "b_stgrp_u_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_ai_6.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_ai_6.html",
     "label": "Angewandte Informatik _ - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_ai_6_ws25",
+    "id": "b_stgrp_ai_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_bau_6.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_bau_6.html",
     "label": "Bauingenieurwesen - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_bau_6_ws25",
+    "id": "b_stgrp_bau_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_u_6.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_bauip_6.html",
+    "label": "Bauingenieurwesen im Praxisverbund - 6",
+    "faculty": "Bau-Wasser-Boden",
+    "type": "graphical",
+    "id": "b_stgrp_bauip_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_u_6.html",
     "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 6",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_u_6_ws25",
+    "id": "b_stgrp_u_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_bip_7.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 7",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_bauip_8.html",
+    "label": "Bauingenieurwesen im Praxisverbund _ - 8",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_bip_7_ws25",
-    "semester": 7,
+    "id": "b_stgrp_bauip_8_ss26",
+    "semester": 8,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_ma_glob_1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_ma_glob_1.html",
     "label": "Wasserwirtschaft im globalen Wandel - PO 2025 - 1",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_ma_glob_1_ws25",
+    "id": "b_stgrp_ma_glob_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws25_b_stgrp_ma_glob_2.html",
-    "label": "Wasserwirtschaft im Globalen Wandel - PO 2018 - 2",
+    "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ss26_b_stgrp_ma_glob_2.html",
+    "label": "Wasserwirtschaft im globalen Wandel - PO 2025 - 2",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
-    "id": "b_stgrp_ma_glob_2_ws25",
+    "id": "b_stgrp_ma_glob_2_ss26",
     "semester": 2,
     "degree": "Master"
   },
@@ -220,7 +211,7 @@
     "label": "EIT",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_gs_1_ws25",
+    "id": "e_eit_gs_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -229,7 +220,7 @@
     "label": "EITiP",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eitip_gs_1_ws25",
+    "id": "e_eitip_gs_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -238,7 +229,7 @@
     "label": "WEIT",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weit_1_ws25",
+    "id": "e_weit_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -247,7 +238,7 @@
     "label": "WEITiP",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weitip_1_ws25",
+    "id": "e_weitip_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -256,7 +247,7 @@
     "label": "EIT(iP)",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_gs_2_ws25",
+    "id": "e_eit_ip_gs_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -265,7 +256,7 @@
     "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weit_ip_2_ws25",
+    "id": "e_weit_ip_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -274,7 +265,7 @@
     "label": "EIT(iP)",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_gs_3_ws25",
+    "id": "e_eit_ip_gs_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -283,142 +274,142 @@
     "label": "WEIT(iP)",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weit_ip_3_ws25",
+    "id": "e_weit_ip_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_AT-Sem4.html",
-    "label": "e_eit_ip_at_4_ws25",
+    "label": "e_eit_ip_at_4_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_at_4_ws25",
+    "id": "e_eit_ip_at_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_EE-Sem4.html",
-    "label": "e_eit_ip_ee_4_ws25",
+    "label": "e_eit_ip_ee_4_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_ee_4_ws25",
+    "id": "e_eit_ip_ee_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_IT-Sem4.html",
-    "label": "e_eit_ip_it_4_ws25",
+    "label": "e_eit_ip_it_4_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_it_4_ws25",
+    "id": "e_eit_ip_it_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_TI-Sem4.html",
-    "label": "e_eit_ip_ti_4_ws25",
+    "label": "e_eit_ip_ti_4_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_ti_4_ws25",
+    "id": "e_eit_ip_ti_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem4.html",
-    "label": "e_weit_ip_4_ws25",
+    "label": "e_weit_ip_4_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weit_ip_4_ws25",
+    "id": "e_weit_ip_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_AT-Sem5.html",
-    "label": "e_eit_ip_at_5_ws25",
+    "label": "e_eit_ip_at_5_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_at_5_ws25",
+    "id": "e_eit_ip_at_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_EE-Sem5.html",
-    "label": "e_eit_ip_ee_5_ws25",
+    "label": "e_eit_ip_ee_5_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_ee_5_ws25",
+    "id": "e_eit_ip_ee_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_IT-Sem5.html",
-    "label": "e_eit_ip_it_5_ws25",
+    "label": "e_eit_ip_it_5_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_it_5_ws25",
+    "id": "e_eit_ip_it_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_TI-Sem5.html",
-    "label": "e_eit_ip_ti_5_ws25",
+    "label": "e_eit_ip_ti_5_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_ti_5_ws25",
+    "id": "e_eit_ip_ti_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem5.html",
-    "label": "e_weit_ip_5_ws25",
+    "label": "e_weit_ip_5_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weit_ip_5_ws25",
+    "id": "e_weit_ip_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_AT-Sem6.html",
-    "label": "e_eit_ip_at_6_ws25",
+    "label": "e_eit_ip_at_6_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_at_6_ws25",
+    "id": "e_eit_ip_at_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_EE-Sem6.html",
-    "label": "e_eit_ip_ee_6_ws25",
+    "label": "e_eit_ip_ee_6_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_ee_6_ws25",
+    "id": "e_eit_ip_ee_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_IT-Sem6.html",
-    "label": "e_eit_ip_it_6_ws25",
+    "label": "e_eit_ip_it_6_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_it_6_ws25",
+    "id": "e_eit_ip_it_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_TI-Sem6.html",
-    "label": "e_eit_ip_ti_6_ws25",
+    "label": "e_eit_ip_ti_6_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_eit_ip_ti_6_ws25",
+    "id": "e_eit_ip_ti_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem6.html",
-    "label": "e_weit_ip_6_ws25",
+    "label": "e_weit_ip_6_ss26",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weit_ip_6_ws25",
+    "id": "e_weit_ip_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -427,7 +418,7 @@
     "label": "Vertiefungs-/Wahlpflichtfächer WEIT(iP)",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_weit_ip_wpf_ws25",
+    "id": "e_weit_ip_wpf_ss26",
     "semester": "WPF",
     "degree": "Bachelor"
   },
@@ -436,629 +427,512 @@
     "label": "IST",
     "faculty": "Elektrotechnik",
     "type": "graphical",
-    "id": "e_ist_ws25",
+    "id": "e_ist_ss26",
     "semester": "Sonstige",
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_AE.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Semester_AE.html",
     "label": "Automotive Engineering",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_1_ws25",
+    "id": "f_ae_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_Mathe-Lift.html",
-    "label": "Automotive Engineering / Mathe-Lift",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_mathe_lift_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_FIF.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Semester_FIF.html",
     "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_fif_1_ws25",
+    "id": "f_fif_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_MuTD.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Semester_SVS.html",
+    "label": "Smart Vehicle Systems",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_svs_1_ss26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_AE.html",
+    "label": "Automotive Engineering",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_ae_2_ss26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_Mathe-Lift.html",
+    "label": "Automotive Engineering/Mathe-Lift",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_mathe_lift_2_ss26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_FIF.html",
+    "label": "Fahrzeuginformatik",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_fif_2_ss26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_MuTD.html",
     "label": "Material + Technisches Design",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_mutd_1_ws25",
-    "semester": 1,
+    "id": "f_mutd_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_SVS.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_SVS.html",
     "label": "Smart Vehicle Systems",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_svs_1_ws25",
-    "semester": 1,
+    "id": "f_svs_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_AE.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Semester_AE.html",
     "label": "Automotive Engineering",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_2_ws25",
-    "semester": 2,
+    "id": "f_ae_3_ss26",
+    "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_FIF.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Semester_FIF.html",
     "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_fif_2_ws25",
-    "semester": 2,
+    "id": "f_fif_3_ss26",
+    "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_SVS.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Semester_SVS.html",
     "label": "Smart Vehicle Systems",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_svs_2_ws25",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_AE.html",
-    "label": "Automotive Engineering",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_ae_3_ws25",
+    "id": "f_svs_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_FIF.html",
-    "label": "Fahrzeuginformatik",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_fif_3_ws25",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_MuTD.html",
-    "label": "Material + Technisches Design",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_mutd_3_ws25",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_SVS.html",
-    "label": "Smart Vehicle Systems",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_svs_3_ws25",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_AE-ASM.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_AE-ASM.html",
     "label": "Automotive Engineering - After Sales, Service and Mobility (ASM)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_asm_5_ws25",
-    "semester": 5,
+    "id": "f_ae_asm_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_AE-PCS.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_AE-PCS.html",
     "label": "Automotive Engineering - Powertrain and Chassis Systems (PCS)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_pcs_5_ws25",
-    "semester": 5,
+    "id": "f_ae_pcs_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_AE-SAD.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_AE-SAD.html",
     "label": "Automotive Engineering - Smart Automotive Development (SAD)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_sad_5_ws25",
-    "semester": 5,
+    "id": "f_ae_sad_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_AE-SPIE.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_AE-SPIE.html",
     "label": "Automotive Engineering - Smart Production and Industrial Engineering (SPIE)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_ae_spie_5_ws25",
-    "semester": 5,
+    "id": "f_ae_spie_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-ASO.html",
-    "label": "Fahrzeuginformatik - Automotive Software (ASO)",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_FIF.html",
+    "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_fif_aso_5_ws25",
-    "semester": 5,
+    "id": "f_fif_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-ASY.html",
-    "label": "Fahrzeuginformatik - Automotive Systems (ASY)",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_fif_asy_5_ws25",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-AMO.html",
-    "label": "Fahrzeuginformatik - Autonome Mobilität (AMO)",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_fif_amo_5_ws25",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-IOT.html",
-    "label": "Fahrzeuginformatik - Industrial IoT (IOT)",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_fif_iot_5_ws25",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_MuTD.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_MuTD.html",
     "label": "Material + Technisches Design",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_mutd_5_ws25",
-    "semester": 5,
+    "id": "f_mutd_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-EMO.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/4_Semester_SVS.html",
+    "label": "Smart Vehicle Systems",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_svs_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_FIF-ASO.html",
+    "label": "Fahrzeuginformatik - Automotive Software (ASO)",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_fif_aso_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_FIF-ASY.html",
+    "label": "Fahrzeuginformatik - Automotive Systems (ASY)",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_fif_asy_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_FIF-AMO.html",
+    "label": "Fahrzeuginformatik - Autonome Mobilität (AMO)",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_fif_amo_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_FIF-IOT.html",
+    "label": "Fahrzeuginformatik - Industrial IOT (IOT)",
+    "faculty": "Fahrzeugtechnik",
+    "type": "graphical",
+    "id": "f_fif_iot_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_SVS-EMO.html",
     "label": "Smart Vehicle Systems - Elektromobilität (EMO)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_svs_emo_5_ws25",
-    "semester": 5,
+    "id": "f_svs_emo_6_ss26",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-IAS.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_SVS-IAS.html",
     "label": "Smart Vehicle Systems - Intelligente autonome Systeme (IAS)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_svs_ias_5_ws25",
-    "semester": 5,
+    "id": "f_svs_ias_6_ss26",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-MSY.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Semester_SVS-MSY.html",
     "label": "Smart Vehicle Systems - Mechatronische Systeme (MSY)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_svs_msy_5_ws25",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-MKA.html",
-    "label": "Smart Vehicle Systems - Mobilitätskonzepte im Aftersales (MKA)",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_svs_mka_5_ws25",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Sem_IuE.html",
-    "label": "Fahrzeugmechatronik und -informatik / Informatik und Elektronik",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_iue_6_ws25",
+    "id": "f_svs_msy_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Sem_MET.html",
-    "label": "Fahrzeugmechatronik und -informatik / Mechatronik",
+    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Semester_Master_FZT.html",
+    "label": "Fahrzeugtechnik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
-    "id": "f_met_6_ws25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Sem_AGF.html",
-    "label": "Fahrzeugtechnik / Aggregate- und Fahrwerkentwicklung",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_agf_6_ws25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Sem_ABE.html",
-    "label": "Fahrzeugtechnik / Aufbau und Entwicklung",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_abe_6_ws25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/6_Sem_PU.html",
-    "label": "Fahrzeugtechnik / Produktion und Umwelt",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_pu_6_ws25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/7_Sem_StiP_IuE.html",
-    "label": "StiP Fahrzeugmechatronik und -informatik / Informatik und Elektronik",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_stip_iue_7_ws25",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/7_Sem_StiP_MET.html",
-    "label": "StiP Fahrzeugmechatronik und -informatik / Mechatronik",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_stip_met_7_ws25",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/7_Sem_StiP_AGF.html",
-    "label": "StiP Fahrzeugtechnik / Aggregate- und Fahrwerkentwicklung",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_stip_agf_7_ws25",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/7_Sem_StiP_ABE.html",
-    "label": "StiP Fahrzeugtechnik / Aufbau und Entwicklung",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_stip_abe_7_ws25",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_Master.html",
-    "label": "Smart Factory",
-    "faculty": "Fahrzeugtechnik",
-    "type": "graphical",
-    "id": "f_master_2_ws25",
-    "semester": 2,
+    "id": "f_master_fzt_1_ss26",
+    "semester": 1,
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD1_WS2526.html",
-    "label": "BMRD",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmrd_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/IVMG1_WS2526.html",
-    "label": "IVMG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_ivmg_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG1_WS2526.html",
-    "label": "KPG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_kpg_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG1_E_WS2526.html",
-    "label": "KPG - Erzieher*innen",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_kpg_e_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/MAG1_WS2526.html",
-    "label": "MAG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_mag_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/APWP2_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/APWP1_SOSE26.html",
     "label": "APWP",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_apwp_2_ws25",
-    "semester": 2,
+    "id": "g_apwp_1_ss26",
+    "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMPF2_B_WS2526.html",
-    "label": "BMPF - Studienprofil B",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMPF1_SOSE26.html",
+    "label": "BMPF",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_bmpf_b_2_ws25",
-    "semester": 2,
+    "id": "g_bmpf_1_ss26",
+    "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMPF2_M_WS2526.html",
-    "label": "BMPF - Studienprofil M",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD1_SOSE26.html",
+    "label": "BMRD",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_bmpf_m_2_ws25",
-    "semester": 2,
+    "id": "g_bmrd_1_ss26",
+    "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD2_B_WS2526.html",
-    "label": "BMRD - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmrd_b_2_ws25",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD2_M_WS2526.html",
-    "label": "BMRD - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmrd_m_2_ws25",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BPG2_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BPG1_SOSE26.html",
     "label": "BPG",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_bpg_2_ws25",
+    "id": "g_bpg_1_ss26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD2_B_SOSE26.html",
+    "label": "BMRD - Studienprofil B",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_bmrd_b_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD3_B_WS2526.html",
-    "label": "BMRD - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmrd_b_3_ws25",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD3_M_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD2_M_SOSE26.html",
     "label": "BMRD - Studienprofil M",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_bmrd_m_3_ws25",
-    "semester": 3,
+    "id": "g_bmrd_m_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/IVMG3_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/IVMG2_SOSE26.html",
     "label": "IVMG",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_ivmg_3_ws25",
-    "semester": 3,
+    "id": "g_ivmg_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG3_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG2_SOSE26.html",
     "label": "KPG",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_kpg_3_ws25",
-    "semester": 3,
+    "id": "g_kpg_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG3_E_WS2526.html",
-    "label": "KPG - Erzieher*innen",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG2_E_SOSE26.html",
+    "label": "KPG - Erzieher & Erzieherinnen",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_kpg_e_3_ws25",
-    "semester": 3,
+    "id": "g_kpg_e_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/MAG3_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/MAG2_SOSE26.html",
     "label": "MAG",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_mag_3_ws25",
+    "id": "g_mag_2_ss26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/APWP3_SOSE26.html",
+    "label": "APWP",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_apwp_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/APP4_WS2526.html",
-    "label": "APP",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMPF3_B_SOSE26.html",
+    "label": "BMPF - Studienprofil B",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_app_4_ws25",
+    "id": "g_bmpf_b_3_ss26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMPF3_M_SOSE26.html",
+    "label": "BMPF - Studienprofil M",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_bmpf_m_3_ss26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD3_B_SOSE26.html",
+    "label": "BMRD - Studienprofil B",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_bmrd_b_3_ss26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD3_M_SOSE26.html",
+    "label": "BMRD - Studienprofil M",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_bmrd_m_3_ss26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BPG3_SOSE26.html",
+    "label": "BPG",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_bpg_3_ss26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD4_B_SOSE26.html",
+    "label": "BMRD - Studienprofil B",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_bmrd_b_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMP4_B_WS2526.html",
-    "label": "BMP - Studienprofil B",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMRD4_M_SOSE26.html",
+    "label": "BMRD - Studienprofil M",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_bmp_b_4_ws25",
+    "id": "g_bmrd_m_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMP4_M_WS2526.html",
-    "label": "BMP - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmp_m_4_ws25",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMR4_B_WS2526.html",
-    "label": "BMR - Studienprofil B",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmr_b_4_ws25",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMR4_M_WS2526.html",
-    "label": "BMR - Studienprofil M",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_bmr_m_4_ws25",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG5_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG4_SOSE26.html",
     "label": "KPG",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_kpg_5_ws25",
-    "semester": 5,
+    "id": "g_kpg_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/MAG5_KH_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG4_E_SOSE26.html",
+    "label": "KPG - Erzieher & Erzieherinnen",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_kpg_e_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/MAG4_KH_SOSE26.html",
     "label": "MAG - Schwerpunkt KH",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_mag_kh_5_ws25",
-    "semester": 5,
+    "id": "g_mag_kh_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/MAG5_KV_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/MAG4_KV_SOSE26.html",
     "label": "MAG - Schwerpunkt KV",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_mag_kv_5_ws25",
-    "semester": 5,
+    "id": "g_mag_kv_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/MAG5_PH_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/MAG4_PH_SOSE26.html",
     "label": "MAG - Schwerpunkt PH",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_mag_ph_5_ws25",
+    "id": "g_mag_ph_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/APP5_SOSE26.html",
+    "label": "APP",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_app_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/APP6_WS2526.html",
-    "label": "APP",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_app_6_ws25",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMP6_B_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMP5_B_SOSE26.html",
     "label": "BMP - Studienprofil B",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_bmp_b_6_ws25",
-    "semester": 6,
+    "id": "g_bmp_b_5_ss26",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMP6_M_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMP5_M_SOSE26.html",
     "label": "BMP - Studienprofil M",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_bmp_m_6_ws25",
-    "semester": 6,
+    "id": "g_bmp_m_5_ss26",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMR6_B_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMR5_B_SOSE26.html",
     "label": "BMR - Studienprofil B",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_bmr_b_6_ws25",
-    "semester": 6,
+    "id": "g_bmr_b_5_ss26",
+    "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMR6_M_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMR5_M_SOSE26.html",
     "label": "BMR - Studienprofil M",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_bmr_m_6_ws25",
+    "id": "g_bmr_m_5_ss26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG6_SOSE26.html",
+    "label": "KPG",
+    "faculty": "Gesundheitswesen",
+    "type": "graphical",
+    "id": "g_kpg_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/KPG7_WS2526.html",
-    "label": "KPG",
-    "faculty": "Gesundheitswesen",
-    "type": "graphical",
-    "id": "g_kpg_7_ws25",
-    "semester": 7,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/APP8_WS2526.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/g/wp/APP7_SOSE26.html",
     "label": "APP",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
-    "id": "g_app_8_ws25",
-    "semester": 8,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_bwm_1.html",
-    "label": "Betriebswirtschaft und Management",
-    "faculty": "Handel und Soziale Arbeit",
-    "type": "graphical",
-    "id": "h_bwm_1_ws25",
-    "semester": 1,
+    "id": "g_app_7_ss26",
+    "semester": 7,
     "degree": "Bachelor"
   },
   {
@@ -1066,8 +940,17 @@
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_soa_1_ws25",
+    "id": "h_soa_1_ss26",
     "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_bwm_2.html",
+    "label": "Betriebswirtschaft und Management",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_bwm_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
@@ -1075,17 +958,8 @@
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_soa_2_ws25",
+    "id": "h_soa_2_ss26",
     "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_hul_3.html",
-    "label": "Handel und Logistik",
-    "faculty": "Handel und Soziale Arbeit",
-    "type": "graphical",
-    "id": "h_hul_3_ws25",
-    "semester": 3,
     "degree": "Bachelor"
   },
   {
@@ -1093,7 +967,7 @@
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_soa_3_ws25",
+    "id": "h_soa_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1102,7 +976,7 @@
     "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_hul_4_ws25",
+    "id": "h_hul_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1111,7 +985,7 @@
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_soa_4_ws25",
+    "id": "h_soa_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1120,7 +994,7 @@
     "label": "Handel und Logistik",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_hul_5_ws25",
+    "id": "h_hul_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1129,8 +1003,17 @@
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_soa_5_ws25",
+    "id": "h_soa_5_ss26",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_hul_6.html",
+    "label": "Handel und Logistik",
+    "faculty": "Handel und Soziale Arbeit",
+    "type": "graphical",
+    "id": "h_hul_6_ss26",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -1138,7 +1021,7 @@
     "label": "Soziale Arbeit",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_soa_6_ws25",
+    "id": "h_soa_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -1147,17 +1030,17 @@
     "label": "BA OBWL",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_bwl_ws25",
+    "id": "h_bwl_ss26",
     "semester": "Sonstige",
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_bap.html",
-    "label": "Soziale Arbeit - Berufsanerkennung",
+    "timetablePath": "https://stundenplan.ostfalia.de/h/lvp/wp/h_stdgrp_soa_wpf.html",
+    "label": "Soziale Arbeit - Wahlpflichtfächer",
     "faculty": "Handel und Soziale Arbeit",
     "type": "graphical",
-    "id": "h_bap_ws25",
-    "semester": "Sonstige",
+    "id": "h_soa_wpf_ss26",
+    "semester": "WPF",
     "degree": "Bachelor"
   },
   {
@@ -1165,7 +1048,7 @@
     "label": "Digital Technologies",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_digital_technologies_1_ws25",
+    "id": "i_digital_technologies_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -1174,7 +1057,7 @@
     "label": "Elektrotechnik und Informationstechnik",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_elektrotechnik_und_informationstechnik_1_ws25",
+    "id": "i_elektrotechnik_und_informationstechnik_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -1183,7 +1066,7 @@
     "label": "IT-Sicherheit",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_it_sicherheit_1_ws25",
+    "id": "i_it_sicherheit_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -1192,7 +1075,16 @@
     "label": "Informatik",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_1_ws25",
+    "id": "i_informatik_1_ss26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211301.html",
+    "label": "Medieninformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -1201,7 +1093,7 @@
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_wirtschaftsinformatik_1_ws25",
+    "id": "i_wirtschaftsinformatik_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -1210,7 +1102,7 @@
     "label": "Informatik - CE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_ce_2_ws25",
+    "id": "i_informatik_ce_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1219,7 +1111,7 @@
     "label": "Informatik - IE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_ie_2_ws25",
+    "id": "i_informatik_ie_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1228,7 +1120,7 @@
     "label": "Informatik - MI",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_mi_2_ws25",
+    "id": "i_informatik_mi_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1237,7 +1129,7 @@
     "label": "Informatik - SE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_se_2_ws25",
+    "id": "i_informatik_se_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1246,7 +1138,7 @@
     "label": "Informatik - SYS",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_sys_2_ws25",
+    "id": "i_informatik_sys_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1255,7 +1147,7 @@
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_wirtschaftsinformatik_2_ws25",
+    "id": "i_wirtschaftsinformatik_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1264,7 +1156,16 @@
     "label": "Digital Technologies - DITR",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_digital_technologies_ditr_3_ws25",
+    "id": "i_digital_technologies_ditr_3_ss26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261423.html",
+    "label": "IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1273,7 +1174,7 @@
     "label": "Informatik - CE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_ce_3_ws25",
+    "id": "i_informatik_ce_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1282,7 +1183,7 @@
     "label": "Informatik - IE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_ie_3_ws25",
+    "id": "i_informatik_ie_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1291,7 +1192,7 @@
     "label": "Informatik - MI",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_mi_3_ws25",
+    "id": "i_informatik_mi_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1300,7 +1201,7 @@
     "label": "Informatik - SE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_se_3_ws25",
+    "id": "i_informatik_se_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1309,16 +1210,25 @@
     "label": "Informatik - SYS",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_sys_3_ws25",
+    "id": "i_informatik_sys_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/131803.html",
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211303.html",
+    "label": "Medieninformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_3_ss26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/231403.html",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_wirtschaftsinformatik_3_ws25",
+    "id": "i_wirtschaftsinformatik_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1327,7 +1237,7 @@
     "label": "Informatik - CE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_ce_4_ws25",
+    "id": "i_informatik_ce_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1336,7 +1246,7 @@
     "label": "Informatik - IE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_ie_4_ws25",
+    "id": "i_informatik_ie_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1345,7 +1255,7 @@
     "label": "Informatik - MI",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_mi_4_ws25",
+    "id": "i_informatik_mi_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1354,7 +1264,7 @@
     "label": "Informatik - SE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_se_4_ws25",
+    "id": "i_informatik_se_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1363,7 +1273,7 @@
     "label": "Informatik - SYS",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_sys_4_ws25",
+    "id": "i_informatik_sys_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1372,7 +1282,7 @@
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_wirtschaftsinformatik_4_ws25",
+    "id": "i_wirtschaftsinformatik_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1381,7 +1291,16 @@
     "label": "Digital Technologies - DITR",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_digital_technologies_ditr_5_ws25",
+    "id": "i_digital_technologies_ditr_5_ss26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261425.html",
+    "label": "IT-Sicherheit",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1390,7 +1309,7 @@
     "label": "Informatik - CE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_ce_5_ws25",
+    "id": "i_informatik_ce_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1399,7 +1318,7 @@
     "label": "Informatik - IE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_ie_5_ws25",
+    "id": "i_informatik_ie_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1408,7 +1327,7 @@
     "label": "Informatik - MI",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_mi_5_ws25",
+    "id": "i_informatik_mi_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1417,7 +1336,7 @@
     "label": "Informatik - SE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_se_5_ws25",
+    "id": "i_informatik_se_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1426,7 +1345,16 @@
     "label": "Informatik - SYS",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_informatik_sys_5_ws25",
+    "id": "i_informatik_sys_5_ss26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211305.html",
+    "label": "Medieninformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1435,7 +1363,7 @@
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_wirtschaftsinformatik_5_ws25",
+    "id": "i_wirtschaftsinformatik_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1444,7 +1372,7 @@
     "label": "Digital Technologies - CHMI",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_master_digital_technologies_chmi_1_ws25",
+    "id": "i_master_digital_technologies_chmi_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
@@ -1453,7 +1381,7 @@
     "label": "Digital Technologies - EMD",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_master_digital_technologies_emd_1_ws25",
+    "id": "i_master_digital_technologies_emd_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
@@ -1462,7 +1390,7 @@
     "label": "Digital Technologies - MLBD",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_master_digital_technologies_mlbd_1_ws25",
+    "id": "i_master_digital_technologies_mlbd_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
@@ -1471,7 +1399,7 @@
     "label": "Digital Technologies - SCPS",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_master_digital_technologies_scps_1_ws25",
+    "id": "i_master_digital_technologies_scps_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
@@ -1480,7 +1408,7 @@
     "label": "Informatik - IE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_master_informatik_ie_1_ws25",
+    "id": "i_master_informatik_ie_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
@@ -1489,7 +1417,7 @@
     "label": "Informatik - SCE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_master_informatik_sce_1_ws25",
+    "id": "i_master_informatik_sce_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
@@ -1498,7 +1426,16 @@
     "label": "Informatik - SE",
     "faculty": "Informatik",
     "type": "intranet",
-    "id": "i_master_informatik_se_1_ws25",
+    "id": "i_master_informatik_se_1_ss26",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/251301.html",
+    "label": "Medieninformatik",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_medieninformatik_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
@@ -1507,7 +1444,7 @@
     "label": "RFS (PO 2025)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_1_ws25",
+    "id": "r_25_09_r_b_rfs_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -1516,7 +1453,7 @@
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_1_ws25",
+    "id": "r_25_09_r_b_rpp_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -1525,7 +1462,7 @@
     "label": "WR (PO 2025)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_1_ws25",
+    "id": "r_25_09_r_b_wr_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -1534,7 +1471,7 @@
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_2_ws25",
+    "id": "r_25_09_r_b_rfs_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1543,7 +1480,7 @@
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_2_ws25",
+    "id": "r_25_09_r_b_rpp_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1552,7 +1489,7 @@
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_2_ws25",
+    "id": "r_25_09_r_b_wr_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1561,7 +1498,7 @@
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_3_ws25",
+    "id": "r_25_09_r_b_rfs_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1570,7 +1507,7 @@
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_3_ws25",
+    "id": "r_25_09_r_b_rpp_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1579,7 +1516,7 @@
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_3_ws25",
+    "id": "r_25_09_r_b_wr_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1588,7 +1525,7 @@
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_4_ws25",
+    "id": "r_25_09_r_b_rfs_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1597,7 +1534,7 @@
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_5_ws25",
+    "id": "r_25_09_r_b_rpp_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1606,7 +1543,7 @@
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_5_ws25",
+    "id": "r_25_09_r_b_wr_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1615,7 +1552,7 @@
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_6_ws25",
+    "id": "r_25_09_r_b_rfs_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -1624,7 +1561,7 @@
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_6_ws25",
+    "id": "r_25_09_r_b_rpp_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -1633,7 +1570,7 @@
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_6_ws25",
+    "id": "r_25_09_r_b_wr_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
@@ -1642,7 +1579,7 @@
     "label": "Erstsemesterveranstaltungen alt",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_erstsemesterveranstaltungen_ws25",
+    "id": "r_25_09_r_erstsemesterveranstaltungen_ss26",
     "semester": "Sonstige",
     "degree": "Bachelor"
   },
@@ -1651,98 +1588,71 @@
     "label": "Wahlpflichtfächer und Tutorien",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wpf_ws25",
+    "id": "r_25_09_r_b_wpf_ss26",
     "semester": "WPF",
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-m-ftc-1.html",
-    "label": "FTC (PO 2022) - nur im WS",
-    "faculty": "Recht",
-    "type": "graphical",
-    "id": "r_25_09_r_m_ftc_1_ws25",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-m-ilb-1-25.html",
-    "label": "ILB PO 202 (PO 2025) - nur im WS (Plan für ILB-Studierende, die im Wintersemester 2025/2026 im sind)",
-    "faculty": "Recht",
-    "type": "graphical",
-    "id": "r_25_09_r_m_ilb_25_1_ws25",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-m-rpp-1.html",
-    "label": "RPP-M (PO 2022) - nur im WS",
-    "faculty": "Recht",
-    "type": "graphical",
-    "id": "r_25_09_r_m_rpp_1_ws25",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-m-ilb-1-22.html",
-    "label": "ILB PO 202 (PO 2022) - nur im WS (Plan für ILB-Studierende, die im Wintersemester 2025/2026 im sind)",
-    "faculty": "Recht",
-    "type": "graphical",
-    "id": "r_25_09_r_m_ilb_1_22_2_ws25",
-    "semester": 2,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor Soziale Arbeit_1_1. Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/SS2025/Bachelor Soziale Arbeit_1_1. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_1_ws25",
+    "id": "s_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor Soziale Arbeit_2_2. Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/SS2025/Bachelor Soziale Arbeit_2_2. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_2_ws25",
+    "id": "s_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor Soziale Arbeit_3_3. Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/SS2025/Bachelor Soziale Arbeit_3_3. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_3_ws25",
+    "id": "s_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor Soziale Arbeit_4_4. Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/SS2025/Bachelor Soziale Arbeit_4_4. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_4_ws25",
+    "id": "s_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor Soziale Arbeit_5_5. Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/SS2025/Bachelor Soziale Arbeit_5_5. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_5_ws25",
+    "id": "s_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor Soziale Arbeit_6_6. Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/SS2025/Bachelor Soziale Arbeit_6_6. Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_6_ws25",
+    "id": "s_6_ss26",
     "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/SS2022/Fakultaetstermine_1_1. Sem_SS2022.html",
+    "label": "Fakultätstermine SS 2022 - Gremienzeiten",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_fakultaetstermine_1_1_ss26",
+    "semester": "Sonstige",
     "degree": "Bachelor"
   },
   {
@@ -1750,7 +1660,7 @@
     "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_1_ws25",
+    "id": "s_ma_psa_schwerpunkt_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
@@ -1759,7 +1669,7 @@
     "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_2_1_ws25",
+    "id": "s_ma_psa_schwerpunkt_2_1_ss26",
     "semester": 1,
     "degree": "Master"
   },
@@ -1768,7 +1678,7 @@
     "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_1_2_ws25",
+    "id": "s_ma_psa_schwerpunkt_1_2_ss26",
     "semester": 2,
     "degree": "Master"
   },
@@ -1777,7 +1687,7 @@
     "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_2_ws25",
+    "id": "s_ma_psa_schwerpunkt_2_ss26",
     "semester": 2,
     "degree": "Master"
   },
@@ -1786,7 +1696,7 @@
     "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_1_3_ws25",
+    "id": "s_ma_psa_schwerpunkt_1_3_ss26",
     "semester": 3,
     "degree": "Master"
   },
@@ -1795,7 +1705,7 @@
     "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_2_3_ws25",
+    "id": "s_ma_psa_schwerpunkt_2_3_ss26",
     "semester": 3,
     "degree": "Master"
   },
@@ -1804,7 +1714,7 @@
     "label": "Präventive Soziale Arbeit - Schwerpunkt 1",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_1_4_ws25",
+    "id": "s_ma_psa_schwerpunkt_1_4_ss26",
     "semester": 4,
     "degree": "Master"
   },
@@ -1813,458 +1723,368 @@
     "label": "Präventive Soziale Arbeit - Schwerpunkt 2",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
-    "id": "s_ma_psa_schwerpunkt_2_4_ws25",
+    "id": "s_ma_psa_schwerpunkt_2_4_ss26",
     "semester": 4,
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_ap_1.html",
-    "label": "Angewandte Psychologie",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_ap_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_ds_1.html",
-    "label": "Digitales Storytelling",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_ds_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lim_1.html",
-    "label": "Logistik und Informationsmanagement",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_lim_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lip_1.html",
-    "label": "Logistik und Informationsmanagement im Praxisverbund",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_lip_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lom_1.html",
-    "label": "Logistikmanagement",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_lom_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lop_1.html",
-    "label": "Logistikmanagement im Praxisverbund",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_lop_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mkt_1.html",
-    "label": "Marketing",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_mkt_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_md_1.html",
-    "label": "Mediendesign",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_md_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mk_1.html",
-    "label": "Medienkommunikation",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_mk_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mm_1.html",
-    "label": "Medienmanagement",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_mm_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_namo_1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_namo_1.html",
     "label": "Nachhaltige Mobilität",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_namo_1_ws25",
+    "id": "k_namo_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_sts_1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_sts_1.html",
     "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_sts_1_ws25",
+    "id": "k_sts_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_spm_1.html",
-    "label": "Sportmanagement",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/DT 2 23.09.2024.html",
+    "label": "DT 2",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_spm_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_srm_1.html",
-    "label": "Stadt- und Regionalmanagement",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_srm_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_tm_1.html",
-    "label": "Tourismusmanagement",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_tm_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_namo_2.html",
-    "label": "Nachhaltige Mobilität",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_namo_2_ws25",
+    "id": "k_dt_23_09_2024_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_sts_2.html",
-    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_ds_2.html",
+    "label": "Digitales Storytelling",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_sts_2_ws25",
+    "id": "k_ds_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_ds_3.html",
-    "label": "Digitales Storytelling",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_ds_3_ws25",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lim_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lim_2.html",
     "label": "Logistik und Informationsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lim_3_ws25",
-    "semester": 3,
+    "id": "k_lim_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lip_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lip_2.html",
     "label": "Logistik und Informationsmanagement im Praxisverbund",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lip_3_ws25",
-    "semester": 3,
+    "id": "k_lip_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lom_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lom_2.html",
     "label": "Logistikmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lom_3_ws25",
-    "semester": 3,
+    "id": "k_lom_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lop_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lop_2.html",
     "label": "Logistikmanagement im Praxisverbund",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lop_3_ws25",
-    "semester": 3,
+    "id": "k_lop_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_md_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_md_2.html",
     "label": "Mediendesign",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_md_3_ws25",
-    "semester": 3,
+    "id": "k_md_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mk_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_mk_2.html",
     "label": "Medienkommunikation",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_mk_3_ws25",
-    "semester": 3,
+    "id": "k_mk_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mm_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_mm_2.html",
     "label": "Medienmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_mm_3_ws25",
-    "semester": 3,
+    "id": "k_mm_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_namo_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_namo_2.html",
     "label": "Nachhaltige Mobilität",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_namo_3_ws25",
-    "semester": 3,
+    "id": "k_namo_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_sts_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_sts_2.html",
     "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_sts_3_ws25",
-    "semester": 3,
+    "id": "k_sts_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_spm_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_spm_2.html",
     "label": "Sportmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_spm_3_ws25",
-    "semester": 3,
+    "id": "k_spm_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_srm_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_srm_2.html",
     "label": "Stadt- und Regionalmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_srm_3_ws25",
-    "semester": 3,
+    "id": "k_srm_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_tm_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_tm_2.html",
     "label": "Tourismusmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_tm_3_ws25",
-    "semester": 3,
+    "id": "k_tm_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lim_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lim_4.html",
     "label": "Logistik und Informationsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lim_5_ws25",
-    "semester": 5,
+    "id": "k_lim_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lom_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lip_4.html",
+    "label": "Logistik und Informationsmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lip_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lom_4.html",
     "label": "Logistikmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lom_5_ws25",
-    "semester": 5,
+    "id": "k_lom_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_md_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lop_4.html",
+    "label": "Logistikmanagement im Praxisverbund",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lop_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_md_4.html",
     "label": "Mediendesign",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_md_5_ws25",
-    "semester": 5,
+    "id": "k_md_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mk_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_mk_4.html",
     "label": "Medienkommunikation",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_mk_5_ws25",
-    "semester": 5,
+    "id": "k_mk_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mm_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_mm_4.html",
     "label": "Medienmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_mm_5_ws25",
-    "semester": 5,
+    "id": "k_mm_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mpm_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_mpm_4.html",
     "label": "Mobilität und Personenverkehrsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_mpm_5_ws25",
-    "semester": 5,
+    "id": "k_mpm_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_spm_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_spm_4.html",
     "label": "Sportmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_spm_5_ws25",
-    "semester": 5,
+    "id": "k_spm_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_srm_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_srm_4.html",
     "label": "Stadt- und Regionalmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_srm_5_ws25",
-    "semester": 5,
+    "id": "k_srm_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_tm_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_tm_4.html",
     "label": "Tourismusmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_tm_5_ws25",
-    "semester": 5,
+    "id": "k_tm_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_wmv_5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_wmv_4.html",
     "label": "Wirtschaftsingenieurwesen Mobilität und Verkehr",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_wmv_5_ws25",
-    "semester": 5,
+    "id": "k_wmv_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lip_7.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lim_6.html",
+    "label": "Logistik und Informationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lim_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lip_6.html",
     "label": "Logistik und Informationsmanagement im Praxisverbund",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lip_7_ws25",
-    "semester": 7,
+    "id": "k_lip_6_ss26",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lop_7.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lom_6.html",
+    "label": "Logistikmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_lom_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lop_6.html",
     "label": "Logistikmanagement im Praxisverbund",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_lop_7_ws25",
-    "semester": 7,
+    "id": "k_lop_6_ss26",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m_fdu_1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_mpm_6.html",
+    "label": "Mobilität und Personenverkehrsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mpm_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_wmv_6.html",
+    "label": "Wirtschaftsingenieurwesen Mobilität und Verkehr",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_wmv_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_mvl_1.html",
+    "label": "Verkehr und Logistik",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_mvl_1_ss26",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_2.html",
     "label": "Führung in Dienstleistungsunternehmen",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_m_fdu_1_ws25",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m_km_1.html",
-    "label": "Kommunikationsmanagement",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_m_km_1_ws25",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m_md_1.html",
-    "label": "Mediendesign",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_m_md_1_ws25",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/MVL 1 WS 2025-26.html",
-    "label": "Verkehr und Logistik",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_mvl_1_ws25",
-    "semester": 1,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m_mvl_2.html",
-    "label": "Verkehr und Logistik",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_m_mvl_2_ws25",
+    "id": "k_m_fdu_2_ss26",
     "semester": 2,
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m_fdu_3.html",
-    "label": "Führung in Dienstleistungsunternehmen",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_m_fdu_3_ws25",
-    "semester": 3,
-    "degree": "Master"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m_km_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_km_2.html",
     "label": "Kommunikationsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_m_km_3_ws25",
-    "semester": 3,
+    "id": "k_m_km_2_ss26",
+    "semester": 2,
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m_md_3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_md_2.html",
     "label": "Mediendesign",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_m_md_3_ws25",
-    "semester": 3,
+    "id": "k_m_md_2_ss26",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_4.html",
+    "label": "Führung in Dienstleistungsunternehmen",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_fdu_4_ss26",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_km_4.html",
+    "label": "Kommunikationsmanagement",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_km_4_ss26",
+    "semester": 4,
     "degree": "Master"
   },
   {
@@ -2272,7 +2092,7 @@
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_egt_egtip_1_ws25",
+    "id": "v_egt_egtip_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -2281,7 +2101,7 @@
     "label": "Green Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_1_ws25",
+    "id": "v_green_engineering_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -2290,7 +2110,7 @@
     "label": "KSM",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_klimaschutzmanagement_ksm_1_ws25",
+    "id": "v_klimaschutzmanagement_ksm_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -2299,7 +2119,7 @@
     "label": "Smart City Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_smart_city_engineering_1_ws25",
+    "id": "v_smart_city_engineering_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -2308,7 +2128,7 @@
     "label": "WING B/WINGBiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_biooekonomie_wing_b_wingbip_1_ws25",
+    "id": "v_biooekonomie_wing_b_wingbip_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -2317,7 +2137,7 @@
     "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_e_wingsip_1_ws25",
+    "id": "v_wing_e_wingsip_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -2326,7 +2146,7 @@
     "label": "WING G/WINGGiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_gebaeude_wing_g_winggip_1_ws25",
+    "id": "v_gebaeude_wing_g_winggip_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -2335,7 +2155,7 @@
     "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_u_wingsip_1_ws25",
+    "id": "v_wing_u_wingsip_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
@@ -2344,7 +2164,7 @@
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_egt_egtip_2_ws25",
+    "id": "v_egt_egtip_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -2353,7 +2173,7 @@
     "label": "Green Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_2_ws25",
+    "id": "v_green_engineering_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -2362,7 +2182,7 @@
     "label": "KSM",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_klimaschutzmanagement_ksm_2_ws25",
+    "id": "v_klimaschutzmanagement_ksm_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -2371,7 +2191,7 @@
     "label": "Smart City Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_smart_city_engineering_2_ws25",
+    "id": "v_smart_city_engineering_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -2380,7 +2200,7 @@
     "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_e_2_ws25",
+    "id": "v_wing_e_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -2389,7 +2209,7 @@
     "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_u_2_ws25",
+    "id": "v_wing_u_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -2398,7 +2218,7 @@
     "label": "KSM",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_klimaschutzmanagement_ksm_3_ws25",
+    "id": "v_klimaschutzmanagement_ksm_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -2407,7 +2227,7 @@
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_egt_egtip_3_3_4_ws25",
+    "id": "v_egt_egtip_3_3_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -2416,7 +2236,7 @@
     "label": "Green Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_3_3_4_ws25",
+    "id": "v_green_engineering_3_3_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -2425,7 +2245,7 @@
     "label": "Smart City Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_smart_city_engineering_3_3_4_ws25",
+    "id": "v_smart_city_engineering_3_3_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -2434,7 +2254,7 @@
     "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_e_3_3_4_ws25",
+    "id": "v_wing_e_3_3_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -2443,7 +2263,7 @@
     "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_u_3_3_4_ws25",
+    "id": "v_wing_u_3_3_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -2452,7 +2272,7 @@
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_egt_egtip_2_5_ws25",
+    "id": "v_egt_egtip_2_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -2461,7 +2281,7 @@
     "label": "Green Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_5_ws25",
+    "id": "v_green_engineering_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -2470,7 +2290,7 @@
     "label": "Smart City Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_smart_city_engineering_5_ws25",
+    "id": "v_smart_city_engineering_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -2479,7 +2299,7 @@
     "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_e_5_ws25",
+    "id": "v_wing_e_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -2488,7 +2308,7 @@
     "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_u_5_ws25",
+    "id": "v_wing_u_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -2497,7 +2317,7 @@
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_egt_egtip_7_ws25",
+    "id": "v_egt_egtip_7_ss26",
     "semester": 7,
     "degree": "Bachelor"
   },
@@ -2506,7 +2326,7 @@
     "label": "Green Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_7_ws25",
+    "id": "v_green_engineering_7_ss26",
     "semester": 7,
     "degree": "Bachelor"
   },
@@ -2515,7 +2335,7 @@
     "label": "Smart City Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_smart_city_engineering_7_ws25",
+    "id": "v_smart_city_engineering_7_ss26",
     "semester": 7,
     "degree": "Bachelor"
   },
@@ -2524,7 +2344,7 @@
     "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_e_7_ws25",
+    "id": "v_wing_e_7_ss26",
     "semester": 7,
     "degree": "Bachelor"
   },
@@ -2533,178 +2353,151 @@
     "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_u_7_ws25",
+    "id": "v_wing_u_7_ss26",
     "semester": 7,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_1_2025-26 WS BWL 1. Sem. - Gr. 1.html",
-    "label": "BWL - Gruppe 1",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2025_26_ws_bwl_gr_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_1_2025-26 WS BWL 1. Sem. - Gr. 2.html",
-    "label": "BWL - Gruppe 2",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2025_26_ws_bwl_gr_2_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Master SM_1_2025-26 WS SM 1. Sem..html",
-    "label": "Strategisches Management",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_master_sm_2025_26_ws_sm_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Winf_1_2025-26 WS WI 1. Sem..html",
-    "label": "Wirtschaftsinformatik",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_winf_2025_26_ws_wi_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_1_2025-26 WS WIng 1. Sem. - Gr. 1.html",
-    "label": "Wirtschaftsingenieurswesen - Gruppe 1",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wing_2025_26_ws_wing_gr_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_1_2025-26 WS WIng 1. Sem. - Gr. 2.html",
-    "label": "Wirtschaftsingenieurswesen - Gruppe 2",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wing_2025_26_ws_wing_gr_2_1_ws25",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_2_2025-26 WS BWL 2. Sem..html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_1_2026 SS BWL 1. Sem..html",
     "label": "BWL",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_bwl_2025_26_ws_bwl_2_ws25",
+    "id": "w_bwl_2026_ss_bwl_1_ss26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_2_2026 SS BWL 2. Sem. - Gr. 1.html",
+    "label": "BWL - Gruppe 1",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2026_ss_bwl_gr_1_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_3_2025-26 WS BWL 3. Sem. - Gr. 1.html",
-    "label": "BWL - Gruppe 1",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2025_26_ws_bwl_gr_1_3_ws25",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_3_2025-26 WS BWL 3. Sem. - Gr. 2.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_2_2026 SS BWL 2. Sem. - Gr. 2.html",
     "label": "BWL - Gruppe 2",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_bwl_2025_26_ws_bwl_gr_2_3_ws25",
-    "semester": 3,
+    "id": "w_bwl_2026_ss_bwl_gr_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Master SM_3_2025-26 WS SM 3. Sem..html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Master SM_2_2026 SS SM 2. Sem..html",
     "label": "Strategisches Management",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_master_sm_2025_26_ws_sm_3_ws25",
-    "semester": 3,
+    "id": "w_master_sm_2026_ss_sm_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Winf_3_2025-26 WS WI 3. Sem..html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor WI_2_2026 SS WI 2. Sem..html",
     "label": "Wirtschaftsinformatik",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_winf_2025_26_ws_wi_3_ws25",
-    "semester": 3,
+    "id": "w_wi_2026_ss_wi_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_3_2025-26 WS WIng 3. Sem. - Gr. 1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_2_2026 SS WIng 2. Sem. - Gr. 1.html",
     "label": "Wirtschaftsingenieurswesen - Gruppe 1",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_wing_2025_26_ws_wing_gr_1_3_ws25",
-    "semester": 3,
+    "id": "w_wing_2026_ss_wing_gr_1_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_3_2025-26 WS WIng 3. Sem. - Gr. 2.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_2_2026 SS WIng 2. Sem. - Gr. 2.html",
     "label": "Wirtschaftsingenieurswesen - Gruppe 2",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_wing_2025_26_ws_wing_gr_2_3_ws25",
+    "id": "w_wing_2026_ss_wing_gr_2_ss26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_3_2026 SS BWL 3. Sem..html",
+    "label": "BWL",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2026_ss_bwl_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_4_2025-26 WS BWL 4. Sem..html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_4_2026 SS BWL 4. Sem..html",
     "label": "BWL",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_bwl_2025_26_ws_bwl_4_ws25",
+    "id": "w_bwl_2026_ss_bwl_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_5_2025-26 WS BWL 5. Sem..html",
-    "label": "BWL",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2025_26_ws_bwl_5_ws25",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Winf_5_2025-26 WS WI 5. Sem..html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor WI_4_2026 SS WI 4. Sem..html",
     "label": "Wirtschaftsinformatik",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_winf_2025_26_ws_wi_5_ws25",
-    "semester": 5,
+    "id": "w_wi_2026_ss_wi_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_5_2025-26 WS WIng 5. Sem. - Gr. 1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_4_2026 SS 4. Sem. - Gr. 1.html",
     "label": "Wirtschaftsingenieurswesen - Gruppe 1",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_wing_2025_26_ws_wing_gr_1_5_ws25",
-    "semester": 5,
+    "id": "w_wing_2026_gr_1_4_ss26",
+    "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_5_2025-26 WS WIng 5. Sem. - Gr. 2.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_4_2026 SS 4. Sem. - Gr. 2.html",
     "label": "Wirtschaftsingenieurswesen - Gruppe 2",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_wing_2025_26_ws_wing_gr_2_5_ws25",
+    "id": "w_wing_2026_gr_2_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_5_2026 SS BWL 5. Sem..html",
+    "label": "BWL",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_bwl_2026_ss_bwl_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wahlpflichtfaecher_1_2025-26 WS.html",
-    "label": "Wahlpflichtfächer Wahlpflichtfächer - WS 2025/26",
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_6_2026 SS WIng 6. Sem. - Gr. 1.html",
+    "label": "Wirtschaftsingenieurswesen - Gruppe 1",
     "faculty": "Wirtschaft",
     "type": "graphical",
-    "id": "w_wahlpflichtfaecher_1_2025_26_ws_ws25",
+    "id": "w_wing_2026_ss_wing_gr_1_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_6_2026 SS WIng 6. Sem. - Gr. 2.html",
+    "label": "Wirtschaftsingenieurswesen - Gruppe 2",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_wing_2026_ss_wing_gr_2_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor WPF_1_2026 SS.html",
+    "label": "Wahlpflichtfächer Wahlpflichtfächer - SS 2026",
+    "faculty": "Wirtschaft",
+    "type": "graphical",
+    "id": "w_wpf_1_2026_ss_ss26",
     "semester": "WPF",
     "degree": "Bachelor"
   }
