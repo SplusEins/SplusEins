@@ -105,7 +105,7 @@ Der Endpunkt zum Abfragen des Bus-Plans befindet sich in der Datei `controller/b
 **Parameter:** keine
 
 **Rückgabe:**
-Liefert einen Plan der 5 nächsten Abfahrten des Nahverkehrs in Wolfenbüttel zwischen den Standorten Exer (ID `de-DELFI_de:03158:599:0:1`) und Salzdahlumer Straße (ID `de-DELFI_de:03158:598:0:1`). Die Daten werden mit Hilfe des Motis-Clients und der Transitous-API abgerufen.
+Liefert einen Plan zurück der die 5 nächsten Abfahrten des Nahverkehrs in Wolfenbüttel zwischen den Standorten Exer (ID `de-DELFI_de:03158:599:0:1`) und Salzdahlumer Straße (ID `de-DELFI_de:03158:598:0:1`) enthält. Die Daten werden mit Hilfe des Motis-Clients und der Transitous-API abgerufen.
 
 ## News
 
