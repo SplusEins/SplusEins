@@ -22,7 +22,7 @@ Auf der Startseite von SplusEins werden News angezeigt. Diese Stammen aus versch
 
 ### Busplan
 
-SplusEins stellt Nahverkehrsinformationen für die Verbindung zwischen den beiden Standorten in Wolfenbüttel zur Verfügung. Die Daten stammen von der Deutschen Bahn und werden über ein System namens Hafas mithilfe des [Hafas-Client](https://github.com/public-transport/hafas-client) abgerufen. Wie auch beim Stundenplan und Mensaplan fragt das Frontend die Daten vom Backend ab, welches Anfragen an Hafas stellt. Die Anfragen können ebenfalls, sofern aktuelle Daten vorhanden sind, mithilfe eines Caches beantwortet werden.
+SplusEins stellt Nahverkehrsinformationen für die Verbindung zwischen den beiden Standorten in Wolfenbüttel zur Verfügung. Die Daten stammen von der Deutschen Bahn und werden über ein System namens MOTIS mithilfe des [motis-fptf-client](https://github.com/motis-project/motis-fptf-client) mit dem [Transitous-Profil](https://transitous.org/api/) abgerufen. Wie auch beim Stundenplan und Mensaplan fragt das Frontend die Daten vom Backend ab, welches Anfragen an die Transitous-API stellt. Die Anfragen können ebenfalls, sofern aktuelle Daten vorhanden sind, mithilfe eines Caches beantwortet werden.
 
 ## Frontend
 
