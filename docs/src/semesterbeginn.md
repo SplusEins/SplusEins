@@ -17,7 +17,7 @@ Die oben erwähnte Aktualisierung der Pläne nutzt die Datei [`timetable-config.
 3. Optional: Die Stundenplan-URLs in der Datei sollten überprüft werden, ob diese noch aktuell sind. Die Übersichtsseite der Ostfalia findet sich [hier](https://stundenplan.ostfalia.de).
 
 ::: tip
-Die tägliche Github Action, die den PR erstellt, kann auch [hier](https://github.com/SplusEins/SplusEins/actions/workflows/timetables.yml) mit `Run workflow` manuell ausgeführt werden, um die veränderte Konfiguration zu überprüfen. 
+Die tägliche Github Action, die den PR erstellt, kann auch [hier](https://github.com/SplusEins/SplusEins/actions/workflows/timetables.yml) mit `Run workflow` manuell ausgeführt werden, um die veränderte Konfiguration zu überprüfen.
 
 <u>**Wichtig für Forks:**</u> Für die erfolgreiche Ausführung der Action ist das Hinterlegen von `SKED_USER` und `SKED_PASSWORD` als [Repository Secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-a-repository) mit validen Ostfalia-Accountdaten im Fork zwingend erforderlich. Ohne diese Secrets können ausschließlich Pläne der Fakultät I abgerufen werden, da hierfür keine Authentifizierung notwendig ist.
 :::
