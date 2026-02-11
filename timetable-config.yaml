@@ -27,12 +27,11 @@ timetable_blacklist:
   - "231405.html" # workaround for informatik (might be removable next semester)
   - "131803.html" # workaround for i_wirtschaftsinformatik_3, added in SS 26 (might be removable next semester)
 
-
 plans:
   - url: https://stundenplan.ostfalia.de/b/wp/index.html
     faculty: Bau-Wasser-Boden
   - url: https://stundenplan.ostfalia.de/e/
-    faculty: Elektrotechnik
+    faculty: Elektro- und Informationstechnik
   - url: https://stundenplan.ostfalia.de/f/wp/index.html
     faculty: Fahrzeugtechnik
   - url: https://stundenplan.ostfalia.de/g/wp/index.html

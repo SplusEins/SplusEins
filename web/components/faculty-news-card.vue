@@ -46,7 +46,7 @@ export default {
       { description: 'Campus Wolfsburg', title: 'aus Wolfsburg', path: 'wob' },
       { description: 'Campus Suderburg', title: 'aus Suderburg', path: 'sud' },
       {
-        description: 'Fakultät Elektrotechnik',
+        description: 'Fakultät Elektro- und Informationstechnik',
         title: 'aus der E-Technik',
         path: 'e',
       },

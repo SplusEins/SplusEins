@@ -77,7 +77,7 @@ Diese Infokarte zeigt die neusten Nachrichten der Ostfalia Homepage und Campus38
 Diese Infokarte zeigt die neusten Nachrichten der Ostfalia Homepage zur gewählten Fakultät bzw. zum gewählten Standort an.
 ![img](./img/spluseins_start_full_c.png)
 
-Mit einem Klick auf das Zeitung-Symbol können die gewünschte Fakultät bzw. der gewünschte Standort ausgewählt werden. Zur Verfügung stehen hierbei die Fakultäten Informatik, Elektrotechnik und Recht und die Standorte Wolfenbüttel, Wolfsburg und Suderburg.
+Mit einem Klick auf das Zeitung-Symbol können die gewünschte Fakultät bzw. der gewünschte Standort ausgewählt werden. Zur Verfügung stehen hierbei die Fakultäten Informatik, Elektro- und Informationstechnik und Recht und die Standorte Wolfenbüttel, Wolfsburg und Suderburg.
 
 #### Mensa
 
