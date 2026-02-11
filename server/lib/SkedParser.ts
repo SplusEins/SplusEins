@@ -300,7 +300,7 @@ export function parseSkedGraphical(
             break;
           case 'Gesundheitswesen':
           case 'Verkehr-Sport-Tourismus-Medien':
-          case 'Elektrotechnik':
+          case 'Elektro- und Informationstechnik':
             if (parts.length === 3) {
               // some special handling for faculty E entries
               veranstaltung = parts[1];
