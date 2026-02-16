@@ -1359,146 +1359,146 @@
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rfs-1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rfs-1.html",
     "label": "RFS (PO 2025)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_1_ss26",
+    "id": "r_26_03_r_b_rfs_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rpp-1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rpp-1.html",
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_1_ss26",
+    "id": "r_26_03_r_b_rpp_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wr-1.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-wr-1.html",
     "label": "WR (PO 2025)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_1_ss26",
+    "id": "r_26_03_r_b_wr_1_ss26",
     "semester": 1,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rfs-2.html",
-    "label": "RFS (PO 2022)",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rfs-2.html",
+    "label": "RFS (PO 2025)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_2_ss26",
+    "id": "r_26_03_r_b_rfs_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rpp-2.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rpp-2.html",
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_2_ss26",
+    "id": "r_26_03_r_b_rpp_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wr-2.html",
-    "label": "WR (PO 2022)",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-wr-2.html",
+    "label": "WR (PO 2025)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_2_ss26",
+    "id": "r_26_03_r_b_wr_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rfs-3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rfs-3.html",
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_3_ss26",
+    "id": "r_26_03_r_b_rfs_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rpp-3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rpp-3.html",
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_3_ss26",
+    "id": "r_26_03_r_b_rpp_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wr-3.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-wr-3.html",
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_3_ss26",
+    "id": "r_26_03_r_b_wr_3_ss26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rfs-4.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rfs-4.html",
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_4_ss26",
+    "id": "r_26_03_r_b_rfs_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rpp-5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rpp-5.html",
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_5_ss26",
+    "id": "r_26_03_r_b_rpp_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wr-5.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-wr-5.html",
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_5_ss26",
+    "id": "r_26_03_r_b_wr_5_ss26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rfs-6.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rfs-6.html",
     "label": "RFS (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rfs_6_ss26",
+    "id": "r_26_03_r_b_rfs_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-rpp-6.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rpp-6.html",
     "label": "RPP (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_rpp_6_ss26",
+    "id": "r_26_03_r_b_rpp_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wr-6.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-wr-6.html",
     "label": "WR (PO 2022)",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wr_6_ss26",
+    "id": "r_26_03_r_b_wr_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-erstsemesterveranstaltungen.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-erstsemesterveranstaltungen.html",
     "label": "Erstsemesterveranstaltungen alt",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_erstsemesterveranstaltungen_ss26",
+    "id": "r_26_03_r_erstsemesterveranstaltungen_ss26",
     "semester": "Sonstige",
     "degree": "Bachelor"
   },
@@ -1512,13 +1512,40 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/25-09-r-b-wpf.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-wpf.html",
     "label": "Wahlpflichtfächer und Tutorien",
     "faculty": "Recht",
     "type": "graphical",
-    "id": "r_25_09_r_b_wpf_ss26",
+    "id": "r_26_03_r_b_wpf_ss26",
     "semester": "WPF",
     "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-m-ftc-2.html",
+    "label": "FTC (PO 2022) - nur im Sommersemester",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_26_03_r_m_ftc_2_ss26",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-m-ilb-2.html",
+    "label": "ILB (PO 2025) - nur im Sommersemester",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_26_03_r_m_ilb_2_ss26",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-m-rpp-2.html",
+    "label": "RPP-M (PO 2022) - nur im Sommersemester",
+    "faculty": "Recht",
+    "type": "graphical",
+    "id": "r_26_03_r_m_rpp_2_ss26",
+    "semester": 2,
+    "degree": "Master"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/s/wp/SS2026/Bachelor Soziale Arbeit_1_1. Sem.html",
