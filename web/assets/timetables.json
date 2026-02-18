@@ -1693,7 +1693,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_sts_1.html",
-    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
+    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme ster",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_sts_1_ss26",
@@ -1701,11 +1701,11 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/DT 2 23.09.2024.html",
-    "label": "DT 2",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_ap_2.html",
+    "label": "Angewandte Psychologie",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_dt_23_09_2024_2_ss26",
+    "id": "k_ap_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1751,6 +1751,15 @@
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_lop_2_ss26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_mkt_2.html",
+    "label": "Marketing",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mkt_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1827,6 +1836,33 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_namo_3.html",
+    "label": "Nachhaltige Mobilität",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_namo_3_ss26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_sts_3.html",
+    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_sts_3_ss26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_ds_4.html",
+    "label": "Digitales Storytelling",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_ds_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_lim_4.html",
     "label": "Logistik und Informationsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
@@ -1890,11 +1926,20 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_mpm_4.html",
-    "label": "Mobilität und Personenverkehrsmanagement",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_namo_4.html",
+    "label": "Nachhaltige Mobilität",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_mpm_4_ss26",
+    "id": "k_namo_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_sts_4.html",
+    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_sts_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1922,15 +1967,6 @@
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_tm_4_ss26",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_wmv_4.html",
-    "label": "Wirtschaftsingenieurwesen Mobilität und Verkehr",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_wmv_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -2025,6 +2061,15 @@
     "degree": "Master"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_mvl_2.html",
+    "label": "Verkehr und Logistik",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_mvl_2_ss26",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_fdu_4.html",
     "label": "Führung in Dienstleistungsunternehmen",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
@@ -2039,6 +2084,15 @@
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_m_km_4_ss26",
+    "semester": 4,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_m_md_4.html",
+    "label": "Mediendesign",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_m_md_4_ss26",
     "semester": 4,
     "degree": "Master"
   },
