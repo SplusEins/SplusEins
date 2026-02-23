@@ -1071,6 +1071,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261422.html",
+    "label": "IT-Sicherheit (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_vfh_2_ss26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111812.html",
     "label": "Informatik - CE",
     "faculty": "Informatik",
@@ -1134,11 +1143,29 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211302.html",
+    "label": "Medieninformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_vfh_2_ss26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261465.html",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_wirtschaftsinformatik_2_ss26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/231402.html",
+    "label": "Wirtschaftsinformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_wirtschaftsinformatik_vfh_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1197,6 +1224,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261424.html",
+    "label": "IT-Sicherheit (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_vfh_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111814.html",
     "label": "Informatik - CE",
     "faculty": "Informatik",
@@ -1242,11 +1278,29 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211304.html",
+    "label": "Medieninformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_vfh_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/131804.html",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_wirtschaftsinformatik_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/231404.html",
+    "label": "Wirtschaftsinformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_wirtschaftsinformatik_vfh_4_ss26",
     "semester": 4,
     "degree": "Bachelor"
   },
@@ -1302,6 +1356,24 @@
     "type": "intranet",
     "id": "i_wirtschaftsinformatik_5_ss26",
     "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261447.html",
+    "label": "IT-Sicherheit (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_vfh_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211306.html",
+    "label": "Medieninformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_vfh_6_ss26",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -1693,7 +1765,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/stjg_sts_1.html",
-    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme ster",
+    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_sts_1_ss26",
@@ -2382,150 +2454,6 @@
     "type": "graphical",
     "id": "v_wing_u_6_ss26",
     "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_1_2026 SS BWL 1. Sem..html",
-    "label": "BWL",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2026_ss_bwl_1_ss26",
-    "semester": 1,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_2_2026 SS BWL 2. Sem. - Gr. 1.html",
-    "label": "BWL - Gruppe 1",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2026_ss_bwl_gr_1_2_ss26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_2_2026 SS BWL 2. Sem. - Gr. 2.html",
-    "label": "BWL - Gruppe 2",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2026_ss_bwl_gr_2_ss26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Master SM_2_2026 SS SM 2. Sem..html",
-    "label": "Strategisches Management",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_master_sm_2026_ss_sm_2_ss26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor WI_2_2026 SS WI 2. Sem..html",
-    "label": "Wirtschaftsinformatik",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wi_2026_ss_wi_2_ss26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_2_2026 SS WIng 2. Sem. - Gr. 1.html",
-    "label": "Wirtschaftsingenieurswesen - Gruppe 1",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wing_2026_ss_wing_gr_1_2_ss26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_2_2026 SS WIng 2. Sem. - Gr. 2.html",
-    "label": "Wirtschaftsingenieurswesen - Gruppe 2",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wing_2026_ss_wing_gr_2_ss26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_3_2026 SS BWL 3. Sem..html",
-    "label": "BWL",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2026_ss_bwl_3_ss26",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_4_2026 SS BWL 4. Sem..html",
-    "label": "BWL",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2026_ss_bwl_4_ss26",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor WI_4_2026 SS WI 4. Sem..html",
-    "label": "Wirtschaftsinformatik",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wi_2026_ss_wi_4_ss26",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_4_2026 SS 4. Sem. - Gr. 1.html",
-    "label": "Wirtschaftsingenieurswesen - Gruppe 1",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wing_2026_gr_1_4_ss26",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_4_2026 SS 4. Sem. - Gr. 2.html",
-    "label": "Wirtschaftsingenieurswesen - Gruppe 2",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wing_2026_gr_2_4_ss26",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor BWL_5_2026 SS BWL 5. Sem..html",
-    "label": "BWL",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_bwl_2026_ss_bwl_5_ss26",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_6_2026 SS WIng 6. Sem. - Gr. 1.html",
-    "label": "Wirtschaftsingenieurswesen - Gruppe 1",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wing_2026_ss_wing_gr_1_6_ss26",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor Wing_6_2026 SS WIng 6. Sem. - Gr. 2.html",
-    "label": "Wirtschaftsingenieurswesen - Gruppe 2",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wing_2026_ss_wing_gr_2_6_ss26",
-    "semester": 6,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/w/Bachelor WPF_1_2026 SS.html",
-    "label": "Wahlpflichtfächer Wahlpflichtfächer - SS 2026",
-    "faculty": "Wirtschaft",
-    "type": "graphical",
-    "id": "w_wpf_1_2026_ss_ss26",
-    "semester": "WPF",
     "degree": "Bachelor"
   }
 ]
