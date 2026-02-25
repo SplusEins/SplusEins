@@ -80,5 +80,11 @@ plans:
   - url: https://stundenplan.ostfalia.de/v/stundenplan/bee/index.html
     faculty: Versorgungstechnik
     shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/but/index.html
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
+  - url: https://stundenplan.ostfalia.de/v/stundenplan/esut/index.html
+    faculty: Versorgungstechnik
+    shorthand_syntax: True
   - url: https://stundenplan.ostfalia.de/w/
     faculty: Wirtschaft
