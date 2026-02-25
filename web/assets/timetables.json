@@ -2169,6 +2169,15 @@
     "degree": "Master"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio- und Umwelttechnik (BEE - BEEiP)_1_1. Semester.html",
+    "label": "BUT/ BUTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_beeip_1_ss26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_1_1. Semester.html",
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
@@ -2238,6 +2247,15 @@
     "type": "graphical",
     "id": "v_wing_u_wingsip_1_ss26",
     "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio- und Umwelttechnik (BUT- BUTiP)_2_2. Semester.html",
+    "label": "BUT/ BUTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_but_butip_2_ss26",
+    "semester": 2,
     "degree": "Bachelor"
   },
   {
@@ -2349,6 +2367,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio- und Umwelttechnik (BEE )_4_4. Sem.html",
+    "label": "BUT/ BUTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_4_ss26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie- und Gebaeudetechnik (EGT - EGTiP)_4_4. Sem.html",
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
@@ -2400,6 +2427,15 @@
     "type": "graphical",
     "id": "v_wing_u_4_ss26",
     "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio- und Umwelttechnik (BEE )_6_6. Sem.html",
+    "label": "BUT/ BUTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_bee_6_ss26",
+    "semester": 6,
     "degree": "Bachelor"
   },
   {
@@ -2455,5 +2491,14 @@
     "id": "v_wing_u_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/esut/Master ESUT_1_1. Semester.html",
+    "label": "ESUT",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_master_esut_1_ss26",
+    "semester": 1,
+    "degree": "Master"
   }
 ]
