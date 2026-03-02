@@ -1080,15 +1080,6 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111812.html",
-    "label": "Informatik - CE",
-    "faculty": "Informatik",
-    "type": "intranet",
-    "id": "i_informatik_ce_2_ss26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261453.html",
     "label": "Informatik - DS",
     "faculty": "Informatik",
@@ -1098,29 +1089,11 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111822.html",
-    "label": "Informatik - IE",
-    "faculty": "Informatik",
-    "type": "intranet",
-    "id": "i_informatik_ie_2_ss26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261461.html",
     "label": "Informatik - ITS",
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_informatik_its_2_ss26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111832.html",
-    "label": "Informatik - MI",
-    "faculty": "Informatik",
-    "type": "intranet",
-    "id": "i_informatik_mi_2_ss26",
     "semester": 2,
     "degree": "Bachelor"
   },
