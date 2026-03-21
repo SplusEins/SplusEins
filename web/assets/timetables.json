@@ -1278,6 +1278,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261425.html",
+    "label": "IT-Sicherheit (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_vfh_5_ss26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111815.html",
     "label": "Informatik - CE",
     "faculty": "Informatik",
@@ -1323,6 +1332,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/211305.html",
+    "label": "Medieninformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_medieninformatik_vfh_5_ss26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/131805.html",
     "label": "Wirtschaftsinformatik",
     "faculty": "Informatik",
@@ -1346,6 +1364,15 @@
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_medieninformatik_vfh_6_ss26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/231406.html",
+    "label": "Wirtschaftsinformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_wirtschaftsinformatik_vfh_6_ss26",
     "semester": 6,
     "degree": "Bachelor"
   },
