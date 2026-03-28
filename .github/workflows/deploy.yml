@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Deploy with dokku
-        uses: dokku/github-action@master
+        uses: dokku/github-action@b705ed643fea68530501b1faf37abe233caa06be # master
         with:
           git_remote_url: "${{ env.REMOTE_HOST }}/api"
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
@@ -32,7 +32,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Deploy with dokku
-        uses: dokku/github-action@master
+        uses: dokku/github-action@b705ed643fea68530501b1faf37abe233caa06be # master
         with:
           git_remote_url: "${{ env.REMOTE_HOST }}/web"
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
@@ -46,7 +46,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Deploy with dokku
-        uses: dokku/github-action@master
+        uses: dokku/github-action@b705ed643fea68530501b1faf37abe233caa06be # master
         with:
           git_remote_url: "${{ env.REMOTE_HOST }}/docs"
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
