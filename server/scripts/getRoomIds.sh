@@ -58,9 +58,8 @@ fetch_osm_data() {
         id: .id,
         level: .tags.level,
         ref: .tags.ref,
-        avglat: (((.bounds.minlat + .bounds.maxlat) / 2) * 1000000 | round / 1000000),
-        avglon: (((.bounds.minlon + .bounds.maxlon) / 2) * 1000000 | round / 1000000)
-      }) | map({(.ref): {id: .id, level: .level, avglat: .avglat, avglon: .avglon}}) | add // {} # ensure empty object if no data
+        bounds: .bounds
+      }) | map({(.ref): {id: .id, level: .level, bounds: .bounds}}) | add // {} # ensure empty object if no data
       ')
       echo "$processed" > "$output_file"
       echo "✓ Successfully saved room data to ${output_file}"

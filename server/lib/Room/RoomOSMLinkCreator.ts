@@ -15,7 +15,16 @@ export function createOSMLink(
   room: string,
   facultyLocation: FacultyLocation,
 ): string | null {
-  let osmData: { id: number; level: string; avglat: number; avglon: number; } | null = null;
+  let osmData: {
+    id: number;
+    level: string;
+    bounds: {
+      minlat: number;
+      minlon: number;
+      maxlat: number;
+      maxlon: number;
+    };
+  } | null = null;
 
   // Select the correct OSM data based on the faculty location
   switch (facultyLocation) {
@@ -35,12 +44,23 @@ export function createOSMLink(
 
   /**
    * Check if we have OSM data for this room in the selected location
+   *
    * If we do, create the OSM link using the ID
    * Example: Link: https://indoorequal.org/#map=19.54/52.1766869/10.5484767&level=0&poi=way:1445466532
+   *
+   * IndoorEqual currently does not support links to specific rooms, so we will center the map on the room's location.
+   * This will not show a maker for the room, but it will at least show the correct area of the building.
    */
   if (osmData) {
-    return `https://indoorequal.org/#map=19.5/${osmData.avglat}/${osmData.avglon}&level=${osmData.level}&poi=way:${osmData.id}`;
-    // return `https://osmapp.org/way/${osmData.id}`;
+    const level = osmData.level;
+    // Calculate the average latitude and longitude for the room's bounding box
+    // This will center the map on the room when the link is opened
+    const avgLat = (osmData.bounds.minlat + osmData.bounds.maxlat) / 2;
+    const avgLon = (osmData.bounds.minlon + osmData.bounds.maxlon) / 2;
+
+    // Construct the OSM link using the calculated values { 20: zoom level, avgLat: average latitude, avgLon: average longitude, level: room level, id: OSM ID of the room }
+    return `https://indoorequal.org/#map=20/${avgLat}/${avgLon}&level=${level}`;
   }
+
   return null;
 }
