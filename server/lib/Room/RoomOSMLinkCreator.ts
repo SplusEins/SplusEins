@@ -5,6 +5,34 @@ import * as OSM_ROOMS_DATA_SUD from '../../assets/overpass_osm/SUD.json';
 
 import { FacultyLocation } from './RoomLocationApi';
 
+type OSMRoomData = {
+  id: number;
+  level: string;
+  bounds: {
+    minlat: number;
+    minlon: number;
+    maxlat: number;
+    maxlon: number;
+  };
+};
+
+/**
+ * Type guard to check if data has the correct OSM room structure
+ */
+function isOSMRoomData(data: unknown): data is OSMRoomData {
+  return (
+    typeof data === 'object' &&
+    data !== null &&
+    'id' in data &&
+    'level' in data &&
+    'bounds' in data &&
+    typeof (data as Record<string, unknown>).id === 'number' &&
+    typeof (data as Record<string, unknown>).level === 'string' &&
+    typeof (data as Record<string, unknown>).bounds === 'object' &&
+    (data as Record<string, unknown>).bounds !== null
+  );
+}
+
 /**
  * Creates an OSM link for the given room if available.
  * @param room name
@@ -15,16 +43,7 @@ export function createOSMLink(
   room: string,
   facultyLocation: FacultyLocation,
 ): string | null {
-  let osmData: {
-    id: number;
-    level: string;
-    bounds: {
-      minlat: number;
-      minlon: number;
-      maxlat: number;
-      maxlon: number;
-    };
-  } | null = null;
+  let osmData: OSMRoomData | null = null;
 
   // Select the correct OSM data based on the faculty location
   switch (facultyLocation) {
@@ -51,7 +70,7 @@ export function createOSMLink(
    * IndoorEqual currently does not support links to specific rooms, so we will center the map on the room's location.
    * This will not show a maker for the room, but it will at least show the correct area of the building.
    */
-  if (osmData) {
+  if (isOSMRoomData(osmData)) {
     const level = osmData.level;
     // Calculate the average latitude and longitude for the room's bounding box
     // This will center the map on the room when the link is opened
