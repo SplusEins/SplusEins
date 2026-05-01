@@ -54,11 +54,13 @@ fetch_osm_data() {
     # Check if response is valid JSON
     if echo "$response" | jq empty 2>/dev/null; then
       # Process response and ensure empty object if no data
-      processed=$(echo "$response" | jq '
-        .elements
-        | map({id: .id, level: .tags.level, ref: .tags.ref})
-        | map({ (.ref): { id: .id, level: .level } })
-        | add // {} # ensure empty object if no data
+      processed=$(echo "$response" | jq '.elements | map({
+        id: .id,
+        level: .tags.level,
+        ref: .tags.ref,
+        avglat: (((.bounds.minlat + .bounds.maxlat) / 2) * 1000000 | round / 1000000),
+        avglon: (((.bounds.minlon + .bounds.maxlon) / 2) * 1000000 | round / 1000000)
+      }) | map({(.ref): {id: .id, level: .level, avglat: .avglat, avglon: .avglon}}) | add // {} # ensure empty object if no data
       ')
       echo "$processed" > "$output_file"
       echo "✓ Successfully saved room data to ${output_file}"

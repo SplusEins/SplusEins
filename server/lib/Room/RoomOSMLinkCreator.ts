@@ -15,7 +15,7 @@ export function createOSMLink(
   room: string,
   facultyLocation: FacultyLocation,
 ): string | null {
-  let osmData: { id: number; level: string } | null = null;
+  let osmData: { id: number; level: string; avglat: number; avglon: number; } | null = null;
 
   // Select the correct OSM data based on the faculty location
   switch (facultyLocation) {
@@ -36,10 +36,11 @@ export function createOSMLink(
   /**
    * Check if we have OSM data for this room in the selected location
    * If we do, create the OSM link using the ID
-   * Example: Link: https://osmapp.org/way/123456789
+   * Example: Link: https://indoorequal.org/#map=19.54/52.1766869/10.5484767&level=0&poi=way:1445466532
    */
   if (osmData) {
-    return `https://osmapp.org/way/${osmData.id}`;
+    return `https://indoorequal.org/#map=19.5/${osmData.avglat}/${osmData.avglon}&level=${osmData.level}&poi=way:${osmData.id}`;
+    // return `https://osmapp.org/way/${osmData.id}`;
   }
   return null;
 }
