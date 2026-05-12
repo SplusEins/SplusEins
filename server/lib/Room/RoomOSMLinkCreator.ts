@@ -77,7 +77,7 @@ export function createOSMLink(
     const avgLat = (osmData.bounds.minlat + osmData.bounds.maxlat) / 2;
     const avgLon = (osmData.bounds.minlon + osmData.bounds.maxlon) / 2;
 
-    // Construct the OSM link using the calculated values { 20: zoom level, avgLat: average latitude, avgLon: average longitude, level: room level, id: OSM ID of the room }
+    // Construct the OSM link using the calculated values { 20: zoom level, avgLat: average latitude, avgLon: average longitude, level: room level }
     return `https://indoorequal.org/#map=20/${avgLat}/${avgLon}&level=${level}`;
   }
 
