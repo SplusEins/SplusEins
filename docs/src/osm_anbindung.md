@@ -6,11 +6,11 @@ Open Street Map ist eine open source Alternative für Karten, die ähnlich wie W
 
 ## Erstellen der Links zu Open Street Map
 
-Die Seite https://www.openstreetmap.org/ hat keine Unterstützung für Räume. Dafür müssen andere Viewer wie [IndoorEqual](https://indoorequal.org) oder [OSMApp](https://osmapp.org) genutzt werden. Wir nutzen [OSMApp](https://osmapp.org).
+Die Seite https://www.openstreetmap.org/ hat keine Unterstützung für Räume. Dafür müssen andere Viewer wie [IndoorEqual](https://indoorequal.org) oder [OSMApp](https://osmapp.org) genutzt werden. Wir nutzen [IndoorEqual](https://indoorequal.org).
 
-### Erstellen der Links zu OSMApp
+### Erstellen der Links
 
-Jeder Raum hat ein "ref", in den typischerweise die Raumerkennung eingetragen wird. Darüber kann man den Raum finden. Dazu besitzt jeder Raum eine einzigartige Id. Mit der Id kann der Link zu OSMApp erstellt werden.
+Jeder Raum hat ein "ref", in den typischerweise die Raumerkennung eingetragen wird. Darüber kann man den Raum finden. Dazu besitzt jeder Raum eine einzigartige Id.
 
 Beispielraum Exer / Salzdahlumer Straße:
 
@@ -40,7 +40,17 @@ Da manche Räume an unterschiedlichen Standorten gleich heißen, wird für jeden
 
 ### Links erstellen
 
-Setzt man die Id in "https://osmapp.org/way/:id" ein, kommt man direkt zu dem Raum (z. B. WF-EX-2/252: https://osmapp.org/way/1435503585).
+IndoorEqual unterstützt nicht das Markieren von Räumen. Daher berechnen wir die Mitte des Raums und zentrieren die Kamera darauf.
+
+#### Beispiel
+
+20 = zoom, avgLat = durchschnittliche Latitude, avgLon = durchschnittliche Longitude, level = Etage
+
+`https://indoorequal.org/#map=20/${avgLat}/${avgLon}&level=${level}`
+
+---
+
+> OsmApp (Nicht mehr genutzt): Setzt man die Id in "https://osmapp.org/way/:id" ein, kommt man direkt zu dem Raum (z. B. WF-EX-2/252: https://osmapp.org/way/1435503585).
 
 ## Eigene Räume erstellen
 
