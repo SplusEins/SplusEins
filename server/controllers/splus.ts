@@ -1,5 +1,5 @@
 import * as express from 'express';
-import * as TIMETABLES from '../assets/timetables.json';
+import * as TIMETABLES_IMPORT from '../assets/timetables.json';
 
 import {
   TimetableRequest,
@@ -7,6 +7,8 @@ import {
   Timetable,
 } from '../model/SplusEinsModel';
 import { getEvents, getUniqueEvents } from '../lib/SplusApi';
+
+const TIMETABLES = TIMETABLES_IMPORT; // Has to be imported like this to force materialization of the JSON file, otherwise the TIMETABLES will be undefined when calling find on it
 
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
 
