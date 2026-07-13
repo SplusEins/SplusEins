@@ -257,10 +257,10 @@ export function parseSkedGraphical(
             anmerkung = parts[1];
             break;
           case 'Handel und Soziale Arbeit':
-            veranstaltung = parts.at(2) || '';
-            anmerkung = parts.at(1) || '';
-            raum = parts.at(-1) || '';
-            dozent = parts.at(-2) || '';
+            veranstaltung = parts[1] || '';
+            dozent = parts[2] || '';
+            raum = parts[3] || '';
+            anmerkung = parts.slice(4).join(', ') || '';
             break;
           case 'Wirtschaft':
             // Leider ohne Dozent / Raum, da die Zeilen in dieser Fakultät zu unterschiedlich genutzt werden
