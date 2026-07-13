@@ -257,11 +257,10 @@ export function parseSkedGraphical(
             anmerkung = parts[1];
             break;
           case 'Handel und Soziale Arbeit':
-            const partsTemp = parts.slice(1); // skip uhrzeit at [0]
-            veranstaltung = partsTemp[0] || '';
-            dozent = partsTemp[1] || '';
-            raum = partsTemp[2] || '';
-            anmerkung = partsTemp.slice(3).join(', ') || '';
+            veranstaltung = parts[1] || '';
+            dozent = parts[2] || '';
+            raum = parts[3] || '';
+            anmerkung = parts.slice(4).join(', ') || '';
             break;
           case 'Wirtschaft':
             // Leider ohne Dozent / Raum, da die Zeilen in dieser Fakultät zu unterschiedlich genutzt werden
