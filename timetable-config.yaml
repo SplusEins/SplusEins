@@ -10,6 +10,7 @@ timetable_blacklist:
   - "sose"
   - "/ss/"
   - "ss202"
+  - "ss 202"
   - "nur im ss"
 
   # - "ws 25"
