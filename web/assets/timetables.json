@@ -216,6 +216,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EITiP-GS-Sem1.html",
+    "label": "EITiP",
+    "faculty": "Elektro- und Informationstechnik",
+    "type": "graphical",
+    "id": "e_eitip_gs_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEIT-Sem1.html",
     "label": "WEIT",
     "faculty": "Elektro- und Informationstechnik",
@@ -225,38 +234,29 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT-GS-Sem2.html",
-    "label": "EIT",
-    "faculty": "Elektro- und Informationstechnik",
-    "type": "graphical",
-    "id": "e_eit_gs_2_ws26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EITiP-GS-Sem2.html",
-    "label": "EITiP",
-    "faculty": "Elektro- und Informationstechnik",
-    "type": "graphical",
-    "id": "e_eitip_gs_2_ws26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEIT-Sem2.html",
-    "label": "WEIT",
-    "faculty": "Elektro- und Informationstechnik",
-    "type": "graphical",
-    "id": "e_weit_2_ws26",
-    "semester": 2,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEITiP-Sem2.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEITiP-Sem1.html",
     "label": "WEITiP",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
-    "id": "e_weitip_2_ws26",
+    "id": "e_weitip_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)-GS-Sem2.html",
+    "label": "EIT(iP)",
+    "faculty": "Elektro- und Informationstechnik",
+    "type": "graphical",
+    "id": "e_eit_ip_gs_2_ws26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem2.html",
+    "label": "WEIT(iP)",
+    "faculty": "Elektro- und Informationstechnik",
+    "type": "graphical",
+    "id": "e_weit_ip_2_ws26",
     "semester": 2,
     "degree": "Bachelor"
   },
@@ -1125,6 +1125,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261426.html",
+    "label": "IT-Sicherheit (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_vfh_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261448.html",
     "label": "Informatik",
     "faculty": "Informatik",
@@ -1184,6 +1193,15 @@
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_digital_technologies_ditr_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261423.html",
+    "label": "IT-Sicherheit (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_vfh_3_ws26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -1260,6 +1278,24 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/231403.html",
+    "label": "Wirtschaftsinformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_wirtschaftsinformatik_vfh_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261424.html",
+    "label": "IT-Sicherheit (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_vfh_4_ws26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111814.html",
     "label": "Informatik - CE",
     "faculty": "Informatik",
@@ -1310,6 +1346,15 @@
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_digital_technologies_ditr_5_ws26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261425.html",
+    "label": "IT-Sicherheit (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_it_sicherheit_vfh_5_ws26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1427,6 +1472,24 @@
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_master_informatik_se_1_ws26",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/251301.html",
+    "label": "Medieninformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_medieninformatik_vfh_1_ws26",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261401.html",
+    "label": "Wirtschaftsinformatik (VFH)",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_wirtschaftsinformatik_vfh_1_ws26",
     "semester": 1,
     "degree": "Master"
   },
