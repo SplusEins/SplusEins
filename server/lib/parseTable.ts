@@ -2,12 +2,17 @@
  * https://github.com/misterparser/cheerio-tableparser/blob/master/index.js
  */
 
-export default function parseTable($, dupCols, dupRows, textMode, estimateTimes) {
+export default function parseTable(
+  $,
+  dupCols,
+  dupRows,
+  textMode,
+  estimateTimes,
+) {
   if (dupCols === undefined) dupCols = false;
   if (dupRows === undefined) dupRows = false;
   if (textMode === undefined) textMode = false;
   if (estimateTimes === undefined) estimateTimes = false;
-
 
   let startTime;
   let timeGrid;
@@ -19,12 +24,22 @@ export default function parseTable($, dupCols, dupRows, textMode, estimateTimes)
       if (/^\d?\d:\d\d$/g.test(content)) {
         times.push({
           index: row_idx,
-          time: new Date(0, 0, 0, parseInt(content.split(':')[0]), parseInt(content.split(':')[1]), 0)
+          time: new Date(
+            0,
+            0,
+            0,
+            parseInt(content.split(':')[0]),
+            parseInt(content.split(':')[1]),
+            0,
+          ),
         });
       }
     });
     // Calculate row length in minutes and start time of the timetable
-    timeGrid = (times[1].time - times[0].time) / (times[1].index - times[0].index) / (60 * 1000);
+    timeGrid =
+      (times[1].time - times[0].time) /
+      (times[1].index - times[0].index) /
+      (60 * 1000);
     startTime = addMinutes(times[0].time, -1 * timeGrid * times[0].index);
   }
 
@@ -44,14 +59,30 @@ export default function parseTable($, dupCols, dupRows, textMode, estimateTimes)
 
         if (estimateTimes) {
           // Add time string to html if cell is an event and has no time
-          if (!/\d?\d:\d\d - \d?\d:\d\d Uhr<br>.*/gm.test(content) && $(col).text().trim() !== "" && !/\d?\d:\d\d/gm.test($(col).text().trim()) && !/.., \d\d\.\d\d\.\d\d\d\d/gm.test($(col).text().trim())) {
-            content = addMinutes(startTime, row_idx * timeGrid).toLocaleTimeString('de-de', {
-              hour: 'numeric',
-              minute: '2-digit',
-            }) + ' - ' + addMinutes(startTime, (row_idx + parseInt(rowspan)) * timeGrid).toLocaleTimeString('de-de', {
-              hour: 'numeric',
-              minute: '2-digit',
-            }) + ' Uhr<br>' + content;
+          if (
+            !/\d?\d:\d\d - \d?\d:\d\d Uhr<br>.*/gm.test(content) &&
+            $(col).text().trim() !== '' &&
+            !/\d?\d:\d\d/gm.test($(col).text().trim()) &&
+            !/.., \d\d\.\d\d\.\d\d\d\d/gm.test($(col).text().trim())
+          ) {
+            content =
+              addMinutes(startTime, row_idx * timeGrid).toLocaleTimeString(
+                'de-de',
+                {
+                  hour: 'numeric',
+                  minute: '2-digit',
+                },
+              ) +
+              ' - ' +
+              addMinutes(
+                startTime,
+                (row_idx + parseInt(rowspan)) * timeGrid,
+              ).toLocaleTimeString('de-de', {
+                hour: 'numeric',
+                minute: '2-digit',
+              }) +
+              ' Uhr<br>' +
+              content;
           }
         }
       }
