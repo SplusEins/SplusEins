@@ -192,7 +192,7 @@ export function parseSkedGraphical(
       true,
       true,
       false,
-      (faculty === "Maschinenbau"),
+      faculty === 'Maschinenbau',
     );
 
     cols = cols.filter((c) => c[0].length > 0); // filter pseudo columns -> first entry is not date string
