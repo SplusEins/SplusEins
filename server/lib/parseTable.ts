@@ -2,10 +2,31 @@
  * https://github.com/misterparser/cheerio-tableparser/blob/master/index.js
  */
 
-export default function parseTable($, dupCols, dupRows, textMode) {
+export default function parseTable($, dupCols, dupRows, textMode, estimateTimes) {
   if (dupCols === undefined) dupCols = false;
   if (dupRows === undefined) dupRows = false;
   if (textMode === undefined) textMode = false;
+  if (estimateTimes === undefined) estimateTimes = false;
+
+
+  let startTime;
+  let timeGrid;
+  if (estimateTimes) {
+    let times = [];
+    $('tr').each((row_idx, row) => {
+      let content = $('td:first', row).html();
+      // Find time labels at the side of the timetable
+      if (/^\d?\d:\d\d$/g.test(content)) {
+        times.push({
+          index: row_idx,
+          time: new Date(0, 0, 0, parseInt(content.split(':')[0]), parseInt(content.split(':')[1]), 0)
+        });
+      }
+    });
+    // Calculate row length in minutes and start time of the timetable
+    timeGrid = (times[1].time - times[0].time) / (times[1].index - times[0].index) / (60 * 1000);
+    startTime = addMinutes(times[0].time, -1 * timeGrid * times[0].index);
+  }
 
   const columns = [];
   let curr_x = 0;
@@ -20,6 +41,19 @@ export default function parseTable($, dupCols, dupRows, textMode) {
         content = $(col).text().trim() || '';
       } else {
         content = $(col).html() || '';
+
+        if (estimateTimes) {
+          // Add time string to html if cell is an event and has no time
+          if (!/\d?\d:\d\d - \d?\d:\d\d Uhr<br>.*/gm.test(content) && $(col).text().trim() != "" && !/\d?\d:\d\d/gm.test($(col).text().trim()) && !/.., \d\d\.\d\d\.\d\d\d\d/gm.test($(col).text().trim())) {
+            content = addMinutes(startTime, row_idx * timeGrid).toLocaleTimeString('de-de', {
+              hour: 'numeric',
+              minute: '2-digit',
+            }) + ' - ' + addMinutes(startTime, (row_idx + parseInt(rowspan)) * timeGrid).toLocaleTimeString('de-de', {
+              hour: 'numeric',
+              minute: '2-digit',
+            }) + ' Uhr<br>' + content;
+          }
+        }
       }
 
       let x = 0;
@@ -50,4 +84,8 @@ export default function parseTable($, dupCols, dupRows, textMode) {
   });
 
   return columns;
+}
+
+function addMinutes(date, minutes) {
+  return new Date(date.getTime() + minutes * 60000);
 }
