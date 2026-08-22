@@ -12,9 +12,9 @@ export default function parseTable($, dupCols, dupRows, textMode, estimateTimes)
   let startTime;
   let timeGrid;
   if (estimateTimes) {
-    let times = [];
+    const times = [];
     $('tr').each((row_idx, row) => {
-      let content = $('td:first', row).html();
+      const content = $('td:first', row).html();
       // Find time labels at the side of the timetable
       if (/^\d?\d:\d\d$/g.test(content)) {
         times.push({
@@ -44,7 +44,7 @@ export default function parseTable($, dupCols, dupRows, textMode, estimateTimes)
 
         if (estimateTimes) {
           // Add time string to html if cell is an event and has no time
-          if (!/\d?\d:\d\d - \d?\d:\d\d Uhr<br>.*/gm.test(content) && $(col).text().trim() != "" && !/\d?\d:\d\d/gm.test($(col).text().trim()) && !/.., \d\d\.\d\d\.\d\d\d\d/gm.test($(col).text().trim())) {
+          if (!/\d?\d:\d\d - \d?\d:\d\d Uhr<br>.*/gm.test(content) && $(col).text().trim() !== "" && !/\d?\d:\d\d/gm.test($(col).text().trim()) && !/.., \d\d\.\d\d\.\d\d\d\d/gm.test($(col).text().trim())) {
             content = addMinutes(startTime, row_idx * timeGrid).toLocaleTimeString('de-de', {
               hour: 'numeric',
               minute: '2-digit',
