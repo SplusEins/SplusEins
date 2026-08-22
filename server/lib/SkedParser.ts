@@ -192,6 +192,7 @@ export function parseSkedGraphical(
       true,
       true,
       false,
+      (faculty === "Maschinenbau"),
     );
 
     cols = cols.filter((c) => c[0].length > 0); // filter pseudo columns -> first entry is not date string
@@ -301,6 +302,7 @@ export function parseSkedGraphical(
           case 'Gesundheitswesen':
           case 'Verkehr-Sport-Tourismus-Medien':
           case 'Elektro- und Informationstechnik':
+          case 'Maschinenbau':
             if (parts.length === 3) {
               // some special handling for faculty E entries
               veranstaltung = parts[1];

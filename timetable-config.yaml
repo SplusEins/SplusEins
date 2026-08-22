@@ -47,9 +47,8 @@ plans:
     faculty: Verkehr-Sport-Tourismus-Medien
   - url: https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/
     faculty: Verkehr-Sport-Tourismus-Medien
-  # Die Timetables haben keine Uhrzeit in den einzelnen Elementen => zu hart für SplusEins
-  # - url: https://stundenplan.ostfalia.de/m/sem/index.html
-  #  faculty: Maschinenbau
+  - url: https://stundenplan.ostfalia.de/m/sem/index.html
+    faculty: Maschinenbau
   - url: https://stundenplan.ostfalia.de/r/studentenset/index.html
     faculty: Recht
   - url: https://stundenplan.ostfalia.de/s/wp/index.html
