@@ -1683,7 +1683,7 @@
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor%20Soziale%20Arbeit_1_1.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202627/Bachelor%20Soziale%20Arbeit_1_1.%20Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1692,7 +1692,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor%20Soziale%20Arbeit_2_2.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202627/Bachelor%20Soziale%20Arbeit_2_2.%20Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1701,7 +1701,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor%20Soziale%20Arbeit_3_3.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202627/Bachelor%20Soziale%20Arbeit_3_3.%20Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1710,7 +1710,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor%20Soziale%20Arbeit_4_4.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202627/Bachelor%20Soziale%20Arbeit_4_4.%20Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1719,7 +1719,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor%20Soziale%20Arbeit_5_5.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202627/Bachelor%20Soziale%20Arbeit_5_5.%20Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -1728,7 +1728,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202526/Bachelor%20Soziale%20Arbeit_6_6.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202627/Bachelor%20Soziale%20Arbeit_6_6.%20Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
     "type": "graphical",
@@ -2502,11 +2502,11 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green%20Engineering_3_3.%20Semester%20(PO%202018).html",
-    "label": "Green Engineering (PO 2018)",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green%20Engineering_3_3.%20Semester%20(PO%202020).html",
+    "label": "Green Engineering (PO 2020)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_po_2018_3_ws26",
+    "id": "v_green_engineering_po_2020_3_ws26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -2520,7 +2520,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/Smart%20City%20Engineering_3_3.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/Smart%20City%20Engineering_3_3.%20Semester.html",
     "label": "Smart City Engineering",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
