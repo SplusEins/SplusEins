@@ -68,7 +68,7 @@ export default function parseTable(
           ) {
             if (!startTime || !timeGrid) {
               // Add a blank line instead of the times if row length or start time could not be calculated
-              content = "<br>" + content;
+              content = '<br>' + content;
             } else {
               content =
                 addMinutes(startTime, row_idx * timeGrid).toLocaleTimeString(
