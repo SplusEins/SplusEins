@@ -36,11 +36,13 @@ export default function parseTable(
       }
     });
     // Calculate row length in minutes and start time of the timetable
-    timeGrid =
-      (times[1].time - times[0].time) /
-      (times[1].index - times[0].index) /
-      (60 * 1000);
-    startTime = addMinutes(times[0].time, -1 * timeGrid * times[0].index);
+    if (times.length >= 2) {
+      timeGrid =
+        (times[1].time - times[0].time) /
+        (times[1].index - times[0].index) /
+        (60 * 1000);
+      startTime = addMinutes(times[0].time, -1 * timeGrid * times[0].index);
+    }
   }
 
   const columns = [];
@@ -64,24 +66,29 @@ export default function parseTable(
             !/\d?\d:\d\d/gm.test($(col).text().trim()) &&
             !/.., \d\d\.\d\d\.\d\d\d\d/gm.test($(col).text().trim())
           ) {
-            content =
-              addMinutes(startTime, row_idx * timeGrid).toLocaleTimeString(
-                'de-de',
-                {
+            if (!startTime || !timeGrid) {
+              // Add a blank line instead of the times if row length or start time could not be calculated
+              content = "<br>" + content;
+            } else {
+              content =
+                addMinutes(startTime, row_idx * timeGrid).toLocaleTimeString(
+                  'de-de',
+                  {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                  },
+                ) +
+                ' - ' +
+                addMinutes(
+                  startTime,
+                  (row_idx + parseInt(rowspan)) * timeGrid,
+                ).toLocaleTimeString('de-de', {
                   hour: 'numeric',
                   minute: '2-digit',
-                },
-              ) +
-              ' - ' +
-              addMinutes(
-                startTime,
-                (row_idx + parseInt(rowspan)) * timeGrid,
-              ).toLocaleTimeString('de-de', {
-                hour: 'numeric',
-                minute: '2-digit',
-              }) +
-              ' Uhr<br>' +
-              content;
+                }) +
+                ' Uhr<br>' +
+                content;
+            }
           }
         }
       }
