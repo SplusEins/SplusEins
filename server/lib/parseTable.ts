@@ -60,7 +60,6 @@ export default function parseTable(
         if (estimateTimes) {
           // Add time string to html if cell is an event and has no time
           if (
-            !/\d?\d:\d\d - \d?\d:\d\d Uhr<br>.*/gm.test(content) &&
             $(col).text().trim() !== '' &&
             !/\d?\d:\d\d/gm.test($(col).text().trim()) &&
             !/.., \d\d\.\d\d\.\d\d\d\d/gm.test($(col).text().trim())
