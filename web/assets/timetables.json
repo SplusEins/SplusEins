@@ -955,7 +955,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/g/wp/BMR6_B_WS2627.html",
-    "label": "BMR - Studienprofil M",
+    "label": "BMR - Studienprofil B",
     "faculty": "Gesundheitswesen",
     "type": "graphical",
     "id": "g_bmr_b_6_ws26",
@@ -1494,6 +1494,582 @@
     "degree": "Master"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE1+.html",
+    "label": "BDE (PO2025) - BDE1+",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE1a%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE1a",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde1a_po2025_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE1b%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE1b",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde1b_po2025_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM1+.html",
+    "label": "BM (PO2025) - BM1+",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM1a%20(PO2025).html",
+    "label": "BM (PO2025) - BM1a",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm1a_po2025_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM1b%20(PO2025).html",
+    "label": "BM (PO2025) - BM1b",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm1b_po2025_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi1+.html",
+    "label": "BWi (PO2025) - BWi1+",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi1a%20(PO2025).html",
+    "label": "BWi (PO2025) - BWi1a",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi1a_po2025_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi1b%20(PO2025).html",
+    "label": "BWi (PO2025) - BWi1b",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi1b_po2025_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE2%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE2",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_po2025_2_ws26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM2a%20(PO2025).html",
+    "label": "BM (PO2025) - BM2a",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm2a_po2025_2_ws26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM2b%20(PO2025).html",
+    "label": "BM (PO2025) - BM2b",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm2b_po2025_2_ws26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi2a%20(PO2025).html",
+    "label": "BWi (PO2025) - BWi2a",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi2a_po2025_2_ws26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi2b%20(PO2025).html",
+    "label": "BWi (PO2025) - BWi2b",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi2b_po2025_2_ws26",
+    "semester": 2,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE3%20(PO2021).html",
+    "label": "BDE (PO2021) - BDE3",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_po2021_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE3%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE3",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_po2025_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM3%20(PO2018).html",
+    "label": "BM (PO2018) - BM3",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_po2018_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM3a%20(PO2025).html",
+    "label": "BM (PO2025) - BM3a",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm3a_po2025_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM3b%20(PO2025).html",
+    "label": "BM (PO2025) - BM3b",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm3b_po2025_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi3%20(PO2018).html",
+    "label": "BWi (PO2018) - BWi3",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi_po2018_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi3%20(PO2025).html",
+    "label": "BWi (PO2025) - BWi3",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi_po2025_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE4.html",
+    "label": "BDE (PO2021) - BDE4",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_4_ws26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM4a%20(PO2018).html",
+    "label": "BM (PO2018) - BM4a",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm4a_po2018_4_ws26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM4b%20(PO2018).html",
+    "label": "BM (PO2018) - BM4b",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm4b_po2018_4_ws26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi4%20(PO2018).html",
+    "label": "BWi (PO2018) - BWi4",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi_po2018_4_ws26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE6_DPD%20(PO2021).html",
+    "label": "BDE (PO2021) - BDE6_DPD",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_dpd_po2021_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE6_M&D%20(PO2021).html",
+    "label": "BDE (PO2021) - BDE6_M&D",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_m_d_po2021_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE6_SP%20(PO2021).html",
+    "label": "BDE (PO2021) - BDE6_SP",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_sp_po2021_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE6_DPD%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE6_DPD",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_dpd_po2025_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE6_M&D%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE6_M&D",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_m_d_po2025_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE6_SP%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE6_SP",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_sp_po2025_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM6_A&F%20(PO2018).html",
+    "label": "BM (PO2018) - BM6A&F",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_a_f_po2018_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM6_K&E%20(PO2018).html",
+    "label": "BM (PO2018) - BM6_K&E",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_k_e_po2018_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM6_Mec%20(PO2018).html",
+    "label": "BM (PO2018) - BM6_Mec",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_mec_po2018_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM6_P&L%20(PO2018).html",
+    "label": "BM (PO2018) - BM6_P&L",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_p_l_po2018_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM6_A&F%20(PO2025).html",
+    "label": "BM (PO2025) - BM6_A&F",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_a_f_po2025_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM6_K&E%20(PO2025).html",
+    "label": "BM (PO2025) - BM6_K&E",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_k_e_po2025_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM6_M&D%20(PO2025).html",
+    "label": "BM (PO2025) - BM6_M&D",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_m_d_po2025_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM6_SP%20(PO2025).html",
+    "label": "BM (PO2025) - BM6_SP",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_sp_po2025_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi6%20(PO2018).html",
+    "label": "BWi (PO2018) - BWi6",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi_po2018_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi6%20(PO2025).html",
+    "label": "BWi (PO2025) - BWi6",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi_po2025_6_ws26",
+    "semester": 6,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE7_DPD%20(PO2021).html",
+    "label": "BDE (PO2021) - BDE7_DPD",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_dpd_po2021_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE7_M&D%20(PO2021).html",
+    "label": "BDE (PO2021) - BDE7_M&D",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_m_d_po2021_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE7_SP%20(PO2021).html",
+    "label": "BDE (PO2021) - BDE7_SP",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_sp_po2021_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE7_DPD%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE7_DPD",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_dpd_po2025_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE7_M&D%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE7_M&D",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_m_d_po2025_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BDE7_SP%20(PO2025).html",
+    "label": "BDE (PO2025) - BDE7_SP",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bde_sp_po2025_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM7_A&F%20(PO2018).html",
+    "label": "BM (PO2018) - BM7_A&F",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_a_f_po2018_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM7_K&E%20(PO2018).html",
+    "label": "BM (PO2018) - BM7_K&E",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_k_e_po2018_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM7_Mec%20(PO2018).html",
+    "label": "BM (PO2018) - BM7_Mec",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_mec_po2018_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM7_P&L%20(PO2018).html",
+    "label": "BM (PO2018) - BM7_P&L",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_p_l_po2018_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM7_A&F%20(PO2025).html",
+    "label": "BM (PO2025) - BM7_A&F",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_a_f_po2025_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM7_K&E%20(PO2025).html",
+    "label": "BM (PO2025) - BM7_K&E",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_k_e_po2025_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM7_M&D%20(PO2025).html",
+    "label": "BM (PO2025) - BM7_M&D",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_m_d_po2025_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BM7_SP%20(PO2025).html",
+    "label": "BM (PO2025) - BM7_SP",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bm_sp_po2025_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi7%20(PO2018).html",
+    "label": "BWi (PO2018) - BWi7",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi_po2018_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/BWi7%20(PO2025).html",
+    "label": "BWi (PO2025) - BWi7",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_bwi_po2025_7_ws26",
+    "semester": 7,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/WPF_BDE_PO2021.html",
+    "label": "BDE (PO2021) - WPF",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_wpf_bde_po2021_ws26",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/WPF_BDE_PO2025.html",
+    "label": "BDE (PO2025) - WPF",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_wpf_bde_po2025_ws26",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/WPF_BM_PO2018.html",
+    "label": "BM (PO2018) - WPF",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_wpf_bm_po2018_ws26",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/WPF_BM_PO2025.html",
+    "label": "BM (PO2025) - WPF",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_wpf_bm_po2025_ws26",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/WPF_BWi_PO2018.html",
+    "label": "BWi (PO2018) - WPF",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_wpf_bwi_po2018_ws26",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/WPF_BWi_PO2025.html",
+    "label": "BWi (PO2025) - WPF",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_wpf_bwi_po2025_ws26",
+    "semester": "WPF",
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/m/sem/MSE.html",
+    "label": "MSE - MSE",
+    "faculty": "Maschinenbau",
+    "type": "graphical",
+    "id": "m_mse_ws26",
+    "semester": "Sonstige",
+    "degree": "Master"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/r/studentenset/26-03-r-b-rfs-1.html",
     "label": "RFS (PO 2025)",
     "faculty": "Recht",
@@ -1962,6 +2538,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_ap_3.html",
+    "label": "Angewandte Psychologie",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_ap_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_ds_3.html",
     "label": "Digitales Storytelling",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
@@ -2003,6 +2588,15 @@
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_lop_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mkt_3.html",
+    "label": "Marketing",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_mkt_3_ws26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -2079,6 +2673,33 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_namo_4.html",
+    "label": "Nachhaltige Mobilität",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_namo_4_ws26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_sts_4.html",
+    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_sts_4_ws26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_ds_5.html",
+    "label": "Digitales Storytelling",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_ds_5_ws26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_lim_5.html",
     "label": "Logistik und Informationsmanagement",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
@@ -2124,11 +2745,20 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_mpm_5.html",
-    "label": "Mobilität und Personenverkehrsmanagement",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_namo_5.html",
+    "label": "Nachhaltige Mobilität",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_mpm_5_ws26",
+    "id": "k_namo_5_ws26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_sts_5.html",
+    "label": "Smart Transportatation Systems - Intelligente Verkehrssysteme",
+    "faculty": "Verkehr-Sport-Tourismus-Medien",
+    "type": "graphical",
+    "id": "k_sts_5_ws26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -2156,15 +2786,6 @@
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
     "id": "k_tm_5_ws26",
-    "semester": 5,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_wmv_5.html",
-    "label": "Wirtschaftsingenieurwesen Mobilität und Verkehr",
-    "faculty": "Verkehr-Sport-Tourismus-Medien",
-    "type": "graphical",
-    "id": "k_wmv_5_ws26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -2214,11 +2835,11 @@
     "degree": "Master"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/MVL%201%20WS%202025-26.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ws/stjg_m_mvl_1.html",
     "label": "Verkehr und Logistik",
     "faculty": "Verkehr-Sport-Tourismus-Medien",
     "type": "graphical",
-    "id": "k_mvl_1_ws26",
+    "id": "k_m_mvl_1_ws26",
     "semester": 1,
     "degree": "Master"
   },
@@ -2457,8 +3078,17 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio-%20und%20Umwelttechnik%20(BEE%20)_3_3.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio-%20und%20Umwelttechnik%20(BUT-%20BUTiP)_3_3.%20Semester.html",
     "label": "BUT/ BUTiP",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_but_butip_3_ws26",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio-%20und%20Umwelttechnik%20(BEE%20)_3_3.%20Sem.html",
+    "label": "BUT/ BUTiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_3_ws26",
@@ -2466,16 +3096,7 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio-%20und%20Umwelttechnik%20(BUT-%20BUTiP)_3_3.%20Semester%20(PO%202018).html",
-    "label": "BUT/ BUTiP (PO 2018)",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_but_butip_po_2018_3_ws26",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie-%20und%20Gebaeudetechnik%20(EGT%20-%20EGTiP)_3_3.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie-%20und%20Gebaeudetechnik%20(EGT%20-%20EGTiP)_3_3.%20%20Semester.html",
     "label": "EGT / EGTiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
@@ -2484,29 +3105,29 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie-%20und%20Gebaeudetechnik%20(EGT%20-%20EGTiP)_3_3.%20%20Semester%20(PO%202018).html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie-%20und%20Gebaeudetechnik%20(EGT%20-%20EGTiP)_3_3.%20Sem.html",
     "label": "EGT / EGTiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_egt_egtip_po_2018_3_ws26",
+    "id": "v_egt_egtip_3_ws26_2",
+    "semester": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green%20Engineering_3_3.%20Semester.html",
+    "label": "Green Engineering",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_green_engineering_3_ws26_2",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green%20Engineering_3_3.%20Sem.html",
-    "label": "Green Engineering",
-    "faculty": "Versorgungstechnik",
-    "type": "graphical",
-    "id": "v_green_engineering_3_ws26",
-    "semester": 3,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green%20Engineering_3_3.%20Semester%20(PO%202020).html",
     "label": "Green Engineering (PO 2020)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_po_2020_3_ws26",
+    "id": "v_green_engineering_3_ws26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -2538,20 +3159,20 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/E/Wirtschaftsingenieur%20Energie%20(WING%20E)_3_3.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/E/Wirtschaftsingenieur%20Energie%20(WING%20E%20-%20WINGSiP)_3_3.%20Semester.html",
     "label": "WING E / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_e_3_ws26",
+    "id": "v_wing_e_wingsip_3_ws26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/E/Wirtschaftsingenieur%20Energie%20(WING%20E%20-%20WINGSiP)_3_3.%20Semester%20(PO%202018).html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/E/Wirtschaftsingenieur%20Energie%20(WING%20E)_3_3.%20Sem.html",
     "label": "WING E / WINGSiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_e_wingsip_po_2018_3_ws26",
+    "id": "v_wing_e_3_ws26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -2565,20 +3186,20 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/U/Wirtschaftsingenieur%20Umwelt%20(WING%20U)_3_3.%20Sem.html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/U/Wirtschaftsingenieur%20Umwelt%20(WING%20U%20-%20WINGSiP)_3_3.%20Semester.html",
     "label": "WING U / WINGSiP",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_u_3_ws26",
+    "id": "v_wing_u_wingsip_3_ws26",
     "semester": 3,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/U/Wirtschaftsingenieur%20Umwelt%20(WING%20U%20-%20WINGSiP)_3_3.%20Semester%20(PO%202018).html",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/U/Wirtschaftsingenieur%20Umwelt%20(WING%20U)_3_3.%20Sem.html",
     "label": "WING U / WINGSiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_wing_u_wingsip_po_2018_3_ws26",
+    "id": "v_wing_u_3_ws26",
     "semester": 3,
     "degree": "Bachelor"
   },
@@ -2638,7 +3259,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/U/Wirtschaftsingenieur%20Umwelt%20(WING%20U)_5_5.%20Semester.html",
-    "label": "WING U / WINGSiP",
+    "label": "WING U / WINGSiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_u_5_ws26",
