@@ -2268,6 +2268,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202627/Bachelor%20Soziale%20Arbeit%20Dual_1_1.%20Sem.html",
+    "label": "Soziale Arbeit Dual",
+    "faculty": "Soziale Arbeit",
+    "type": "graphical",
+    "id": "s_dual_1_ws26",
+    "semester": 1,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/s/wp/WS202627/Bachelor%20Soziale%20Arbeit_2_2.%20Sem.html",
     "label": "Soziale Arbeit",
     "faculty": "Soziale Arbeit",
@@ -3205,7 +3214,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio-%20und%20Umwelttechnik%20(BEE%20)_5_5.%20Semester.html",
-    "label": "BUT/ BUTiP",
+    "label": "BUT/ BUTiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_5_ws26",
@@ -3214,7 +3223,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie-%20und%20Gebaeudetechnik%20(EGT%20-%20EGTiP)_5_5.%20Sem.2.html",
-    "label": "EGT / EGTiP",
+    "label": "EGT / EGTiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_egt_egtip_2_5_ws26",
@@ -3223,7 +3232,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green%20Engineering_5_5.%20Sem.html",
-    "label": "Green Engineering",
+    "label": "Green Engineering (PO 2020)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_green_engineering_5_ws26",
@@ -3231,17 +3240,17 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ksm/Klimaschutzmanagement%20(KSM)_5_5.%20Semester.html",
-    "label": "KSM",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ksm/Klimaschutzmanagement%20(KSM)_5_5.%20Sem.%20(PO%202024).html",
+    "label": "KSM (PO 2024)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_klimaschutzmanagement_ksm_5_ws26",
+    "id": "v_klimaschutzmanagement_ksm_po_2024_5_ws26",
     "semester": 5,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/Smart%20City%20Engineering_5_5.%20Sem.html",
-    "label": "Smart City Engineering",
+    "label": "Smart City Engineering (PO 2020)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_smart_city_engineering_5_ws26",
@@ -3250,7 +3259,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/E/Wirtschaftsingenieur%20Energie%20(WING%20E)_5_5.%20Sem.html",
-    "label": "WING E / WINGSiP",
+    "label": "WING E / WINGSiP (PO 2028)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_e_5_ws26",
@@ -3268,7 +3277,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/but/Bio-%20und%20Umwelttechnik%20(BEE%20)_7_7.%20Sem.html",
-    "label": "BUT/ BUTiP",
+    "label": "BUT/ BUTiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_bee_7_ws26",
@@ -3277,7 +3286,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/egt/Energie-%20und%20Gebaeudetechnik%20(EGT%20-%20EGTiP)_7_7.%20Sem.html",
-    "label": "EGT / EGTiP",
+    "label": "EGT / EGTiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_egt_egtip_7_ws26",
@@ -3285,26 +3294,26 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green%20Engineering_7_7.%20Semester.html",
-    "label": "Green Engineering",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/ge/Green%20Engineering_7_7.%20Sem.%20(PO%202020).html",
+    "label": "Green Engineering (PO 2020)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_green_engineering_7_ws26",
+    "id": "v_green_engineering_po_2020_7_ws26",
     "semester": 7,
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/Smart%20City%20Engineering_7_7.%20Semester.html",
-    "label": "Smart City Engineering",
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/sce/Smart%20City%20Engineering_7_7.%20Sem.%20(PO%202020).html",
+    "label": "Smart City Engineering (PO 2020)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
-    "id": "v_smart_city_engineering_7_ws26",
+    "id": "v_smart_city_engineering_po_2020_7_ws26",
     "semester": 7,
     "degree": "Bachelor"
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/E/Wirtschaftsingenieur%20Energie%20(WING%20E)_7_7.%20Sem.html",
-    "label": "WING E / WINGSiP",
+    "label": "WING E / WINGSiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_e_7_ws26",
@@ -3313,7 +3322,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/wing/U/Wirtschaftsingenieur%20Umwelt%20(WING%20U)_7_7.%20Sem.html",
-    "label": "WING U / WINGSiP",
+    "label": "WING U / WINGSiP (PO 2018)",
     "faculty": "Versorgungstechnik",
     "type": "graphical",
     "id": "v_wing_u_7_ws26",
