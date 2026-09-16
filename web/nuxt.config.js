@@ -39,6 +39,9 @@ export default {
     lang: 'de',
     name: 'SplusEins',
     author: 'SplusEins-Team',
+    description:
+      'SplusEins - Stundenplan und Mensaplan für Studenten der Ostfalia. Schaue Pläne der Ostfalia und Mensa Ostfalia an.',
+    ogDescription: true,
     ogHost: 'https://spluseins.de',
     ogImage: '/logo.png',
   },
