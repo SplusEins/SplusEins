@@ -1,7 +1,7 @@
 [
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_ai_1.html",
-    "label": "Angewandte Informatik - 1",
+    "label": "Angewandte Informatik",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_1_ws26",
@@ -10,7 +10,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_bau_1.html",
-    "label": "Bauingenieurwesen - 1",
+    "label": "Bauingenieurwesen",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_1_ws26",
@@ -19,7 +19,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_u_1.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 1",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_1_ws26",
@@ -28,7 +28,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_ai_2.html",
-    "label": "Angewandte Informatik - 2",
+    "label": "Angewandte Informatik",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_2_ws26",
@@ -37,7 +37,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_bau_2.html",
-    "label": "Bauingenieurwesen - 2",
+    "label": "Bauingenieurwesen",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_2_ws26",
@@ -46,7 +46,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_u_2.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 2",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_2_ws26",
@@ -55,7 +55,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_ai_3.html",
-    "label": "Angewandte Informatik - 3",
+    "label": "Angewandte Informatik",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_3_ws26",
@@ -64,7 +64,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_bau_3.html",
-    "label": "Bauingenieurwesen - 3",
+    "label": "Bauingenieurwesen",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_3_ws26",
@@ -73,7 +73,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_bauip_3.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 3",
+    "label": "Bauingenieurwesen im Praxisverbund",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bauip_3_ws26",
@@ -82,7 +82,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_u_3.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 3",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_3_ws26",
@@ -91,7 +91,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_ai_4.html",
-    "label": "Angewandte Informatik - 4",
+    "label": "Angewandte Informatik",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_4_ws26",
@@ -100,7 +100,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_bau_4.html",
-    "label": "Bauingenieurwesen - 4",
+    "label": "Bauingenieurwesen",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_4_ws26",
@@ -109,7 +109,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_u_4.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 4",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_4_ws26",
@@ -118,7 +118,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_ai_5.html",
-    "label": "Angewandte Informatik - 5",
+    "label": "Angewandte Informatik",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_5_ws26",
@@ -127,7 +127,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_bau_5.html",
-    "label": "Bauingenieurwesen - 5",
+    "label": "Bauingenieurwesen",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_5_ws26",
@@ -136,7 +136,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_bauip_5.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 5",
+    "label": "Bauingenieurwesen im Praxisverbund",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bauip_5_ws26",
@@ -145,7 +145,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_u_5.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 5",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_5_ws26",
@@ -154,7 +154,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_ai_6.html",
-    "label": "Angewandte Informatik - 6",
+    "label": "Angewandte Informatik",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ai_6_ws26",
@@ -163,7 +163,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_bau_6.html",
-    "label": "Bauingenieurwesen - 6",
+    "label": "Bauingenieurwesen",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bau_6_ws26",
@@ -172,7 +172,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_u_6.html",
-    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen) - 6",
+    "label": "Wasser- und Bodenmanagement (Umweltingenieurwesen)",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_u_6_ws26",
@@ -181,7 +181,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_bauip_7.html",
-    "label": "Bauingenieurwesen im Praxisverbund - 7",
+    "label": "Bauingenieurwesen im Praxisverbund",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_bauip_7_ws26",
@@ -190,7 +190,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_ma_glob_1.html",
-    "label": "Wasserwirtschaft im globalen Wandel - PO 2025 - 1",
+    "label": "Wasserwirtschaft im globalen Wandel - PO 2025",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ma_glob_1_ws26",
@@ -199,7 +199,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/b/wp/ws26_b_stgrp_ma_glob_2.html",
-    "label": "Wasserwirtschaft im globalen Wandel - PO 2025 - 2",
+    "label": "Wasserwirtschaft im globalen Wandel - PO 2025",
     "faculty": "Bau-Wasser-Boden",
     "type": "graphical",
     "id": "b_stgrp_ma_glob_2_ws26",
@@ -433,7 +433,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_AE.html",
-    "label": "1 Automotive Engineering →",
+    "label": "Automotive Engineering",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_ae_1_ws26",
@@ -442,7 +442,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_FIF.html",
-    "label": "1 Fahrzeuginformatik →",
+    "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_fif_1_ws26",
@@ -451,7 +451,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_MuTD.html",
-    "label": "1 Material + Technisches Design →",
+    "label": "Material + Technisches Design",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_mutd_1_ws26",
@@ -460,7 +460,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/1_Sem_SVS.html",
-    "label": "1 Smart Vehicle Systems →",
+    "label": "Smart Vehicle Systems",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_svs_1_ws26",
@@ -469,7 +469,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_AE.html",
-    "label": "2 Automotive Engineering →",
+    "label": "Automotive Engineering",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_ae_2_ws26",
@@ -478,7 +478,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_FIF.html",
-    "label": "2 Fahrzeuginformatik →",
+    "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_fif_2_ws26",
@@ -487,7 +487,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Sem_SVS.html",
-    "label": "2 Smart Vehicle Systems →",
+    "label": "Smart Vehicle Systems",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_svs_2_ws26",
@@ -496,7 +496,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_AE.html",
-    "label": "3 Automotive Engineering →",
+    "label": "Automotive Engineering",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_ae_3_ws26",
@@ -505,7 +505,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_FIF.html",
-    "label": "3 Fahrzeuginformatik →",
+    "label": "Fahrzeuginformatik",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_fif_3_ws26",
@@ -514,7 +514,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_MuTD.html",
-    "label": "3 Material + Technisches Design →",
+    "label": "Material + Technisches Design",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_mutd_3_ws26",
@@ -523,7 +523,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/3_Sem_SVS.html",
-    "label": "3 Smart Vehicle Systems →",
+    "label": "Smart Vehicle Systems",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_svs_3_ws26",
@@ -532,7 +532,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_AE-ASM.html",
-    "label": "5 Automotive Engineering After Sales, Service and Mobility (ASM) →",
+    "label": "Automotive Engineering After Sales, Service and Mobility (ASM)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_ae_asm_5_ws26",
@@ -541,7 +541,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_AE-PCS.html",
-    "label": "5 Automotive Engineering Powertrain and Chassis Systems (PCS) →",
+    "label": "Automotive Engineering Powertrain and Chassis Systems (PCS)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_ae_pcs_5_ws26",
@@ -550,7 +550,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_AE-SAD.html",
-    "label": "5 Automotive Engineering Smart Automotive Development (SAD) →",
+    "label": "Automotive Engineering Smart Automotive Development (SAD)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_ae_sad_5_ws26",
@@ -559,7 +559,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_AE-SPIE.html",
-    "label": "5 Automotive Engineering Smart Production and Industrial Engineering (SPIE) →",
+    "label": "Automotive Engineering Smart Production and Industrial Engineering (SPIE)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_ae_spie_5_ws26",
@@ -568,7 +568,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-ASO.html",
-    "label": "5 Fahrzeuginformatik Automotive Software (ASO) →",
+    "label": "Fahrzeuginformatik Automotive Software (ASO)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_fif_aso_5_ws26",
@@ -577,7 +577,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-ASY.html",
-    "label": "5 Fahrzeuginformatik Automotive Systems (ASY) →",
+    "label": "Fahrzeuginformatik Automotive Systems (ASY)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_fif_asy_5_ws26",
@@ -586,7 +586,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-AMO.html",
-    "label": "5 Fahrzeuginformatik Autonome Mobilität (AMO) →",
+    "label": "Fahrzeuginformatik Autonome Mobilität (AMO)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_fif_amo_5_ws26",
@@ -595,7 +595,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_FIF-IOT.html",
-    "label": "5 Fahrzeuginformatik Industrial IOT (IOT) →",
+    "label": "Fahrzeuginformatik Industrial IOT (IOT)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_fif_iot_5_ws26",
@@ -604,7 +604,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_MuTD.html",
-    "label": "5 Material + Technisches Design →",
+    "label": "Material + Technisches Design",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_mutd_5_ws26",
@@ -613,7 +613,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-EMO.html",
-    "label": "5 Smart Vehicle Systems Elektromobilität (EMO) →",
+    "label": "Smart Vehicle Systems Elektromobilität (EMO)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_svs_emo_5_ws26",
@@ -622,7 +622,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-IAS.html",
-    "label": "5 Smart Vehicle Systems Intelligente autonome Systeme (IAS) →",
+    "label": "Smart Vehicle Systems Intelligente autonome Systeme (IAS)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_svs_ias_5_ws26",
@@ -631,7 +631,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-MSY.html",
-    "label": "5 Smart Vehicle Systems Mechatronische Systeme (MSY) →",
+    "label": "Smart Vehicle Systems Mechatronische Systeme (MSY)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_svs_msy_5_ws26",
@@ -640,7 +640,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/5_Sem_SVS-MKA.html",
-    "label": "5 Smart Vehicle Systems Mobilitätskonzepte im Aftersales (MKA) →",
+    "label": "Smart Vehicle Systems Mobilitätskonzepte im Aftersales (MKA)",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_svs_mka_5_ws26",
@@ -649,7 +649,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/f/wp/2_Semester_Master_EMO.html",
-    "label": "2 Fahrzeugtechnik - Elektromobilität →",
+    "label": "Fahrzeugtechnik - Elektromobilität",
     "faculty": "Fahrzeugtechnik",
     "type": "graphical",
     "id": "f_master_emo_2_ws26",
