@@ -191,6 +191,7 @@ export default {
     }),
     ...mapGetters({
       isCustomSchedule: 'splus/isCustomTimetable',
+      scheduleDisplayName: 'splus/scheduleDisplayName',
     }),
   },
   methods: {
@@ -212,6 +213,7 @@ export default {
       if (navigator.share) {
         await navigator.share({
           url: this.currentUrl(),
+          title: this.scheduleDisplayName(),
         });
       } else {
         this.shareDialogOpen = true;

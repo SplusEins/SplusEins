@@ -5,30 +5,20 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 import SpluseinsCalendar from '../../components/spluseins-calendar.vue';
 
 export default {
   name: 'TimetablePage',
   head() {
+    const title = this.scheduleDisplayName();
     return {
-      title: this.isCustomSchedule
-        ? 'Stundenplan'
-        : this.schedule.longDescription,
+      title,
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: this.isCustomSchedule
-            ? 'Stundenplan'
-            : this.schedule.longDescription,
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: this.isCustomSchedule
-            ? 'Stundenplan'
-            : this.schedule.longDescription,
+          hid: 'og:title',
+          property: 'og:title',
+          content: title,
         },
       ],
     };
@@ -38,10 +28,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isCustomSchedule: 'splus/isCustomTimetable',
-    }),
-    ...mapState({
-      schedule: (state) => state.splus.schedule,
+      scheduleDisplayName: 'splus/scheduleDisplayName',
     }),
   },
   async fetch({ store, params, query, error }) {
