@@ -34,6 +34,7 @@ export default ({ store }) => {
         version: state.version,
         ui: {
           isDark: state.ui.isDark,
+          hasSeenDisclaimer: state.ui.hasSeenDisclaimer,
         },
         splus: {
           customSchedules: state.splus.customSchedules,

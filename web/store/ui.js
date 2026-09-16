@@ -4,6 +4,10 @@ export const state = () => ({
    */
   isDark: false,
   sidenavIsOpen: undefined,
+  /**
+   * Whether the "Inoffiziell" Disclaimer at first launch has been dismissed
+   */
+  hasSeenDisclaimer: false,
 });
 
 export const mutations = {
@@ -18,5 +22,8 @@ export const mutations = {
   },
   setSidenav(state, value) {
     state.sidenavIsOpen = value;
+  },
+  dismissDisclaimer(state) {
+    state.hasSeenDisclaimer = true;
   },
 };
