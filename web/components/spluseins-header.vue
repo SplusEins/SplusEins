@@ -4,9 +4,14 @@
       <v-app-bar-nav-icon @click.stop="toggleSidenav()" />
       <v-spacer />
       <img src="../assets/img/headerLogo.png" height="35px" class="pr-4" />
-      <v-toolbar-title class="header-text cursor-pointer">
+      <v-toolbar-title
+        class="cursor-pointer"
+        :class="showPlanTitle ? 'text-center min-width-0' : 'header-text'"
+      >
         <a v-if="staging" :href="commitUrl"> STAGING </a>
-        <nuxt-link tag="span" to="/" v-else> SPLUSEINS </nuxt-link>
+        <nuxt-link v-else tag="span" to="/">
+          {{ showPlanTitle ? planTitle : 'SPLUSEINS' }}
+        </nuxt-link>
       </v-toolbar-title>
       <v-spacer />
       <v-toolbar-items>
@@ -30,7 +35,7 @@
 
 <script>
 import SpluseinsSideNav from './spluseins-side-nav';
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations, mapState, mapGetters } from 'vuex';
 import { mdiWifiOff, mdiThemeLightDark } from '@mdi/js';
 
 export default {
@@ -50,8 +55,17 @@ export default {
     commitUrl: function () {
       return 'https://github.com/SplusEins/SplusEins/commit/' + this.version;
     },
+    showPlanTitle() {
+      return this.$route.name === 'plan-timetable' && !!this.planTitle;
+    },
+    planTitle() {
+      return this.scheduleDisplayName(40);
+    },
     ...mapState({
       isDark: (state) => state.ui.isDark,
+    }),
+    ...mapGetters({
+      scheduleDisplayName: 'splus/scheduleDisplayName',
     }),
   },
   watch: {
@@ -90,5 +104,8 @@ export default {
 }
 .cursor-pointer {
   cursor: pointer;
+}
+.min-width-0 {
+  min-width: 0;
 }
 </style>

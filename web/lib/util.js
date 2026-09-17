@@ -37,6 +37,23 @@ export function timetableToRoute(timetable) {
   };
 }
 
+function timetableSemesterSuffix(semester) {
+  return typeof semester === 'number' ? `${semester}. Sem.` : '';
+}
+
+export function truncateText(text, maxLength) {
+  return text.length > maxLength
+    ? `${text.slice(0, maxLength).trimEnd()}…`
+    : text;
+}
+
+// e.g. "Digital Technologies 1. Sem."; maxLabelLength truncates the label only, so the suffix survives
+export function timetableDisplayName(timetable, maxLabelLength = Infinity) {
+  const label = truncateText(timetable.label, maxLabelLength);
+  const suffix = timetableSemesterSuffix(timetable.semester);
+  return suffix ? `${label} ${suffix}` : label;
+}
+
 export function shortenTimetableDegree(timetable) {
   let shortenedDegree;
 

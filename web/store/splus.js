@@ -6,6 +6,8 @@ import TIMETABLES from '~/assets/timetables.json';
 import {
   SEMESTER_WEEK_1,
   shortenTimetableDegree,
+  timetableDisplayName,
+  truncateText,
   uniq,
   customTimetableToRoute,
   scalarArraysEqual,
@@ -94,10 +96,6 @@ export const state = () => ({
       params: { timetable: timetable.id },
     },
     description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
-    longDescription:
-      timetable.degree === 'Räume'
-        ? `${timetable.semester} – Raum ${timetable.label}`
-        : `${timetable.label} ${timetable.semester}. Semester ${shortenTimetableDegree(timetable)}`,
   })),
   /**
    * Map of created or visited custom timetables.
@@ -220,6 +218,15 @@ export const getters = {
   isCustomTimetable: (state) => {
     return !!state.schedule && !!state.schedule.whitelist;
   },
+  // pass maxLabelLength to truncate for space-constrained UI (see timetableDisplayName)
+  scheduleDisplayName:
+    (state, getters) =>
+    (maxLabelLength = Infinity) => {
+      if (!state.schedule) return '';
+      return getters.isCustomTimetable
+        ? truncateText(state.schedule.label, maxLabelLength)
+        : timetableDisplayName(state.schedule, maxLabelLength);
+    },
   subscribableTimetables: (state) => {
     return [
       ...Object.values(state.customSchedules),
@@ -385,7 +392,7 @@ export const actions = {
           ? query.course
           : [query.course];
         const id = Array.isArray(query.id || []) ? query.id : [query.id];
-        const label = query.name;
+        const label = query.name || '';
         const customTimetable = { id, label, whitelist };
 
         commit('addCustomSchedule', customTimetable);
