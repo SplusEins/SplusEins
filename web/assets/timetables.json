@@ -3348,6 +3348,15 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/esut/Master%20ESUT_2_2.%20Semester%20Energie%20und%20Gebaeude.html",
+    "label": "ESUT Energie und Gebäude",
+    "faculty": "Versorgungstechnik",
+    "type": "graphical",
+    "id": "v_master_esut_und_gebaeude_2_ws26",
+    "semester": 2,
+    "degree": "Master"
+  },
+  {
     "timetablePath": "https://stundenplan.ostfalia.de/v/stundenplan/esut/Master%20ESUT_2_2.%20Semester%20Netze%20und%20Umwelt.html",
     "label": "ESUT Netze und Umwelt",
     "faculty": "Versorgungstechnik",
