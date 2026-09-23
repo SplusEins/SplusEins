@@ -36,8 +36,11 @@
           <a href="https://intranet-i.ostfalia.de/fips/stundenplan/"
             >intranet-i.ostfalia.de/fips/stundenplan/</a
           >. Die Mensapläne basieren auf den Inhalten von
-          <a href="https://openmensa.org">OpenMensa</a>. Für Vollständigkeit
-          wird keine Haftung übernommen.
+          <a href="https://openmensa.org">OpenMensa</a>. Die Raumstandorte
+          basieren auf Daten von
+          <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>,
+          verfügbar unter der Open Database Licence. Für Vollständigkeit wird
+          keine Haftung übernommen.
         </p>
       </v-card-text>
 
