@@ -16,19 +16,19 @@ OUTPUT_DIR="${SCRIPT_DIR}/../assets/overpass_osm/"
 QUERY_BEGINNING='[out:json][timeout:25]; nwr["indoor"="room"]["ref"~""]('
 QUERY_END='); out tags geom;'
 
-# Wolfenbüttel Campus:
+# Campus Wolfenbüttel:
 BBOX_WF='52.174312,10.542111,52.183790,10.564728'
 # http://bboxfinder.com/#52.174312,10.542111,52.183790,10.564728
 
-# Salzgitter Campus Calbrecht:
+# Campus Salzgitter:
 BBOX_SZ='52.081906,10.371480,52.092744,10.390105'
 # http://bboxfinder.com/#52.081906,10.371480,52.092744,10.390105
 
-# Campus Wolfsburg
+# Campus Wolfsburg:
 BBOX_WOB='52.423550,10.774144,52.426504,10.788885'
 # http://bboxfinder.com/#52.423550,10.774144,52.426504,10.788885
 
-# Campus Suderburg: 
+# Campus Suderburg:
 BBOX_SUD='52.896564,10.443470,52.898713,10.448105'
 # http://bboxfinder.com/#52.896564,10.443470,52.898713,10.448105
 
@@ -45,12 +45,12 @@ fetch_osm_data() {
   local query="${QUERY_BEGINNING}${bbox}${QUERY_END}"
   local max_retries=3
   local retry_delay=5
-  
+
   echo "Fetching ${campus_name}..."
-  
+
   for ((i=1; i<=max_retries; i++)); do
-    local response=$(curl -s --data-urlencode "data=${query}" "https://overpass-api.de/api/interpreter")
-    
+    local response=$(curl -s -H "User-Agent: spluseins-api/1.0.0 (https://github.com/SplusEins/SplusEins)" --data-urlencode "data=${query}" "https://overpass-api.de/api/interpreter")
+
     # Check if response is valid JSON
     if echo "$response" | jq empty 2>/dev/null; then
       # Process response and ensure empty object if no data
