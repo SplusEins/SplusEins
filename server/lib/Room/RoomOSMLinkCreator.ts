@@ -2,10 +2,11 @@ import * as OSM_ROOMS_DATA_WF from '../../assets/overpass_osm/WF.json';
 import * as OSM_ROOMS_DATA_SZ from '../../assets/overpass_osm/SZ.json';
 import * as OSM_ROOMS_DATA_WOB from '../../assets/overpass_osm/WOB.json';
 import * as OSM_ROOMS_DATA_SUD from '../../assets/overpass_osm/SUD.json';
+import * as ROOM_ALIASES from '../../assets/roomAliases.json';
 
 import { FacultyLocation } from './RoomLocationApi';
 
-type OSMRoomData = {
+type OSMRoomEntry = {
   id: number;
   level: string;
   bounds: {
@@ -19,7 +20,7 @@ type OSMRoomData = {
 /**
  * Type guard to check if data has the correct OSM room structure
  */
-function isOSMRoomData(data: unknown): data is OSMRoomData {
+function isOSMRoomData(data: unknown): data is OSMRoomEntry {
   return (
     typeof data === 'object' &&
     data !== null &&
@@ -43,7 +44,9 @@ export function createOSMLink(
   room: string,
   facultyLocation: FacultyLocation,
 ): string | null {
-  let osmData: OSMRoomData | null = null;
+  room = ROOM_ALIASES[room] ?? room; // Use alias if available, otherwise use the original room name
+
+  let osmData: OSMRoomEntry | null = null;
 
   // Select the correct OSM data based on the faculty location
   switch (facultyLocation) {
@@ -63,6 +66,8 @@ export function createOSMLink(
 
   /**
    * Check if we have OSM data for this room in the selected location
+   *
+   * Only necessary, because the json gets pulled automatically from overpass and we want to make sure invalid data doesn't break the system.
    *
    * If we do, create the OSM link using the ID
    * Example: Link: https://indoorequal.org/#map=19.54/52.1766869/10.5484767&level=0&poi=way:1445466532
