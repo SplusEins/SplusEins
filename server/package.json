@@ -27,7 +27,7 @@
     "express": "4.22.3",
     "ical-generator": "10.2.0",
     "iconv-lite": "0.7.3",
-    "moment": "2.30.1",
+    "moment": "2.31.0",
     "moment-timezone": "0.6.4",
     "node-fetch": "2.7.0",
     "rss": "1.2.2",
