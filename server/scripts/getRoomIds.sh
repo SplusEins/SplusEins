@@ -10,7 +10,7 @@ OUTPUT_DIR="${SCRIPT_DIR}/../assets/overpass_osm/"
 
 # Root-Relationen der Campus (Relation -> Gebäude-Relationen -> Outline + Räume)
 REL_WF=21498810
-REL_SUD=0 # TODO: ID eintragen
+REL_SUD=21499858 # TODO: ID eintragen
 REL_SZ=0  # TODO: ID eintragen
 REL_WOB=0 # TODO: ID eintragen
 
@@ -104,8 +104,8 @@ fetch_osm_data() {
 
 fetch_osm_data "WF" "$REL_WF"
 sleep 2
-# fetch_osm_data "SUD" "$REL_SUD"
-# sleep 2
+fetch_osm_data "SUD" "$REL_SUD"
+sleep 2
 # fetch_osm_data "SZ" "$REL_SZ"
 # sleep 2
 # fetch_osm_data "WOB" "$REL_WOB"
