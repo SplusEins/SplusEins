@@ -5,89 +5,64 @@ set -o pipefail
 
 # Rerun after changes to OSM data (e. g. adding new rooms or changing existing ones)
 
+# Get the directory of the script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Define output file path
 OUTPUT_DIR="${SCRIPT_DIR}/../assets/overpass_osm/"
 
-# Root-Relationen der Campus (Relation -> Gebäude-Relationen -> Outline + Räume)
-REL_WF=21498810
-REL_SUD=21499858 # TODO: ID eintragen
-REL_SZ=0  # TODO: ID eintragen
-REL_WOB=0 # TODO: ID eintragen
+## SAMPLE DATA_QUERY='[out:json][timeout:25]; nwr["indoor"="room"]["ref"~""](52.174312,10.542111,52.183790,10.564728); out tags geom;'
 
-# Query:
-# 1. Root-Relation -> Gebäude-Relationen (.buildings), mit members (out body)
-# 2. Alle Ways dieser Gebäuderelationen (Outline + Räume), nur Tags + Bounding Box
-build_query() {
-  local root_id=$1
-  echo "[out:json][timeout:60];
-rel(id:${root_id});
-rel(r)->.buildings;
-.buildings out body;
-way(r.buildings);
-out tags bb;"
-}
+QUERY_BEGINNING='[out:json][timeout:25]; nwr["indoor"="room"]["ref"~""]('
+QUERY_END='); out tags geom;'
 
-# jq-Filter: Gebäude (Name + Adresse), keyed by Relation-ID
-JQ_BUILDINGS='
-  (.elements | map(select(.type=="way") | {key: (.id|tostring), value: .}) | from_entries) as $ways
-  | [.elements[] | select(.type=="relation" and .tags.type=="building")]
-  | map(
-      . as $r
-      | ([$r.members[] | select(.role=="outline") | $ways[(.ref|tostring)]] | first // {}) as $o
-      | {
-          key: ($r.id | tostring),
-          value: {
-            name:        ($o.tags["name"] // $r.tags["name"]),
-            street:      ($o.tags["addr:street"]),
-            housenumber: ($o.tags["addr:housenumber"] // $o.tags["addr:Housenumber"]),
-            postcode:    ($o.tags["addr:postcode"]),
-            city:        ($o.tags["addr:city"])
-          }
-        }
-    )
-  | from_entries
-'
+# Campus Wolfenbüttel:
+BBOX_WF='52.174312,10.542111,52.183790,10.564728'
+# http://bboxfinder.com/#52.174312,10.542111,52.183790,10.564728
 
-# jq-Filter: Räume (wie bisher, keyed by ref), plus Verweis auf das Gebäude
-JQ_ROOMS='
-  (.elements | map(select(.type=="way") | {key: (.id|tostring), value: .}) | from_entries) as $ways
-  | [.elements[] | select(.type=="relation" and .tags.type=="building")]
-  | map(
-      . as $r
-      | $r.members[]
-      | select(.role=="part:indoor")
-      | $ways[(.ref|tostring)]
-      | select(. != null and .tags.ref != null)
-      | {(.tags.ref): {id: .id, level: .tags.level, building: $r.id, bounds: .bounds}}
-    )
-  | add // {}
-'
+# Campus Salzgitter:
+BBOX_SZ='52.081906,10.371480,52.092744,10.390105'
+# http://bboxfinder.com/#52.081906,10.371480,52.092744,10.390105
+
+# Campus Wolfsburg:
+BBOX_WOB='52.423550,10.774144,52.426504,10.788885'
+# http://bboxfinder.com/#52.423550,10.774144,52.426504,10.788885
+
+# Campus Suderburg:
+BBOX_SUD='52.896564,10.443470,52.898713,10.448105'
+# http://bboxfinder.com/#52.896564,10.443470,52.898713,10.448105
 
 echo "Fetching OSM data..."
+
+# Ensure the assets directory exists
 mkdir -p -- "$OUTPUT_DIR"
 
+# Function to fetch and process OSM data with retry logic
 fetch_osm_data() {
   local campus_name=$1
-  local root_id=$2
-  local buildings_file="${OUTPUT_DIR}${campus_name}_buildings.json"
-  local rooms_file="${OUTPUT_DIR}${campus_name}_rooms.json"
-  local query
-  query=$(build_query "$root_id")
+  local bbox=$2
+  local output_file="${OUTPUT_DIR}${campus_name}.json"
+  local query="${QUERY_BEGINNING}${bbox}${QUERY_END}"
   local max_retries=3
   local retry_delay=5
 
   echo "Fetching ${campus_name}..."
 
-  for ((i = 1; i <= max_retries; i++)); do
-    local response
-    response=$(curl -s -H "User-Agent: spluseins-api/1.0.0 (https://github.com/SplusEins/SplusEins)" \
-      --data-urlencode "data=${query}" "https://overpass-api.de/api/interpreter") || true
+  for ((i=1; i<=max_retries; i++)); do
+    local response=$(curl -s -H "User-Agent: spluseins-api/1.0.0 (https://github.com/SplusEins/SplusEins)" --data-urlencode "data=${query}" "https://overpass-api.de/api/interpreter")
 
-    # Valid JSON UND .elements vorhanden (Overpass liefert bei Timeouts teils JSON mit "remark")
-    if echo "$response" | jq -e '.elements' >/dev/null 2>&1; then
-      echo "$response" | jq "$JQ_BUILDINGS" >"$buildings_file"
-      echo "$response" | jq "$JQ_ROOMS" >"$rooms_file"
-      echo "✓ Saved ${buildings_file} and ${rooms_file}"
+    # Check if response is valid JSON
+    if echo "$response" | jq empty 2>/dev/null; then
+      # Process response and ensure empty object if no data
+      processed=$(echo "$response" | jq '.elements | map({
+        id: .id,
+        level: .tags.level,
+        ref: .tags.ref,
+        bounds: .bounds
+      }) | map({(.ref): {id: .id, level: .level, bounds: .bounds}}) | add // {} # ensure empty object if no data
+      ')
+      echo "$processed" > "$output_file"
+      echo "✓ Successfully saved room data to ${output_file}"
       return 0
     else
       if [[ $i -lt $max_retries ]]; then
@@ -102,13 +77,20 @@ fetch_osm_data() {
   done
 }
 
-fetch_osm_data "WF" "$REL_WF"
+# Wolfenbüttel:
+fetch_osm_data "WF" "$BBOX_WF"
 sleep 2
-fetch_osm_data "SUD" "$REL_SUD"
+
+# Suderburg:
+fetch_osm_data "SUD" "$BBOX_SUD"
 sleep 2
-# fetch_osm_data "SZ" "$REL_SZ"
-# sleep 2
-# fetch_osm_data "WOB" "$REL_WOB"
+
+# Salzgitter:
+fetch_osm_data "SZ" "$BBOX_SZ"
+sleep 2
+
+# Wolfsburg:
+fetch_osm_data "WOB" "$BBOX_WOB"
 
 echo ""
 echo "Done! All campus data fetched successfully."
