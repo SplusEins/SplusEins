@@ -2,7 +2,8 @@
   "B47": {
     "id": 1458735100,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976596,
       "minlon": 10.4461990,
@@ -13,7 +14,8 @@
   "B23": {
     "id": 1458170689,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8974065,
       "minlon": 10.4460229,
@@ -24,7 +26,8 @@
   "B24": {
     "id": 1458170691,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8974039,
       "minlon": 10.4459532,
@@ -35,7 +38,8 @@
   "B42": {
     "id": 1458170692,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8975322,
       "minlon": 10.4461534,
@@ -46,7 +50,8 @@
   "B40": {
     "id": 1458170695,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8975283,
       "minlon": 10.4460524,
@@ -57,7 +62,8 @@
   "B39": {
     "id": 1458170694,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8975268,
       "minlon": 10.4460146,
@@ -68,7 +74,8 @@
   "B4": {
     "id": 1458170659,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973748,
       "minlon": 10.4464750,
@@ -79,7 +86,8 @@
   "B3": {
     "id": 1458170658,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8974049,
       "minlon": 10.4464703,
@@ -90,7 +98,8 @@
   "B6": {
     "id": 1458170661,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973023,
       "minlon": 10.4464833,
@@ -101,7 +110,8 @@
   "B5": {
     "id": 1458170660,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973310,
       "minlon": 10.4464782,
@@ -112,7 +122,8 @@
   "B8": {
     "id": 1458170663,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972245,
       "minlon": 10.4464893,
@@ -123,7 +134,8 @@
   "B7": {
     "id": 1458170662,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972754,
       "minlon": 10.4464863,
@@ -134,7 +146,8 @@
   "B16": {
     "id": 1458170633,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973256,
       "minlon": 10.4463468,
@@ -145,7 +158,8 @@
   "B15": {
     "id": 1458170632,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972700,
       "minlon": 10.4463514,
@@ -156,7 +170,8 @@
   "B21": {
     "id": 1458170634,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973643,
       "minlon": 10.4462166,
@@ -167,7 +182,8 @@
   "B11": {
     "id": 1458170626,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8971292,
       "minlon": 10.4464528,
@@ -178,7 +194,8 @@
   "B10": {
     "id": 1458170628,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8971310,
       "minlon": 10.4464997,
@@ -189,7 +206,8 @@
   "B9": {
     "id": 1458170630,
     "level": "0",
-    "building": 21499848,
+    "building:name": "Verwaltung",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8971826,
       "minlon": 10.4464950,
@@ -200,7 +218,8 @@
   "B50": {
     "id": 1458735091,
     "level": "0",
-    "building": 21499849,
+    "building:name": "Rechenzentrum",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8978287,
       "minlon": 10.4461826,
@@ -211,7 +230,8 @@
   "B54": {
     "id": 1458735094,
     "level": "0",
-    "building": 21499849,
+    "building:name": "Rechenzentrum",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8977939,
       "minlon": 10.4462801,
@@ -222,7 +242,8 @@
   "B48": {
     "id": 1458739254,
     "level": "0",
-    "building": 21499849,
+    "building:name": "Rechenzentrum",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976796,
       "minlon": 10.4461224,
@@ -233,7 +254,8 @@
   "B55": {
     "id": 1458735095,
     "level": "0",
-    "building": 21499849,
+    "building:name": "Rechenzentrum",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8977559,
       "minlon": 10.4462844,
@@ -244,7 +266,8 @@
   "B51": {
     "id": 1458735092,
     "level": "0",
-    "building": 21499849,
+    "building:name": "Rechenzentrum",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8978664,
       "minlon": 10.4461749,
@@ -255,7 +278,8 @@
   "B52": {
     "id": 1458735093,
     "level": "0",
-    "building": 21499849,
+    "building:name": "Rechenzentrum",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8978313,
       "minlon": 10.4462710,
@@ -266,7 +290,8 @@
   "B56": {
     "id": 1458735096,
     "level": "0",
-    "building": 21499849,
+    "building:name": "Rechenzentrum",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8977287,
       "minlon": 10.4462887,
@@ -277,7 +302,8 @@
   "B57": {
     "id": 1458735097,
     "level": "0",
-    "building": 21499849,
+    "building:name": "Rechenzentrum",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976859,
       "minlon": 10.4462918,
@@ -288,7 +314,8 @@
   "B58": {
     "id": 1458700679,
     "level": "0",
-    "building": 21499850,
+    "building:name": "Aula",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8975263,
       "minlon": 10.4462997,
@@ -299,7 +326,8 @@
   "B109": {
     "id": 1459044599,
     "level": "1",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8977281,
       "minlon": 10.4457394,
@@ -310,7 +338,8 @@
   "B108": {
     "id": 1459044598,
     "level": "1",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976586,
       "minlon": 10.4457479,
@@ -321,7 +350,8 @@
   "B107": {
     "id": 1459044597,
     "level": "1",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8975509,
       "minlon": 10.4457551,
@@ -332,7 +362,8 @@
   "B103.3": {
     "id": 1459044595,
     "level": "1",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8974886,
       "minlon": 10.4457702,
@@ -343,7 +374,8 @@
   "B103": {
     "id": 1459044592,
     "level": "1",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973489,
       "minlon": 10.4457769,
@@ -354,7 +386,8 @@
   "B35": {
     "id": 1459044607,
     "level": "0",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976586,
       "minlon": 10.4457439,
@@ -365,7 +398,8 @@
   "B36": {
     "id": 1459044606,
     "level": "0",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8977663,
       "minlon": 10.4457306,
@@ -376,7 +410,8 @@
   "B110": {
     "id": 1459044600,
     "level": "1",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8978094,
       "minlon": 10.4457306,
@@ -387,7 +422,8 @@
   "B102": {
     "id": 1459044591,
     "level": "1",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973537,
       "minlon": 10.4459097,
@@ -398,7 +434,8 @@
   "B26": {
     "id": 1459044614,
     "level": "0",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973537,
       "minlon": 10.4459097,
@@ -409,7 +446,8 @@
   "B27": {
     "id": 1459044613,
     "level": "0",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973489,
       "minlon": 10.4457769,
@@ -420,7 +458,8 @@
   "B34": {
     "id": 1459044608,
     "level": "0",
-    "building": 21499851,
+    "building:name": "Seminarräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8975509,
       "minlon": 10.4457551,
@@ -431,7 +470,8 @@
   "C14": {
     "id": 1459061639,
     "level": "0",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972375,
       "minlon": 10.4453707,
@@ -442,7 +482,8 @@
   "C15": {
     "id": 1459061638,
     "level": "0",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972753,
       "minlon": 10.4453669,
@@ -453,7 +494,8 @@
   "C7": {
     "id": 1459061647,
     "level": "0",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973559,
       "minlon": 10.4454879,
@@ -464,7 +506,8 @@
   "C8": {
     "id": 1459061646,
     "level": "0",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973178,
       "minlon": 10.4454907,
@@ -475,7 +518,8 @@
   "C9": {
     "id": 1459061645,
     "level": "0",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972798,
       "minlon": 10.4454944,
@@ -486,7 +530,8 @@
   "C10": {
     "id": 1459061644,
     "level": "0",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972421,
       "minlon": 10.4454981,
@@ -497,7 +542,8 @@
   "C11": {
     "id": 1459061643,
     "level": "0",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972042,
       "minlon": 10.4455020,
@@ -508,7 +554,8 @@
   "C12": {
     "id": 1459061642,
     "level": "0",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8971775,
       "minlon": 10.4455059,
@@ -519,7 +566,8 @@
   "C13": {
     "id": 1459061640,
     "level": "0",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8971993,
       "minlon": 10.4453746,
@@ -530,7 +578,8 @@
   "C106.2": {
     "id": 1459345435,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973178,
       "minlon": 10.4454927,
@@ -541,7 +590,8 @@
   "C107": {
     "id": 1459345434,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972798,
       "minlon": 10.4454944,
@@ -552,7 +602,8 @@
   "C108.1": {
     "id": 1459345433,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972588,
       "minlon": 10.4454981,
@@ -563,7 +614,8 @@
   "C108.2": {
     "id": 1459345432,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972421,
       "minlon": 10.4455003,
@@ -574,7 +626,8 @@
   "C104.2": {
     "id": 1459345438,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973848,
       "minlon": 10.4454858,
@@ -585,7 +638,8 @@
   "C105": {
     "id": 1459345437,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973559,
       "minlon": 10.4454879,
@@ -596,7 +650,8 @@
   "C106.1": {
     "id": 1459345436,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973358,
       "minlon": 10.4454907,
@@ -607,7 +662,8 @@
   "C113": {
     "id": 1459345427,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972375,
       "minlon": 10.4453707,
@@ -618,7 +674,8 @@
   "C112": {
     "id": 1459345426,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8971993,
       "minlon": 10.4453746,
@@ -629,7 +686,8 @@
   "C109.1": {
     "id": 1459345431,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972227,
       "minlon": 10.4455020,
@@ -640,7 +698,8 @@
   "C109.2": {
     "id": 1459345430,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972042,
       "minlon": 10.4455040,
@@ -651,7 +710,8 @@
   "C110": {
     "id": 1459345429,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8971775,
       "minlon": 10.4455059,
@@ -662,7 +722,8 @@
   "C114": {
     "id": 1459345428,
     "level": "1",
-    "building": 21499852,
+    "building:name": "Büroräume",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972753,
       "minlon": 10.4453669,
@@ -673,7 +734,8 @@
   "D104": {
     "id": 1459403504,
     "level": "1",
-    "building": 21499853,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8971788,
       "minlon": 10.4450283,
@@ -684,7 +746,8 @@
   "D103": {
     "id": 1459403505,
     "level": "1",
-    "building": 21499853,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972553,
       "minlon": 10.4450357,
@@ -695,7 +758,8 @@
   "D106": {
     "id": 1459403502,
     "level": "1",
-    "building": 21499853,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972719,
       "minlon": 10.4448472,
@@ -706,7 +770,8 @@
   "D105": {
     "id": 1459403503,
     "level": "1",
-    "building": 21499853,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8971466,
       "minlon": 10.4448278,
@@ -717,7 +782,8 @@
   "D3": {
     "id": 1459396196,
     "level": "0",
-    "building": 21499853,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972553,
       "minlon": 10.4450357,
@@ -728,7 +794,8 @@
   "D4": {
     "id": 1459396197,
     "level": "0",
-    "building": 21499853,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8971788,
       "minlon": 10.4450283,
@@ -739,7 +806,8 @@
   "D6": {
     "id": 1459396194,
     "level": "0",
-    "building": 21499853,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972719,
       "minlon": 10.4448472,
@@ -750,7 +818,8 @@
   "D5": {
     "id": 1459396195,
     "level": "0",
-    "building": 21499853,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8971466,
       "minlon": 10.4448278,
@@ -761,7 +830,8 @@
   "E15": {
     "id": 1459821395,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972543,
       "minlon": 10.4442421,
@@ -772,7 +842,8 @@
   "E20": {
     "id": 1459821399,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8975246,
       "minlon": 10.4444640,
@@ -783,7 +854,8 @@
   "E18": {
     "id": 1459821398,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8974347,
       "minlon": 10.4443417,
@@ -794,7 +866,8 @@
   "E17": {
     "id": 1459821397,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973966,
       "minlon": 10.4443210,
@@ -805,7 +878,8 @@
   "E16": {
     "id": 1459821396,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973746,
       "minlon": 10.4443083,
@@ -816,7 +890,8 @@
   "E6": {
     "id": 1459821403,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973967,
       "minlon": 10.4445072,
@@ -827,7 +902,8 @@
   "E5": {
     "id": 1459821402,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8974573,
       "minlon": 10.4445399,
@@ -838,7 +914,8 @@
   "E4": {
     "id": 1459821401,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8974832,
       "minlon": 10.4445540,
@@ -849,7 +926,8 @@
   "E19": {
     "id": 1459821400,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8975319,
       "minlon": 10.4443910,
@@ -860,7 +938,8 @@
   "E9": {
     "id": 1459821406,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973066,
       "minlon": 10.4444585,
@@ -871,7 +950,8 @@
   "E8": {
     "id": 1459821405,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973445,
       "minlon": 10.4444789,
@@ -882,7 +962,8 @@
   "E7": {
     "id": 1459821404,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973742,
       "minlon": 10.4444951,
@@ -893,7 +974,8 @@
   "E14": {
     "id": 1459821411,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972064,
       "minlon": 10.4442632,
@@ -904,7 +986,8 @@
   "E12": {
     "id": 1459821410,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972219,
       "minlon": 10.4444141,
@@ -915,7 +998,8 @@
   "E11": {
     "id": 1459821409,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972545,
       "minlon": 10.4444304,
@@ -926,7 +1010,8 @@
   "E10": {
     "id": 1459821408,
     "level": "0",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972934,
       "minlon": 10.4444468,
@@ -937,7 +1022,8 @@
   "E111": {
     "id": 1459845778,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972064,
       "minlon": 10.4442632,
@@ -948,7 +1034,8 @@
   "E115": {
     "id": 1459845783,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973755,
       "minlon": 10.4443076,
@@ -959,7 +1046,8 @@
   "E114": {
     "id": 1459845782,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973455,
       "minlon": 10.4442919,
@@ -970,7 +1058,8 @@
   "E113": {
     "id": 1459845781,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973159,
       "minlon": 10.4442753,
@@ -981,7 +1070,8 @@
   "E112": {
     "id": 1459845780,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972557,
       "minlon": 10.4442421,
@@ -992,7 +1082,8 @@
   "E119": {
     "id": 1459845787,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8975531,
       "minlon": 10.4444059,
@@ -1003,7 +1094,8 @@
   "E118": {
     "id": 1459845786,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8975227,
       "minlon": 10.4443895,
@@ -1014,7 +1106,8 @@
   "E117": {
     "id": 1459845785,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8974340,
       "minlon": 10.4443403,
@@ -1025,7 +1118,8 @@
   "E116": {
     "id": 1459845784,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973967,
       "minlon": 10.4443202,
@@ -1036,7 +1130,8 @@
   "E103": {
     "id": 1459845791,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8974802,
       "minlon": 10.4445521,
@@ -1047,7 +1142,8 @@
   "E121": {
     "id": 1459845789,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8975982,
       "minlon": 10.4444312,
@@ -1058,7 +1154,8 @@
   "E120": {
     "id": 1459845788,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8975762,
       "minlon": 10.4444188,
@@ -1069,7 +1166,8 @@
   "E107": {
     "id": 1459845795,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973067,
       "minlon": 10.4444585,
@@ -1080,7 +1178,8 @@
   "E106": {
     "id": 1459845794,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8973355,
       "minlon": 10.4444741,
@@ -1091,7 +1190,8 @@
   "E105": {
     "id": 1459845793,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8974264,
       "minlon": 10.4445230,
@@ -1102,7 +1202,8 @@
   "E104": {
     "id": 1459845792,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8974544,
       "minlon": 10.4445380,
@@ -1113,7 +1214,8 @@
   "E109": {
     "id": 1459845797,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972219,
       "minlon": 10.4444141,
@@ -1124,7 +1226,8 @@
   "E108": {
     "id": 1459845796,
     "level": "1",
-    "building": 21499854,
+    "building:name": null,
+    "building:addr": null,
     "bounds": {
       "minlat": 52.8972845,
       "minlon": 10.4444468,
@@ -1135,7 +1238,8 @@
   "F8": {
     "id": 1459847911,
     "level": "0",
-    "building": 21499855,
+    "building:name": "Versuchshalle",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8978217,
       "minlon": 10.4441628,
@@ -1146,7 +1250,8 @@
   "F7": {
     "id": 1459847910,
     "level": "0",
-    "building": 21499855,
+    "building:name": "Versuchshalle",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8978397,
       "minlon": 10.4441295,
@@ -1157,7 +1262,8 @@
   "F4": {
     "id": 1459847915,
     "level": "0",
-    "building": 21499855,
+    "building:name": "Versuchshalle",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976161,
       "minlon": 10.4440521,
@@ -1168,7 +1274,8 @@
   "F5": {
     "id": 1459847914,
     "level": "0",
-    "building": 21499855,
+    "building:name": "Versuchshalle",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976408,
       "minlon": 10.4440299,
@@ -1179,7 +1286,8 @@
   "F2": {
     "id": 1459847913,
     "level": "0",
-    "building": 21499855,
+    "building:name": "Versuchshalle",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976668,
       "minlon": 10.4439018,
@@ -1190,7 +1298,8 @@
   "F1": {
     "id": 1459847912,
     "level": "0",
-    "building": 21499855,
+    "building:name": "Versuchshalle",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8977184,
       "minlon": 10.4440161,
@@ -1201,7 +1310,8 @@
   "F6": {
     "id": 1459847917,
     "level": "0",
-    "building": 21499855,
+    "building:name": "Versuchshalle",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976953,
       "minlon": 10.4442865,
@@ -1212,7 +1322,8 @@
   "F3": {
     "id": 1459847916,
     "level": "0",
-    "building": 21499855,
+    "building:name": "Versuchshalle",
+    "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976425,
       "minlon": 10.4441156,
@@ -1223,7 +1334,8 @@
   "H 013": {
     "id": 1459357436,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981907,
       "minlon": 10.4440897,
@@ -1234,7 +1346,8 @@
   "H 014": {
     "id": 1459357437,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8982205,
       "minlon": 10.4440865,
@@ -1245,7 +1358,8 @@
   "H 015": {
     "id": 1459357438,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8982499,
       "minlon": 10.4440831,
@@ -1256,7 +1370,8 @@
   "H 016": {
     "id": 1459357439,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8982763,
       "minlon": 10.4440802,
@@ -1267,7 +1382,8 @@
   "H 004": {
     "id": 1459357432,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981562,
       "minlon": 10.4441892,
@@ -1278,7 +1394,8 @@
   "H 010": {
     "id": 1459357433,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981047,
       "minlon": 10.4440992,
@@ -1289,7 +1406,8 @@
   "H 011": {
     "id": 1459357434,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981334,
       "minlon": 10.4440962,
@@ -1300,7 +1418,8 @@
   "H 012": {
     "id": 1459357435,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981616,
       "minlon": 10.4440930,
@@ -1311,7 +1430,8 @@
   "H 002": {
     "id": 1459357430,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981144,
       "minlon": 10.4443426,
@@ -1322,7 +1442,8 @@
   "H 003": {
     "id": 1459357431,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981085,
       "minlon": 10.4441938,
@@ -1333,7 +1454,8 @@
   "H 001": {
     "id": 1459357427,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981217,
       "minlon": 10.4445330,
@@ -1344,7 +1466,8 @@
   "H 007": {
     "id": 1459357444,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8982394,
       "minlon": 10.4445853,
@@ -1355,7 +1478,8 @@
   "H 017": {
     "id": 1459357440,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8982771,
       "minlon": 10.4441715,
@@ -1366,7 +1490,8 @@
   "H 005": {
     "id": 1459357442,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8982282,
       "minlon": 10.4442868,
@@ -1377,7 +1502,8 @@
   "H 006": {
     "id": 1459357443,
     "level": "0",
-    "building": 21499856,
+    "building:name": "Gebäude H",
+    "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8982324,
       "minlon": 10.4444012,
@@ -1388,7 +1514,8 @@
   "A109": {
     "id": 1459946601,
     "level": "1",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8969433,
       "minlon": 10.4473751,
@@ -1399,7 +1526,8 @@
   "A110": {
     "id": 1459946600,
     "level": "1",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8969658,
       "minlon": 10.4475385,
@@ -1410,7 +1538,8 @@
   "A15": {
     "id": 1459935908,
     "level": "0",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8967842,
       "minlon": 10.4476240,
@@ -1421,7 +1550,8 @@
   "A16": {
     "id": 1459935909,
     "level": "0",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8968558,
       "minlon": 10.4476006,
@@ -1432,7 +1562,8 @@
   "A6": {
     "id": 1459935920,
     "level": "0",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8969937,
       "minlon": 10.4472346,
@@ -1443,7 +1574,8 @@
   "A206": {
     "id": 1459948477,
     "level": "2",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8969830,
       "minlon": 10.4476033,
@@ -1454,7 +1586,8 @@
   "A207": {
     "id": 1459948476,
     "level": "2",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8969242,
       "minlon": 10.4476199,
@@ -1465,7 +1598,8 @@
   "A208": {
     "id": 1459948475,
     "level": "2",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8968724,
       "minlon": 10.4476575,
@@ -1476,7 +1610,8 @@
   "A209": {
     "id": 1459948474,
     "level": "2",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8967958,
       "minlon": 10.4476718,
@@ -1487,7 +1622,8 @@
   "A201": {
     "id": 1459948480,
     "level": "2",
-    "building": 21499857,
+    "building:name": "Altbau - Ostfalia",
+    "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8968949,
       "minlon": 10.4472736,

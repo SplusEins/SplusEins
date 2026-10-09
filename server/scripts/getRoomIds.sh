@@ -10,12 +10,11 @@ OUTPUT_DIR="${SCRIPT_DIR}/../assets/overpass_osm/"
 
 # Root-Relationen der Campus (Relation -> Gebäude-Relationen -> Outline + Räume)
 REL_WF=21498810
-REL_SUD=21499858 # TODO: ID eintragen
+REL_SUD=21499858
 REL_SZ=0  # TODO: ID eintragen
 REL_WOB=0 # TODO: ID eintragen
 
-# Query:
-# 1. Root-Relation -> Gebäude-Relationen (.buildings), mit members (out body)
+# 1. Root-Relation -> Gebäude-Relationen (.buildings), mit members
 # 2. Alle Ways dieser Gebäuderelationen (Outline + Räume), nur Tags + Bounding Box
 build_query() {
   local root_id=$1
@@ -27,38 +26,30 @@ way(r.buildings);
 out tags bb;"
 }
 
-# jq-Filter: Gebäude (Name + Adresse), keyed by Relation-ID
-JQ_BUILDINGS='
-  (.elements | map(select(.type=="way") | {key: (.id|tostring), value: .}) | from_entries) as $ways
-  | [.elements[] | select(.type=="relation" and .tags.type=="building")]
-  | map(
-      . as $r
-      | ([$r.members[] | select(.role=="outline") | $ways[(.ref|tostring)]] | first // {}) as $o
-      | {
-          key: ($r.id | tostring),
-          value: {
-            name:        ($o.tags["name"] // $r.tags["name"]),
-            street:      ($o.tags["addr:street"]),
-            housenumber: ($o.tags["addr:housenumber"] // $o.tags["addr:Housenumber"]),
-            postcode:    ($o.tags["addr:postcode"]),
-            city:        ($o.tags["addr:city"])
-          }
-        }
-    )
-  | from_entries
-'
-
-# jq-Filter: Räume (wie bisher, keyed by ref), plus Verweis auf das Gebäude
+# Pro Raum (key = ref): id, level, building:name, building:addr, bounds
 JQ_ROOMS='
   (.elements | map(select(.type=="way") | {key: (.id|tostring), value: .}) | from_entries) as $ways
   | [.elements[] | select(.type=="relation" and .tags.type=="building")]
   | map(
       . as $r
+      | ([$r.members[] | select(.role=="outline") | $ways[(.ref|tostring)]] | first // {}) as $o
+      | ($o.tags // {}) as $t
+      | ($t["addr:housenumber"] // $t["addr:Housenumber"]) as $hn
+      | ([$t["addr:street"], $hn]            | map(select(. != null)) | join(" ")) as $line1
+      | ([$t["addr:postcode"], $t["addr:city"]] | map(select(. != null)) | join(" ")) as $line2
+      | ([$line1, $line2] | map(select(. != "")) | join(", ")) as $addr
+      | ($t["name"] // $r.tags["name"]) as $bname
       | $r.members[]
       | select(.role=="part:indoor")
       | $ways[(.ref|tostring)]
       | select(. != null and .tags.ref != null)
-      | {(.tags.ref): {id: .id, level: .tags.level, building: $r.id, bounds: .bounds}}
+      | {(.tags.ref): {
+          id: .id,
+          level: .tags.level,
+          "building:name": $bname,
+          "building:addr": (if $addr == "" then null else $addr end),
+          bounds: .bounds
+        }}
     )
   | add // {}
 '
@@ -69,8 +60,7 @@ mkdir -p -- "$OUTPUT_DIR"
 fetch_osm_data() {
   local campus_name=$1
   local root_id=$2
-  local buildings_file="${OUTPUT_DIR}${campus_name}_buildings.json"
-  local rooms_file="${OUTPUT_DIR}${campus_name}_rooms.json"
+  local output_file="${OUTPUT_DIR}${campus_name}.json"
   local query
   query=$(build_query "$root_id")
   local max_retries=3
@@ -78,16 +68,15 @@ fetch_osm_data() {
 
   echo "Fetching ${campus_name}..."
 
-  for ((i = 1; i <= max_retries; i++)); do
+  for ((i=1; i<=max_retries; i++)); do
     local response
     response=$(curl -s -H "User-Agent: spluseins-api/1.0.0 (https://github.com/SplusEins/SplusEins)" \
       --data-urlencode "data=${query}" "https://overpass-api.de/api/interpreter") || true
 
     # Valid JSON UND .elements vorhanden (Overpass liefert bei Timeouts teils JSON mit "remark")
     if echo "$response" | jq -e '.elements' >/dev/null 2>&1; then
-      echo "$response" | jq "$JQ_BUILDINGS" >"$buildings_file"
-      echo "$response" | jq "$JQ_ROOMS" >"$rooms_file"
-      echo "✓ Saved ${buildings_file} and ${rooms_file}"
+      echo "$response" | jq "$JQ_ROOMS" > "$output_file"
+      echo "✓ Successfully saved room data to ${output_file}"
       return 0
     else
       if [[ $i -lt $max_retries ]]; then
