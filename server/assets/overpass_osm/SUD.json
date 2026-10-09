@@ -6,8 +6,8 @@
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8976596,
-      "minlon": 10.4461990,
-      "maxlat": 52.8976840,
+      "minlon": 10.446199,
+      "maxlat": 52.897684,
       "maxlon": 10.4462497
     }
   },
@@ -55,7 +55,7 @@
     "bounds": {
       "minlat": 52.8975283,
       "minlon": 10.4460524,
-      "maxlat": 52.8975630,
+      "maxlat": 52.897563,
       "maxlon": 10.4460977
     }
   },
@@ -78,7 +78,7 @@
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8973748,
-      "minlon": 10.4464750,
+      "minlon": 10.446475,
       "maxlat": 52.8974079,
       "maxlon": 10.4465544
     }
@@ -113,10 +113,10 @@
     "building:name": "Verwaltung",
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
-      "minlat": 52.8973310,
+      "minlat": 52.897331,
       "minlon": 10.4464782,
       "maxlat": 52.8973774,
-      "maxlon": 10.4465590
+      "maxlon": 10.446559
     }
   },
   "B8": {
@@ -161,10 +161,10 @@
     "building:name": "Verwaltung",
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
-      "minlat": 52.8972700,
+      "minlat": 52.89727,
       "minlon": 10.4463514,
       "maxlat": 52.8973284,
-      "maxlon": 10.4464420
+      "maxlon": 10.446442
     }
   },
   "B21": {
@@ -197,7 +197,7 @@
     "building:name": "Verwaltung",
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
-      "minlat": 52.8971310,
+      "minlat": 52.897131,
       "minlon": 10.4464997,
       "maxlat": 52.8971852,
       "maxlon": 10.4465799
@@ -210,7 +210,7 @@
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8971826,
-      "minlon": 10.4464950,
+      "minlon": 10.446495,
       "maxlat": 52.8972271,
       "maxlon": 10.4465745
     }
@@ -224,7 +224,7 @@
       "minlat": 52.8978287,
       "minlon": 10.4461826,
       "maxlat": 52.8978681,
-      "maxlon": 10.4462310
+      "maxlon": 10.446231
     }
   },
   "B54": {
@@ -282,7 +282,7 @@
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8978313,
-      "minlon": 10.4462710,
+      "minlon": 10.446271,
       "maxlat": 52.8979501,
       "maxlon": 10.4464567
     }
@@ -307,7 +307,7 @@
     "bounds": {
       "minlat": 52.8976859,
       "minlon": 10.4462918,
-      "maxlat": 52.8977320,
+      "maxlat": 52.897732,
       "maxlon": 10.4463779
     }
   },
@@ -331,8 +331,8 @@
     "bounds": {
       "minlat": 52.8977281,
       "minlon": 10.4457394,
-      "maxlat": 52.8978140,
-      "maxlon": 10.4458760
+      "maxlat": 52.897814,
+      "maxlon": 10.445876
     }
   },
   "B108": {
@@ -343,7 +343,7 @@
     "bounds": {
       "minlat": 52.8976586,
       "minlon": 10.4457479,
-      "maxlat": 52.8977330,
+      "maxlat": 52.897733,
       "maxlon": 10.4458838
     }
   },
@@ -487,7 +487,7 @@
     "bounds": {
       "minlat": 52.8972753,
       "minlon": 10.4453669,
-      "maxlat": 52.8973150,
+      "maxlat": 52.897315,
       "maxlon": 10.4454394
     }
   },
@@ -524,7 +524,7 @@
       "minlat": 52.8972798,
       "minlon": 10.4454944,
       "maxlat": 52.8973213,
-      "maxlon": 10.4455940
+      "maxlon": 10.445594
     }
   },
   "C10": {
@@ -546,7 +546,7 @@
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972042,
-      "minlon": 10.4455020,
+      "minlon": 10.445502,
       "maxlat": 52.8972457,
       "maxlon": 10.4456018
     }
@@ -571,7 +571,7 @@
     "bounds": {
       "minlat": 52.8971993,
       "minlon": 10.4453746,
-      "maxlat": 52.8972410,
+      "maxlat": 52.897241,
       "maxlon": 10.4454706
     }
   },
@@ -596,7 +596,7 @@
       "minlat": 52.8972798,
       "minlon": 10.4454944,
       "maxlat": 52.8973213,
-      "maxlon": 10.4455940
+      "maxlon": 10.445594
     }
   },
   "C108.1": {
@@ -679,7 +679,7 @@
     "bounds": {
       "minlat": 52.8971993,
       "minlon": 10.4453746,
-      "maxlat": 52.8972410,
+      "maxlat": 52.897241,
       "maxlon": 10.4454706
     }
   },
@@ -690,9 +690,9 @@
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972227,
-      "minlon": 10.4455020,
+      "minlon": 10.445502,
       "maxlat": 52.8972457,
-      "maxlon": 10.4456000
+      "maxlon": 10.4456
     }
   },
   "C109.2": {
@@ -702,8 +702,8 @@
     "building:addr": "Herbert-Meyer-Straße 7, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8972042,
-      "minlon": 10.4455040,
-      "maxlat": 52.8972260,
+      "minlon": 10.445504,
+      "maxlat": 52.897226,
       "maxlon": 10.4456018
     }
   },
@@ -727,7 +727,7 @@
     "bounds": {
       "minlat": 52.8972753,
       "minlon": 10.4453669,
-      "maxlat": 52.8973160,
+      "maxlat": 52.897316,
       "maxlon": 10.4454628
     }
   },
@@ -739,7 +739,7 @@
     "bounds": {
       "minlat": 52.8971788,
       "minlon": 10.4450283,
-      "maxlat": 52.8972600,
+      "maxlat": 52.89726,
       "maxlon": 10.4451338
     }
   },
@@ -799,7 +799,7 @@
     "bounds": {
       "minlat": 52.8971788,
       "minlon": 10.4450283,
-      "maxlat": 52.8972600,
+      "maxlat": 52.89726,
       "maxlon": 10.4451338
     }
   },
@@ -846,7 +846,7 @@
     "building:addr": null,
     "bounds": {
       "minlat": 52.8975246,
-      "minlon": 10.4444640,
+      "minlon": 10.444464,
       "maxlat": 52.8975538,
       "maxlon": 10.4445138
     }
@@ -870,7 +870,7 @@
     "building:addr": null,
     "bounds": {
       "minlat": 52.8973966,
-      "minlon": 10.4443210,
+      "minlon": 10.444321,
       "maxlat": 52.8974562,
       "maxlon": 10.4444542
     }
@@ -918,7 +918,7 @@
     "building:addr": null,
     "bounds": {
       "minlat": 52.8974832,
-      "minlon": 10.4445540,
+      "minlon": 10.444554,
       "maxlat": 52.8975273,
       "maxlon": 10.4446636
     }
@@ -930,8 +930,8 @@
     "building:addr": null,
     "bounds": {
       "minlat": 52.8975319,
-      "minlon": 10.4443910,
-      "maxlat": 52.8975850,
+      "minlon": 10.444391,
+      "maxlat": 52.897585,
       "maxlon": 10.4445232
     }
   },
@@ -944,7 +944,7 @@
       "minlat": 52.8973066,
       "minlon": 10.4444585,
       "maxlat": 52.8973628,
-      "maxlon": 10.4445730
+      "maxlon": 10.444573
     }
   },
   "E8": {
@@ -1004,7 +1004,7 @@
       "minlat": 52.8972545,
       "minlon": 10.4444304,
       "maxlat": 52.8973032,
-      "maxlon": 10.4445400
+      "maxlon": 10.44454
     }
   },
   "E10": {
@@ -1109,7 +1109,7 @@
     "building:name": null,
     "building:addr": null,
     "bounds": {
-      "minlat": 52.8974340,
+      "minlat": 52.897434,
       "minlon": 10.4443403,
       "maxlat": 52.8975429,
       "maxlon": 10.4444918
@@ -1171,7 +1171,7 @@
     "bounds": {
       "minlat": 52.8973067,
       "minlon": 10.4444585,
-      "maxlat": 52.8973540,
+      "maxlat": 52.897354,
       "maxlon": 10.4445681
     }
   },
@@ -1194,7 +1194,7 @@
     "building:addr": null,
     "bounds": {
       "minlat": 52.8974264,
-      "minlon": 10.4445230,
+      "minlon": 10.444523,
       "maxlat": 52.8974728,
       "maxlon": 10.4446337
     }
@@ -1206,9 +1206,9 @@
     "building:addr": null,
     "bounds": {
       "minlat": 52.8974544,
-      "minlon": 10.4445380,
-      "maxlat": 52.8974990,
-      "maxlon": 10.4446480
+      "minlon": 10.444538,
+      "maxlat": 52.897499,
+      "maxlon": 10.444648
     }
   },
   "E109": {
@@ -1243,7 +1243,7 @@
     "bounds": {
       "minlat": 52.8978217,
       "minlon": 10.4441628,
-      "maxlat": 52.8978660,
+      "maxlat": 52.897866,
       "maxlon": 10.4442427
     }
   },
@@ -1340,7 +1340,7 @@
       "minlat": 52.8981907,
       "minlon": 10.4440897,
       "maxlat": 52.8982234,
-      "maxlon": 10.4441670
+      "maxlon": 10.444167
     }
   },
   "H 014": {
@@ -1422,7 +1422,7 @@
     "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981616,
-      "minlon": 10.4440930,
+      "minlon": 10.444093,
       "maxlat": 52.8981938,
       "maxlon": 10.4441702
     }
@@ -1458,7 +1458,7 @@
     "building:addr": "In den Twieten, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8981217,
-      "minlon": 10.4445330,
+      "minlon": 10.444533,
       "maxlat": 52.8982177,
       "maxlon": 10.4447322
     }
@@ -1508,7 +1508,7 @@
       "minlat": 52.8982324,
       "minlon": 10.4444012,
       "maxlat": 52.8983277,
-      "maxlon": 10.4445960
+      "maxlon": 10.444596
     }
   },
   "A109": {
@@ -1542,7 +1542,7 @@
     "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
       "minlat": 52.8967842,
-      "minlon": 10.4476240,
+      "minlon": 10.447624,
       "maxlat": 52.8968779,
       "maxlon": 10.4477685
     }
@@ -1556,7 +1556,7 @@
       "minlat": 52.8968558,
       "minlon": 10.4476006,
       "maxlat": 52.8969051,
-      "maxlon": 10.4476900
+      "maxlon": 10.44769
     }
   },
   "A6": {
@@ -1577,10 +1577,10 @@
     "building:name": "Altbau - Ostfalia",
     "building:addr": "Karl-Hillmer-Straße 5, 29556 Suderburg",
     "bounds": {
-      "minlat": 52.8969830,
+      "minlat": 52.896983,
       "minlon": 10.4476033,
       "maxlat": 52.8970496,
-      "maxlon": 10.4477090
+      "maxlon": 10.447709
     }
   },
   "A207": {
@@ -1603,7 +1603,7 @@
     "bounds": {
       "minlat": 52.8968724,
       "minlon": 10.4476575,
-      "maxlat": 52.8969510,
+      "maxlat": 52.896951,
       "maxlon": 10.4477873
     }
   },
