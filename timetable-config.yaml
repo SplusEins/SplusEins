@@ -40,7 +40,7 @@ plans:
     shorthand_syntax: True
   - url: https://stundenplan.ostfalia.de/h/lvp/wp/index.html
     faculty: Handel und Soziale Arbeit
-  - url: https://intranet-i.ostfalia.de/fips/stundenplan/student_groups.html
+  - url: https://intranet-i.ostfalia.de/fips/stundenplan/
     faculty: Informatik
     type: "intranet"
   - url: https://stundenplan.ostfalia.de/k/prod/vorlesungsplaene/wp/ss/
