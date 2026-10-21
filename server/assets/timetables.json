@@ -1557,6 +1557,15 @@
     "degree": "Master"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/8_optional.html",
+    "label": "Informatik - WPF und Zusatzangebote",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_informatik_wpf_und_zusatzangebote_ws26",
+    "semester": "WPF",
+    "degree": "Master"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/13_optional.html",
     "label": "Wirtschaftsinformatik (VFH) - WPF und Zusatzangebote",
     "faculty": "Informatik",
