@@ -1314,11 +1314,29 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261455.html",
+    "label": "Informatik - DS",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_informatik_ds_4_ws26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111824.html",
     "label": "Informatik - IE",
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_informatik_ie_4_ws26",
+    "semester": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261463.html",
+    "label": "Informatik - ITS",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_informatik_its_4_ws26",
     "semester": 4,
     "degree": "Bachelor"
   },
