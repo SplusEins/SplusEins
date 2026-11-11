@@ -11,7 +11,7 @@
     "dev": "tsx watch server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "jest",
+    "test": "vitest run",
     "fmt": "prettier . --write",
     "fmt:check": "prettier . --check",
     "lint": "eslint .",
@@ -21,7 +21,6 @@
     "@motis-project/motis-client": "2.11.4",
     "@motis-project/motis-fptf-client": "6.7.1",
     "cheerio": "1.2.0",
-    "cookie-parser": "1.4.7",
     "cors": "2.8.6",
     "csv-string": "4.1.1",
     "dayjs": "1.11.23",
@@ -33,22 +32,19 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "@types/cookie-parser": "1.4.10",
     "@types/cors": "2.8.19",
     "@types/express": "5.0.6",
-    "@types/jest": "30.0.0",
     "@types/node": "24.19.2",
     "@types/rss": "0.0.32",
     "@types/sanitize-html": "2.16.2",
     "eslint": "10.14.0",
     "eslint-config-prettier": "10.1.8",
     "globals": "17.14.0",
-    "jest": "30.5.2",
     "prettier": "3.9.10",
     "supertest": "7.3.1",
-    "ts-jest": "29.4.15",
     "tsx": "4.23.15",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.72.2"
+    "typescript-eslint": "8.72.2",
+    "vitest": "5.1.0"
   }
 }

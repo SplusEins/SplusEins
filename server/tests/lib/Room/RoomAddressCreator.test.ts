@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { createRoomAddress } from '../../../lib/Room/RoomAddressCreator';
 
 describe('RoomAddressCreator', () => {

@@ -2,7 +2,7 @@ import OSM_ROOMS_DATA_WF from '../../assets/overpass_osm/WF.json';
 import OSM_ROOMS_DATA_SZ from '../../assets/overpass_osm/SZ.json';
 import OSM_ROOMS_DATA_WOB from '../../assets/overpass_osm/WOB.json';
 import OSM_ROOMS_DATA_SUD from '../../assets/overpass_osm/SUD.json';
-import ROOM_ALIASES from '../../assets/roomAliases.json';
+import ROOM_ALIASES_JSON from '../../assets/roomAliases.json';
 
 import { FacultyLocation } from './RoomLocationApi';
 
@@ -15,6 +15,14 @@ type OSMRoomEntry = {
     maxlat: number;
     maxlon: number;
   };
+};
+
+const ROOM_ALIASES: Record<string, string> = ROOM_ALIASES_JSON;
+const OSM_ROOMS: Record<FacultyLocation, Record<string, unknown>> = {
+  WF: OSM_ROOMS_DATA_WF,
+  SZ: OSM_ROOMS_DATA_SZ,
+  WOB: OSM_ROOMS_DATA_WOB,
+  SUD: OSM_ROOMS_DATA_SUD,
 };
 
 /**
@@ -46,23 +54,7 @@ export function createOSMLink(
 ): string | null {
   room = ROOM_ALIASES[room] ?? room; // Use alias if available, otherwise use the original room name
 
-  let osmData: OSMRoomEntry | null = null;
-
-  // Select the correct OSM data based on the faculty location
-  switch (facultyLocation) {
-    case 'WF':
-      osmData = OSM_ROOMS_DATA_WF?.[room] ?? null;
-      break;
-    case 'SZ':
-      osmData = OSM_ROOMS_DATA_SZ?.[room] ?? null;
-      break;
-    case 'WOB':
-      osmData = OSM_ROOMS_DATA_WOB?.[room] ?? null;
-      break;
-    case 'SUD':
-      osmData = OSM_ROOMS_DATA_SUD?.[room] ?? null;
-      break;
-  }
+  const osmData = OSM_ROOMS[facultyLocation]?.[room];
 
   /**
    * Check if we have OSM data for this room in the selected location

@@ -1,4 +1,5 @@
 import sanitize from 'sanitize-html';
+import { config } from '../config';
 import iconv from 'iconv-lite';
 import dayjs from './dayjs';
 import { cached } from './cache';
@@ -12,14 +13,24 @@ import {
 import { ParsedLecture } from '../model/SplusModel';
 import { getLectureRoomLocations } from './Room/RoomLocationApi';
 
-const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
+const CACHE_SECONDS = config.splusCacheSeconds;
 
-const SKED_USER = process.env.SKED_USER;
-const SKED_PASSWORD = process.env.SKED_PASSWORD;
+// Allow only specific HTML attributes for the room since we directly render the HTML in the client
+// Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
+const ALLOW_LINKS: sanitize.IOptions = {
+  allowedTags: ['a'],
+  allowedAttributes: { a: ['href', 'target'] },
+};
+const STRIP_HTML: sanitize.IOptions = {
+  allowedTags: [],
+  allowedAttributes: {},
+};
 
-const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
+function clean(html: string, options: sanitize.IOptions): string {
+  return sanitize(html, options).replaceAll('&amp;', '&');
+}
 
-function sleep(ms) {
+function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -29,7 +40,9 @@ function sleep(ms) {
  * @returns HTML-string
  */
 async function timetableRequest(timetable: TimetableRequest): Promise<string> {
-  const token = Buffer.from(SKED_USER + ':' + SKED_PASSWORD).toString('base64');
+  const token = Buffer.from(
+    config.skedUser + ':' + config.skedPassword,
+  ).toString('base64');
   const headers = new Headers();
   headers.append('Authorization', 'Basic ' + token);
 
@@ -94,30 +107,16 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
           `Unsupported timetable type detected: ${timetable.type}.`,
         );
     }
-    lectures = lectures.map((lecture) => {
-      const allowLinksConfig: sanitize.IOptions = {
-        allowedTags: ['a'],
-        allowedAttributes: { a: ['href', 'target'] },
-      };
-      // Allow only specific HTML attributes for the room since we directly render the HTML in the client
-      // Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
-      lecture.room = sanitize(lecture.room, allowLinksConfig).replace(
-        '&amp;',
-        '&',
-      );
-      lecture.room = getLectureRoomLocations(
-        lecture.room.split(','),
+    lectures = lectures.map((lecture) => ({
+      ...lecture,
+      room: getLectureRoomLocations(
+        clean(lecture.room, ALLOW_LINKS).split(','),
         timetable.faculty,
-      );
-      lecture.info = sanitize(lecture.info, allowLinksConfig).replace(
-        '&amp;',
-        '&',
-      );
-      // Strip all html
-      lecture.lecturer = sanitize(lecture.lecturer, {}).replace('&amp;', '&');
-      lecture.title = sanitize(lecture.title, {}).replace('&amp;', '&');
-      return lecture;
-    });
+      ),
+      info: clean(lecture.info, ALLOW_LINKS),
+      lecturer: clean(lecture.lecturer, STRIP_HTML),
+      title: clean(lecture.title, STRIP_HTML),
+    }));
     console.log(
       `Storing ${lectures.length} parsed lectures for ${key} in cache`,
     );
@@ -131,24 +130,18 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
  * Uniqueness is determined by the ID field (which is derived from the title of the event/lecture).
  *
  * @param timetable request, the week field will be ignored.
- * @returns An array of the unique events. Parameters for a specific event (like start and end date) are set to null.
+ * @returns The first event of each lecture.
  */
 export async function getUniqueEvents(
   timetable: TimetableRequest,
 ): Promise<Event[]> {
   const allEvents = await parseTimetable(timetable);
-  // Filter unique events
-  const uniqueEvents = [...new Set(allEvents.map((obj) => obj.id))] // search all unique IDs
-    .map((id) => {
-      // map IDs back to events, but copy by value first so we don't modify existing cache objects!
-      const matchingEvent = allEvents.slice().find((evt) => evt.id == id);
-      // TODO uncomment this, but make sure the events pass by value works
-      // For some reason https://github.com/SplusEins/SplusEins/pull/466 was NOT enough
-      // clear end and start since this is just one of the random events for this ID
-      // matchingEvent.start = null;
-      // matchingEvent.end = null;
-      return matchingEvent;
-    });
+  // keep the first event of each lecture
+  const eventsById = new Map<string, Event>();
+  for (const event of allEvents) {
+    if (!eventsById.has(event.id)) eventsById.set(event.id, event);
+  }
+  const uniqueEvents = [...eventsById.values()];
   console.log(
     `Returning ${uniqueEvents.length} unique lecture metadata for ${timetable.id}`,
   );
@@ -175,7 +168,7 @@ export async function getEvents(
         return events;
       }),
     ),
-  ).then(flatten);
+  ).then((events) => events.flat());
 
   // filter duplicates
   const key = (event: Event) =>
@@ -183,7 +176,5 @@ export async function getEvents(
     `${event.start} ${event.end}`;
   const eventsByKey = new Map<string, Event>();
   allEvents.forEach((event) => eventsByKey.set(key(event), event));
-  const events = [...eventsByKey.values()];
-
-  return events;
+  return [...eventsByKey.values()];
 }

@@ -133,7 +133,7 @@ export function parseSkedCSV(csvString: string): ParsedLecture[] {
 
   const arr = CSV.parse(csvString);
   // Pop the first row from the array since it contains the header strings
-  const headerRow = arr.shift();
+  const headerRow = arr.shift() ?? [];
 
   // iterate through every CSV row
   arr.forEach(function (cols) {
@@ -296,11 +296,11 @@ export function parseSkedGraphical(
             ) {
               anmerkung += parts.shift() + ', ';
             }
-            veranstaltung = parts.shift();
+            veranstaltung = parts.shift() ?? '';
             if (parts.length >= 3) {
               anmerkung += parts.shift() + ', ';
-              dozent = parts.shift();
-              raum = parts.pop();
+              dozent = parts.shift() ?? '';
+              raum = parts.pop() ?? '';
             }
             anmerkung += parts.join(', ') || '';
             anmerkung = anmerkung.replace(/(, ?)+$/, ''); // remove trailing ,
@@ -361,13 +361,13 @@ export function parseTimetableIntranet(html: string): ParsedLecture[] {
   const days = $('table.schedule');
   const events = [] as ParsedLecture[];
   days.each(function (index, day) {
-    const date = $(day).find('.day').html().split('<br>')[1];
+    const date = ($(day).find('.day').html() ?? '').split('<br>')[1];
 
     $(day)
       .find('.day-event')
       .each(function (i, event) {
-        const styleTopString = $(event).css('top');
-        const styleHeightString = $(event).css('height');
+        const styleTopString = $(event).css('top') ?? '';
+        const styleHeightString = $(event).css('height') ?? '';
         const styleUsesPercentage = styleTopString.includes('%');
         let startTimeSince8: number | undefined;
         let endTimeSince8: number | undefined;

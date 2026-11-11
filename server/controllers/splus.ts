@@ -1,4 +1,5 @@
-import express from 'express';
+import express, { NextFunction, Response } from 'express';
+import { config } from '../config';
 import TIMETABLES from '../assets/timetables.json';
 
 import {
@@ -8,10 +9,9 @@ import {
 } from '../model/SplusEinsModel';
 import { getEvents, getUniqueEvents } from '../lib/SplusApi';
 
-const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
+const CACHE_SECONDS = config.splusCacheSeconds;
 
 const router = express.Router();
-const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
 /**
  * Get unique lectures for given timetable id
@@ -21,7 +21,7 @@ const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
  */
 router.get('/:timetable/lectures', async (req, res, next) => {
   const timetableId = req.params.timetable;
-  const timetable = TIMETABLES.find(({ id }) => id == timetableId);
+  const timetable = TIMETABLES.find(({ id }) => id === timetableId);
 
   if (!timetable) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
@@ -55,14 +55,14 @@ router.get('/:timetable/lectures', async (req, res, next) => {
  */
 router.get('/:timetable/:weeks', async (req, res, next) => {
   const timetableId = req.params.timetable;
-  const timetable = TIMETABLES.find(({ id }) => id == timetableId);
+  const timetable = TIMETABLES.find(({ id }) => id === timetableId);
 
   const weeks = req.params.weeks
     .split(',')
     .filter((week) => week.length > 0)
     .map((week) => parseInt(week));
 
-  if (!timetable || weeks.length == 0) {
+  if (!timetable || weeks.length === 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.status(404).send('Stundenplan existiert nicht');
     return;
@@ -90,7 +90,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
     };
     const response: Timetable = <Timetable>{
       name:
-        timetable.degree == 'Räume'
+        timetable.degree === 'Räume'
           ? `${timetable.semester} ${timetable.label}`
           : `${timetable.degree} ${timetable.label} - ${timetable.semester}. Semester`,
       events,
@@ -122,15 +122,15 @@ router.get('/:timetables/:weeks{/:lectures}/:name', async (req, res, next) => {
   );
 
   const timetables = timetableIds
-    .map((timetableId) => TIMETABLES.find(({ id }) => id == timetableId))
-    .filter((timetable) => timetable != undefined);
+    .map((timetableId) => TIMETABLES.find(({ id }) => id === timetableId))
+    .filter((timetable) => timetable !== undefined);
 
   const weeks = req.params.weeks
     .split(',')
     .filter((week) => week.length > 0)
     .map((week) => parseInt(week));
 
-  if (timetables.length == 0 || weeks.length == 0) {
+  if (timetables.length === 0 || weeks.length === 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.status(404).send('Stundenplan existiert nicht');
     return;
@@ -139,18 +139,16 @@ router.get('/:timetables/:weeks{/:lectures}/:name', async (req, res, next) => {
   const name = decodeURIComponent(req.params.name);
 
   try {
-    const requests = <TimetableRequest[]>flatten(
-      timetables.map((timetable) =>
-        weeks.map(
-          (week) =>
-            <TimetableRequest>{
-              id: timetable.id,
-              week,
-              timetablePath: timetable.timetablePath,
-              faculty: timetable.faculty,
-              type: timetable.type,
-            },
-        ),
+    const requests = timetables.flatMap((timetable) =>
+      weeks.map(
+        (week) =>
+          <TimetableRequest>{
+            id: timetable.id,
+            week,
+            timetablePath: timetable.timetablePath,
+            faculty: timetable.faculty,
+            type: timetable.type,
+          },
       ),
     );
     const allEvents = await getEvents(requests);
@@ -180,7 +178,7 @@ router.get('/:timetables/:weeks{/:lectures}/:name', async (req, res, next) => {
   }
 });
 
-function handleSkedError(error: unknown, res, next) {
+function handleSkedError(error: unknown, res: Response, next: NextFunction) {
   if (!(error instanceof Error)) throw error;
   if (error.message.startsWith('404')) {
     res.status(404).send('Stundenplan nicht bei Ostfalia verfügbar');

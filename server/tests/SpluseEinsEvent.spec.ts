@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { ParsedLecture } from '../model/SplusModel';
 import { Event } from '../model/SplusEinsModel';
 
