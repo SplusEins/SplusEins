@@ -1,5 +1,6 @@
 // Production server: serves the built app from dist/ and forwards
 // /api and /docs to the other services. Start with `npm start`.
+import { readFileSync } from 'node:fs';
 import express from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
@@ -34,6 +35,8 @@ app.use(
 // Everything else (index.html, sw.js, ...) must be checked for updates.
 app.use(express.static('dist'));
 // Unknown paths are pages of the single page app - the router in the browser handles them.
-app.use((req, res) => res.sendFile('index.html', { root: 'dist' }));
+// index.html is read only once, so these requests do not need to access the disk.
+const indexHtml = readFileSync('dist/index.html');
+app.use((req, res) => res.type('html').send(indexHtml));
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
