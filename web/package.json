@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@mdi/js": "7.4.47",
-    "chroma-js": "3.3.0",
     "dayjs": "1.11.23",
     "express": "5.3.0",
     "http-proxy-middleware": "4.2.1",

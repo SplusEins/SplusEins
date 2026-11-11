@@ -72,7 +72,7 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue';
+import { computed, defineAsyncComponent, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { mdiClose } from '@mdi/js';
 import { uniq, customTimetableToRoute, deepEqual } from '../lib/util';
@@ -82,8 +82,14 @@ import {
   eventsAsLectures,
 } from '../stores/splus';
 import { useAppStore } from '../stores/app';
-import TimetableSelect from './timetable-select.vue';
-import CourseMultiselect from './course-multiselect.vue';
+
+// loaded when the dialog is opened for the first time
+const TimetableSelect = defineAsyncComponent(
+  () => import('./timetable-select.vue'),
+);
+const CourseMultiselect = defineAsyncComponent(
+  () => import('./course-multiselect.vue'),
+);
 
 const props = defineProps({
   /* personalized timetable to edit - leave empty to create a new one */

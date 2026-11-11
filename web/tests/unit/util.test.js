@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  colorScale,
   customTimetableToRoute,
   deepEqual,
   range,
@@ -73,5 +74,23 @@ describe('util', () => {
       params: {},
       query: { id: ['a', 'b'], course: ['x'], name: 'Mein Plan', v: '1' },
     });
+  });
+});
+
+describe('colorScale', () => {
+  it('should spread the colors from start to end', () => {
+    expect(colorScale('#000000', '#ff8040', 3)).toEqual([
+      '#000000',
+      '#804020',
+      '#ff8040',
+    ]);
+  });
+
+  it('should return the middle color for a single color', () => {
+    expect(colorScale('#000000', '#ff8040', 1)).toEqual(['#804020']);
+  });
+
+  it('should return no colors for no events', () => {
+    expect(colorScale('#1976D2', '#004D40', 0)).toEqual([]);
   });
 });
