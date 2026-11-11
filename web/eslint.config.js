@@ -12,7 +12,6 @@ export default [
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.node,
         // defined in vite.config.js
         __TEAM__: 'readonly',
         __STAGING__: 'readonly',
@@ -26,6 +25,11 @@ export default [
       'no-warning-comments': 'warn',
       'vue/valid-v-slot': 'off', // false positives for vuetify
     },
+  },
+  {
+    // these files run in Node.js, not in the browser
+    files: ['*.config.js', 'server.js'],
+    languageOptions: { globals: globals.node },
   },
   {
     // pages are named after their URL

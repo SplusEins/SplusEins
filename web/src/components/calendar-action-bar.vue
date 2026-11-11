@@ -159,10 +159,15 @@ function currentUrl() {
 async function share() {
   // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
   if (navigator.share) {
-    await navigator.share({
-      url: currentUrl(),
-      title: splus.scheduleDisplayName(),
-    });
+    try {
+      await navigator.share({
+        url: currentUrl(),
+        title: splus.scheduleDisplayName(),
+      });
+    } catch (error) {
+      // AbortError: the user closed the share dialog
+      if (error.name !== 'AbortError') throw error;
+    }
   } else {
     shareDialogOpen.value = true;
   }

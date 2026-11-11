@@ -34,9 +34,11 @@ app.use(
 );
 // Everything else (index.html, sw.js, ...) must be checked for updates.
 app.use(express.static('dist'));
-// Unknown paths are pages of the single page app - the router in the browser handles them.
+// Missing files and API requests without API_URL must not be answered with the app.
+app.use(['/assets', '/api', '/docs'], (req, res) => res.sendStatus(404));
+// Other paths are pages of the single page app - the router in the browser handles them.
 // index.html is read only once, so these requests do not need to access the disk.
 const indexHtml = readFileSync('dist/index.html');
-app.use((req, res) => res.type('html').send(indexHtml));
+app.get('/{*path}', (req, res) => res.type('html').send(indexHtml));
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));

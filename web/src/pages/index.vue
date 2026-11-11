@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import dayjs from '../lib/dayjs';
 import { useUiStore } from '../stores/ui';
@@ -76,6 +76,4 @@ const displayMensaCard = computed(() => {
     dayjs().add(1, 'days').isSame(dayPlans[0].date, 'day')
   );
 });
-
-onMounted(() => mensa.load());
 </script>
