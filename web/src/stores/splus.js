@@ -31,7 +31,7 @@ function defaultWeek() {
 
   // if the user is looking at today and is on Sat/Sun, peek to the next week
   if (dayjs().isoWeekday() === 6 || dayjs().isoWeekday() === 7) {
-    return formatDayjs(dayjs().startOf('isoweek').add('1', 'week'));
+    return formatDayjs(dayjs().startOf('isoweek').add(1, 'week'));
   } else {
     return formatDayjs(dayjs().startOf('isoweek'));
   }
@@ -89,21 +89,26 @@ function isCustomTimetable(timetable) {
   return !!timetable && !!timetable.whitelist;
 }
 
+/* all timetables of the Ostfalia, they do not change while the app runs */
+const SCHEDULES = TIMETABLES.map((timetable) => ({
+  ...timetable,
+  path: `${timetable.faculty} ${timetable.degree}`,
+  route: {
+    name: 'plan-timetable',
+    params: { timetable: timetable.id },
+  },
+  description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
+}));
+
+/* counts the requests of load(), so that only the response of the last one is used */
+let loadCounter = 0;
+
 export const useSplusStore = defineStore('splus', {
   state: () => ({
     /**
      * Current timetable, either one of TIMETABLES or customTimetable.
      */
     schedule: undefined,
-    schedules: TIMETABLES.map((timetable) => ({
-      ...timetable,
-      path: `${timetable.faculty} ${timetable.degree}`,
-      route: {
-        name: 'plan-timetable',
-        params: { timetable: timetable.id },
-      },
-      description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
-    })),
     /**
      * Map of created or visited custom timetables.
      * Key: label
@@ -189,30 +194,20 @@ export const useSplusStore = defineStore('splus', {
      * Convert the state's star schema: { faculty, degree, semester, ...timetable }
      * into a hierarchy: { (faculty, degree): { semester: timetables } }
      */
-    getTimetablesAsTree: (state) => {
+    getTimetablesAsTree: () => {
       const tree = {};
-      state.schedules.forEach((timetable) => {
-        const path = timetable.path;
-        if (tree[path] == undefined) {
-          tree[path] = {};
-        }
-
-        const leaf1 = tree[path];
-        if (leaf1[timetable.semester] == undefined) {
-          leaf1[timetable.semester] = [];
-        }
-
-        const leaf2 = leaf1[timetable.semester];
-        leaf2.push(timetable);
+      SCHEDULES.forEach((timetable) => {
+        tree[timetable.path] ??= {};
+        tree[timetable.path][timetable.semester] ??= [];
+        tree[timetable.path][timetable.semester].push(timetable);
       });
-
       return tree;
     },
-    timetableIds: (state) => {
-      return state.schedules.map(({ id }) => id);
+    timetableIds: () => {
+      return SCHEDULES.map(({ id }) => id);
     },
-    getTimetableById: (state) => (timetableId) => {
-      return state.schedules.find(({ id }) => id === timetableId);
+    getTimetableById: () => (timetableId) => {
+      return SCHEDULES.find(({ id }) => id === timetableId);
     },
     customTimetablesAsRoutes: (state) => {
       return Object.values(state.customSchedules).map(customTimetableToRoute);
@@ -244,10 +239,10 @@ export const useSplusStore = defineStore('splus', {
   },
   actions: {
     decrementWeek() {
-      this.week = formatDayjs(dayjs(this.week).subtract('1', 'week'));
+      this.week = formatDayjs(dayjs(this.week).subtract(1, 'week'));
     },
     incrementWeek() {
-      this.week = formatDayjs(dayjs(this.week).add('1', 'week'));
+      this.week = formatDayjs(dayjs(this.week).add(1, 'week'));
     },
     resetWeek(forceDefault) {
       if (forceDefault) {
@@ -289,19 +284,14 @@ export const useSplusStore = defineStore('splus', {
     deleteCustomSchedule(customTimetable) {
       delete this.customSchedules[customTimetable.label];
       if (this.subscribedTimetable.label === customTimetable.label) {
-        const subscribables = [
-          ...Object.values(this.customSchedules),
-          ...this.favoriteSchedules,
-        ];
-        this.subscribedTimetable =
-          subscribables.length === 0 ? {} : subscribables[0];
+        this.subscribeFirstTimetable();
       }
     },
     addFavoriteSchedule(favoriteTimetable) {
       if (
-        this.favoriteSchedules.filter(
+        !this.favoriteSchedules.some(
           (favorite) => favorite.id === favoriteTimetable.id,
-        ).length === 0
+        )
       ) {
         this.favoriteSchedules.push(favoriteTimetable);
         if (Object.keys(this.subscribedTimetable).length === 0) {
@@ -314,13 +304,14 @@ export const useSplusStore = defineStore('splus', {
         (timetable) => timetable.id !== favoriteTimetable.id,
       );
       if (this.subscribedTimetable.id === favoriteTimetable.id) {
-        const subscribables = [
-          ...Object.values(this.customSchedules),
-          ...this.favoriteSchedules,
-        ];
-        this.subscribedTimetable =
-          subscribables.length === 0 ? {} : subscribables[0];
+        this.subscribeFirstTimetable();
       }
+    },
+    /**
+     * Show the first saved timetable on the start page, or none if there is none.
+     */
+    subscribeFirstTimetable() {
+      this.subscribedTimetable = this.subscribableTimetables[0] ?? {};
     },
     setSubscribedTimetable(timetable) {
       this.subscribedTimetable = timetable;
@@ -330,12 +321,17 @@ export const useSplusStore = defineStore('splus', {
      * Request the events of the current timetable for the current week.
      */
     async load() {
+      const request = ++loadCounter;
       try {
-        this.events = await loadEvents(
+        const events = await loadEvents(
           this.schedule,
           dayjs(this.week).isoWeek(),
         );
+        // e.g. the user switched to the next week before the response arrived
+        if (request !== loadCounter) return;
+        this.events = events;
       } catch (error) {
+        if (request !== loadCounter) return;
         useAppStore().enqueueError(
           error.status === 404
             ? 'Dieser Plan existiert nicht (mehr).'
@@ -383,7 +379,7 @@ export const useSplusStore = defineStore('splus', {
           }
 
           // standard, no filters
-          this.schedule = this.schedules.find(
+          this.schedule = SCHEDULES.find(
             (timetable) => timetable.id === params.timetable,
           );
         }
