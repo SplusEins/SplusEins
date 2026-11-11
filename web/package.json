@@ -14,6 +14,7 @@
     "dev:local": "API_URL=http://127.0.0.1:3001 vite",
     "build": "vite build",
     "preview": "vite preview",
+    "test": "vitest run",
     "start": "node server.js",
     "fmt": "prettier . --write",
     "fmt:check": "prettier . --check",
@@ -42,6 +43,7 @@
     "prettier": "3.9.10",
     "vite": "8.3.8",
     "vite-plugin-pwa": "2.0.0",
-    "vite-plugin-vuetify": "2.1.3"
+    "vite-plugin-vuetify": "2.1.3",
+    "vitest": "5.1.0"
   }
 }

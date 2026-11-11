@@ -1,5 +1,6 @@
 // Saves a part of the stores in the browser (localStorage), so that
 // timetables and settings are still there on the next visit.
+import { watch } from 'vue';
 import { useUiStore } from './ui';
 import { useSplusStore } from './splus';
 import { useMensaStore } from './mensa';
@@ -37,31 +38,32 @@ export function persistStores(pinia) {
   splus.$patch(saved.splus || {});
   mensa.$patch(saved.mensa || {});
 
-  // save on every change
-  const save = () => {
+  // save when one of the saved values changes
+  const savedState = () => ({
+    version: VERSION,
     /* select items to be saved - must not change the structure! */
-    const state = {
-      version: VERSION,
-      ui: {
-        isDark: ui.isDark,
-        hasSeenDisclaimer: ui.hasSeenDisclaimer,
-      },
-      splus: {
-        customSchedules: splus.customSchedules,
-        favoriteSchedules: splus.favoriteSchedules,
-        subscribedTimetable: splus.subscribedTimetable,
-      },
-      mensa: {
-        location: mensa.location,
-      },
-    };
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch (error) {
-      console.error('could not save state', error.message);
-    }
-  };
-  ui.$subscribe(save);
-  splus.$subscribe(save);
-  mensa.$subscribe(save);
+    ui: {
+      isDark: ui.isDark,
+      hasSeenDisclaimer: ui.hasSeenDisclaimer,
+    },
+    splus: {
+      customSchedules: splus.customSchedules,
+      favoriteSchedules: splus.favoriteSchedules,
+      subscribedTimetable: splus.subscribedTimetable,
+    },
+    mensa: {
+      location: mensa.location,
+    },
+  });
+  watch(
+    savedState,
+    (state) => {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (error) {
+        console.error('could not save state', error.message);
+      }
+    },
+    { deep: true },
+  );
 }

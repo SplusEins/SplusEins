@@ -75,7 +75,7 @@
 import { computed, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { mdiClose } from '@mdi/js';
-import { uniq, flatten, customTimetableToRoute, deepEqual } from '../lib/util';
+import { uniq, customTimetableToRoute, deepEqual } from '../lib/util';
 import {
   useSplusStore,
   loadUniqueLectures,
@@ -110,14 +110,15 @@ const selectedCourses = ref([]);
 /* lectures of the selected timetables: { timetable id: [lecture] } */
 const lectures = ref({});
 /* state */
-const loading = ref(false);
+const pendingLoads = ref(0);
+const loading = computed(() => pendingLoads.value > 0);
 const valid = ref(false);
 
 const isNew = computed(() => !props.customSchedule);
 const saveable = computed(
   () => valid.value && selectedCourses.value.length > 0,
 );
-const allLectures = computed(() => flatten(Object.values(lectures.value)));
+const allLectures = computed(() => Object.values(lectures.value).flat());
 
 const rules = {
   required: (value) => !!value || 'Pflichtfeld',
@@ -140,17 +141,16 @@ function getFormattedName(schedule) {
 }
 
 async function loadLectures(schedule) {
-  loading.value = true;
-
+  pendingLoads.value++;
   try {
     const events = await loadUniqueLectures(schedule);
     lectures.value[schedule.id] = eventsAsLectures(events);
   } catch (error) {
     useAppStore().enqueueError('Stundenplan: API-Verbindung fehlgeschlagen');
     console.error('error during API call', error.message);
+  } finally {
+    pendingLoads.value--;
   }
-
-  loading.value = false;
 }
 
 async function addSchedule(schedule) {
@@ -221,8 +221,20 @@ async function load() {
     .filter((course) => course !== undefined);
 }
 
+/**
+ * Forget the input, so that the dialog starts empty next time.
+ */
+function reset() {
+  selectedName.value = '';
+  selectedSchedules.value = [];
+  selectedCourses.value = [];
+  lectures.value = {};
+}
+
 watch(dialogOpen, () => {
-  if (dialogOpen.value && !isNew.value) {
+  if (!dialogOpen.value) {
+    reset();
+  } else if (!isNew.value) {
     load();
   }
 });
