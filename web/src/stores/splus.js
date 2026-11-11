@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import chroma from 'chroma-js';
 
 import dayjs from '../lib/dayjs';
 import { apiGet, errorCode } from '../lib/api';
@@ -13,6 +12,7 @@ import {
   uniq,
   customTimetableToRoute,
   scalarArraysEqual,
+  colorScale,
 } from '../lib/util';
 
 const formatDayjs = (date) => {
@@ -158,9 +158,7 @@ export const useSplusStore = defineStore('splus', {
         state.events.map((event) => event.meta.organiserShortname).sort(),
       );
 
-      const colorScale = chroma
-        .scale(['#1976D2', '#004D40']) // blue to teal
-        .colors(uniqueIds.length);
+      const colors = colorScale('#1976D2', '#004D40', uniqueIds.length); // blue to teal
 
       const eventsByStart = new Map();
       state.events.forEach((event) =>
@@ -171,8 +169,7 @@ export const useSplusStore = defineStore('splus', {
       );
 
       return state.events.map((event) => {
-        const color =
-          colorScale[uniqueIds.indexOf(event.meta.organiserShortname)];
+        const color = colors[uniqueIds.indexOf(event.meta.organiserShortname)];
         const description = event.meta.organiserName
           ? `Dozent: ${event.meta.organiserName}<br>${event.meta.description}`
           : `${event.meta.description}`;
