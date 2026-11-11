@@ -310,13 +310,16 @@ export function parseSkedGraphical(
               .replace(` - ${dozent}`, '')
               .replace(` ${dozent}`, '');
             break;
-          case 'Fahrzeugtechnik':
-            raum = parts[0];
-            uhrzeitStart = parts[1];
-            uhrzeitEnde = parts[2];
-            dozent = parts[3];
-            veranstaltung = parts[4];
+          case 'Fahrzeugtechnik': {
+            // room, start, end, lecturer, title - room or lecturer may be missing
+            const fields = [...parts];
+            raum = /^\d?\d:\d\d$/.test(fields[0]) ? '' : (fields.shift() ?? '');
+            uhrzeitStart = fields.shift() ?? '';
+            uhrzeitEnde = fields.shift() ?? '';
+            veranstaltung = fields.pop() ?? '';
+            dozent = fields.join(', ');
             break;
+          }
           case 'Gesundheitswesen':
           case 'Verkehr-Sport-Tourismus-Medien':
           case 'Elektro- und Informationstechnik':
@@ -338,7 +341,8 @@ export function parseSkedGraphical(
         }
 
         const times = parseTimes(datum, uhrzeitStart, uhrzeitEnde);
-        if (!times || !veranstaltung) {
+        // entries without a title are kept: a broken event tells users to check the original plan
+        if (!times) {
           return;
         }
 
@@ -346,7 +350,7 @@ export function parseSkedGraphical(
           info: anmerkung || '',
           room: raum || '',
           lecturer: dozent || '',
-          title: veranstaltung,
+          title: veranstaltung ?? '',
           ...times,
         });
       });
