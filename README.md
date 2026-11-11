@@ -48,6 +48,11 @@ The frontend is a single page app built with [Vue 3](https://vuejs.org), [Vite](
 
 `npm run build` creates the production build in `dist/`, `npm start` serves it.
 
+```bash
+# run the tests in tests/unit/
+npm test
+```
+
 ### Setup backend
 
 ```bash
@@ -75,6 +80,9 @@ set CACHE_PATH=spluseins-cache # Windows
 
 # start dev api at localhost:3001/api
 npm run dev
+
+# run the tests
+npm test
 ```
 
 ### Setup documentation

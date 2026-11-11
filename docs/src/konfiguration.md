@@ -26,12 +26,15 @@ Beim Bauen (`npm run build`), da diese Werte fest in die App eingebaut werden:
 - `PORT`: Port des Servers (Default: `3001`)
 - `SKED_USER`: stundenplan.ostfalia.de Benutzername
 - `SKED_PASSWORD`: stundenplan.ostfalia.de Passwort
-- `COOKIE_SECRET`: Token, welcher genutzt wird um Cookies zu signieren
 - `CACHE_PATH`: Pfad welcher angibt wo gecachte Daten gespeichert werden sollen (Default: `/tmp/spluseins-cache`)
-- `CACHE_DISABLE`: Boolean-Wert welche den Cache aktivieren/deaktivieren kann (Default `true`)
+- `CACHE_DISABLE`: Wenn gesetzt (z.B. `true`), wird nichts zwischengespeichert (Default: Cache aktiv)
 - `API_PREFIX`: Optionales Präfix des Servers z.B. `/api`
 - `ICS_PRELOAD_WEEKS`: Anzahl der Wochen, welche bei ICS-Kalenderabfragen zurückgeliefert werden (Default: `4`)
 - `ICS_CACHE_SECONDS`: Cache-Dauer in Sekunden für ICS-Abfragen (Default: `600`)
 - `NEWS_CACHE_SECONDS`: Cache-Dauer in Sekunden für News-Abfragen (Default: `1800`)
 - `MENSA_CACHE_SECONDS`: Cache-Dauer in Sekunden für Mensa-Abfragen (Default: `1800`)
 - `SPLUS_CACHE_SECONDS`: Cache-Dauer in Sekunden für Stundenplan-Abfragen (Default: `10800`)
+- `BUS_CACHE_SECONDS`: Cache-Dauer in Sekunden für Bus-Abfragen (Default: `60`)
+- `CENSOR_DISABLE`: Wenn gesetzt, werden die Namen der Dozenten nicht abgekürzt
+
+Alle Variablen werden in `server/config.ts` gelesen. Ist eine Zahl ungültig, startet der Server nicht.
