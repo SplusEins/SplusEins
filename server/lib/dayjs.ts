@@ -15,3 +15,11 @@ dayjs.extend(isoWeek);
 dayjs.locale('de');
 
 export default dayjs;
+
+/**
+ * ISO week numbers of this week and the following weeks, e.g. [52, 53, 1, 2]
+ * at the end of a year with 53 weeks.
+ */
+export function upcomingIsoWeeks(count: number, from = dayjs()): number[] {
+  return Array.from({ length: count }, (_, i) => from.add(i, 'week').isoWeek());
+}
