@@ -30,7 +30,7 @@ jobs:
           OSTFALIA_PASS: ${{ secrets.OSTFALIA_PASS }}
         run: |
           set -o pipefail
-          sked-parser -o web/assets/timetables.json -o server/assets/timetables.json -c timetable-config.yaml 2>&1 | tee sked-parser-full.log
+          sked-parser -o web/src/assets/timetables.json -o server/assets/timetables.json -c timetable-config.yaml 2>&1 | tee sked-parser-full.log
 
       - name: Extract WARN lines
         id: warns

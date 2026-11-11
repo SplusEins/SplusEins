@@ -1,9 +1,9 @@
-import * as moment from 'moment';
-import * as express from 'express';
+import express from 'express';
 import ical from 'ical-generator';
 import { createHash } from 'crypto';
 
-import * as TIMETABLES from '../assets/timetables.json';
+import TIMETABLES from '../assets/timetables.json';
+import dayjs from '../lib/dayjs';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { getEvents } from '../lib/SplusApi';
 
@@ -20,12 +20,12 @@ const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
  * @returns ical event
  */
 function eventToICSEvent(lecture: Event) {
-  const uid = sha256(JSON.stringify(lecture)).substr(0, 16);
+  const uid = sha256(JSON.stringify(lecture)).slice(0, 16);
   return {
     uid,
     start: lecture.start,
     end: lecture.end,
-    timestamp: moment().toDate(),
+    timestamp: new Date(),
     summary: lecture.title,
     description:
       lecture.meta.organiserName +
@@ -44,7 +44,7 @@ function eventToICSEvent(lecture: Event) {
  * @param lectures Comma-separated list of lecture title IDs
  * @return An ICS calendar
  */
-router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
+router.get('/:version/:timetables{/:lectures}', async (req, res, next) => {
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>(
     (req.params.lectures || '')
@@ -62,7 +62,7 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
     return;
   }
 
-  const thisWeek = moment().week();
+  const thisWeek = dayjs().isoWeek();
   const weeks = range(thisWeek, thisWeek + ICS_PRELOAD_WEEKS);
 
   try {

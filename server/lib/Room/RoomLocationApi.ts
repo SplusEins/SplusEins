@@ -1,4 +1,4 @@
-import * as LOCATION_OF_FACULTY from '../../assets/locationOfFaculty.json';
+import LOCATION_OF_FACULTY from '../../assets/locationOfFaculty.json';
 
 import { createRoomAddress } from './RoomAddressCreator';
 import { createOSMLink } from './RoomOSMLinkCreator';

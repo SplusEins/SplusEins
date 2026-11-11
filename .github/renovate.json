@@ -49,7 +49,7 @@
     {
       "matchPackageNames": [
         "vue",
-        "nuxt",
+        "vuetify",
         "webpack"
       ],
       "matchUpdateTypes": [
