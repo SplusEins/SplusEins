@@ -118,12 +118,30 @@ exports[`Test SkedParser > should parse a graphical plan of Fahrzeugtechnik 1`] 
 [
   {
     "duration": 1.5,
+    "end": 2026-11-11T12:00:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "D-222",
+    "start": 2026-11-11T10:30:00.000Z,
+    "title": "Mentoring",
+  },
+  {
+    "duration": 1.5,
     "end": 2026-11-12T08:45:00.000Z,
     "info": "",
     "lecturer": "Becker",
     "room": "F-101",
     "start": 2026-11-12T07:15:00.000Z,
     "title": "Fahrdynamik",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-13T12:00:00.000Z,
+    "info": "",
+    "lecturer": "Prof. Dr.-Ing. Becker",
+    "room": "",
+    "start": 2026-11-13T10:30:00.000Z,
+    "title": "Labor Verbrennungsmotoren",
   },
 ]
 `;

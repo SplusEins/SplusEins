@@ -46,6 +46,53 @@ describe('Test SkedParser', () => {
     ).toMatchSnapshot();
   });
 
+  it('should parse Fahrzeugtechnik entries without room or lecturer', () => {
+    const lectures = parseSkedGraphical(
+      fixture('fahrzeugtechnik.html'),
+      'Fahrzeugtechnik',
+    );
+    expect(
+      lectures.map(({ title, room, lecturer, start }) => ({
+        title,
+        room,
+        lecturer,
+        start: start.toISOString(),
+      })),
+    ).toEqual([
+      {
+        title: 'Mentoring',
+        room: 'D-222',
+        lecturer: '',
+        start: '2026-11-11T10:30:00.000Z',
+      },
+      {
+        title: 'Fahrdynamik',
+        room: 'F-101',
+        lecturer: 'Becker',
+        start: '2026-11-12T07:15:00.000Z',
+      },
+      {
+        title: 'Labor Verbrennungsmotoren',
+        room: '',
+        lecturer: 'Prof. Dr.-Ing. Becker',
+        start: '2026-11-13T10:30:00.000Z',
+      },
+    ]);
+  });
+
+  it('should keep entries without a title so that users notice them', () => {
+    const html = fixture('soziale-arbeit.html').replace(
+      'Ringveranstaltung Ethik',
+      'Erstsemesterbegrüßung',
+    );
+    const lectures = parseSkedGraphical(html, 'Soziale Arbeit');
+    expect(lectures).toHaveLength(2);
+    expect(lectures[1]).toMatchObject({
+      title: '',
+      info: 'Erstsemesterbegrüßung, Aula',
+    });
+  });
+
   it('should estimate missing times for Maschinenbau', () => {
     expect(
       parseSkedGraphical(fixture('graphical-no-times.html'), 'Maschinenbau'),
