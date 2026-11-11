@@ -1,7 +1,8 @@
 import { ParsedLecture } from './SplusModel';
 import * as crypto from 'crypto';
+import { config } from '../config';
 
-const CENSOR_DISABLE = !!process.env.CENSOR_DISABLE;
+const CENSOR_DISABLE = config.censorDisable;
 
 export interface NewsElement {
   title: string;

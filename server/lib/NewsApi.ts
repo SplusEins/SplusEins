@@ -1,12 +1,11 @@
 import * as cheerio from 'cheerio';
 
+import { config } from '../config';
 import dayjs from './dayjs';
 import { cached } from './cache';
 import { NewsElement } from '../model/SplusEinsModel';
 
-const CACHE_SECONDS = parseInt(process.env.NEWS_CACHE_SECONDS || '1800');
-
-const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
+const CACHE_SECONDS = config.newsCacheSeconds;
 
 /**
  * Fetch and parse ostfalia news from internal ostfalia endpoint they use for openCMS
@@ -126,7 +125,7 @@ function truncateAndSortNews(
 
   // Sort articles by date, but rank "campus38" lower because they have much more news
   const scoreArticle = (article: NewsElement) => {
-    const date = new Date(article.date).getTime();
+    const date = article.date ? new Date(article.date).getTime() : 0;
     const now = new Date().getTime();
     const age = now - date;
     const boost = article.source === 'campus38' ? 0.35 : 1.0;
@@ -183,6 +182,6 @@ export default async function getNews(
         return [];
       }
     }),
-  ).then(flatten);
-  return truncateAndSortNews(news, limit);
+  );
+  return truncateAndSortNews(news.flat(), limit);
 }

@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import {
@@ -13,7 +14,7 @@ const fixture = (name: string) =>
 /**
  * These tests compare the output of the parsers with the saved output in
  * __snapshots__/. If a parser was changed on purpose, update the saved
- * output with `npx jest -u` and check the differences.
+ * output with `npx vitest run -u` and check the differences.
  */
 describe('Test SkedParser', () => {
   const graphicalFaculties = [

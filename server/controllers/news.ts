@@ -1,10 +1,11 @@
 import express from 'express';
+import { config } from '../config';
 import RSS from 'rss';
 import crypto from 'crypto';
 import getNews from '../lib/NewsApi';
 import { NewsElement } from '../model/SplusEinsModel';
 
-const CACHE_SECONDS = parseInt(process.env.NEWS_CACHE_SECONDS || '1800');
+const CACHE_SECONDS = config.newsCacheSeconds;
 const router = express.Router();
 
 const MAX_NEWS_ITEMS = 100;
@@ -31,7 +32,6 @@ router.get('/:newstypes{.:ext}', async (req, res) => {
     return res.json(news);
   } else {
     // Request ends with .rss, create and send RSS feed
-    const news = await getNews(newstypes, limit);
     const hostUrl = req.protocol + '://' + req.get('host');
     const feed = new RSS({
       title: `SplusEins news feed (for ${req.params.newstypes})`,
@@ -44,8 +44,8 @@ router.get('/:newstypes{.:ext}', async (req, res) => {
         title: newsEl.title,
         description: newsEl.text,
         url: newsEl.link,
-        categories: [newsEl.source],
-        date: newsEl.date,
+        categories: newsEl.source ? [newsEl.source] : [],
+        date: newsEl.date ?? new Date(),
         guid: crypto
           .createHash('sha1')
           .update(newsEl.title + newsEl.date)

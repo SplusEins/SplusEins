@@ -1,7 +1,8 @@
 import express from 'express';
+import { config } from '../config';
 import { cached } from '../lib/cache';
 
-import { createClient } from '@motis-project/motis-fptf-client';
+import { createClient, Journey } from '@motis-project/motis-fptf-client';
 import { profile } from '@motis-project/motis-fptf-client/p/transitous';
 
 // create a client with Transitous profile (disable station enrichment to avoid import/path issues with db-hafas-stations)
@@ -11,7 +12,7 @@ const motisClient = createClient(
   { enrichStations: false },
 ); // in case of changes, adjust the version date accordingly
 
-const CACHE_SECONDS = parseInt(process.env.BUS_CACHE_SECONDS || '60');
+const CACHE_SECONDS = config.busCacheSeconds;
 
 const router = express.Router();
 
@@ -31,7 +32,7 @@ router.get('/', async (req, res, next) => {
 
       const exerToFh = await motisClient.journeys(exer, fh, motisOpts);
       const fhToExer = await motisClient.journeys(fh, exer, motisOpts);
-      const extractDateAndLine = (journeys) =>
+      const extractDateAndLine = (journeys: Journey[]) =>
         journeys
           .map(({ legs }) => legs)
           .filter((legs) => legs.length === 1)
@@ -40,7 +41,7 @@ router.get('/', async (req, res, next) => {
             date: leg.departure,
             line: leg.line.name.replace('Bus ', ''), // remove Bus string at start
           }))
-          .sort((a, b) => Date.parse(a) - Date.parse(b));
+          .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 
       return {
         departures: {
