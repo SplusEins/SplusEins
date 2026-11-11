@@ -1,7 +1,7 @@
-import fetch, { Headers } from 'node-fetch';
-import * as cacheManager from 'cache-manager';
-import * as fsStore from 'cache-manager-fs-hash';
-import * as moment from 'moment';
+import sanitize from 'sanitize-html';
+import iconv from 'iconv-lite';
+import dayjs from './dayjs';
+import { cached } from './cache';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import {
   parseSkedCSV,
@@ -9,9 +9,7 @@ import {
   parseTimetableIntranet,
   parseSkedList,
 } from './SkedParser';
-import * as sanitize from 'sanitize-html';
 import { ParsedLecture } from '../model/SplusModel';
-import * as iconv from 'iconv-lite';
 import { getLectureRoomLocations } from './Room/RoomLocationApi';
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
@@ -19,21 +17,7 @@ const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 const SKED_USER = process.env.SKED_USER;
 const SKED_PASSWORD = process.env.SKED_PASSWORD;
 
-// default must be in /tmp because the rest is RO on AWS Lambda
-const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
-const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
 const CACHE_SECONDS = parseInt(process.env.SPLUS_CACHE_SECONDS || '10800');
-
-const cache = CACHE_DISABLE
-  ? cacheManager.caching({ store: 'memory', max: 0 })
-  : cacheManager.caching({
-      store: fsStore,
-      options: {
-        path: CACHE_PATH,
-        ttl: 60,
-        subdirs: true,
-      },
-    });
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -57,7 +41,10 @@ async function timetableRequest(timetable: TimetableRequest): Promise<string> {
     if (res.ok) {
       if (timetable.type === 'csv') {
         // CSV files are stored windows1252 encoded, convert them
-        return iconv.decode(await res.buffer(), 'windows1252');
+        return iconv.decode(
+          Buffer.from(await res.arrayBuffer()),
+          'windows1252',
+        );
       }
       return res.text();
     }
@@ -85,61 +72,57 @@ async function timetableRequest(timetable: TimetableRequest): Promise<string> {
 async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
   const key = `lectures-${timetable.id}`;
 
-  return await cache.wrap(
-    key,
-    async () => {
-      console.log(`Lectures cache miss for key ${key}`);
-      const data = await timetableRequest(timetable);
-      let lectures: ParsedLecture[];
-      switch (timetable.type) {
-        case 'graphical':
-          lectures = parseSkedGraphical(data, timetable.faculty);
-          break;
-        case 'list':
-          lectures = parseSkedList(data);
-          break;
-        case 'csv':
-          lectures = parseSkedCSV(data);
-          break;
-        case 'intranet':
-          lectures = parseTimetableIntranet(data);
-          break;
-        default:
-          throw new Error(
-            `Unsupported timetable type detected: ${timetable.type}.`,
-          );
-      }
-      lectures = lectures.map((lecture) => {
-        const allowLinksConfig: sanitize.IOptions = {
-          allowedTags: ['a'],
-          allowedAttributes: { a: ['href', 'target'] },
-        };
-        // Allow only specific HTML attributes for the room since we directly render the HTML in the client
-        // Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
-        lecture.room = sanitize(lecture.room, allowLinksConfig).replace(
-          '&amp;',
-          '&',
+  return await cached(key, CACHE_SECONDS, async () => {
+    console.log(`Lectures cache miss for key ${key}`);
+    const data = await timetableRequest(timetable);
+    let lectures: ParsedLecture[];
+    switch (timetable.type) {
+      case 'graphical':
+        lectures = parseSkedGraphical(data, timetable.faculty);
+        break;
+      case 'list':
+        lectures = parseSkedList(data);
+        break;
+      case 'csv':
+        lectures = parseSkedCSV(data);
+        break;
+      case 'intranet':
+        lectures = parseTimetableIntranet(data);
+        break;
+      default:
+        throw new Error(
+          `Unsupported timetable type detected: ${timetable.type}.`,
         );
-        lecture.room = getLectureRoomLocations(
-          lecture.room.split(','),
-          timetable.faculty,
-        );
-        lecture.info = sanitize(lecture.info, allowLinksConfig).replace(
-          '&amp;',
-          '&',
-        );
-        // Strip all html
-        lecture.lecturer = sanitize(lecture.lecturer, {}).replace('&amp;', '&');
-        lecture.title = sanitize(lecture.title, {}).replace('&amp;', '&');
-        return lecture;
-      });
-      console.log(
-        `Storing ${lectures.length} parsed lectures for ${key} in cache`,
+    }
+    lectures = lectures.map((lecture) => {
+      const allowLinksConfig: sanitize.IOptions = {
+        allowedTags: ['a'],
+        allowedAttributes: { a: ['href', 'target'] },
+      };
+      // Allow only specific HTML attributes for the room since we directly render the HTML in the client
+      // Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
+      lecture.room = sanitize(lecture.room, allowLinksConfig).replace(
+        '&amp;',
+        '&',
       );
-      return lectures.map((lecture) => new Event(lecture));
-    },
-    { ttl: CACHE_SECONDS },
-  );
+      lecture.room = getLectureRoomLocations(
+        lecture.room.split(','),
+        timetable.faculty,
+      );
+      lecture.info = sanitize(lecture.info, allowLinksConfig).replace(
+        '&amp;',
+        '&',
+      );
+      // Strip all html
+      lecture.lecturer = sanitize(lecture.lecturer, {}).replace('&amp;', '&');
+      lecture.title = sanitize(lecture.title, {}).replace('&amp;', '&');
+      return lecture;
+    });
+    console.log(
+      `Storing ${lectures.length} parsed lectures for ${key} in cache`,
+    );
+    return lectures.map((lecture) => new Event(lecture));
+  });
 }
 
 /**
@@ -186,7 +169,7 @@ export async function getEvents(
       parseTimetable(timetable).then((events) => {
         // Return only events for the correct week of a single request
         events = events.filter(
-          (lecture) => moment(lecture.start).isoWeek() == timetable.week,
+          (lecture) => dayjs(lecture.start).isoWeek() === timetable.week,
         );
         console.log(`Serving ${events.length} lectures for ${timetable.id}`);
         return events;

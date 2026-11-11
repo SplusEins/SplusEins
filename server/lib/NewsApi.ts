@@ -1,27 +1,10 @@
-import * as cacheManager from 'cache-manager';
-import * as fsStore from 'cache-manager-fs-hash';
-import * as moment from 'moment';
 import * as cheerio from 'cheerio';
-import fetch from 'node-fetch';
-import { URLSearchParams } from 'url';
 
+import dayjs from './dayjs';
+import { cached } from './cache';
 import { NewsElement } from '../model/SplusEinsModel';
 
-// default must be in /tmp because the rest is RO on AWS Lambda
-const CACHE_PATH = process.env.CACHE_PATH || '/tmp/spluseins-cache';
-const CACHE_DISABLE = !!process.env.CACHE_DISABLE;
 const CACHE_SECONDS = parseInt(process.env.NEWS_CACHE_SECONDS || '1800');
-
-const cache = CACHE_DISABLE
-  ? cacheManager.caching({ store: 'memory', max: 0 })
-  : cacheManager.caching({
-      store: fsStore,
-      options: {
-        path: CACHE_PATH,
-        ttl: 60,
-        subdirs: true,
-      },
-    });
 
 const flatten = <T>(arr: T[][]) => [].concat(...arr) as T[];
 
@@ -70,9 +53,7 @@ async function ostfaliaNewsRequest(
         title: $('a', this).text().trim(),
         link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
         text: $('p', this).last().text().trim(),
-        date: moment($('p', this).first().text().trim(), 'DD.MM.YY')
-          .utcOffset('+0100')
-          .toDate(),
+        date: dayjs($('p', this).first().text().trim(), 'DD.MM.YY').toDate(),
       };
     })
     .get();
@@ -88,16 +69,14 @@ async function campus38NewsRequest(): Promise<NewsElement[]> {
   const response = await fetch('https://www.campus38.de/newsfeed.xml').then(
     (res) => res.text(),
   );
-  const $ = cheerio.load(response, { xmlMode: true });
+  const $ = cheerio.load(response, { xml: true });
   return $('entry')
     .map(function () {
       return <NewsElement>{
         title: $('title', this).text().trim(),
         link: $('link', this).attr('href'),
         text: $('summary', this).text().trim(),
-        date: moment($('published', this).text().trim().split('T')[0])
-          .utcOffset('+0100')
-          .toDate(),
+        date: dayjs($('published', this).text().trim().split('T')[0]).toDate(),
       };
     })
     .slice(0, 10)
@@ -117,7 +96,7 @@ function truncateAndSortNews(
   // don't show articles that are more than x days in the future,
   // can happen in some rare cases where news items = calendar items (like faculty S)
   news = news.filter(
-    (article) => moment(article.date).diff(moment(), 'days') < 3,
+    (article) => dayjs(article.date).diff(dayjs(), 'days') < 3,
   );
   // Filter any duplicate entries (based on title+desc)
   news = news.filter(
@@ -136,8 +115,8 @@ function truncateAndSortNews(
     if (text.length > MAX_LEN) {
       const lastDotIndex = text.lastIndexOf('.', MAX_LEN);
       if (lastDotIndex > MAX_LEN / 2)
-        text = text.substr(0, lastDotIndex + 1); // cut text at end of sentence
-      else text = text.substr(0, text.lastIndexOf(' ', MAX_LEN)) + '...'; // no end of sentence exists or it's too early, cut text at end of word and add ...
+        text = text.slice(0, lastDotIndex + 1); // cut text at end of sentence
+      else text = text.slice(0, text.lastIndexOf(' ', MAX_LEN)) + '...'; // no end of sentence exists or it's too early, cut text at end of word and add ...
     }
     return {
       ...article,
@@ -185,21 +164,17 @@ export default async function getNews(
       }
       try {
         const key = 'news-' + newsSelector;
-        return (await cache.wrap(
-          key,
-          async () => {
-            let newsEls: NewsElement[] =
-              newsSelector !== 'campus38'
-                ? await ostfaliaNewsRequest(newsSelector)
-                : await campus38NewsRequest();
-            newsEls = newsEls.map((article) => ({
-              ...article,
-              source: newsSelector,
-            }));
-            return newsEls;
-          },
-          { ttl: CACHE_SECONDS },
-        )) as Promise<NewsElement[]>;
+        return await cached(key, CACHE_SECONDS, async () => {
+          let newsEls: NewsElement[] =
+            newsSelector !== 'campus38'
+              ? await ostfaliaNewsRequest(newsSelector)
+              : await campus38NewsRequest();
+          newsEls = newsEls.map((article) => ({
+            ...article,
+            source: newsSelector,
+          }));
+          return newsEls;
+        });
       } catch (e) {
         if (!(e instanceof Error)) throw e;
         console.log(

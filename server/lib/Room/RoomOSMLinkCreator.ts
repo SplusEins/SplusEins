@@ -1,8 +1,8 @@
-import * as OSM_ROOMS_DATA_WF from '../../assets/overpass_osm/WF.json';
-import * as OSM_ROOMS_DATA_SZ from '../../assets/overpass_osm/SZ.json';
-import * as OSM_ROOMS_DATA_WOB from '../../assets/overpass_osm/WOB.json';
-import * as OSM_ROOMS_DATA_SUD from '../../assets/overpass_osm/SUD.json';
-import * as ROOM_ALIASES from '../../assets/roomAliases.json';
+import OSM_ROOMS_DATA_WF from '../../assets/overpass_osm/WF.json';
+import OSM_ROOMS_DATA_SZ from '../../assets/overpass_osm/SZ.json';
+import OSM_ROOMS_DATA_WOB from '../../assets/overpass_osm/WOB.json';
+import OSM_ROOMS_DATA_SUD from '../../assets/overpass_osm/SUD.json';
+import ROOM_ALIASES from '../../assets/roomAliases.json';
 
 import { FacultyLocation } from './RoomLocationApi';
 

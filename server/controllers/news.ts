@@ -1,10 +1,8 @@
-/* eslint-disable no-useless-escape */
-import * as express from 'express';
-import * as RSS from 'rss';
-import {} from 'rss';
+import express from 'express';
+import RSS from 'rss';
+import crypto from 'crypto';
 import getNews from '../lib/NewsApi';
-import { NewsElement } from '~/model/SplusEinsModel';
-import * as crypto from 'crypto';
+import { NewsElement } from '../model/SplusEinsModel';
 
 const CACHE_SECONDS = parseInt(process.env.NEWS_CACHE_SECONDS || '1800');
 const router = express.Router();
@@ -12,15 +10,10 @@ const router = express.Router();
 const MAX_NEWS_ITEMS = 100;
 
 /**
- * Accept CORS preflight requests.
- */
-router.options('/:newstypes\.:ext?');
-
-/**
  * Get ostfalia faculty news
  * @returns NewsElement[]
  */
-router.get('/:newstypes\.:ext?', async (req, res) => {
+router.get('/:newstypes{.:ext}', async (req, res) => {
   const newstypes = <string[]>req.params.newstypes.split(',');
   let limit = parseInt(req.query.limit as string) || MAX_NEWS_ITEMS;
   if (limit > MAX_NEWS_ITEMS) limit = MAX_NEWS_ITEMS;

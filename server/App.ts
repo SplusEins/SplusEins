@@ -1,6 +1,6 @@
-import * as express from 'express';
-import * as cookieParser from 'cookie-parser';
-import * as cors from 'cors';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import splusController from './controllers/splus';
 import mensaController from './controllers/mensa';
 import newsController from './controllers/news';

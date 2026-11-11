@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./*"],
-      "@/*": ["./*"],
-      "~~/*": ["./*"],
-      "@@/*": ["./*"]
-    }
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ESNext",
+    "jsx": "preserve"
   },
-  "exclude": ["node_modules", ".nuxt", "dist"]
+  "include": ["src/**/*", "*.js"],
+  "exclude": ["node_modules", "dist"]
 }

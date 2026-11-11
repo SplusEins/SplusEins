@@ -6,7 +6,7 @@ Alle relevanten Stellen im Code können auch gefunden werden, indem man nach `TO
 
 ### Semesterstart setzen
 
-Im Frontend muss gesetzt werden, welche Woche die erste Vorlesungswoche ist. Das wird in der Variable `SEMESTER_WEEK_1` in [`web/lib/util.js`](https://github.com/SplusEins/SplusEins/blob/master/web/lib/util.js#L9) gesetzt. Der Vorlesungsbeginn der Ostfalia wird auf [dieser Seite](https://www.ostfalia.de/studieren/im-studium/studienorganisation/semestertermine) veröffentlicht, woraus man die ISO-Woche berechnen kann.
+Im Frontend muss gesetzt werden, welche Woche die erste Vorlesungswoche ist. Das wird in der Variable `SEMESTER_WEEK_1` in [`web/src/lib/util.js`](https://github.com/SplusEins/SplusEins/blob/master/web/src/lib/util.js#L9) gesetzt. Der Vorlesungsbeginn der Ostfalia wird auf [dieser Seite](https://www.ostfalia.de/studieren/im-studium/studienorganisation/semestertermine) veröffentlicht, woraus man die ISO-Woche berechnen kann.
 
 ### `sked-parser` Konfiguration aktualisieren
 
@@ -24,7 +24,7 @@ Die tägliche Github Action, die den PR erstellt, kann auch [hier](https://githu
 
 ### Gespeicherte Pläne löschen
 
-Zudem muss bei dem `vuex-persist`-Plugin die Storage-Version erhöht werden, damit Pläne des vorherigen Semesters aus dem Local Storage der Nutzer gelöscht werden. Dies passiert in [`web/plugins/vuex-persist.js`](https://github.com/SplusEins/SplusEins/blob/master/web/plugins/vuex-persist.js), die Zeilen sind mit TODOs markiert.
+Zudem muss die Storage-Version (`VERSION`) erhöht werden, damit Pläne des vorherigen Semesters aus dem Local Storage der Nutzer gelöscht werden. Dies passiert in [`web/src/stores/persist.js`](https://github.com/SplusEins/SplusEins/blob/master/web/src/stores/persist.js), die Zeile ist mit einem TODO markiert.
 
 ### Überprüfen der einzelnen Stundenpläne
 

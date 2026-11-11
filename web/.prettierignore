@@ -2,6 +2,5 @@
 build
 coverage
 node_modules
-.nuxt
-.output
-__mocks__
+dist
+dev-dist
