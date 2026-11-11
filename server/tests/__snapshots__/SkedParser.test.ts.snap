@@ -1,0 +1,565 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Test SkedParser should estimate missing times for Maschinenbau 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:30:00.000Z,
+    "info": "",
+    "lecturer": "Meier",
+    "room": "M201",
+    "start": 2026-11-09T07:00:00.000Z,
+    "title": "Technische Mechanik",
+  },
+  {
+    "duration": 1,
+    "end": 2026-11-10T08:30:00.000Z,
+    "info": "Labor",
+    "lecturer": "Schulz",
+    "room": "M105",
+    "start": 2026-11-10T07:30:00.000Z,
+    "title": "Werkstoffkunde",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a CSV plan 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:45:00.000Z,
+    "info": "Hinweis",
+    "lecturer": "Prof. Dr. Test",
+    "room": "252",
+    "start": 2026-11-09T07:15:00.000Z,
+    "title": "Programmieren 1",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T10:30:00.000Z,
+    "info": "",
+    "lecturer": "Herr Beispiel",
+    "room": "253",
+    "start": 2026-11-10T09:00:00.000Z,
+    "title": "Datenbanken",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a graphical plan of Bau-Wasser-Boden 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:45:00.000Z,
+    "info": "Zeile A",
+    "lecturer": "Zeile C",
+    "room": "Zeile D",
+    "start": 2026-11-09T07:15:00.000Z,
+    "title": "Zeile B &amp; Co",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T10:30:00.000Z,
+    "info": "Prof. Dr. Schmidt",
+    "lecturer": "Gruppe 1",
+    "room": "Prof. Dr. Schmidt",
+    "start": 2026-11-09T09:00:00.000Z,
+    "title": "S-Modul 3 Prof. Dr. Schmidt",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T09:30:00.000Z,
+    "info": "Nur Titel",
+    "lecturer": "",
+    "room": "",
+    "start": 2026-11-10T08:00:00.000Z,
+    "title": "B7",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T14:30:00.000Z,
+    "info": "X",
+    "lecturer": "Z",
+    "room": "Anmerkung 1",
+    "start": 2026-11-10T13:00:00.000Z,
+    "title": "Y",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T08:45:00.000Z,
+    "info": "Müller",
+    "lecturer": "A123",
+    "room": "",
+    "start": 2026-11-11T07:15:00.000Z,
+    "title": "Mathematik 1",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T14:30:00.000Z,
+    "info": "X",
+    "lecturer": "Z",
+    "room": "Anmerkung 1",
+    "start": 2026-11-11T13:00:00.000Z,
+    "title": "Y",
+  },
+  {
+    "duration": 2,
+    "end": 2027-03-29T01:30:00.000Z,
+    "info": "Sommerzeit",
+    "lecturer": "R1",
+    "room": "",
+    "start": 2027-03-28T23:30:00.000Z,
+    "title": "Test",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a graphical plan of Fahrzeugtechnik 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-12T08:45:00.000Z,
+    "info": "",
+    "lecturer": "Becker",
+    "room": "F-101",
+    "start": 2026-11-12T07:15:00.000Z,
+    "title": "Fahrdynamik",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a graphical plan of Gesundheitswesen 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:45:00.000Z,
+    "info": "Zeile D, Zeile E",
+    "lecturer": "Zeile B &amp; Co",
+    "room": "Zeile C",
+    "start": 2026-11-09T07:15:00.000Z,
+    "title": "Zeile A",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T10:30:00.000Z,
+    "info": "Prof. Dr. Schmidt, Hörsaal 2",
+    "lecturer": "S-Modul 3 Prof. Dr. Schmidt",
+    "room": "Gruppe 1",
+    "start": 2026-11-09T09:00:00.000Z,
+    "title": "Prof. Dr. Schmidt",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T09:30:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "B7",
+    "start": 2026-11-10T08:00:00.000Z,
+    "title": "Nur Titel",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T14:30:00.000Z,
+    "info": "Anmerkung 1, Anmerkung 2",
+    "lecturer": "Y",
+    "room": "Z",
+    "start": 2026-11-10T13:00:00.000Z,
+    "title": "X",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T08:45:00.000Z,
+    "info": "",
+    "lecturer": "Mathematik 1",
+    "room": "A123",
+    "start": 2026-11-11T07:15:00.000Z,
+    "title": "Müller",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T14:30:00.000Z,
+    "info": "Anmerkung 1, Anmerkung 2",
+    "lecturer": "Y",
+    "room": "Z",
+    "start": 2026-11-11T13:00:00.000Z,
+    "title": "X",
+  },
+  {
+    "duration": 2,
+    "end": 2027-03-29T01:30:00.000Z,
+    "info": "",
+    "lecturer": "Test",
+    "room": "R1",
+    "start": 2027-03-28T23:30:00.000Z,
+    "title": "Sommerzeit",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a graphical plan of Handel und Soziale Arbeit 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:45:00.000Z,
+    "info": "Zeile D, Zeile E",
+    "lecturer": "Zeile B &amp; Co",
+    "room": "Zeile C",
+    "start": 2026-11-09T07:15:00.000Z,
+    "title": "Zeile A",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T10:30:00.000Z,
+    "info": "Prof. Dr. Schmidt, Hörsaal 2",
+    "lecturer": "S-Modul 3 Prof. Dr. Schmidt",
+    "room": "Gruppe 1",
+    "start": 2026-11-09T09:00:00.000Z,
+    "title": "Prof. Dr. Schmidt",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T09:30:00.000Z,
+    "info": "",
+    "lecturer": "B7",
+    "room": "",
+    "start": 2026-11-10T08:00:00.000Z,
+    "title": "Nur Titel",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T14:30:00.000Z,
+    "info": "Anmerkung 1, Anmerkung 2",
+    "lecturer": "Y",
+    "room": "Z",
+    "start": 2026-11-10T13:00:00.000Z,
+    "title": "X",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T08:45:00.000Z,
+    "info": "",
+    "lecturer": "Mathematik 1",
+    "room": "A123",
+    "start": 2026-11-11T07:15:00.000Z,
+    "title": "Müller",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T14:30:00.000Z,
+    "info": "Anmerkung 1, Anmerkung 2",
+    "lecturer": "Y",
+    "room": "Z",
+    "start": 2026-11-11T13:00:00.000Z,
+    "title": "X",
+  },
+  {
+    "duration": 2,
+    "end": 2027-03-29T01:30:00.000Z,
+    "info": "",
+    "lecturer": "Test",
+    "room": "R1",
+    "start": 2027-03-28T23:30:00.000Z,
+    "title": "Sommerzeit",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a graphical plan of Recht 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:45:00.000Z,
+    "info": "Zeile E",
+    "lecturer": "Zeile C",
+    "room": "Zeile D",
+    "start": 2026-11-09T07:15:00.000Z,
+    "title": "Zeile B &amp; Co Zeile A",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T10:30:00.000Z,
+    "info": "Hörsaal 2",
+    "lecturer": "Gruppe 1",
+    "room": "Prof. Dr. Schmidt",
+    "start": 2026-11-09T09:00:00.000Z,
+    "title": "S-Modul 3 Prof. Dr. Schmidt Prof. Dr. Schmidt",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T09:30:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "",
+    "start": 2026-11-10T08:00:00.000Z,
+    "title": "B7 Nur Titel",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T14:30:00.000Z,
+    "info": "Anmerkung 2",
+    "lecturer": "Z",
+    "room": "Anmerkung 1",
+    "start": 2026-11-10T13:00:00.000Z,
+    "title": "Y X",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T08:45:00.000Z,
+    "info": "",
+    "lecturer": "A123",
+    "room": "",
+    "start": 2026-11-11T07:15:00.000Z,
+    "title": "Mathematik 1 Müller",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T14:30:00.000Z,
+    "info": "Anmerkung 2",
+    "lecturer": "Z",
+    "room": "Anmerkung 1",
+    "start": 2026-11-11T13:00:00.000Z,
+    "title": "Y X",
+  },
+  {
+    "duration": 2,
+    "end": 2027-03-29T01:30:00.000Z,
+    "info": "",
+    "lecturer": "R1",
+    "room": "",
+    "start": 2027-03-28T23:30:00.000Z,
+    "title": "Test Sommerzeit",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a graphical plan of Soziale Arbeit 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T10:30:00.000Z,
+    "info": "BA 3. Sem, Gruppe 1, online",
+    "lecturer": "Prof. Dr. Schmidt",
+    "room": "Hörsaal 2",
+    "start": 2026-11-09T09:00:00.000Z,
+    "title": "S-Modul 3",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T12:30:00.000Z,
+    "info": "Aula",
+    "lecturer": "",
+    "room": "",
+    "start": 2026-11-10T11:00:00.000Z,
+    "title": "RingveranstaltungEthik",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a graphical plan of Versorgungstechnik 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:45:00.000Z,
+    "info": "Zeile D, Zeile E",
+    "lecturer": "Zeile A",
+    "room": "Zeile C",
+    "start": 2026-11-09T07:15:00.000Z,
+    "title": "Zeile B &amp; Co",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T10:30:00.000Z,
+    "info": "Prof. Dr. Schmidt, Hörsaal 2",
+    "lecturer": "Prof. Dr. Schmidt",
+    "room": "Gruppe 1",
+    "start": 2026-11-09T09:00:00.000Z,
+    "title": "S-Modul 3 Prof. Dr. Schmidt",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T09:30:00.000Z,
+    "info": "",
+    "lecturer": "Nur Titel",
+    "room": "",
+    "start": 2026-11-10T08:00:00.000Z,
+    "title": "B7",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T14:30:00.000Z,
+    "info": "Anmerkung 1, Anmerkung 2",
+    "lecturer": "X",
+    "room": "Z",
+    "start": 2026-11-10T13:00:00.000Z,
+    "title": "Y",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T08:45:00.000Z,
+    "info": "",
+    "lecturer": "Müller",
+    "room": "A123",
+    "start": 2026-11-11T07:15:00.000Z,
+    "title": "Mathematik 1",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T14:30:00.000Z,
+    "info": "Anmerkung 1, Anmerkung 2",
+    "lecturer": "X",
+    "room": "Z",
+    "start": 2026-11-11T13:00:00.000Z,
+    "title": "Y",
+  },
+  {
+    "duration": 2,
+    "end": 2027-03-29T01:30:00.000Z,
+    "info": "",
+    "lecturer": "Sommerzeit",
+    "room": "R1",
+    "start": 2027-03-28T23:30:00.000Z,
+    "title": "Test",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a graphical plan of Wirtschaft 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:45:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "",
+    "start": 2026-11-09T07:15:00.000Z,
+    "title": "Zeile A",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T10:30:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "",
+    "start": 2026-11-09T09:00:00.000Z,
+    "title": "Prof. Dr. Schmidt",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T09:30:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "",
+    "start": 2026-11-10T08:00:00.000Z,
+    "title": "Nur Titel",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T14:30:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "",
+    "start": 2026-11-10T13:00:00.000Z,
+    "title": "X",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T08:45:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "",
+    "start": 2026-11-11T07:15:00.000Z,
+    "title": "Müller",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-11T14:30:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "",
+    "start": 2026-11-11T13:00:00.000Z,
+    "title": "X",
+  },
+  {
+    "duration": 2,
+    "end": 2027-03-29T01:30:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "",
+    "start": 2027-03-28T23:30:00.000Z,
+    "title": "Sommerzeit",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse a list plan 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:45:00.000Z,
+    "info": "Anmerkung",
+    "lecturer": "Prof. Dr. Test",
+    "room": "252",
+    "start": 2026-11-09T07:15:00.000Z,
+    "title": "Programmieren 1",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T10:30:00.000Z,
+    "info": "",
+    "lecturer": "Herr Beispiel",
+    "room": "253",
+    "start": 2026-11-09T09:00:00.000Z,
+    "title": "Datenbanken",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T12:30:00.000Z,
+    "info": "",
+    "lecturer": "X",
+    "room": "1",
+    "start": 2026-11-09T11:00:00.000Z,
+    "title": "Langes Datum",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-10T14:30:00.000Z,
+    "info": "",
+    "lecturer": "Dozent R",
+    "room": "252",
+    "start": 2026-11-10T13:00:00.000Z,
+    "title": "Raumplan",
+  },
+]
+`;
+
+exports[`Test SkedParser should parse an intranet plan 1`] = `
+[
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T08:39:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "A209",
+    "start": 2026-11-09T07:09:00.000Z,
+    "title": "Programmieren 1",
+  },
+  {
+    "duration": 1.5,
+    "end": 2026-11-09T11:30:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "B107, B58",
+    "start": 2026-11-09T10:00:00.000Z,
+    "title": "Mathematik",
+  },
+  {
+    "duration": 0.9,
+    "end": 2027-03-29T08:54:00.000Z,
+    "info": "",
+    "lecturer": "",
+    "room": "",
+    "start": 2027-03-29T08:00:00.000Z,
+    "title": "Sommerzeit & Co",
+  },
+]
+`;

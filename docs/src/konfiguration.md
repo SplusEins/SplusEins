@@ -6,11 +6,19 @@ Sowohl Frontend als auch Backend können bzw. müssen über Umgebungsvariablen k
 
 ### Frontend
 
-- `HOST`: Host (Domain oder IP) des Servers (Default: `127.0.0.1`)
-- `API_URL`: (Lokale) URL der API ohne `/api` Suffix (z.B. `http://localhost:50001/`), alle Requests zu `/api` werden (von Nuxt als Proxy) zu dieser URL weitergeleitet.
-- `DOCS_URL`: (Lokale) URL der Dokumentation (z.B. `http://localhost:50002/`), alle Requests zu `/docs` werden (von Nuxt als Proxy) zu dieser URL weitergeleitet.
-- `PAGE_CACHE_SECONDS`: Cache-Dauer in Sekunden für gerenderte Nuxt-Seiten (Default: `600`)
+Das Frontend ist eine Single-Page-App (Vue 3, gebaut mit Vite). `npm run build` erzeugt statische Dateien in `web/dist/`, `npm start` startet einen kleinen Express-Server (`web/server.js`), der diese Dateien ausliefert und `/api` sowie `/docs` weiterleitet.
+
+Zur Laufzeit (`npm start` bzw. `npm run dev`):
+
+- `PORT`: Port des Servers (Default: `3000`)
+- `API_URL`: (Lokale) URL der API ohne `/api` Suffix (z.B. `http://localhost:50001/`), alle Requests zu `/api` werden zu dieser URL weitergeleitet.
+- `DOCS_URL`: (Lokale) URL der Dokumentation (z.B. `http://localhost:50002/`), alle Requests zu `/docs` werden zu dieser URL weitergeleitet.
+
+Beim Bauen (`npm run build`), da diese Werte fest in die App eingebaut werden:
+
 - `PROTECTED_INFORMATION`: Namen der Team-Mitglieder für das Impressum und die Datenschutz-Seite
+- `STAGING`: `true` für den Staging-Server, zeigt einen Hinweis in der Kopfzeile
+- `GIT_REV`: Git-Commit des Builds, wird auf dem Staging-Server verlinkt
 
 ### Backend
 

@@ -11,9 +11,11 @@ Als Spracherweiterung zu JS wurde [Typescript](https://www.typescriptlang.org) g
 - `/model`: beinhaltet die Implementierung des Typescript Interfaces und Klassen
 - `/tests`: beinhaltet Unit- und Integrationstests
 - `App.ts`: beinhaltet Implementierung der App-Klasse in welcher die verschiedenen Controller integriert werden
-- `server.ts`: Skript welcher eine Instanz der App-Klasse erstellt und startet (alternativ siehe: `serverless.ts`)
-- `serverless.ts`: Skript welcher eine Instanz der Klasse erstellt, welche kompatibel für der serverlosen Betrieb unter [Netlify](https://www.netlify.com) ist
-- `webpack.config.js` Konfigurationsdatei für [Webpack](https://webpack.js.org) für den Build des Servers
+- `server.ts`: Skript welcher eine Instanz der App-Klasse erstellt und startet
+- `lib/cache.ts`: speichert Antworten langsamer Anfragen (z.B. an die Ostfalia-Server) als Dateien zwischen
+- `lib/dayjs.ts`: konfiguriert die Datumsbibliothek [Day.js](https://day.js.org)
+
+Im Entwicklungsmodus (`npm run dev`) wird der Server mit [tsx](https://tsx.is) direkt aus den TypeScript-Dateien gestartet. Für den produktiven Betrieb übersetzt `npm run build` den Code mit dem TypeScript-Compiler nach `dist/`, `npm start` startet ihn.
 
 # API
 
@@ -37,7 +39,7 @@ Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Even
 **Beispiel:**
 `/splus/informatik-wpf/33,34`
 
-### GET `/splus/:timetables/:weeks/:lectures?/:name`
+### GET `/splus/:timetables/:weeks{/:lectures}/:name`
 
 **Parameter:**
 
@@ -153,7 +155,7 @@ Alle Implementierung der Parser liefern eine Liste vom Interface _ParsedLecture_
 
 ## Struktur der Stundenpläne
 
-Für jeden Plan muss ein JSON-Objekt in der Datei definiert werden und in `/server/assets/timetables.json` sowie `/web/assets/timetables.json` abgelegt werden.
+Für jeden Plan muss ein JSON-Objekt in der Datei definiert werden und in `/server/assets/timetables.json` sowie `/web/src/assets/timetables.json` abgelegt werden.
 Diese müssen folgende Struktur besitzen:
 
 ```json

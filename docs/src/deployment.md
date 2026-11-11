@@ -45,7 +45,7 @@ Nach der Einrichtung des Dokku-Servers (siehe unten) muss zum Deployen bei neuen
    dokku config:set web API_URL=http://api.web:5000/ DOCS_URL=http://docs.web:5000/
    ```
    ::: tip
-   Port 5000 ist der Standard für die Anwendung **innerhalb** des Dokku-Containers, welcher mit `APP_NAME.web` angesprochen werden kann. Die `web`-Anwendung bringt mit Nuxt einen Proxy mit, der dann Requests von `/api` und `/docs` auf die URLs in den Umgebungsvariablen weiterleitet.
+   Port 5000 ist der Standard für die Anwendung **innerhalb** des Dokku-Containers, welcher mit `APP_NAME.web` angesprochen werden kann. Die `web`-Anwendung bringt einen Proxy mit (`web/server.js`), der dann Requests von `/api` und `/docs` auf die URLs in den Umgebungsvariablen weiterleitet.
    :::
 6. SSL-Zertifikat angelegen:
    ```bash

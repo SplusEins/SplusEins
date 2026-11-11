@@ -91,3 +91,5 @@ credentials.yml
 spluseinscache
 
 *.code-workspace
+# vite-plugin-pwa development output
+dev-dist

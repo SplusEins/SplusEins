@@ -2,7 +2,7 @@
 
 ## Lizenz & Attribution
 
-OSM-Daten stehen unter der [Open Database Licence (ODbL)](https://www.openstreetmap.org/copyright). Da wir Raumdaten (Ids, Levels, Bounding Boxes) aus der Overpass API extrahieren und in `/server/assets/overpass_osm/*.json` weiterverwenden, sind wir laut den [OSMF Attribution Guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines) verpflichtet, OpenStreetMap sichtbar zu attributieren. Das passiert aktuell im "Über"-Dialog (`web/components/spluseins-about.vue`) mit einem Link auf die ODbL. Diese Attribution darf beim Entfernen oder Umbauen des Dialogs nicht verloren gehen.
+OSM-Daten stehen unter der [Open Database Licence (ODbL)](https://www.openstreetmap.org/copyright). Da wir Raumdaten (Ids, Levels, Bounding Boxes) aus der Overpass API extrahieren und in `/server/assets/overpass_osm/*.json` weiterverwenden, sind wir laut den [OSMF Attribution Guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines) verpflichtet, OpenStreetMap sichtbar zu attributieren. Das passiert aktuell im "Über"-Dialog (`web/src/components/spluseins-about.vue`) mit einem Link auf die ODbL. Diese Attribution darf beim Entfernen oder Umbauen des Dialogs nicht verloren gehen.
 
 ## Was ist OSM?
 
