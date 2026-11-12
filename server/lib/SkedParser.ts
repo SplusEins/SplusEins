@@ -239,7 +239,8 @@ export function parseSkedGraphical(
           // is date
           return;
         }
-        const datum = col[0].split(', ')[1];
+        // 'Mo, 09.11.2026' or '09.11.2026'
+        const datum = col[0].split(', ').pop() ?? '';
         const parts = entry
           .split('<br>')
           .map((part) => part.replace(/<a.+>(.+)<\/a>/, '$1'));
@@ -286,6 +287,17 @@ export function parseSkedGraphical(
             veranstaltung = parts[1];
             break;
           case 'Soziale Arbeit':
+            if (!parts[0].endsWith('Uhr') && parts[1].endsWith('Uhr')) {
+              // master plans: title, time, room, lecturer
+              [uhrzeitStart, uhrzeitEnde] = parts[1]
+                .split('Uhr')[0]
+                .split(' - ');
+              veranstaltung = parts[0];
+              raum = parts[2];
+              dozent = parts[3] ?? '';
+              anmerkung = parts.slice(4).join(', ');
+              break;
+            }
             if (parts[0].endsWith('Uhr')) {
               parts.shift(); // remove first uhrzeit entry
             }
@@ -311,13 +323,14 @@ export function parseSkedGraphical(
               .replace(` ${dozent}`, '');
             break;
           case 'Fahrzeugtechnik': {
-            // room, start, end, lecturer, title - room or lecturer may be missing
+            // room, start, end, lecturer, title, e.g. 'Moodle'
+            // room, lecturer and the last line may be missing
             const fields = [...parts];
             raum = /^\d?\d:\d\d$/.test(fields[0]) ? '' : (fields.shift() ?? '');
             uhrzeitStart = fields.shift() ?? '';
             uhrzeitEnde = fields.shift() ?? '';
-            veranstaltung = fields.pop() ?? '';
-            dozent = fields.join(', ');
+            if (fields.length === 1) fields.unshift('');
+            [dozent = '', veranstaltung = ''] = fields;
             break;
           }
           case 'Gesundheitswesen':

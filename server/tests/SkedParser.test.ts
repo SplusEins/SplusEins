@@ -40,13 +40,44 @@ describe('Test SkedParser', () => {
     ).toMatchSnapshot();
   });
 
+  it('should parse a master plan of Soziale Arbeit', () => {
+    const lectures = parseSkedGraphical(
+      fixture('soziale-arbeit-master.html'),
+      'Soziale Arbeit',
+    );
+    expect(
+      lectures.map(({ title, room, lecturer, start, end }) => ({
+        title,
+        room,
+        lecturer,
+        start: start.toISOString(),
+        end: end.toISOString(),
+      })),
+    ).toEqual([
+      {
+        title: 'Evaluation und Wirkungsorientierung',
+        room: '6/137',
+        lecturer: 'Wunderlich',
+        start: '2026-11-09T07:15:00.000Z',
+        end: '2026-11-09T08:45:00.000Z',
+      },
+      {
+        title: 'Forschungsarbeit mit Begleitung (2)',
+        room: '6/042, 6/056',
+        lecturer: 'Rost, Schultz',
+        start: '2026-11-10T09:00:00.000Z',
+        end: '2026-11-10T17:00:00.000Z',
+      },
+    ]);
+  });
+
   it('should parse a graphical plan of Fahrzeugtechnik', () => {
     expect(
       parseSkedGraphical(fixture('fahrzeugtechnik.html'), 'Fahrzeugtechnik'),
     ).toMatchSnapshot();
   });
 
-  it('should parse Fahrzeugtechnik entries without room or lecturer', () => {
+  it('should parse Fahrzeugtechnik entries with missing or additional lines', () => {
     const lectures = parseSkedGraphical(
       fixture('fahrzeugtechnik.html'),
       'Fahrzeugtechnik',
@@ -76,6 +107,12 @@ describe('Test SkedParser', () => {
         room: '',
         lecturer: 'Prof. Dr.-Ing. Becker',
         start: '2026-11-13T10:30:00.000Z',
+      },
+      {
+        title: 'Mathematik II',
+        room: 'D-021',
+        lecturer: 'Prof. Dr. Vanis',
+        start: '2026-11-16T07:00:00.000Z',
       },
     ]);
   });

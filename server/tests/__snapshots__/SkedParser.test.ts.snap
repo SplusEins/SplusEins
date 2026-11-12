@@ -143,6 +143,15 @@ exports[`Test SkedParser > should parse a graphical plan of Fahrzeugtechnik 1`] 
     "start": 2026-11-13T10:30:00.000Z,
     "title": "Labor Verbrennungsmotoren",
   },
+  {
+    "duration": 1.5,
+    "end": 2026-11-16T08:30:00.000Z,
+    "info": "",
+    "lecturer": "Prof. Dr. Vanis",
+    "room": "D-021",
+    "start": 2026-11-16T07:00:00.000Z,
+    "title": "Mathematik II",
+  },
 ]
 `;
 
