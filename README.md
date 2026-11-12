@@ -35,6 +35,22 @@ npm run dev:remote
 # Or use the local API, when developing the backend (see below)
 npm run dev:local
 
+# Then open http://localhost:3000
+```
+
+The frontend is a single page app built with [Vue 3](https://vuejs.org), [Vite](https://vite.dev), [Vuetify](https://vuetifyjs.com), [Pinia](https://pinia.vuejs.org) and [Vue Router](https://router.vuejs.org):
+
+- `src/pages/`: one component per page, the URLs are defined in `src/router.js`
+- `src/components/`: building blocks of the pages
+- `src/stores/`: data shared between components, e.g. the current timetable
+- `src/lib/`: helper functions, e.g. for API requests
+- `public/`: files which are served as they are
+
+`npm run build` creates the production build in `dist/`, `npm start` serves it.
+
+```bash
+# run the tests in tests/unit/
+npm test
 ```
 
 ### Setup backend
@@ -64,6 +80,9 @@ set CACHE_PATH=spluseins-cache # Windows
 
 # start dev api at localhost:3001/api
 npm run dev
+
+# run the tests
+npm test
 ```
 
 ### Setup documentation

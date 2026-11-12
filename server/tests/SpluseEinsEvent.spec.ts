@@ -1,6 +1,6 @@
+import { describe, it, expect } from 'vitest';
 import { ParsedLecture } from '../model/SplusModel';
 import { Event } from '../model/SplusEinsModel';
-import * as moment from 'moment';
 
 describe('Test Event', () => {
   function testLecture(
@@ -9,8 +9,8 @@ describe('Test Event', () => {
   ): ParsedLecture {
     return <ParsedLecture>{
       title,
-      start: moment('2019-03-19T07:15:00.000Z').toDate(),
-      end: moment('2019-03-19T08:45:00.000Z').toDate(),
+      start: new Date('2019-03-19T07:15:00.000Z'),
+      end: new Date('2019-03-19T08:45:00.000Z'),
       duration: 1.5,
       info: 'Nur für Unit-Tests',
       room: 'R404',

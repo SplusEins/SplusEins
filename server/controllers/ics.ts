@@ -1,35 +1,33 @@
-import * as moment from 'moment';
-import * as express from 'express';
+import express from 'express';
 import ical from 'ical-generator';
 import { createHash } from 'crypto';
 
-import * as TIMETABLES from '../assets/timetables.json';
+import TIMETABLES from '../assets/timetables.json';
+import { config } from '../config';
+import { upcomingIsoWeeks } from '../lib/dayjs';
 import { Event, TimetableRequest } from '../model/SplusEinsModel';
 import { getEvents } from '../lib/SplusApi';
 
 const router = express.Router();
-const sha256 = (x) => createHash('sha256').update(x, 'utf8').digest('hex');
-const range = (lower: number, upper: number) =>
-  Array.from(Array(upper - lower), (x, i) => lower + i);
-
-const ICS_PRELOAD_WEEKS = parseInt(process.env.ICS_PRELOAD_WEEKS || '4');
-const CACHE_SECONDS = parseInt(process.env.ICS_CACHE_SECONDS || '600');
+const sha256 = (x: string) =>
+  createHash('sha256').update(x, 'utf8').digest('hex');
+const CACHE_SECONDS = config.icsCacheSeconds;
 
 /**
  * @param lecture lecture
  * @returns ical event
  */
 function eventToICSEvent(lecture: Event) {
-  const uid = sha256(JSON.stringify(lecture)).substr(0, 16);
+  const uid = sha256(JSON.stringify(lecture)).slice(0, 16);
   return {
     uid,
     start: lecture.start,
     end: lecture.end,
-    timestamp: moment().toDate(),
+    timestamp: new Date(),
     summary: lecture.title,
     description:
       lecture.meta.organiserName +
-      (lecture.meta.description != '' ? ' - ' : '') +
+      (lecture.meta.description !== '' ? ' - ' : '') +
       lecture.meta.description,
     location: lecture.location,
   };
@@ -44,7 +42,7 @@ function eventToICSEvent(lecture: Event) {
  * @param lectures Comma-separated list of lecture title IDs
  * @return An ICS calendar
  */
-router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
+router.get('/:version/:timetables{/:lectures}', async (req, res, next) => {
   const timetableIds = <string[]>req.params.timetables.split(',');
   const titleIds = <string[]>(
     (req.params.lectures || '')
@@ -53,30 +51,27 @@ router.get('/:version/:timetables/:lectures?', async (req, res, next) => {
   );
 
   const timetables = timetableIds
-    .map((timetableId) => TIMETABLES.find(({ id }) => id == timetableId))
-    .filter((timetable) => timetable != undefined);
+    .map((timetableId) => TIMETABLES.find(({ id }) => id === timetableId))
+    .filter((timetable) => timetable !== undefined);
 
-  if (timetables.length == 0) {
+  if (timetables.length === 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.sendStatus(404);
     return;
   }
 
-  const thisWeek = moment().week();
-  const weeks = range(thisWeek, thisWeek + ICS_PRELOAD_WEEKS);
+  // the timetables cover one semester, so a week number is never ambiguous
+  const weeks = upcomingIsoWeeks(config.icsPreloadWeeks);
 
   try {
-    const requests: TimetableRequest[] = [];
-    weeks.forEach((week) =>
-      timetables.forEach((timetable) =>
-        requests.push(<TimetableRequest>{
-          id: timetable.id,
-          week,
-          type: timetable.type,
-          faculty: timetable.faculty,
-          timetablePath: timetable.timetablePath,
-        }),
-      ),
+    const requests: TimetableRequest[] = weeks.flatMap((week) =>
+      timetables.map((timetable) => ({
+        id: timetable.id,
+        week,
+        type: timetable.type,
+        faculty: timetable.faculty,
+        timetablePath: timetable.timetablePath,
+      })),
     );
 
     const allEvents: Event[] = await getEvents(requests);

@@ -32,20 +32,20 @@ Nach der Einrichtung des Dokku-Servers (siehe unten) muss zum Deployen bei neuen
    dokku network:set api attach-post-deploy spluseins
    dokku network:set docs attach-post-deploy spluseins
    dokku network:rebuildall
-   dokku config:set web HOST=0.0.0.0
    dokku config:set api HOST=0.0.0.0
    dokku config:set docs HOST=0.0.0.0
    dokku ps:restart web
    dokku ps:restart api
    dokku ps:restart docs
    ```
-5. Setzen der Umgebungsvariablen für die Module, siehe [Umgebungsvariablen](./konfiguration.md#umgebungsvariablen). Besonders wichtig sind die `HOST`- und `API_URL`-Variablen, diese müssen wie folgt **auf dem Server** gesetzt werden:
+5. Setzen der Umgebungsvariablen für die Module, siehe [Umgebungsvariablen](./konfiguration.md#umgebungsvariablen). Besonders wichtig sind die Variablen `HOST` (für `api`) und `API_URL` (für `web`), diese müssen wie folgt **auf dem Server** gesetzt werden:
    ```bash
    dokku domains:add web spluseins.de spluseins-i.ostfalia.de
    dokku config:set web API_URL=http://api.web:5000/ DOCS_URL=http://docs.web:5000/
    ```
+   Die Variablen `PROTECTED_INFORMATION`, `STAGING` und `GIT_REV` werden beim Bauen fest in das Frontend eingebaut. Nach einer Änderung muss es deshalb neu gebaut werden, z.B. mit `dokku ps:rebuild web`.
    ::: tip
-   Port 5000 ist der Standard für die Anwendung **innerhalb** des Dokku-Containers, welcher mit `APP_NAME.web` angesprochen werden kann. Die `web`-Anwendung bringt mit Nuxt einen Proxy mit, der dann Requests von `/api` und `/docs` auf die URLs in den Umgebungsvariablen weiterleitet.
+   Port 5000 ist der Standard für die Anwendung **innerhalb** des Dokku-Containers, welcher mit `APP_NAME.web` angesprochen werden kann. Die `web`-Anwendung bringt einen Proxy mit (`web/server.js`), der dann Requests von `/api` und `/docs` auf die URLs in den Umgebungsvariablen weiterleitet.
    :::
 6. SSL-Zertifikat angelegen:
    ```bash

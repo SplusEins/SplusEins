@@ -1,4 +1,5 @@
-import * as TIMETABLES from '../assets/timetables.json';
+import { describe, it, expect } from 'vitest';
+import TIMETABLES from '../assets/timetables.json';
 
 describe('Test Timetables JSON', () => {
   const findDuplicates = (list, key) => {

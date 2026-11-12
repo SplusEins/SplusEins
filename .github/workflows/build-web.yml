@@ -23,4 +23,5 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run fmt:check
+      - run: npm test
       - run: npm run build

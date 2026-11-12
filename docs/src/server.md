@@ -9,11 +9,15 @@ Als Spracherweiterung zu JS wurde [Typescript](https://www.typescriptlang.org) g
 - `/lib`: beinhaltet Implementierung von verschiedenen Tools wie den Parser für die Stundenpläne
 - `/controllers`: beinhaltet die Controller für die einzelnen Endpunkte des Servers
 - `/model`: beinhaltet die Implementierung des Typescript Interfaces und Klassen
-- `/tests`: beinhaltet Unit- und Integrationstests
+- `/tests`: beinhaltet Unit- und Integrationstests ([Vitest](https://vitest.dev)), `npm test` führt sie aus
+- `/types`: Typen für Bibliotheken, die selbst keine mitbringen
+- `config.ts`: liest alle Umgebungsvariablen, siehe [Konfiguration](konfiguration.md#backend)
 - `App.ts`: beinhaltet Implementierung der App-Klasse in welcher die verschiedenen Controller integriert werden
-- `server.ts`: Skript welcher eine Instanz der App-Klasse erstellt und startet (alternativ siehe: `serverless.ts`)
-- `serverless.ts`: Skript welcher eine Instanz der Klasse erstellt, welche kompatibel für der serverlosen Betrieb unter [Netlify](https://www.netlify.com) ist
-- `webpack.config.js` Konfigurationsdatei für [Webpack](https://webpack.js.org) für den Build des Servers
+- `server.ts`: Skript welcher eine Instanz der App-Klasse erstellt und startet
+- `lib/cache.ts`: speichert Antworten langsamer Anfragen (z.B. an die Ostfalia-Server) als Dateien zwischen
+- `lib/dayjs.ts`: konfiguriert die Datumsbibliothek [Day.js](https://day.js.org)
+
+Im Entwicklungsmodus (`npm run dev`) wird der Server mit [tsx](https://tsx.is) direkt aus den TypeScript-Dateien gestartet. Für den produktiven Betrieb übersetzt `npm run build` den Code mit dem TypeScript-Compiler nach `dist/`, `npm start` startet ihn.
 
 # API
 
@@ -37,7 +41,7 @@ Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Even
 **Beispiel:**
 `/splus/informatik-wpf/33,34`
 
-### GET `/splus/:timetables/:weeks/:lectures?/:name`
+### GET `/splus/:timetables/:weeks{/:lectures}/:name`
 
 **Parameter:**
 
@@ -93,8 +97,8 @@ Der Endpunkt zum Abfragen der Mensa-Plan Daten befindet sich in der Datei `contr
 **Parameter:** keine
 
 **Rückgabe:**
-Liefert ein Mensa Objekt mit einem MensaDayPlan-Array (siehe `model/SplusEinsModel.ts`), aus 6 Tagesplänen (falls verfügbar) der aller eingetragenden Mensen. Die Pläne werden von der OpenMensa-API abgerufen.
-Die Mensa in Wolfenbüttel besitzt die ID `166`.
+Liefert ein Array von Mensa-Objekten mit jeweils bis zu 6 Tagesplänen (siehe `model/SplusEinsModel.ts`), für alle eingetragenen Mensen. Die Daten kommen von der API des Studentenwerks (STW-ON), die Mensa in Wolfenbüttel besitzt dort die ID `130`.
+Mensen, die nicht geladen werden konnten, fehlen in der Antwort. Konnte keine Mensa geladen werden, antwortet der Server mit `504` (Zeitüberschreitung bei STW-ON) bzw. `500`.
 
 ## Bus
 
@@ -153,7 +157,7 @@ Alle Implementierung der Parser liefern eine Liste vom Interface _ParsedLecture_
 
 ## Struktur der Stundenpläne
 
-Für jeden Plan muss ein JSON-Objekt in der Datei definiert werden und in `/server/assets/timetables.json` sowie `/web/assets/timetables.json` abgelegt werden.
+Für jeden Plan muss ein JSON-Objekt in der Datei definiert werden und in `/server/assets/timetables.json` sowie `/web/src/assets/timetables.json` abgelegt werden.
 Diese müssen folgende Struktur besitzen:
 
 ```json

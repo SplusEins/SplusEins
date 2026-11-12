@@ -1,10 +1,42 @@
 import { load } from 'cheerio';
-import * as moment from 'moment-timezone';
+import * as CSV from 'csv-string';
+import dayjs from './dayjs';
 import { ParsedLecture } from '../model/SplusModel';
 import parseTable from './parseTable';
-import * as CSV from 'csv-string';
 
-moment.locale('de');
+/* e.g. "09.11.2026 8:15" */
+const NUMERIC_DATE_FORMAT = 'DD.MM.YYYY H:m';
+/* e.g. "9. November 2026 8:15" */
+const LONG_DATE_FORMAT = 'D. MMMM YYYY H:m';
+
+/**
+ * Parse start and end of a lecture. All times of the Ostfalia are german local times.
+ *
+ * @param date e.g. "09.11.2026"
+ * @param startTime e.g. "8:15"
+ * @param endTime e.g. "9:45"
+ * @param formats formats which are tried one after another, see https://day.js.org/docs/en/parse/string-format
+ * @returns start, end and duration in hours or undefined if the date or a time is invalid
+ */
+function parseTimes(
+  date: string,
+  startTime: string,
+  endTime: string,
+  formats = [NUMERIC_DATE_FORMAT],
+): { start: Date; end: Date; duration: number } | undefined {
+  for (const format of formats) {
+    const start = dayjs.tz(`${date} ${startTime}`, format, 'Europe/Berlin');
+    const end = dayjs.tz(`${date} ${endTime}`, format, 'Europe/Berlin');
+    if (start.isValid() && end.isValid()) {
+      return {
+        start: start.toDate(),
+        end: end.toDate(),
+        duration: end.diff(start, 'hours', true),
+      };
+    }
+  }
+  return undefined;
+}
 
 export function parseSkedList(html: string): ParsedLecture[] {
   const $ = load(html);
@@ -75,17 +107,12 @@ export function parseSkedList(html: string): ParsedLecture[] {
 
     lastDatum = datum;
 
-    let start = null;
-    let end = null;
-    for (const format of ['DD.MM.YYYY H:m', 'LLL YYYY H:m']) {
-      start = moment.tz(datum + ' ' + uhrzeitStart, format, 'Europe/Berlin');
-      end = moment.tz(datum + ' ' + uhrzeitEnde, format, 'Europe/Berlin');
-      if (start.isValid() && end.isValid()) {
-        break;
-      }
-    }
+    const times = parseTimes(datum, uhrzeitStart, uhrzeitEnde, [
+      NUMERIC_DATE_FORMAT,
+      LONG_DATE_FORMAT,
+    ]);
 
-    if (!start.isValid() || !end.isValid()) {
+    if (!times) {
       return;
     }
 
@@ -94,10 +121,8 @@ export function parseSkedList(html: string): ParsedLecture[] {
       room: raum,
       lecturer: dozent,
       title: veranstaltung.replace(/^I-/, ''),
-      start: start.utc().toDate(),
-      end: end.utc().toDate(),
-      duration: end.diff(start, 'hours', true),
-    } as ParsedLecture);
+      ...times,
+    });
   });
 
   return events;
@@ -108,7 +133,7 @@ export function parseSkedCSV(csvString: string): ParsedLecture[] {
 
   const arr = CSV.parse(csvString);
   // Pop the first row from the array since it contains the header strings
-  const headerRow = arr.shift();
+  const headerRow = arr.shift() ?? [];
 
   // iterate through every CSV row
   arr.forEach(function (cols) {
@@ -152,16 +177,11 @@ export function parseSkedCSV(csvString: string): ParsedLecture[] {
       }
     });
 
-    let start = null;
-    let end = null;
-    for (const format of ['DD.MM.YYYY H:m', 'LLL YYYY H:m']) {
-      start = moment.tz(datum + ' ' + uhrzeitStart, format, 'Europe/Berlin');
-      end = moment.tz(datum + ' ' + uhrzeitEnde, format, 'Europe/Berlin');
-      if (start.isValid() && end.isValid()) {
-        break;
-      }
-    }
-    if (!start.isValid() || !end.isValid()) {
+    const times = parseTimes(datum, uhrzeitStart, uhrzeitEnde, [
+      NUMERIC_DATE_FORMAT,
+      LONG_DATE_FORMAT,
+    ]);
+    if (!times) {
       return;
     }
 
@@ -170,10 +190,8 @@ export function parseSkedCSV(csvString: string): ParsedLecture[] {
       room: raum,
       lecturer: dozent,
       title: veranstaltung,
-      start: start.utc().toDate(),
-      end: end.utc().toDate(),
-      duration: end.diff(start, 'hours', true),
-    } as ParsedLecture);
+      ...times,
+    });
   });
 
   return events;
@@ -188,7 +206,7 @@ export function parseSkedGraphical(
 
   $('body table').each(function () {
     let cols = parseTable(
-      load(this, { decodeEntities: false }),
+      load(this),
       true,
       true,
       false,
@@ -234,7 +252,7 @@ export function parseSkedGraphical(
         let uhrzeitEnde = time[1];
 
         let dozent = '';
-        let veranstaltung = '';
+        let veranstaltung: string;
         let raum = '';
         let anmerkung = '';
 
@@ -278,11 +296,11 @@ export function parseSkedGraphical(
             ) {
               anmerkung += parts.shift() + ', ';
             }
-            veranstaltung = parts.shift();
+            veranstaltung = parts.shift() ?? '';
             if (parts.length >= 3) {
               anmerkung += parts.shift() + ', ';
-              dozent = parts.shift();
-              raum = parts.pop();
+              dozent = parts.shift() ?? '';
+              raum = parts.pop() ?? '';
             }
             anmerkung += parts.join(', ') || '';
             anmerkung = anmerkung.replace(/(, ?)+$/, ''); // remove trailing ,
@@ -292,13 +310,16 @@ export function parseSkedGraphical(
               .replace(` - ${dozent}`, '')
               .replace(` ${dozent}`, '');
             break;
-          case 'Fahrzeugtechnik':
-            raum = parts[0];
-            uhrzeitStart = parts[1];
-            uhrzeitEnde = parts[2];
-            dozent = parts[3];
-            veranstaltung = parts[4];
+          case 'Fahrzeugtechnik': {
+            // room, start, end, lecturer, title - room or lecturer may be missing
+            const fields = [...parts];
+            raum = /^\d?\d:\d\d$/.test(fields[0]) ? '' : (fields.shift() ?? '');
+            uhrzeitStart = fields.shift() ?? '';
+            uhrzeitEnde = fields.shift() ?? '';
+            veranstaltung = fields.pop() ?? '';
+            dozent = fields.join(', ');
             break;
+          }
           case 'Gesundheitswesen':
           case 'Verkehr-Sport-Tourismus-Medien':
           case 'Elektro- und Informationstechnik':
@@ -319,18 +340,9 @@ export function parseSkedGraphical(
             throw new Error('This faculty is not supported.');
         }
 
-        const dateFormat = 'DD.MM.YYYY H:m';
-        const start = moment.tz(
-          datum + ' ' + uhrzeitStart,
-          dateFormat,
-          'Europe/Berlin',
-        );
-        const end = moment.tz(
-          datum + ' ' + uhrzeitEnde,
-          dateFormat,
-          'Europe/Berlin',
-        );
-        if (!start.isValid() || !end.isValid() || veranstaltung === '') {
+        const times = parseTimes(datum, uhrzeitStart, uhrzeitEnde);
+        // entries without a title are kept: a broken event tells users to check the original plan
+        if (!times) {
           return;
         }
 
@@ -338,11 +350,9 @@ export function parseSkedGraphical(
           info: anmerkung || '',
           room: raum || '',
           lecturer: dozent || '',
-          title: veranstaltung || '',
-          start: start.utc().toDate(),
-          end: end.utc().toDate(),
-          duration: end.diff(start, 'hours', true),
-        } as ParsedLecture);
+          title: veranstaltung ?? '',
+          ...times,
+        });
       });
     });
   });
@@ -355,14 +365,13 @@ export function parseTimetableIntranet(html: string): ParsedLecture[] {
   const days = $('table.schedule');
   const events = [] as ParsedLecture[];
   days.each(function (index, day) {
-    const date = $(day).find('.day').html().split('<br>')[1];
-    const jsDate = moment(date, 'DD.MM.YYYY').toDate();
+    const date = ($(day).find('.day').html() ?? '').split('<br>')[1];
 
     $(day)
       .find('.day-event')
       .each(function (i, event) {
-        const styleTopString = $(event).css('top');
-        const styleHeightString = $(event).css('height');
+        const styleTopString = $(event).css('top') ?? '';
+        const styleHeightString = $(event).css('height') ?? '';
         const styleUsesPercentage = styleTopString.includes('%');
         let startTimeSince8: number | undefined;
         let endTimeSince8: number | undefined;
@@ -386,30 +395,20 @@ export function parseTimetableIntranet(html: string): ParsedLecture[] {
           throw new Error('Invalid time styles');
         }
 
-        const eventStart = new Date(jsDate);
-        eventStart.setHours(8 + Math.floor(startTimeSince8 / 60));
-        eventStart.setMinutes(startTimeSince8 % 60);
-
-        const eventEnd = new Date(jsDate);
-        eventEnd.setHours(8 + Math.floor(endTimeSince8 / 60));
-        eventEnd.setMinutes(endTimeSince8 % 60);
+        // e.g. 105 minutes after 8:00 -> "9:45"
+        const timeOfDay = (minutesSince8: number) =>
+          `${8 + Math.floor(minutesSince8 / 60)}:${Math.floor(minutesSince8 % 60)}`;
 
         const title = $(event).find('.text').text();
         const room = $(event).find('.rooms').text();
 
-        const dateFormat = 'DD.MM.YYYY H:m';
-        const start = moment.tz(
-          date + ' ' + eventStart.toTimeString(),
-          dateFormat,
-          'Europe/Berlin',
+        const times = parseTimes(
+          date,
+          timeOfDay(startTimeSince8),
+          timeOfDay(endTimeSince8),
         );
-        const end = moment.tz(
-          date + ' ' + eventEnd.toTimeString(),
-          dateFormat,
-          'Europe/Berlin',
-        );
-        if (!start.isValid() || !end.isValid()) {
-          throw new Error('Invalid date' + start + ' ' + end);
+        if (!times) {
+          throw new Error(`Invalid date ${date}`);
         }
 
         events.push({
@@ -417,9 +416,7 @@ export function parseTimetableIntranet(html: string): ParsedLecture[] {
           room,
           lecturer: '',
           title,
-          start: start.utc().toDate(),
-          end: end.utc().toDate(),
-          duration: end.diff(start, 'hours', true),
+          ...times,
         });
       });
   });

@@ -1,4 +1,4 @@
-import * as LOCATION_OF_FACULTY from '../../assets/locationOfFaculty.json';
+import LOCATION_OF_FACULTY_JSON from '../../assets/locationOfFaculty.json';
 
 import { createRoomAddress } from './RoomAddressCreator';
 import { createOSMLink } from './RoomOSMLinkCreator';
@@ -11,6 +11,8 @@ import { createOSMLink } from './RoomOSMLinkCreator';
  * 'SUD' -> (Suderburg)
  */
 export type FacultyLocation = 'WF' | 'WOB' | 'SZ' | 'SUD';
+
+const LOCATION_OF_FACULTY: Record<string, string> = LOCATION_OF_FACULTY_JSON;
 
 export function getRoomLocation(room: string, faculty: string): string {
   let result = room;
