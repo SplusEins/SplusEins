@@ -4,7 +4,7 @@
     color="secondary"
     :height="$vuetify.display.mobile ? 56 : 64"
   >
-    <v-app-bar-nav-icon @click.stop="toggleSidenav()" />
+    <v-app-bar-nav-icon v-if="!mobile" @click.stop="toggleSidenav()" />
     <div class="header-title">
       <img
         src="../assets/img/headerLogo.png"
@@ -29,10 +29,29 @@
       @click="enqueueError('Internetverbindung: Nicht verfügbar')"
     />
     <v-btn
+      v-if="!mobile"
       :icon="mdiThemeLightDark"
       aria-label="Dunkles Design umschalten"
       @click="toggleDark()"
     />
+    <v-menu v-else location="bottom end">
+      <template #activator="{ props }">
+        <v-btn v-bind="props" :icon="mdiDotsVertical" aria-label="Menü" />
+      </template>
+      <!-- the app bar is dark, the menu follows the app theme -->
+      <v-card :theme="isDark ? 'dark' : 'light'">
+        <v-list>
+          <v-list-item
+            :prepend-icon="mdiThemeLightDark"
+            :title="isDark ? 'Heller Modus' : 'Dunkelmodus'"
+            @click="toggleDark()"
+          />
+        </v-list>
+        <install-button-list />
+        <v-divider />
+        <spluseins-footer />
+      </v-card>
+    </v-menu>
     <v-progress-linear
       :active="pendingRequests > 0"
       indeterminate
@@ -46,16 +65,23 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { mdiWifiOff, mdiThemeLightDark } from '@mdi/js';
+import { storeToRefs } from 'pinia';
+import { useDisplay } from 'vuetify';
+import { mdiWifiOff, mdiThemeLightDark, mdiDotsVertical } from '@mdi/js';
 import { useAppStore } from '../stores/app';
 import { useUiStore } from '../stores/ui';
 import { useSplusStore } from '../stores/splus';
 import { pendingRequests } from '../lib/api';
 import { staging, version } from '../lib/config';
+import InstallButtonList from './install-button-list.vue';
+import SpluseinsFooter from './spluseins-footer.vue';
 
 const route = useRoute();
 const splus = useSplusStore();
-const { toggleDark, toggleSidenav } = useUiStore();
+const ui = useUiStore();
+const { toggleDark, toggleSidenav } = ui;
+const { isDark } = storeToRefs(ui);
+const { mobile } = useDisplay();
 const { enqueueError } = useAppStore();
 
 const commitUrl = 'https://github.com/SplusEins/SplusEins/commit/' + version;

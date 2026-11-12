@@ -1,10 +1,5 @@
 <template>
-  <v-container
-    v-touch="{
-      right: () => setSidenav(true),
-    }"
-    class="container"
-  >
+  <v-container class="container">
     <div>
       <h1>Datenschutzerklärung</h1>
       <p>
@@ -308,10 +303,7 @@
 </template>
 
 <script setup>
-import { useUiStore } from '../stores/ui';
 import { team } from '../lib/config';
-
-const { setSidenav } = useUiStore();
 </script>
 
 <style scoped>
