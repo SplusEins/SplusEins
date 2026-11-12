@@ -11,6 +11,7 @@ import {
   timetableDisplayName,
   truncateText,
   uniq,
+  customTimetableToRoute,
 } from '../lib/util';
 
 // all keep white text at WCAG AA, the most distinct ones come first
@@ -105,7 +106,7 @@ const SCHEDULES = TIMETABLES.map((timetable) => ({
 
 /* count the requests, so that only the response of the last one is used */
 let loadCounter = 0;
-let upcomingCounter = 0;
+let agendaCounter = 0;
 /* week of the last showWeek() call, which may still be loading */
 let requestedWeek;
 
@@ -139,9 +140,9 @@ export const useSplusStore = defineStore('splus', {
      */
     week: defaultWeek(),
     /**
-     * Events of subscribedTimetable in defaultWeek, for upcoming-lectures-card
+     * Events of all favorite and custom timetables for this and next week
      */
-    upcomingEvents: [],
+    agendaEvents: [],
   }),
   getters: {
     /**
@@ -317,28 +318,37 @@ export const useSplusStore = defineStore('splus', {
       return this.showWeek(formatDayjs(week));
     },
     /**
-     * Request the events of subscribedTimetable for defaultWeek
+     * Request events of all subscribable timetables for this and next week
      */
-    async loadUpcomingEvents() {
-      const request = ++upcomingCounter;
-      if (!this.subscribedTimetable.id) {
-        this.upcomingEvents = [];
-        return;
-      }
+    async loadAgendaEvents() {
+      const request = ++agendaCounter;
+      const week = dayjs(defaultWeek());
+      const weeks = [week.isoWeek(), week.add(1, 'week').isoWeek()].join(',');
       try {
-        const events = await loadEvents(
-          this.subscribedTimetable,
-          dayjs(defaultWeek()).isoWeek(),
+        const perTimetable = await Promise.all(
+          this.subscribableTimetables.map(async (timetable) => {
+            const events = await loadEvents(timetable, weeks);
+            const plan = isCustomTimetable(timetable)
+              ? {
+                  name: timetable.label,
+                  route: customTimetableToRoute(timetable),
+                }
+              : {
+                  name: timetableDisplayName(timetable),
+                  route: {
+                    name: 'plan-timetable',
+                    params: { timetable: timetable.id },
+                  },
+                };
+            return events.map((event) => ({ ...event, plan }));
+          }),
         );
-        if (request === upcomingCounter) this.upcomingEvents = events;
+        // e.g. a timetable was removed before the response arrived
+        if (request === agendaCounter) this.agendaEvents = perTimetable.flat();
       } catch (error) {
-        // never show the events of another timetable
-        if (request === upcomingCounter) this.upcomingEvents = [];
-        // don't show the error because this error is not critical on the start page and looks bad
-        console.error(
-          'Error during API call for upcoming events on index page',
-          error.message,
-        );
+        // never show the events of removed timetables
+        if (request === agendaCounter) this.agendaEvents = [];
+        console.error('Error during API call for agenda events', error.message);
       }
     },
     /**

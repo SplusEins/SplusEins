@@ -113,13 +113,7 @@ describe('splus store', () => {
     expect(splus.lastWeekday).toBe(5);
   });
 
-  describe('loadUpcomingEvents', () => {
-    it('forgets the events of a removed timetable', async () => {
-      splus.upcomingEvents = [{ title: 'old' }];
-      await splus.loadUpcomingEvents();
-      expect(splus.upcomingEvents).toEqual([]);
-    });
-
+  describe('loadAgendaEvents', () => {
     it('keeps only the response of the last request', async () => {
       const responses = [];
       vi.stubGlobal(
@@ -128,14 +122,14 @@ describe('splus store', () => {
       );
       splus.addFavoriteSchedule(timetable);
 
-      const first = splus.loadUpcomingEvents();
-      const second = splus.loadUpcomingEvents();
+      const first = splus.loadAgendaEvents();
+      const second = splus.loadAgendaEvents();
       responses[1](Response.json({ events: [{ title: 'new' }] }));
       await second;
       responses[0](Response.json({ events: [{ title: 'old' }] }));
       await first;
 
-      expect(splus.upcomingEvents).toEqual([{ title: 'new' }]);
+      expect(splus.agendaEvents.map(({ title }) => title)).toEqual(['new']);
     });
   });
 
