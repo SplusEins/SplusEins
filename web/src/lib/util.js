@@ -5,19 +5,6 @@ export const scalarArraysEqual = (array1, array2) =>
 export const range = (lower, upper) =>
   Array.from(Array(upper - lower), (x, i) => lower + i);
 
-/**
- * `count` colors evenly spread between two hex colors, e.g. '#1976D2'.
- */
-export function colorScale(from, to, count) {
-  const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
-  const [a, b] = [rgb(from), rgb(to)];
-  return Array.from({ length: count }, (_, i) => {
-    const t = count > 1 ? i / (count - 1) : 0.5;
-    const mixed = a.map((c, j) => Math.round(c + (b[j] - c) * t));
-    return '#' + mixed.map((c) => c.toString(16).padStart(2, '0')).join('');
-  });
-}
-
 export const SEMESTER_WEEK_1 = 39; // TODO Semesterwechsel set to first calendar week of the semester
 
 export function customTimetableToRoute(customTimetable) {

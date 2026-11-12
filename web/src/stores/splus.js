@@ -12,8 +12,18 @@ import {
   uniq,
   customTimetableToRoute,
   scalarArraysEqual,
-  colorScale,
 } from '../lib/util';
+
+const COURSE_COLORS = [
+  '#1F5FBF',
+  '#0F7A6C',
+  '#7A4FC2',
+  '#B04A16',
+  '#2E7D32',
+  '#B0306A',
+  '#5B6B10',
+  '#0E6E8C',
+];
 
 const formatDayjs = (date) => {
   return date.format('YYYY-MM-DD');
@@ -154,11 +164,8 @@ export const useSplusStore = defineStore('splus', {
      * @see https://clickermonkey.github.io/dayspan/docs/interfaces/eventinput.html
      */
     getCalendarEvents: (state) => {
-      const uniqueIds = uniq(
-        state.events.map((event) => event.meta.organiserShortname).sort(),
-      );
-
-      const colors = colorScale('#1976D2', '#004D40', uniqueIds.length); // blue to teal
+      // keyed by title, organiser shortnames are empty in the current data
+      const uniqueIds = uniq(state.events.map((event) => event.title).sort());
 
       const eventsByStart = new Map();
       state.events.forEach((event) =>
@@ -169,7 +176,8 @@ export const useSplusStore = defineStore('splus', {
       );
 
       return state.events.map((event) => {
-        const color = colors[uniqueIds.indexOf(event.meta.organiserShortname)];
+        const color =
+          COURSE_COLORS[uniqueIds.indexOf(event.title) % COURSE_COLORS.length];
         const description = event.meta.organiserName
           ? `Dozent: ${event.meta.organiserName}<br>${event.meta.description}`
           : `${event.meta.description}`;

@@ -1,16 +1,21 @@
 <template>
-  <v-footer app theme="dark" class="px-1 text-body-medium font-size-mobile">
+  <v-footer
+    app
+    theme="dark"
+    color="secondary"
+    class="px-1 text-body-medium font-size-mobile"
+  >
     <div class="w-100 text-center">
       {{ new Date().getFullYear() }}
-      —
+      ·
       <span class="font-weight-bold"> SplusEins </span>
-      —
+      ·
       <a class="link" href="#" @click.prevent="aboutDialogOpen = true">
         Über
       </a>
-      —
+      ·
       <router-link to="/impressum" class="link"> Impressum </router-link>
-      —
+      ·
       <router-link to="/datenschutz" class="link"> Datenschutz </router-link>
     </div>
   </v-footer>

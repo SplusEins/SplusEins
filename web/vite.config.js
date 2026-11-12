@@ -41,7 +41,7 @@ export default defineConfig({
         name: 'SplusEins',
         short_name: 'SplusEins',
         description:
-          'SplusEins - Stundenplan und Mensaplan für Studenten der Ostfalia.',
+          'SplusEins - Stundenplan und Mensaplan für Studierende der Ostfalia.',
         lang: 'de',
         display: 'standalone',
         start_url: '/?standalone=true',

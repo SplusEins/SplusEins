@@ -1,8 +1,16 @@
 <template>
-  <v-app-bar theme="dark" :height="$vuetify.display.mobile ? 56 : 64">
+  <v-app-bar
+    theme="dark"
+    color="secondary"
+    :height="$vuetify.display.mobile ? 56 : 64"
+  >
     <v-app-bar-nav-icon @click.stop="toggleSidenav()" />
     <div class="header-title">
-      <img src="../assets/img/headerLogo.png" height="35" class="pr-4" />
+      <img
+        src="../assets/img/headerLogo.png"
+        height="35"
+        class="bg-white rounded-lg pa-1 mr-4"
+      />
       <a v-if="staging" :href="commitUrl"> STAGING </a>
       <router-link
         v-else
