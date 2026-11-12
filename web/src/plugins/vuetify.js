@@ -28,8 +28,20 @@ export default createVuetify({
     // the theme is switched in App.vue
     defaultTheme: 'light',
     themes: {
-      light: { colors: { primary: '#1976D2', secondary: '#424242' } },
-      dark: { colors: { primary: '#2196F3', secondary: '#424242' } },
+      light: {
+        colors: {
+          primary: '#1A5FC4',
+          secondary: '#00234A',
+          accent: '#FFC53D',
+          error: '#B02E24',
+          info: '#1A5FC4',
+          success: '#15703A',
+          warning: '#8F4E00',
+        },
+      },
+      dark: {
+        colors: { primary: '#3B7DDD', secondary: '#00234A', accent: '#FFC53D' },
+      },
     },
   },
 });

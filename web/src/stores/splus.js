@@ -11,8 +11,31 @@ import {
   timetableDisplayName,
   truncateText,
   uniq,
-  colorScale,
 } from '../lib/util';
+
+// all keep white text at WCAG AA, the most distinct ones come first
+const COURSE_COLORS = [
+  '#1F5FBF',
+  '#0F7A6C',
+  '#7A4FC2',
+  '#B04A16',
+  '#2E7D32',
+  '#B0306A',
+  '#5B6B10',
+  '#0E6E8C',
+  '#C62828',
+  '#0D3B66',
+  '#8A5F18',
+  '#4F5B66',
+  '#95419A',
+  '#1A533E',
+  '#82064C',
+  '#443198',
+  '#6F4928',
+  '#6A1B9A',
+  '#3D4A0F',
+  '#5D395A',
+];
 
 function isCustomTimetable(timetable) {
   return !!timetable && !!timetable.whitelist;
@@ -136,14 +159,12 @@ export const useSplusStore = defineStore('splus', {
      * @see https://clickermonkey.github.io/dayspan/docs/interfaces/eventinput.html
      */
     getCalendarEvents: (state) => {
-      const uniqueIds = uniq(
-        state.events.map((event) => event.meta.organiserShortname).sort(),
-      );
-
-      const colors = colorScale('#1976D2', '#004D40', uniqueIds.length); // blue to teal
+      // keyed by title, organiser shortnames are empty in the current data
+      const uniqueIds = uniq(state.events.map((event) => event.title).sort());
 
       return state.events.map((event) => {
-        const color = colors[uniqueIds.indexOf(event.meta.organiserShortname)];
+        const color =
+          COURSE_COLORS[uniqueIds.indexOf(event.title) % COURSE_COLORS.length];
         const description = event.meta.organiserName
           ? `Dozent: ${event.meta.organiserName}<br>${event.meta.description}`
           : `${event.meta.description}`;
