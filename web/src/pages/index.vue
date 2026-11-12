@@ -1,10 +1,5 @@
 <template>
-  <v-container
-    v-touch="{
-      right: () => setSidenav(true),
-    }"
-    fluid
-  >
+  <v-container fluid>
     <v-row density="compact">
       <v-col cols="12" md="6" order="first">
         <v-row no-gutters class="fill-height">
@@ -53,7 +48,6 @@
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import dayjs from '../lib/dayjs';
-import { useUiStore } from '../stores/ui';
 import { useSplusStore } from '../stores/splus';
 import { useMensaStore } from '../stores/mensa';
 import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
@@ -62,7 +56,6 @@ import MensaCard from '../components/mensa-card.vue';
 import StatsCard from '../components/stats-card.vue';
 
 const mensa = useMensaStore();
-const { setSidenav } = useUiStore();
 const { hasSubscribableTimetables } = storeToRefs(useSplusStore());
 
 const displayMensaCard = computed(() => {

@@ -1,14 +1,13 @@
 <template>
   <v-app>
     <spluseins-header />
-    <!-- the footer comes before the navigation so that it uses the full width -->
-    <spluseins-footer />
-    <spluseins-side-nav />
+    <spluseins-side-nav v-if="!$vuetify.display.mobile" />
     <v-main>
       <!-- the key re-creates the page when e.g. another timetable is opened -->
       <router-view :key="$route.fullPath" />
       <spluseins-error-snackbar />
     </v-main>
+    <spluseins-bottom-nav />
     <spluseins-disclaimer />
   </v-app>
 </template>
@@ -20,7 +19,7 @@ import { useTheme } from 'vuetify';
 import { useUiStore } from './stores/ui';
 import SpluseinsHeader from './components/spluseins-header.vue';
 import SpluseinsSideNav from './components/spluseins-side-nav.vue';
-import SpluseinsFooter from './components/spluseins-footer.vue';
+import SpluseinsBottomNav from './components/spluseins-bottom-nav.vue';
 import SpluseinsErrorSnackbar from './components/spluseins-error-snackbar.vue';
 import SpluseinsDisclaimer from './components/spluseins-disclaimer.vue';
 

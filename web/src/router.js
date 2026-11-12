@@ -10,6 +10,11 @@ const routes = [
     component: () => import('./pages/timetable.vue'),
   },
   {
+    path: '/plaene',
+    component: () => import('./pages/plans.vue'),
+    meta: { title: 'Pläne' },
+  },
+  {
     path: '/mensa',
     component: () => import('./pages/mensa.vue'),
     meta: { title: 'Mensaplan' },

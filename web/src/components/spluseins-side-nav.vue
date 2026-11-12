@@ -9,6 +9,8 @@
     <general-timetables-list />
     <template #append>
       <install-button-list />
+      <v-divider />
+      <spluseins-footer />
     </template>
   </v-navigation-drawer>
 </template>
@@ -23,6 +25,7 @@ import FavoriteTimetablesList from './favorite-timetables-list.vue';
 import CustomTimetablesList from './custom-timetables-list.vue';
 import InstallButtonList from './install-button-list.vue';
 import BasicUtilitiesList from './basic-utilities-list.vue';
+import SpluseinsFooter from './spluseins-footer.vue';
 
 const splus = useSplusStore();
 const { sidenavIsOpen: drawer } = storeToRefs(useUiStore());
