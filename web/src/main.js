@@ -15,6 +15,25 @@ const pinia = createPinia();
 persistStores(pinia);
 
 // service worker for offline support, configured in vite.config.js
-registerSW({ immediate: true });
+registerSW({
+  immediate: true,
+  // the browser only looks for a new version on page loads, so also check
+  // when the user comes back or moves on
+  onRegisteredSW(swUrl, registration) {
+    if (!registration) return;
+    let lastCheck = Date.now();
+    const check = () => {
+      if (Date.now() - lastCheck < 60 * 1000 || !navigator.onLine) return;
+      lastCheck = Date.now();
+      registration.update().catch(() => {});
+    };
+    setInterval(check, 60 * 60 * 1000);
+    router.afterEach(check);
+    document.addEventListener(
+      'visibilitychange',
+      () => document.visibilityState === 'visible' && check(),
+    );
+  },
+});
 
 createApp(App).use(pinia).use(router).use(vuetify).use(Donut).mount('#app');
