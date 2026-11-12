@@ -28,14 +28,18 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
 import { useUiStore } from '../stores/ui';
 
-const { upcomingEvents, subscribedTimetable } = storeToRefs(useSplusStore());
+const splus = useSplusStore();
+const { upcomingEvents, subscribedTimetable } = storeToRefs(splus);
 const { isDark } = storeToRefs(useUiStore());
+
+onMounted(() => splus.loadUpcomingEvents());
+watch(subscribedTimetable, () => splus.loadUpcomingEvents());
 
 /* hours of this week per module: Map { title: hours } */
 const hoursByTitle = computed(() => {

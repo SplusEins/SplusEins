@@ -22,16 +22,22 @@
               :key="departure.date + '-' + departure.line + '-' + index"
             >
               <v-chip
-                variant="outlined"
-                :color="lineColor(departure.line)"
+                size="small"
+                label
+                color="secondary"
+                variant="flat"
                 class="mr-2"
               >
                 Linie {{ departure.line }}
               </v-chip>
               {{ absoluteDate(departure.date) }} Uhr
-              <template v-if="minutesUntilDate(departure.date) < 15">
-                ({{ relativeDate(departure.date) }})
-              </template>
+              <v-chip
+                v-if="minutesUntilDate(departure.date) < 60"
+                size="small"
+                class="ml-2"
+              >
+                {{ departureLabel(departure.date) }}
+              </v-chip>
             </v-list-item>
           </v-list>
         </v-card>
@@ -79,7 +85,12 @@ const relativeDate = (str) => dayjs(str).fromNow();
 const absoluteDate = (str) => dayjs(str).format('HH:mm');
 const formatTime = (str) => dayjs(str).format('HH:mm:ss');
 const minutesUntilDate = (str) => dayjs(str).diff(dayjs(), 'minutes');
-const lineColor = (line) => ['pink', 'purple', 'blue'][parseInt(line) % 4];
+
+function departureLabel(date) {
+  const minutes = minutesUntilDate(date);
+  if (minutes < 0) return relativeDate(date);
+  return minutes === 0 ? 'jetzt' : `in ${minutes} min`;
+}
 
 function removePastDepartures(departures) {
   // remove all departures older than 10 minutes ago

@@ -37,7 +37,7 @@ watch(isDark, () => theme.change(isDark.value ? 'dark' : 'light'), {
   white-space: normal;
 }
 /* text links use the color of the theme, also in dark mode */
-:where(a:not(.v-btn, .v-list-item, .v-tab)) {
+:where(a:not(.v-btn, .v-list-item, .v-tab, .text-medium-emphasis)) {
   color: rgb(var(--v-theme-primary));
 }
 a.link {

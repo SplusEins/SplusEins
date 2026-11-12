@@ -143,10 +143,13 @@ export const useSplusStore = defineStore('splus', {
      */
     week: undefined,
     /**
-     * state for upcoming-lectures-card
+     * Events of subscribedTimetable for the default week, for stats-card
      */
-    upcomingLecturesTimetable: undefined,
     upcomingEvents: [],
+    /**
+     * Events of all favorite and custom timetables for this and next week
+     */
+    agendaEvents: [],
   }),
   getters: {
     weekOrDefault: (state) => {
@@ -256,9 +259,6 @@ export const useSplusStore = defineStore('splus', {
         this.week = this.week || defaultWeek();
       }
     },
-    setUpcomingLecturesTimetable(timetable) {
-      this.upcomingLecturesTimetable = timetable;
-    },
     addCustomSchedule(customTimetable) {
       const label = customTimetable.label;
       const customTimetableStored = this.customSchedules[label];
@@ -346,12 +346,13 @@ export const useSplusStore = defineStore('splus', {
       }
     },
     /**
-     * Request lectures of upcomingLecturesTimetable for defaultWeek
+     * Request lectures of subscribedTimetable for defaultWeek
      */
     async loadUpcomingEvents() {
+      if (!this.subscribedTimetable.id) return;
       try {
         this.upcomingEvents = await loadEvents(
-          this.upcomingLecturesTimetable,
+          this.subscribedTimetable,
           dayjs(defaultWeek()).isoWeek(),
         );
       } catch (error) {
@@ -360,6 +361,36 @@ export const useSplusStore = defineStore('splus', {
           'Error during API call for upcoming events on index page',
           error.message,
         );
+      }
+    },
+    /**
+     * Request events of all subscribable timetables for this and next week
+     */
+    async loadAgendaEvents() {
+      const week = dayjs(defaultWeek());
+      const weeks = [week.isoWeek(), week.add(1, 'week').isoWeek()].join(',');
+      try {
+        const perTimetable = await Promise.all(
+          this.subscribableTimetables.map(async (timetable) => {
+            const events = await loadEvents(timetable, weeks);
+            const plan = isCustomTimetable(timetable)
+              ? {
+                  name: timetable.label,
+                  route: customTimetableToRoute(timetable),
+                }
+              : {
+                  name: timetableDisplayName(timetable),
+                  route: {
+                    name: 'plan-timetable',
+                    params: { timetable: timetable.id },
+                  },
+                };
+            return events.map((event) => ({ ...event, plan }));
+          }),
+        );
+        this.agendaEvents = perTimetable.flat();
+      } catch (error) {
+        console.error('Error during API call for agenda events', error.message);
       }
     },
     /**
