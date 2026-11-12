@@ -11,6 +11,8 @@ export const useUiStore = defineStore('ui', {
      * Whether the "Inoffiziell" Disclaimer at first launch has been dismissed
      */
     hasSeenDisclaimer: false,
+    // not persisted; the dialog is in App.vue so closing a menu cannot unmount it
+    aboutIsOpen: false,
   }),
   actions: {
     toggleDark() {
