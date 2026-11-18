@@ -15,8 +15,13 @@ import {
 const TIMEOUT_MILLISECONDS = 3000;
 const CACHE_SECONDS = config.mensaCacheSeconds;
 const STW_API = 'https://sls.api.stw-on.de/v1/location';
-// Wolfenbüttel, Wolfsburg (Bistro 4U), Salzgitter, Suderburg
-const MENSA_IDS = [130, 112, 200, 134];
+// STW-ON id and key of the location, the web client remembers the selection by key
+const MENSAS = [
+  { id: 130, key: 'wf' }, // Wolfenbüttel
+  { id: 112, key: 'wob' }, // Wolfsburg (Bistro 4U)
+  { id: 200, key: 'sz' }, // Salzgitter
+  { id: 134, key: 'sud' }, // Suderburg
+];
 const BISTRO_4U = 112;
 const AMOUNT_OF_RETURNED_DAYS = 6;
 
@@ -62,8 +67,11 @@ async function getDayPlans(id: number): Promise<MensaDayPlan[]> {
 /**
  * Load a mensa with its opening hours and meals. Fails if one of the requests fails.
  */
-function getMensa(id: number): Promise<Mensa> {
-  const key = `mensa-${id}-${dayjs().format('YYYY-MM-DD')}`;
+function getMensa({
+  id,
+  key: mensaKey,
+}: (typeof MENSAS)[number]): Promise<Mensa> {
+  const key = `mensa-v2-${id}-${dayjs().format('YYYY-MM-DD')}`;
   return cached(key, CACHE_SECONDS, async () => {
     console.log(`mensa cache miss for key ${key}`);
 
@@ -77,8 +85,9 @@ function getMensa(id: number): Promise<Mensa> {
       // copy only neccessary fields
       name: response.name,
       id: response.id,
+      key: mensaKey,
       dayPlans,
-      url: `${response.address.city.toLowerCase()}/essen/${page}`,
+      url: `https://www.stw-on.de/${response.address.city.toLowerCase()}/essen/${page}`,
       opening_hours: filterMensaOpenings(response.opening_hours, response.id),
       address: response.address,
     };
@@ -89,7 +98,7 @@ function getMensa(id: number): Promise<Mensa> {
  * Get all mensas of the Ostfalia. Mensas which could not be loaded are left out.
  */
 router.get('/', async (req, res, next) => {
-  const results = await Promise.allSettled(MENSA_IDS.map(getMensa));
+  const results = await Promise.allSettled(MENSAS.map(getMensa));
   const mensas = results
     .filter((result) => result.status === 'fulfilled')
     .map((result) => result.value);

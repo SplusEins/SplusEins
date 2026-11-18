@@ -97,7 +97,7 @@ Der Endpunkt zum Abfragen der Mensa-Plan Daten befindet sich in der Datei `contr
 **Parameter:** keine
 
 **Rückgabe:**
-Liefert ein Array von Mensa-Objekten mit jeweils bis zu 6 Tagesplänen (siehe `model/SplusEinsModel.ts`), für alle eingetragenen Mensen. Die Daten kommen von der API des Studentenwerks (STW-ON), die Mensa in Wolfenbüttel besitzt dort die ID `130`.
+Liefert ein Array von Mensa-Objekten mit jeweils bis zu 6 Tagesplänen (siehe `model/SplusEinsModel.ts`), für alle eingetragenen Mensen. Die Daten kommen von der API des Studentenwerks (STW-ON), die Mensa in Wolfenbüttel besitzt dort die ID `130`. Jede Mensa hat zusätzlich einen festen `key` (`wf`, `wob`, `sz`, `sud`), über den das Frontend die gewählte Mensa speichert, und in `url` den Link zur Seite beim Studentenwerk.
 Mensen, die nicht geladen werden konnten, fehlen in der Antwort. Konnte keine Mensa geladen werden, antwortet der Server mit `504` (Zeitüberschreitung bei STW-ON) bzw. `500`.
 
 ## Bus

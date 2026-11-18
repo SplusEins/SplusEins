@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 import dayjs from '../lib/dayjs';
 import { apiGet } from '../lib/api';
-import { locationMap } from '../lib/mensa-location-map.js';
 import { useAppStore } from './app';
 
 export const useMensaStore = defineStore('mensa', {
@@ -10,16 +9,21 @@ export const useMensaStore = defineStore('mensa', {
      * List of Mensa objects
      */
     plans: null,
+    /**
+     * key of the selected mensa, e.g. 'wf'
+     */
     location: 'wf',
   }),
   getters: {
-    getNextAvailablePlan: (state) => {
-      if (!state.plans || state.plans.length === 0) {
-        return { meals: [] };
-      }
-      const mappedName = locationMap[state.location] || locationMap.wf;
-      const plan = state.plans.find((p) => p.name === mappedName);
-      if (!plan || !plan.dayPlans || plan.dayPlans.length === 0) {
+    /**
+     * The selected mensa, or the first one if it is not available.
+     */
+    selectedPlan: (state) =>
+      state.plans?.find((plan) => plan.key === state.location) ??
+      state.plans?.[0],
+    getNextAvailablePlan() {
+      const plan = this.selectedPlan;
+      if (!plan || plan.dayPlans.length === 0) {
         return { meals: [] };
       }
 
@@ -45,6 +49,16 @@ export const useMensaStore = defineStore('mensa', {
       }
 
       return dayPlan || { meals: [] };
+    },
+    /**
+     * 'Heute' or 'Morgen' if the next plan is for one of these days, otherwise undefined
+     */
+    nextPlanDay() {
+      const date = this.getNextAvailablePlan.date;
+      if (!date) return undefined;
+      if (dayjs().isSame(date, 'day')) return 'Heute';
+      if (dayjs().add(1, 'day').isSame(date, 'day')) return 'Morgen';
+      return undefined;
     },
   },
   actions: {

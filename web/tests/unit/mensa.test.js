@@ -5,10 +5,11 @@ import { useMensaStore } from '../../src/stores/mensa';
 const dayPlan = (date) => ({ date, meals: [{ name: `Essen am ${date}` }] });
 const plans = [
   {
+    key: 'wf',
     name: 'Mensa Wolfenbüttel',
     dayPlans: [dayPlan('2026-11-10'), dayPlan('2026-11-11')],
   },
-  { name: 'Mensa Salzgitter', dayPlans: [dayPlan('2026-11-12')] },
+  { key: 'sz', name: 'Mensa Salzgitter', dayPlans: [dayPlan('2026-11-12')] },
 ];
 
 describe('mensa store', () => {
@@ -41,6 +42,27 @@ describe('mensa store', () => {
     vi.useFakeTimers({ now: new Date(2026, 10, 10, 12) });
     mensa.setLocation('sz');
     expect(mensa.getNextAvailablePlan.date).toBe('2026-11-12');
+  });
+
+  it('uses the first mensa if the selected one is missing', () => {
+    vi.useFakeTimers({ now: new Date(2026, 10, 10, 12) });
+    mensa.setLocation('sud');
+    expect(mensa.selectedPlan.key).toBe('wf');
+  });
+
+  it('names the day of a plan of today', () => {
+    vi.useFakeTimers({ now: new Date(2026, 10, 10, 12) });
+    expect(mensa.nextPlanDay).toBe('Heute');
+  });
+
+  it('names the day of a plan of tomorrow', () => {
+    vi.useFakeTimers({ now: new Date(2026, 10, 10, 15) });
+    expect(mensa.nextPlanDay).toBe('Morgen');
+  });
+
+  it('does not name the day of a later plan', () => {
+    vi.useFakeTimers({ now: new Date(2026, 10, 1, 12) });
+    expect(mensa.nextPlanDay).toBeUndefined();
   });
 
   it('has no meals without plans', () => {

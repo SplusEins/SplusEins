@@ -62,7 +62,6 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import dayjs from '../lib/dayjs';
 import { useUiStore } from '../stores/ui';
 import { useSplusStore } from '../stores/splus';
 import { useMensaStore } from '../stores/mensa';
@@ -77,15 +76,5 @@ const { setSidenav } = useUiStore();
 const { hasSubscribableTimetables } = storeToRefs(useSplusStore());
 const newsCount = ref(0);
 
-const displayMensaCard = computed(() => {
-  const dayPlans = mensa.plans?.[0]?.dayPlans;
-  if (!dayPlans || dayPlans.length === 0) {
-    return false;
-  }
-  // display if next plan is from today or from tomorrow
-  return (
-    dayjs().isSame(dayPlans[0].date, 'day') ||
-    dayjs().add(1, 'days').isSame(dayPlans[0].date, 'day')
-  );
-});
+const displayMensaCard = computed(() => mensa.nextPlanDay !== undefined);
 </script>

@@ -31,10 +31,7 @@
                 class="mr-2"
                 :icon="mdiFolderInformation"
               />
-              <a
-                :href="getMensaURL(item.url)"
-                class="text-decoration-none"
-                target="_blank"
+              <a :href="item.url" class="text-decoration-none" target="_blank"
                 >Offizielle Mensa-Seite mit Öffnungszeiten</a
               >
             </div>
@@ -125,7 +122,6 @@ import {
 } from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useMensaStore } from '../stores/mensa';
-import { locationMap } from '../lib/mensa-location-map.js';
 import MensaDayplan from '../components/mensa-dayplan.vue';
 
 const mensa = useMensaStore();
@@ -134,12 +130,9 @@ const { plans } = storeToRefs(mensa);
 onMounted(() => mensa.load());
 
 /* index of the mensa which is selected on the start page */
-const defaultTab = computed(() => {
-  if (!plans.value || plans.value.length === 0) return 0;
-  const mappedName = locationMap[mensa.location] || locationMap.wf;
-  const idx = plans.value.findIndex((p) => p.name === mappedName);
-  return idx !== -1 ? idx : 0;
-});
+const defaultTab = computed(() =>
+  Math.max(0, plans.value?.indexOf(mensa.selectedPlan) ?? 0),
+);
 /* index of the tab the user clicked on */
 const selectedTab = ref(undefined);
 const currentTab = computed({
@@ -148,10 +141,6 @@ const currentTab = computed({
     selectedTab.value = value;
   },
 });
-
-function getMensaURL(url) {
-  return `https://www.stw-on.de/${url}`;
-}
 
 function noMealsAvailable(dayPlans) {
   return !dayPlans || dayPlans.length === 0;
