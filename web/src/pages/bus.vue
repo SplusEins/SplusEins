@@ -86,7 +86,7 @@ const relativeDate = (str) => dayjs(str).fromNow();
 const absoluteDate = (str) => dayjs(str).format('HH:mm');
 const formatTime = (str) => dayjs(str).format('HH:mm:ss');
 const minutesUntilDate = (str) => dayjs(str).diff(dayjs(), 'minutes');
-const lineColor = (line) => ['pink', 'purple', 'blue'][parseInt(line) % 4];
+const lineColor = (line) => ['pink', 'purple', 'blue'][parseInt(line) % 3];
 
 function removePastDepartures(departures) {
   // remove all departures older than 10 minutes ago
