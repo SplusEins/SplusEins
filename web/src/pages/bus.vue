@@ -67,13 +67,20 @@ const directionLabel = {
   fhToExer: 'Fachhochschule zu Exer',
 };
 
-// load now and then every minute
+// load now and then every minute, but only while the page is visible
+function refresh() {
+  if (document.visibilityState === 'visible') bus.load();
+}
 let refreshTimer;
 onMounted(() => {
   bus.load();
-  refreshTimer = setInterval(() => bus.load(), 60000);
+  refreshTimer = setInterval(refresh, 60000);
+  document.addEventListener('visibilitychange', refresh);
 });
-onUnmounted(() => clearInterval(refreshTimer));
+onUnmounted(() => {
+  clearInterval(refreshTimer);
+  document.removeEventListener('visibilitychange', refresh);
+});
 
 const relativeDate = (str) => dayjs(str).fromNow();
 const absoluteDate = (str) => dayjs(str).format('HH:mm');

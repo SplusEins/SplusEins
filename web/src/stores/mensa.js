@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import dayjs from '../lib/dayjs';
-import { apiGet, errorCode } from '../lib/api';
+import { apiGet } from '../lib/api';
 import { locationMap } from '../lib/mensa-location-map.js';
 import { useAppStore } from './app';
 
@@ -55,10 +55,7 @@ export const useMensaStore = defineStore('mensa', {
       try {
         this.plans = await apiGet('/api/mensa');
       } catch (error) {
-        useAppStore().enqueueError(
-          `Mensaplan konnte nicht geladen werden (${errorCode(error)}).`,
-        );
-        console.error('error during Mensa API call', error.message);
+        useAppStore().reportLoadError('Mensaplan', error);
       }
     },
   },

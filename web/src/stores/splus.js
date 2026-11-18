@@ -1,9 +1,13 @@
 import { defineStore } from 'pinia';
 
 import dayjs from '../lib/dayjs';
-import { apiGet, errorCode } from '../lib/api';
+import { apiGet } from '../lib/api';
 import TIMETABLES from '../assets/timetables.json';
 import { useAppStore } from './app';
+
+function isCustomTimetable(timetable) {
+  return !!timetable && !!timetable.whitelist;
+}
 import {
   SEMESTER_WEEK_1,
   shortenTimetableDegree,
@@ -11,7 +15,6 @@ import {
   truncateText,
   uniq,
   customTimetableToRoute,
-  scalarArraysEqual,
   colorScale,
 } from '../lib/util';
 
@@ -41,10 +44,8 @@ function defaultWeek() {
  * Return all events for the given timetable and week.
  */
 export async function loadEvents(timetable, weeks) {
-  const isCustomTimetable = Array.isArray(timetable.id);
-
   let data;
-  if (isCustomTimetable) {
+  if (isCustomTimetable(timetable)) {
     const ids = timetable.id.join(',');
     const whitelist = timetable.whitelist.join(',');
     data = await apiGet(
@@ -65,28 +66,18 @@ export async function loadUniqueLectures(timetable) {
 }
 
 /**
- * Transform v2 events to v1 lectures.
+ * Flatten API events into rows for course-multiselect.
  */
 export function eventsAsLectures(events) {
-  return events.map((event) => {
-    const startMoment = dayjs(event.start);
-    return {
-      title: event.title,
-      day: startMoment.isoWeekday(),
-      begin: startMoment.hour() + startMoment.minute() / 60,
-      info: event.meta.description,
-      room: event.location,
-      lecturer: event.meta.organiserName,
-      titleId: event.id,
-      organiserShortname: event.meta.organiserShortname,
-      start: event.start,
-      duration: event.duration,
-    };
-  });
-}
-
-function isCustomTimetable(timetable) {
-  return !!timetable && !!timetable.whitelist;
+  return events.map((event) => ({
+    title: event.title,
+    room: event.location,
+    lecturer: event.meta.organiserName,
+    titleId: event.id,
+    organiserShortname: event.meta.organiserShortname,
+    start: event.start,
+    end: event.end,
+  }));
 }
 
 /* all timetables of the Ostfalia, they do not change while the app runs */
@@ -133,9 +124,8 @@ export const useSplusStore = defineStore('splus', {
      */
     week: undefined,
     /**
-     * state for upcoming-lectures-card
+     * Events of subscribedTimetable in defaultWeek, for upcoming-lectures-card
      */
-    upcomingLecturesTimetable: undefined,
     upcomingEvents: [],
   }),
   getters: {
@@ -160,27 +150,16 @@ export const useSplusStore = defineStore('splus', {
 
       const colors = colorScale('#1976D2', '#004D40', uniqueIds.length); // blue to teal
 
-      const eventsByStart = new Map();
-      state.events.forEach((event) =>
-        eventsByStart.set(event.start, [
-          ...(eventsByStart.get(event.start) || []),
-          event,
-        ]),
-      );
-
       return state.events.map((event) => {
         const color = colors[uniqueIds.indexOf(event.meta.organiserShortname)];
         const description = event.meta.organiserName
           ? `Dozent: ${event.meta.organiserName}<br>${event.meta.description}`
           : `${event.meta.description}`;
 
-        const startMoment = dayjs(event.start);
         return {
           name: event.title,
-          start: startMoment.format('YYYY-MM-DD HH:mm'),
-          end: startMoment
-            .add(event.duration, 'hours')
-            .format('YYYY-MM-DD HH:mm'),
+          start: dayjs(event.start).format('YYYY-MM-DD HH:mm'),
+          end: dayjs(event.end).format('YYYY-MM-DD HH:mm'),
           desc: description,
           location: event.location,
           color,
@@ -248,30 +227,10 @@ export const useSplusStore = defineStore('splus', {
         this.week = this.week || defaultWeek();
       }
     },
-    setUpcomingLecturesTimetable(timetable) {
-      this.upcomingLecturesTimetable = timetable;
-    },
     addCustomSchedule(customTimetable) {
       const label = customTimetable.label;
-      const customTimetableStored = this.customSchedules[label];
-
-      // detect conflicts - never overwrite
-      if (customTimetableStored !== undefined) {
-        const coursesGiven = customTimetable.whitelist;
-        const coursesStored = customTimetableStored.whitelist;
-
-        if (
-          customTimetable.id !== customTimetableStored.id ||
-          !scalarArraysEqual(coursesGiven, coursesStored)
-        ) {
-          console.log(
-            'not overwriting local custom timetable ' +
-              'with different configuration',
-          );
-        }
-
-        return;
-      }
+      // never overwrite a stored timetable with the same name
+      if (label in this.customSchedules) return;
 
       this.customSchedules[label] = customTimetable;
       if (Object.keys(this.subscribedTimetable).length === 0) {
@@ -310,9 +269,6 @@ export const useSplusStore = defineStore('splus', {
     subscribeFirstTimetable() {
       this.subscribedTimetable = this.subscribableTimetables[0] ?? {};
     },
-    setSubscribedTimetable(timetable) {
-      this.subscribedTimetable = timetable;
-    },
 
     /**
      * Request the events of the current timetable for the current week.
@@ -329,21 +285,20 @@ export const useSplusStore = defineStore('splus', {
         this.events = events;
       } catch (error) {
         if (request !== loadCounter) return;
-        useAppStore().enqueueError(
-          error.status === 404
-            ? 'Dieser Plan existiert nicht (mehr).'
-            : `Stundenplan konnte nicht geladen werden (${errorCode(error)}).`,
-        );
-        console.error('error during API call', error.message);
+        if (error.status === 404) {
+          useAppStore().enqueueError('Dieser Plan existiert nicht (mehr).');
+        } else {
+          useAppStore().reportLoadError('Stundenplan', error);
+        }
       }
     },
     /**
-     * Request lectures of upcomingLecturesTimetable for defaultWeek
+     * Request the events of subscribedTimetable for defaultWeek
      */
     async loadUpcomingEvents() {
       try {
         this.upcomingEvents = await loadEvents(
-          this.upcomingLecturesTimetable,
+          this.subscribedTimetable,
           dayjs(defaultWeek()).isoWeek(),
         );
       } catch (error) {

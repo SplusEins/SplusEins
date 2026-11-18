@@ -152,8 +152,7 @@ async function loadLectures(schedule) {
     const events = await loadUniqueLectures(schedule);
     lectures.value[schedule.id] = eventsAsLectures(events);
   } catch (error) {
-    useAppStore().enqueueError('Stundenplan: API-Verbindung fehlgeschlagen');
-    console.error('error during API call', error.message);
+    useAppStore().reportLoadError('Stundenplan', error);
   } finally {
     pendingLoads.value--;
   }

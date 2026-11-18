@@ -84,12 +84,11 @@ function getDayHeader(dayPlan) {
   );
 }
 
-function getPriceLabel(price) {
-  const euros = Math.floor(price);
-  let cents = Math.round((price - euros) * 100);
-  cents = cents >= 10 ? cents : '0' + cents;
-  return euros + ',' + cents + '€';
-}
+const EURO = new Intl.NumberFormat('de-DE', {
+  style: 'currency',
+  currency: 'EUR',
+});
+const getPriceLabel = (price) => EURO.format(price);
 
 function getIcons(item) {
   return item.categories.map((category) => ({
