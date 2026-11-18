@@ -49,7 +49,7 @@ Die Installation der Android App erfolgt über den Google Play Store unter der U
 
 ### Abonnieren eines Planes zur Standartanzeige auf der Startseite
 
-1. Um den Plan auszuwählen, für welchen auf der Startseite Statistiken und die nächste Vorlesung angezeigt werden sollen, klicken Sie in der Info Karte „Nächste Vorlesung“ auf das Lesezeichen-Symbol.
+1. Um den Plan auszuwählen, für welchen auf der Startseite die nächste Vorlesung angezeigt werden sollen, klicken Sie in der Info Karte „Nächste Vorlesung“ auf das Lesezeichen-Symbol.
    ![img](./img/spluseins_start_abo_0.png)
 2. Wählen Sie durch einen Klick den gewünschten Plan aus. In dieser Liste tauchen alle Ihre personalisierten Pläne und Ihre Favoriten auf.
    ![img](./img/spluseins_start_abo_1.png)
@@ -84,13 +84,6 @@ Mit einem Klick auf das Zeitung-Symbol können die gewünschte Fakultät bzw. de
 Diese Infokarte zeigt den Speiseplan aller Mensen der Ostfalia für den aktuellen bzw. den morgigen Tag an.
 
 <!-- ![img](./img/spluseins_start_full_d.png) Mensaplan ist gerade nicht auf der Startseite -->
-
-#### Statistik
-
-Diese Infokarte zeigt Statistiken zum aktuell abonnierten Plan an. Die Statistiken beinhalten die wöchentliche Stundenzahl, sowie eine farbliche Übersicht der zeitlichen Aufteilung der Veranstaltungen.
-![img](./img/spluseins_start_full_e.png)
-
-Der abonnierte Plan lässt sich über die Infokarte „Nächste Vorlesung“ ändern.
 
 #### Schnellzugriff
 
