@@ -18,7 +18,6 @@
     "lintfix": "eslint --fix ."
   },
   "dependencies": {
-    "@motis-project/motis-client": "2.11.4",
     "@motis-project/motis-fptf-client": "6.7.1",
     "cheerio": "1.2.0",
     "cors": "2.8.6",
