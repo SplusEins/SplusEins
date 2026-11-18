@@ -15,7 +15,7 @@
       <template v-if="opened.includes(path)">
         <template v-for="(schedules, semester) in semesters">
           <v-list-group
-            v-if="!isNaN(Number(semester))"
+            v-if="semesterLabel(schedules[0].semester)"
             :key="path + semester"
             :value="path + semester"
             subgroup
@@ -50,6 +50,7 @@
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useSplusStore } from '../stores/splus';
+import { semesterLabel } from '../lib/util';
 
 const { getTimetablesAsTree: schedulesTree } = storeToRefs(useSplusStore());
 
