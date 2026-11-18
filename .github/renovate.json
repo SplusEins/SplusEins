@@ -2,16 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":dependencyDashboard",
     ":prHourlyLimitNone",
     ":separateMajorReleases",
-    "helpers:pinGitHubActionDigests",
-    "docker:pinDigests"
+    "helpers:pinGitHubActionDigests"
   ],
   "automerge": true,
   "automergeType": "branch",
   "automergeSchedule": ["* * * * 6"],
-  "platformAutomerge": true,
   "minimumReleaseAge": "7 days",
   "minimumReleaseAgeBehaviour": "timestamp-optional",
   "labels": ["dependencies"],
@@ -62,22 +59,6 @@
       "matchUpdateTypes": ["major"],
       "matchPackageNames": ["node", "@types/node"],
       "automerge": false
-    },
-    {
-      "description": "Kept from the Vue 3 migration",
-      "matchPackageNames": ["vue", "vuetify"],
-      "matchUpdateTypes": ["major"],
-      "enabled": false
-    }
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": ["/^Dockerfile$/", "/^.github/.+/*\\.ya?ml$/"],
-      "matchStrings": [
-        "renovate:? datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_(?:VERSION|version)=(?<currentValue>.*)\\s"
-      ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
   ],
   "schedule": ["* 0-13 1 * *"],
