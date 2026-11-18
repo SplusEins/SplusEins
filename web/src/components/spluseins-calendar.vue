@@ -110,7 +110,7 @@ const { mobile } = useDisplay();
 
 const calendarEndDate = computed(() =>
   dayjs(week.value)
-    .add(splus.getHasEventsOnWeekend ? 5 : 4, 'days')
+    .add(splus.lastWeekday - 1, 'days')
     .format('YYYY-MM-DD'),
 );
 const monthSummary = computed(() => {

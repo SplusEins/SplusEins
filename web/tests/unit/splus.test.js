@@ -96,6 +96,15 @@ describe('splus store', () => {
     );
   });
 
+  it('shows sunday when there are events on sunday', () => {
+    splus.events = [{ start: '2026-11-14T10:00' }];
+    expect(splus.lastWeekday).toBe(6);
+    splus.events = [{ start: '2026-11-15T10:00' }];
+    expect(splus.lastWeekday).toBe(7);
+    splus.events = [{ start: '2026-11-10T10:00' }];
+    expect(splus.lastWeekday).toBe(5);
+  });
+
   describe('showWeek', () => {
     beforeEach(() => {
       splus.importSchedule({ params: { timetable: timetable.id }, query: {} });
