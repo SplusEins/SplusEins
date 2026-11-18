@@ -30,6 +30,18 @@ function clean(html: string, options: sanitize.IOptions): string {
   return sanitize(html, options).replaceAll('&amp;', '&');
 }
 
+/**
+ * The Ostfalia server answered with an error status.
+ */
+export class SkedError extends Error {
+  constructor(
+    readonly status: number,
+    message: string,
+  ) {
+    super(message);
+  }
+}
+
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -48,7 +60,7 @@ async function timetableRequest(timetable: TimetableRequest): Promise<string> {
 
   const url = timetable.timetablePath;
   console.log(`Url for ${timetable.id} is ${url}`);
-  let errorMsg = '';
+  let error: SkedError | undefined;
   for (let attempt = 0; attempt < 3; attempt++) {
     const res = await fetch(url, { headers });
     if (res.ok) {
@@ -64,16 +76,20 @@ async function timetableRequest(timetable: TimetableRequest): Promise<string> {
 
     if (res.status < 500) {
       // Client side error, throw directly
-      throw new Error(
+      throw new SkedError(
+        res.status,
         `${res.status}: Ostfalia Sked replied "${res.statusText}"`,
       );
     }
-    errorMsg = `${res.status} Sked error for ${timetable.id}: ${res.statusText} (attempt ${attempt})`;
-    console.error(errorMsg);
+    error = new SkedError(
+      res.status,
+      `${res.status} Sked error for ${timetable.id}: ${res.statusText} (attempt ${attempt})`,
+    );
+    console.error(error.message);
     await sleep(100);
   }
 
-  throw new Error(errorMsg);
+  throw error;
 }
 
 /**
@@ -129,7 +145,7 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
  *
  * Uniqueness is determined by the ID field (which is derived from the title of the event/lecture).
  *
- * @param timetable request, the week field will be ignored.
+ * @param timetable request
  * @returns The first event of each lecture.
  */
 export async function getUniqueEvents(
@@ -149,26 +165,30 @@ export async function getUniqueEvents(
 }
 
 /**
- * Manages multiple TimetableRequests
- *
- * @param timetables request
- * @returns requested Events
+ * @param timetables the timetables to merge
+ * @param weeks ISO weeks to return events of
+ * @param titleIds return only events with these ids, or all if empty
+ * @returns the events, each only once even if it is in several timetables
  */
 export async function getEvents(
   timetables: TimetableRequest[],
+  weeks: number[],
+  titleIds: string[] = [],
 ): Promise<Event[]> {
-  const allEvents = await Promise.all(
-    timetables.map((timetable: TimetableRequest) =>
-      parseTimetable(timetable).then((events) => {
-        // Return only events for the correct week of a single request
-        events = events.filter(
-          (lecture) => dayjs(lecture.start).isoWeek() === timetable.week,
+  const weekSet = new Set(weeks);
+  const allEvents = (
+    await Promise.all(
+      timetables.map(async (timetable) => {
+        const events = (await parseTimetable(timetable)).filter(
+          (event) =>
+            weekSet.has(dayjs(event.start).isoWeek()) &&
+            (titleIds.length === 0 || titleIds.includes(event.id)),
         );
         console.log(`Serving ${events.length} lectures for ${timetable.id}`);
         return events;
       }),
-    ),
-  ).then((events) => events.flat());
+    )
+  ).flat();
 
   // filter duplicates
   const key = (event: Event) =>

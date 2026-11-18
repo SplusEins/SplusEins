@@ -115,6 +115,11 @@ describe('splus', () => {
     it('should answer 404 for unknown timetables', async () => {
       await request(app).get('/api/ics/v1/unknown').expect(404);
     });
+
+    it('should answer 502 if the Ostfalia server has problems', async () => {
+      mockFetch(async () => new Response('', { status: 503 }));
+      await request(app).get(`/api/ics/v1/${timetable.id}`).expect(502);
+    });
   });
 });
 

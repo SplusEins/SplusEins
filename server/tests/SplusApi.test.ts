@@ -9,7 +9,6 @@ type SplusApi = typeof import('../lib/SplusApi');
 
 const request = (id: string): TimetableRequest => ({
   id,
-  week: FIXTURE_WEEK,
   timetablePath: `https://stundenplan.ostfalia.de/${id}.html`,
   faculty: 'Bau-Wasser-Boden',
   type: 'graphical',
@@ -27,7 +26,7 @@ describe('Test SplusApi', () => {
   afterEach(() => vi.restoreAllMocks());
 
   it('should return the events of the requested week', async () => {
-    const events = await splusApi.getEvents([request('a')]);
+    const events = await splusApi.getEvents([request('a')], [FIXTURE_WEEK]);
     expect(events.map(({ title }) => title)).toEqual([
       'Zeile B & Co',
       'S-Modul 3 Prof. Dr. Schmidt',
@@ -39,7 +38,10 @@ describe('Test SplusApi', () => {
   });
 
   it('should remove events which are in several timetables', async () => {
-    const events = await splusApi.getEvents([request('a'), request('b')]);
+    const events = await splusApi.getEvents(
+      [request('a'), request('b')],
+      [FIXTURE_WEEK],
+    );
     expect(events).toHaveLength(6);
   });
 
@@ -53,7 +55,7 @@ describe('Test SplusApi', () => {
           ),
         ),
     );
-    const events = await splusApi.getEvents([request('a')]);
+    const events = await splusApi.getEvents([request('a')], [FIXTURE_WEEK]);
     expect(events[0].title).toBe('Zeile B & C & D');
   });
 
@@ -81,8 +83,11 @@ describe('Test SplusApi', () => {
     });
 
     it('should remove duplicates of cached and freshly loaded timetables', async () => {
-      await splusApi.getEvents([request('a')]);
-      const events = await splusApi.getEvents([request('a'), request('b')]);
+      await splusApi.getEvents([request('a')], [FIXTURE_WEEK]);
+      const events = await splusApi.getEvents(
+        [request('a'), request('b')],
+        [FIXTURE_WEEK],
+      );
       expect(events).toHaveLength(6);
     });
   });
