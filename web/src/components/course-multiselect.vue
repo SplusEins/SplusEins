@@ -28,7 +28,7 @@
         <v-checkbox-btn
           :model-value="isSelected(internalItem)"
           :disabled="
-            !isSelected(internalItem) && selectedCourses.length > maxCourses
+            !isSelected(internalItem) && selectedCourses.length >= maxCourses
           "
           :color="
             overlappingCourses.includes(item.title) ? 'warning' : undefined

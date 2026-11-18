@@ -26,7 +26,7 @@
                   :rules="[
                     rules.required,
                     rules.uniqueScheduleLabel,
-                    isNew ? rules.uniqueCustomScheduleLabel : true,
+                    rules.uniqueCustomScheduleLabel,
                   ]"
                   label="Plan benennen"
                   required
@@ -36,7 +36,7 @@
 
               <v-col cols="12">
                 <timetable-select
-                  v-show="selectedSchedules.length <= maxSchedules"
+                  v-show="selectedSchedules.length < maxSchedules"
                   :selected-schedules="selectedSchedules"
                   :loading="loading"
                   @select="addSchedule"
@@ -92,7 +92,7 @@ const CourseMultiselect = defineAsyncComponent(
 );
 
 const props = defineProps({
-  /* personalized timetable to edit - leave empty to create a new one */
+  /* personalized timetable to edit, or one without label to start a new one from - leave empty to start empty */
   customSchedule: {
     type: Object,
     default: () => undefined,
@@ -120,7 +120,7 @@ const pendingLoads = ref(0);
 const loading = computed(() => pendingLoads.value > 0);
 const valid = ref(false);
 
-const isNew = computed(() => !props.customSchedule);
+const isNew = computed(() => !props.customSchedule?.label);
 const saveable = computed(
   () => valid.value && selectedCourses.value.length > 0,
 );
@@ -131,7 +131,9 @@ const rules = {
   uniqueScheduleLabel: (value) =>
     !splus.timetableIds.includes(value) || 'Bereits vergeben',
   uniqueCustomScheduleLabel: (value) =>
-    !splus.customTimetableLabels.includes(value) || 'Bereits vergeben',
+    value === props.customSchedule?.label ||
+    !splus.customTimetableLabels.includes(value) ||
+    'Bereits vergeben',
 };
 
 function getFormattedName(schedule) {
@@ -149,7 +151,11 @@ function getFormattedName(schedule) {
 async function loadLectures(schedule) {
   pendingLoads.value++;
   try {
-    lectures.value[schedule.id] = await loadUniqueLectures(schedule);
+    const loaded = await loadUniqueLectures(schedule);
+    // the timetable may have been removed in the meantime
+    if (selectedSchedules.value.includes(schedule)) {
+      lectures.value[schedule.id] = loaded;
+    }
   } catch (error) {
     useAppStore().reportLoadError('Stundenplan', error);
   } finally {
@@ -187,11 +193,12 @@ function save() {
   // Set the base schedule and filters matching the given courses.
   const titleIds = uniq(selectedCourses.value.map(({ id }) => id));
 
-  const customScheduleRoute = customTimetableToRoute({
+  const customSchedule = {
     id: selectedSchedules.value.map(({ id }) => id),
     label: selectedName.value,
     whitelist: titleIds,
-  });
+  };
+  const customScheduleRoute = customTimetableToRoute(customSchedule);
 
   if (isNew.value) {
     router.push(customScheduleRoute);
@@ -202,8 +209,8 @@ function save() {
     JSON.stringify(customScheduleRoute) !==
     JSON.stringify(customTimetableToRoute(props.customSchedule));
   if (wasChanged) {
+    splus.replaceCustomSchedule(props.customSchedule, customSchedule);
     router.replace(customScheduleRoute);
-    splus.deleteCustomSchedule(props.customSchedule);
   }
 }
 
@@ -214,9 +221,11 @@ async function load() {
   selectedName.value = props.customSchedule.label;
 
   await Promise.all(
-    props.customSchedule.id.map((id) =>
-      addSchedule(splus.getTimetableById(id)),
-    ),
+    props.customSchedule.id
+      .map((id) => splus.getTimetableById(id))
+      // timetables which do not exist anymore
+      .filter((schedule) => schedule !== undefined)
+      .map(addSchedule),
   );
 
   selectedCourses.value = props.customSchedule.whitelist
@@ -238,7 +247,7 @@ function reset() {
 watch(dialogOpen, () => {
   if (!dialogOpen.value) {
     reset();
-  } else if (!isNew.value) {
+  } else if (props.customSchedule) {
     load();
   }
 });

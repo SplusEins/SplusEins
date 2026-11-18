@@ -215,6 +215,17 @@ export const useSplusStore = defineStore('splus', {
         this.subscribeFirstTimetable();
       }
     },
+    /**
+     * Store an edited custom timetable, which stays subscribed if it was before.
+     */
+    replaceCustomSchedule(oldTimetable, newTimetable) {
+      const wasSubscribed =
+        isCustomTimetable(this.subscribedTimetable) &&
+        this.subscribedTimetable.label === oldTimetable.label;
+      delete this.customSchedules[oldTimetable.label];
+      this.customSchedules[newTimetable.label] = newTimetable;
+      if (wasSubscribed) this.subscribedTimetable = newTimetable;
+    },
     addFavoriteSchedule(favoriteTimetable) {
       if (
         !this.favoriteSchedules.some(
