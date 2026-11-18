@@ -147,16 +147,16 @@ export function parseSkedCSV(csvString: string): ParsedLecture[] {
     // Iterate through every CSV column
     cols.forEach(function (content, index) {
       // Get the name of this column from the header row by the current index
-      const columnName = headerRow[index].trim().toLowerCase();
+      const columnName = headerRow[index]?.trim().toLowerCase();
       // Simply map the fields to the right variables by their column header
       switch (columnName) {
         case 'datum':
           datum = content;
           break;
         case 'uhrzeit': {
-          const timeParts = content.split('Uhr')[0].split(' - ');
-          uhrzeitStart = timeParts[0].trim();
-          uhrzeitEnde = timeParts[1].trim();
+          const [start = '', end = ''] = content.split('Uhr')[0].split(' - ');
+          uhrzeitStart = start.trim();
+          uhrzeitEnde = end.trim();
           break;
         }
         case 'veranstaltung':
