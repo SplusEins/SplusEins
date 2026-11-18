@@ -1,9 +1,8 @@
 name: "Docs Build"
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
+    branches: [master, "renovate/**"]
   pull_request:
   merge_group:
 
