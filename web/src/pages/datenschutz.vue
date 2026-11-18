@@ -217,8 +217,8 @@
         Welches Design verwendet wird (hell oder dunkel)
         <br />Welche Pläne favorisiert wurden <br />Personalisierte Pläne: Namen
         des Plans, gespeicherte Kurse, dafür verwendete Stundenpläne und Name
-        des Plans <br />Welche News-Art auf der Startseite angezeigt werden soll
-        <br />Welcher Stundenplan auf der Startseite angezeigt werden soll
+        des Plans <br />Welcher Stundenplan auf der Startseite angezeigt werden
+        soll
       </p>
       <h3>Rechtsgrundlage und berechtigtes Interesse:</h3>
       <p>
