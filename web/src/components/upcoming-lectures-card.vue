@@ -82,9 +82,6 @@ const nextEvent = computed(() => {
   return possibleEvents[0];
 });
 
-function load() {
-  if (selectedItem.value.id) splus.loadUpcomingEvents();
-}
-onMounted(load);
-watch(selectedItem, load);
+onMounted(() => splus.loadUpcomingEvents());
+watch(selectedItem, () => splus.loadUpcomingEvents());
 </script>

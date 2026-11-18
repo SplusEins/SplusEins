@@ -80,8 +80,9 @@ const SCHEDULES = TIMETABLES.map((timetable) => ({
       : ''),
 }));
 
-/* counts the requests of showWeek(), so that only the response of the last one is used */
+/* count the requests, so that only the response of the last one is used */
 let loadCounter = 0;
+let upcomingCounter = 0;
 /* week of the last showWeek() call, which may still be loading */
 let requestedWeek;
 
@@ -291,12 +292,20 @@ export const useSplusStore = defineStore('splus', {
      * Request the events of subscribedTimetable for defaultWeek
      */
     async loadUpcomingEvents() {
+      const request = ++upcomingCounter;
+      if (!this.subscribedTimetable.id) {
+        this.upcomingEvents = [];
+        return;
+      }
       try {
-        this.upcomingEvents = await loadEvents(
+        const events = await loadEvents(
           this.subscribedTimetable,
           dayjs(defaultWeek()).isoWeek(),
         );
+        if (request === upcomingCounter) this.upcomingEvents = events;
       } catch (error) {
+        // never show the events of another timetable
+        if (request === upcomingCounter) this.upcomingEvents = [];
         // don't show the error because this error is not critical on the start page and looks bad
         console.error(
           'Error during API call for upcoming events on index page',
