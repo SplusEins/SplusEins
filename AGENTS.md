@@ -59,7 +59,7 @@ Mensa, news, bus (Motis/Transitous) and ICS export are sibling controllers in `s
 ### Frontend
 
 - `src/pages/` (routes in `src/router.js`), `src/components/`, `src/stores/` (Pinia), `src/lib/` (API client and helpers).
-- `src/stores/persist.js` saves parts of the `ui`, `splus` and `mensa` stores to `localStorage`. Saved timetables are only ids (they contain the semester, e.g. `_ws26`); `forgetUnknownTimetables` drops ids missing from `timetables.json` on startup, so no reset is needed at semester change. Bump `VERSION` (and migrate or drop) only when the saved format changes.
+- `src/stores/persist.js` saves parts of the `ui`, `splus` and `mensa` stores to `localStorage`. Saved timetables are only ids (they contain the semester, e.g. `_ws26`); `forgetUnknownTimetables` drops ids missing from `timetables.json` on startup, so no reset is needed at semester change. Bump `VERSION` (and migrate or drop) only when the saved format changes. Since version 19 it saves under `spluseins-state` and only reads the old `spluseins` key, which version 18 code (old tabs, rollbacks) still uses.
 - Build-time constants (`__TEAM__`, `__STAGING__`, `__VERSION__`) come from `vite.config.js` via `define` and are read in `src/lib/config.js`. `__TEAM__` is `PROTECTED_INFORMATION` or `src/assets/protected-information.json`; it ends up in the client bundle, so it is only for mildly sensitive data.
 - `/api` and `/docs` are proxied, not called cross-origin: by Vite in dev (`API_URL`, `DOCS_URL`) and by `web/server.js` (Express) in production, which also serves `dist/` and answers all other paths with an in-memory `index.html`.
 - The service worker (`vite-plugin-pwa`) caches `/api/*` NetworkFirst, except `/api/ics/`.

@@ -9,7 +9,8 @@ import TIMETABLES from '../../src/assets/timetables.json';
 const [timetable] = TIMETABLES;
 const custom = { id: [timetable.id], label: 'Plan', whitelist: ['x'] };
 
-const STORAGE_KEY = 'spluseins';
+const STORAGE_KEY = 'spluseins-state';
+const LEGACY_STORAGE_KEY = 'spluseins';
 
 function stubLocalStorage(items = {}) {
   const storage = {
@@ -46,7 +47,7 @@ describe('persistStores', () => {
 
   it('converts the timetables saved by version 18', () => {
     const items = stubLocalStorage({
-      [STORAGE_KEY]: JSON.stringify({
+      [LEGACY_STORAGE_KEY]: JSON.stringify({
         version: 18,
         splus: {
           customSchedules: { Plan: custom },
@@ -66,6 +67,33 @@ describe('persistStores', () => {
     });
   });
 
+  it('leaves the data of version 18 for older app versions', async () => {
+    const legacy = JSON.stringify({
+      version: 18,
+      splus: { favoriteSchedules: [timetable] },
+    });
+    const items = stubLocalStorage({ [LEGACY_STORAGE_KEY]: legacy });
+    persistStores(pinia);
+    useUiStore(pinia).toggleDark();
+    await nextTick();
+    expect(items[LEGACY_STORAGE_KEY]).toBe(legacy);
+  });
+
+  it('prefers the data of the current version', () => {
+    stubLocalStorage({
+      [LEGACY_STORAGE_KEY]: JSON.stringify({
+        version: 18,
+        splus: { favoriteSchedules: [] },
+      }),
+      [STORAGE_KEY]: JSON.stringify({
+        version: 19,
+        splus: { favoriteIds: [timetable.id] },
+      }),
+    });
+    persistStores(pinia);
+    expect(useSplusStore(pinia).favoriteIds).toEqual([timetable.id]);
+  });
+
   it('forgets timetables which do not exist anymore', () => {
     stubLocalStorage({
       [STORAGE_KEY]: JSON.stringify({
@@ -79,7 +107,7 @@ describe('persistStores', () => {
 
   it('deletes the timetables of an unknown older version but keeps the settings', () => {
     stubLocalStorage({
-      [STORAGE_KEY]: JSON.stringify({
+      [LEGACY_STORAGE_KEY]: JSON.stringify({
         version: 17,
         ui: { isDark: true },
         splus: { favoriteIds: [timetable.id] },

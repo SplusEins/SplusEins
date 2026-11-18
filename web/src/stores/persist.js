@@ -5,7 +5,10 @@ import { useUiStore } from './ui';
 import { subscriptionKey, useSplusStore } from './splus';
 import { useMensaStore } from './mensa';
 
-const STORAGE_KEY = 'spluseins';
+const STORAGE_KEY = 'spluseins-state';
+// Up to version 18 the data was saved here. It is only read, so that an older
+// app version in another tab or after a rollback still finds its own data.
+const LEGACY_STORAGE_KEY = 'spluseins';
 
 /**
  * Format of the saved data. Saved timetables of older, unknown formats are
@@ -16,7 +19,10 @@ const VERSION = 19;
 
 function readSavedState() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    const saved =
+      localStorage.getItem(STORAGE_KEY) ??
+      localStorage.getItem(LEGACY_STORAGE_KEY);
+    return JSON.parse(saved) || {};
   } catch (error) {
     // e.g. localStorage is blocked by the browser
     console.error('could not read saved state', error.message);

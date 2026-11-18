@@ -195,6 +195,17 @@ describe('splus store', () => {
       ]);
     });
 
+    it('reads responses of the old API format from the cache', async () => {
+      vi.stubGlobal(
+        'fetch',
+        vi.fn(async () =>
+          Response.json({ name: 'x', events: [{ title: 'a' }] }),
+        ),
+      );
+      await splus.showWeek('2026-11-16');
+      expect(splus.events).toEqual([{ title: 'a' }]);
+    });
+
     it('reports a missing timetable', async () => {
       vi.stubGlobal(
         'fetch',

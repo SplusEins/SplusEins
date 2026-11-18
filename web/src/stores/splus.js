@@ -100,9 +100,11 @@ export function subscriptionKey(timetable) {
 export async function loadEvents(timetable, weeks) {
   const ids = [].concat(timetable.id).join(',');
   const lectures = (timetable.whitelist ?? []).join(',');
-  return await apiGet(
+  const data = await apiGet(
     `/api/splus/${ids}/${weeks}` + (lectures ? `/${lectures}` : ''),
   );
+  // the browser and service worker caches may still hold { events } of the old API
+  return Array.isArray(data) ? data : data.events;
 }
 
 /**
