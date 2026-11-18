@@ -120,11 +120,14 @@ export const useSplusStore = defineStore('splus', {
     upcomingEvents: [],
   }),
   getters: {
-    getHasEventsOnWeekend: (state) => {
-      return (
-        state.events
-          .map(({ start }) => dayjs(start).isoWeekday())
-          .filter((day) => day > 5).length > 0 // 1: Monday, 5: Friday
+    /**
+     * Last day of the week to show: Friday, or the last day with events on the weekend
+     * (1: Monday, 7: Sunday)
+     */
+    lastWeekday: (state) => {
+      return Math.max(
+        5,
+        ...state.events.map(({ start }) => dayjs(start).isoWeekday()),
       );
     },
     /**
