@@ -44,6 +44,15 @@ describe('splus store', () => {
       splus.removeFavoriteSchedule(otherTimetable);
       expect(splus.subscribedTimetable).toEqual(timetable);
     });
+
+    it('stays on a personal timetable when it is edited', () => {
+      splus.addFavoriteSchedule(timetable);
+      splus.addCustomSchedule(custom('Mein Plan'));
+      splus.subscribedTimetable = custom('Mein Plan');
+      splus.replaceCustomSchedule(custom('Mein Plan'), custom('Neuer Plan'));
+      expect(splus.subscribedTimetable.label).toBe('Neuer Plan');
+      expect(splus.customTimetableLabels).toEqual(['Neuer Plan']);
+    });
   });
 
   it('adds each favorite only once', () => {
