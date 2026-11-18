@@ -109,6 +109,7 @@ export class Event {
   duration: number;
   location: string;
   meta: EventMetadata;
+  colorIndex?: number;
 
   private censorOrganiserName(name: string): string {
     return name

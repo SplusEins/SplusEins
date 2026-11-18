@@ -10,7 +10,6 @@ import {
   shortenTimetableDegree,
   timetableDisplayName,
   truncateText,
-  uniq,
   customTimetableToRoute,
 } from '../lib/util';
 
@@ -160,12 +159,16 @@ export const useSplusStore = defineStore('splus', {
      * @see https://clickermonkey.github.io/dayspan/docs/interfaces/eventinput.html
      */
     getCalendarEvents: (state) => {
-      // keyed by title, organiser shortnames are empty in the current data
-      const uniqueIds = uniq(state.events.map((event) => event.title).sort());
+      // custom plans combine several plans, whose indexes would collide
+      const whitelist = isCustomTimetable(state.schedule)
+        ? state.schedule.whitelist
+        : [];
 
       return state.events.map((event) => {
-        const color =
-          COURSE_COLORS[uniqueIds.indexOf(event.title) % COURSE_COLORS.length];
+        const index = whitelist.length
+          ? whitelist.indexOf(event.id)
+          : event.colorIndex;
+        const color = COURSE_COLORS[index % COURSE_COLORS.length];
         const description = event.meta.organiserName
           ? `Dozent: ${event.meta.organiserName}<br>${event.meta.description}`
           : `${event.meta.description}`;

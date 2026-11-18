@@ -197,7 +197,13 @@ export async function getEvents(
   const allEvents = (
     await Promise.all(
       timetables.map(async (timetable) => {
-        const events = (await parseTimetable(timetable)).filter(
+        const parsed = await parseTimetable(timetable);
+        // index over the whole semester so a course keeps its color every week
+        const titles = [...new Set(parsed.map(({ title }) => title))].sort();
+        parsed.forEach((event) => {
+          event.colorIndex = titles.indexOf(event.title);
+        });
+        const events = parsed.filter(
           (event) =>
             weekSet.has(dayjs(event.start).isoWeek()) &&
             (titleIds.length === 0 || titleIds.includes(event.id)),
