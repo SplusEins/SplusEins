@@ -4,19 +4,19 @@ import dayjs from '../lib/dayjs';
 import { apiGet } from '../lib/api';
 import TIMETABLES from '../assets/timetables.json';
 import { useAppStore } from './app';
-
-function isCustomTimetable(timetable) {
-  return !!timetable && !!timetable.whitelist;
-}
 import {
   SEMESTER_WEEK_1,
+  semesterLabel,
   shortenTimetableDegree,
   timetableDisplayName,
   truncateText,
   uniq,
-  customTimetableToRoute,
   colorScale,
 } from '../lib/util';
+
+function isCustomTimetable(timetable) {
+  return !!timetable && !!timetable.whitelist;
+}
 
 const formatDayjs = (date) => {
   return date.format('YYYY-MM-DD');
@@ -65,21 +65,6 @@ export async function loadUniqueLectures(timetable) {
   return await apiGet(`/api/splus/${timetable.id}/lectures`);
 }
 
-/**
- * Flatten API events into rows for course-multiselect.
- */
-export function eventsAsLectures(events) {
-  return events.map((event) => ({
-    title: event.title,
-    room: event.location,
-    lecturer: event.meta.organiserName,
-    titleId: event.id,
-    organiserShortname: event.meta.organiserShortname,
-    start: event.start,
-    end: event.end,
-  }));
-}
-
 /* all timetables of the Ostfalia, they do not change while the app runs */
 const SCHEDULES = TIMETABLES.map((timetable) => ({
   ...timetable,
@@ -88,11 +73,17 @@ const SCHEDULES = TIMETABLES.map((timetable) => ({
     name: 'plan-timetable',
     params: { timetable: timetable.id },
   },
-  description: `${shortenTimetableDegree(timetable)} ${timetable.label} - ${timetable.semester}. Sem.`,
+  description:
+    `${shortenTimetableDegree(timetable)} ${timetable.label}` +
+    (semesterLabel(timetable.semester)
+      ? ` - ${semesterLabel(timetable.semester)}`
+      : ''),
 }));
 
-/* counts the requests of load(), so that only the response of the last one is used */
+/* counts the requests of showWeek(), so that only the response of the last one is used */
 let loadCounter = 0;
+/* week of the last showWeek() call, which may still be loading */
+let requestedWeek;
 
 export const useSplusStore = defineStore('splus', {
   state: () => ({
@@ -122,16 +113,13 @@ export const useSplusStore = defineStore('splus', {
     /**
      * Currently viewed week as a date string. The date string specifies the first day of that week.
      */
-    week: undefined,
+    week: defaultWeek(),
     /**
      * Events of subscribedTimetable in defaultWeek, for upcoming-lectures-card
      */
     upcomingEvents: [],
   }),
   getters: {
-    weekOrDefault: (state) => {
-      return state.week || defaultWeek();
-    },
     getHasEventsOnWeekend: (state) => {
       return (
         state.events
@@ -185,9 +173,6 @@ export const useSplusStore = defineStore('splus', {
     getTimetableById: () => (timetableId) => {
       return SCHEDULES.find(({ id }) => id === timetableId);
     },
-    customTimetablesAsRoutes: (state) => {
-      return Object.values(state.customSchedules).map(customTimetableToRoute);
-    },
     customTimetableLabels: (state) => {
       return Object.keys(state.customSchedules);
     },
@@ -214,19 +199,6 @@ export const useSplusStore = defineStore('splus', {
     },
   },
   actions: {
-    decrementWeek() {
-      this.week = formatDayjs(dayjs(this.week).subtract(1, 'week'));
-    },
-    incrementWeek() {
-      this.week = formatDayjs(dayjs(this.week).add(1, 'week'));
-    },
-    resetWeek(forceDefault) {
-      if (forceDefault) {
-        this.week = defaultWeek();
-      } else {
-        this.week = this.week || defaultWeek();
-      }
-    },
     addCustomSchedule(customTimetable) {
       const label = customTimetable.label;
       // never overwrite a stored timetable with the same name
@@ -271,26 +243,35 @@ export const useSplusStore = defineStore('splus', {
     },
 
     /**
-     * Request the events of the current timetable for the current week.
+     * Load the events of the current timetable in the given week and show
+     * both together afterwards, so that the calendar does not flicker.
+     * @param week first day of the week, e.g. '2026-11-16'
      */
-    async load() {
+    async showWeek(week = defaultWeek()) {
+      requestedWeek = week;
       const request = ++loadCounter;
       try {
-        const events = await loadEvents(
-          this.schedule,
-          dayjs(this.week).isoWeek(),
-        );
+        const events = await loadEvents(this.schedule, dayjs(week).isoWeek());
         // e.g. the user switched to the next week before the response arrived
         if (request !== loadCounter) return;
         this.events = events;
       } catch (error) {
         if (request !== loadCounter) return;
+        this.events = [];
         if (error.status === 404) {
           useAppStore().enqueueError('Dieser Plan existiert nicht (mehr).');
         } else {
           useAppStore().reportLoadError('Stundenplan', error);
         }
       }
+      this.week = week;
+    },
+    /**
+     * Show the week `weeks` weeks after the last requested one, so that quick clicks add up.
+     */
+    moveWeek(weeks) {
+      const week = dayjs(requestedWeek ?? this.week).add(weeks, 'week');
+      return this.showWeek(formatDayjs(week));
     },
     /**
      * Request the events of subscribedTimetable for defaultWeek
