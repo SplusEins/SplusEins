@@ -39,10 +39,17 @@ router.get('/', async (req, res, next) => {
           .map(({ legs }) => legs)
           .filter((legs) => legs.length === 1)
           .map((legs) => legs[0])
-          .map((leg) => ({
-            date: leg.departure,
-            line: leg.line.name.replace('Bus ', ''), // remove Bus string at start
-          }))
+          // walking-only journeys have no line
+          .flatMap((leg) =>
+            leg.line?.name
+              ? [
+                  {
+                    date: leg.departure,
+                    line: leg.line.name.replace('Bus ', ''),
+                  },
+                ]
+              : [],
+          )
           .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 
       return {
