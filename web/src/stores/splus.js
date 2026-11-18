@@ -86,6 +86,15 @@ function defaultWeek() {
 }
 
 /**
+ * Key of a saved timetable which stays the same while the app is updated.
+ */
+export function subscriptionKey(timetable) {
+  return isCustomTimetable(timetable)
+    ? `custom:${timetable.label}`
+    : timetable.id;
+}
+
+/**
  * Return all events for the given timetable and week.
  */
 export async function loadEvents(timetable, weeks) {
@@ -117,6 +126,9 @@ const SCHEDULES = TIMETABLES.map((timetable) => ({
       ? ` - ${semesterLabel(timetable.semester)}`
       : ''),
 }));
+const SCHEDULES_BY_ID = new Map(
+  SCHEDULES.map((schedule) => [schedule.id, schedule]),
+);
 
 /* count the requests, so that only the response of the last one is used */
 let loadCounter = 0;
@@ -143,8 +155,15 @@ export const useSplusStore = defineStore('splus', {
      * filters: Whitelist array of keys.
      */
     customSchedules: {},
-    favoriteSchedules: [],
-    subscribedTimetable: {},
+    /**
+     * Ids of the favorite timetables. Only ids are saved, so that labels
+     * stay current and timetables of past semesters can be dropped.
+     */
+    favoriteIds: [],
+    /**
+     * subscriptionKey of the timetable shown on the start page
+     */
+    subscribedKey: null,
     /**
      * Events
      */
@@ -195,7 +214,12 @@ export const useSplusStore = defineStore('splus', {
       return SCHEDULES.map(({ id }) => id);
     },
     getTimetableById: () => (timetableId) => {
-      return SCHEDULES.find(({ id }) => id === timetableId);
+      return SCHEDULES_BY_ID.get(timetableId);
+    },
+    favoriteSchedules: (state) => {
+      return state.favoriteIds
+        .map((id) => SCHEDULES_BY_ID.get(id))
+        .filter((schedule) => schedule !== undefined);
     },
     customTimetableLabels: (state) => {
       return Object.keys(state.customSchedules);
@@ -212,11 +236,20 @@ export const useSplusStore = defineStore('splus', {
           ? truncateText(state.schedule.label, maxLabelLength)
           : timetableDisplayName(state.schedule, maxLabelLength);
       },
-    subscribableTimetables: (state) => {
+    subscribableTimetables() {
       return [
-        ...Object.values(state.customSchedules),
-        ...state.favoriteSchedules,
+        ...Object.values(this.customSchedules),
+        ...this.favoriteSchedules,
       ];
+    },
+    subscribedTimetable() {
+      return (
+        this.subscribableTimetables.find(
+          (timetable) => subscriptionKey(timetable) === this.subscribedKey,
+        ) ??
+        this.subscribableTimetables[0] ??
+        {}
+      );
     },
     /**
      * Faculty of the subscribed timetable, of the first one for a custom timetable
@@ -236,52 +269,53 @@ export const useSplusStore = defineStore('splus', {
       if (label in this.customSchedules) return;
 
       this.customSchedules[label] = customTimetable;
-      if (Object.keys(this.subscribedTimetable).length === 0) {
-        this.subscribedTimetable = this.customSchedules[label];
-      }
+      this.subscribedKey ??= subscriptionKey(customTimetable);
     },
     deleteCustomSchedule(customTimetable) {
       delete this.customSchedules[customTimetable.label];
-      if (this.subscribedTimetable.label === customTimetable.label) {
-        this.subscribeFirstTimetable();
-      }
+      this.unsubscribe(customTimetable);
     },
     /**
      * Store an edited custom timetable, which stays subscribed if it was before.
      */
     replaceCustomSchedule(oldTimetable, newTimetable) {
       const wasSubscribed =
-        isCustomTimetable(this.subscribedTimetable) &&
-        this.subscribedTimetable.label === oldTimetable.label;
+        this.subscribedKey === subscriptionKey(oldTimetable);
       delete this.customSchedules[oldTimetable.label];
       this.customSchedules[newTimetable.label] = newTimetable;
-      if (wasSubscribed) this.subscribedTimetable = newTimetable;
+      if (wasSubscribed) this.subscribedKey = subscriptionKey(newTimetable);
     },
     addFavoriteSchedule(favoriteTimetable) {
-      if (
-        !this.favoriteSchedules.some(
-          (favorite) => favorite.id === favoriteTimetable.id,
-        )
-      ) {
-        this.favoriteSchedules.push(favoriteTimetable);
-        if (Object.keys(this.subscribedTimetable).length === 0) {
-          this.subscribedTimetable = favoriteTimetable;
-        }
-      }
+      if (this.favoriteIds.includes(favoriteTimetable.id)) return;
+      this.favoriteIds.push(favoriteTimetable.id);
+      this.subscribedKey ??= subscriptionKey(favoriteTimetable);
     },
     removeFavoriteSchedule(favoriteTimetable) {
-      this.favoriteSchedules = this.favoriteSchedules.filter(
-        (timetable) => timetable.id !== favoriteTimetable.id,
+      this.favoriteIds = this.favoriteIds.filter(
+        (id) => id !== favoriteTimetable.id,
       );
-      if (this.subscribedTimetable.id === favoriteTimetable.id) {
-        this.subscribeFirstTimetable();
-      }
+      this.unsubscribe(favoriteTimetable);
     },
     /**
-     * Show the first saved timetable on the start page, or none if there is none.
+     * If the removed timetable was subscribed, show the first saved one instead.
      */
-    subscribeFirstTimetable() {
-      this.subscribedTimetable = this.subscribableTimetables[0] ?? {};
+    unsubscribe(removedTimetable) {
+      if (this.subscribedKey !== subscriptionKey(removedTimetable)) return;
+      const first = this.subscribableTimetables[0];
+      this.subscribedKey = first ? subscriptionKey(first) : null;
+    },
+    /**
+     * Forget saved timetables which do not exist anymore, e.g. of the last semester.
+     */
+    forgetUnknownTimetables() {
+      this.favoriteIds = this.favoriteIds.filter((id) =>
+        SCHEDULES_BY_ID.has(id),
+      );
+      for (const [label, custom] of Object.entries(this.customSchedules)) {
+        if (!custom.id.some((id) => SCHEDULES_BY_ID.has(id))) {
+          delete this.customSchedules[label];
+        }
+      }
     },
 
     /**

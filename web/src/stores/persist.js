@@ -2,16 +2,17 @@
 // timetables and settings are still there on the next visit.
 import { watch } from 'vue';
 import { useUiStore } from './ui';
-import { useSplusStore } from './splus';
+import { subscriptionKey, useSplusStore } from './splus';
 import { useMensaStore } from './mensa';
 
 const STORAGE_KEY = 'spluseins';
 
 /**
- * Version of the saved data.
- * When it is incremented, saved timetables of all users are deleted.
+ * Format of the saved data. Saved timetables of older, unknown formats are
+ * deleted. Timetables of past semesters do not need a new version, they are
+ * dropped by forgetUnknownTimetables because their ids contain the semester.
  */
-const VERSION = 18; // TODO Semesterwechsel increment this
+const VERSION = 19;
 
 function readSavedState() {
   try {
@@ -23,6 +24,22 @@ function readSavedState() {
   }
 }
 
+// version 18 saved copies of the timetables instead of their ids
+function migrateFrom18({
+  customSchedules = {},
+  favoriteSchedules = [],
+  subscribedTimetable = {},
+}) {
+  return {
+    customSchedules,
+    favoriteIds: favoriteSchedules.map(({ id }) => id),
+    subscribedKey:
+      Object.keys(subscribedTimetable).length > 0
+        ? subscriptionKey(subscribedTimetable)
+        : null,
+  };
+}
+
 export function persistStores(pinia) {
   const ui = useUiStore(pinia);
   const splus = useSplusStore(pinia);
@@ -30,12 +47,14 @@ export function persistStores(pinia) {
 
   // restore
   const saved = readSavedState();
-  if (saved.version < VERSION) {
-    // timetables of the previous semester do not exist anymore
+  if (saved.version === 18 && saved.splus) {
+    saved.splus = migrateFrom18(saved.splus);
+  } else if (saved.version < VERSION) {
     delete saved.splus;
   }
   ui.$patch(saved.ui || {});
   splus.$patch(saved.splus || {});
+  splus.forgetUnknownTimetables();
   mensa.$patch(saved.mensa || {});
 
   // save when one of the saved values changes
@@ -48,8 +67,8 @@ export function persistStores(pinia) {
     },
     splus: {
       customSchedules: splus.customSchedules,
-      favoriteSchedules: splus.favoriteSchedules,
-      subscribedTimetable: splus.subscribedTimetable,
+      favoriteIds: splus.favoriteIds,
+      subscribedKey: splus.subscribedKey,
     },
     mensa: {
       location: mensa.location,
@@ -64,6 +83,7 @@ export function persistStores(pinia) {
         console.error('could not save state', error.message);
       }
     },
-    { deep: true },
+    // also save right away, so that converted or dropped timetables are stored
+    { deep: true, immediate: true },
   );
 }

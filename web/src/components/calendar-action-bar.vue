@@ -118,9 +118,7 @@ const shareDialogOpen = ref(false);
 
 const isTinyMobile = computed(() => width.value <= 400);
 const isFavorite = computed(() =>
-  splus.favoriteSchedules.some(
-    (favorite) => favorite.id === currentSchedule.value.id,
-  ),
+  splus.favoriteIds.includes(currentSchedule.value.id),
 );
 const timetableIds = computed(() =>
   isCustomSchedule.value
