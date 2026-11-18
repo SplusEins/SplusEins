@@ -150,6 +150,16 @@ describe('Test SkedParser', () => {
     expect(parseSkedCSV(fixture('sked.csv'))).toMatchSnapshot();
   });
 
+  it('should skip CSV rows it cannot read instead of failing', () => {
+    const csv = [
+      'Datum;Uhrzeit;Veranstaltung',
+      '09.11.2026;ganztägig;Blockseminar',
+      '10.11.2026;8:15 - 9:45 Uhr;Datenbanken;extra',
+    ].join('\n');
+    const events = parseSkedCSV(csv);
+    expect(events.map(({ title }) => title)).toEqual(['Datenbanken']);
+  });
+
   it('should parse an intranet plan', () => {
     expect(parseTimetableIntranet(fixture('intranet.html'))).toMatchSnapshot();
   });
