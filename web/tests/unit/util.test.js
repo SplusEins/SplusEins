@@ -3,9 +3,7 @@ import {
   colorScale,
   customTimetableToRoute,
   deepEqual,
-  range,
   roomWithoutLinks,
-  scalarArraysEqual,
   shortenTimetableDegree,
   timetableDisplayName,
   truncateText,
@@ -15,16 +13,6 @@ import {
 describe('util', () => {
   it('uniq removes duplicates', () => {
     expect(uniq([1, 2, 1, 3])).toEqual([1, 2, 3]);
-  });
-
-  it('scalarArraysEqual compares element by element', () => {
-    expect(scalarArraysEqual(['a', 'b'], ['a', 'b'])).toBe(true);
-    expect(scalarArraysEqual(['a', 'b'], ['b', 'a'])).toBe(false);
-    expect(scalarArraysEqual(['a'], ['a', 'b'])).toBe(false);
-  });
-
-  it('range excludes the upper bound', () => {
-    expect(range(2, 5)).toEqual([2, 3, 4]);
   });
 
   it('deepEqual compares nested objects', () => {

@@ -83,10 +83,7 @@ const nextEvent = computed(() => {
 });
 
 function load() {
-  if (selectedItem.value.id) {
-    splus.setUpcomingLecturesTimetable(selectedItem.value);
-    splus.loadUpcomingEvents();
-  }
+  if (selectedItem.value.id) splus.loadUpcomingEvents();
 }
 onMounted(load);
 watch(selectedItem, load);

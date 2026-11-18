@@ -1,9 +1,4 @@
 export const uniq = (iterable) => [...new Set(iterable)];
-export const scalarArraysEqual = (array1, array2) =>
-  array1.length === array2.length &&
-  array1.every((value, index) => value === array2[index]);
-export const range = (lower, upper) =>
-  Array.from(Array(upper - lower), (x, i) => lower + i);
 
 /**
  * `count` colors evenly spread between two hex colors, e.g. '#1976D2'.
