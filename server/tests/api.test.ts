@@ -83,6 +83,32 @@ describe('splus', () => {
       .expect(404);
   });
 
+  it('should answer 502 if the Ostfalia server does not answer', async () => {
+    mockFetch(async () => {
+      throw new DOMException('timed out', 'TimeoutError');
+    });
+    await request(app)
+      .get(`/api/splus/${timetable.id}/${FIXTURE_WEEK}`)
+      .expect(502);
+  });
+
+  it('should answer 502 if the Ostfalia server sends the plan too slowly', async () => {
+    const error = vi.spyOn(console, 'error');
+    mockFetch(
+      async () =>
+        new Response(
+          new ReadableStream({
+            start: (controller) =>
+              controller.error(new DOMException('timed out', 'TimeoutError')),
+          }),
+        ),
+    );
+    await request(app)
+      .get(`/api/splus/${timetable.id}/${FIXTURE_WEEK}`)
+      .expect(502);
+    expect(error).toHaveBeenCalledWith(expect.stringContaining('timed out'));
+  });
+
   it('should not send internal error details', async () => {
     mockFetch(async () => {
       throw new Error('internal detail');

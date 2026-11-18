@@ -14,6 +14,7 @@ import { ParsedLecture } from '../model/SplusModel';
 import { getLectureRoomLocations } from './Room/RoomLocationApi';
 
 const CACHE_SECONDS = config.splusCacheSeconds;
+const TIMEOUT_MILLISECONDS = 20 * 1000;
 
 // Allow only specific HTML attributes for the room since we directly render the HTML in the client
 // Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
@@ -52,6 +53,20 @@ function sleep(ms: number) {
  * @returns HTML-string
  */
 async function timetableRequest(timetable: TimetableRequest): Promise<string> {
+  try {
+    return await fetchWithRetries(timetable);
+  } catch (e) {
+    // the timeout also covers reading the body
+    if (e instanceof Error && e.name === 'TimeoutError') {
+      const error = new SkedError(504, `Sked timed out for ${timetable.id}`);
+      console.error(error.message);
+      throw error;
+    }
+    throw e;
+  }
+}
+
+async function fetchWithRetries(timetable: TimetableRequest): Promise<string> {
   const token = Buffer.from(
     config.skedUser + ':' + config.skedPassword,
   ).toString('base64');
@@ -62,7 +77,10 @@ async function timetableRequest(timetable: TimetableRequest): Promise<string> {
   console.log(`Url for ${timetable.id} is ${url}`);
   let error: SkedError | undefined;
   for (let attempt = 0; attempt < 3; attempt++) {
-    const res = await fetch(url, { headers });
+    const res = await fetch(url, {
+      headers,
+      signal: AbortSignal.timeout(TIMEOUT_MILLISECONDS),
+    });
     if (res.ok) {
       if (timetable.type === 'csv') {
         // CSV files are stored windows1252 encoded, convert them
@@ -71,7 +89,7 @@ async function timetableRequest(timetable: TimetableRequest): Promise<string> {
           'windows1252',
         );
       }
-      return res.text();
+      return await res.text();
     }
 
     if (res.status < 500) {
