@@ -87,10 +87,9 @@ describe('splus store', () => {
     );
   });
 
-  describe('load', () => {
+  describe('showWeek', () => {
     beforeEach(() => {
       splus.importSchedule({ params: { timetable: timetable.id }, query: {} });
-      splus.resetWeek(false);
     });
 
     it('keeps only the response of the last request', async () => {
@@ -100,14 +99,44 @@ describe('splus store', () => {
         vi.fn(() => new Promise((resolve) => responses.push(resolve))),
       );
 
-      const first = splus.load();
-      const second = splus.load();
+      const first = splus.showWeek('2026-11-09');
+      const second = splus.showWeek('2026-11-16');
       responses[1](Response.json({ events: [{ title: 'new' }] }));
       await second;
       responses[0](Response.json({ events: [{ title: 'old' }] }));
       await first;
 
       expect(splus.events).toEqual([{ title: 'new' }]);
+      expect(splus.week).toBe('2026-11-16');
+    });
+
+    it('changes the week only after the events are loaded', async () => {
+      let respond;
+      vi.stubGlobal(
+        'fetch',
+        vi.fn(() => new Promise((resolve) => (respond = resolve))),
+      );
+      splus.week = '2026-11-09';
+
+      const loading = splus.showWeek('2026-11-16');
+      expect(splus.week).toBe('2026-11-09');
+      respond(Response.json({ events: [] }));
+      await loading;
+      expect(splus.week).toBe('2026-11-16');
+    });
+
+    it('adds up quick moves to other weeks', async () => {
+      const fetch = vi.fn(() => new Promise(() => {}));
+      vi.stubGlobal('fetch', fetch);
+      splus.showWeek('2026-11-09'); // week 46
+      fetch.mockClear();
+
+      splus.moveWeek(1);
+      splus.moveWeek(1);
+      expect(fetch.mock.calls.map(([url]) => url)).toEqual([
+        `/api/splus/${timetable.id}/47`,
+        `/api/splus/${timetable.id}/48`,
+      ]);
     });
 
     it('reports a missing timetable', async () => {
@@ -115,7 +144,7 @@ describe('splus store', () => {
         'fetch',
         vi.fn(async () => new Response('', { status: 404 })),
       );
-      await splus.load();
+      await splus.showWeek();
       expect(useAppStore().errorQueue).toEqual([
         'Dieser Plan existiert nicht (mehr).',
       ]);

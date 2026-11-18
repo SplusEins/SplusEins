@@ -1,8 +1,8 @@
 <template>
   <v-container
     v-touch="{
-      right: () => prev(),
-      left: () => next(),
+      right: () => splus.moveWeek(-1),
+      left: () => splus.moveWeek(1),
     }"
     fluid
     class="pa-1 pa-md-3"
@@ -12,19 +12,19 @@
         :breakpoint="!$vuetify.display.mobile"
         :icon="mdiCalendarToday"
         text="Heute"
-        @click="setToday"
+        @click="splus.showWeek()"
       />
       <v-btn
         v-tooltip:bottom="'Vorherige Woche'"
         :icon="mdiChevronLeft"
         aria-label="Vorherige Woche"
-        @click="prev"
+        @click="splus.moveWeek(-1)"
       />
       <v-btn
         v-tooltip:bottom="'Nächste Woche'"
         :icon="mdiChevronRight"
         aria-label="Nächste Woche"
-        @click="next"
+        @click="splus.moveWeek(1)"
       />
 
       <v-toolbar-title class="ml-2">
@@ -38,7 +38,7 @@
       class="inherit-background-color"
       type="custom-daily"
       :events="events"
-      :start="calendarStartDate"
+      :start="week"
       :end="calendarEndDate"
       :interval-width="$vuetify.display.mobile ? 25 : 50"
       :interval-format="formatInterval"
@@ -105,18 +105,16 @@ import CalendarEventPopover from './calendar-event-popover.vue';
 import ResponsiveIconButton from './responsive-icon-button.vue';
 
 const splus = useSplusStore();
-const { schedule, getCalendarEvents: events } = storeToRefs(splus);
+const { schedule, week, getCalendarEvents: events } = storeToRefs(splus);
 const { mobile } = useDisplay();
 
-/* first day of the displayed week */
-const calendarStartDate = ref(splus.weekOrDefault);
 const calendarEndDate = computed(() =>
-  dayjs(calendarStartDate.value)
+  dayjs(week.value)
     .add(splus.getHasEventsOnWeekend ? 5 : 4, 'days')
     .format('YYYY-MM-DD'),
 );
 const monthSummary = computed(() => {
-  const startDate = dayjs(calendarStartDate.value);
+  const startDate = dayjs(week.value);
   const endDate = dayjs(calendarEndDate.value);
   if (startDate.isSame(endDate, 'month')) {
     return startDate.format('MMMM YYYY');
@@ -125,24 +123,7 @@ const monthSummary = computed(() => {
   }
 });
 
-async function refresh() {
-  // Blocking load first and manually set start date afterwards so we avoid load flickering
-  await splus.load();
-  calendarStartDate.value = splus.weekOrDefault;
-}
-function setToday() {
-  splus.resetWeek(true);
-  refresh();
-}
-function prev() {
-  splus.decrementWeek();
-  refresh();
-}
-function next() {
-  splus.incrementWeek();
-  refresh();
-}
-onMounted(refresh);
+onMounted(() => splus.showWeek(splus.week));
 
 function formatInterval(interval) {
   if (mobile.value) {
