@@ -75,12 +75,12 @@
 import { computed, defineAsyncComponent, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { mdiClose } from '@mdi/js';
-import { uniq, customTimetableToRoute, deepEqual } from '../lib/util';
 import {
-  useSplusStore,
-  loadUniqueLectures,
-  eventsAsLectures,
-} from '../stores/splus';
+  uniq,
+  customTimetableToRoute,
+  timetableDisplayName,
+} from '../lib/util';
+import { useSplusStore, loadUniqueLectures } from '../stores/splus';
 import { useAppStore } from '../stores/app';
 
 // loaded when the dialog is opened for the first time
@@ -113,7 +113,7 @@ const maxCourses = 20;
 const selectedName = ref('');
 const selectedSchedules = ref([]);
 const selectedCourses = ref([]);
-/* lectures of the selected timetables: { timetable id: [lecture] } */
+/* lectures (events) of the selected timetables: { timetable id: [lecture] } */
 const lectures = ref({});
 /* state */
 const pendingLoads = ref(0);
@@ -140,7 +140,7 @@ function getFormattedName(schedule) {
       schedule.label === element.label &&
       schedule.semester !== element.semester
     ) {
-      return schedule.label + ' (' + schedule.semester + '. Sem)';
+      return timetableDisplayName(schedule);
     }
   }
   return schedule.label;
@@ -149,8 +149,7 @@ function getFormattedName(schedule) {
 async function loadLectures(schedule) {
   pendingLoads.value++;
   try {
-    const events = await loadUniqueLectures(schedule);
-    lectures.value[schedule.id] = eventsAsLectures(events);
+    lectures.value[schedule.id] = await loadUniqueLectures(schedule);
   } catch (error) {
     useAppStore().reportLoadError('Stundenplan', error);
   } finally {
@@ -186,7 +185,7 @@ function save() {
   dialogOpen.value = false;
 
   // Set the base schedule and filters matching the given courses.
-  const titleIds = uniq(selectedCourses.value.map(({ titleId }) => titleId));
+  const titleIds = uniq(selectedCourses.value.map(({ id }) => id));
 
   const customScheduleRoute = customTimetableToRoute({
     id: selectedSchedules.value.map(({ id }) => id),
@@ -199,9 +198,9 @@ function save() {
     return;
   }
 
-  const wasChanged = !splus.customTimetablesAsRoutes.some((route) =>
-    deepEqual(route, customScheduleRoute),
-  );
+  const wasChanged =
+    JSON.stringify(customScheduleRoute) !==
+    JSON.stringify(customTimetableToRoute(props.customSchedule));
   if (wasChanged) {
     router.replace(customScheduleRoute);
     splus.deleteCustomSchedule(props.customSchedule);
@@ -221,7 +220,7 @@ async function load() {
   );
 
   selectedCourses.value = props.customSchedule.whitelist
-    .map((id) => allLectures.value.find(({ titleId }) => titleId === id))
+    .map((id) => allLectures.value.find((lecture) => lecture.id === id))
     // courses which do not exist anymore
     .filter((course) => course !== undefined);
 }
