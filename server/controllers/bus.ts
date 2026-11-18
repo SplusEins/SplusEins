@@ -30,8 +30,10 @@ router.get('/', async (req, res, next) => {
     const data = await cached('bus', CACHE_SECONDS, async () => {
       console.log('bus cache miss for key bus');
 
-      const exerToFh = await motisClient.journeys(exer, fh, motisOpts);
-      const fhToExer = await motisClient.journeys(fh, exer, motisOpts);
+      const [exerToFh, fhToExer] = await Promise.all([
+        motisClient.journeys(exer, fh, motisOpts),
+        motisClient.journeys(fh, exer, motisOpts),
+      ]);
       const extractDateAndLine = (journeys: Journey[]) =>
         journeys
           .map(({ legs }) => legs)

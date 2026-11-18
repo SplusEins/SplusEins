@@ -205,13 +205,7 @@ export function parseSkedGraphical(
   const events = [] as ParsedLecture[];
 
   $('body table').each(function () {
-    let cols = parseTable(
-      load(this),
-      true,
-      true,
-      false,
-      faculty === 'Maschinenbau',
-    );
+    let cols = parseTable(load(this), faculty === 'Maschinenbau');
 
     cols = cols.filter((c) => c[0].length > 0); // filter pseudo columns -> first entry is not date string
     cols = cols.map((col) =>

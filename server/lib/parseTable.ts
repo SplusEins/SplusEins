@@ -11,18 +11,14 @@ const TIME_FORMAT: Intl.DateTimeFormatOptions = {
 /**
  * Convert a HTML table into columns of cell contents.
  *
+ * Cells spanning several rows or columns are repeated in each of them.
+ *
  * @param $ the table
- * @param dupCols repeat the content of cells which span several columns
- * @param dupRows repeat the content of cells which span several rows
- * @param textMode return the text instead of the HTML of the cells
  * @param estimateTimes add the times to cells without times, based on the time labels at the side of the table
  * @returns columns[x][y]
  */
 export default function parseTable(
   $: CheerioAPI,
-  dupCols = false,
-  dupRows = false,
-  textMode = false,
   estimateTimes = false,
 ): string[][] {
   let startTime: Date | undefined;
@@ -58,33 +54,28 @@ export default function parseTable(
     $('td, th', row).each(function (_, col) {
       const rowspan = parseInt($(col).attr('rowspan') || '1');
       const colspan = parseInt($(col).attr('colspan') || '1');
-      let content: string;
-      if (textMode) {
-        content = $(col).text().trim();
-      } else {
-        content = $(col).html() || '';
-        const text = $(col).text().trim();
+      let content = $(col).html() || '';
+      const text = $(col).text().trim();
 
-        // Add time string to html if cell is an event and has no time
-        if (
-          estimateTimes &&
-          text !== '' &&
-          !/\d?\d:\d\d/gm.test(text) &&
-          !/.., \d\d\.\d\d\.\d\d\d\d/gm.test(text)
-        ) {
-          if (!startTime || !timeGrid) {
-            // Add a blank line instead of the times if row length or start time could not be calculated
-            content = '<br>' + content;
-          } else {
-            const start = addMinutes(startTime, rowIndex * timeGrid);
-            const end = addMinutes(startTime, (rowIndex + rowspan) * timeGrid);
-            content =
-              start.toLocaleTimeString('de-de', TIME_FORMAT) +
-              ' - ' +
-              end.toLocaleTimeString('de-de', TIME_FORMAT) +
-              ' Uhr<br>' +
-              content;
-          }
+      // Add time string to html if cell is an event and has no time
+      if (
+        estimateTimes &&
+        text !== '' &&
+        !/\d?\d:\d\d/gm.test(text) &&
+        !/.., \d\d\.\d\d\.\d\d\d\d/gm.test(text)
+      ) {
+        if (!startTime || !timeGrid) {
+          // Add a blank line instead of the times if row length or start time could not be calculated
+          content = '<br>' + content;
+        } else {
+          const start = addMinutes(startTime, rowIndex * timeGrid);
+          const end = addMinutes(startTime, (rowIndex + rowspan) * timeGrid);
+          content =
+            start.toLocaleTimeString('de-de', TIME_FORMAT) +
+            ' - ' +
+            end.toLocaleTimeString('de-de', TIME_FORMAT) +
+            ' Uhr<br>' +
+            content;
         }
       }
 
@@ -101,11 +92,7 @@ export default function parseTable(
             }
           }
 
-          if ((x === 0 || dupRows) && (y === 0 || dupCols)) {
-            columns[currY + y][currX + x] = content;
-          } else {
-            columns[currY + y][currX + x] = '';
-          }
+          columns[currY + y][currX + x] = content;
         }
       }
       currY += 1;
