@@ -67,9 +67,7 @@ const selectedPath = ref(undefined);
 const selectedSemester = ref(undefined);
 const selectedSchedule = ref(undefined);
 
-const paths = computed(() =>
-  Object.keys(schedulesTree.value).filter((path) => !path.includes('Räume')),
-);
+const paths = computed(() => Object.keys(schedulesTree.value));
 const semesters = computed(() =>
   Object.keys(schedulesTree.value[selectedPath.value] || {}),
 );

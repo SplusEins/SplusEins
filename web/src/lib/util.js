@@ -26,18 +26,11 @@ export function customTimetableToRoute(customTimetable) {
   return { name: 'plan-timetable', params: {}, query };
 }
 
-export function deepEqual(x, y) {
-  if (typeof x === 'object' && typeof x === typeof y) {
-    return (
-      Object.keys(x).length === Object.keys(y).length &&
-      Object.keys(x).every((key) => deepEqual(x[key], y[key]))
-    );
-  }
-
-  return x === y;
-}
-
-function timetableSemesterSuffix(semester) {
+/**
+ * @returns e.g. '3. Sem.', or '' for semesters like 'WPF' or 'Sonstige',
+ * whose timetable labels already say what they contain
+ */
+export function semesterLabel(semester) {
   return typeof semester === 'number' ? `${semester}. Sem.` : '';
 }
 
@@ -50,7 +43,7 @@ export function truncateText(text, maxLength) {
 // e.g. "Digital Technologies 1. Sem."; maxLabelLength truncates the label only, so the suffix survives
 export function timetableDisplayName(timetable, maxLabelLength = Infinity) {
   const label = truncateText(timetable.label, maxLabelLength);
-  const suffix = timetableSemesterSuffix(timetable.semester);
+  const suffix = semesterLabel(timetable.semester);
   return suffix ? `${label} ${suffix}` : label;
 }
 

@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 import {
   colorScale,
   customTimetableToRoute,
-  deepEqual,
   roomWithoutLinks,
+  semesterLabel,
   shortenTimetableDegree,
   timetableDisplayName,
   truncateText,
@@ -15,9 +15,9 @@ describe('util', () => {
     expect(uniq([1, 2, 1, 3])).toEqual([1, 2, 3]);
   });
 
-  it('deepEqual compares nested objects', () => {
-    expect(deepEqual({ a: [1, { b: 2 }] }, { a: [1, { b: 2 }] })).toBe(true);
-    expect(deepEqual({ a: [1, { b: 2 }] }, { a: [1, { b: 3 }] })).toBe(false);
+  it('semesterLabel names only numbered semesters', () => {
+    expect(semesterLabel(3)).toBe('3. Sem.');
+    expect(semesterLabel('WPF')).toBe('');
   });
 
   it('truncateText adds an ellipsis', () => {

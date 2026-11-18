@@ -28,7 +28,7 @@ const splus = useSplusStore();
 const { sidenavIsOpen: drawer } = storeToRefs(useUiStore());
 
 const hasCustomTimetables = computed(
-  () => Object.keys(splus.customSchedules).length > 0,
+  () => splus.customTimetableLabels.length > 0,
 );
 const hasFavoriteTimetables = computed(
   () => splus.favoriteSchedules.length > 0,
