@@ -7,79 +7,88 @@ import { NewsElement } from '../model/SplusEinsModel';
 
 const CACHE_SECONDS = config.newsCacheSeconds;
 
+const OSTFALIA_URL = 'https://www.ostfalia.de/';
+const FACULTIES = 'hochschule/fakultaeten/';
+
 /**
- * Fetch and parse ostfalia news from internal ostfalia endpoint they use for openCMS
- *
- * @param newsSelector News type to load
- * @returns NewsElement[]
+ * News list pages of the Ostfalia website. Selectors without a page there
+ * (e, f, w and the campuses) are still accepted but return no news.
+ */
+const OSTFALIA_NEWS_PAGES: Record<string, string | undefined> = {
+  campus: 'hochschule/nachrichten',
+  b: FACULTIES + 'fakultaet-bau-wasser-boden/nachrichten',
+  g: FACULTIES + 'fakultaet-gesundheitswesen/nachrichten',
+  h: FACULTIES + 'handel-und-soziale-arbeit/nachrichten',
+  k: FACULTIES + 'fakultaet-verkehr-sport-tourismus-medien/nachrichten',
+  r: FACULTIES + 'fakultaet-recht/nachrichten',
+  s: FACULTIES + 'fakultaet-soziale-arbeit/nachrichten',
+  e: undefined,
+  f: undefined,
+  w: undefined,
+  wob: undefined,
+  wf: undefined,
+  sud: undefined,
+  sz: undefined,
+};
+
+async function fetchOk(url: string): Promise<Response> {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`${url} returned ${response.status}`);
+  return response;
+}
+
+/**
+ * Scrape the news list page of the Ostfalia website (TYPO3)
  */
 async function ostfaliaNewsRequest(
   newsSelector: string,
 ): Promise<NewsElement[]> {
-  if (['wob', 'wf', 'sud', 'sz'].includes(newsSelector)) {
-    // prepend standort/campus selectors with necceassary prefix
-    newsSelector = 'campus/' + newsSelector;
-  }
-  const query = new URLSearchParams();
-  query.append('itemsPerPage', '30');
-  // Syntax of collectorParam very similar to https://documentation.opencms.org/opencms-documentation/more-opencms-features/solr-search-integration
-  // so that param will probably be forwarded to Apache SOLR
-  query.append(
-    'collectorParam',
-    'fq=type:of-news' + // not stricly neccessary, but kept here just in case
-      '&fq=parent-folders:"/sites/default/de/' +
-      newsSelector +
-      '/.content/"' + // .content could be removed as well
-      '&sort=newsdate_de_dt desc' + // order the articles by date in the SOLR requests
-      '&rows=25',
-  ); // limit the number of requested rows, otherwise server error
-  query.append('showDate', 'true'); // always show dates on articles
-  query.append('currPage', '1'); // pagination, we always need the first page
-  query.append('teaserLength', '250'); // cut off descriptions longer than x characters, doesn't always work?
-
-  const response = await fetch(
-    'https://www.ostfalia.de/cms/system/modules/de.ostfalia.module.template/elements/renderNewsList.jsp',
-    {
-      method: 'POST',
-      body: query,
-    },
-  ).then((res) => res.text());
-
-  const $ = cheerio.load(response);
-  const elements: NewsElement[] = $('article')
-    .map(function () {
+  const page = OSTFALIA_NEWS_PAGES[newsSelector];
+  if (!page) return [];
+  const response = await fetchOk(OSTFALIA_URL + page);
+  const $ = cheerio.load(await response.text());
+  const elements = $('.teaser-wall__item')
+    .map((_, item) => {
+      const href = $('.teaser__title-link', item).attr('href');
+      const date = $('time.teaser__date', item).attr('datetime');
       return <NewsElement>{
-        title: $('a', this).text().trim(),
-        link: 'https://www.ostfalia.de' + $('a', this).attr('href'),
-        text: $('p', this).last().text().trim(),
-        date: dayjs($('p', this).first().text().trim(), 'DD.MM.YY').toDate(),
+        title: $('.teaser__title-text', item).text().trim(),
+        link: href ? new URL(href, OSTFALIA_URL).href : OSTFALIA_URL + page,
+        text: $('.teaser__snippet', item).text().trim(),
+        date: date ? dayjs(date).toDate() : undefined,
       };
     })
-    .get();
-  console.log(`Fetched ${elements.length} news for "${newsSelector}"`);
+    .get()
+    .filter((article) => article.title);
+  if (elements.length === 0) {
+    throw new Error(`No news found on ${page}, did the page layout change?`);
+  }
   return elements;
 }
 
+interface WordpressPost {
+  date_gmt: string;
+  link: string;
+  title: { rendered: string };
+  excerpt: { rendered: string };
+}
+
+const htmlToText = (html: string) => cheerio.load(html).text().trim();
+
 /**
- * Fetch and parse campus38 news
- * @returns NewsElement[]
+ * Fetch campus38 news from the WordPress REST API
  */
 async function campus38NewsRequest(): Promise<NewsElement[]> {
-  const response = await fetch('https://www.campus38.de/newsfeed.xml').then(
-    (res) => res.text(),
+  const response = await fetchOk(
+    'https://campus38.de/wp-json/wp/v2/posts?per_page=10&_fields=date_gmt,link,title,excerpt',
   );
-  const $ = cheerio.load(response, { xml: true });
-  return $('entry')
-    .map(function () {
-      return <NewsElement>{
-        title: $('title', this).text().trim(),
-        link: $('link', this).attr('href'),
-        text: $('summary', this).text().trim(),
-        date: dayjs($('published', this).text().trim().split('T')[0]).toDate(),
-      };
-    })
-    .slice(0, 10)
-    .get();
+  const posts = (await response.json()) as WordpressPost[];
+  return posts.map((post) => ({
+    title: htmlToText(post.title.rendered),
+    link: post.link,
+    text: htmlToText(post.excerpt.rendered),
+    date: new Date(post.date_gmt + 'Z'),
+  }));
 }
 
 /**
@@ -148,13 +157,7 @@ export default async function getNews(
   newsSelectors: string[],
   limit: number,
 ): Promise<NewsElement[]> {
-  const facultySelectors = ['r', 'b', 'k', 'h', 'f', 'g', 'w', 'e', 's']; // all allowed faculties
-  const campusSelectors = ['wob', 'wf', 'sud', 'sz']; // all allowed campuses/standorte
-  const otherSelectors = ['campus', 'campus38']; // currently only ostfalia global news and Campus 38 news.
-  const allowedSelectors = facultySelectors.concat(
-    campusSelectors,
-    otherSelectors,
-  );
+  const allowedSelectors = [...Object.keys(OSTFALIA_NEWS_PAGES), 'campus38'];
 
   const news = await Promise.all(
     newsSelectors.map(async (newsSelector) => {
