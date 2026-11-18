@@ -2,88 +2,87 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "security:minimumReleaseAgeNpm",
     ":dependencyDashboard",
     ":prHourlyLimitNone",
     ":separateMajorReleases",
     "helpers:pinGitHubActionDigests",
-    "docker:pinDigests",
-    ":automergePatch",
-    ":automergeLinters",
-    ":automergeTesters",
-    ":automergeTypes",
-    ":automergeDigest",
-    ":automergePr",
-    "group:test",
-    "group:linters",
-    "group:definitelyTyped",
-    "schedule:automergeWeekends",
-    ":approveMajorUpdates"
+    "docker:pinDigests"
   ],
-  "labels": [
-    "dependencies"
-  ],
-  "ignorePaths": [
-    "app/**"
-  ],
+  "automerge": true,
+  "automergeType": "branch",
+  "automergeSchedule": ["* * * * 6"],
   "platformAutomerge": true,
+  "minimumReleaseAge": "7 days",
+  "minimumReleaseAgeBehaviour": "timestamp-optional",
+  "labels": ["dependencies"],
+  "ignorePaths": ["app/**"],
   "packageRules": [
     {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true
+      "description": "Everything else, monthly",
+      "groupName": "all non-major dependencies",
+      "matchUpdateTypes": ["minor", "patch", "pin", "pinDigest", "digest"]
     },
     {
-      "extends": [
-        "packages:test",
-        "packages:linters",
-        "schedule:monthly"
-      ]
+      "description": "Runtime and build tools, every three months",
+      "groupName": "toolchain",
+      "extends": ["schedule:quarterly"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "pinDigest", "digest"],
+      "matchPackageNames": ["node", "@types/node", "typescript"]
     },
     {
-      "matchPackageNames": [
-        "vue",
-        "vuetify",
-        "webpack"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "enabled": false
+      "groupName": "toolchain",
+      "extends": ["schedule:quarterly"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "pinDigest", "digest"],
+      "matchManagers": ["github-actions", "devcontainer"]
     },
     {
-      "matchPackageNames": [
-        "cheerio"
-      ],
+      "description": "Break most often, so apart from everything else",
+      "groupName": "linters",
+      "extends": ["packages:linters", "schedule:quarterly"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "pinDigest", "digest"],
+      "matchPackageNames": ["globals"]
+    },
+    {
+      "groupName": "test packages",
+      "extends": ["packages:test", "schedule:quarterly"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "pinDigest", "digest"]
+    },
+    {
+      "description": "Majors get a PR each, so closing one keeps that major away. Monorepos still come together.",
+      "matchUpdateTypes": ["major"],
+      "minimumReleaseAge": "30 days"
+    },
+    {
+      "description": "Production code and its runtime wait for a human",
+      "matchUpdateTypes": ["major"],
+      "matchDepTypes": ["dependencies"],
+      "automerge": false
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "matchPackageNames": ["node", "@types/node"],
+      "automerge": false
+    },
+    {
+      "description": "Kept from the Vue 3 migration",
+      "matchPackageNames": ["vue", "vuetify"],
+      "matchUpdateTypes": ["major"],
       "enabled": false
     }
   ],
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/^Dockerfile$/",
-        "/^.github/.+/*\\.ya?ml$/"
-      ],
+      "managerFilePatterns": ["/^Dockerfile$/", "/^.github/.+/*\\.ya?ml$/"],
       "matchStrings": [
         "renovate:? datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_(?:VERSION|version)=(?<currentValue>.*)\\s"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
   ],
-  "schedule": [
-    "before 2pm on Saturday"
-  ],
+  "schedule": ["* 0-13 1 * *"],
   "timezone": "Europe/Berlin",
   "npm": {
-    "extends": [
-      ":pinAllExceptPeerDependencies"
-    ]
+    "extends": [":pinAllExceptPeerDependencies"]
   }
 }
