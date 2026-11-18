@@ -31,7 +31,7 @@ describe('Test SplusApi', () => {
     expect(events.map(({ title }) => title)).toEqual([
       'Zeile B & Co',
       'S-Modul 3 Prof. Dr. Schmidt',
-      'B7',
+      'Nur Titel',
       'Y',
       'Mathematik 1',
       'Y',

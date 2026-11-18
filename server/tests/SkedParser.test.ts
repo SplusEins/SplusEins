@@ -1,15 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { readFileSync } from 'fs';
-import { join } from 'path';
 import {
   parseSkedCSV,
   parseSkedGraphical,
   parseSkedList,
   parseTimetableIntranet,
 } from '../lib/SkedParser';
-
-const fixture = (name: string) =>
-  readFileSync(join(__dirname, 'fixtures', name), 'utf8');
+import { fixture } from './helpers';
 
 /**
  * These tests compare the output of the parsers with the saved output in
@@ -117,17 +113,91 @@ describe('Test SkedParser', () => {
     ]);
   });
 
-  it('should keep entries without a title so that users notice them', () => {
-    const html = fixture('soziale-arbeit.html').replace(
-      'Ringveranstaltung Ethik',
-      'Erstsemesterbegrüßung',
-    );
-    const lectures = parseSkedGraphical(html, 'Soziale Arbeit');
-    expect(lectures).toHaveLength(2);
-    expect(lectures[1]).toMatchObject({
-      title: '',
-      info: 'Erstsemesterbegrüßung, Aula',
-    });
+  const cell = (lines: string[]) =>
+    '<table><tr><td></td><td>Mo, 09.11.2026</td></tr><tr><td>8:00</td>' +
+    `<td>8:00 - 9:30 Uhr<br>${lines.join('<br>')}</td></tr></table>`;
+
+  /* cells shaped like the current plans, with made-up names. The layouts change
+     from time to time: values must rather end up in info than in a wrong field */
+  it.each([
+    [
+      'an entry without a title, so that users notice it',
+      'Soziale Arbeit',
+      ['', 'Aula'],
+      { title: '', room: 'Aula' },
+    ],
+    [
+      'a Soziale Arbeit cell',
+      'Soziale Arbeit',
+      ['S-Gruppenarbeit', 'Muster', '6/058 [1]'],
+      { title: 'S-Gruppenarbeit', lecturer: 'Muster', room: '6/058' },
+    ],
+    [
+      'a Wirtschaft cell',
+      'Wirtschaft',
+      ['Organisationslehre', 'Dipl.-Kfm. Muster', 'C-131'],
+      {
+        title: 'Organisationslehre',
+        lecturer: 'Dipl.-Kfm. Muster',
+        room: 'C-131',
+      },
+    ],
+    [
+      'a Handel und Soziale Arbeit cell',
+      'Handel und Soziale Arbeit',
+      ['16 Wissenschaftliches Arbeiten', 'A. Muster', 'Webkonferenz'],
+      {
+        title: '16 Wissenschaftliches Arbeiten',
+        lecturer: 'A. Muster',
+        room: 'Webkonferenz',
+      },
+    ],
+    [
+      'a lecture type as room',
+      'Recht',
+      ['F05.1 (2022)', 'Finanzbuchführung', 'Muster LL.M.', 'V', 'online'],
+      { lecturer: 'Muster LL.M.', room: '', info: 'V, online' },
+    ],
+    [
+      'student groups as room',
+      'Verkehr-Sport-Tourismus-Medien',
+      ['Personenverkehrssysteme', 'Prof. Dr. Muster', 'NaMo 3, NaMo 4'],
+      { lecturer: 'Prof. Dr. Muster', room: '', info: 'NaMo 3, NaMo 4' },
+    ],
+    [
+      'student groups as lecturer',
+      'Wirtschaft',
+      ['Wirtschaftsenglisch 1', 'Gr. 1', 'Muster'],
+      { lecturer: '', room: '', info: 'Gr. 1, Muster' },
+    ],
+    [
+      'a room as lecturer',
+      'Bau-Wasser-Boden',
+      ['Ü', 'Tutorium Mechanik', 'D6'],
+      { title: 'Tutorium Mechanik', lecturer: '', room: 'D6', info: 'Ü' },
+    ],
+    [
+      'a missing line before the lecturer',
+      'Recht',
+      ['BGB AT', 'Muster', 'R001', 'T', 'RFS'],
+      { lecturer: '', room: 'R001' },
+    ],
+    [
+      'only a title and a room',
+      'Versorgungstechnik',
+      ['Z03 Tutorium ELT I', 'CU05'],
+      { title: 'Z03 Tutorium ELT I', lecturer: '', room: 'CU05' },
+    ],
+    [
+      'only a lecturer and a title which looks like a room',
+      'Versorgungstechnik',
+      ['Muster', 'Z06 Thermo I - Labor'],
+      { title: 'Z06 Thermo I - Labor', lecturer: 'Muster', room: '' },
+    ],
+  ])('should handle %s', (_, faculty, lines, expected) => {
+    const lectures = parseSkedGraphical(cell(lines), faculty);
+    expect(lectures).toHaveLength(1);
+    expect(lectures[0]).toMatchObject(expected);
   });
 
   it('should estimate missing times for Maschinenbau', () => {

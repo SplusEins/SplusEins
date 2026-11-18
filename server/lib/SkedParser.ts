@@ -197,6 +197,36 @@ export function parseSkedCSV(csvString: string): ParsedLecture[] {
   return events;
 }
 
+/* e.g. "NaMo 5", "BM6_SP" or "Gr. 3", unlike rooms like "CU05" */
+const STUDENT_GROUP = /^[a-zäöü]{2,}\.? ?\d(?!\d)/i;
+
+const joinInfo = (value: string, info: string) =>
+  [value, info].filter(Boolean).join(', ');
+
+const splitList = (text = '') =>
+  text
+    .split(',')
+    .map((token) => token.trim())
+    .filter(Boolean);
+
+/**
+ * Whether a cell line names rooms, e.g. "D-222", "6/058, 6/134", "M108 Lab." or "online".
+ * Strict: single words only, because titles like "Z06 Thermo I" look like rooms too.
+ */
+function looksLikeRoom(text: string | undefined, strict = false): boolean {
+  const tokens = splitList(text);
+  return (
+    tokens.length > 0 &&
+    tokens.every(
+      (token) =>
+        /^(onl|webkonferenz|hybrid|aula|hörsaal|hs )/i.test(token) ||
+        (/\d/.test(token) &&
+          !STUDENT_GROUP.test(token) &&
+          !(strict && /\s/.test(token))),
+    )
+  );
+}
+
 export function parseSkedGraphical(
   html: string,
   faculty: string,
@@ -252,9 +282,9 @@ export function parseSkedGraphical(
         let uhrzeitStart = time[0];
         let uhrzeitEnde = time[1];
 
-        let dozent = '';
+        let dozent: string;
         let veranstaltung: string;
-        let raum = '';
+        let raum: string;
         let anmerkung = '';
 
         switch (faculty) {
@@ -262,29 +292,19 @@ export function parseSkedGraphical(
             dozent = parts[1];
             veranstaltung = parts[2];
             raum = parts[3];
-            anmerkung = parts.splice(4).join(', ') || '';
+            anmerkung = parts.slice(4).join(', ');
             break;
           case 'Recht':
             dozent = parts[3];
             veranstaltung = parts[2] + ' ' + parts[1];
             raum = parts[4];
-            anmerkung = parts.splice(5).join(', ') || '';
+            anmerkung = parts.slice(5).join(', ');
             break;
           case 'Bau-Wasser-Boden':
             dozent = parts[3];
             veranstaltung = parts[2];
             raum = parts[4];
             anmerkung = parts[1];
-            break;
-          case 'Handel und Soziale Arbeit':
-            veranstaltung = parts[1] || '';
-            dozent = parts[2] || '';
-            raum = parts[3] || '';
-            anmerkung = parts.slice(4).join(', ') || '';
-            break;
-          case 'Wirtschaft':
-            // Leider ohne Dozent / Raum, da die Zeilen in dieser Fakultät zu unterschiedlich genutzt werden
-            veranstaltung = parts[1];
             break;
           case 'Soziale Arbeit':
             if (!parts[0].endsWith('Uhr') && parts[1].endsWith('Uhr')) {
@@ -298,29 +318,17 @@ export function parseSkedGraphical(
               anmerkung = parts.slice(4).join(', ');
               break;
             }
-            if (parts[0].endsWith('Uhr')) {
-              parts.shift(); // remove first uhrzeit entry
-            }
-            while (
-              parts[0] !== undefined &&
-              !parts[0].startsWith('S-') &&
-              !parts[0].startsWith('Ringveranstaltung')
-            ) {
-              anmerkung += parts.shift() + ', ';
-            }
-            veranstaltung = parts.shift() ?? '';
-            if (parts.length >= 3) {
-              anmerkung += parts.shift() + ', ';
-              dozent = parts.shift() ?? '';
-              raum = parts.pop() ?? '';
-            }
-            anmerkung += parts.join(', ') || '';
-            anmerkung = anmerkung.replace(/(, ?)+$/, ''); // remove trailing ,
-
-            // einige veranstaltungen enthalten den dozenten im titel
-            veranstaltung = veranstaltung
-              .replace(` - ${dozent}`, '')
-              .replace(` ${dozent}`, '');
+          // falls through
+          case 'Handel und Soziale Arbeit':
+          case 'Wirtschaft':
+          case 'Gesundheitswesen':
+          case 'Verkehr-Sport-Tourismus-Medien':
+          case 'Elektro- und Informationstechnik':
+          case 'Maschinenbau':
+            veranstaltung = parts[1];
+            dozent = parts[2];
+            raum = parts[3];
+            anmerkung = parts.slice(4).join(', ');
             break;
           case 'Fahrzeugtechnik': {
             // room, start, end, lecturer, title, e.g. 'Moodle'
@@ -333,24 +341,36 @@ export function parseSkedGraphical(
             [dozent = '', veranstaltung = ''] = fields;
             break;
           }
-          case 'Gesundheitswesen':
-          case 'Verkehr-Sport-Tourismus-Medien':
-          case 'Elektro- und Informationstechnik':
-          case 'Maschinenbau':
-            if (parts.length === 3) {
-              // some special handling for faculty E entries
-              veranstaltung = parts[1];
-              raum = parts[2];
-            } else {
-              dozent = parts[2];
-              veranstaltung = parts[1];
-              raum = parts[3];
-              anmerkung = parts.splice(4).join(', ') || '';
-            }
-            break;
           default:
             console.log('No parser defined for faculty ' + faculty);
             throw new Error('This faculty is not supported.');
+        }
+
+        // the layouts change from time to time: rather show a value as info than in the wrong field
+        if (
+          parts.length === 3 &&
+          parts[0].endsWith('Uhr') &&
+          looksLikeRoom(parts[2], true)
+        ) {
+          // only time, title and room
+          veranstaltung = parts[1];
+          dozent = '';
+          raum = parts[2];
+          anmerkung = '';
+        }
+        if (raum && !looksLikeRoom(raum)) {
+          anmerkung = joinInfo(raum, anmerkung);
+          raum = '';
+        }
+        const isGroup = splitList(dozent).some((token) =>
+          STUDENT_GROUP.test(token),
+        );
+        if (!isGroup && !raum && looksLikeRoom(dozent, true)) {
+          raum = dozent;
+          dozent = '';
+        } else if (isGroup || looksLikeRoom(dozent)) {
+          anmerkung = joinInfo(dozent, anmerkung);
+          dozent = '';
         }
 
         const times = parseTimes(datum, uhrzeitStart, uhrzeitEnde);
@@ -360,7 +380,7 @@ export function parseSkedGraphical(
         }
 
         events.push({
-          info: anmerkung || '',
+          info: anmerkung,
           room: raum || '',
           lecturer: dozent || '',
           title: veranstaltung ?? '',

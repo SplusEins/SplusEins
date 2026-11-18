@@ -100,7 +100,7 @@ describe('splus', () => {
         .expect(200);
       expect(response.text).toContain('BEGIN:VCALENDAR');
       expect(response.text).toContain('SUMMARY:Mathematik 1');
-      expect(response.text).toContain('SUMMARY:B7');
+      expect(response.text).toContain('SUMMARY:Nur Titel');
     });
 
     it('should return a calendar of selected lectures', async () => {
@@ -109,7 +109,7 @@ describe('splus', () => {
         .get(`/api/ics/v1/${timetable.id},${otherTimetable.id}/${titleId}`)
         .expect(200);
       expect(response.text).toContain('SUMMARY:Mathematik 1');
-      expect(response.text).not.toContain('SUMMARY:B7');
+      expect(response.text).not.toContain('SUMMARY:Nur Titel');
     });
 
     it('should answer 404 for unknown timetables', async () => {
