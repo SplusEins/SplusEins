@@ -1,8 +1,10 @@
 import { ParsedLecture } from './SplusModel';
-import * as crypto from 'crypto';
 import { config } from '../config';
+import { shortHash } from '../lib/shortHash';
 
 const CENSOR_DISABLE = config.censorDisable;
+const ACADEMIC_TITLES =
+  /^(Prof\.?|Dr\.?|Dipl\.?|Ing\.?|Inform\.?|Herr|Frau|MA|BA|rer\.|nat\.|Master|Bachelor)$/i;
 
 export interface NewsElement {
   title: string;
@@ -73,7 +75,6 @@ export interface StwMensaMeal {
 
 export interface TimetableRequest {
   id: string;
-  week: number;
   timetablePath: string;
   faculty: string;
   type: string;
@@ -108,19 +109,7 @@ export class Event {
   location: string;
   meta: EventMetadata;
 
-  private generateId(title: string): string {
-    // since the id is part of the url it should not contain /, + or =
-    return crypto
-      .createHash('sha1')
-      .update(title)
-      .digest('base64')
-      .replace(/[/+=]/g, '')
-      .slice(0, 5);
-  }
-
   private censorOrganiserName(name: string): string {
-    const titles =
-      /^(Prof\.?|Dr\.?|Dipl\.?|Ing\.?|Inform\.?|Herr|Frau|MA|BA|rer\.|nat\.|Master|Bachelor)$/i;
     return name
       .split(',')
       .map((part) =>
@@ -128,7 +117,9 @@ export class Event {
           .trim()
           .split(/\s+/)
           .map((word) =>
-            titles.test(word) || word.length < 3 ? word : word[0] + '.',
+            ACADEMIC_TITLES.test(word) || word.length < 3
+              ? word
+              : word[0] + '.',
           )
           .join(' '),
       )
@@ -136,15 +127,13 @@ export class Event {
   }
 
   private generateOrganiserShortname(lecturer: string): string {
-    const titles =
-      /^(Prof\.?|Dr\.?|Dipl\.?|Ing\.?|Inform\.?|Herr|Frau|MA|BA|rer\.|nat\.|Master|Bachelor)$/i;
     return lecturer
       .split(',')
       .map((part) =>
         part
           .trim()
           .split(/\s+/)
-          .filter((word) => !titles.test(word) && word.length > 0)
+          .filter((word) => !ACADEMIC_TITLES.test(word) && word.length > 0)
           .map((word) =>
             word
               .replace(/[äÄ]/g, 'ae')
@@ -161,21 +150,19 @@ export class Event {
   }
 
   constructor(lecture: ParsedLecture) {
-    this.id = this.generateId(lecture.title);
+    // the id is part of the url, so it must not contain /, + or =
+    this.id = shortHash(lecture.title, 5);
     this.title = lecture.title;
     this.start = lecture.start;
     this.end = lecture.end;
     this.duration = lecture.duration;
     this.location = lecture.room;
+    const organiserName = CENSOR_DISABLE
+      ? lecture.lecturer
+      : this.censorOrganiserName(lecture.lecturer);
     this.meta = {
-      organiserShortname: this.generateOrganiserShortname(
-        CENSOR_DISABLE
-          ? lecture.lecturer
-          : this.censorOrganiserName(lecture.lecturer),
-      ),
-      organiserName: CENSOR_DISABLE
-        ? lecture.lecturer
-        : this.censorOrganiserName(lecture.lecturer),
+      organiserShortname: this.generateOrganiserShortname(organiserName),
+      organiserName,
       description: lecture.info,
     };
   }

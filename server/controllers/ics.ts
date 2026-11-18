@@ -2,11 +2,11 @@ import express from 'express';
 import ical from 'ical-generator';
 import { createHash } from 'crypto';
 
-import TIMETABLES from '../assets/timetables.json';
 import { config } from '../config';
 import { upcomingIsoWeeks } from '../lib/dayjs';
-import { Event, TimetableRequest } from '../model/SplusEinsModel';
+import { Event } from '../model/SplusEinsModel';
 import { getEvents } from '../lib/SplusApi';
+import { findTimetables, splitList } from '../lib/timetables';
 
 const router = express.Router();
 const sha256 = (x: string) =>
@@ -43,16 +43,7 @@ function eventToICSEvent(lecture: Event) {
  * @return An ICS calendar
  */
 router.get('/:version/:timetables{/:lectures}', async (req, res, next) => {
-  const timetableIds = <string[]>req.params.timetables.split(',');
-  const titleIds = <string[]>(
-    (req.params.lectures || '')
-      .split(',')
-      .filter((titleId) => titleId.length > 0)
-  );
-
-  const timetables = timetableIds
-    .map((timetableId) => TIMETABLES.find(({ id }) => id === timetableId))
-    .filter((timetable) => timetable !== undefined);
+  const timetables = findTimetables(req.params.timetables);
 
   if (timetables.length === 0) {
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
@@ -64,24 +55,12 @@ router.get('/:version/:timetables{/:lectures}', async (req, res, next) => {
   const weeks = upcomingIsoWeeks(config.icsPreloadWeeks);
 
   try {
-    const requests: TimetableRequest[] = weeks.flatMap((week) =>
-      timetables.map((timetable) => ({
-        id: timetable.id,
-        week,
-        type: timetable.type,
-        faculty: timetable.faculty,
-        timetablePath: timetable.timetablePath,
-      })),
+    const events = await getEvents(
+      timetables,
+      weeks,
+      splitList(req.params.lectures),
     );
-
-    const allEvents: Event[] = await getEvents(requests);
-    const filteredEvents =
-      titleIds.length > 0
-        ? allEvents.filter(({ id }) => titleIds.includes(id))
-        : allEvents;
-    const events = filteredEvents.map((event) => eventToICSEvent(event));
-
-    const cal = ical({ events });
+    const cal = ical({ events: events.map(eventToICSEvent) });
 
     res.set('Content-Type', 'text/plain');
     res.set('Content-Disposition', 'attachment;filename="spluseins.ics"');
