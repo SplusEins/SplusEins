@@ -1,8 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { registerSW } from 'virtual:pwa-register';
-import Donut from 'vue-css-donut-chart';
-import 'vue-css-donut-chart/dist/vcdonut.css';
 
 import './assets/style/roboto.css';
 import App from './App.vue';
@@ -36,4 +34,4 @@ registerSW({
   },
 });
 
-createApp(App).use(pinia).use(router).use(vuetify).use(Donut).mount('#app');
+createApp(App).use(pinia).use(router).use(vuetify).mount('#app');
