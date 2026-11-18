@@ -40,8 +40,7 @@ describe('splus', () => {
     const response = await request(app)
       .get(`/api/splus/${timetable.id}/${FIXTURE_WEEK}`)
       .expect(200);
-    expect(response.body.events).toHaveLength(6);
-    expect(response.body.meta.id).toBe(timetable.id);
+    expect(response.body).toHaveLength(6);
   });
 
   it('should return the lectures of a timetable', async () => {
@@ -51,25 +50,21 @@ describe('splus', () => {
     expect(response.body.map(({ title }) => title)).toContain('Mathematik 1');
   });
 
-  it('should return a personal timetable with selected lectures', async () => {
+  it('should return selected lectures of several timetables', async () => {
     const titleId = await titleIdOf('Mathematik 1');
     const response = await request(app)
       .get(
-        `/api/splus/${timetable.id},${otherTimetable.id}/${FIXTURE_WEEK}/${titleId}/Mein%20Plan`,
+        `/api/splus/${timetable.id},${otherTimetable.id}/${FIXTURE_WEEK}/${titleId}`,
       )
       .expect(200);
-    expect(response.body.name).toBe('Mein Plan');
-    expect(response.body.events.map(({ title }) => title)).toEqual([
-      'Mathematik 1',
-    ]);
+    expect(response.body.map(({ title }) => title)).toEqual(['Mathematik 1']);
   });
 
-  it('should return a personal timetable without selected lectures', async () => {
+  it('should return all lectures of several timetables only once', async () => {
     const response = await request(app)
-      .get(`/api/splus/${timetable.id}/${FIXTURE_WEEK}/Mein%20Plan`)
+      .get(`/api/splus/${timetable.id},${otherTimetable.id}/${FIXTURE_WEEK}`)
       .expect(200);
-    expect(response.body.name).toBe('Mein Plan');
-    expect(response.body.events).toHaveLength(6);
+    expect(response.body).toHaveLength(6);
   });
 
   it('should answer 404 for unknown timetables', async () => {

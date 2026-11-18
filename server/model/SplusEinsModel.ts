@@ -87,20 +87,6 @@ export interface EventMetadata {
   description: string;
 }
 
-export interface TimetableMetadata {
-  id: string | string[];
-  faculty: string | string[];
-  degree: string | string[];
-  specialisation: string | string[];
-  semester: number | number[];
-}
-
-export interface Timetable {
-  name?: string;
-  events: Event[];
-  meta: TimetableMetadata;
-}
-
 export class Event {
   id: string;
   title: string;

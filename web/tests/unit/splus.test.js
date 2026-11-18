@@ -124,9 +124,9 @@ describe('splus store', () => {
 
       const first = splus.loadAgendaEvents();
       const second = splus.loadAgendaEvents();
-      responses[1](Response.json({ events: [{ title: 'new', meta: {} }] }));
+      responses[1](Response.json([{ title: 'new', meta: {} }]));
       await second;
-      responses[0](Response.json({ events: [{ title: 'old', meta: {} }] }));
+      responses[0](Response.json([{ title: 'old', meta: {} }]));
       await first;
 
       expect(splus.agendaEvents.map(({ name }) => name)).toEqual(['new']);
@@ -147,9 +147,9 @@ describe('splus store', () => {
 
       const first = splus.showWeek('2026-11-09');
       const second = splus.showWeek('2026-11-16');
-      responses[1](Response.json({ events: [{ title: 'new' }] }));
+      responses[1](Response.json([{ title: 'new' }]));
       await second;
-      responses[0](Response.json({ events: [{ title: 'old' }] }));
+      responses[0](Response.json([{ title: 'old' }]));
       await first;
 
       expect(splus.events).toEqual([{ title: 'new' }]);
@@ -166,7 +166,7 @@ describe('splus store', () => {
 
       const loading = splus.showWeek('2026-11-16');
       expect(splus.week).toBe('2026-11-09');
-      respond(Response.json({ events: [] }));
+      respond(Response.json([]));
       await loading;
       expect(splus.week).toBe('2026-11-16');
     });

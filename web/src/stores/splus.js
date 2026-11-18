@@ -89,18 +89,11 @@ function defaultWeek() {
  * Return all events for the given timetable and week.
  */
 export async function loadEvents(timetable, weeks) {
-  let data;
-  if (isCustomTimetable(timetable)) {
-    const ids = timetable.id.join(',');
-    const whitelist = timetable.whitelist.join(',');
-    data = await apiGet(
-      `/api/splus/${ids}/${weeks}/${whitelist}/${encodeURIComponent(timetable.label)}`,
-    );
-  } else {
-    data = await apiGet(`/api/splus/${timetable.id}/${weeks}`);
-  }
-
-  return data.events;
+  const ids = [].concat(timetable.id).join(',');
+  const lectures = (timetable.whitelist ?? []).join(',');
+  return await apiGet(
+    `/api/splus/${ids}/${weeks}` + (lectures ? `/${lectures}` : ''),
+  );
 }
 
 /**
