@@ -10,16 +10,13 @@
       :items-per-page="-1"
       :sort-by="[{ key: 'title', order: 'asc' }]"
       :mobile="false"
-      item-value="titleId"
+      item-value="id"
       return-object
       show-select
       hide-default-footer
       must-sort
       no-data-text="Keine Kurse geladen."
     >
-      <template #item.room="{ item }">
-        {{ roomWithoutLinks(item.room) }}
-      </template>
       <template
         #item.data-table-select="{
           item,
@@ -63,17 +60,23 @@ const selectedCourses = defineModel({ type: Array, default: () => [] });
 
 const headers = [
   { key: 'title', title: 'Vorlesung' },
-  { key: 'lecturer', title: 'Dozent' },
-  { key: 'room', title: 'Raum' },
+  {
+    key: 'lecturer',
+    title: 'Dozent',
+    value: (lecture) => lecture.meta.organiserName,
+  },
+  {
+    key: 'room',
+    title: 'Raum',
+    value: (lecture) => roomWithoutLinks(lecture.location),
+  },
 ];
 const headersMobile = [{ key: 'title', title: 'Vorlesung' }];
 
 /* a course has many lectures, show each course only once */
 const courses = computed(() => {
   const lecturesById = new Map();
-  props.lectures.forEach((lecture) =>
-    lecturesById.set(lecture.titleId, lecture),
-  );
+  props.lectures.forEach((lecture) => lecturesById.set(lecture.id, lecture));
   return [...lecturesById.values()];
 });
 
