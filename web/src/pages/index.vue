@@ -45,12 +45,22 @@
       >
         <quick-access-card />
       </v-col>
+
+      <v-col
+        v-show="newsCount > 0"
+        cols="12"
+        md="6"
+        :lg="hasSubscribableTimetables && displayMensaCard ? 4 : 6"
+        order="last"
+      >
+        <news-card @loaded="newsCount = $event" />
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import dayjs from '../lib/dayjs';
 import { useUiStore } from '../stores/ui';
@@ -60,10 +70,12 @@ import UpcomingLecturesCard from '../components/upcoming-lectures-card.vue';
 import QuickAccessCard from '../components/quick-access-card.vue';
 import MensaCard from '../components/mensa-card.vue';
 import StatsCard from '../components/stats-card.vue';
+import NewsCard from '../components/news-card.vue';
 
 const mensa = useMensaStore();
 const { setSidenav } = useUiStore();
 const { hasSubscribableTimetables } = storeToRefs(useSplusStore());
+const newsCount = ref(0);
 
 const displayMensaCard = computed(() => {
   const dayPlans = mensa.plans?.[0]?.dayPlans;
