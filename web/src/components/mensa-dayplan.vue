@@ -5,7 +5,7 @@
     </v-card-title>
     <v-divider />
     <v-card-text class="py-1">
-      <div v-for="item in plan.meals" :key="item.id" class="py-2">
+      <div v-for="(item, idx) in plan.meals" :key="idx" class="py-2">
         <div class="d-flex">
           <div class="text-title-medium">
             {{ item.lane }}

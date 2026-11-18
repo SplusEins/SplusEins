@@ -171,7 +171,15 @@ describe('mensa', () => {
   it('should return all mensas with their meals per day', async () => {
     stwApi(() => undefined);
     const response = await request(app).get('/api/mensa').expect(200);
-    expect(response.body).toHaveLength(4);
+    expect(response.body.map(({ key }) => key)).toEqual([
+      'wf',
+      'wob',
+      'sz',
+      'sud',
+    ]);
+    expect(response.body[0].url).toBe(
+      'https://www.stw-on.de/wolfenbüttel/essen/mensa',
+    );
     expect(response.body[0].dayPlans.map(({ date }) => date)).toEqual([
       '2026-11-10',
       '2026-11-11',

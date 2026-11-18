@@ -52,6 +52,7 @@ export interface MensaOpening {
 export interface Mensa {
   name: string;
   id: number;
+  key: string;
   opening_hours: MensaOpening[];
   address: MensaAddress;
   dayPlans: MensaDayPlan[];
