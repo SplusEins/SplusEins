@@ -1,8 +1,8 @@
 import express from 'express';
 import { config } from '../config';
 import RSS from 'rss';
-import crypto from 'crypto';
 import getNews from '../lib/NewsApi';
+import { shortHash } from '../lib/shortHash';
 import { NewsElement } from '../model/SplusEinsModel';
 
 const CACHE_SECONDS = config.newsCacheSeconds;
@@ -46,12 +46,7 @@ router.get('/:newstypes{.:ext}', async (req, res) => {
         url: newsEl.link,
         categories: newsEl.source ? [newsEl.source] : [],
         date: newsEl.date ?? new Date(),
-        guid: crypto
-          .createHash('sha1')
-          .update(newsEl.title + newsEl.date)
-          .digest('base64')
-          .replace(/\W/g, '')
-          .slice(0, 8),
+        guid: shortHash(newsEl.title + newsEl.date, 8),
       }))
       .forEach((feedItem) => feed.item(feedItem));
     res.set('Content-Type', 'application/rss+xml');
