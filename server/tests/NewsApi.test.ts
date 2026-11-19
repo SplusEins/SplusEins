@@ -69,11 +69,6 @@ describe('Test NewsApi', () => {
     expect(texts).not.toMatch(/&#?\w+;/);
   });
 
-  it('should return no news for selectors without an Ostfalia page', async () => {
-    expect(await getNews(['e', 'wob'], 100)).toEqual([]);
-    expect(fetchSpy).not.toHaveBeenCalled();
-  });
-
   it('should return no news if the page layout changed', async () => {
     fetchSpy.mockImplementation(async () => new Response('<html></html>'));
     expect(await getNews(['r'], 100)).toEqual([]);
@@ -81,6 +76,11 @@ describe('Test NewsApi', () => {
 
   it('should reject unknown selectors', async () => {
     await expect(getNews(['x'], 100)).rejects.toThrow('not supported');
+  });
+
+  it('should reject selectors of the old website without a news page', async () => {
+    await expect(getNews(['wob'], 100)).rejects.toThrow('not supported');
+    expect(fetchSpy).not.toHaveBeenCalled();
   });
 
   it('should sort the news of all sources by date', async () => {
