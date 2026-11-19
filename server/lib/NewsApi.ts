@@ -113,8 +113,7 @@ function truncateAndSortNews(
     (v, i, a) =>
       a.findIndex((t) => t.title === v.title && t.text === v.text) === i,
   );
-  // a simple hack to filter out any job adverts
-  // todo one day fix it with a better collectorParam above
+  // filter out job adverts
   news = news.filter((article) => !article.title.includes('(m/w/d)'));
 
   // Truncate article descriptions
@@ -134,18 +133,9 @@ function truncateAndSortNews(
     };
   });
 
-  // Sort articles by date, but rank "campus38" lower because they have much more news
-  const scoreArticle = (article: NewsElement) => {
-    const date = article.date ? new Date(article.date).getTime() : 0;
-    const now = new Date().getTime();
-    const age = now - date;
-    const boost = article.source === 'campus38' ? 0.35 : 1.0;
-    return age / boost;
-  };
-  news = news.sort((a1, a2) => scoreArticle(a1) - scoreArticle(a2));
-  // Cut array after limit (yes this is legit javascript: https://stackoverflow.com/a/31560542/4026792)
-  if (news.length > limit) news.length = limit;
-  return news;
+  // newest first, news without a date last
+  const time = ({ date }: NewsElement) => (date ? new Date(date).getTime() : 0);
+  return news.sort((a1, a2) => time(a2) - time(a1)).slice(0, limit);
 }
 
 /**

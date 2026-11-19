@@ -36,8 +36,7 @@ import { useSplusStore } from '../stores/splus';
 /* emits the number of shown news, so that the page can hide the card */
 const emit = defineEmits(['loaded']);
 
-const { subscribedTimetable } = storeToRefs(useSplusStore());
-const faculty = computed(() => subscribedTimetable.value.faculty);
+const { subscribedFaculty: faculty } = storeToRefs(useSplusStore());
 
 const ostfaliaNews = ref([]);
 const campus38News = ref([]);

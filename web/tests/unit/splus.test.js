@@ -89,6 +89,14 @@ describe('splus store', () => {
     });
   });
 
+  it('knows the faculty of the subscribed timetable', () => {
+    expect(splus.subscribedFaculty).toBeUndefined();
+    splus.addCustomSchedule(custom('Mein Plan', [otherTimetable.id]));
+    expect(splus.subscribedFaculty).toBe(otherTimetable.faculty);
+    splus.subscribedTimetable = timetable;
+    expect(splus.subscribedFaculty).toBe(timetable.faculty);
+  });
+
   it('groups the timetables by faculty, degree and semester', () => {
     const path = `${timetable.faculty} ${timetable.degree}`;
     expect(splus.getTimetablesAsTree[path][timetable.semester]).toContainEqual(

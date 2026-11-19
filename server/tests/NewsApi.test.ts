@@ -82,4 +82,15 @@ describe('Test NewsApi', () => {
   it('should reject unknown selectors', async () => {
     await expect(getNews(['x'], 100)).rejects.toThrow('not supported');
   });
+
+  it('should sort the news of all sources by date', async () => {
+    const news = await getNews(['campus', 'campus38'], 100);
+    const dates = news.map(({ date }) => new Date(date!).getTime());
+    expect(dates).toEqual([...dates].sort((a, b) => b - a));
+    expect(news[0].source).toBe('campus38');
+  });
+
+  it('should return at most limit news', async () => {
+    expect(await getNews(['campus', 'campus38'], 3)).toHaveLength(3);
+  });
 });

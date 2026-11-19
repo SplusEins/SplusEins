@@ -123,7 +123,7 @@ Die Endpunkte zum Abfragen der News-Daten befinden sich in der Datei `controller
 - limit: Optional, limitiert die zurückgegebenen News auf diese Anzahl. Maximal zurückgegeben werden die 100 letzten News.
 
 **Rückgabe:**
-Liefert ein NewsElement-Array (siehe `model/SplusEinsModel.ts`) mit den ausgewählten News zurück. Die Beschreibungen werden auf 130 Zeichen gekürzt und die News nach Datum sortiert. Einzige Ausnahme bei der Sortierung sind die `campus38`-News. Diese werden etwas geringer gewichtet, da diese deutlich häufiger erscheinen als die sonstigen News.
+Liefert ein NewsElement-Array (siehe `model/SplusEinsModel.ts`) mit den ausgewählten News zurück. Die Beschreibungen werden auf 130 Zeichen gekürzt und die News nach Datum sortiert, die neuesten zuerst.
 
 ### GET `/news/:newstypes.rss?limit=NUMBER`
 
