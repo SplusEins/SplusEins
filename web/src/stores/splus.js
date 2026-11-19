@@ -198,6 +198,13 @@ export const useSplusStore = defineStore('splus', {
         ...state.favoriteSchedules,
       ];
     },
+    /**
+     * Faculty of the subscribed timetable, of the first one for a custom timetable
+     */
+    subscribedFaculty() {
+      const [id] = [].concat(this.subscribedTimetable.id ?? []);
+      return this.getTimetableById(id)?.faculty;
+    },
     hasSubscribableTimetables() {
       return this.subscribableTimetables.length > 0;
     },
