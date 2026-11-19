@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title class="d-flex align-center pb-0">
+    <v-card-title class="d-flex align-center">
       <div class="text-title-large text-wrap mr-1">
         {{ mensa.selectedPlan?.name }}
       </div>
@@ -14,8 +14,10 @@
         @click="dialogOpen = true"
       />
     </v-card-title>
-    <v-card-subtitle>{{ mensa.nextPlanDay }}</v-card-subtitle>
-    <v-card-text class="pt-2 pb-0">
+    <v-card-text class="pb-0">
+      <div class="text-body-large font-weight-bold">
+        {{ mensa.nextPlanDay }}
+      </div>
       <template v-if="mensaMenus.length > 0">
         <div v-for="(item, idx) in mensaMenus" :key="idx" class="py-2">
           <div class="text-body-small text-medium-emphasis">

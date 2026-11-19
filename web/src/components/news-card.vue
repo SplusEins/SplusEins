@@ -4,7 +4,7 @@
     <v-card-text>
       <template v-for="(section, idx) in sections" :key="section.title">
         <v-divider v-if="idx > 0" class="my-3" />
-        <div v-if="section.title" class="text-overline">
+        <div v-if="section.title" class="text-body-large font-weight-bold">
           {{ section.title }}
         </div>
         <div v-for="item in section.items" :key="item.link" class="py-1">
