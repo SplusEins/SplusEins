@@ -22,7 +22,7 @@
             {{ event.day }}
           </div>
         </template>
-        <v-list-item :active="event.running">
+        <v-list-item @click="showEvent(event)">
           <template #prepend>
             <div class="d-flex flex-column mr-4 text-body-medium">
               <span class="font-weight-medium">
@@ -46,17 +46,17 @@
               size="8"
               class="mr-1 mb-1"
             />
-            {{ event.title }}
+            {{ event.name }}
           </v-list-item-title>
           <v-list-item-subtitle v-if="event.room">
-            <a v-if="event.roomUrl" :href="event.roomUrl" target="_blank">
-              {{ event.room }}
-            </a>
-            <span v-else>{{ event.room }}</span>
+            <v-icon :icon="mdiMapMarkerOutline" size="14" class="mb-1" />
+            {{ event.room }}
           </v-list-item-subtitle>
         </v-list-item>
       </template>
     </v-list>
+
+    <calendar-event-popover v-model="selectedOpen" :event="selected" />
 
     <v-card-actions
       v-if="splus.hasSubscribableTimetables"
@@ -77,45 +77,50 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
-import { mdiChevronRight, mdiCircle, mdiHeartOutline } from '@mdi/js';
+import { computed, onMounted, ref, watch } from 'vue';
+import {
+  mdiChevronRight,
+  mdiCircle,
+  mdiHeartOutline,
+  mdiMapMarkerOutline,
+} from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
-import { timetablePlan } from '../lib/util';
+import { relativeDay, timetablePlan } from '../lib/util';
+import { useNow } from '../lib/now';
+import CalendarEventPopover from './calendar-event-popover.vue';
 
 const MAX_EVENTS = 5;
 const MAX_DAYS = 2;
 
 const splus = useSplusStore();
 const loading = ref(false);
+const selected = ref(undefined);
+const selectedOpen = ref(false);
+
+function showEvent(event) {
+  selected.value = event;
+  selectedOpen.value = true;
+}
 const plans = computed(() => splus.subscribableTimetables.map(timetablePlan));
 
-// re-evaluate running and past lectures every minute
-const now = ref(Date.now());
-const refreshTimer = setInterval(() => (now.value = Date.now()), 60 * 1000);
-onUnmounted(() => clearInterval(refreshTimer));
-
-function dayLabel(date) {
-  const today = dayjs(now.value);
-  if (date.isSame(today, 'day')) return 'Heute';
-  if (date.isSame(today.add(1, 'day'), 'day')) return 'Morgen';
-  return date.format('dddd, DD.MM.');
-}
+const now = useNow();
 
 const events = computed(() => {
   const seen = new Set();
   const upcoming = splus.agendaEvents
     .map((event) => {
       const start = dayjs(event.start);
-      const end = start.add(event.duration, 'hours');
-      const [room, roomUrl] = (event.location || '').split(' Link: ');
+      const end = dayjs(event.end);
+      const room = (event.location || '')
+        .split(' / ')
+        .map((location) => location.split(/ \(| Link: /)[0])
+        .join(' / ');
       return {
-        key: `${event.title}|${event.start}|${room}`,
-        title: event.title,
-        room: room.split(' (')[0],
-        roomUrl,
-        color: event.color,
-        day: dayLabel(start),
+        ...event,
+        key: `${event.name}|${event.start}|${room}`,
+        room,
+        day: relativeDay(start, now.value) ?? start.format('dddd, DD.MM.'),
         start,
         end,
         running: start.valueOf() <= now.value,
@@ -142,9 +147,3 @@ async function load() {
 onMounted(load);
 watch(() => splus.subscribableTimetables, load);
 </script>
-
-<style scoped>
-.agenda a {
-  color: inherit;
-}
-</style>

@@ -124,12 +124,12 @@ describe('splus store', () => {
 
       const first = splus.loadAgendaEvents();
       const second = splus.loadAgendaEvents();
-      responses[1](Response.json({ events: [{ title: 'new' }] }));
+      responses[1](Response.json({ events: [{ title: 'new', meta: {} }] }));
       await second;
-      responses[0](Response.json({ events: [{ title: 'old' }] }));
+      responses[0](Response.json({ events: [{ title: 'old', meta: {} }] }));
       await first;
 
-      expect(splus.agendaEvents.map(({ title }) => title)).toEqual(['new']);
+      expect(splus.agendaEvents.map(({ name }) => name)).toEqual(['new']);
     });
   });
 
