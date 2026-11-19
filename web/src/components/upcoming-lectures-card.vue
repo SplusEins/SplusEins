@@ -23,7 +23,7 @@
           </div>
         </template>
         <v-list-item @click="showEvent(event)">
-          <template #prepend>
+          <div class="d-flex align-start">
             <div class="d-flex flex-column mr-4 text-body-medium">
               <span class="font-weight-medium">
                 {{ event.start.format('HH:mm') }}
@@ -32,26 +32,28 @@
                 {{ event.end.format('HH:mm') }}
               </span>
             </div>
-          </template>
-          <div
-            v-if="event.running"
-            class="text-label-medium font-weight-bold text-primary"
-          >
-            Jetzt · noch {{ event.end.diff(now, 'minute') }} min
+            <div>
+              <div
+                v-if="event.running"
+                class="text-label-medium font-weight-bold text-primary"
+              >
+                Jetzt · noch {{ event.end.diff(now, 'minute') }} min
+              </div>
+              <v-list-item-title class="text-wrap font-weight-medium">
+                <v-icon
+                  :icon="mdiCircle"
+                  :color="event.color"
+                  size="8"
+                  class="mr-1 mb-1"
+                />
+                {{ event.name }}
+              </v-list-item-title>
+              <v-list-item-subtitle v-if="event.room">
+                <v-icon :icon="mdiMapMarkerOutline" size="14" class="mb-1" />
+                {{ event.room }}
+              </v-list-item-subtitle>
+            </div>
           </div>
-          <v-list-item-title class="text-wrap font-weight-medium">
-            <v-icon
-              :icon="mdiCircle"
-              :color="event.color"
-              size="8"
-              class="mr-1 mb-1"
-            />
-            {{ event.name }}
-          </v-list-item-title>
-          <v-list-item-subtitle v-if="event.room">
-            <v-icon :icon="mdiMapMarkerOutline" size="14" class="mb-1" />
-            {{ event.room }}
-          </v-list-item-subtitle>
         </v-list-item>
       </template>
     </v-list>

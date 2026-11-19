@@ -21,24 +21,19 @@
               )"
               :key="departure.date + '-' + departure.line + '-' + index"
             >
-              <v-chip
-                size="small"
-                label
-                color="secondary"
-                variant="flat"
-                class="mr-2"
-              >
-                Linie {{ departure.line }}
-              </v-chip>
-              {{ absoluteDate(departure.date) }} Uhr
-              <v-chip
-                v-if="minutesUntilDate(departure.date) < 60"
-                v-bind="departsSoon(departure.date) ? SOON_CHIP : {}"
-                size="small"
-                class="ml-2"
-              >
-                {{ departureLabel(departure.date) }}
-              </v-chip>
+              <div class="d-flex align-center ga-2">
+                <v-chip size="small" label color="primary" variant="flat">
+                  Linie {{ departure.line }}
+                </v-chip>
+                {{ absoluteDate(departure.date) }} Uhr
+                <v-chip
+                  v-if="minutesUntilDate(departure.date) < 60"
+                  v-bind="departsSoon(departure.date) ? SOON_CHIP : {}"
+                  size="small"
+                >
+                  {{ departureLabel(departure.date) }}
+                </v-chip>
+              </div>
             </v-list-item>
           </v-list>
         </v-card>
