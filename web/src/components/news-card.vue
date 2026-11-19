@@ -1,6 +1,6 @@
 <template>
-  <v-card class="fill-height">
-    <v-card-title class="text-headline-small">Neuigkeiten</v-card-title>
+  <v-card>
+    <v-card-title class="text-title-large">Neuigkeiten</v-card-title>
     <v-card-text>
       <template v-for="(section, idx) in sections" :key="section.title">
         <v-divider v-if="idx > 0" class="my-3" />

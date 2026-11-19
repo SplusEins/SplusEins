@@ -1,5 +1,5 @@
 <template>
-  <v-card class="fill-height">
+  <v-card>
     <v-card-title class="text-headline-small">Als Nächstes</v-card-title>
 
     <v-card-text v-if="!splus.hasSubscribableTimetables">
@@ -40,41 +40,55 @@
             Jetzt · noch {{ event.end.diff(now, 'minute') }} min
           </div>
           <v-list-item-title class="text-wrap font-weight-medium">
-            <span class="course-dot" :style="{ background: event.color }" />
+            <v-icon
+              :icon="mdiCircle"
+              :color="event.color"
+              size="8"
+              class="mr-1 mb-1"
+            />
             {{ event.title }}
           </v-list-item-title>
-          <v-list-item-subtitle
-            v-if="event.room || showPlans"
-            class="text-medium-emphasis"
-          >
+          <v-list-item-subtitle v-if="event.room">
             <a v-if="event.roomUrl" :href="event.roomUrl" target="_blank">
               {{ event.room }}
             </a>
             <span v-else>{{ event.room }}</span>
-            <template v-if="showPlans">
-              <template v-if="event.room"> · </template>
-              <router-link :to="event.plan.route">
-                {{ event.plan.name }}
-              </router-link>
-            </template>
           </v-list-item-subtitle>
         </v-list-item>
       </template>
     </v-list>
+
+    <v-card-actions
+      v-if="splus.hasSubscribableTimetables"
+      class="flex-wrap ga-2 px-4"
+    >
+      <v-chip
+        v-for="plan in plans"
+        :key="plan.name"
+        :to="plan.route"
+        :append-icon="mdiChevronRight"
+        variant="outlined"
+        label
+      >
+        {{ plan.name }}
+      </v-chip>
+    </v-card-actions>
   </v-card>
 </template>
 
 <script setup>
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
-import { mdiHeartOutline } from '@mdi/js';
+import { mdiChevronRight, mdiCircle, mdiHeartOutline } from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
+import { timetablePlan } from '../lib/util';
 
-const MAX_EVENTS = 6;
+const MAX_EVENTS = 5;
+const MAX_DAYS = 2;
 
 const splus = useSplusStore();
 const loading = ref(false);
-const showPlans = computed(() => splus.subscribableTimetables.length > 1);
+const plans = computed(() => splus.subscribableTimetables.map(timetablePlan));
 
 // re-evaluate running and past lectures every minute
 const now = ref(Date.now());
@@ -90,7 +104,7 @@ function dayLabel(date) {
 
 const events = computed(() => {
   const seen = new Set();
-  return splus.agendaEvents
+  const upcoming = splus.agendaEvents
     .map((event) => {
       const start = dayjs(event.start);
       const end = start.add(event.duration, 'hours');
@@ -100,7 +114,6 @@ const events = computed(() => {
         title: event.title,
         room: room.split(' (')[0],
         roomUrl,
-        plan: event.plan,
         color: event.color,
         day: dayLabel(start),
         start,
@@ -110,7 +123,13 @@ const events = computed(() => {
     })
     .filter((event) => event.end.valueOf() > now.value)
     .filter((event) => !seen.has(event.key) && seen.add(event.key))
-    .sort((a, b) => a.start.valueOf() - b.start.valueOf())
+    .sort((a, b) => a.start.valueOf() - b.start.valueOf());
+  const days = [...new Set(upcoming.map((event) => event.day))].slice(
+    0,
+    MAX_DAYS,
+  );
+  return upcoming
+    .filter((event) => days.includes(event.day))
     .slice(0, MAX_EVENTS);
 });
 
@@ -125,22 +144,7 @@ watch(() => splus.subscribableTimetables, load);
 </script>
 
 <style scoped>
-.agenda {
-  --v-list-item-subtitle-opacity: 1;
-}
 .agenda a {
   color: inherit;
-  text-decoration: none;
-}
-.agenda a:hover {
-  text-decoration: underline;
-}
-.course-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 6px;
-  border-radius: 50%;
-  vertical-align: middle;
 }
 </style>

@@ -13,6 +13,15 @@ export function customTimetableToRoute(customTimetable) {
   return { name: 'plan-timetable', params: {}, query };
 }
 
+export function timetablePlan(timetable) {
+  return timetable.whitelist
+    ? { name: timetable.label, route: customTimetableToRoute(timetable) }
+    : {
+        name: timetableDisplayName(timetable),
+        route: { name: 'plan-timetable', params: { timetable: timetable.id } },
+      };
+}
+
 /**
  * @returns e.g. '3. Sem.', or '' for semesters like 'WPF' or 'Sonstige',
  * whose timetable labels already say what they contain

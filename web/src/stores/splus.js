@@ -10,7 +10,6 @@ import {
   shortenTimetableDegree,
   timetableDisplayName,
   truncateText,
-  customTimetableToRoute,
 } from '../lib/util';
 
 // 20 evenly spread hues, the first ten are 36° apart
@@ -333,21 +332,8 @@ export const useSplusStore = defineStore('splus', {
         const perTimetable = await Promise.all(
           this.subscribableTimetables.map(async (timetable) => {
             const events = await loadEvents(timetable, weeks);
-            const plan = isCustomTimetable(timetable)
-              ? {
-                  name: timetable.label,
-                  route: customTimetableToRoute(timetable),
-                }
-              : {
-                  name: timetableDisplayName(timetable),
-                  route: {
-                    name: 'plan-timetable',
-                    params: { timetable: timetable.id },
-                  },
-                };
             return events.map((event) => ({
               ...event,
-              plan,
               color: courseColor(event, timetable),
             }));
           }),
