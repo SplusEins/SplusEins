@@ -1,3 +1,5 @@
+import dayjs from './dayjs';
+
 export const uniq = (iterable) => [...new Set(iterable)];
 
 export const SEMESTER_WEEK_1 = 39; // TODO Semesterwechsel set to first calendar week of the semester
@@ -65,4 +67,11 @@ export function shortenTimetableDegree(timetable) {
  */
 export function roomWithoutLinks(room) {
   return (room || '').replace(/ Link: \S+/g, '');
+}
+
+export function relativeDay(date, now) {
+  const today = dayjs(now);
+  if (date.isSame(today, 'day')) return 'Heute';
+  if (date.isSame(today.add(1, 'day'), 'day')) return 'Morgen';
+  return undefined;
 }

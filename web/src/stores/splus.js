@@ -8,6 +8,7 @@ import {
   SEMESTER_WEEK_1,
   semesterLabel,
   shortenTimetableDegree,
+  timetablePlan,
   timetableDisplayName,
   truncateText,
 } from '../lib/util';
@@ -38,6 +39,18 @@ const COURSE_COLORS = [
 
 function isCustomTimetable(timetable) {
   return !!timetable && !!timetable.whitelist;
+}
+
+function toCalendarEvent(event, timetable) {
+  return {
+    name: event.title,
+    start: dayjs(event.start).format('YYYY-MM-DD HH:mm'),
+    end: dayjs(event.end).format('YYYY-MM-DD HH:mm'),
+    location: event.location,
+    lecturer: event.meta.organiserName,
+    info: event.meta.description,
+    color: courseColor(event, timetable),
+  };
 }
 
 function courseColor(event, timetable) {
@@ -168,21 +181,9 @@ export const useSplusStore = defineStore('splus', {
      * @see https://clickermonkey.github.io/dayspan/docs/interfaces/eventinput.html
      */
     getCalendarEvents: (state) => {
-      return state.events.map((event) => {
-        const color = courseColor(event, state.schedule);
-        const description = event.meta.organiserName
-          ? `Dozent: ${event.meta.organiserName}<br>${event.meta.description}`
-          : `${event.meta.description}`;
-
-        return {
-          name: event.title,
-          start: dayjs(event.start).format('YYYY-MM-DD HH:mm'),
-          end: dayjs(event.end).format('YYYY-MM-DD HH:mm'),
-          desc: description,
-          location: event.location,
-          color,
-        };
-      });
+      return state.events.map((event) =>
+        toCalendarEvent(event, state.schedule),
+      );
     },
     /**
      * Convert the state's star schema: { faculty, degree, semester, ...timetable }
@@ -333,8 +334,8 @@ export const useSplusStore = defineStore('splus', {
           this.subscribableTimetables.map(async (timetable) => {
             const events = await loadEvents(timetable, weeks);
             return events.map((event) => ({
-              ...event,
-              color: courseColor(event, timetable),
+              ...toCalendarEvent(event, timetable),
+              plan: timetablePlan(timetable),
             }));
           }),
         );

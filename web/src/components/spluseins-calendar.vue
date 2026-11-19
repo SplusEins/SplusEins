@@ -75,13 +75,7 @@
       </template>
     </v-calendar>
 
-    <v-dialog v-model="selectedOpen" max-width="500">
-      <calendar-event-popover
-        v-if="selectedEvent"
-        :event="selectedEvent"
-        @close="selectedOpen = false"
-      />
-    </v-dialog>
+    <calendar-event-popover v-model="selectedOpen" :event="selectedEvent" />
 
     <a
       v-if="schedule && schedule.timetablePath"
