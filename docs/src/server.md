@@ -119,7 +119,7 @@ Die Endpunkte zum Abfragen der News-Daten befinden sich in der Datei `controller
 
 **Parameter:**
 
-- newstypes: Komma getrennte Liste von News-Quellen. Die Ostfalia-News werden von den Nachrichten-Seiten der Ostfalia-Website gelesen: `campus` (zentrale Nachrichten) sowie die Fakultäten `b`, `g`, `h`, `k`, `m`, `r`, `s` und `v`. Die Campus38-News kommen über die WordPress-API mittels `campus38`. `e`, `f`, `w` und die Standorte `wob`, `wf`, `sud`, `sz` werden weiterhin akzeptiert, liefern aber keine News mehr, da es auf der neuen Ostfalia-Website keine passende Nachrichten-Seite gibt.
+- newstypes: Komma getrennte Liste von News-Quellen. Die Ostfalia-News werden von den Nachrichten-Seiten der Ostfalia-Website gelesen: `campus` (zentrale Nachrichten) sowie die Fakultäten `b`, `g`, `h`, `k`, `m`, `r`, `s` und `v`. Die Campus38-News kommen über die WordPress-API mittels `campus38`. Bei anderen Quellen antwortet der Server mit 404.
 - limit: Optional, limitiert die zurückgegebenen News auf diese Anzahl. Maximal zurückgegeben werden die 100 letzten News.
 
 **Rückgabe:**
