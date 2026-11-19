@@ -3,20 +3,9 @@
     <v-card-title class="text-headline-small">Als Nächstes</v-card-title>
 
     <v-card-text v-if="!splus.hasSubscribableTimetables">
-      <p :class="{ 'mb-4': $vuetify.display.mobile }">
-        Markiere einen Stundenplan als Favoriten, um hier deine nächsten
-        Vorlesungen zu sehen. Alternativ kannst du einen personalisierten Plan
-        erstellen.
-      </p>
-      <!-- desktop has the plans in the drawer -->
-      <v-btn
-        v-if="$vuetify.display.mobile"
-        color="primary"
-        variant="flat"
-        to="/plaene"
-      >
-        Plan auswählen
-      </v-btn>
+      Öffne deinen Stundenplan und markiere ihn mit
+      <v-icon :icon="mdiHeartOutline" size="small" aria-label="Herz" />
+      als Favoriten, um hier deine nächsten Vorlesungen zu sehen.
     </v-card-text>
 
     <v-skeleton-loader v-else-if="loading" type="list-item-two-line@3" />
@@ -25,11 +14,14 @@
       Keine Vorlesungen in den nächsten zwei Wochen.
     </v-card-text>
 
-    <v-list v-else class="pt-0">
+    <v-list v-else class="agenda pt-0">
       <template v-for="(event, i) in events" :key="event.key">
-        <v-list-subheader v-if="i === 0 || event.day !== events[i - 1].day">
-          {{ event.day }}
-        </v-list-subheader>
+        <template v-if="i === 0 || event.day !== events[i - 1].day">
+          <v-divider v-if="i > 0" class="my-2" />
+          <div class="v-list-item-title font-weight-bold px-4 py-1">
+            {{ event.day }}
+          </div>
+        </template>
         <v-list-item :active="event.running">
           <template #prepend>
             <div class="d-flex flex-column mr-4 text-body-medium">
@@ -41,24 +33,30 @@
               </span>
             </div>
           </template>
+          <div
+            v-if="event.running"
+            class="text-label-medium font-weight-bold text-primary"
+          >
+            Jetzt · noch {{ event.end.diff(now, 'minute') }} min
+          </div>
           <v-list-item-title class="text-wrap font-weight-medium">
+            <span class="course-dot" :style="{ background: event.color }" />
             {{ event.title }}
           </v-list-item-title>
-          <v-list-item-subtitle>
+          <v-list-item-subtitle
+            v-if="event.room || showPlans"
+            class="text-medium-emphasis"
+          >
             <a v-if="event.roomUrl" :href="event.roomUrl" target="_blank">
               {{ event.room }}
             </a>
             <span v-else>{{ event.room }}</span>
-            ·
-            <router-link :to="event.plan.route" class="text-medium-emphasis">
-              {{ event.plan.name }}
-            </router-link>
-          </v-list-item-subtitle>
-          <v-list-item-subtitle
-            v-if="event.running"
-            class="font-weight-bold text-primary"
-          >
-            Jetzt · noch {{ event.end.diff(now, 'minute') }} min
+            <template v-if="showPlans">
+              <template v-if="event.room"> · </template>
+              <router-link :to="event.plan.route">
+                {{ event.plan.name }}
+              </router-link>
+            </template>
           </v-list-item-subtitle>
         </v-list-item>
       </template>
@@ -68,6 +66,7 @@
 
 <script setup>
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+import { mdiHeartOutline } from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
 
@@ -75,6 +74,7 @@ const MAX_EVENTS = 6;
 
 const splus = useSplusStore();
 const loading = ref(false);
+const showPlans = computed(() => splus.subscribableTimetables.length > 1);
 
 // re-evaluate running and past lectures every minute
 const now = ref(Date.now());
@@ -101,6 +101,7 @@ const events = computed(() => {
         room: room.split(' (')[0],
         roomUrl,
         plan: event.plan,
+        color: event.color,
         day: dayLabel(start),
         start,
         end,
@@ -122,3 +123,24 @@ async function load() {
 onMounted(load);
 watch(() => splus.subscribableTimetables, load);
 </script>
+
+<style scoped>
+.agenda {
+  --v-list-item-subtitle-opacity: 1;
+}
+.agenda a {
+  color: inherit;
+  text-decoration: none;
+}
+.agenda a:hover {
+  text-decoration: underline;
+}
+.course-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+</style>

@@ -41,6 +41,16 @@ function isCustomTimetable(timetable) {
   return !!timetable && !!timetable.whitelist;
 }
 
+function courseColor(event, timetable) {
+  // custom plans combine several plans, whose indexes would collide
+  const whitelist = isCustomTimetable(timetable) ? timetable.whitelist : [];
+  const index = whitelist.length
+    ? whitelist.indexOf(event.id)
+    : event.colorIndex;
+  // grey for responses cached before the API sent colorIndex
+  return COURSE_COLORS[index % COURSE_COLORS.length] ?? '#616161';
+}
+
 const formatDayjs = (date) => {
   return date.format('YYYY-MM-DD');
 };
@@ -159,17 +169,8 @@ export const useSplusStore = defineStore('splus', {
      * @see https://clickermonkey.github.io/dayspan/docs/interfaces/eventinput.html
      */
     getCalendarEvents: (state) => {
-      // custom plans combine several plans, whose indexes would collide
-      const whitelist = isCustomTimetable(state.schedule)
-        ? state.schedule.whitelist
-        : [];
-
       return state.events.map((event) => {
-        const index = whitelist.length
-          ? whitelist.indexOf(event.id)
-          : event.colorIndex;
-        // grey for responses cached before the API sent colorIndex
-        const color = COURSE_COLORS[index % COURSE_COLORS.length] ?? '#616161';
+        const color = courseColor(event, state.schedule);
         const description = event.meta.organiserName
           ? `Dozent: ${event.meta.organiserName}<br>${event.meta.description}`
           : `${event.meta.description}`;
@@ -344,7 +345,11 @@ export const useSplusStore = defineStore('splus', {
                     params: { timetable: timetable.id },
                   },
                 };
-            return events.map((event) => ({ ...event, plan }));
+            return events.map((event) => ({
+              ...event,
+              plan,
+              color: courseColor(event, timetable),
+            }));
           }),
         );
         // e.g. a timetable was removed before the response arrived

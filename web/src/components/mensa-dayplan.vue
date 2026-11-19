@@ -25,8 +25,13 @@
           {{ item.name }}
         </div>
         <div class="text-body-small text-medium-emphasis">
-          Studenten: {{ getPriceLabel(item.price.student) }} - Angestellte:
-          {{ getPriceLabel(item.price.employee) }}
+          <span class="text-no-wrap">
+            Studis {{ getPriceLabel(item.price.student) }}
+          </span>
+          ·
+          <span class="text-no-wrap">
+            Angestellte {{ getPriceLabel(item.price.employee) }}
+          </span>
         </div>
       </div>
     </v-card-text>
