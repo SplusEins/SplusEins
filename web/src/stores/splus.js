@@ -6,8 +6,6 @@ import TIMETABLES from '../assets/timetables.json';
 import { useAppStore } from './app';
 import {
   SEMESTER_WEEK_1,
-  semesterLabel,
-  shortenTimetableDegree,
   timetablePlan,
   timetableDisplayName,
   truncateText,
@@ -123,16 +121,10 @@ export async function loadUniqueLectures(timetable) {
 /* all timetables of the Ostfalia, they do not change while the app runs */
 const SCHEDULES = TIMETABLES.map((timetable) => ({
   ...timetable,
-  path: `${timetable.faculty} ${timetable.degree}`,
   route: {
     name: 'plan-timetable',
     params: { timetable: timetable.id },
   },
-  description:
-    `${shortenTimetableDegree(timetable)} ${timetable.label}` +
-    (semesterLabel(timetable.semester)
-      ? ` - ${semesterLabel(timetable.semester)}`
-      : ''),
 }));
 const SCHEDULES_BY_ID = new Map(
   SCHEDULES.map((schedule) => [schedule.id, schedule]),
@@ -140,6 +132,12 @@ const SCHEDULES_BY_ID = new Map(
 // every timetable id ends with its semester, e.g. '_ws26'
 const semesterOf = (id) => /_[^_]+$/.exec(id)?.[0];
 const CURRENT_SEMESTERS = new Set(SCHEDULES.map(({ id }) => semesterOf(id)));
+
+// e.g. " informatik se 3", so " se" matches the start of a word
+const searchText = (text) =>
+  ` ${String(text)
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, ' ')}`;
 
 /* count the requests, so that only the response of the last one is used */
 let loadCounter = 0;
@@ -209,17 +207,38 @@ export const useSplusStore = defineStore('splus', {
       );
     },
     /**
-     * Convert the state's star schema: { faculty, degree, semester, ...timetable }
-     * into a hierarchy: { (faculty, degree): { semester: timetables } }
+     * Group the timetables: { 'faculty degree': { semester: timetables } }
      */
     getTimetablesAsTree: () => {
       const tree = {};
       SCHEDULES.forEach((timetable) => {
-        tree[timetable.path] ??= {};
-        tree[timetable.path][timetable.semester] ??= [];
-        tree[timetable.path][timetable.semester].push(timetable);
+        const path = `${timetable.faculty} ${timetable.degree}`;
+        tree[path] ??= {};
+        tree[path][timetable.semester] ??= [];
+        tree[path][timetable.semester].push(timetable);
       });
       return tree;
+    },
+    /**
+     * Timetables where every query word starts a word of label, faculty,
+     * degree or semester, those matching in the label first.
+     */
+    searchTimetables: () => (query) => {
+      // skip "sem" or "semester" as in "3. Semester", but keep "se" for "SE"
+      const queryWords = searchText(query)
+        .split(' ')
+        .filter(
+          (word) => word && !(word.length >= 3 && 'semester'.startsWith(word)),
+        );
+      if (queryWords.length === 0) return [];
+      const matches = (text) => {
+        const words = searchText(text);
+        return (word) => words.includes(` ${word}`);
+      };
+      const inLabel = ({ label }) => queryWords.some(matches(label));
+      return SCHEDULES.filter(({ label, faculty, degree, semester }) =>
+        queryWords.every(matches(`${label} ${faculty} ${degree} ${semester}`)),
+      ).sort((a, b) => inLabel(b) - inLabel(a));
     },
     timetableIds: () => {
       return SCHEDULES.map(({ id }) => id);
@@ -269,6 +288,8 @@ export const useSplusStore = defineStore('splus', {
         Boolean,
       );
     },
+    isFavoriteSchedule: (state) => (timetable) =>
+      state.favoriteIds.includes(timetable.id),
     hasSubscribableTimetables() {
       return this.subscribableTimetables.length > 0;
     },
@@ -300,6 +321,13 @@ export const useSplusStore = defineStore('splus', {
       if (this.favoriteIds.includes(favoriteTimetable.id)) return;
       this.favoriteIds.push(favoriteTimetable.id);
       this.subscribedKey ??= subscriptionKey(favoriteTimetable);
+    },
+    toggleFavoriteSchedule(timetable) {
+      if (this.isFavoriteSchedule(timetable)) {
+        this.removeFavoriteSchedule(timetable);
+      } else {
+        this.addFavoriteSchedule(timetable);
+      }
     },
     removeFavoriteSchedule(favoriteTimetable) {
       this.favoriteIds = this.favoriteIds.filter(

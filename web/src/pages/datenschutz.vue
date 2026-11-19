@@ -210,10 +210,9 @@
       <p>Für folgende Anwendungen benötigen wir Cookies:</p>
       <p>
         Welches Design verwendet wird (hell oder dunkel)
-        <br />Welche Pläne favorisiert wurden <br />Personalisierte Pläne: Namen
-        des Plans, gespeicherte Kurse, dafür verwendete Stundenpläne und Name
-        des Plans <br />Welcher Stundenplan auf der Startseite angezeigt werden
-        soll
+        <br />Welche Pläne gemerkt wurden <br />Eigene Pläne: Name des Plans,
+        gespeicherte Kurse und dafür verwendete Stundenpläne <br />Welcher
+        Stundenplan auf der Startseite angezeigt werden soll
       </p>
       <h3>Rechtsgrundlage und berechtigtes Interesse:</h3>
       <p>
