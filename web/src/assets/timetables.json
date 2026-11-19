@@ -280,7 +280,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_AT-Sem4.html",
-    "label": "e_eit_ip_at_4_ws26",
+    "label": "EIT(iP) AT",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_at_4_ws26",
@@ -289,7 +289,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_EE-Sem4.html",
-    "label": "e_eit_ip_ee_4_ws26",
+    "label": "EIT(iP) EE",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_ee_4_ws26",
@@ -298,7 +298,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_IT-Sem4.html",
-    "label": "e_eit_ip_it_4_ws26",
+    "label": "EIT(iP) IT",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_it_4_ws26",
@@ -307,7 +307,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_TI-Sem4.html",
-    "label": "e_eit_ip_ti_4_ws26",
+    "label": "EIT(iP) TI",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_ti_4_ws26",
@@ -316,7 +316,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem4.html",
-    "label": "e_weit_ip_4_ws26",
+    "label": "WEIT(iP)",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_weit_ip_4_ws26",
@@ -325,7 +325,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_AT-Sem5.html",
-    "label": "e_eit_ip_at_5_ws26",
+    "label": "EIT(iP) AT",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_at_5_ws26",
@@ -334,7 +334,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_EE-Sem5.html",
-    "label": "e_eit_ip_ee_5_ws26",
+    "label": "EIT(iP) EE",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_ee_5_ws26",
@@ -343,7 +343,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_IT-Sem5.html",
-    "label": "e_eit_ip_it_5_ws26",
+    "label": "EIT(iP) IT",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_it_5_ws26",
@@ -352,7 +352,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_TI-Sem5.html",
-    "label": "e_eit_ip_ti_5_ws26",
+    "label": "EIT(iP) TI",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_ti_5_ws26",
@@ -361,7 +361,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem5.html",
-    "label": "e_weit_ip_5_ws26",
+    "label": "WEIT(iP)",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_weit_ip_5_ws26",
@@ -370,7 +370,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_AT-Sem6.html",
-    "label": "e_eit_ip_at_6_ws26",
+    "label": "EIT(iP) AT",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_at_6_ws26",
@@ -379,7 +379,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_EE-Sem6.html",
-    "label": "e_eit_ip_ee_6_ws26",
+    "label": "EIT(iP) EE",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_ee_6_ws26",
@@ -388,7 +388,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_IT-Sem6.html",
-    "label": "e_eit_ip_it_6_ws26",
+    "label": "EIT(iP) IT",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_it_6_ws26",
@@ -397,7 +397,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-EIT(iP)_TI-Sem6.html",
-    "label": "e_eit_ip_ti_6_ws26",
+    "label": "EIT(iP) TI",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_eit_ip_ti_6_ws26",
@@ -406,7 +406,7 @@
   },
   {
     "timetablePath": "https://stundenplan.ostfalia.de/e/semester/E-WEIT(iP)-Sem6.html",
-    "label": "e_weit_ip_6_ws26",
+    "label": "WEIT(iP)",
     "faculty": "Elektro- und Informationstechnik",
     "type": "graphical",
     "id": "e_weit_ip_6_ws26",
@@ -1314,29 +1314,11 @@
     "degree": "Bachelor"
   },
   {
-    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261455.html",
-    "label": "Informatik - DS",
-    "faculty": "Informatik",
-    "type": "intranet",
-    "id": "i_informatik_ds_4_ws26",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111824.html",
     "label": "Informatik - IE",
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_informatik_ie_4_ws26",
-    "semester": 4,
-    "degree": "Bachelor"
-  },
-  {
-    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261463.html",
-    "label": "Informatik - ITS",
-    "faculty": "Informatik",
-    "type": "intranet",
-    "id": "i_informatik_its_4_ws26",
     "semester": 4,
     "degree": "Bachelor"
   },
