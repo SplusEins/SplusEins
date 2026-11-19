@@ -168,7 +168,8 @@ export const useSplusStore = defineStore('splus', {
         const index = whitelist.length
           ? whitelist.indexOf(event.id)
           : event.colorIndex;
-        const color = COURSE_COLORS[index % COURSE_COLORS.length];
+        // grey for responses cached before the API sent colorIndex
+        const color = COURSE_COLORS[index % COURSE_COLORS.length] ?? '#616161';
         const description = event.meta.organiserName
           ? `Dozent: ${event.meta.organiserName}<br>${event.meta.description}`
           : `${event.meta.description}`;
