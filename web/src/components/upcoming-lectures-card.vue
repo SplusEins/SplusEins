@@ -2,11 +2,14 @@
   <v-card>
     <v-card-title class="text-headline-small">Als Nächstes</v-card-title>
 
-    <v-card-text v-if="!splus.hasSubscribableTimetables">
-      Öffne deinen Stundenplan und markiere ihn mit
-      <v-icon :icon="mdiHeartOutline" size="small" aria-label="Herz" />
-      als Favoriten, um hier deine nächsten Vorlesungen zu sehen.
-    </v-card-text>
+    <template v-if="!splus.hasSubscribableTimetables">
+      <v-card-text class="pb-0">
+        Such deinen Stundenplan und merke ihn dir mit
+        <v-icon :icon="mdiHeartOutline" size="small" aria-label="Herz" />, dann
+        stehen hier deine nächsten Vorlesungen.
+      </v-card-text>
+      <timetable-search />
+    </template>
 
     <v-skeleton-loader v-else-if="loading" type="list-item-two-line@3" />
 
@@ -92,6 +95,7 @@ import { useSplusStore } from '../stores/splus';
 import { relativeDay, timetablePlan } from '../lib/util';
 import { useNow } from '../lib/now';
 import CalendarEventPopover from './calendar-event-popover.vue';
+import TimetableSearch from './timetable-search.vue';
 
 const MAX_EVENTS = 5;
 const MAX_DAYS = 2;

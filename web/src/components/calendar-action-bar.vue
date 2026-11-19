@@ -1,11 +1,14 @@
 <template>
   <div class="d-flex align-center">
     <responsive-icon-button
-      v-if="!isCustomSchedule && !isTinyMobile"
+      v-if="!isCustomSchedule"
       :breakpoint="$vuetify.display.xlAndUp"
       :icon="isFavorite ? mdiHeart : mdiHeartOutline"
-      :text="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
-      @click="toggleFavorite"
+      :text="isFavorite ? 'Gemerkt' : 'Merken'"
+      :color="isFavorite ? 'primary' : undefined"
+      aria-label="Merken"
+      :aria-pressed="isFavorite"
+      @click="splus.toggleFavoriteSchedule(currentSchedule)"
     />
 
     <!-- mobile action bar -->
@@ -15,18 +18,13 @@
       </template>
 
       <v-list>
-        <v-list-item
-          v-if="!isCustomSchedule && isTinyMobile"
-          :title="isFavorite ? 'Favorit entfernen' : 'Favorisieren'"
-          @click="toggleFavorite"
-        />
         <v-list-item title="Teilen" @click="share()" />
         <v-list-item
           title="Extern öffnen"
           @click="openCalendarDialogOpen = true"
         />
         <v-list-item
-          :title="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
+          :title="isCustomSchedule ? 'Bearbeiten' : 'Kurse auswählen'"
           @click="editTimetableDialogOpen = true"
         />
         <v-list-item
@@ -53,7 +51,7 @@
         @click="deleteTimetableDialogOpen = true"
       />
       <responsive-icon-button
-        :text="isCustomSchedule ? 'Bearbeiten' : 'Personalisieren'"
+        :text="isCustomSchedule ? 'Bearbeiten' : 'Kurse auswählen'"
         :breakpoint="$vuetify.display.xlAndUp"
         :icon="mdiPencil"
         @click="editTimetableDialogOpen = true"
@@ -109,16 +107,15 @@ const router = useRouter();
 const splus = useSplusStore();
 const { schedule: currentSchedule, isCustomTimetable: isCustomSchedule } =
   storeToRefs(splus);
-const { mobile: isMobile, width } = useDisplay();
+const { mobile: isMobile } = useDisplay();
 
 const editTimetableDialogOpen = ref(false);
 const openCalendarDialogOpen = ref(false);
 const deleteTimetableDialogOpen = ref(false);
 const shareDialogOpen = ref(false);
 
-const isTinyMobile = computed(() => width.value <= 400);
 const isFavorite = computed(() =>
-  splus.favoriteIds.includes(currentSchedule.value.id),
+  splus.isFavoriteSchedule(currentSchedule.value),
 );
 const timetableIds = computed(() =>
   isCustomSchedule.value
@@ -143,13 +140,6 @@ const currentAsCustomSchedule = computed(() => {
 
 function routeToRoot() {
   router.replace('/');
-}
-function toggleFavorite() {
-  if (isFavorite.value) {
-    splus.removeFavoriteSchedule(currentSchedule.value);
-  } else {
-    splus.addFavoriteSchedule(currentSchedule.value);
-  }
 }
 function currentUrl() {
   return window.location.href;

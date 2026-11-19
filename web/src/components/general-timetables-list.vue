@@ -18,26 +18,23 @@
             v-if="semesterLabel(schedules[0].semester)"
             :key="path + semester"
             :value="path + semester"
-            subgroup
           >
             <template #activator="{ props }">
               <v-list-item v-bind="props" :title="semester + '. Semester'" />
             </template>
 
-            <v-list-item
+            <timetable-list-item
               v-for="schedule in schedules"
               :key="schedule.id"
-              :to="schedule.route"
-              :title="schedule.label"
+              :timetable="schedule"
             />
           </v-list-group>
 
           <template v-else>
-            <v-list-item
+            <timetable-list-item
               v-for="schedule in schedules"
               :key="schedule.id"
-              :to="schedule.route"
-              :title="schedule.label"
+              :timetable="schedule"
             />
           </template>
         </template>
@@ -51,6 +48,7 @@ import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useSplusStore } from '../stores/splus';
 import { semesterLabel } from '../lib/util';
+import TimetableListItem from './timetable-list-item.vue';
 
 const { getTimetablesAsTree: schedulesTree } = storeToRefs(useSplusStore());
 
