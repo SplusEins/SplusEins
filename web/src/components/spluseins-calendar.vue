@@ -46,6 +46,7 @@
       interval-count="15"
       interval-height="50"
       event-overlap-mode="column"
+      event-color="transparent"
       @click:event="showEvent"
     >
       <template #day-label-header="{ day, present }">
@@ -62,6 +63,7 @@
             'custom-event',
             { 'mini-padding': $vuetify.display.mobile },
           ]"
+          :style="{ '--course': event.color }"
         >
           <div class="font-weight-bold">
             {{ event.name }}
@@ -166,9 +168,17 @@ function showEvent(nativeEvent, { event }) {
   background: inherit !important;
 }
 .custom-event {
+  height: 100%;
   white-space: normal;
   word-wrap: break-word;
   line-height: normal;
+  border-top: 3px solid var(--course);
+  background: oklch(from var(--course) 0.95 0.03 h);
+  color: oklch(from var(--course) 0.4 c h);
+}
+.v-theme--dark .custom-event {
+  background: oklch(from var(--course) 0.32 0.05 h);
+  color: oklch(from var(--course) 0.9 0.05 h);
 }
 .mini-padding {
   padding-top: 2px;
@@ -177,6 +187,6 @@ function showEvent(nativeEvent, { event }) {
 }
 
 .v-calendar .v-event-timed {
-  overflow-y: hidden;
+  overflow: hidden;
 }
 </style>
