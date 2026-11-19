@@ -17,8 +17,8 @@
     <v-list v-else class="agenda pt-0">
       <template v-for="(event, i) in events" :key="event.key">
         <template v-if="i === 0 || event.day !== events[i - 1].day">
-          <v-divider v-if="i > 0" class="my-2" />
-          <div class="v-list-item-title font-weight-bold px-4 py-1">
+          <v-divider v-if="i > 0" class="mx-4 my-3" />
+          <div class="text-body-large font-weight-bold px-4 py-1">
             {{ event.day }}
           </div>
         </template>
@@ -59,7 +59,7 @@
     <calendar-event-popover v-model="selectedOpen" :event="selected" />
 
     <v-card-actions
-      v-if="splus.hasSubscribableTimetables"
+      v-if="mobile && splus.hasSubscribableTimetables"
       class="flex-wrap ga-2 px-4"
     >
       <v-chip
@@ -78,6 +78,7 @@
 
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue';
+import { useDisplay } from 'vuetify';
 import {
   mdiChevronRight,
   mdiCircle,
@@ -94,6 +95,7 @@ const MAX_EVENTS = 5;
 const MAX_DAYS = 2;
 
 const splus = useSplusStore();
+const { mobile } = useDisplay();
 const loading = ref(false);
 const selected = ref(undefined);
 const selectedOpen = ref(false);
