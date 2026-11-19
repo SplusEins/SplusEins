@@ -33,6 +33,7 @@
               {{ absoluteDate(departure.date) }} Uhr
               <v-chip
                 v-if="minutesUntilDate(departure.date) < 60"
+                v-bind="departsSoon(departure.date) ? SOON_CHIP : {}"
                 size="small"
                 class="ml-2"
               >
@@ -92,6 +93,11 @@ const relativeDate = (str) => dayjs(str).fromNow();
 const absoluteDate = (str) => dayjs(str).format('HH:mm');
 const formatTime = (str) => dayjs(str).format('HH:mm:ss');
 const minutesUntilDate = (str) => dayjs(str).diff(dayjs(), 'minutes');
+const SOON_CHIP = { color: 'accent', variant: 'flat' };
+const departsSoon = (date) => {
+  const minutes = minutesUntilDate(date);
+  return minutes >= 0 && minutes <= 5;
+};
 
 function departureLabel(date) {
   const minutes = minutesUntilDate(date);

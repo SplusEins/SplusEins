@@ -1,5 +1,5 @@
 <template>
-  <v-card class="fill-height d-flex flex-column">
+  <v-card>
     <v-card-title class="d-flex align-center pb-1">
       <div class="text-headline-small text-wrap mr-1">
         {{ mensa.selectedPlan?.name }} {{ mensa.nextPlanDay }}

@@ -40,7 +40,13 @@ export default createVuetify({
         },
       },
       dark: {
-        colors: { primary: '#3B7DDD', secondary: '#00234A', accent: '#FFC53D' },
+        colors: {
+          background: '#0B1424',
+          surface: '#121E33',
+          primary: '#8AB4F8',
+          secondary: '#00234A',
+          accent: '#FFC53D',
+        },
       },
     },
   },

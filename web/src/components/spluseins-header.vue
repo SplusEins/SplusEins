@@ -4,7 +4,9 @@
     color="secondary"
     :height="$vuetify.display.mobile ? 56 : 64"
   >
-    <v-app-bar-nav-icon v-if="!mobile" @click.stop="toggleSidenav()" />
+    <template v-if="!mobile" #prepend>
+      <v-app-bar-nav-icon @click.stop="toggleSidenav()" />
+    </template>
     <div class="header-title">
       <img
         src="../assets/img/headerLogo.png"
@@ -21,37 +23,39 @@
         {{ showPlanTitle ? planTitle : 'SPLUSEINS' }}
       </router-link>
     </div>
-    <v-btn
-      v-show="isOffline"
-      color="warning"
-      :icon="mdiWifiOff"
-      aria-label="Offline"
-      @click="enqueueError('Internetverbindung: Nicht verfügbar')"
-    />
-    <v-btn
-      v-if="!mobile"
-      :icon="mdiThemeLightDark"
-      aria-label="Dunkles Design umschalten"
-      @click="toggleDark()"
-    />
-    <v-menu v-else location="bottom end">
-      <template #activator="{ props }">
-        <v-btn v-bind="props" :icon="mdiDotsVertical" aria-label="Menü" />
-      </template>
-      <!-- the app bar is dark, the menu follows the app theme -->
-      <v-card :theme="isDark ? 'dark' : 'light'">
-        <v-list>
-          <v-list-item
-            :prepend-icon="mdiThemeLightDark"
-            :title="isDark ? 'Heller Modus' : 'Dunkelmodus'"
-            @click="toggleDark()"
-          />
-        </v-list>
-        <install-button-list />
-        <v-divider />
-        <spluseins-footer />
-      </v-card>
-    </v-menu>
+    <template #append>
+      <v-btn
+        v-show="isOffline"
+        color="warning"
+        :icon="mdiWifiOff"
+        aria-label="Offline"
+        @click="enqueueError('Internetverbindung: Nicht verfügbar')"
+      />
+      <v-btn
+        v-if="!mobile"
+        :icon="mdiThemeLightDark"
+        aria-label="Dunkles Design umschalten"
+        @click="toggleDark()"
+      />
+      <v-menu v-else location="bottom end">
+        <template #activator="{ props }">
+          <v-btn v-bind="props" :icon="mdiDotsVertical" aria-label="Menü" />
+        </template>
+        <!-- the app bar is dark, the menu follows the app theme -->
+        <v-card :theme="isDark ? 'dark' : 'light'">
+          <v-list>
+            <v-list-item
+              :prepend-icon="mdiThemeLightDark"
+              :title="isDark ? 'Heller Modus' : 'Dunkelmodus'"
+              @click="toggleDark()"
+            />
+          </v-list>
+          <install-button-list />
+          <v-divider />
+          <spluseins-footer />
+        </v-card>
+      </v-menu>
+    </template>
     <v-progress-linear
       :active="pendingRequests > 0"
       indeterminate
