@@ -3,7 +3,7 @@
     <v-list-item to="/" :prepend-icon="mdiHome" title="Startseite" />
     <v-list-item
       :prepend-icon="mdiPlus"
-      title="Personalisierter Plan"
+      title="Eigenen Plan zusammenstellen"
       @click="customTimetableDialogOpen = true"
     />
     <v-list-item to="/mensa" :prepend-icon="mdiFoodForkDrink" title="Mensa" />

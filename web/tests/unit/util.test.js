@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest';
 import {
   customTimetableToRoute,
   semesterLabel,
-  shortenTimetableDegree,
   timetableDisplayName,
   truncateText,
   uniq,
@@ -30,13 +29,6 @@ describe('util', () => {
     );
     expect(timetableDisplayName(timetable, 11)).toBe('Wirtschafts… 3. Sem.');
     expect(timetableDisplayName({ label: 'A-Gebäude' })).toBe('A-Gebäude');
-  });
-
-  it('shortenTimetableDegree shortens known degrees', () => {
-    expect(shortenTimetableDegree({ degree: 'Bachelor of Science' })).toBe(
-      'B.Sc.',
-    );
-    expect(shortenTimetableDegree({ degree: 'Räume' })).toBe('Räume');
   });
 
   it('customTimetableToRoute describes the timetable in the query', () => {

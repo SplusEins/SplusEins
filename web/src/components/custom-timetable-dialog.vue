@@ -13,58 +13,68 @@
           aria-label="Schließen"
           @click="dialogOpen = false"
         />
-        <v-toolbar-title>Neuer Stundenplan</v-toolbar-title>
+        <v-toolbar-title>Eigener Plan</v-toolbar-title>
         <v-btn :disabled="!saveable" @click="save()"> Speichern </v-btn>
       </v-toolbar>
-      <v-card-text class="pa-2">
-        <v-form v-model="valid">
-          <v-container>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field
-                  v-model="selectedName"
-                  :rules="[
-                    rules.required,
-                    rules.uniqueScheduleLabel,
-                    rules.uniqueCustomScheduleLabel,
-                  ]"
-                  label="Plan benennen"
-                  required
-                  autofocus
-                />
-              </v-col>
+      <v-card-text class="px-0">
+        <v-form v-model="valid" @submit.prevent>
+          <p class="px-4 mb-4">
+            Kombiniere Kurse aus mehreren Plänen, zum Beispiel dein Semester und
+            deine Wahlpflichtfächer.
+          </p>
 
-              <v-col cols="12">
-                <timetable-select
-                  v-show="selectedSchedules.length < maxSchedules"
-                  :selected-schedules="selectedSchedules"
-                  :loading="loading"
-                  @select="addSchedule"
-                />
-              </v-col>
+          <div class="px-4 text-label-large text-primary">1 · Pläne</div>
+          <div class="px-4 pt-2">
+            <v-chip
+              v-for="schedule in selectedSchedules"
+              :key="schedule.id"
+              :text="timetableDisplayName(schedule)"
+              closable
+              class="mr-1 mb-1"
+              @click:close="removeSchedule(schedule)"
+            />
+          </div>
+          <template v-if="selectedSchedules.length < maxSchedules">
+            <timetable-search v-model="query">
+              <v-btn
+                :append-icon="browseOpen ? mdiChevronUp : mdiChevronDown"
+                variant="text"
+                class="ml-2"
+                @click="browseOpen = !browseOpen"
+              >
+                Alle Pläne durchstöbern
+              </v-btn>
+              <general-timetables-list v-if="browseOpen" />
+            </timetable-search>
+          </template>
 
-              <v-col cols="12">
-                <v-chip
-                  v-for="schedule in selectedSchedules"
-                  :key="schedule.id"
-                  closable
-                  class="mr-1"
-                  @click:close="removeSchedule(schedule)"
-                >
-                  {{ getFormattedName(schedule) }}
-                </v-chip>
-              </v-col>
+          <div class="px-4 pt-4 d-flex justify-space-between">
+            <span class="text-label-large text-primary">2 · Kurse</span>
+            <span class="text-body-small text-medium-emphasis">
+              {{ selectedCourses.length }} von {{ maxCourses }}
+            </span>
+          </div>
+          <v-progress-linear v-if="loading" indeterminate class="mt-2" />
+          <course-multiselect
+            v-show="selectedSchedules.length > 0"
+            v-model="selectedCourses"
+            :max-courses="maxCourses"
+            :lectures="allLectures"
+          />
 
-              <v-col cols="12">
-                <course-multiselect
-                  v-show="selectedSchedules.length > 0"
-                  v-model="selectedCourses"
-                  :max-courses="maxCourses"
-                  :lectures="allLectures"
-                />
-              </v-col>
-            </v-row>
-          </v-container>
+          <div class="px-4 pt-4 text-label-large text-primary">3 · Name</div>
+          <div class="px-4">
+            <v-text-field
+              v-model="selectedName"
+              :rules="[
+                rules.required,
+                rules.uniqueScheduleLabel,
+                rules.uniqueCustomScheduleLabel,
+              ]"
+              label="Name"
+              required
+            />
+          </div>
         </v-form>
       </v-card-text>
     </v-card>
@@ -72,9 +82,9 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, ref, watch } from 'vue';
+import { computed, defineAsyncComponent, provide, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { mdiClose } from '@mdi/js';
+import { mdiChevronDown, mdiChevronUp, mdiClose } from '@mdi/js';
 import {
   uniq,
   customTimetableToRoute,
@@ -82,17 +92,16 @@ import {
 } from '../lib/util';
 import { useSplusStore, loadUniqueLectures } from '../stores/splus';
 import { useAppStore } from '../stores/app';
+import TimetableSearch from './timetable-search.vue';
+import GeneralTimetablesList from './general-timetables-list.vue';
 
 // loaded when the dialog is opened for the first time
-const TimetableSelect = defineAsyncComponent(
-  () => import('./timetable-select.vue'),
-);
 const CourseMultiselect = defineAsyncComponent(
   () => import('./course-multiselect.vue'),
 );
 
 const props = defineProps({
-  /* personalized timetable to edit, or one without label to start a new one from - leave empty to start empty */
+  /* custom timetable to edit, or one without label to start a new one from - leave empty to start empty */
   customSchedule: {
     type: Object,
     default: () => undefined,
@@ -113,6 +122,8 @@ const maxCourses = 20;
 const selectedName = ref('');
 const selectedSchedules = ref([]);
 const selectedCourses = ref([]);
+const query = ref('');
+const browseOpen = ref(false);
 /* lectures (events) of the selected timetables: { timetable id: [lecture] } */
 const lectures = ref({});
 /* state */
@@ -125,6 +136,7 @@ const saveable = computed(
   () => valid.value && selectedCourses.value.length > 0,
 );
 const allLectures = computed(() => Object.values(lectures.value).flat());
+const selectedIds = computed(() => selectedSchedules.value.map(({ id }) => id));
 
 const rules = {
   required: (value) => !!value || 'Pflichtfeld',
@@ -136,16 +148,14 @@ const rules = {
     'Bereits vergeben',
 };
 
-function getFormattedName(schedule) {
-  for (const element of selectedSchedules.value) {
-    if (
-      schedule.label === element.label &&
-      schedule.semester !== element.semester
-    ) {
-      return timetableDisplayName(schedule);
-    }
-  }
-  return schedule.label;
+/* "Mein Plan", or "Mein Plan 2" etc. if that is taken */
+function defaultName() {
+  const taken = (name) =>
+    splus.customTimetableLabels.includes(name) ||
+    splus.timetableIds.includes(name);
+  let name = 'Mein Plan';
+  for (let i = 2; taken(name); i++) name = `Mein Plan ${i}`;
+  return name;
 }
 
 async function loadLectures(schedule) {
@@ -164,6 +174,7 @@ async function loadLectures(schedule) {
 }
 
 async function addSchedule(schedule) {
+  query.value = '';
   if (selectedSchedules.value.includes(schedule)) {
     return;
   }
@@ -171,6 +182,7 @@ async function addSchedule(schedule) {
   selectedSchedules.value.push(schedule);
   await loadLectures(schedule);
 }
+provide('timetablePicker', { selectedIds, add: addSchedule });
 
 function removeSchedule(schedule) {
   const index = selectedSchedules.value.indexOf(schedule);
@@ -218,7 +230,7 @@ function save() {
  * Load the state from the passed schedule.
  */
 async function load() {
-  selectedName.value = props.customSchedule.label;
+  selectedName.value = props.customSchedule.label || defaultName();
 
   await Promise.all(
     props.customSchedule.id
@@ -242,6 +254,8 @@ function reset() {
   selectedSchedules.value = [];
   selectedCourses.value = [];
   lectures.value = {};
+  query.value = '';
+  browseOpen.value = false;
 }
 
 watch(dialogOpen, () => {
@@ -249,6 +263,8 @@ watch(dialogOpen, () => {
     reset();
   } else if (props.customSchedule) {
     load();
+  } else {
+    selectedName.value = defaultName();
   }
 });
 </script>

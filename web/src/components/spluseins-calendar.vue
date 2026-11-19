@@ -113,9 +113,9 @@ const monthSummary = computed(() => {
   const startDate = dayjs(week.value);
   const endDate = dayjs(calendarEndDate.value);
   if (startDate.isSame(endDate, 'month')) {
-    return startDate.format('MMMM YYYY');
+    return startDate.format('MMM YYYY');
   } else {
-    return startDate.format('MMMM') + '/' + endDate.format('MMMM YYYY');
+    return startDate.format('MMM') + '/' + endDate.format('MMM YYYY');
   }
 });
 
