@@ -1,87 +1,125 @@
 <template>
-  <div>
-    <v-alert v-if="overlappingCourses.length > 0" type="warning" class="mb-2">
-      Kurse überschneiden sich: {{ overlappingCourses.join(', ') }}
-    </v-alert>
-    <v-data-table
-      v-model="selectedCourses"
-      :headers="$vuetify.display.mobile ? headersMobile : headers"
-      :items="courses"
-      :items-per-page="-1"
-      :sort-by="[{ key: 'title', order: 'asc' }]"
-      :mobile="false"
-      item-value="id"
-      return-object
-      show-select
-      hide-default-footer
-      must-sort
-      no-data-text="Keine Kurse geladen."
+  <v-list v-model:opened="opened">
+    <v-list-group
+      v-for="schedule in schedules"
+      :key="schedule.id"
+      :value="schedule.id"
     >
-      <template
-        #item.data-table-select="{
-          item,
-          internalItem,
-          isSelected,
-          toggleSelect,
-        }"
-      >
-        <v-checkbox-btn
-          :model-value="isSelected(internalItem)"
-          :disabled="
-            !isSelected(internalItem) && selectedCourses.length >= maxCourses
-          "
-          :color="
-            overlappingCourses.includes(item.title) ? 'warning' : undefined
-          "
-          @update:model-value="toggleSelect(internalItem)"
-        />
+      <template #activator="{ props: activator }">
+        <v-list-item
+          v-bind="activator"
+          :title="timetableDisplayName(schedule)"
+          :subtitle="`${selectedCounts[schedule.id]} von ${courses[schedule.id].length} ausgewählt`"
+        >
+          <template #prepend>
+            <v-checkbox-btn
+              :model-value="
+                selectedCounts[schedule.id] === courses[schedule.id].length
+              "
+              :indeterminate="
+                selectedCounts[schedule.id] > 0 &&
+                selectedCounts[schedule.id] < courses[schedule.id].length
+              "
+              :aria-label="`Alle Kurse von ${timetableDisplayName(schedule)}`"
+              @click.stop
+              @update:model-value="toggleAll(schedule, $event)"
+            />
+          </template>
+        </v-list-item>
       </template>
-    </v-data-table>
-  </div>
+
+      <v-list-item
+        v-for="course in courses[schedule.id]"
+        :key="course.id"
+        @click="toggle(course)"
+      >
+        <template #prepend>
+          <v-checkbox-btn
+            :model-value="isSelected(course)"
+            :aria-label="course.title"
+            @click.stop
+            @update:model-value="toggle(course)"
+          />
+        </template>
+        <v-list-item-title class="text-wrap">{{
+          course.title
+        }}</v-list-item-title>
+        <div
+          class="text-body-medium"
+          :class="
+            overlapping.has(course.id) ? 'text-warning' : 'text-medium-emphasis'
+          "
+        >
+          {{ dayjs(course.start).format('dd HH:mm') }}
+          <template v-if="overlapping.has(course.id)">
+            · überschneidet sich mit {{ overlapping.get(course.id) }}
+          </template>
+        </div>
+      </v-list-item>
+
+      <div class="pb-2">
+        <v-btn variant="text" color="error" @click="emit('remove', schedule)">
+          Plan entfernen
+        </v-btn>
+      </div>
+    </v-list-group>
+  </v-list>
 </template>
 
 <script setup>
 import { computed } from 'vue';
-import { overlappingCourseTitles } from '../lib/overlaps';
-import { roomWithoutLinks } from '../lib/util';
+import dayjs from '../lib/dayjs';
+import { overlappingCourses } from '../lib/overlaps';
+import { timetableDisplayName, uniq } from '../lib/util';
 
 const props = defineProps({
-  maxCourses: {
-    type: Number,
-    default: Infinity,
-  },
-  lectures: {
+  schedules: {
     type: Array,
     default: () => [],
   },
-});
-/* v-model: the selected courses */
-const selectedCourses = defineModel({ type: Array, default: () => [] });
-
-const headers = [
-  { key: 'title', title: 'Vorlesung' },
-  {
-    key: 'lecturer',
-    title: 'Dozent',
-    value: (lecture) => lecture.meta.organiserName,
+  /* { timetable id: [lecture] }, sorted by title, each course once */
+  lectures: {
+    type: Object,
+    default: () => ({}),
   },
-  {
-    key: 'room',
-    title: 'Raum',
-    value: (lecture) => roomWithoutLinks(lecture.location),
-  },
-];
-const headersMobile = [{ key: 'title', title: 'Vorlesung' }];
-
-/* a course has many lectures, show each course only once */
-const courses = computed(() => {
-  const lecturesById = new Map();
-  props.lectures.forEach((lecture) => lecturesById.set(lecture.id, lecture));
-  return [...lecturesById.values()];
 });
+const emit = defineEmits(['remove']);
+/* v-model: ids of the selected courses */
+const selected = defineModel({ type: Array, default: () => [] });
+/* v-model:opened: ids of the timetables whose courses are shown */
+const opened = defineModel('opened', { type: Array, default: () => [] });
 
-/* titles of the selected courses which take place at the same time */
-const overlappingCourses = computed(() =>
-  overlappingCourseTitles(props.lectures, selectedCourses.value),
+const courses = computed(() =>
+  Object.fromEntries(
+    props.schedules.map(({ id }) => [id, props.lectures[id] ?? []]),
+  ),
 );
+
+const overlapping = computed(() =>
+  overlappingCourses(Object.values(props.lectures).flat(), selected.value),
+);
+
+const selectedSet = computed(() => new Set(selected.value));
+const isSelected = (course) => selectedSet.value.has(course.id);
+const selectedCounts = computed(() =>
+  Object.fromEntries(
+    Object.entries(courses.value).map(([id, list]) => [
+      id,
+      list.filter(isSelected).length,
+    ]),
+  ),
+);
+
+function toggle(course) {
+  selected.value = isSelected(course)
+    ? selected.value.filter((id) => id !== course.id)
+    : [...selected.value, course.id];
+}
+
+function toggleAll(schedule, select) {
+  const ids = courses.value[schedule.id].map(({ id }) => id);
+  selected.value = select
+    ? uniq([...selected.value, ...ids])
+    : selected.value.filter((id) => !ids.includes(id));
+}
 </script>
