@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
   customTimetableToRoute,
-  roomWithoutLinks,
   semesterLabel,
   timetableDisplayName,
   truncateText,
@@ -30,15 +29,6 @@ describe('util', () => {
     );
     expect(timetableDisplayName(timetable, 11)).toBe('Wirtschafts… 3. Sem.');
     expect(timetableDisplayName({ label: 'A-Gebäude' })).toBe('A-Gebäude');
-  });
-
-  it('roomWithoutLinks removes the map links', () => {
-    expect(
-      roomWithoutLinks(
-        'A209 (Am Exer 2, 38302 Wolfenbüttel) Link: https://example.org/1 / B107 Link: https://example.org/2',
-      ),
-    ).toBe('A209 (Am Exer 2, 38302 Wolfenbüttel) / B107');
-    expect(roomWithoutLinks(undefined)).toBe('');
   });
 
   it('customTimetableToRoute describes the timetable in the query', () => {

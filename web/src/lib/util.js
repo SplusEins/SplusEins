@@ -58,15 +58,6 @@ export function timetableSubtitle(timetable) {
   return `${semester} · ${timetable.faculty} ${timetable.degree}`;
 }
 
-/**
- * The API appends a map link to every room, e.g.
- * "A209 (Am Exer 2, 38302 Wolfenbüttel) Link: https://... / B107 Link: https://...".
- * @returns the rooms without the links, e.g. "A209 (Am Exer 2, 38302 Wolfenbüttel) / B107"
- */
-export function roomWithoutLinks(room) {
-  return (room || '').replace(/ Link: \S+/g, '');
-}
-
 export function relativeDay(date, now) {
   const today = dayjs(now);
   if (date.isSame(today, 'day')) return 'Heute';
