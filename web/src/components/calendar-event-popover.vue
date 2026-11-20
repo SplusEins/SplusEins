@@ -76,10 +76,51 @@
         </v-list-item>
       </v-list>
 
-      <template v-if="event.plan">
+      <template v-if="event.plan || customPlan || addTargets.length > 0">
         <v-divider />
-        <v-card-actions class="justify-start px-4">
+        <v-card-actions class="justify-start flex-wrap px-4">
           <v-btn
+            v-if="customPlan"
+            :prepend-icon="mdiEyeOffOutline"
+            :disabled="customPlan.whitelist.length === 1"
+            variant="outlined"
+            @click="hideCourse()"
+          >
+            Alle Termine ausblenden
+          </v-btn>
+          <v-btn
+            v-if="addTargets.length === 1"
+            :prepend-icon="has(addTargets[0]) ? mdiCheck : mdiPlus"
+            :disabled="has(addTargets[0])"
+            variant="outlined"
+            @click="addTo(addTargets[0])"
+          >
+            {{
+              has(addTargets[0])
+                ? `Schon in ${addTargets[0].label}`
+                : `Zu ${addTargets[0].label} hinzufügen`
+            }}
+          </v-btn>
+          <v-menu v-else-if="addTargets.length > 1">
+            <template #activator="{ props: menu }">
+              <v-btn v-bind="menu" :prepend-icon="mdiPlus" variant="outlined">
+                Hinzufügen
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-subheader>Hinzufügen zu</v-list-subheader>
+              <v-list-item
+                v-for="plan in addTargets"
+                :key="plan.label"
+                :title="plan.label"
+                :subtitle="has(plan) ? 'Schon drin' : undefined"
+                :disabled="has(plan)"
+                @click="addTo(plan)"
+              />
+            </v-list>
+          </v-menu>
+          <v-btn
+            v-if="event.plan"
             :to="event.plan.route"
             :append-icon="mdiChevronRight"
             color="primary"
@@ -94,22 +135,26 @@
 
 <script setup>
 import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 import { useDisplay } from 'vuetify';
 import { VBottomSheet } from 'vuetify/components/VBottomSheet';
 import { VDialog } from 'vuetify/components/VDialog';
 import {
   mdiAccountOutline,
+  mdiCheck,
   mdiChevronRight,
   mdiCircle,
   mdiClockOutline,
   mdiClose,
+  mdiEyeOffOutline,
   mdiInformationOutline,
   mdiMapMarkerOutline,
   mdiOpenInNew,
+  mdiPlus,
 } from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
-import { relativeDay } from '../lib/util';
+import { customTimetableToRoute, relativeDay } from '../lib/util';
 import { useNow } from '../lib/now';
 
 const props = defineProps({
@@ -122,6 +167,7 @@ const props = defineProps({
 const open = defineModel({ type: Boolean });
 
 const splus = useSplusStore();
+const router = useRouter();
 const { mobile } = useDisplay();
 
 const now = useNow();
@@ -139,6 +185,41 @@ const day = computed(() =>
     .filter(Boolean)
     .join(', '),
 );
+
+/* the open plan, the agenda has none */
+const openPlan = computed(() =>
+  props.event.plan ? undefined : splus.schedule,
+);
+const customPlan = computed(
+  () =>
+    openPlan.value?.whitelist && splus.customSchedules[openPlan.value.label],
+);
+/* custom plans the course of a normal plan can be added to */
+const addTargets = computed(() =>
+  openPlan.value && !openPlan.value.whitelist
+    ? Object.values(splus.customSchedules)
+    : [],
+);
+const has = (plan) => plan.whitelist.includes(props.event.id);
+
+function addTo(plan) {
+  splus.addCourseToCustomSchedule(
+    plan.label,
+    openPlan.value.id,
+    props.event.id,
+  );
+}
+
+/* removes the course with all its lectures from the custom plan */
+function hideCourse() {
+  const updated = splus.removeCourseFromCustomSchedule(
+    customPlan.value.label,
+    props.event.id,
+  );
+  open.value = false;
+  // the new URL re-creates the plan page
+  router.replace(customTimetableToRoute(updated));
+}
 
 /**
  * Parses the location string into an array of objects with text and url
