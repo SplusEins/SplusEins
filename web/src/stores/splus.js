@@ -42,6 +42,7 @@ function isCustomTimetable(timetable) {
 
 function toCalendarEvent(event, timetable) {
   return {
+    id: event.id,
     name: event.title,
     start: dayjs(event.start).format('YYYY-MM-DD HH:mm'),
     end: dayjs(event.end).format('YYYY-MM-DD HH:mm'),
@@ -317,6 +318,23 @@ export const useSplusStore = defineStore('splus', {
       delete this.customSchedules[oldTimetable.label];
       this.customSchedules[newTimetable.label] = newTimetable;
       if (wasSubscribed) this.subscribedKey = subscriptionKey(newTimetable);
+    },
+    addCourseToCustomSchedule(label, timetableId, courseId) {
+      const old = this.customSchedules[label];
+      this.replaceCustomSchedule(old, {
+        ...old,
+        id: uniq([...old.id, timetableId]),
+        whitelist: [...old.whitelist, courseId],
+      });
+    },
+    removeCourseFromCustomSchedule(label, courseId) {
+      const old = this.customSchedules[label];
+      const updated = {
+        ...old,
+        whitelist: old.whitelist.filter((id) => id !== courseId),
+      };
+      this.replaceCustomSchedule(old, updated);
+      return updated;
     },
     addFavoriteSchedule(favoriteTimetable) {
       if (this.favoriteIds.includes(favoriteTimetable.id)) return;
