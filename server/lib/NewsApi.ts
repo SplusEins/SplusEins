@@ -11,9 +11,10 @@ const OSTFALIA_URL = 'https://www.ostfalia.de/';
 const FACULTIES = 'hochschule/fakultaeten/';
 
 /**
- * News list pages of the Ostfalia website by news selector
+ * News list pages of the Ostfalia website. Selectors without a page there
+ * (e, f, w and the campuses) are still accepted but return no news.
  */
-const OSTFALIA_NEWS_PAGES: Record<string, string> = {
+const OSTFALIA_NEWS_PAGES: Record<string, string | undefined> = {
   campus: 'hochschule/nachrichten',
   b: FACULTIES + 'fakultaet-bau-wasser-boden/nachrichten',
   g: FACULTIES + 'fakultaet-gesundheitswesen/nachrichten',
@@ -23,6 +24,13 @@ const OSTFALIA_NEWS_PAGES: Record<string, string> = {
   r: FACULTIES + 'fakultaet-recht/nachrichten',
   s: FACULTIES + 'fakultaet-soziale-arbeit/nachrichten',
   v: FACULTIES + 'fakultaet-versorgungstechnik/nachrichten',
+  e: undefined,
+  f: undefined,
+  w: undefined,
+  wob: undefined,
+  wf: undefined,
+  sud: undefined,
+  sz: undefined,
 };
 
 async function fetchOk(url: string): Promise<Response> {
@@ -38,6 +46,7 @@ async function ostfaliaNewsRequest(
   newsSelector: string,
 ): Promise<NewsElement[]> {
   const page = OSTFALIA_NEWS_PAGES[newsSelector];
+  if (!page) return [];
   const response = await fetchOk(OSTFALIA_URL + page);
   const $ = cheerio.load(await response.text());
   const elements = $('.teaser-wall__item')
