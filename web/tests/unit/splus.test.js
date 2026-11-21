@@ -54,6 +54,31 @@ describe('splus store', () => {
     });
   });
 
+  it('forgets timetables of past semesters', () => {
+    splus.addFavoriteSchedule(timetable);
+    splus.addFavoriteSchedule({ id: 'old_ss25' });
+    splus.addCustomSchedule(custom('Alt', ['old_ss25']));
+    splus.addCustomSchedule(custom('Gemischt', ['old_ss25', timetable.id]));
+    splus.forgetPastSemesters();
+    expect(splus.favoriteIds).toEqual([timetable.id]);
+    expect(splus.customTimetableLabels).toEqual(['Gemischt']);
+  });
+
+  it('keeps unknown timetables of the current semester', () => {
+    const gone = `gone${timetable.id.slice(timetable.id.lastIndexOf('_'))}`;
+    splus.addFavoriteSchedule({ id: gone });
+    splus.addCustomSchedule(custom('Weg', [gone]));
+    splus.forgetPastSemesters();
+    expect(splus.favoriteIds).toEqual([gone]);
+    expect(splus.customTimetableLabels).toEqual(['Weg']);
+  });
+
+  it('forgets broken personal timetables', () => {
+    splus.customSchedules = { Kaputt: { label: 'Kaputt' }, Null: null };
+    splus.forgetPastSemesters();
+    expect(splus.customTimetableLabels).toEqual([]);
+  });
+
   it('adds each favorite only once', () => {
     splus.addFavoriteSchedule(timetable);
     splus.addFavoriteSchedule({ ...timetable });
