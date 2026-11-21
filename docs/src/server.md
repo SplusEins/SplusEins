@@ -28,34 +28,26 @@ Bei der API handelt es sich um eine REST-Schnittstelle welche mit dem JSON-Forma
 
 Die Endpunkte zum Abfragen der Stundenpläne durch das Frontend sind in der Datei `controller/splus.ts` definiert.
 
-### GET `/splus/:timetable/:weeks`
+### GET `/splus/:sources/:weeks`
 
 **Parameter:**
 
-- timetable: Stundenplan-ID wie in `assets/timetables.json`
+- sources: Eine oder mehrere durch Komma getrennte Stundenplan-IDs wie in `assets/timetables.json`. Hinter einer ID kann stehen, welche Veranstaltungen (`id` eines Events) gezeigt werden, mehrere durch Punkt getrennt:
+  - `se3`: alle Veranstaltungen
+  - `se3!a.b`: alle außer `a` und `b`
+  - `wpf:a.b`: nur `a` und `b`
+
+  Unbekannte Stundenplan-IDs werden ignoriert.
+
 - weeks: Eine oder mehrere durch Komma getrennte Kalenderwochen
 
 **Rückgabe:**
-Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Veranstaltungen) in diesem Plan in den angeforderten Wochen enthält.
+Liefert ein `Event`-Array (siehe `model/SplusEinsModel.ts`) mit den gewählten Veranstaltungen dieser Pläne in den angeforderten Wochen. Eine Veranstaltung, die in mehreren der Pläne steht, ist nur einmal enthalten; `sources` nennt die Pläne, in denen sie steht. `colorIndex` ist über alle Veranstaltungen der Pläne im ganzen Semester vergeben, damit eine Veranstaltung jede Woche dieselbe Farbe hat.
 
-**Beispiel:**
-`/splus/informatik-wpf/33,34`
+**Beispiele:**
 
-### GET `/splus/:timetables/:weeks{/:lectures}/:name`
-
-**Parameter:**
-
-- timetables: Eine oder mehrere durch Komma getrennte Stundenplan-IDs wie in `assets/timetables.json`
-- weeks: Eine oder mehrere durch Komma getrennte Kalenderwochen
-- lectures (optional): Eine oder mehrere durch Komma getrennte Liste von Lecture-IDs wie sie in einem Timetable-Objekt verwendet werden
-- name: frei wählbarer Name für einen Stundenplan (für personalierte Pläne)
-
-**Rückgabe:**
-Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Veranstaltungen) oder falls übergeben, nur die angeforderten Veranstaltungen (lectures) enthält.
-Der Stundenplan hat den übergebenen Namen.
-
-**Beispiel:**
-`/splus/informatik-wpf,informatik-1/33,34/D123A,GA31R/MeinPlan`
+- `/splus/informatik-wpf/33,34`
+- `/splus/informatik-1!D123A,informatik-wpf:GA31R.KX7P2/33,34`
 
 ### GET `/splus/:timetable/lectures`
 
@@ -75,20 +67,19 @@ Jede Vorlesung enthält zusätzlich `slots`, die Zeiten, zu denen sie in mindest
 
 Der Endpunkt zum Abfragen der Stundenpläne im [iCalendar](https://de.wikipedia.org/wiki/ICalendar) Format für Kalender-Apps wie Outlook befindet sich in der Datei `controller/ics.ts`.
 
-### GET `/ics/:version/:timetables/:lectures`
+### GET `/ics/:version/:sources`
 
 **Parameter:**
 
 - version: Versionierung der API, aktuell noch nicht benötigt (zum Beispiel `v1`) verwenden
-- timetables: Eine oder mehrere durch Komma getrennte Stundenplan-IDs wie in `assets/timetables.json`
-- lectures (optional): Eine oder mehrere durch Komma getrennte Liste von Lecture-IDs wie sie in einem Timetable-Objekt verwendet werden
+- sources: Pläne und Veranstaltungen wie bei `GET /splus/:sources/:weeks`
 
 **Rückgabe:**
-Liefert eine ICS-Datei aus, welche alle Events (Verstanstaltungen) oder falls übergeben, nur die angeforderten Veranstaltungen (lectures) enthält.
+Liefert eine ICS-Datei aus, welche die gewählten Events (Veranstaltungen) enthält.
 Die Anzahl der Wochen wird über die Umgebungsvariable `ICS_PRELOAD_WEEKS` bestimmt. Der Standardwert liegt bei 4 Wochen.
 
 **Beispiel:**
-`/ics/v1/informatik-wpf,informatik-1/D123A,GA31R`
+`/ics/v1/informatik-1!D123A,informatik-wpf:GA31R`
 
 ## Mensa
 
@@ -175,7 +166,7 @@ Diese müssen folgende Struktur besitzen:
 }
 ```
 
-- `id` ist eine selbstgewählter, lesbarer Identifier welcher im Pfad einer SplusEins URL enthalten ist z.B. `https://spluseins.de/plan/informatik-1`
+- `id` ist eine selbstgewählter, lesbarer Identifier welcher im Pfad einer SplusEins URL enthalten ist z.B. `https://spluseins.de/plan/informatik-1`. Er darf nur Buchstaben, Ziffern, `-` und `_` enthalten, weil `,`, `!`, `:` und `.` die Pläne und Veranstaltungen in der URL trennen.
 - `label` ist ein Bezeichner welcher zum Beispiel die Vertiefungsrichtung bzw. Studienrichtung kennzeichnet
 - `faculty` gibt die Fakultät an
 - `degree` gibt den angestrebten Studienabschluss an

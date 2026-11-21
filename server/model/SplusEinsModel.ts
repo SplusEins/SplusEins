@@ -98,20 +98,6 @@ export interface EventMetadata {
   description: string;
 }
 
-export interface TimetableMetadata {
-  id: string | string[];
-  faculty: string | string[];
-  degree: string | string[];
-  specialisation: string | string[];
-  semester: number | number[];
-}
-
-export interface Timetable {
-  name?: string;
-  events: Event[];
-  meta: TimetableMetadata;
-}
-
 export interface Event {
   id: string;
   title: string;
@@ -124,6 +110,8 @@ export interface Event {
   rooms: Room[];
   meta: EventMetadata;
   colorIndex?: number;
+  /* ids of the requested timetables which contain the event */
+  sources?: string[];
 }
 
 function censorOrganiserName(name: string): string {
