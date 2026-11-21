@@ -31,15 +31,17 @@ function readSavedState() {
 
 // version 18 saved copies of the timetables instead of their ids
 function migrateFrom18({
-  customSchedules = {},
-  favoriteSchedules = [],
-  subscribedTimetable = {},
+  customSchedules,
+  favoriteSchedules,
+  subscribedTimetable,
 }) {
   return {
-    customSchedules,
-    favoriteIds: favoriteSchedules.map(({ id }) => id),
+    customSchedules: customSchedules ?? {},
+    favoriteIds: (favoriteSchedules ?? [])
+      .map((timetable) => timetable?.id)
+      .filter(Boolean),
     subscribedKey:
-      Object.keys(subscribedTimetable).length > 0
+      subscribedTimetable && Object.keys(subscribedTimetable).length > 0
         ? subscriptionKey(subscribedTimetable)
         : null,
   };
@@ -52,8 +54,14 @@ export function persistStores(pinia) {
 
   // restore
   const saved = readSavedState();
-  if (saved.version === 18 && saved.splus) {
-    saved.splus = migrateFrom18(saved.splus);
+  // TODO Semesterwechsel remove, timetables of version 18 must be deleted then
+  if (saved.version === 18 && VERSION === 19 && saved.splus) {
+    try {
+      saved.splus = migrateFrom18(saved.splus);
+    } catch (error) {
+      console.error('could not convert saved timetables', error.message);
+      delete saved.splus;
+    }
   } else if (saved.version < VERSION) {
     delete saved.splus;
   }
