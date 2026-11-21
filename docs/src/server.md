@@ -37,6 +37,7 @@ Die Endpunkte zum Abfragen der Stundenpläne durch das Frontend sind in der Date
 
 **Rückgabe:**
 Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Veranstaltungen) in diesem Plan in den angeforderten Wochen enthält.
+`weeksWithLectures` enthält für jede Woche des Semesters mit Vorlesungen den Tag der ersten Vorlesung, damit das Frontend bei einer leeren Woche auf die nächsten Vorlesungen hinweisen kann.
 
 **Beispiel:**
 `/splus/informatik-wpf/33,34`
@@ -53,6 +54,7 @@ Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Even
 **Rückgabe:**
 Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Veranstaltungen) oder falls übergeben, nur die angeforderten Veranstaltungen (lectures) enthält.
 Der Stundenplan hat den übergebenen Namen.
+`weeksWithLectures` berücksichtigt nur die übergebenen Veranstaltungen.
 
 **Beispiel:**
 `/splus/informatik-wpf,informatik-1/33,34/D123A,GA31R/MeinPlan`
