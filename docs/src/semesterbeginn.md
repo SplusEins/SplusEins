@@ -8,13 +8,11 @@ Alle relevanten Stellen im Code können auch gefunden werden, indem man nach `TO
 
 Im Frontend muss gesetzt werden, welche Woche die erste Vorlesungswoche ist. Das wird in der Variable `SEMESTER_WEEK_1` in [`web/src/lib/util.js`](https://github.com/SplusEins/SplusEins/blob/master/web/src/lib/util.js#L9) gesetzt. Der Vorlesungsbeginn der Ostfalia wird auf [dieser Seite](https://www.ostfalia.de/studieren/im-studium/studienorganisation/semestertermine) veröffentlicht, woraus man die ISO-Woche berechnen kann.
 
-### `sked-parser` Konfiguration aktualisieren
+### `sked-parser` Konfiguration überprüfen
 
-Die oben erwähnte Aktualisierung der Pläne nutzt die Datei [`timetable-config.yaml`](https://github.com/SplusEins/SplusEins/blob/master/timetable-config.yaml) als Konfiguration. Zu Semesterstart muss diese Datei aktualisiert werden:
+Die oben erwähnte Aktualisierung der Pläne nutzt die Datei [`timetable-config.yaml`](https://github.com/SplusEins/SplusEins/blob/master/timetable-config.yaml) als Konfiguration. Das aktuelle Semester leitet `sked-parser` aus dem Datum ab (z. B. ab Februar 2027 `ss27`, ab August 2027 `ws27`) und hängt es an die IDs an. Pläne, deren URL oder Bezeichnung ein anderes Semester nennt, z. B. `SS2026` oder `WS2526`, werden übersprungen. Falls nötig, kann das Semester mit `current_sem` in der Datei festgelegt werden.
 
-1. Der String für das aktuelle Semester muss aktualisiert werden.
-2. Die Blacklist Strings müssen aktualisiert werden. Diese sollten den Namen des vorherigen Semesters in unterschiedlichen Variationen enthalten (da einige Fakultäten die Stundenpläne des vorherigen Semesters manchmal nicht richtig löschen).
-3. Optional: Die Stundenplan-URLs in der Datei sollten überprüft werden, ob diese noch aktuell sind. Die Übersichtsseite der Ostfalia findet sich [hier](https://stundenplan.ostfalia.de).
+Zu Semesterstart sollten nur die Stundenplan-URLs in der Datei überprüft werden, ob diese noch aktuell sind. Die Übersichtsseite der Ostfalia findet sich [hier](https://stundenplan.ostfalia.de).
 
 ::: tip
 Die tägliche Github Action, die den PR erstellt, kann auch [hier](https://github.com/SplusEins/SplusEins/actions/workflows/timetables.yml) mit `Run workflow` manuell ausgeführt werden, um die veränderte Konfiguration zu überprüfen.
