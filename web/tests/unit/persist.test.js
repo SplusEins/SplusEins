@@ -4,8 +4,13 @@ import { createPinia } from 'pinia';
 import { persistStores } from '../../src/stores/persist';
 import { useUiStore } from '../../src/stores/ui';
 import { useSplusStore } from '../../src/stores/splus';
+import TIMETABLES from '../../src/assets/timetables.json';
 
-const STORAGE_KEY = 'spluseins';
+const [timetable] = TIMETABLES;
+const custom = { id: [timetable.id], label: 'Plan', whitelist: ['x'] };
+
+const STORAGE_KEY = 'spluseins-state';
+const LEGACY_STORAGE_KEY = 'spluseins';
 
 function stubLocalStorage(items = {}) {
   const storage = {
@@ -29,27 +34,77 @@ describe('persistStores', () => {
   it('restores the saved settings and timetables', () => {
     stubLocalStorage({
       [STORAGE_KEY]: JSON.stringify({
-        version: 18,
+        version: 19,
         ui: { isDark: true },
-        splus: { favoriteSchedules: [{ id: 'a' }] },
+        splus: { favoriteIds: [timetable.id], subscribedKey: timetable.id },
       }),
     });
     persistStores(pinia);
     expect(useUiStore(pinia).isDark).toBe(true);
-    expect(useSplusStore(pinia).favoriteSchedules).toEqual([{ id: 'a' }]);
+    expect(useSplusStore(pinia).favoriteIds).toEqual([timetable.id]);
+    expect(useSplusStore(pinia).subscribedTimetable.id).toBe(timetable.id);
   });
 
-  it('deletes the timetables of an older version but keeps the settings', () => {
+  it('converts the timetables saved by version 18', () => {
+    const items = stubLocalStorage({
+      [LEGACY_STORAGE_KEY]: JSON.stringify({
+        version: 18,
+        splus: {
+          customSchedules: { Plan: custom },
+          favoriteSchedules: [timetable],
+          subscribedTimetable: custom,
+        },
+      }),
+    });
+    persistStores(pinia);
+    const splus = useSplusStore(pinia);
+    expect(splus.favoriteIds).toEqual([timetable.id]);
+    expect(splus.subscribedTimetable).toEqual(custom);
+    expect(saved(items).splus).toEqual({
+      customSchedules: { Plan: custom },
+      favoriteIds: [timetable.id],
+      subscribedKey: 'custom:Plan',
+    });
+  });
+
+  it('leaves the data of version 18 for older app versions', async () => {
+    const legacy = JSON.stringify({
+      version: 18,
+      splus: { favoriteSchedules: [timetable] },
+    });
+    const items = stubLocalStorage({ [LEGACY_STORAGE_KEY]: legacy });
+    persistStores(pinia);
+    useUiStore(pinia).toggleDark();
+    await nextTick();
+    expect(items[LEGACY_STORAGE_KEY]).toBe(legacy);
+  });
+
+  it('prefers the data of the current version', () => {
     stubLocalStorage({
+      [LEGACY_STORAGE_KEY]: JSON.stringify({
+        version: 18,
+        splus: { favoriteSchedules: [] },
+      }),
       [STORAGE_KEY]: JSON.stringify({
+        version: 19,
+        splus: { favoriteIds: [timetable.id] },
+      }),
+    });
+    persistStores(pinia);
+    expect(useSplusStore(pinia).favoriteIds).toEqual([timetable.id]);
+  });
+
+  it('deletes the timetables of an unknown older version but keeps the settings', () => {
+    stubLocalStorage({
+      [LEGACY_STORAGE_KEY]: JSON.stringify({
         version: 17,
         ui: { isDark: true },
-        splus: { favoriteSchedules: [{ id: 'a' }] },
+        splus: { favoriteIds: [timetable.id] },
       }),
     });
     persistStores(pinia);
     expect(useUiStore(pinia).isDark).toBe(true);
-    expect(useSplusStore(pinia).favoriteSchedules).toEqual([]);
+    expect(useSplusStore(pinia).favoriteIds).toEqual([]);
   });
 
   it('starts empty if the saved data is broken', () => {
@@ -63,13 +118,16 @@ describe('persistStores', () => {
     const items = stubLocalStorage();
     persistStores(pinia);
     useUiStore(pinia).toggleDark();
-    useSplusStore(pinia).addFavoriteSchedule({ id: 'a' });
+    useSplusStore(pinia).addFavoriteSchedule(timetable);
     await nextTick();
     expect(saved(items)).toEqual(
       expect.objectContaining({
-        version: 18,
+        version: 19,
         ui: { isDark: true, hasSeenDisclaimer: false },
-        splus: expect.objectContaining({ favoriteSchedules: [{ id: 'a' }] }),
+        splus: expect.objectContaining({
+          favoriteIds: [timetable.id],
+          subscribedKey: timetable.id,
+        }),
       }),
     );
   });
@@ -77,8 +135,9 @@ describe('persistStores', () => {
   it('does not save other changes', async () => {
     const items = stubLocalStorage();
     persistStores(pinia);
+    const before = items[STORAGE_KEY];
     useSplusStore(pinia).events = [{ title: 'Vorlesung' }];
     await nextTick();
-    expect(items[STORAGE_KEY]).toBeUndefined();
+    expect(items[STORAGE_KEY]).toBe(before);
   });
 });
