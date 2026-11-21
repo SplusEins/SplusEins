@@ -50,7 +50,8 @@ A plan request goes `controllers/splus.ts` -> `lib/SplusApi.ts` (fetches from Os
 
 ## Web
 
-- `src/stores/persist.js` saves parts of the `ui`, `splus` and `mensa` stores to `localStorage`. Saved timetables are only ids that contain the semester (e.g. `_ws26`), and ids of other semesters are dropped on startup, so a semester change needs no migration. Bump `VERSION` only when the saved format changes. Version 18 code still uses the old `spluseins` key, so only read it, never write it.
+- Plans (`src/lib/plans.ts`) are written in URLs and the API as sources, e.g. `se3!a.b,wpf:c`.
+- `src/stores/persist.js` saves to `localStorage`. Timetable ids contain the semester, old ones are dropped on startup. Bump `VERSION` only when the saved format changes.
 - `__TEAM__`, `__STAGING__` and `__VERSION__` are build-time constants from `vite.config.js`. `__TEAM__` ends up in the client bundle.
 - `/api` and `/docs` are always proxied, by Vite in dev and by `web/server.js` in production, which also serves `dist/` and answers unknown paths with `index.html`.
 - The service worker caches `/api/*` NetworkFirst, except `/api/ics/`.

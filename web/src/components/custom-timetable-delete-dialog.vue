@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="dialogOpen" max-width="400">
-    <v-card :title="`${customSchedule.label} löschen?`">
+    <v-card :title="`${plan.name} löschen?`">
       <v-card-actions>
         <v-spacer />
         <v-btn @click="dialogOpen = false"> Abbrechen </v-btn>
@@ -12,9 +12,10 @@
 
 <script setup>
 import { useSplusStore } from '../stores/splus';
+import { planKey } from '../lib/plans';
 
 const props = defineProps({
-  customSchedule: {
+  plan: {
     type: Object,
     required: true,
   },
@@ -25,7 +26,7 @@ const dialogOpen = defineModel({ type: Boolean, default: false });
 
 function confirmDelete() {
   dialogOpen.value = false;
-  useSplusStore().deleteCustomSchedule(props.customSchedule);
+  useSplusStore().deletePlan(planKey(props.plan));
   emit('on-delete');
 }
 </script>

@@ -4,9 +4,9 @@ import IndexPage from './pages/index.vue';
 const routes = [
   { path: '/', component: IndexPage, meta: { title: 'Startseite' } },
   {
-    // name and parameter are stored in the browser of users (favorites), do not rename
-    name: 'plan-timetable',
-    path: '/plan/:timetable?',
+    // e.g. /plan/se3,wpf:a.b?name=Mein%20Plan, see lib/plans.ts
+    name: 'plan',
+    path: '/plan/:sources?',
     component: () => import('./pages/timetable.vue'),
   },
   {
