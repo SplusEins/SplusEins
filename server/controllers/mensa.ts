@@ -8,8 +8,10 @@ import {
   MensaDayPlan,
   MensaMeal,
   Mensa,
+  StwLocation,
   StwMensaMeal,
 } from '../model/SplusEinsModel';
+import { isRecord } from '../lib/isRecord';
 
 // abort requests if the API of the Studentenwerk is too slow to respond
 const TIMEOUT_MILLISECONDS = 3000;
@@ -27,14 +29,41 @@ const AMOUNT_OF_RETURNED_DAYS = 6;
 
 const router = express.Router();
 
-async function fetchStw<T>(path: string): Promise<T> {
+async function fetchStw(path: string): Promise<unknown> {
   const response = await fetch(`${STW_API}/${path}`, {
     signal: AbortSignal.timeout(TIMEOUT_MILLISECONDS),
   });
   if (!response.ok) {
     throw new Error(`STW-ON replied ${response.status} for ${path}`);
   }
-  return (await response.json()) as T;
+  return response.json();
+}
+
+function isStwLocation(location: unknown): location is StwLocation {
+  return (
+    isRecord(location) &&
+    typeof location.id === 'number' &&
+    typeof location.name === 'string' &&
+    isRecord(location.address) &&
+    typeof location.address.city === 'string' &&
+    Array.isArray(location.opening_hours)
+  );
+}
+
+function isStwMensaMeal(meal: unknown): meal is StwMensaMeal {
+  return (
+    isRecord(meal) &&
+    typeof meal.date === 'string' &&
+    typeof meal.name === 'string' &&
+    isRecord(meal.price) &&
+    isRecord(meal.lane) &&
+    typeof meal.lane.name === 'string' &&
+    isRecord(meal.tags) &&
+    Array.isArray(meal.tags.categories) &&
+    meal.tags.categories.every(
+      (category) => isRecord(category) && typeof category.name === 'string',
+    )
+  );
 }
 
 /**
@@ -45,18 +74,21 @@ async function getDayPlans(id: number): Promise<MensaDayPlan[]> {
   const startDate = dayjs().format('YYYY-MM-DD');
   const endDate = dayjs().add(1, 'weeks').isoWeekday(5).format('YYYY-MM-DD');
 
-  const response = await fetchStw<{ meals: StwMensaMeal[] }>(
-    `${id}/menu/${startDate}/${endDate}`,
-  );
-  const meals: MensaMeal[] = response.meals.map((meal) => ({
-    // copy only neccessary fields
-    date: meal.date,
-    name: meal.name,
-    price: meal.price,
-    // use only name, we don't need the IDs
-    categories: meal.tags.categories.map((category) => category.name),
-    lane: meal.lane.name,
-  }));
+  const response = await fetchStw(`${id}/menu/${startDate}/${endDate}`);
+  if (!isRecord(response) || !Array.isArray(response.meals)) {
+    throw new Error(`STW-ON returned no meals for ${id}`);
+  }
+  const meals: MensaMeal[] = response.meals
+    .filter(isStwMensaMeal)
+    .map((meal) => ({
+      // copy only neccessary fields
+      date: meal.date,
+      name: meal.name,
+      price: meal.price,
+      // use only name, we don't need the IDs
+      categories: meal.tags.categories.map((category) => category.name),
+      lane: meal.lane.name,
+    }));
 
   return Object.entries(Object.groupBy(meals, (meal) => meal.date))
     .map(([date, meals]) => ({ date, meals: meals ?? [] }))
@@ -77,8 +109,11 @@ function getMensa({
 
     const [dayPlans, response] = await Promise.all([
       getDayPlans(id),
-      fetchStw<Mensa>(`${id}`),
+      fetchStw(`${id}`),
     ]);
+    if (!isStwLocation(response)) {
+      throw new Error(`STW-ON returned an invalid location for ${id}`);
+    }
     const page = response.id === BISTRO_4U ? 'bistro4u' : 'mensa';
 
     return {

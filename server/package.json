@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "tsx watch server.ts",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc",
     "start": "node dist/server.js",
     "test": "vitest run",
     "fmt": "prettier . --write",
@@ -36,13 +37,15 @@
     "@types/node": "24.19.2",
     "@types/rss": "0.0.32",
     "@types/sanitize-html": "2.16.2",
+    "@types/supertest": "7.2.1",
     "eslint": "10.14.0",
     "eslint-config-prettier": "10.1.8",
     "globals": "17.14.0",
     "prettier": "3.9.10",
     "supertest": "7.3.1",
     "tsx": "4.23.15",
-    "typescript": "5.9.3",
+    "type-fest": "5.10.0",
+    "typescript": "6.0.3",
     "typescript-eslint": "8.72.2",
     "vitest": "5.1.0"
   }

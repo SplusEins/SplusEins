@@ -41,7 +41,7 @@ function parseTimes(
 export function parseSkedList(html: string): ParsedLecture[] {
   const $ = load(html);
 
-  const events = [] as ParsedLecture[];
+  const events: ParsedLecture[] = [];
 
   let lastDatum = '';
   let datum = '';
@@ -129,7 +129,7 @@ export function parseSkedList(html: string): ParsedLecture[] {
 }
 
 export function parseSkedCSV(csvString: string): ParsedLecture[] {
-  const events = [] as ParsedLecture[];
+  const events: ParsedLecture[] = [];
 
   const arr = CSV.parse(csvString);
   // Pop the first row from the array since it contains the header strings
@@ -202,7 +202,7 @@ export function parseSkedGraphical(
   faculty: string,
 ): ParsedLecture[] {
   const $ = load(html);
-  const events = [] as ParsedLecture[];
+  const events: ParsedLecture[] = [];
 
   $('body table').each(function () {
     let cols = parseTable(load(this), faculty === 'Maschinenbau');
@@ -370,7 +370,7 @@ export function parseSkedGraphical(
 export function parseTimetableIntranet(html: string): ParsedLecture[] {
   const $ = load(html);
   const days = $('table.schedule');
-  const events = [] as ParsedLecture[];
+  const events: ParsedLecture[] = [];
   days.each(function (index, day) {
     const date = ($(day).find('.day').html() ?? '').split('<br>')[1];
 

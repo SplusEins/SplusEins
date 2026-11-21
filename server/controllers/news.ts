@@ -15,8 +15,8 @@ const MAX_NEWS_ITEMS = 100;
  * @returns NewsElement[]
  */
 router.get('/:newstypes{.:ext}', async (req, res) => {
-  const newstypes = <string[]>req.params.newstypes.split(',');
-  let limit = parseInt(req.query.limit as string) || MAX_NEWS_ITEMS;
+  const newstypes = req.params.newstypes.split(',');
+  let limit = parseInt(String(req.query.limit)) || MAX_NEWS_ITEMS;
   if (limit > MAX_NEWS_ITEMS) limit = MAX_NEWS_ITEMS;
   let news: NewsElement[];
   try {

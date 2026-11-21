@@ -4,6 +4,7 @@ import { config } from '../config';
 import dayjs from './dayjs';
 import { cached } from './cache';
 import { NewsElement } from '../model/SplusEinsModel';
+import { isRecord } from './isRecord';
 
 const CACHE_SECONDS = config.newsCacheSeconds;
 
@@ -51,16 +52,16 @@ async function centralNewsRequest(): Promise<NewsElement[]> {
   );
   const $ = cheerio.load(htmls.join(''));
   const elements = $('.teaser-wall__item')
-    .map((_, item) => {
+    .map((_, item): NewsElement => {
       // "Aktuelles | 20.11.2026 | Fakultät Maschinenbau, Fakultät Wirtschaft"
       const [, , departments = ''] = $('.teaser__meta', item).text().split('|');
       const href = $('.teaser__title-link', item).attr('href');
       const date = $('time.teaser__date', item).attr('datetime');
-      return <NewsElement>{
+      return {
         title: $('.teaser__title-text', item).text().trim(),
         link: href ? new URL(href, OSTFALIA_URL).href : CENTRAL_NEWS_URL,
         text: $('.teaser__snippet', item).text().trim(),
-        date: date ? dayjs(date).toDate() : undefined,
+        date: date ? dayjs(date).toISOString() : undefined,
         departments: departments
           .split(',')
           .map((department) => department.trim())
@@ -82,6 +83,18 @@ interface WordpressPost {
   excerpt: { rendered: string };
 }
 
+function isWordpressPost(post: unknown): post is WordpressPost {
+  return (
+    isRecord(post) &&
+    typeof post.date_gmt === 'string' &&
+    typeof post.link === 'string' &&
+    isRecord(post.title) &&
+    typeof post.title.rendered === 'string' &&
+    isRecord(post.excerpt) &&
+    typeof post.excerpt.rendered === 'string'
+  );
+}
+
 const htmlToText = (html: string) => cheerio.load(html).text().trim();
 
 /**
@@ -91,12 +104,15 @@ async function campus38NewsRequest(): Promise<NewsElement[]> {
   const response = await fetchOk(
     'https://campus38.de/wp-json/wp/v2/posts?per_page=10&_fields=date_gmt,link,title,excerpt',
   );
-  const posts = (await response.json()) as WordpressPost[];
-  return posts.map((post) => ({
+  const posts: unknown = await response.json();
+  if (!Array.isArray(posts)) {
+    throw new Error('campus38 did not return a list of posts');
+  }
+  return posts.filter(isWordpressPost).map((post) => ({
     title: htmlToText(post.title.rendered),
     link: post.link,
     text: htmlToText(post.excerpt.rendered),
-    date: new Date(post.date_gmt + 'Z'),
+    date: new Date(post.date_gmt + 'Z').toISOString(),
   }));
 }
 
