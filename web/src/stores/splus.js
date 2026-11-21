@@ -186,6 +186,10 @@ export const useSplusStore = defineStore('splus', {
      */
     nextLectureDay: undefined,
     /**
+     * Whether the viewed plan has any lectures, undefined until it is loaded
+     */
+    planHasLectures: undefined,
+    /**
      * Events of all favorite and custom timetables for this and next week
      */
     agendaEvents: [],
@@ -353,10 +357,12 @@ export const useSplusStore = defineStore('splus', {
           weeksWithLectures,
           dayjs(week).add(1, 'week'),
         );
+        this.planHasLectures = weeksWithLectures.length > 0;
       } catch (error) {
         if (request !== loadCounter) return;
         this.events = [];
         this.nextLectureDay = undefined;
+        this.planHasLectures = undefined;
         if (error.status === 404) {
           useAppStore().enqueueError('Dieser Plan existiert nicht (mehr).');
         } else {
