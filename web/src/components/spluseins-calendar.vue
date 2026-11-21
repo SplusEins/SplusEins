@@ -76,12 +76,13 @@
     </v-calendar>
 
     <v-overlay
-      :model-value="events.length === 0 && !!nextLecture"
+      :model-value="events.length === 0 && splus.planHasLectures !== undefined"
       contained
       persistent
       no-click-animation
       :scrim="false"
       scroll-strategy="none"
+      style="z-index: 1"
       class="align-center justify-center"
     >
       <v-card
@@ -91,26 +92,38 @@
         rounded="xl"
         elevation="6"
       >
-        <div class="text-title-medium font-weight-bold">
-          Diese Woche keine Vorlesungen
-        </div>
-        <div class="text-body-medium text-medium-emphasis mt-1">
-          Nächste am
-          <span class="text-primary font-weight-bold">
-            {{ nextLecture?.format('dddd, DD.MM.') }}
-          </span>
-        </div>
-        <v-btn
-          class="mt-4"
-          color="primary"
-          variant="flat"
-          rounded="pill"
-          :append-icon="mdiArrowRight"
-          text="Zur Woche springen"
-          @click="
-            splus.showWeek(nextLecture.startOf('isoWeek').format('YYYY-MM-DD'))
-          "
-        />
+        <template v-if="nextLecture">
+          <div class="text-title-medium font-weight-bold">
+            Diese Woche keine Vorlesungen
+          </div>
+          <div class="text-body-medium text-medium-emphasis mt-1">
+            Nächste am
+            <span class="text-primary font-weight-bold">
+              {{ nextLecture.format('dddd, DD.MM.') }}
+            </span>
+          </div>
+          <v-btn
+            class="mt-4"
+            color="primary"
+            variant="flat"
+            rounded="pill"
+            :append-icon="mdiArrowRight"
+            text="Zur Woche springen"
+            @click="
+              splus.showWeek(
+                nextLecture.startOf('isoWeek').format('YYYY-MM-DD'),
+              )
+            "
+          />
+        </template>
+        <template v-else>
+          <div class="text-title-medium font-weight-bold">
+            Keine weiteren Vorlesungen
+          </div>
+          <div class="text-body-medium text-medium-emphasis mt-1">
+            Der Plan enthält keine späteren Termine.
+          </div>
+        </template>
       </v-card>
     </v-overlay>
 
