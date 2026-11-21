@@ -98,13 +98,18 @@ export function subscriptionKey(timetable) {
  * Return all events for the given timetable and week.
  */
 export async function loadEvents(timetable, weeks) {
-  const ids = [].concat(timetable.id).join(',');
-  const lectures = (timetable.whitelist ?? []).join(',');
-  const data = await apiGet(
-    `/api/splus/${ids}/${weeks}` + (lectures ? `/${lectures}` : ''),
-  );
-  // the browser and service worker caches may still hold { events } of the old API
-  return Array.isArray(data) ? data : data.events;
+  let data;
+  if (isCustomTimetable(timetable)) {
+    const ids = timetable.id.join(',');
+    const whitelist = timetable.whitelist.join(',');
+    data = await apiGet(
+      `/api/splus/${ids}/${weeks}/${whitelist}/${encodeURIComponent(timetable.label)}`,
+    );
+  } else {
+    data = await apiGet(`/api/splus/${timetable.id}/${weeks}`);
+  }
+
+  return data.events;
 }
 
 /**
@@ -159,7 +164,7 @@ export const useSplusStore = defineStore('splus', {
     customSchedules: {},
     /**
      * Ids of the favorite timetables. Only ids are saved, so that labels
-     * stay current and timetables of past semesters can be dropped.
+     * stay current.
      */
     favoriteIds: [],
     /**
@@ -305,19 +310,6 @@ export const useSplusStore = defineStore('splus', {
       if (this.subscribedKey !== subscriptionKey(removedTimetable)) return;
       const first = this.subscribableTimetables[0];
       this.subscribedKey = first ? subscriptionKey(first) : null;
-    },
-    /**
-     * Forget saved timetables which do not exist anymore, e.g. of the last semester.
-     */
-    forgetUnknownTimetables() {
-      this.favoriteIds = this.favoriteIds.filter((id) =>
-        SCHEDULES_BY_ID.has(id),
-      );
-      for (const [label, custom] of Object.entries(this.customSchedules)) {
-        if (!custom.id.some((id) => SCHEDULES_BY_ID.has(id))) {
-          delete this.customSchedules[label];
-        }
-      }
     },
 
     /**

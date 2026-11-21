@@ -63,16 +63,6 @@ describe('splus store', () => {
     expect(splus.subscribedFaculty).toBe(timetable.faculty);
   });
 
-  it('forgets timetables which do not exist anymore', () => {
-    splus.addFavoriteSchedule(timetable);
-    splus.addFavoriteSchedule({ id: 'old_ss25' });
-    splus.addCustomSchedule(custom('Alt', ['old_ss25']));
-    splus.addCustomSchedule(custom('Gemischt', ['old_ss25', timetable.id]));
-    splus.forgetUnknownTimetables();
-    expect(splus.favoriteIds).toEqual([timetable.id]);
-    expect(splus.customTimetableLabels).toEqual(['Gemischt']);
-  });
-
   it('adds each favorite only once', () => {
     splus.addFavoriteSchedule(timetable);
     splus.addFavoriteSchedule({ ...timetable });
@@ -134,9 +124,9 @@ describe('splus store', () => {
 
       const first = splus.loadAgendaEvents();
       const second = splus.loadAgendaEvents();
-      responses[1](Response.json([{ title: 'new', meta: {} }]));
+      responses[1](Response.json({ events: [{ title: 'new', meta: {} }] }));
       await second;
-      responses[0](Response.json([{ title: 'old', meta: {} }]));
+      responses[0](Response.json({ events: [{ title: 'old', meta: {} }] }));
       await first;
 
       expect(splus.agendaEvents.map(({ name }) => name)).toEqual(['new']);
@@ -157,9 +147,9 @@ describe('splus store', () => {
 
       const first = splus.showWeek('2026-11-09');
       const second = splus.showWeek('2026-11-16');
-      responses[1](Response.json([{ title: 'new' }]));
+      responses[1](Response.json({ events: [{ title: 'new' }] }));
       await second;
-      responses[0](Response.json([{ title: 'old' }]));
+      responses[0](Response.json({ events: [{ title: 'old' }] }));
       await first;
 
       expect(splus.events).toEqual([{ title: 'new' }]);
@@ -176,7 +166,7 @@ describe('splus store', () => {
 
       const loading = splus.showWeek('2026-11-16');
       expect(splus.week).toBe('2026-11-09');
-      respond(Response.json([]));
+      respond(Response.json({ events: [] }));
       await loading;
       expect(splus.week).toBe('2026-11-16');
     });
@@ -193,17 +183,6 @@ describe('splus store', () => {
         `/api/splus/${timetable.id}/47`,
         `/api/splus/${timetable.id}/48`,
       ]);
-    });
-
-    it('reads responses of the old API format from the cache', async () => {
-      vi.stubGlobal(
-        'fetch',
-        vi.fn(async () =>
-          Response.json({ name: 'x', events: [{ title: 'a' }] }),
-        ),
-      );
-      await splus.showWeek('2026-11-16');
-      expect(splus.events).toEqual([{ title: 'a' }]);
     });
 
     it('reports a missing timetable', async () => {

@@ -94,17 +94,6 @@ describe('persistStores', () => {
     expect(useSplusStore(pinia).favoriteIds).toEqual([timetable.id]);
   });
 
-  it('forgets timetables which do not exist anymore', () => {
-    stubLocalStorage({
-      [STORAGE_KEY]: JSON.stringify({
-        version: 19,
-        splus: { favoriteIds: ['old_ss25', timetable.id] },
-      }),
-    });
-    persistStores(pinia);
-    expect(useSplusStore(pinia).favoriteIds).toEqual([timetable.id]);
-  });
-
   it('deletes the timetables of an unknown older version but keeps the settings', () => {
     stubLocalStorage({
       [LEGACY_STORAGE_KEY]: JSON.stringify({

@@ -11,11 +11,10 @@ const STORAGE_KEY = 'spluseins-state';
 const LEGACY_STORAGE_KEY = 'spluseins';
 
 /**
- * Format of the saved data. Saved timetables of older, unknown formats are
- * deleted. Timetables of past semesters do not need a new version, they are
- * dropped by forgetUnknownTimetables because their ids contain the semester.
+ * Version of the saved data.
+ * When it is incremented, saved timetables of all users are deleted.
  */
-const VERSION = 19;
+const VERSION = 19; // TODO Semesterwechsel increment this
 
 function readSavedState() {
   try {
@@ -60,7 +59,6 @@ export function persistStores(pinia) {
   }
   ui.$patch(saved.ui || {});
   splus.$patch(saved.splus || {});
-  splus.forgetUnknownTimetables();
   mensa.$patch(saved.mensa || {});
 
   // save when one of the saved values changes
@@ -89,7 +87,7 @@ export function persistStores(pinia) {
         console.error('could not save state', error.message);
       }
     },
-    // also save right away, so that converted or dropped timetables are stored
+    // also save right away, so that converted timetables are stored
     { deep: true, immediate: true },
   );
 }

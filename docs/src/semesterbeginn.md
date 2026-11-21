@@ -22,9 +22,9 @@ Die tägliche Github Action, die den PR erstellt, kann auch [hier](https://githu
 <u>**Wichtig für Forks:**</u> Für die erfolgreiche Ausführung der Action ist das Hinterlegen von `SKED_USER` und `SKED_PASSWORD` als [Repository Secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-a-repository) mit validen Ostfalia-Accountdaten im Fork zwingend erforderlich. Ohne diese Secrets können ausschließlich Pläne der Fakultät I abgerufen werden, da hierfür keine Authentifizierung notwendig ist.
 :::
 
-### Gespeicherte Pläne
+### Gespeicherte Pläne löschen
 
-Hier ist nichts zu tun, Pläne vergangener Semester entfernt die App beim Start automatisch.
+Zudem muss die Storage-Version (`VERSION`) erhöht werden, damit Pläne des vorherigen Semesters aus dem Local Storage der Nutzer gelöscht werden. Dies passiert in [`web/src/stores/persist.js`](https://github.com/SplusEins/SplusEins/blob/master/web/src/stores/persist.js), die Zeile ist mit einem TODO markiert.
 
 ### Überprüfen der einzelnen Stundenpläne
 

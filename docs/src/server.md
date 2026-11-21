@@ -28,21 +28,34 @@ Bei der API handelt es sich um eine REST-Schnittstelle welche mit dem JSON-Forma
 
 Die Endpunkte zum Abfragen der Stundenpläne durch das Frontend sind in der Datei `controller/splus.ts` definiert.
 
-### GET `/splus/:timetables/:weeks{/:lectures}`
+### GET `/splus/:timetable/:weeks`
+
+**Parameter:**
+
+- timetable: Stundenplan-ID wie in `assets/timetables.json`
+- weeks: Eine oder mehrere durch Komma getrennte Kalenderwochen
+
+**Rückgabe:**
+Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Veranstaltungen) in diesem Plan in den angeforderten Wochen enthält.
+
+**Beispiel:**
+`/splus/informatik-wpf/33,34`
+
+### GET `/splus/:timetables/:weeks{/:lectures}/:name`
 
 **Parameter:**
 
 - timetables: Eine oder mehrere durch Komma getrennte Stundenplan-IDs wie in `assets/timetables.json`
 - weeks: Eine oder mehrere durch Komma getrennte Kalenderwochen
-- lectures (optional): Eine oder mehrere durch Komma getrennte Lecture-IDs (`id` eines Events), z.B. für personalisierte Pläne
+- lectures (optional): Eine oder mehrere durch Komma getrennte Liste von Lecture-IDs wie sie in einem Timetable-Objekt verwendet werden
+- name: frei wählbarer Name für einen Stundenplan (für personalierte Pläne)
 
 **Rückgabe:**
-Liefert ein `Event`-Array (siehe `model/SplusEinsModel.ts`) mit allen Veranstaltungen dieser Pläne in den angeforderten Wochen. Werden `lectures` übergeben, sind nur diese Veranstaltungen enthalten. Eine Veranstaltung, die in mehreren der Pläne steht, ist nur einmal enthalten.
+Liefert ein Timetable-Objekt (siehe `model/SplusEinsModel.ts`), welche alle Events (Veranstaltungen) oder falls übergeben, nur die angeforderten Veranstaltungen (lectures) enthält.
+Der Stundenplan hat den übergebenen Namen.
 
-**Beispiele:**
-
-- `/splus/informatik-wpf/33,34`
-- `/splus/informatik-wpf,informatik-1/33,34/D123A,GA31R`
+**Beispiel:**
+`/splus/informatik-wpf,informatik-1/33,34/D123A,GA31R/MeinPlan`
 
 ### GET `/splus/:timetable/lectures`
 
