@@ -13,15 +13,17 @@ import { createOSMLink } from './RoomOSMLinkCreator';
 export type FacultyLocation = 'WF' | 'WOB' | 'SZ' | 'SUD';
 
 const LOCATION_OF_FACULTY: Record<string, string> = LOCATION_OF_FACULTY_JSON;
+const FACULTY_LOCATIONS: FacultyLocation[] = ['WF', 'WOB', 'SZ', 'SUD'];
+
+const isFacultyLocation = (location?: string): location is FacultyLocation =>
+  FACULTY_LOCATIONS.some((facultyLocation) => facultyLocation === location);
 
 export function getRoomLocation(room: string, faculty: string): string {
   let result = room;
 
   // Determine faculty location
-  let facultyLocation: FacultyLocation | null = null;
-  if (faculty && LOCATION_OF_FACULTY[faculty]) {
-    facultyLocation = LOCATION_OF_FACULTY[faculty] as FacultyLocation;
-  }
+  const location = LOCATION_OF_FACULTY[faculty];
+  const facultyLocation = isFacultyLocation(location) ? location : null;
 
   // Add address and OSM link if faculty location is known
   const address = facultyLocation

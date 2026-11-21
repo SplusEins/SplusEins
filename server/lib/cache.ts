@@ -3,6 +3,7 @@
 import { createHash } from 'crypto';
 import { mkdir, readdir, readFile, rename, rm, writeFile } from 'fs/promises';
 import { join } from 'path';
+import type { Jsonify } from 'type-fest';
 import { config } from '../config';
 
 const CLEANUP_INTERVAL_MILLISECONDS = 60 * 60 * 1000;
@@ -47,9 +48,7 @@ async function writeEntry(file: string, entry: CacheEntry): Promise<void> {
 /**
  * Return the cached value for the key. If there is none (or it is too old),
  * call `load` and cache its result. If `load` fails, nothing is cached.
- *
- * Note: Values are always returned as they were converted to JSON and back,
- * so Dates are returned as strings, whether they were cached or not.
+ * The value is always converted to JSON and back, whether it was cached or not.
  *
  * @param key unique name of the data
  * @param ttlSeconds how long the value may be used
@@ -59,9 +58,9 @@ export async function cached<T>(
   key: string,
   ttlSeconds: number,
   load: () => Promise<T>,
-): Promise<T> {
+): Promise<Jsonify<T>> {
   if (config.cacheDisable) {
-    return asJson(await load());
+    return await load().then(asJson);
   }
 
   if (!running.has(key)) {
@@ -69,10 +68,10 @@ export async function cached<T>(
       const file = fileOf(key);
       const entry = await readEntry(file);
       if (entry && entry.expires > Date.now()) {
-        return entry.value as T;
+        return entry.value as Jsonify<T>;
       }
 
-      const value = asJson(await load());
+      const value = await load().then(asJson);
       await writeEntry(file, {
         expires: Date.now() + ttlSeconds * 1000,
         value,
@@ -87,11 +86,13 @@ export async function cached<T>(
     );
   }
 
-  return running.get(key) as Promise<T>;
+  return running.get(key) as Promise<Jsonify<T>>;
 }
 
-function asJson<T>(value: T): T {
-  return value === undefined ? value : JSON.parse(JSON.stringify(value));
+function asJson<T>(value: T): Jsonify<T> {
+  return value === undefined
+    ? (value as Jsonify<T>)
+    : JSON.parse(JSON.stringify(value));
 }
 
 /**

@@ -18,7 +18,8 @@ Each subproject is a separate Dokku app (`.dokku-monorepo`: `api=server`, `web=w
 ```bash
 # server/
 npm run dev        # tsx watch, API at 127.0.0.1:3001/api
-npm run build      # tsc -> dist/, `npm start` runs dist/server.js
+npm run typecheck  # tsc, including tests
+npm run build      # tsc -p tsconfig.build.json -> dist/, `npm start` runs dist/server.js
 npm test           # vitest run
 npx vitest run tests/SkedParser.test.ts   # single file
 npx vitest run -u  # update parser snapshots after an intended parser change
@@ -36,7 +37,7 @@ npm run dev        # localhost:8080/docs/
 npm run lint / lintfix / fmt / fmt:check
 ```
 
-CI order: server `lint -> fmt:check -> build -> test`; web `lint -> fmt:check -> test -> build`. Match it before pushing.
+CI order: server `lint -> fmt:check -> typecheck -> build -> test`; web `lint -> fmt:check -> test -> build`. Match it before pushing.
 
 Server tests mock `fetch` with HTML/CSV fixtures in `server/tests/fixtures/`, so they need no Ostfalia credentials. `vitest.config.ts` forces `TZ=America/New_York` (results must not depend on server time zone) and `CACHE_DISABLE=true`.
 
@@ -46,14 +47,14 @@ Server tests mock `fetch` with HTML/CSV fixtures in `server/tests/fixtures/`, so
 
 `timetable-config.yaml` (root) is input for the **external** Python tool [sked-parser](https://github.com/SplusEins/sked_parser), not for code here. The daily `timetables.yml` workflow runs it and opens a PR updating `server/assets/timetables.json` and `web/src/assets/timetables.json`. These are generated, never hand-edit them; `server/tests/Timetables.test.ts` guards them against duplicate ids/paths.
 
-Request path: `controllers/splus.ts` looks up the id in `timetables.json` -> `lib/SplusApi.ts` fetches the page from Ostfalia (Basic Auth `SKED_USER`/`SKED_PASSWORD`, retries 5xx up to 3x) -> dispatches on `timetable.type` (`graphical` | `list` | `csv` | `intranet`) to `lib/SkedParser.ts`, where `graphical` also branches per faculty -> sanitizes room/info HTML with `sanitize-html` (it is rendered client-side) and resolves rooms via `lib/Room/` -> caches the parsed lectures -> wraps them in `Event` (`model/SplusEinsModel.ts`), which censors lecturer names unless `CENSOR_DISABLE` and derives a stable lecture id from a SHA1 of the title.
+Request path: `controllers/splus.ts` looks up the id in `timetables.json` -> `lib/SplusApi.ts` fetches the page from Ostfalia (Basic Auth `SKED_USER`/`SKED_PASSWORD`, retries 5xx up to 3x) -> dispatches on `timetable.type` (`graphical` | `list` | `csv` | `intranet`) to `lib/SkedParser.ts`, where `graphical` also branches per faculty -> sanitizes room/info HTML with `sanitize-html` (it is rendered client-side) and resolves rooms via `lib/Room/` -> caches the parsed lectures -> turns them into `Event`s with `createEvent` (`model/SplusEinsModel.ts`), which censors lecturer names unless `CENSOR_DISABLE` and derives a stable lecture id from a SHA1 of the title.
 
 Mensa, news, bus (Motis/Transitous) and ICS export are sibling controllers in `server/controllers/` with logic in `server/lib/`.
 
 ### Server internals
 
 - `config.ts` is the only place reading env vars; an invalid number aborts startup.
-- `lib/cache.ts` is a hand-rolled file cache (`cached(key, ttl, load)`): one JSON file per SHA1'd key under `CACHE_PATH`, atomic writes, deduplicates concurrent loads, failures are not cached. Values round-trip through JSON, so `Date`s come back as strings.
+- `lib/cache.ts` is a hand-rolled file cache (`cached(key, ttl, load)`): one JSON file per SHA1'd key under `CACHE_PATH`, atomic writes, deduplicates concurrent loads, failures are not cached. Values round-trip through JSON, which the return type `Jsonify<T>` from type-fest reflects, so models use ISO strings instead of `Date`s.
 - `App.ts` mounts the controllers under `API_PREFIX`, returns plain-text 404/500 and only logs error details.
 
 ### Frontend

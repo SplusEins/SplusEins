@@ -5,6 +5,7 @@ import OSM_ROOMS_DATA_SUD from '../../assets/overpass_osm/SUD.json';
 import ROOM_ALIASES_JSON from '../../assets/roomAliases.json';
 
 import { FacultyLocation } from './RoomLocationApi';
+import { isRecord } from '../isRecord';
 
 type OSMRoomEntry = {
   id: number;
@@ -30,15 +31,10 @@ const OSM_ROOMS: Record<FacultyLocation, Record<string, unknown>> = {
  */
 function isOSMRoomData(data: unknown): data is OSMRoomEntry {
   return (
-    typeof data === 'object' &&
-    data !== null &&
-    'id' in data &&
-    'level' in data &&
-    'bounds' in data &&
-    typeof (data as Record<string, unknown>).id === 'number' &&
-    typeof (data as Record<string, unknown>).level === 'string' &&
-    typeof (data as Record<string, unknown>).bounds === 'object' &&
-    (data as Record<string, unknown>).bounds !== null
+    isRecord(data) &&
+    typeof data.id === 'number' &&
+    typeof data.level === 'string' &&
+    isRecord(data.bounds)
   );
 }
 

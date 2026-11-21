@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import App from '../App';
+import { Event, Mensa, MensaDayPlan } from '../model/SplusEinsModel';
 import {
   fixture,
   FIXTURE_WEEK,
@@ -29,7 +30,7 @@ describe('splus', () => {
     const response = await request(app).get(
       `/api/splus/${timetable.id}/lectures`,
     );
-    return response.body.find((event) => event.title === title).id;
+    return response.body.find((event: Event) => event.title === title).id;
   };
 
   beforeEach(() => {
@@ -48,7 +49,9 @@ describe('splus', () => {
     const response = await request(app)
       .get(`/api/splus/${timetable.id}/lectures`)
       .expect(200);
-    expect(response.body.map(({ title }) => title)).toContain('Mathematik 1');
+    expect(response.body.map(({ title }: Event) => title)).toContain(
+      'Mathematik 1',
+    );
   });
 
   it('should return a personal timetable with selected lectures', async () => {
@@ -59,7 +62,7 @@ describe('splus', () => {
       )
       .expect(200);
     expect(response.body.name).toBe('Mein Plan');
-    expect(response.body.events.map(({ title }) => title)).toEqual([
+    expect(response.body.events.map(({ title }: Event) => title)).toEqual([
       'Mathematik 1',
     ]);
   });
@@ -197,7 +200,7 @@ describe('mensa', () => {
   it('should return all mensas with their meals per day', async () => {
     stwApi(() => undefined);
     const response = await request(app).get('/api/mensa').expect(200);
-    expect(response.body.map(({ key }) => key)).toEqual([
+    expect(response.body.map(({ key }: Mensa) => key)).toEqual([
       'wf',
       'wob',
       'sz',
@@ -206,10 +209,9 @@ describe('mensa', () => {
     expect(response.body[0].url).toBe(
       'https://www.stw-on.de/wolfenbüttel/essen/mensa',
     );
-    expect(response.body[0].dayPlans.map(({ date }) => date)).toEqual([
-      '2026-11-10',
-      '2026-11-11',
-    ]);
+    expect(
+      response.body[0].dayPlans.map(({ date }: MensaDayPlan) => date),
+    ).toEqual(['2026-11-10', '2026-11-11']);
     expect(response.headers['cache-control']).toContain('max-age');
   });
 
@@ -218,7 +220,7 @@ describe('mensa', () => {
       id === 130 ? new Response('', { status: 500 }) : undefined,
     );
     const response = await request(app).get('/api/mensa').expect(200);
-    expect(response.body.map(({ id }) => id)).toEqual([112, 200, 134]);
+    expect(response.body.map(({ id }: Mensa) => id)).toEqual([112, 200, 134]);
     expect(response.headers['cache-control']).toBe('no-cache');
   });
 

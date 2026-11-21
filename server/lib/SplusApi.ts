@@ -3,7 +3,7 @@ import { config } from '../config';
 import iconv from 'iconv-lite';
 import dayjs from './dayjs';
 import { cached } from './cache';
-import { Event, TimetableRequest } from '../model/SplusEinsModel';
+import { createEvent, Event, TimetableRequest } from '../model/SplusEinsModel';
 import {
   parseSkedCSV,
   parseSkedGraphical,
@@ -154,7 +154,7 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
     console.log(
       `Storing ${lectures.length} parsed lectures for ${key} in cache`,
     );
-    return lectures.map((lecture) => new Event(lecture));
+    return lectures.map(createEvent);
   });
 }
 
