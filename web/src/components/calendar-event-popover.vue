@@ -9,6 +9,7 @@
         <div class="flex-grow-1">
           <div class="text-label-medium text-medium-emphasis">
             <v-icon
+              v-if="event.plan"
               :icon="mdiCircle"
               :color="event.color"
               size="10"

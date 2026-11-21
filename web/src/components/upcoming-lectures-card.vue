@@ -35,6 +35,10 @@
                 {{ event.end.format('HH:mm') }}
               </span>
             </div>
+            <div
+              class="rounded-pill align-self-stretch mr-3"
+              :style="{ width: '3px', background: event.color }"
+            />
             <div>
               <div
                 v-if="event.running"
@@ -42,13 +46,9 @@
               >
                 Jetzt · noch {{ event.end.diff(now, 'minute') }} min
               </div>
-              <v-list-item-title class="text-wrap font-weight-medium">
-                <v-icon
-                  :icon="mdiCircle"
-                  :color="event.color"
-                  size="8"
-                  class="mr-1 mb-1"
-                />
+              <v-list-item-title
+                class="text-wrap text-body-large font-weight-medium"
+              >
                 {{ event.name }}
               </v-list-item-title>
               <v-list-item-subtitle v-if="event.room">
@@ -75,6 +75,14 @@
         variant="outlined"
         label
       >
+        <template #prepend>
+          <v-icon
+            :icon="mdiCircle"
+            :color="plan.color"
+            size="10"
+            class="mr-2"
+          />
+        </template>
         {{ plan.name }}
       </v-chip>
     </v-card-actions>
@@ -91,14 +99,15 @@ import {
   mdiMapMarkerOutline,
 } from '@mdi/js';
 import dayjs from '../lib/dayjs';
-import { useSplusStore } from '../stores/splus';
-import { relativeDay, timetablePlan } from '../lib/util';
+import { planColor, useSplusStore } from '../stores/splus';
+import { relativeDay, timetableDisplayName, timetablePlan } from '../lib/util';
 import { useNow } from '../lib/now';
 import CalendarEventPopover from './calendar-event-popover.vue';
 import TimetableSearch from './timetable-search.vue';
 
 const MAX_EVENTS = 5;
 const MAX_DAYS = 2;
+const CHIP_LABEL_LENGTH = 24;
 
 const splus = useSplusStore();
 const { mobile } = useDisplay();
@@ -110,7 +119,13 @@ function showEvent(event) {
   selected.value = event;
   selectedOpen.value = true;
 }
-const plans = computed(() => splus.subscribableTimetables.map(timetablePlan));
+const plans = computed(() =>
+  splus.subscribableTimetables.map((timetable, i) => ({
+    ...timetablePlan(timetable),
+    name: timetableDisplayName(timetable, CHIP_LABEL_LENGTH),
+    color: planColor(i),
+  })),
+);
 
 const now = useNow();
 

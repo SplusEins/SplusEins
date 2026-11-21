@@ -19,7 +19,10 @@ describe('splus store', () => {
     splus = useSplusStore();
   });
 
-  afterEach(() => vi.unstubAllGlobals());
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+  });
 
   describe('subscribed timetable', () => {
     it('is the first saved timetable', () => {
@@ -154,6 +157,24 @@ describe('splus store', () => {
       await first;
 
       expect(splus.agendaEvents.map(({ name }) => name)).toEqual(['new']);
+    });
+
+    it('keeps the events of the other plans when one fails', async () => {
+      vi.spyOn(console, 'error').mockImplementation(() => {});
+      vi.stubGlobal(
+        'fetch',
+        vi.fn(async (url) =>
+          url.includes(otherTimetable.id)
+            ? new Response('', { status: 500 })
+            : Response.json({ events: [{ title: 'ok', meta: {} }] }),
+        ),
+      );
+      splus.addFavoriteSchedule(timetable);
+      splus.addFavoriteSchedule(otherTimetable);
+
+      await splus.loadAgendaEvents();
+
+      expect(splus.agendaEvents.map(({ name }) => name)).toEqual(['ok']);
     });
   });
 
