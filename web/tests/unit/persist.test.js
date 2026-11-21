@@ -67,6 +67,39 @@ describe('persistStores', () => {
     });
   });
 
+  it('converts incomplete data of version 18', () => {
+    stubLocalStorage({
+      [LEGACY_STORAGE_KEY]: JSON.stringify({
+        version: 18,
+        ui: { isDark: true },
+        splus: {
+          customSchedules: null,
+          favoriteSchedules: [null, timetable],
+          subscribedTimetable: null,
+        },
+      }),
+    });
+    persistStores(pinia);
+    const splus = useSplusStore(pinia);
+    expect(useUiStore(pinia).isDark).toBe(true);
+    expect(splus.favoriteIds).toEqual([timetable.id]);
+    expect(splus.subscribedTimetable.id).toBe(timetable.id);
+  });
+
+  it('starts without timetables if the data of version 18 cannot be converted', () => {
+    stubLocalStorage({
+      [LEGACY_STORAGE_KEY]: JSON.stringify({
+        version: 18,
+        ui: { isDark: true },
+        splus: { favoriteSchedules: 'broken' },
+      }),
+    });
+    vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    persistStores(pinia);
+    expect(useUiStore(pinia).isDark).toBe(true);
+    expect(useSplusStore(pinia).favoriteIds).toEqual([]);
+  });
+
   it('leaves the data of version 18 for older app versions', async () => {
     const legacy = JSON.stringify({
       version: 18,
