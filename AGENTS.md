@@ -2,66 +2,55 @@
 
 Guidance for coding agents working in this repository.
 
-## Repository structure
+## Structure
 
-Monorepo with three independent npm packages (each with its own `package.json`, `.nvmrc` (Node 24), ESLint/Prettier config). There is no root `package.json`, so always `cd` into a subproject first.
+Three independent npm packages, each with its own `package.json`, `.nvmrc` (Node 24) and ESLint/Prettier config. There is no root `package.json`, so `cd` into one first.
 
-- `server/`: Express 5 API (TypeScript), served at `/api`
-- `web/`: Vue 3 SPA (Vite, Vuetify, Pinia, Vue Router, PWA), JavaScript; new code may use TypeScript
-- `docs/`: VitePress docs (German), served at `/docs`. `docs/src/konfiguration.md` documents every env var, `server.md` the API endpoints, `deployment.md` the Dokku setup.
-- `app/`: generated Bubblewrap TWA Android wrapper, not hand-maintained.
+- `server/`: Express 5 API in TypeScript, served at `/api`
+- `web/`: Vue 3 SPA (Vite, Vuetify, Pinia, PWA) in JavaScript; new code may use TypeScript
+- `docs/`: VitePress docs in German, served at `/docs`. `konfiguration.md` documents every env var, `server.md` the API, `deployment.md` the Dokku setup.
+- `app/`: generated Android TWA wrapper, not maintained by hand
 
-Each subproject is a separate Dokku app (`.dokku-monorepo`: `api=server`, `web=web`, `docs=docs`). `deploy.yml` deploys all three on push to `master`; `deploy-dev.yml` (manual) deploys `web-staging`/`api-staging`.
+Each package is its own Dokku app (`.dokku-monorepo`). `deploy.yml` deploys all of them on push to `master`, `deploy-dev.yml` deploys the staging apps on demand.
 
 ## Commands
 
 ```bash
 # server/
-npm run dev        # tsx watch, API at 127.0.0.1:3001/api
-npm run typecheck  # tsc, including tests
-npm run build      # tsc -p tsconfig.build.json -> dist/, `npm start` runs dist/server.js
-npm test           # vitest run
+npm run dev          # API at 127.0.0.1:3001/api, loads server/.env (SKED_USER, SKED_PASSWORD)
+npm run typecheck    # tsc, including tests
+npm run build        # tsc -p tsconfig.build.json -> dist/
 npx vitest run tests/SkedParser.test.ts   # single file
-npx vitest run -u  # update parser snapshots after an intended parser change
+npx vitest run -u    # update parser snapshots after an intended parser change
 
 # web/
-npm run dev:remote # Vite on :3000, proxies /api to https://spluseins.de/
-npm run dev:local  # proxies /api to 127.0.0.1:3001 (run server/ alongside)
-npm run build      # -> dist/, `npm start` serves it via server.js
-npm run typecheck  # vue-tsc, checks only TypeScript (checkJs is off)
-npm test           # vitest, tests/unit/**/*.test.{js,ts}
+npm run dev:remote   # Vite on :3000 against https://spluseins.de/api
+npm run dev:local    # against a local server/
+npm run typecheck    # vue-tsc, checks TypeScript only (checkJs is off)
 
-# docs/
-npm run dev        # localhost:8080/docs/
-
-# all
-npm run lint / lintfix / fmt / fmt:check
+# every package
+npm test / lint / lintfix / fmt / fmt:check
 ```
 
-CI order: server `lint -> fmt:check -> typecheck -> build -> test`; web `lint -> fmt:check -> typecheck -> test -> build`. Match it before pushing.
+CI runs server `lint, fmt:check, typecheck, build, test` and web `lint, fmt:check, typecheck, test, build`. Run the same before pushing.
 
-Server tests mock `fetch` with HTML/CSV fixtures in `server/tests/fixtures/`, so they need no Ostfalia credentials. `vitest.config.ts` forces `TZ=America/New_York` (results must not depend on server time zone) and `CACHE_DISABLE=true`.
+Server tests mock `fetch` with fixtures from `server/tests/fixtures/`, so they need no Ostfalia credentials. `vitest.config.ts` sets `TZ=America/New_York` so results cannot depend on the server time zone, and `CACHE_DISABLE=true`.
 
-## Architecture
+## Timetables
 
-### Timetable data flow
+`timetable-config.yaml` is the input of the external Python tool [sked-parser](https://github.com/SplusEins/sked_parser), not of code in this repo. The daily `timetables.yml` workflow runs it and opens a PR that regenerates `server/assets/timetables.json` and `web/src/assets/timetables.json`. Never edit those by hand.
 
-`timetable-config.yaml` (root) is input for the **external** Python tool [sked-parser](https://github.com/SplusEins/sked_parser), not for code here. The daily `timetables.yml` workflow runs it and opens a PR updating `server/assets/timetables.json` and `web/src/assets/timetables.json`. These are generated, never hand-edit them; `server/tests/Timetables.test.ts` guards them against duplicate ids/paths.
+A plan request goes `controllers/splus.ts` -> `lib/SplusApi.ts` (fetches from Ostfalia with Basic Auth, retries 5xx) -> `lib/SkedParser.ts` (branches on `timetable.type` and, for `graphical`, per faculty) -> rooms resolved via `lib/Room/` -> cached -> `createEvent` in `model/SplusEinsModel.ts`, which censors lecturer names unless `CENSOR_DISABLE` and derives a stable id from the title. Room and info HTML is sanitized because the client renders it.
 
-Request path: `controllers/splus.ts` looks up the id in `timetables.json` -> `lib/SplusApi.ts` fetches the page from Ostfalia (Basic Auth `SKED_USER`/`SKED_PASSWORD`, retries 5xx up to 3x) -> dispatches on `timetable.type` (`graphical` | `list` | `csv` | `intranet`) to `lib/SkedParser.ts`, where `graphical` also branches per faculty -> sanitizes room/info HTML with `sanitize-html` (it is rendered client-side) and resolves rooms via `lib/Room/` -> caches the parsed lectures -> turns them into `Event`s with `createEvent` (`model/SplusEinsModel.ts`), which censors lecturer names unless `CENSOR_DISABLE` and derives a stable lecture id from a SHA1 of the title.
+## Server
 
-Mensa, news, bus (Motis/Transitous) and ICS export are sibling controllers in `server/controllers/` with logic in `server/lib/`.
+- `config.ts` is the only place that reads env vars; an invalid number aborts startup.
+- `lib/cache.ts` is a file cache (`cached(key, ttl, load)`) with one JSON file per key under `CACHE_PATH`. It deduplicates concurrent loads and never caches failures. Values always go through JSON, which the return type `Jsonify<T>` from type-fest reflects, so models use ISO strings instead of `Date`s.
+- Validate external JSON with type guards (`lib/isRecord.ts`) instead of casts.
 
-### Server internals
+## Web
 
-- `config.ts` is the only place reading env vars; an invalid number aborts startup.
-- `lib/cache.ts` is a hand-rolled file cache (`cached(key, ttl, load)`): one JSON file per SHA1'd key under `CACHE_PATH`, atomic writes, deduplicates concurrent loads, failures are not cached. Values round-trip through JSON, which the return type `Jsonify<T>` from type-fest reflects, so models use ISO strings instead of `Date`s.
-- `App.ts` mounts the controllers under `API_PREFIX`, returns plain-text 404/500 and only logs error details.
-
-### Frontend
-
-- `src/pages/` (routes in `src/router.js`), `src/components/`, `src/stores/` (Pinia), `src/lib/` (API client and helpers).
-- `src/stores/persist.js` saves parts of the `ui`, `splus` and `mensa` stores to `localStorage`. Saved timetables are only ids (they contain the semester, e.g. `_ws26`); `forgetPastSemesters` drops ids of other semesters than those in `timetables.json` on startup, so no reset is needed at semester change. Unknown ids of the current semester are kept, as a plan can be missing from one daily update. Bump `VERSION` (and migrate or drop) only when the saved format changes. Since version 19 it saves under `spluseins-state` and only reads the old `spluseins` key, which version 18 code (old tabs, rollbacks) still uses.
-- Build-time constants (`__TEAM__`, `__STAGING__`, `__VERSION__`) come from `vite.config.js` via `define` and are read in `src/lib/config.js`. `__TEAM__` is `PROTECTED_INFORMATION` or `src/assets/protected-information.json`; it ends up in the client bundle, so it is only for mildly sensitive data.
-- `/api` and `/docs` are proxied, not called cross-origin: by Vite in dev (`API_URL`, `DOCS_URL`) and by `web/server.js` (Express) in production, which also serves `dist/` and answers all other paths with an in-memory `index.html`.
-- The service worker (`vite-plugin-pwa`) caches `/api/*` NetworkFirst, except `/api/ics/`.
+- `src/stores/persist.js` saves parts of the `ui`, `splus` and `mensa` stores to `localStorage`. Saved timetables are only ids that contain the semester (e.g. `_ws26`), and ids of other semesters are dropped on startup, so a semester change needs no migration. Bump `VERSION` only when the saved format changes. Version 18 code still uses the old `spluseins` key, so only read it, never write it.
+- `__TEAM__`, `__STAGING__` and `__VERSION__` are build-time constants from `vite.config.js`. `__TEAM__` ends up in the client bundle.
+- `/api` and `/docs` are always proxied, by Vite in dev and by `web/server.js` in production, which also serves `dist/` and answers unknown paths with `index.html`.
+- The service worker caches `/api/*` NetworkFirst, except `/api/ics/`.

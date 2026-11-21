@@ -59,7 +59,7 @@ npm test
 cd server/
 ```
 
-Add your ostfalia credentials as environment variables, preferably in a `.env`-file.
+Add your ostfalia credentials to `server/.env`. `npm run dev` loads this file, all settings are listed in the [configuration docs](https://spluseins.de/docs/konfiguration.html).
 
 ```bash
 # ./server/.env
@@ -73,10 +73,6 @@ npm install
 
 # install correct node version (might be optional)
 nvm install
-
-# Set environment variables
-CACHE_PATH=spluseins-cache # Linux/Unix
-set CACHE_PATH=spluseins-cache # Windows
 
 # start dev api at localhost:3001/api
 npm run dev
