@@ -1,34 +1,31 @@
 import dayjs from './dayjs';
+import { truncateText } from './util';
 
-/* faculty names of the timetables with their news selector of the API */
-const FACULTY_SELECTORS = {
-  'Bau-Wasser-Boden': 'b',
-  Gesundheitswesen: 'g',
-  'Handel und Soziale Arbeit': 'h',
-  'Verkehr-Sport-Tourismus-Medien': 'k',
-  Maschinenbau: 'm',
-  Recht: 'r',
-  'Soziale Arbeit': 's',
-  Versorgungstechnik: 'v',
-};
-
-export const MAX_NEWS_AGE_DAYS = 14;
+const MAX_NEWS_AGE_DAYS = 14;
+/* the rest of the news are the newest of all departments */
+const MAX_FACULTY_NEWS_FIRST = 3;
 
 /**
- * @param faculty faculty name of a timetable, e.g. 'Recht'
- * @returns API path for the central Ostfalia news and the news of the faculty
+ * @param departments whose news are preferred, e.g. ['Fakultät Recht']
+ * @returns the newest `count` news which are at most MAX_NEWS_AGE_DAYS old,
+ *   with up to 3 news of the departments among them, in their order
  */
-export function ostfaliaNewsPath(faculty) {
-  const selectors = ['campus', FACULTY_SELECTORS[faculty]].filter(Boolean);
-  return `/api/news/${selectors.join(',')}`;
+export function recentNews(news, count, departments = []) {
+  const oldest = dayjs().subtract(MAX_NEWS_AGE_DAYS, 'days');
+  const recent = news.filter(({ date }) => date && dayjs(date).isAfter(oldest));
+  const shown = new Set(
+    recent
+      .filter((item) =>
+        item.departments?.some((name) => departments.includes(name)),
+      )
+      .slice(0, MAX_FACULTY_NEWS_FIRST),
+  );
+  for (const item of recent) if (shown.size < count) shown.add(item);
+  return recent.filter((item) => shown.has(item));
 }
 
-/**
- * @returns the newest `count` news which are at most MAX_NEWS_AGE_DAYS old
- */
-export function recentNews(news, count, now = dayjs()) {
-  const oldest = dayjs(now).subtract(MAX_NEWS_AGE_DAYS, 'days');
-  return news
-    .filter(({ date }) => date && dayjs(date).isAfter(oldest))
-    .slice(0, count);
+/* e.g. 'Recht' for 'Fakultät Recht', 'ZeLL' for 'Zentrum für … (ZeLL)' */
+export function departmentLabel(department) {
+  const abbreviation = department.match(/\((.+)\)$/)?.[1];
+  return abbreviation ?? truncateText(department.replace(/^Fakultät /, ''), 30);
 }

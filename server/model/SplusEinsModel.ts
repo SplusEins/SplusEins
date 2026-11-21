@@ -12,6 +12,8 @@ export interface NewsElement {
   text: string;
   date?: Date;
   source?: string;
+  /* who published the news, e.g. 'Fakultät Recht' or 'Sprachenzentrum' */
+  departments?: string[];
 }
 
 export interface MensaPrice {

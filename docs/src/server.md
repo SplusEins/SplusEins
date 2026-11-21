@@ -119,11 +119,11 @@ Die Endpunkte zum Abfragen der News-Daten befinden sich in der Datei `controller
 
 **Parameter:**
 
-- newstypes: Komma getrennte Liste von News-Quellen. Die Ostfalia-News werden von den Nachrichten-Seiten der Ostfalia-Website gelesen: `campus` (zentrale Nachrichten) sowie die Fakultäten `b`, `g`, `h`, `k`, `m`, `r`, `s` und `v`. Die Campus38-News kommen über die WordPress-API mittels `campus38`. `e`, `f`, `w` und die Standorte `wob`, `wf`, `sud`, `sz` werden weiterhin akzeptiert, liefern aber keine News mehr, da es auf der neuen Ostfalia-Website keine passende Nachrichten-Seite gibt.
+- newstypes: Komma getrennte Liste von News-Quellen. `campus` liefert die zentralen Nachrichten der Ostfalia-Website, davon die ersten drei Seiten, etwa drei Wochen. Die Fakultäten `b`, `e`, `f`, `g`, `h`, `i`, `k`, `m`, `r`, `s`, `v` und `w` liefern die zentralen Nachrichten, die die jeweilige Fakultät nennen. Die Campus38-News kommen über die WordPress-API mittels `campus38`. Andere Quellen werden mit 404 beantwortet.
 - limit: Optional, limitiert die zurückgegebenen News auf diese Anzahl. Maximal zurückgegeben werden die 100 letzten News.
 
 **Rückgabe:**
-Liefert ein NewsElement-Array (siehe `model/SplusEinsModel.ts`) mit den ausgewählten News zurück. Die Beschreibungen werden auf 130 Zeichen gekürzt und die News nach Datum sortiert, die neuesten zuerst.
+Liefert ein NewsElement-Array (siehe `model/SplusEinsModel.ts`) mit den ausgewählten News zurück. Die Beschreibungen werden auf 130 Zeichen gekürzt und die News nach Datum sortiert, die neuesten zuerst. `departments` enthält, wer eine Ostfalia-News veröffentlicht hat, z. B. `Fakultät Recht` oder `Sprachenzentrum`.
 
 ### GET `/news/:newstypes.rss?limit=NUMBER`
 
