@@ -90,5 +90,5 @@ export default defineConfig({
   },
   preview: { port: 3000, proxy },
   // https://vitest.dev/config/
-  test: { include: ['tests/unit/**/*.test.js'] },
+  test: { include: ['tests/unit/**/*.test.{js,ts}'] },
 });

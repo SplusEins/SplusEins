@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import vue from 'eslint-plugin-vue';
+import tseslint from 'typescript-eslint';
 import prettier from 'eslint-config-prettier';
 import globals from 'globals';
 
@@ -7,6 +8,15 @@ export default [
   { ignores: ['dist/', 'dev-dist/', 'src/assets/'] },
   js.configs.recommended,
   ...vue.configs['flat/strongly-recommended'],
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
+    files: ['**/*.ts'],
+  })),
+  {
+    // allows <script lang="ts"> in components
+    files: ['**/*.vue'],
+    languageOptions: { parserOptions: { parser: tseslint.parser } },
+  },
   prettier,
   {
     languageOptions: {

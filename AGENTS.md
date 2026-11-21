@@ -7,7 +7,7 @@ Guidance for coding agents working in this repository.
 Monorepo with three independent npm packages (each with its own `package.json`, `.nvmrc` (Node 24), ESLint/Prettier config). There is no root `package.json`, so always `cd` into a subproject first.
 
 - `server/`: Express 5 API (TypeScript), served at `/api`
-- `web/`: Vue 3 SPA (Vite, Vuetify, Pinia, Vue Router, PWA)
+- `web/`: Vue 3 SPA (Vite, Vuetify, Pinia, Vue Router, PWA), JavaScript; new code may use TypeScript
 - `docs/`: VitePress docs (German), served at `/docs`. `docs/src/konfiguration.md` documents every env var, `server.md` the API endpoints, `deployment.md` the Dokku setup.
 - `app/`: generated Bubblewrap TWA Android wrapper, not hand-maintained.
 
@@ -28,7 +28,8 @@ npx vitest run -u  # update parser snapshots after an intended parser change
 npm run dev:remote # Vite on :3000, proxies /api to https://spluseins.de/
 npm run dev:local  # proxies /api to 127.0.0.1:3001 (run server/ alongside)
 npm run build      # -> dist/, `npm start` serves it via server.js
-npm test           # vitest, tests/unit/**/*.test.js
+npm run typecheck  # vue-tsc, checks only TypeScript (checkJs is off)
+npm test           # vitest, tests/unit/**/*.test.{js,ts}
 
 # docs/
 npm run dev        # localhost:8080/docs/
@@ -37,7 +38,7 @@ npm run dev        # localhost:8080/docs/
 npm run lint / lintfix / fmt / fmt:check
 ```
 
-CI order: server `lint -> fmt:check -> typecheck -> build -> test`; web `lint -> fmt:check -> test -> build`. Match it before pushing.
+CI order: server `lint -> fmt:check -> typecheck -> build -> test`; web `lint -> fmt:check -> typecheck -> test -> build`. Match it before pushing.
 
 Server tests mock `fetch` with HTML/CSV fixtures in `server/tests/fixtures/`, so they need no Ostfalia credentials. `vitest.config.ts` forces `TZ=America/New_York` (results must not depend on server time zone) and `CACHE_DISABLE=true`.
 
