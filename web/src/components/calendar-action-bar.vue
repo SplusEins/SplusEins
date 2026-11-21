@@ -1,14 +1,14 @@
 <template>
   <div class="d-flex align-center">
     <responsive-icon-button
-      v-if="!isCustomSchedule"
+      v-if="rememberable"
       :breakpoint="$vuetify.display.xlAndUp"
       :icon="isFavorite ? mdiHeart : mdiHeartOutline"
       :text="isFavorite ? 'Gemerkt' : 'Merken'"
       :color="isFavorite ? 'primary' : undefined"
       aria-label="Merken"
       :aria-pressed="isFavorite"
-      @click="splus.toggleFavoriteSchedule(currentSchedule)"
+      @click="splus.toggleRemembered(currentSchedule.sources[0])"
     />
 
     <!-- mobile action bar -->
@@ -24,11 +24,11 @@
           @click="openCalendarDialogOpen = true"
         />
         <v-list-item
-          :title="isCustomSchedule ? 'Bearbeiten' : 'Kurse auswählen'"
+          :title="currentSchedule.name ? 'Bearbeiten' : 'Kurse auswählen'"
           @click="editTimetableDialogOpen = true"
         />
         <v-list-item
-          v-if="isCustomSchedule"
+          v-if="deletable"
           title="Löschen"
           @click="deleteTimetableDialogOpen = true"
         />
@@ -44,14 +44,14 @@
         @click="share()"
       />
       <responsive-icon-button
-        v-if="isCustomSchedule"
+        v-if="deletable"
         :breakpoint="$vuetify.display.xlAndUp"
         :icon="mdiDelete"
         text="Löschen"
         @click="deleteTimetableDialogOpen = true"
       />
       <responsive-icon-button
-        :text="isCustomSchedule ? 'Bearbeiten' : 'Kurse auswählen'"
+        :text="currentSchedule.name ? 'Bearbeiten' : 'Kurse auswählen'"
         :breakpoint="$vuetify.display.xlAndUp"
         :icon="mdiPencil"
         @click="editTimetableDialogOpen = true"
@@ -66,18 +66,17 @@
 
     <custom-timetable-delete-dialog
       v-model="deleteTimetableDialogOpen"
-      :custom-schedule="currentSchedule"
+      :plan="currentSchedule"
       @on-delete="routeToRoot()"
     />
     <custom-timetable-dialog
       v-model="editTimetableDialogOpen"
-      :custom-schedule="currentAsCustomSchedule"
+      :plan="currentSchedule"
     />
     <copy-text-dialog v-model="shareDialogOpen" :text-to-copy="currentUrl()" />
     <open-calendar-dialog
       v-model="openCalendarDialogOpen"
-      :timetable-ids="timetableIds"
-      :title-ids="titleIds"
+      :sources="sourcesToString(currentSchedule.sources)"
     />
   </div>
 </template>
@@ -97,6 +96,7 @@ import {
   mdiCalendar,
 } from '@mdi/js';
 import { useSplusStore } from '../stores/splus';
+import { sourcesToString } from '../lib/plans';
 import CopyTextDialog from './copy-text-dialog.vue';
 import OpenCalendarDialog from './open-calendar-dialog.vue';
 import ResponsiveIconButton from './responsive-icon-button.vue';
@@ -105,8 +105,7 @@ import CustomTimetableDialog from './custom-timetable-dialog.vue';
 
 const router = useRouter();
 const splus = useSplusStore();
-const { schedule: currentSchedule, isCustomTimetable: isCustomSchedule } =
-  storeToRefs(splus);
+const { schedule: currentSchedule, savedSchedule } = storeToRefs(splus);
 const { mobile: isMobile } = useDisplay();
 
 const editTimetableDialogOpen = ref(false);
@@ -114,29 +113,15 @@ const openCalendarDialogOpen = ref(false);
 const deleteTimetableDialogOpen = ref(false);
 const shareDialogOpen = ref(false);
 
+/* a single timetable, which the heart saves without name */
+const rememberable = computed(
+  () =>
+    !currentSchedule.value.name && currentSchedule.value.sources.length === 1,
+);
 const isFavorite = computed(() =>
-  splus.isFavoriteSchedule(currentSchedule.value),
+  splus.isRemembered(currentSchedule.value.sources[0].id),
 );
-const timetableIds = computed(() =>
-  isCustomSchedule.value
-    ? currentSchedule.value.id
-    : [currentSchedule.value.id],
-);
-const titleIds = computed(() =>
-  isCustomSchedule.value ? currentSchedule.value.whitelist : [],
-);
-const currentAsCustomSchedule = computed(() => {
-  if (isCustomSchedule.value) {
-    return currentSchedule.value;
-  } else {
-    // new custom schedule with the regular as its base
-    return {
-      label: '',
-      id: [currentSchedule.value.id],
-      whitelist: [],
-    };
-  }
-});
+const deletable = computed(() => !!savedSchedule.value?.name);
 
 function routeToRoot() {
   router.replace('/');

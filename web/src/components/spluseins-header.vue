@@ -92,7 +92,7 @@ const commitUrl = 'https://github.com/SplusEins/SplusEins/commit/' + version;
 
 const planTitle = computed(() => splus.scheduleDisplayName(40));
 const showPlanTitle = computed(
-  () => route.name === 'plan-timetable' && !!planTitle.value,
+  () => route.name === 'plan' && !!planTitle.value,
 );
 
 const isOffline = ref(!navigator.onLine);

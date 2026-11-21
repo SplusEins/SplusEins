@@ -33,7 +33,5 @@ const ui = useUiStore();
 const splus = useSplusStore();
 const { dismissDisclaimer } = ui;
 
-const dialogOpen = computed(
-  () => !ui.hasSeenDisclaimer && !splus.hasSubscribableTimetables,
-);
+const dialogOpen = computed(() => !ui.hasSeenDisclaimer && !splus.hasPlans);
 </script>
