@@ -25,7 +25,7 @@ describe('splus store', () => {
     it('is the first saved timetable', () => {
       splus.addFavoriteSchedule(timetable);
       splus.addCustomSchedule(custom('Mein Plan'));
-      expect(splus.subscribedTimetable).toEqual(timetable);
+      expect(splus.subscribedTimetable.id).toBe(timetable.id);
     });
 
     it('moves to the next timetable when it is removed', () => {
@@ -42,17 +42,25 @@ describe('splus store', () => {
       splus.addFavoriteSchedule(timetable);
       splus.addFavoriteSchedule(otherTimetable);
       splus.removeFavoriteSchedule(otherTimetable);
-      expect(splus.subscribedTimetable).toEqual(timetable);
+      expect(splus.subscribedTimetable.id).toBe(timetable.id);
     });
 
     it('stays on a personal timetable when it is edited', () => {
-      splus.addFavoriteSchedule(timetable);
       splus.addCustomSchedule(custom('Mein Plan'));
-      splus.subscribedTimetable = custom('Mein Plan');
+      splus.addFavoriteSchedule(timetable);
       splus.replaceCustomSchedule(custom('Mein Plan'), custom('Neuer Plan'));
       expect(splus.subscribedTimetable.label).toBe('Neuer Plan');
       expect(splus.customTimetableLabels).toEqual(['Neuer Plan']);
     });
+  });
+
+  it('knows the faculty of the subscribed timetable', () => {
+    expect(splus.subscribedFaculty).toBeUndefined();
+    splus.addCustomSchedule(custom('Mein Plan', [otherTimetable.id]));
+    expect(splus.subscribedFaculty).toBe(otherTimetable.faculty);
+    splus.addFavoriteSchedule(timetable);
+    splus.deleteCustomSchedule(custom('Mein Plan', [otherTimetable.id]));
+    expect(splus.subscribedFaculty).toBe(timetable.faculty);
   });
 
   it('adds each favorite only once', () => {
@@ -87,14 +95,6 @@ describe('splus store', () => {
       expect(splus.isCustomTimetable).toBe(true);
       expect(splus.customTimetableLabels).toEqual(['Mein Plan']);
     });
-  });
-
-  it('knows the faculty of the subscribed timetable', () => {
-    expect(splus.subscribedFaculty).toBeUndefined();
-    splus.addCustomSchedule(custom('Mein Plan', [otherTimetable.id]));
-    expect(splus.subscribedFaculty).toBe(otherTimetable.faculty);
-    splus.subscribedTimetable = timetable;
-    expect(splus.subscribedFaculty).toBe(timetable.faculty);
   });
 
   it('groups the timetables by faculty, degree and semester', () => {
