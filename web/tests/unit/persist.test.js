@@ -86,18 +86,35 @@ describe('persistStores', () => {
     expect(splus.subscribedTimetable.id).toBe(timetable.id);
   });
 
-  it('starts without timetables if the data of version 18 cannot be converted', () => {
+  it('starts without timetables if the saved ones cannot be read', () => {
     stubLocalStorage({
-      [LEGACY_STORAGE_KEY]: JSON.stringify({
-        version: 18,
+      [STORAGE_KEY]: JSON.stringify({
+        version: 19,
         ui: { isDark: true },
-        splus: { favoriteSchedules: 'broken' },
+        splus: { favoriteIds: 'broken', customSchedules: { Plan: custom } },
       }),
     });
     vi.spyOn(console, 'error').mockImplementation(() => undefined);
     persistStores(pinia);
+    const splus = useSplusStore(pinia);
     expect(useUiStore(pinia).isDark).toBe(true);
-    expect(useSplusStore(pinia).favoriteIds).toEqual([]);
+    expect(splus.favoriteIds).toEqual([]);
+    expect(splus.customSchedules).toEqual({});
+  });
+
+  it('drops broken timetables of version 18 but keeps the settings', () => {
+    stubLocalStorage({
+      [LEGACY_STORAGE_KEY]: JSON.stringify({
+        version: 18,
+        ui: { isDark: true },
+        splus: { customSchedules: 'broken', favoriteSchedules: 'broken' },
+      }),
+    });
+    persistStores(pinia);
+    const splus = useSplusStore(pinia);
+    expect(useUiStore(pinia).isDark).toBe(true);
+    expect(splus.favoriteIds).toEqual([]);
+    expect(splus.customSchedules).toEqual({});
   });
 
   it('leaves the data of version 18 for older app versions', async () => {
@@ -121,6 +138,17 @@ describe('persistStores', () => {
       [STORAGE_KEY]: JSON.stringify({
         version: 19,
         splus: { favoriteIds: [timetable.id] },
+      }),
+    });
+    persistStores(pinia);
+    expect(useSplusStore(pinia).favoriteIds).toEqual([timetable.id]);
+  });
+
+  it('forgets timetables of past semesters', () => {
+    stubLocalStorage({
+      [STORAGE_KEY]: JSON.stringify({
+        version: 19,
+        splus: { favoriteIds: ['old_ss25', timetable.id] },
       }),
     });
     persistStores(pinia);

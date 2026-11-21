@@ -137,6 +137,9 @@ const SCHEDULES = TIMETABLES.map((timetable) => ({
 const SCHEDULES_BY_ID = new Map(
   SCHEDULES.map((schedule) => [schedule.id, schedule]),
 );
+// every timetable id ends with its semester, e.g. '_ws26'
+const semesterOf = (id) => /_[^_]+$/.exec(id)?.[0];
+const CURRENT_SEMESTERS = new Set(SCHEDULES.map(({ id }) => semesterOf(id)));
 
 /* count the requests, so that only the response of the last one is used */
 let loadCounter = 0;
@@ -165,7 +168,7 @@ export const useSplusStore = defineStore('splus', {
     customSchedules: {},
     /**
      * Ids of the favorite timetables. Only ids are saved, so that labels
-     * stay current.
+     * stay current and timetables of past semesters can be dropped.
      */
     favoriteIds: [],
     /**
@@ -311,6 +314,21 @@ export const useSplusStore = defineStore('splus', {
       if (this.subscribedKey !== subscriptionKey(removedTimetable)) return;
       const first = this.subscribableTimetables[0];
       this.subscribedKey = first ? subscriptionKey(first) : null;
+    },
+    /**
+     * Forget saved timetables of past semesters and broken ones. Unknown
+     * timetables of the current semester are kept, as they may come back
+     * with the next update of timetables.json.
+     */
+    forgetPastSemesters() {
+      const keep = (id) =>
+        SCHEDULES_BY_ID.has(id) || CURRENT_SEMESTERS.has(semesterOf(id));
+      this.favoriteIds = this.favoriteIds.filter(keep);
+      this.customSchedules = Object.fromEntries(
+        Object.entries(this.customSchedules ?? {}).filter(([, custom]) =>
+          [].concat(custom?.id).some(keep),
+        ),
+      );
     },
 
     /**

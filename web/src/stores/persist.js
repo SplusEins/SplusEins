@@ -11,10 +11,11 @@ const STORAGE_KEY = 'spluseins-state';
 const LEGACY_STORAGE_KEY = 'spluseins';
 
 /**
- * Version of the saved data.
- * When it is incremented, saved timetables of all users are deleted.
+ * Format of the saved data. Saved timetables of older, unknown formats are
+ * deleted. Timetables of past semesters do not need a new version, they are
+ * dropped by forgetPastSemesters because their ids contain the semester.
  */
-const VERSION = 19; // TODO Semesterwechsel increment this
+const VERSION = 19;
 
 function readSavedState() {
   try {
@@ -29,21 +30,19 @@ function readSavedState() {
   }
 }
 
-// version 18 saved copies of the timetables instead of their ids
+// version 18 saved copies of the timetables instead of their ids,
+// anything broken is dropped by forgetPastSemesters
 function migrateFrom18({
   customSchedules,
   favoriteSchedules,
   subscribedTimetable,
 }) {
   return {
-    customSchedules: customSchedules ?? {},
-    favoriteIds: (favoriteSchedules ?? [])
-      .map((timetable) => timetable?.id)
-      .filter(Boolean),
-    subscribedKey:
-      subscribedTimetable && Object.keys(subscribedTimetable).length > 0
-        ? subscriptionKey(subscribedTimetable)
-        : null,
+    customSchedules,
+    favoriteIds: [].concat(favoriteSchedules ?? []).map((t) => t?.id),
+    subscribedKey: subscribedTimetable?.id
+      ? subscriptionKey(subscribedTimetable)
+      : null,
   };
 }
 
@@ -54,20 +53,21 @@ export function persistStores(pinia) {
 
   // restore
   const saved = readSavedState();
-  // TODO Semesterwechsel remove, timetables of version 18 must be deleted then
-  if (saved.version === 18 && VERSION === 19 && saved.splus) {
-    try {
+  ui.$patch(saved.ui || {});
+  mensa.$patch(saved.mensa || {});
+  // broken saved timetables must not break the app
+  try {
+    if (saved.version === 18 && saved.splus) {
       saved.splus = migrateFrom18(saved.splus);
-    } catch (error) {
-      console.error('could not convert saved timetables', error.message);
+    } else if (saved.version < VERSION) {
       delete saved.splus;
     }
-  } else if (saved.version < VERSION) {
-    delete saved.splus;
+    splus.$patch(saved.splus || {});
+    splus.forgetPastSemesters();
+  } catch (error) {
+    console.error('could not restore saved timetables', error.message);
+    splus.$reset();
   }
-  ui.$patch(saved.ui || {});
-  splus.$patch(saved.splus || {});
-  mensa.$patch(saved.mensa || {});
 
   // save when one of the saved values changes
   const savedState = () => ({
@@ -95,7 +95,7 @@ export function persistStores(pinia) {
         console.error('could not save state', error.message);
       }
     },
-    // also save right away, so that converted timetables are stored
+    // also save right away, so that converted or dropped timetables are stored
     { deep: true, immediate: true },
   );
 }
