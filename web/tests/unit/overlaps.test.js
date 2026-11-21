@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { overlappingCourseTitles, overlaps } from '../../src/lib/overlaps';
+import { overlappingCourses, overlaps } from '../../src/lib/overlaps';
 
 const at = (hours) => new Date(Date.UTC(2026, 10, 9) + hours * 3600000);
 const slot = (begin, duration) => ({
@@ -23,7 +23,7 @@ describe('overlaps', () => {
   });
 });
 
-describe('overlappingCourseTitles', () => {
+describe('overlappingCourses', () => {
   const lecture = (id, start, duration = 1.5) => ({
     id,
     title: `Vorlesung ${id}`,
@@ -39,13 +39,12 @@ describe('overlappingCourseTitles', () => {
       lecture('b', '2026-11-09T08:00:00Z'),
       lecture('c', '2026-11-10T08:00:00Z'),
     ];
-    expect(
-      overlappingCourseTitles(lectures, [
-        { id: 'a' },
-        { id: 'b' },
-        { id: 'c' },
+    expect(overlappingCourses(lectures, ['a', 'b', 'c'])).toEqual(
+      new Map([
+        ['a', 'Vorlesung b'],
+        ['b', 'Vorlesung a'],
       ]),
-    ).toEqual(['Vorlesung a', 'Vorlesung b']);
+    );
   });
 
   it('ignores courses which are not selected or on other days', () => {
@@ -54,9 +53,7 @@ describe('overlappingCourseTitles', () => {
       lecture('b', '2026-11-09T08:00:00Z'),
       lecture('c', '2026-11-10T07:15:00Z'),
     ];
-    expect(
-      overlappingCourseTitles(lectures, [{ id: 'a' }, { id: 'c' }]),
-    ).toEqual([]);
+    expect(overlappingCourses(lectures, ['a', 'c'])).toEqual(new Map());
   });
 
   it('does not count a lecture which is in two timetables', () => {
@@ -64,6 +61,6 @@ describe('overlappingCourseTitles', () => {
       lecture('a', '2026-11-09T07:15:00Z'),
       lecture('a', '2026-11-09T07:15:00Z'),
     ];
-    expect(overlappingCourseTitles(lectures, [{ id: 'a' }])).toEqual([]);
+    expect(overlappingCourses(lectures, ['a'])).toEqual(new Map());
   });
 });

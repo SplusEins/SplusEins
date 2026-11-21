@@ -32,6 +32,10 @@ export function semesterLabel(semester) {
   return typeof semester === 'number' ? `${semester}. Sem.` : '';
 }
 
+export function courseCount(count) {
+  return count === 1 ? '1 Kurs' : `${count} Kurse`;
+}
+
 export function truncateText(text, maxLength) {
   return text.length > maxLength
     ? `${text.slice(0, maxLength).trimEnd()}…`
@@ -45,28 +49,13 @@ export function timetableDisplayName(timetable, maxLabelLength = Infinity) {
   return suffix ? `${label} ${suffix}` : label;
 }
 
-const SHORT_DEGREES = {
-  'Bachelor of Science': 'B.Sc.',
-  'Master of Science': 'M.Sc.',
-  'Bachelor of Arts': 'B.A.',
-  'Master of Arts': 'M.A.',
-  'Bachelor of Engineering': 'B.Eng.',
-  'Master of Engineering': 'M.Eng.',
-  'Bachelor of Laws': 'LL.B.',
-  'Master of Laws': 'LL.M.',
-};
-
-export function shortenTimetableDegree(timetable) {
-  return SHORT_DEGREES[timetable.degree] ?? timetable.degree;
-}
-
-/**
- * The API appends a map link to every room, e.g.
- * "A209 (Am Exer 2, 38302 Wolfenbüttel) Link: https://... / B107 Link: https://...".
- * @returns the rooms without the links, e.g. "A209 (Am Exer 2, 38302 Wolfenbüttel) / B107"
- */
-export function roomWithoutLinks(room) {
-  return (room || '').replace(/ Link: \S+/g, '');
+// semester ("3. Semester" or "WPF"), faculty and degree
+export function timetableSubtitle(timetable) {
+  const semester =
+    typeof timetable.semester === 'number'
+      ? `${timetable.semester}. Semester`
+      : timetable.semester;
+  return `${semester} · ${timetable.faculty} ${timetable.degree}`;
 }
 
 export function relativeDay(date, now) {

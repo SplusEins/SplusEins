@@ -2,97 +2,110 @@
   <v-dialog
     v-model="dialogOpen"
     :fullscreen="$vuetify.display.mobile"
-    max-width="800px"
+    max-width="720px"
     scrollable
     transition="dialog-bottom-transition"
   >
     <v-card>
       <v-toolbar color="primary">
         <v-btn
+          v-if="addingPlan"
+          :icon="mdiArrowLeft"
+          aria-label="Zurück"
+          @click="addingPlan = false"
+        />
+        <v-btn
+          v-else
           :icon="mdiClose"
           aria-label="Schließen"
           @click="dialogOpen = false"
         />
-        <v-toolbar-title>Neuer Stundenplan</v-toolbar-title>
-        <v-btn :disabled="!saveable" @click="save()"> Speichern </v-btn>
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
-      <v-card-text class="pa-2">
-        <v-form v-model="valid">
-          <v-container>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field
-                  v-model="selectedName"
-                  :rules="[
-                    rules.required,
-                    rules.uniqueScheduleLabel,
-                    rules.uniqueCustomScheduleLabel,
-                  ]"
-                  label="Plan benennen"
-                  required
-                  autofocus
-                />
-              </v-col>
 
-              <v-col cols="12">
-                <timetable-select
-                  v-show="selectedSchedules.length < maxSchedules"
-                  :selected-schedules="selectedSchedules"
-                  :loading="loading"
-                  @select="addSchedule"
-                />
-              </v-col>
+      <v-card-text class="px-0">
+        <template v-if="adding">
+          <p v-if="selectedSchedules.length === 0" class="px-4 mb-2">
+            Such deinen Plan und wähle Kurse aus, auch aus mehreren Plänen.
+          </p>
+          <timetable-search v-model="query" />
+        </template>
 
-              <v-col cols="12">
-                <v-chip
-                  v-for="schedule in selectedSchedules"
-                  :key="schedule.id"
-                  closable
-                  class="mr-1"
-                  @click:close="removeSchedule(schedule)"
-                >
-                  {{ getFormattedName(schedule) }}
-                </v-chip>
-              </v-col>
-
-              <v-col cols="12">
-                <course-multiselect
-                  v-show="selectedSchedules.length > 0"
-                  v-model="selectedCourses"
-                  :max-courses="maxCourses"
-                  :lectures="allLectures"
-                />
-              </v-col>
-            </v-row>
-          </v-container>
+        <v-form v-else v-model="valid" @submit.prevent>
+          <v-progress-linear v-if="loading" indeterminate />
+          <course-multiselect
+            v-model="selectedCourses"
+            v-model:opened="openedSchedules"
+            :schedules="selectedSchedules"
+            :lectures="lectures"
+            @remove="removeSchedule"
+          />
+          <div class="px-4 pb-4">
+            <v-btn
+              v-if="selectedSchedules.length < maxSchedules"
+              :prepend-icon="mdiPlus"
+              variant="tonal"
+              @click="addingPlan = true"
+            >
+              Weiteren Plan hinzufügen
+            </v-btn>
+            <span v-else class="text-body-medium text-medium-emphasis">
+              Höchstens {{ maxSchedules }} Pläne
+            </span>
+          </div>
+          <div class="px-4">
+            <v-text-field
+              v-model="selectedName"
+              :rules="[
+                rules.required,
+                rules.uniqueScheduleLabel,
+                rules.uniqueCustomScheduleLabel,
+              ]"
+              label="Name"
+              required
+            />
+          </div>
         </v-form>
       </v-card-text>
+
+      <v-divider />
+      <v-card-actions class="px-4">
+        <span
+          v-if="selectedSchedules.length > 0"
+          class="text-body-medium text-medium-emphasis"
+        >
+          {{ courseCount(selectedCourses.length) }}
+        </span>
+        <v-spacer />
+        <v-btn
+          :disabled="!saveable"
+          color="primary"
+          variant="flat"
+          @click="save()"
+        >
+          Speichern
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, ref, watch } from 'vue';
+import { computed, defineAsyncComponent, provide, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { mdiClose } from '@mdi/js';
-import {
-  uniq,
-  customTimetableToRoute,
-  timetableDisplayName,
-} from '../lib/util';
+import { mdiArrowLeft, mdiClose, mdiPlus } from '@mdi/js';
+import { courseCount, customTimetableToRoute, uniq } from '../lib/util';
 import { useSplusStore, loadUniqueLectures } from '../stores/splus';
 import { useAppStore } from '../stores/app';
+import TimetableSearch from './timetable-search.vue';
 
 // loaded when the dialog is opened for the first time
-const TimetableSelect = defineAsyncComponent(
-  () => import('./timetable-select.vue'),
-);
 const CourseMultiselect = defineAsyncComponent(
   () => import('./course-multiselect.vue'),
 );
 
 const props = defineProps({
-  /* personalized timetable to edit, or one without label to start a new one from - leave empty to start empty */
+  /* custom timetable to edit, or one without label to start a new one from - leave empty to start empty */
   customSchedule: {
     type: Object,
     default: () => undefined,
@@ -104,20 +117,18 @@ const dialogOpen = defineModel({ type: Boolean, default: false });
 const router = useRouter();
 const splus = useSplusStore();
 
-// reasonable limits to ensure good performance
-// and a usable UI
+// keeps the requests and the list manageable
 const maxSchedules = 8;
-const maxCourses = 20;
 
 /* user data */
 const selectedName = ref('');
 const selectedSchedules = ref([]);
 const selectedCourses = ref([]);
+const query = ref('');
+const addingPlan = ref(false);
+const openedSchedules = ref([]);
 /* lectures (events) of the selected timetables: { timetable id: [lecture] } */
 const lectures = ref({});
-/* state */
-const pendingLoads = ref(0);
-const loading = computed(() => pendingLoads.value > 0);
 const valid = ref(false);
 
 const isNew = computed(() => !props.customSchedule?.label);
@@ -125,6 +136,17 @@ const saveable = computed(
   () => valid.value && selectedCourses.value.length > 0,
 );
 const allLectures = computed(() => Object.values(lectures.value).flat());
+const loading = computed(() =>
+  selectedSchedules.value.some(({ id }) => !lectures.value[id]),
+);
+const adding = computed(
+  () => addingPlan.value || selectedSchedules.value.length === 0,
+);
+const title = computed(() => {
+  if (addingPlan.value) return 'Plan hinzufügen';
+  return isNew.value ? 'Neuer Plan' : props.customSchedule.label;
+});
+const selectedIds = computed(() => selectedSchedules.value.map(({ id }) => id));
 
 const rules = {
   required: (value) => !!value || 'Pflichtfeld',
@@ -136,51 +158,54 @@ const rules = {
     'Bereits vergeben',
 };
 
-function getFormattedName(schedule) {
-  for (const element of selectedSchedules.value) {
-    if (
-      schedule.label === element.label &&
-      schedule.semester !== element.semester
-    ) {
-      return timetableDisplayName(schedule);
-    }
-  }
-  return schedule.label;
+/* "Mein Plan", or "Mein Plan 2" etc. if that is taken */
+function defaultName() {
+  const taken = (name) =>
+    splus.customTimetableLabels.includes(name) ||
+    splus.timetableIds.includes(name);
+  let name = 'Mein Plan';
+  for (let i = 2; taken(name); i++) name = `Mein Plan ${i}`;
+  return name;
 }
 
-async function loadLectures(schedule) {
-  pendingLoads.value++;
+/* adds the timetable and loads its courses */
+async function addSchedule(schedule) {
+  selectedSchedules.value.push(schedule);
+  let loaded = [];
   try {
-    const loaded = await loadUniqueLectures(schedule);
-    // the timetable may have been removed in the meantime
-    if (selectedSchedules.value.includes(schedule)) {
-      lectures.value[schedule.id] = loaded;
-    }
+    loaded = await loadUniqueLectures(schedule);
   } catch (error) {
     useAppStore().reportLoadError('Stundenplan', error);
-  } finally {
-    pendingLoads.value--;
   }
-}
-
-async function addSchedule(schedule) {
+  // the timetable may have been removed in the meantime
   if (selectedSchedules.value.includes(schedule)) {
-    return;
+    lectures.value[schedule.id] = loaded.sort((a, b) =>
+      a.title.localeCompare(b.title),
+    );
   }
-
-  selectedSchedules.value.push(schedule);
-  await loadLectures(schedule);
 }
+
+/* chosen in the search: adds it with all its courses and shows them */
+async function pickSchedule(schedule) {
+  query.value = '';
+  addingPlan.value = false;
+  if (selectedSchedules.value.includes(schedule)) return;
+
+  openedSchedules.value = [schedule.id];
+  await addSchedule(schedule);
+  const ids = (lectures.value[schedule.id] ?? []).map(({ id }) => id);
+  selectedCourses.value = uniq([...selectedCourses.value, ...ids]);
+}
+provide('timetablePicker', { selectedIds, add: pickSchedule });
 
 function removeSchedule(schedule) {
-  const index = selectedSchedules.value.indexOf(schedule);
-  selectedSchedules.value.splice(index, 1);
-  const titles = (lectures.value[schedule.id] || []).map(
-    (lecture) => lecture.title,
+  selectedSchedules.value = selectedSchedules.value.filter(
+    (selected) => selected !== schedule,
   );
-  lectures.value[schedule.id] = [];
-  selectedCourses.value = selectedCourses.value.filter(
-    (course) => !titles.includes(course.title),
+  delete lectures.value[schedule.id];
+  // courses which are also in another timetable stay selected
+  selectedCourses.value = selectedCourses.value.filter((id) =>
+    allLectures.value.some((lecture) => lecture.id === id),
   );
 }
 
@@ -190,27 +215,18 @@ function removeSchedule(schedule) {
 function save() {
   dialogOpen.value = false;
 
-  // Set the base schedule and filters matching the given courses.
-  const titleIds = uniq(selectedCourses.value.map(({ id }) => id));
-
   const customSchedule = {
-    id: selectedSchedules.value.map(({ id }) => id),
+    id: selectedIds.value,
     label: selectedName.value,
-    whitelist: titleIds,
+    whitelist: uniq(selectedCourses.value),
   };
-  const customScheduleRoute = customTimetableToRoute(customSchedule);
+  const route = customTimetableToRoute(customSchedule);
 
   if (isNew.value) {
-    router.push(customScheduleRoute);
-    return;
-  }
-
-  const wasChanged =
-    JSON.stringify(customScheduleRoute) !==
-    JSON.stringify(customTimetableToRoute(props.customSchedule));
-  if (wasChanged) {
+    router.push(route);
+  } else {
     splus.replaceCustomSchedule(props.customSchedule, customSchedule);
-    router.replace(customScheduleRoute);
+    router.replace(route);
   }
 }
 
@@ -218,7 +234,7 @@ function save() {
  * Load the state from the passed schedule.
  */
 async function load() {
-  selectedName.value = props.customSchedule.label;
+  selectedName.value = props.customSchedule.label || defaultName();
 
   await Promise.all(
     props.customSchedule.id
@@ -228,10 +244,17 @@ async function load() {
       .map(addSchedule),
   );
 
-  selectedCourses.value = props.customSchedule.whitelist
-    .map((id) => allLectures.value.find((lecture) => lecture.id === id))
-    // courses which do not exist anymore
-    .filter((course) => course !== undefined);
+  const loadedIds = allLectures.value.map(({ id }) => id);
+  if (isNew.value) {
+    // started from a plan: all of its courses, shown
+    selectedCourses.value = uniq(loadedIds);
+    openedSchedules.value = selectedIds.value;
+  } else {
+    // without courses which do not exist anymore
+    selectedCourses.value = props.customSchedule.whitelist.filter((id) =>
+      loadedIds.includes(id),
+    );
+  }
 }
 
 /**
@@ -242,6 +265,9 @@ function reset() {
   selectedSchedules.value = [];
   selectedCourses.value = [];
   lectures.value = {};
+  query.value = '';
+  addingPlan.value = false;
+  openedSchedules.value = [];
 }
 
 watch(dialogOpen, () => {
@@ -249,6 +275,8 @@ watch(dialogOpen, () => {
     reset();
   } else if (props.customSchedule) {
     load();
+  } else {
+    selectedName.value = defaultName();
   }
 });
 </script>

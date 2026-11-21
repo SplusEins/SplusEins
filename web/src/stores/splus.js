@@ -6,8 +6,6 @@ import TIMETABLES from '../assets/timetables.json';
 import { useAppStore } from './app';
 import {
   SEMESTER_WEEK_1,
-  semesterLabel,
-  shortenTimetableDegree,
   timetablePlan,
   timetableDisplayName,
   truncateText,
@@ -38,12 +36,18 @@ const COURSE_COLORS = [
   '#0A7E84',
 ];
 
+// agenda and its plan chips colour by plan
+export function planColor(index) {
+  return COURSE_COLORS[index % COURSE_COLORS.length];
+}
+
 function isCustomTimetable(timetable) {
   return !!timetable && !!timetable.whitelist;
 }
 
 function toCalendarEvent(event, timetable) {
   return {
+    id: event.id,
     name: event.title,
     start: dayjs(event.start).format('YYYY-MM-DD HH:mm'),
     end: dayjs(event.end).format('YYYY-MM-DD HH:mm'),
@@ -123,16 +127,10 @@ export async function loadUniqueLectures(timetable) {
 /* all timetables of the Ostfalia, they do not change while the app runs */
 const SCHEDULES = TIMETABLES.map((timetable) => ({
   ...timetable,
-  path: `${timetable.faculty} ${timetable.degree}`,
   route: {
     name: 'plan-timetable',
     params: { timetable: timetable.id },
   },
-  description:
-    `${shortenTimetableDegree(timetable)} ${timetable.label}` +
-    (semesterLabel(timetable.semester)
-      ? ` - ${semesterLabel(timetable.semester)}`
-      : ''),
 }));
 const SCHEDULES_BY_ID = new Map(
   SCHEDULES.map((schedule) => [schedule.id, schedule]),
@@ -140,6 +138,12 @@ const SCHEDULES_BY_ID = new Map(
 // every timetable id ends with its semester, e.g. '_ws26'
 const semesterOf = (id) => /_[^_]+$/.exec(id)?.[0];
 const CURRENT_SEMESTERS = new Set(SCHEDULES.map(({ id }) => semesterOf(id)));
+
+// e.g. " informatik se 3", so " se" matches the start of a word
+const searchText = (text) =>
+  ` ${String(text)
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, ' ')}`;
 
 /* count the requests, so that only the response of the last one is used */
 let loadCounter = 0;
@@ -209,17 +213,38 @@ export const useSplusStore = defineStore('splus', {
       );
     },
     /**
-     * Convert the state's star schema: { faculty, degree, semester, ...timetable }
-     * into a hierarchy: { (faculty, degree): { semester: timetables } }
+     * Group the timetables: { 'faculty degree': { semester: timetables } }
      */
     getTimetablesAsTree: () => {
       const tree = {};
       SCHEDULES.forEach((timetable) => {
-        tree[timetable.path] ??= {};
-        tree[timetable.path][timetable.semester] ??= [];
-        tree[timetable.path][timetable.semester].push(timetable);
+        const path = `${timetable.faculty} ${timetable.degree}`;
+        tree[path] ??= {};
+        tree[path][timetable.semester] ??= [];
+        tree[path][timetable.semester].push(timetable);
       });
       return tree;
+    },
+    /**
+     * Timetables where every query word starts a word of label, faculty,
+     * degree or semester, those matching in the label first.
+     */
+    searchTimetables: () => (query) => {
+      // skip "sem" or "semester" as in "3. Semester", but keep "se" for "SE"
+      const queryWords = searchText(query)
+        .split(' ')
+        .filter(
+          (word) => word && !(word.length >= 3 && 'semester'.startsWith(word)),
+        );
+      if (queryWords.length === 0) return [];
+      const matches = (text) => {
+        const words = searchText(text);
+        return (word) => words.includes(` ${word}`);
+      };
+      const inLabel = ({ label }) => queryWords.some(matches(label));
+      return SCHEDULES.filter(({ label, faculty, degree, semester }) =>
+        queryWords.every(matches(`${label} ${faculty} ${degree} ${semester}`)),
+      ).sort((a, b) => inLabel(b) - inLabel(a));
     },
     timetableIds: () => {
       return SCHEDULES.map(({ id }) => id);
@@ -269,6 +294,8 @@ export const useSplusStore = defineStore('splus', {
         Boolean,
       );
     },
+    isFavoriteSchedule: (state) => (timetable) =>
+      state.favoriteIds.includes(timetable.id),
     hasSubscribableTimetables() {
       return this.subscribableTimetables.length > 0;
     },
@@ -296,10 +323,34 @@ export const useSplusStore = defineStore('splus', {
       this.customSchedules[newTimetable.label] = newTimetable;
       if (wasSubscribed) this.subscribedKey = subscriptionKey(newTimetable);
     },
+    addCourseToCustomSchedule(label, timetableId, courseId) {
+      const old = this.customSchedules[label];
+      this.replaceCustomSchedule(old, {
+        ...old,
+        id: uniq([...old.id, timetableId]),
+        whitelist: [...old.whitelist, courseId],
+      });
+    },
+    removeCourseFromCustomSchedule(label, courseId) {
+      const old = this.customSchedules[label];
+      const updated = {
+        ...old,
+        whitelist: old.whitelist.filter((id) => id !== courseId),
+      };
+      this.replaceCustomSchedule(old, updated);
+      return updated;
+    },
     addFavoriteSchedule(favoriteTimetable) {
       if (this.favoriteIds.includes(favoriteTimetable.id)) return;
       this.favoriteIds.push(favoriteTimetable.id);
       this.subscribedKey ??= subscriptionKey(favoriteTimetable);
+    },
+    toggleFavoriteSchedule(timetable) {
+      if (this.isFavoriteSchedule(timetable)) {
+        this.removeFavoriteSchedule(timetable);
+      } else {
+        this.addFavoriteSchedule(timetable);
+      }
     },
     removeFavoriteSchedule(favoriteTimetable) {
       this.favoriteIds = this.favoriteIds.filter(
@@ -369,23 +420,27 @@ export const useSplusStore = defineStore('splus', {
       const request = ++agendaCounter;
       const week = dayjs(defaultWeek());
       const weeks = [week.isoWeek(), week.add(1, 'week').isoWeek()].join(',');
-      try {
-        const perTimetable = await Promise.all(
-          this.subscribableTimetables.map(async (timetable) => {
-            const events = await loadEvents(timetable, weeks);
-            return events.map((event) => ({
-              ...toCalendarEvent(event, timetable),
-              plan: timetablePlan(timetable),
-            }));
-          }),
+      const perTimetable = await Promise.allSettled(
+        this.subscribableTimetables.map(async (timetable, i) => {
+          const events = await loadEvents(timetable, weeks);
+          return events.map((event) => ({
+            ...toCalendarEvent(event, timetable),
+            color: planColor(i),
+            plan: timetablePlan(timetable),
+          }));
+        }),
+      );
+      // e.g. a timetable was removed before the response arrived
+      if (request !== agendaCounter) return;
+      // a failing plan must not hide the events of the others
+      this.agendaEvents = perTimetable.flatMap((result) => {
+        if (result.status === 'fulfilled') return result.value;
+        console.error(
+          'Error during API call for agenda events',
+          result.reason?.message,
         );
-        // e.g. a timetable was removed before the response arrived
-        if (request === agendaCounter) this.agendaEvents = perTimetable.flat();
-      } catch (error) {
-        // never show the events of removed timetables
-        if (request === agendaCounter) this.agendaEvents = [];
-        console.error('Error during API call for agenda events', error.message);
-      }
+        return [];
+      });
     },
     /**
      * Import timetable from route and set as current timetable.
