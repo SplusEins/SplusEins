@@ -36,6 +36,11 @@ const COURSE_COLORS = [
   '#0A7E84',
 ];
 
+// agenda and its plan chips colour by plan
+export function planColor(index) {
+  return COURSE_COLORS[index % COURSE_COLORS.length];
+}
+
 function isCustomTimetable(timetable) {
   return !!timetable && !!timetable.whitelist;
 }
@@ -416,23 +421,27 @@ export const useSplusStore = defineStore('splus', {
       const request = ++agendaCounter;
       const week = dayjs(defaultWeek());
       const weeks = [week.isoWeek(), week.add(1, 'week').isoWeek()].join(',');
-      try {
-        const perTimetable = await Promise.all(
-          this.subscribableTimetables.map(async (timetable) => {
-            const events = await loadEvents(timetable, weeks);
-            return events.map((event) => ({
-              ...toCalendarEvent(event, timetable),
-              plan: timetablePlan(timetable),
-            }));
-          }),
+      const perTimetable = await Promise.allSettled(
+        this.subscribableTimetables.map(async (timetable, i) => {
+          const events = await loadEvents(timetable, weeks);
+          return events.map((event) => ({
+            ...toCalendarEvent(event, timetable),
+            color: planColor(i),
+            plan: timetablePlan(timetable),
+          }));
+        }),
+      );
+      // e.g. a timetable was removed before the response arrived
+      if (request !== agendaCounter) return;
+      // a failing plan must not hide the events of the others
+      this.agendaEvents = perTimetable.flatMap((result) => {
+        if (result.status === 'fulfilled') return result.value;
+        console.error(
+          'Error during API call for agenda events',
+          result.reason?.message,
         );
-        // e.g. a timetable was removed before the response arrived
-        if (request === agendaCounter) this.agendaEvents = perTimetable.flat();
-      } catch (error) {
-        // never show the events of removed timetables
-        if (request === agendaCounter) this.agendaEvents = [];
-        console.error('Error during API call for agenda events', error.message);
-      }
+        return [];
+      });
     },
     /**
      * Import timetable from route and set as current timetable.
