@@ -19,6 +19,8 @@ jobs:
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version-file: "docs/.nvmrc"
+          cache: npm
+          cache-dependency-path: "docs/package-lock.json"
       - run: npm ci
       - run: npm run build
       - run: npm run fmt:check
