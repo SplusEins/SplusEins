@@ -2,8 +2,6 @@ import dayjs from './dayjs';
 
 export const uniq = (iterable) => [...new Set(iterable)];
 
-export const SEMESTER_WEEK_1 = 39; // TODO Semesterwechsel set to first calendar week of the semester
-
 export function customTimetableToRoute(customTimetable) {
   const query = {
     id: customTimetable.id,

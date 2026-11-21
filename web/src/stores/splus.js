@@ -5,7 +5,6 @@ import { apiGet } from '../lib/api';
 import TIMETABLES from '../assets/timetables.json';
 import { useAppStore } from './app';
 import {
-  SEMESTER_WEEK_1,
   timetablePlan,
   timetableDisplayName,
   truncateText,
@@ -74,15 +73,6 @@ const formatDayjs = (date) => {
 };
 
 function defaultWeek() {
-  if (
-    dayjs().isoWeek() < SEMESTER_WEEK_1 &&
-    SEMESTER_WEEK_1 - dayjs().isoWeek() < 10
-  ) {
-    // Use semester beginning instead of today if semester hasn't started yet
-    // Do that only a few weeks before the semester so we avoid bugs with year wraparounds
-    return formatDayjs(dayjs().isoWeek(SEMESTER_WEEK_1).startOf('isoweek'));
-  }
-
   // if the user is looking at today and is on Sat/Sun, peek to the next week
   if (dayjs().isoWeekday() === 6 || dayjs().isoWeekday() === 7) {
     return formatDayjs(dayjs().startOf('isoweek').add(1, 'week'));
@@ -100,8 +90,13 @@ export function subscriptionKey(timetable) {
     : timetable.id;
 }
 
+/* the first of the days, e.g. '2026-09-21', which is not before `from` */
+const firstDayFrom = (days, from) =>
+  days.filter((day) => !dayjs(day).isBefore(from, 'day')).sort()[0];
+
 /**
- * Return all events for the given timetable and week.
+ * @returns the events of the given timetable and weeks and the day of the first
+ *   lecture of each week of the semester with lectures, e.g. ['2026-09-21']
  */
 export async function loadEvents(timetable, weeks) {
   let data;
@@ -115,7 +110,10 @@ export async function loadEvents(timetable, weeks) {
     data = await apiGet(`/api/splus/${timetable.id}/${weeks}`);
   }
 
-  return data.events;
+  return {
+    events: data.events,
+    weeksWithLectures: data.weeksWithLectures ?? [],
+  };
 }
 
 /**
@@ -188,6 +186,10 @@ export const useSplusStore = defineStore('splus', {
      * Currently viewed week as a date string. The date string specifies the first day of that week.
      */
     week: defaultWeek(),
+    /**
+     * Day of the first lecture after the viewed week, e.g. '2026-09-21'
+     */
+    nextLectureDay: undefined,
     /**
      * Events of all favorite and custom timetables for this and next week
      */
@@ -392,13 +394,21 @@ export const useSplusStore = defineStore('splus', {
       requestedWeek = week;
       const request = ++loadCounter;
       try {
-        const events = await loadEvents(this.schedule, dayjs(week).isoWeek());
+        const { events, weeksWithLectures } = await loadEvents(
+          this.schedule,
+          dayjs(week).isoWeek(),
+        );
         // e.g. the user switched to the next week before the response arrived
         if (request !== loadCounter) return;
         this.events = events;
+        this.nextLectureDay = firstDayFrom(
+          weeksWithLectures,
+          dayjs(week).add(1, 'week'),
+        );
       } catch (error) {
         if (request !== loadCounter) return;
         this.events = [];
+        this.nextLectureDay = undefined;
         if (error.status === 404) {
           useAppStore().enqueueError('Dieser Plan existiert nicht (mehr).');
         } else {
@@ -423,7 +433,7 @@ export const useSplusStore = defineStore('splus', {
       const weeks = [week.isoWeek(), week.add(1, 'week').isoWeek()].join(',');
       const perTimetable = await Promise.allSettled(
         this.subscribableTimetables.map(async (timetable, i) => {
-          const events = await loadEvents(timetable, weeks);
+          const { events } = await loadEvents(timetable, weeks);
           return events.map((event) => ({
             ...toCalendarEvent(event, timetable),
             color: planColor(i),

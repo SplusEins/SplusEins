@@ -4,10 +4,6 @@
 
 Alle relevanten Stellen im Code können auch gefunden werden, indem man nach `TODO Semesterwechsel` sucht. Im Folgenden werden diese kurz beschrieben.
 
-### Semesterstart setzen
-
-Im Frontend muss gesetzt werden, welche Woche die erste Vorlesungswoche ist. Das wird in der Variable `SEMESTER_WEEK_1` in [`web/src/lib/util.js`](https://github.com/SplusEins/SplusEins/blob/master/web/src/lib/util.js#L9) gesetzt. Der Vorlesungsbeginn der Ostfalia wird auf [dieser Seite](https://www.ostfalia.de/studieren/im-studium/studienorganisation/semestertermine) veröffentlicht, woraus man die ISO-Woche berechnen kann.
-
 ### `sked-parser` Konfiguration überprüfen
 
 Die oben erwähnte Aktualisierung der Pläne nutzt die Datei [`timetable-config.yaml`](https://github.com/SplusEins/SplusEins/blob/master/timetable-config.yaml) als Konfiguration. Das aktuelle Semester leitet `sked-parser` aus dem Datum ab (z. B. ab Februar 2027 `ss27`, ab August 2027 `ws27`) und hängt es an die IDs an. Pläne, deren URL oder Bezeichnung ein anderes Semester nennt, z. B. `SS2026` oder `WS2526`, werden übersprungen. Falls nötig, kann das Semester mit `current_sem` in der Datei festgelegt werden.
