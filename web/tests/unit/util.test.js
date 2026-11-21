@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import {
-  customTimetableToRoute,
   semesterLabel,
   timetableDisplayName,
   truncateText,
@@ -29,19 +28,5 @@ describe('util', () => {
     );
     expect(timetableDisplayName(timetable, 11)).toBe('Wirtschafts… 3. Sem.');
     expect(timetableDisplayName({ label: 'A-Gebäude' })).toBe('A-Gebäude');
-  });
-
-  it('customTimetableToRoute describes the timetable in the query', () => {
-    expect(
-      customTimetableToRoute({
-        id: ['a', 'b'],
-        label: 'Mein Plan',
-        whitelist: ['x'],
-      }),
-    ).toEqual({
-      name: 'plan-timetable',
-      params: {},
-      query: { id: ['a', 'b'], course: ['x'], name: 'Mein Plan', v: '1' },
-    });
   });
 });

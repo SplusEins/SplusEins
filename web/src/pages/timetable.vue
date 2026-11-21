@@ -14,8 +14,6 @@ import NotFoundPage from './not-found.vue';
 const splus = useSplusStore();
 const { schedule } = storeToRefs(splus);
 
-// The timetable is described by the URL:
-// /plan/<id> for a regular one or /plan?id=...&course=...&name=... for a personalized one
-splus.importSchedule(useRoute());
+splus.openPlan(useRoute());
 setPageTitle(splus.scheduleDisplayName());
 </script>

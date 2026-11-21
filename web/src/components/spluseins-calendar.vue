@@ -7,6 +7,7 @@
     fluid
     class="pa-1 pa-md-3"
   >
+    <plan-save-bar />
     <v-toolbar flat density="compact" class="inherit-background-color mb-2">
       <responsive-icon-button
         :breakpoint="!$vuetify.display.mobile"
@@ -78,8 +79,8 @@
     <calendar-event-popover v-model="selectedOpen" :event="selectedEvent" />
 
     <a
-      v-if="schedule && schedule.timetablePath"
-      :href="schedule.timetablePath"
+      v-if="original"
+      :href="original"
       class="pt-1 d-flex justify-end text-body-small text-medium-emphasis"
       target="_blank"
       rel="nofollow noopener"
@@ -97,12 +98,20 @@ import { mdiChevronLeft, mdiChevronRight, mdiCalendarToday } from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
 import CalendarActionBar from './calendar-action-bar.vue';
+import PlanSaveBar from './plan-save-bar.vue';
 import CalendarEventPopover from './calendar-event-popover.vue';
 import ResponsiveIconButton from './responsive-icon-button.vue';
 
 const splus = useSplusStore();
 const { schedule, week, getCalendarEvents: events } = storeToRefs(splus);
 const { mobile } = useDisplay();
+
+/* sked page of a plan from one timetable */
+const original = computed(
+  () =>
+    schedule.value?.sources.length === 1 &&
+    splus.getTimetableById(schedule.value.sources[0].id)?.timetablePath,
+);
 
 const calendarEndDate = computed(() =>
   dayjs(week.value)

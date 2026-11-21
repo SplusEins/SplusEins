@@ -4,26 +4,6 @@ export const uniq = (iterable) => [...new Set(iterable)];
 
 export const SEMESTER_WEEK_1 = 39; // TODO Semesterwechsel set to first calendar week of the semester
 
-export function customTimetableToRoute(customTimetable) {
-  const query = {
-    id: customTimetable.id,
-    course: customTimetable.whitelist,
-    name: customTimetable.label,
-    v: '1',
-  };
-
-  return { name: 'plan-timetable', params: {}, query };
-}
-
-export function timetablePlan(timetable) {
-  return timetable.whitelist
-    ? { name: timetable.label, route: customTimetableToRoute(timetable) }
-    : {
-        name: timetableDisplayName(timetable),
-        route: { name: 'plan-timetable', params: { timetable: timetable.id } },
-      };
-}
-
 /**
  * @returns e.g. '3. Sem.', or '' for semesters like 'WPF' or 'Sonstige',
  * whose timetable labels already say what they contain

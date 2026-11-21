@@ -2,48 +2,26 @@
 // timetables and settings are still there on the next visit.
 import { watch } from 'vue';
 import { useUiStore } from './ui';
-import { subscriptionKey, useSplusStore } from './splus';
+import { useSplusStore } from './splus';
 import { useMensaStore } from './mensa';
 
 const STORAGE_KEY = 'spluseins-state';
-// Up to version 18 the data was saved here. It is only read, so that an older
-// app version in another tab or after a rollback still finds its own data.
-const LEGACY_STORAGE_KEY = 'spluseins';
 
 /**
- * Format of the saved data. Saved timetables of older, unknown formats are
- * deleted. Timetables of past semesters do not need a new version, they are
- * dropped by forgetPastSemesters because their ids contain the semester.
+ * Format of the saved data. Saved plans of older formats are deleted.
+ * Timetables of past semesters do not need a new version, they are dropped
+ * by forgetPastSemesters because their ids contain the semester.
  */
-const VERSION = 19;
+const VERSION = 20;
 
 function readSavedState() {
   try {
-    const saved =
-      localStorage.getItem(STORAGE_KEY) ??
-      localStorage.getItem(LEGACY_STORAGE_KEY);
-    return JSON.parse(saved) || {};
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
   } catch (error) {
     // e.g. localStorage is blocked by the browser
     console.error('could not read saved state', error.message);
     return {};
   }
-}
-
-// version 18 saved copies of the timetables instead of their ids,
-// anything broken is dropped by forgetPastSemesters
-function migrateFrom18({
-  customSchedules,
-  favoriteSchedules,
-  subscribedTimetable,
-}) {
-  return {
-    customSchedules,
-    favoriteIds: [].concat(favoriteSchedules ?? []).map((t) => t?.id),
-    subscribedKey: subscribedTimetable?.id
-      ? subscriptionKey(subscribedTimetable)
-      : null,
-  };
 }
 
 export function persistStores(pinia) {
@@ -55,13 +33,9 @@ export function persistStores(pinia) {
   const saved = readSavedState();
   ui.$patch(saved.ui || {});
   mensa.$patch(saved.mensa || {});
-  // broken saved timetables must not break the app
+  // broken saved plans must not break the app
   try {
-    if (saved.version === 18 && saved.splus) {
-      saved.splus = migrateFrom18(saved.splus);
-    } else if (saved.version < VERSION) {
-      delete saved.splus;
-    }
+    if (saved.version < VERSION) delete saved.splus;
     splus.$patch(saved.splus || {});
     splus.forgetPastSemesters();
   } catch (error) {
@@ -78,9 +52,7 @@ export function persistStores(pinia) {
       hasSeenDisclaimer: ui.hasSeenDisclaimer,
     },
     splus: {
-      customSchedules: splus.customSchedules,
-      favoriteIds: splus.favoriteIds,
-      subscribedKey: splus.subscribedKey,
+      plans: splus.plans,
     },
     mensa: {
       location: mensa.location,
@@ -95,7 +67,6 @@ export function persistStores(pinia) {
         console.error('could not save state', error.message);
       }
     },
-    // also save right away, so that converted or dropped timetables are stored
-    { deep: true, immediate: true },
+    { deep: true },
   );
 }

@@ -3,13 +3,15 @@ import { createPinia, setActivePinia } from 'pinia';
 import TIMETABLES from '../../src/assets/timetables.json';
 import { useSplusStore } from '../../src/stores/splus';
 import { useAppStore } from '../../src/stores/app';
+import { planKey } from '../../src/lib/plans';
 
 const [timetable, otherTimetable] = TIMETABLES;
-const custom = (label, id = [timetable.id]) => ({
-  id,
-  label,
-  whitelist: ['x'],
+const remembered = (id = timetable.id) => ({ sources: [{ id }] });
+const named = (name, sources = [{ id: timetable.id, only: ['x'] }]) => ({
+  name,
+  sources,
 });
+const keys = (plans) => plans.map(planKey);
 
 describe('splus store', () => {
   let splus;
@@ -19,136 +21,166 @@ describe('splus store', () => {
     splus = useSplusStore();
   });
 
-  afterEach(() => {
-    vi.unstubAllGlobals();
-    vi.restoreAllMocks();
-  });
+  afterEach(() => vi.unstubAllGlobals());
 
-  describe('subscribed timetable', () => {
-    it('is the first saved timetable', () => {
-      splus.addFavoriteSchedule(timetable);
-      splus.addCustomSchedule(custom('Mein Plan'));
-      expect(splus.subscribedTimetable.id).toBe(timetable.id);
+  describe('savePlan', () => {
+    it('replaces the plan with the same key in place', () => {
+      splus.toggleRemembered({ id: timetable.id });
+      splus.toggleRemembered({ id: otherTimetable.id });
+      const edited = { sources: [{ id: timetable.id, except: ['x'] }] };
+      splus.savePlan(undefined, edited);
+      expect(splus.plans).toEqual([edited, remembered(otherTimetable.id)]);
     });
 
-    it('moves to the next timetable when it is removed', () => {
-      splus.addFavoriteSchedule(timetable);
-      splus.addCustomSchedule(custom('Mein Plan'));
-      splus.removeFavoriteSchedule(timetable);
-      expect(splus.subscribedTimetable.label).toBe('Mein Plan');
-
-      splus.deleteCustomSchedule(custom('Mein Plan'));
-      expect(splus.subscribedTimetable).toEqual({});
+    it('keeps the place of a renamed plan', () => {
+      splus.savePlan(undefined, named('Mein Plan'));
+      splus.toggleRemembered({ id: otherTimetable.id });
+      splus.savePlan('Mein Plan', named('Neuer Plan'));
+      expect(keys(splus.plans)).toEqual(['Neuer Plan', otherTimetable.id]);
     });
 
-    it('stays when another timetable is removed', () => {
-      splus.addFavoriteSchedule(timetable);
-      splus.addFavoriteSchedule(otherTimetable);
-      splus.removeFavoriteSchedule(otherTimetable);
-      expect(splus.subscribedTimetable.id).toBe(timetable.id);
-    });
-
-    it('stays on a personal timetable when it is edited', () => {
-      splus.addCustomSchedule(custom('Mein Plan'));
-      splus.addFavoriteSchedule(timetable);
-      splus.replaceCustomSchedule(custom('Mein Plan'), custom('Neuer Plan'));
-      expect(splus.subscribedTimetable.label).toBe('Neuer Plan');
-      expect(splus.customTimetableLabels).toEqual(['Neuer Plan']);
+    it('replaces a plan which got the key of another', () => {
+      splus.toggleRemembered({ id: timetable.id });
+      splus.savePlan(undefined, named('Mein Plan'));
+      splus.savePlan('Mein Plan', remembered());
+      expect(splus.plans).toEqual([remembered()]);
     });
   });
 
-  it('forgets timetables of past semesters', () => {
-    splus.addFavoriteSchedule(timetable);
-    splus.addFavoriteSchedule({ id: 'old_ss25' });
-    splus.addCustomSchedule(custom('Alt', ['old_ss25']));
-    splus.addCustomSchedule(custom('Gemischt', ['old_ss25', timetable.id]));
-    splus.forgetPastSemesters();
-    expect(splus.favoriteIds).toEqual([timetable.id]);
-    expect(splus.customTimetableLabels).toEqual(['Gemischt']);
+  it('remembers a timetable only once', () => {
+    splus.toggleRemembered({ id: timetable.id });
+    expect(splus.isRemembered(timetable.id)).toBe(true);
+    splus.savePlan(undefined, named('Mein Plan'));
+    expect(splus.isRemembered(otherTimetable.id)).toBe(false);
+    splus.toggleRemembered({ id: timetable.id });
+    expect(splus.isRemembered(timetable.id)).toBe(false);
+    expect(keys(splus.plans)).toEqual(['Mein Plan']);
   });
 
-  it('keeps unknown timetables of the current semester', () => {
-    const gone = `gone${timetable.id.slice(timetable.id.lastIndexOf('_'))}`;
-    splus.addFavoriteSchedule({ id: gone });
-    splus.addCustomSchedule(custom('Weg', [gone]));
-    splus.forgetPastSemesters();
-    expect(splus.favoriteIds).toEqual([gone]);
-    expect(splus.customTimetableLabels).toEqual(['Weg']);
+  it('adds a course to a plan', () => {
+    splus.savePlan(undefined, named('Mein Plan'));
+    splus.addCourse('Mein Plan', timetable.id, 'y');
+    splus.addCourse('Mein Plan', otherTimetable.id, 'z');
+    expect(splus.plans[0].sources).toEqual([
+      { id: timetable.id, only: ['x', 'y'] },
+      { id: otherTimetable.id, only: ['z'] },
+    ]);
   });
 
-  it('forgets broken personal timetables', () => {
-    splus.customSchedules = { Kaputt: { label: 'Kaputt' }, Null: null };
-    splus.forgetPastSemesters();
-    expect(splus.customTimetableLabels).toEqual([]);
-  });
-
-  it('adds each favorite only once', () => {
-    splus.addFavoriteSchedule(timetable);
-    splus.addFavoriteSchedule({ ...timetable });
-    expect(splus.favoriteSchedules).toHaveLength(1);
-  });
-
-  it('never overwrites a custom timetable', () => {
-    splus.addCustomSchedule(custom('Mein Plan'));
-    splus.addCustomSchedule(custom('Mein Plan', [otherTimetable.id]));
-    expect(splus.customSchedules['Mein Plan'].id).toEqual([timetable.id]);
-  });
-
-  describe('importSchedule', () => {
-    it('opens a regular timetable', () => {
-      splus.importSchedule({ params: { timetable: timetable.id }, query: {} });
-      expect(splus.schedule.id).toBe(timetable.id);
-      expect(splus.isCustomTimetable).toBe(false);
+  describe('forgetPastSemesters', () => {
+    it('forgets timetables of past semesters', () => {
+      splus.toggleRemembered({ id: timetable.id });
+      splus.toggleRemembered({ id: 'old_ss25' });
+      splus.savePlan(undefined, named('Alt', [{ id: 'old_ss25' }]));
+      splus.savePlan(
+        undefined,
+        named('Gemischt', [{ id: 'old_ss25' }, { id: timetable.id }]),
+      );
+      splus.forgetPastSemesters();
+      expect(splus.plans).toEqual([
+        remembered(),
+        named('Gemischt', [{ id: timetable.id }]),
+      ]);
     });
 
-    it('opens and saves a personal timetable', () => {
-      splus.importSchedule({
-        params: {},
-        query: { v: '1', id: timetable.id, course: 'x', name: 'Mein Plan' },
+    it('keeps unknown timetables of the current semester', () => {
+      const gone = `gone${timetable.id.slice(timetable.id.lastIndexOf('_'))}`;
+      splus.toggleRemembered({ id: gone });
+      splus.forgetPastSemesters();
+      expect(splus.plans).toEqual([remembered(gone)]);
+    });
+
+    it('forgets broken plans', () => {
+      splus.plans = [{ name: 'Kaputt' }, null, { sources: [null] }];
+      splus.forgetPastSemesters();
+      expect(splus.plans).toEqual([]);
+    });
+  });
+
+  describe('openPlan', () => {
+    it('opens a timetable', () => {
+      splus.openPlan({ params: { sources: timetable.id }, query: {} });
+      expect(splus.schedule).toEqual(remembered());
+      expect(splus.plans).toEqual([]);
+    });
+
+    it('opens a shared plan with a name without saving it', () => {
+      splus.openPlan({
+        params: { sources: `${timetable.id}:x,unknown` },
+        query: { name: 'Mein Plan' },
       });
-      expect(splus.schedule).toEqual({
-        id: [timetable.id],
-        label: 'Mein Plan',
-        whitelist: ['x'],
-      });
-      expect(splus.isCustomTimetable).toBe(true);
-      expect(splus.customTimetableLabels).toEqual(['Mein Plan']);
+      expect(splus.schedule).toEqual(named('Mein Plan'));
+      expect(splus.plans).toEqual([]);
     });
 
-    it('never shows the events of the timetable opened before', () => {
-      splus.importSchedule({ params: { timetable: timetable.id }, query: {} });
+    it('opens nothing without known timetables', () => {
+      splus.openPlan({ params: { sources: 'unknown' }, query: {} });
+      expect(splus.schedule).toBeUndefined();
+    });
+
+    it('never shows the events of the plan opened before', () => {
+      splus.openPlan({ params: { sources: timetable.id }, query: {} });
       splus.events = [{ title: 'old' }];
-      splus.importSchedule({
-        params: { timetable: otherTimetable.id },
-        query: {},
-      });
+      splus.openPlan({ params: { sources: otherTimetable.id }, query: {} });
       expect(splus.events).toEqual([]);
     });
 
-    it('cancels the request of the timetable opened before', async () => {
+    it('cancels the request of the plan opened before', async () => {
       let respond;
       vi.stubGlobal(
         'fetch',
         vi.fn(() => new Promise((resolve) => (respond = resolve))),
       );
-      splus.importSchedule({ params: { timetable: timetable.id }, query: {} });
+      splus.openPlan({ params: { sources: timetable.id }, query: {} });
       const loading = splus.showWeek('2026-11-16');
-      splus.importSchedule({
-        params: { timetable: otherTimetable.id },
-        query: {},
-      });
+      splus.openPlan({ params: { sources: otherTimetable.id }, query: {} });
       expect(fetch.mock.calls[0][1].signal.aborted).toBe(true);
-      respond(Response.json({ events: [{ title: 'old' }] }));
+      respond(Response.json([{ title: 'old' }]));
       await loading;
       expect(splus.events).toEqual([]);
     });
   });
 
-  it('knows the faculties of the saved timetables', () => {
+  describe('unsavedState', () => {
+    const open = (sources, name) =>
+      splus.openPlan({ params: { sources }, query: name ? { name } : {} });
+
+    it('is empty for a timetable with all courses', () => {
+      open(timetable.id);
+      expect(splus.unsavedState).toBeUndefined();
+    });
+
+    it('asks to save a plan with a name or selected courses', () => {
+      open(timetable.id, 'Mein Plan');
+      expect(splus.unsavedState).toBe('unsaved');
+      open(`${timetable.id}!x`);
+      expect(splus.unsavedState).toBe('unsaved');
+    });
+
+    it('notices changes of a saved plan', () => {
+      splus.savePlan(undefined, named('Mein Plan'));
+      open(`${timetable.id}:x`, 'Mein Plan');
+      expect(splus.unsavedState).toBeUndefined();
+      open(`${timetable.id}:x.y`, 'Mein Plan');
+      expect(splus.unsavedState).toBe('changed');
+    });
+  });
+
+  it('finds the saved version of a timetable', () => {
+    const hidden = { sources: [{ id: timetable.id, except: ['x'] }] };
+    splus.savePlan(undefined, hidden);
+    expect(splus.planByKey(timetable.id)).toEqual(hidden);
+    expect(splus.planByKey(otherTimetable.id)).toBeUndefined();
+  });
+
+  it('knows the faculties of the saved plans', () => {
     expect(splus.savedFaculties).toEqual([]);
     const law = TIMETABLES.find(({ faculty }) => faculty === 'Recht');
-    splus.addCustomSchedule(custom('Mein Plan', [timetable.id, law.id]));
-    splus.addFavoriteSchedule(otherTimetable);
+    splus.savePlan(
+      undefined,
+      named('Mein Plan', [{ id: timetable.id }, { id: law.id }]),
+    );
+    splus.toggleRemembered({ id: otherTimetable.id });
     expect(splus.savedFaculties).toEqual([timetable.faculty, 'Recht']);
   });
 
@@ -175,13 +207,13 @@ describe('splus store', () => {
         'fetch',
         vi.fn(() => new Promise((resolve) => responses.push(resolve))),
       );
-      splus.addFavoriteSchedule(timetable);
+      splus.toggleRemembered({ id: timetable.id });
 
       const first = splus.loadAgendaEvents();
       const second = splus.loadAgendaEvents();
-      responses[1](Response.json({ events: [{ title: 'new', meta: {} }] }));
+      responses[1](Response.json([{ title: 'new', meta: {} }]));
       await second;
-      responses[0](Response.json({ events: [{ title: 'old', meta: {} }] }));
+      responses[0](Response.json([{ title: 'old', meta: {} }]));
       await first;
 
       expect(splus.agendaEvents.map(({ name }) => name)).toEqual(['new']);
@@ -194,11 +226,11 @@ describe('splus store', () => {
         vi.fn(async (url) =>
           url.includes(otherTimetable.id)
             ? new Response('', { status: 500 })
-            : Response.json({ events: [{ title: 'ok', meta: {} }] }),
+            : Response.json([{ title: 'ok', meta: {} }]),
         ),
       );
-      splus.addFavoriteSchedule(timetable);
-      splus.addFavoriteSchedule(otherTimetable);
+      splus.toggleRemembered({ id: timetable.id });
+      splus.toggleRemembered({ id: otherTimetable.id });
 
       await splus.loadAgendaEvents();
 
@@ -208,7 +240,7 @@ describe('splus store', () => {
 
   describe('showWeek', () => {
     beforeEach(() => {
-      splus.importSchedule({ params: { timetable: timetable.id }, query: {} });
+      splus.openPlan({ params: { sources: timetable.id }, query: {} });
     });
 
     it('keeps only the response of the last request', async () => {
@@ -220,9 +252,9 @@ describe('splus store', () => {
 
       const first = splus.showWeek('2026-11-09');
       const second = splus.showWeek('2026-11-16');
-      responses[1](Response.json({ events: [{ title: 'new' }] }));
+      responses[1](Response.json([{ title: 'new' }]));
       await second;
-      responses[0](Response.json({ events: [{ title: 'old' }] }));
+      responses[0](Response.json([{ title: 'old' }]));
       await first;
 
       expect(splus.events).toEqual([{ title: 'new' }]);
@@ -239,7 +271,7 @@ describe('splus store', () => {
 
       const loading = splus.showWeek('2026-11-16');
       expect(splus.week).toBe('2026-11-09');
-      respond(Response.json({ events: [] }));
+      respond(Response.json([]));
       await loading;
       expect(splus.week).toBe('2026-11-16');
     });

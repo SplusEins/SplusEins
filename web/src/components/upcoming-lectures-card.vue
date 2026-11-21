@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title class="text-headline-small">Als Nächstes</v-card-title>
 
-    <template v-if="!splus.hasSubscribableTimetables">
+    <template v-if="!splus.hasPlans">
       <v-card-text class="pb-0">
         Such deinen Stundenplan und merke ihn dir mit
         <v-icon :icon="mdiHeartOutline" size="small" aria-label="Herz" />, dann
@@ -63,10 +63,7 @@
 
     <calendar-event-popover v-model="selectedOpen" :event="selected" />
 
-    <v-card-actions
-      v-if="mobile && splus.hasSubscribableTimetables"
-      class="flex-wrap ga-2 px-4"
-    >
+    <v-card-actions v-if="mobile && splus.hasPlans" class="flex-wrap ga-2 px-4">
       <v-chip
         v-for="plan in plans"
         :key="plan.name"
@@ -100,7 +97,8 @@ import {
 } from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { planColor, useSplusStore } from '../stores/splus';
-import { relativeDay, timetableDisplayName, timetablePlan } from '../lib/util';
+import { relativeDay } from '../lib/util';
+import { planLink } from '../lib/plans';
 import { useNow } from '../lib/now';
 import CalendarEventPopover from './calendar-event-popover.vue';
 import TimetableSearch from './timetable-search.vue';
@@ -120,9 +118,8 @@ function showEvent(event) {
   selectedOpen.value = true;
 }
 const plans = computed(() =>
-  splus.subscribableTimetables.map((timetable, i) => ({
-    ...timetablePlan(timetable),
-    name: timetableDisplayName(timetable, CHIP_LABEL_LENGTH),
+  splus.plans.map((plan, i) => ({
+    ...planLink(plan, CHIP_LABEL_LENGTH),
     color: planColor(i),
   })),
 );
@@ -157,11 +154,11 @@ const events = computed(() => {
 });
 
 async function load() {
-  if (!splus.hasSubscribableTimetables) return;
+  if (!splus.hasPlans) return;
   loading.value = splus.agendaEvents.length === 0;
   await splus.loadAgendaEvents();
   loading.value = false;
 }
 onMounted(load);
-watch(() => splus.subscribableTimetables, load);
+watch(() => splus.plans, load);
 </script>

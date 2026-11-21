@@ -31,7 +31,7 @@
           <timetable-search v-model="query" />
         </template>
 
-        <v-form v-else v-model="valid" @submit.prevent>
+        <v-form v-else ref="form" v-model="valid" @submit.prevent>
           <v-progress-linear v-if="loading" indeterminate />
           <course-multiselect
             v-model="selectedCourses"
@@ -56,13 +56,9 @@
           <div class="px-4">
             <v-text-field
               v-model="selectedName"
-              :rules="[
-                rules.required,
-                rules.uniqueScheduleLabel,
-                rules.uniqueCustomScheduleLabel,
-              ]"
-              label="Name"
-              required
+              :rules="[rules.required, rules.notATimetable, rules.unique]"
+              :label="nameRequired ? 'Name' : 'Name (optional)'"
+              :required="nameRequired"
             />
           </div>
         </v-form>
@@ -94,7 +90,13 @@
 import { computed, defineAsyncComponent, provide, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { mdiArrowLeft, mdiClose, mdiPlus } from '@mdi/js';
-import { courseCount, customTimetableToRoute, uniq } from '../lib/util';
+import { courseCount, uniq } from '../lib/util';
+import {
+  includesCourse,
+  planDisplayName,
+  planKey,
+  planRoute,
+} from '../lib/plans';
 import { useSplusStore, loadUniqueLectures } from '../stores/splus';
 import { useAppStore } from '../stores/app';
 import TimetableSearch from './timetable-search.vue';
@@ -105,8 +107,8 @@ const CourseMultiselect = defineAsyncComponent(
 );
 
 const props = defineProps({
-  /* custom timetable to edit, or one without label to start a new one from - leave empty to start empty */
-  customSchedule: {
+  /* plan to edit, leave empty to start a new one */
+  plan: {
     type: Object,
     default: () => undefined,
   },
@@ -130,8 +132,10 @@ const openedSchedules = ref([]);
 /* lectures (events) of the selected timetables: { timetable id: [lecture] } */
 const lectures = ref({});
 const valid = ref(false);
+const form = ref(undefined);
 
-const isNew = computed(() => !props.customSchedule?.label);
+const isNew = computed(() => !props.plan);
+const nameRequired = computed(() => selectedSchedules.value.length >= 2);
 const saveable = computed(
   () => valid.value && selectedCourses.value.length > 0,
 );
@@ -144,25 +148,27 @@ const adding = computed(
 );
 const title = computed(() => {
   if (addingPlan.value) return 'Plan hinzufügen';
-  return isNew.value ? 'Neuer Plan' : props.customSchedule.label;
+  return isNew.value ? 'Neuer Plan' : planDisplayName(props.plan);
 });
 const selectedIds = computed(() => selectedSchedules.value.map(({ id }) => id));
 
+const isPlanName = (name) => splus.plans.some((plan) => plan.name === name);
+
 const rules = {
-  required: (value) => !!value || 'Pflichtfeld',
-  uniqueScheduleLabel: (value) =>
+  required: (value) =>
+    !!value || !nameRequired.value || 'Pflichtfeld bei mehreren Plänen',
+  notATimetable: (value) =>
     !splus.timetableIds.includes(value) || 'Bereits vergeben',
-  uniqueCustomScheduleLabel: (value) =>
-    value === props.customSchedule?.label ||
-    !splus.customTimetableLabels.includes(value) ||
+  unique: (value) =>
+    !value ||
+    value === props.plan?.name ||
+    !isPlanName(value) ||
     'Bereits vergeben',
 };
 
 /* "Mein Plan", or "Mein Plan 2" etc. if that is taken */
 function defaultName() {
-  const taken = (name) =>
-    splus.customTimetableLabels.includes(name) ||
-    splus.timetableIds.includes(name);
+  const taken = (name) => isPlanName(name) || splus.timetableIds.includes(name);
   let name = 'Mein Plan';
   for (let i = 2; taken(name); i++) name = `Mein Plan ${i}`;
   return name;
@@ -210,51 +216,59 @@ function removeSchedule(schedule) {
 }
 
 /**
- * Store the edited schedule.
+ * Per timetable all courses, all except the unchecked or only the checked ones,
+ * whichever list is shorter. Timetables without checked courses are left out.
  */
+function selectedSources() {
+  const selected = new Set(selectedCourses.value);
+  return selectedSchedules.value.flatMap(({ id }) => {
+    const ids = (lectures.value[id] ?? []).map((lecture) => lecture.id);
+    // the courses could not be loaded
+    if (ids.length === 0) {
+      return props.plan?.sources.filter((source) => source.id === id) ?? [];
+    }
+    const checked = ids.filter((course) => selected.has(course));
+    const unchecked = ids.filter((course) => !selected.has(course));
+    if (checked.length === 0) return [];
+    if (unchecked.length === 0) return [{ id }];
+    return checked.length > unchecked.length
+      ? [{ id, except: unchecked }]
+      : [{ id, only: checked }];
+  });
+}
+
 function save() {
   dialogOpen.value = false;
-
-  const customSchedule = {
-    id: selectedIds.value,
-    label: selectedName.value,
-    whitelist: uniq(selectedCourses.value),
-  };
-  const route = customTimetableToRoute(customSchedule);
-
-  if (isNew.value) {
-    router.push(route);
-  } else {
-    splus.replaceCustomSchedule(props.customSchedule, customSchedule);
-    router.replace(route);
-  }
+  const sources = selectedSources();
+  const plan = selectedName.value
+    ? { name: selectedName.value, sources }
+    : { sources };
+  splus.savePlan(props.plan && planKey(props.plan), plan);
+  router[isNew.value ? 'push' : 'replace'](planRoute(plan));
 }
 
 /**
- * Load the state from the passed schedule.
+ * Load the courses of the plan.
  */
 async function load() {
-  selectedName.value = props.customSchedule.label || defaultName();
+  selectedName.value = props.plan.name ?? '';
 
   await Promise.all(
-    props.customSchedule.id
-      .map((id) => splus.getTimetableById(id))
+    props.plan.sources
+      .map(({ id }) => splus.getTimetableById(id))
       // timetables which do not exist anymore
       .filter((schedule) => schedule !== undefined)
       .map(addSchedule),
   );
 
-  const loadedIds = allLectures.value.map(({ id }) => id);
-  if (isNew.value) {
-    // started from a plan: all of its courses, shown
-    selectedCourses.value = uniq(loadedIds);
-    openedSchedules.value = selectedIds.value;
-  } else {
-    // without courses which do not exist anymore
-    selectedCourses.value = props.customSchedule.whitelist.filter((id) =>
-      loadedIds.includes(id),
-    );
-  }
+  selectedCourses.value = uniq(
+    props.plan.sources.flatMap((source) =>
+      (lectures.value[source.id] ?? [])
+        .map(({ id }) => id)
+        .filter((id) => includesCourse(source, id)),
+    ),
+  );
+  if (selectedIds.value.length === 1) openedSchedules.value = selectedIds.value;
 }
 
 /**
@@ -273,10 +287,16 @@ function reset() {
 watch(dialogOpen, () => {
   if (!dialogOpen.value) {
     reset();
-  } else if (props.customSchedule) {
+  } else if (props.plan) {
     load();
-  } else {
+  }
+});
+
+// several timetables need a name
+watch(nameRequired, () => {
+  if (nameRequired.value && !selectedName.value) {
     selectedName.value = defaultName();
   }
+  form.value?.validate();
 });
 </script>

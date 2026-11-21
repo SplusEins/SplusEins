@@ -77,13 +77,13 @@
         </v-list-item>
       </v-list>
 
-      <template v-if="event.plan || customPlan || addTargets.length > 0">
+      <template v-if="event.plan || openPlan || addTargets.length > 0">
         <v-divider />
         <v-card-actions class="justify-start flex-wrap px-4">
           <v-btn
-            v-if="customPlan"
+            v-if="openPlan"
             :prepend-icon="mdiEyeOffOutline"
-            :disabled="customPlan.whitelist.length === 1"
+            :disabled="withoutThisCourse.sources.length === 0"
             variant="outlined"
             @click="hideFromPlan()"
           >
@@ -98,8 +98,8 @@
           >
             {{
               has(addTargets[0])
-                ? `Schon in ${addTargets[0].label}`
-                : `Zu ${addTargets[0].label} hinzufügen`
+                ? `Schon in ${addTargets[0].name}`
+                : `Zu ${addTargets[0].name} hinzufügen`
             }}
           </v-btn>
           <v-menu v-else-if="addTargets.length > 1">
@@ -112,8 +112,8 @@
               <v-list-subheader>Hinzufügen zu</v-list-subheader>
               <v-list-item
                 v-for="plan in addTargets"
-                :key="plan.label"
-                :title="plan.label"
+                :key="plan.name"
+                :title="plan.name"
                 :subtitle="has(plan) ? 'Schon drin' : undefined"
                 :disabled="has(plan)"
                 @click="addTo(plan)"
@@ -155,7 +155,13 @@ import {
 } from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
-import { customTimetableToRoute, relativeDay } from '../lib/util';
+import { relativeDay } from '../lib/util';
+import {
+  includesCourse,
+  planKey,
+  planRoute,
+  withoutCourse,
+} from '../lib/plans';
 import { useNow } from '../lib/now';
 
 const props = defineProps({
@@ -191,34 +197,37 @@ const day = computed(() =>
 const openPlan = computed(() =>
   props.event.plan ? undefined : splus.schedule,
 );
-const customPlan = computed(
-  () =>
-    openPlan.value?.whitelist && splus.customSchedules[openPlan.value.label],
+const withoutThisCourse = computed(() =>
+  withoutCourse(openPlan.value, props.event.id, props.event.sources),
 );
-/* custom plans the course of a normal plan can be added to */
+/* plans with a name the course can be added to */
 const addTargets = computed(() =>
-  openPlan.value && !openPlan.value.whitelist
-    ? Object.values(splus.customSchedules)
+  openPlan.value
+    ? splus.plans.filter((plan) => plan.name && plan !== splus.savedSchedule)
     : [],
 );
-const has = (plan) => plan.whitelist.includes(props.event.id);
+const has = (plan) =>
+  plan.sources.some(
+    (source) =>
+      props.event.sources.includes(source.id) &&
+      includesCourse(source, props.event.id),
+  );
 
 function addTo(plan) {
-  splus.addCourseToCustomSchedule(
-    plan.label,
-    openPlan.value.id,
-    props.event.id,
-  );
+  splus.addCourse(planKey(plan), props.event.sources[0], props.event.id);
 }
 
-/* removes the course with all its lectures from the custom plan */
+/**
+ * Removes the course with all its lectures from the open plan. A saved plan
+ * is saved right away, otherwise the bar on the page offers to save it.
+ */
 function hideFromPlan() {
-  const updated = splus.removeCourseFromCustomSchedule(
-    customPlan.value.label,
-    props.event.id,
-  );
+  const changed = withoutThisCourse.value;
+  if (splus.savedSchedule && !splus.unsavedState) {
+    splus.savePlan(planKey(splus.schedule), changed);
+  }
   open.value = false;
   // the new URL re-creates the plan page
-  router.replace(customTimetableToRoute(updated));
+  router.replace(planRoute(changed));
 }
 </script>
