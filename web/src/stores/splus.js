@@ -4,13 +4,15 @@ import dayjs from '../lib/dayjs';
 import { apiGet } from '../lib/api';
 import TIMETABLES from '../assets/timetables.json';
 import { useAppStore } from './app';
+import { SEMESTER_WEEK_1, uniq } from '../lib/util';
 import {
-  SEMESTER_WEEK_1,
-  timetablePlan,
-  timetableDisplayName,
-  truncateText,
-  uniq,
-} from '../lib/util';
+  parseSources,
+  planDisplayName,
+  planKey,
+  planRoute,
+  sourcesToString,
+  withCourse,
+} from '../lib/plans';
 
 // 20 evenly spread hues, the first ten are 36° apart
 const COURSE_COLORS = [
@@ -41,11 +43,7 @@ export function planColor(index) {
   return COURSE_COLORS[index % COURSE_COLORS.length];
 }
 
-function isCustomTimetable(timetable) {
-  return !!timetable && !!timetable.whitelist;
-}
-
-function toCalendarEvent(event, timetable) {
+function toCalendarEvent(event) {
   return {
     id: event.id,
     name: event.title,
@@ -54,18 +52,9 @@ function toCalendarEvent(event, timetable) {
     location: event.location,
     lecturer: event.meta.organiserName,
     info: event.meta.description,
-    color: courseColor(event, timetable),
+    sources: event.sources,
+    color: COURSE_COLORS[event.colorIndex % COURSE_COLORS.length],
   };
-}
-
-function courseColor(event, timetable) {
-  // custom plans combine several plans, whose indexes would collide
-  const whitelist = isCustomTimetable(timetable) ? timetable.whitelist : [];
-  const index = whitelist.length
-    ? whitelist.indexOf(event.id)
-    : event.colorIndex;
-  // grey for responses cached before the API sent colorIndex
-  return COURSE_COLORS[index % COURSE_COLORS.length] ?? '#616161';
 }
 
 const formatDayjs = (date) => {
@@ -91,30 +80,10 @@ function defaultWeek() {
 }
 
 /**
- * Key of a saved timetable which stays the same while the app is updated.
+ * Return all events of the plan in the given weeks.
  */
-export function subscriptionKey(timetable) {
-  return isCustomTimetable(timetable)
-    ? `custom:${timetable.label}`
-    : timetable.id;
-}
-
-/**
- * Return all events for the given timetable and week.
- */
-export async function loadEvents(timetable, weeks) {
-  let data;
-  if (isCustomTimetable(timetable)) {
-    const ids = timetable.id.join(',');
-    const whitelist = timetable.whitelist.join(',');
-    data = await apiGet(
-      `/api/splus/${ids}/${weeks}/${whitelist}/${encodeURIComponent(timetable.label)}`,
-    );
-  } else {
-    data = await apiGet(`/api/splus/${timetable.id}/${weeks}`);
-  }
-
-  return data.events;
+export async function loadEvents(plan, weeks) {
+  return await apiGet(`/api/splus/${sourcesToString(plan.sources)}/${weeks}`);
 }
 
 /**
@@ -125,13 +94,7 @@ export async function loadUniqueLectures(timetable) {
 }
 
 /* all timetables of the Ostfalia, they do not change while the app runs */
-const SCHEDULES = TIMETABLES.map((timetable) => ({
-  ...timetable,
-  route: {
-    name: 'plan-timetable',
-    params: { timetable: timetable.id },
-  },
-}));
+const SCHEDULES = TIMETABLES;
 const SCHEDULES_BY_ID = new Map(
   SCHEDULES.map((schedule) => [schedule.id, schedule]),
 );
@@ -154,31 +117,14 @@ let requestedWeek;
 export const useSplusStore = defineStore('splus', {
   state: () => ({
     /**
-     * Current timetable, either one of TIMETABLES or customTimetable.
+     * Plan of the page, described by its URL: { name?, sources }
      */
     schedule: undefined,
     /**
-     * Map of created or visited custom timetables.
-     * Key: label
-     *
-     * Values: custom timetable like this:
-     * { ...timetable, label, whitelist: [ titleId ] }
-     *
-     * where
-     * timetable: Base timetable.
-     * label: Custom name.
-     * filters: Whitelist array of keys.
-     */
-    customSchedules: {},
-    /**
-     * Ids of the favorite timetables. Only ids are saved, so that labels
+     * Saved plans, see lib/plans.js. Only ids are saved, so that labels
      * stay current and timetables of past semesters can be dropped.
      */
-    favoriteIds: [],
-    /**
-     * subscriptionKey of the timetable shown on the start page
-     */
-    subscribedKey: null,
+    plans: [],
     /**
      * Events
      */
@@ -188,7 +134,7 @@ export const useSplusStore = defineStore('splus', {
      */
     week: defaultWeek(),
     /**
-     * Events of all favorite and custom timetables for this and next week
+     * Events of all saved plans for this and next week
      */
     agendaEvents: [],
   }),
@@ -208,9 +154,7 @@ export const useSplusStore = defineStore('splus', {
      * @see https://clickermonkey.github.io/dayspan/docs/interfaces/eventinput.html
      */
     getCalendarEvents: (state) => {
-      return state.events.map((event) =>
-        toCalendarEvent(event, state.schedule),
-      );
+      return state.events.map(toCalendarEvent);
     },
     /**
      * Group the timetables: { 'faculty degree': { semester: timetables } }
@@ -252,134 +196,90 @@ export const useSplusStore = defineStore('splus', {
     getTimetableById: () => (timetableId) => {
       return SCHEDULES_BY_ID.get(timetableId);
     },
-    favoriteSchedules: (state) => {
-      return state.favoriteIds
-        .map((id) => SCHEDULES_BY_ID.get(id))
-        .filter((schedule) => schedule !== undefined);
-    },
-    customTimetableLabels: (state) => {
-      return Object.keys(state.customSchedules);
-    },
-    isCustomTimetable: (state) => {
-      return isCustomTimetable(state.schedule);
-    },
-    // pass maxLabelLength to truncate for space-constrained UI (see timetableDisplayName)
+    // pass maxLength to truncate for space-constrained UI
     scheduleDisplayName:
       (state) =>
-      (maxLabelLength = Infinity) => {
-        if (!state.schedule) return '';
-        return isCustomTimetable(state.schedule)
-          ? truncateText(state.schedule.label, maxLabelLength)
-          : timetableDisplayName(state.schedule, maxLabelLength);
+      (maxLength = Infinity) =>
+        state.schedule ? planDisplayName(state.schedule, maxLength) : '',
+    /* the saved plan with the key of the open one */
+    savedSchedule: (state) =>
+      state.schedule &&
+      state.plans.find((plan) => planKey(plan) === planKey(state.schedule)),
+    /**
+     * 'changed' if the open plan differs from the saved one with its key,
+     * 'unsaved' if it has a name or selected courses and is not saved
+     */
+    unsavedState() {
+      if (!this.schedule) return undefined;
+      const { name, sources } = this.schedule;
+      if (!this.savedSchedule) {
+        const selected =
+          sources.length === 1 && (sources[0].except || sources[0].only);
+        return name || selected ? 'unsaved' : undefined;
+      }
+      return sourcesToString(this.savedSchedule.sources) ===
+        sourcesToString(sources)
+        ? undefined
+        : 'changed';
+    },
+    /* the saved plan of the timetable, or the timetable with all courses */
+    timetablePlan: (state) => (id) =>
+      state.plans.find((plan) => planKey(plan) === id) ?? {
+        sources: [{ id }],
       },
-    subscribableTimetables() {
-      return [
-        ...Object.values(this.customSchedules),
-        ...this.favoriteSchedules,
-      ];
-    },
-    subscribedTimetable() {
-      return (
-        this.subscribableTimetables.find(
-          (timetable) => subscriptionKey(timetable) === this.subscribedKey,
-        ) ??
-        this.subscribableTimetables[0] ??
-        {}
+    /* faculties of the saved plans */
+    savedFaculties: (state) => {
+      const ids = state.plans.flatMap(({ sources }) =>
+        sources.map(({ id }) => id),
       );
-    },
-    /* faculties of the favorite and custom timetables */
-    savedFaculties() {
-      const ids = this.subscribableTimetables.flatMap(({ id }) => id);
       return uniq(ids.map((id) => SCHEDULES_BY_ID.get(id)?.faculty)).filter(
         Boolean,
       );
     },
-    isFavoriteSchedule: (state) => (timetable) =>
-      state.favoriteIds.includes(timetable.id),
-    hasSubscribableTimetables() {
-      return this.subscribableTimetables.length > 0;
-    },
+    /* whether the timetable is saved as a plan without name */
+    isRemembered: (state) => (id) =>
+      state.plans.some((plan) => !plan.name && plan.sources[0].id === id),
+    hasPlans: (state) => state.plans.length > 0,
   },
   actions: {
-    addCustomSchedule(customTimetable) {
-      const label = customTimetable.label;
-      // never overwrite a stored timetable with the same name
-      if (label in this.customSchedules) return;
-
-      this.customSchedules[label] = customTimetable;
-      this.subscribedKey ??= subscriptionKey(customTimetable);
-    },
-    deleteCustomSchedule(customTimetable) {
-      delete this.customSchedules[customTimetable.label];
-      this.unsubscribe(customTimetable);
-    },
     /**
-     * Store an edited custom timetable, which stays subscribed if it was before.
+     * Save the plan in place of the one with oldKey, or of the one with the
+     * same key.
      */
-    replaceCustomSchedule(oldTimetable, newTimetable) {
-      const wasSubscribed =
-        this.subscribedKey === subscriptionKey(oldTimetable);
-      delete this.customSchedules[oldTimetable.label];
-      this.customSchedules[newTimetable.label] = newTimetable;
-      if (wasSubscribed) this.subscribedKey = subscriptionKey(newTimetable);
+    savePlan(oldKey, plan) {
+      const keys = [oldKey, planKey(plan)];
+      const index = this.plans.findIndex((p) => keys.includes(planKey(p)));
+      this.plans = this.plans.filter((p) => !keys.includes(planKey(p)));
+      this.plans.splice(index < 0 ? this.plans.length : index, 0, plan);
     },
-    addCourseToCustomSchedule(label, timetableId, courseId) {
-      const old = this.customSchedules[label];
-      this.replaceCustomSchedule(old, {
-        ...old,
-        id: uniq([...old.id, timetableId]),
-        whitelist: [...old.whitelist, courseId],
-      });
+    deletePlan(key) {
+      this.plans = this.plans.filter((plan) => planKey(plan) !== key);
     },
-    removeCourseFromCustomSchedule(label, courseId) {
-      const old = this.customSchedules[label];
-      const updated = {
-        ...old,
-        whitelist: old.whitelist.filter((id) => id !== courseId),
-      };
-      this.replaceCustomSchedule(old, updated);
-      return updated;
-    },
-    addFavoriteSchedule(favoriteTimetable) {
-      if (this.favoriteIds.includes(favoriteTimetable.id)) return;
-      this.favoriteIds.push(favoriteTimetable.id);
-      this.subscribedKey ??= subscriptionKey(favoriteTimetable);
-    },
-    toggleFavoriteSchedule(timetable) {
-      if (this.isFavoriteSchedule(timetable)) {
-        this.removeFavoriteSchedule(timetable);
+    /* remember the timetable, or forget it */
+    toggleRemembered(source) {
+      if (this.isRemembered(source.id)) {
+        this.deletePlan(source.id);
       } else {
-        this.addFavoriteSchedule(timetable);
+        this.savePlan(undefined, { sources: [source] });
       }
     },
-    removeFavoriteSchedule(favoriteTimetable) {
-      this.favoriteIds = this.favoriteIds.filter(
-        (id) => id !== favoriteTimetable.id,
-      );
-      this.unsubscribe(favoriteTimetable);
+    addCourse(key, sourceId, courseId) {
+      const plan = this.plans.find((p) => planKey(p) === key);
+      this.savePlan(key, withCourse(plan, sourceId, courseId));
     },
     /**
-     * If the removed timetable was subscribed, show the first saved one instead.
-     */
-    unsubscribe(removedTimetable) {
-      if (this.subscribedKey !== subscriptionKey(removedTimetable)) return;
-      const first = this.subscribableTimetables[0];
-      this.subscribedKey = first ? subscriptionKey(first) : null;
-    },
-    /**
-     * Forget saved timetables of past semesters and broken ones. Unknown
+     * Forget timetables of past semesters and broken plans. Unknown
      * timetables of the current semester are kept, as they may come back
      * with the next update of timetables.json.
      */
     forgetPastSemesters() {
-      const keep = (id) =>
-        SCHEDULES_BY_ID.has(id) || CURRENT_SEMESTERS.has(semesterOf(id));
-      this.favoriteIds = this.favoriteIds.filter(keep);
-      this.customSchedules = Object.fromEntries(
-        Object.entries(this.customSchedules ?? {}).filter(([, custom]) =>
-          [].concat(custom?.id).some(keep),
-        ),
-      );
+      const keep = (source) =>
+        SCHEDULES_BY_ID.has(source?.id) ||
+        CURRENT_SEMESTERS.has(semesterOf(source?.id));
+      this.plans = this.plans
+        .filter((plan) => Array.isArray(plan?.sources))
+        .map((plan) => ({ ...plan, sources: plan.sources.filter(keep) }))
+        .filter((plan) => plan.sources.length > 0);
     },
 
     /**
@@ -414,23 +314,23 @@ export const useSplusStore = defineStore('splus', {
       return this.showWeek(formatDayjs(week));
     },
     /**
-     * Request events of all subscribable timetables for this and next week
+     * Request events of all saved plans for this and next week
      */
     async loadAgendaEvents() {
       const request = ++agendaCounter;
       const week = dayjs(defaultWeek());
       const weeks = [week.isoWeek(), week.add(1, 'week').isoWeek()].join(',');
       const perTimetable = await Promise.allSettled(
-        this.subscribableTimetables.map(async (timetable, i) => {
-          const events = await loadEvents(timetable, weeks);
+        this.plans.map(async (plan, i) => {
+          const events = await loadEvents(plan, weeks);
           return events.map((event) => ({
-            ...toCalendarEvent(event, timetable),
+            ...toCalendarEvent(event),
             color: planColor(i),
-            plan: timetablePlan(timetable),
+            plan: { name: planDisplayName(plan), route: planRoute(plan) },
           }));
         }),
       );
-      // e.g. a timetable was removed before the response arrived
+      // e.g. a plan was removed before the response arrived
       if (request !== agendaCounter) return;
       // a failing plan must not hide the events of the others
       this.agendaEvents = perTimetable.flatMap((result) => {
@@ -443,32 +343,17 @@ export const useSplusStore = defineStore('splus', {
       });
     },
     /**
-     * Import timetable from route and set as current timetable.
+     * Open the plan of the route, e.g. /plan/se3,wpf:a.b?name=Mein%20Plan
      */
-    importSchedule({ params, query }) {
-      switch (parseFloat(query.v)) {
-        case 1: {
-          // query parameters are arrays only if they are given multiple times
-          const whitelist = [].concat(query.course || []);
-          const id = [].concat(query.id || []);
-          const label = query.name || '';
-          const customTimetable = { id, label, whitelist };
-
-          this.addCustomSchedule(customTimetable);
-          this.schedule = customTimetable;
-          break;
-        }
-        default: {
-          if (query.v !== undefined) {
-            console.log('unsupported custom timetable query version', query);
-          }
-
-          // standard, no filters
-          this.schedule = SCHEDULES.find(
-            (timetable) => timetable.id === params.timetable,
-          );
-        }
+    openPlan({ params, query }) {
+      const sources = parseSources(params.sources).filter(({ id }) =>
+        SCHEDULES_BY_ID.has(id),
+      );
+      if (sources.length === 0) {
+        this.schedule = undefined;
+        return;
       }
+      this.schedule = query.name ? { name: query.name, sources } : { sources };
     },
   },
 });

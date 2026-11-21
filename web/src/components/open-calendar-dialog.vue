@@ -28,12 +28,9 @@ import { computed } from 'vue';
 import { mdiDownload, mdiContentCopy, mdiOpenInApp } from '@mdi/js';
 
 const props = defineProps({
-  timetableIds: {
-    type: Array,
-    required: true,
-  },
-  titleIds: {
-    type: Array,
+  /* see sourcesToString in lib/plans.js */
+  sources: {
+    type: String,
     required: true,
   },
 });
@@ -41,12 +38,7 @@ const props = defineProps({
 const open = defineModel({ type: Boolean, default: false });
 
 const httpLink = computed(() => {
-  const path =
-    '/api/ics/v1/' +
-    props.timetableIds.join(',') +
-    '/' +
-    props.titleIds.join(',');
-  return window.location.origin + path;
+  return `${window.location.origin}/api/ics/v1/${props.sources}`;
 });
 const webcalLink = computed(() => httpLink.value.replace(/^https?/i, 'webcal'));
 

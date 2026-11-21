@@ -12,6 +12,7 @@ import {
 } from './SkedParser';
 import { ParsedLecture } from '../model/SplusModel';
 import { getLectureRoomLocations } from './Room/RoomLocationApi';
+import { includesCourse, Source } from './timetables';
 
 const CACHE_SECONDS = config.splusCacheSeconds;
 const TIMEOUT_MILLISECONDS = 20 * 1000;
@@ -183,42 +184,52 @@ export async function getUniqueEvents(
 }
 
 /**
- * @param timetables the timetables to merge
+ * @param sources the timetables to merge, each with its selected courses
  * @param weeks ISO weeks to return events of
- * @param titleIds return only events with these ids, or all if empty
- * @returns the events, each only once even if it is in several timetables
+ * @returns the events, each only once with all sources it is in
  */
 export async function getEvents(
-  timetables: TimetableRequest[],
+  sources: Source[],
   weeks: number[],
-  titleIds: string[] = [],
 ): Promise<Event[]> {
   const weekSet = new Set(weeks);
-  const allEvents = (
-    await Promise.all(
-      timetables.map(async (timetable) => {
-        const parsed = await parseTimetable(timetable);
-        // index over the whole semester so a course keeps its color every week
-        const titles = [...new Set(parsed.map(({ title }) => title))].sort();
-        parsed.forEach((event) => {
-          event.colorIndex = titles.indexOf(event.title);
-        });
-        const events = parsed.filter(
-          (event) =>
-            weekSet.has(dayjs(event.start).isoWeek()) &&
-            (titleIds.length === 0 || titleIds.includes(event.id)),
-        );
-        console.log(`Serving ${events.length} lectures for ${timetable.id}`);
-        return events;
-      }),
-    )
-  ).flat();
+  const parsed = await Promise.all(
+    sources.map(({ timetable }) => parseTimetable(timetable)),
+  );
+  // index over the whole semester so a course keeps its color every week
+  const titles = [...new Set(parsed.flat().map(({ title }) => title))].sort();
+  const allEvents = sources.flatMap((source, i) => {
+    const events = parsed[i]
+      .filter(
+        (event) =>
+          weekSet.has(dayjs(event.start).isoWeek()) &&
+          includesCourse(source, event.id),
+      )
+      // copies, the parsed events are cached
+      .map(
+        (event) =>
+          ({
+            ...event,
+            colorIndex: titles.indexOf(event.title),
+            sources: [source.timetable.id],
+          }) as Event,
+      );
+    console.log(`Serving ${events.length} lectures for ${source.timetable.id}`);
+    return events;
+  });
 
   // filter duplicates
   const key = (event: Event) =>
     `${event.meta.organiserShortname} ${event.id} ${event.location} ` +
     `${event.start} ${event.end}`;
   const eventsByKey = new Map<string, Event>();
-  allEvents.forEach((event) => eventsByKey.set(key(event), event));
+  allEvents.forEach((event) => {
+    const known = eventsByKey.get(key(event));
+    if (known) {
+      known.sources = [...new Set([...known.sources!, ...event.sources!])];
+    } else {
+      eventsByKey.set(key(event), event);
+    }
+  });
   return [...eventsByKey.values()];
 }
