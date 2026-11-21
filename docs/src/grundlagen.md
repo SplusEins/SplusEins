@@ -18,7 +18,7 @@ Die Anwendung kann den Mensplan der Standorte der Ostfalia darstellen. Dazu werd
 
 ### News
 
-Auf der Startseite von SplusEins werden News angezeigt. Diese Stammen aus verschiedenen Quellen. Der Bereich 'Neues vom Campus' enthält News von der Seite der Ostfalia und aus dem News-Feed von [Campus-38](https://www.campus38.de/newsfeed.xml). Des Weiteren gibt es den Bereich 'Neues aus X' wobei X eine konfigurierbare Quelle ist. Dazu zählen Fakultäten und Standorte der Ostfalia. Diese Informationen stammen ebenfalls von der offiziellen Ostfalia Webseite. News werden beim Backend angefragt. Dieses beantwortet die Anfrage entweder aus einem Cache oder fragt die Neuigkeiten von den jeweiligen News-Quellen ab. Bei einigen Quellen müssen die Informationen erst mit Hilfe eines Parsers aus HTML Seiten herausgefiltert werden.
+Auf der Startseite von SplusEins werden News angezeigt. Diese Stammen aus verschiedenen Quellen. Der Bereich 'Neues vom Campus' enthält News von der Seite der Ostfalia und aus dem News-Feed von [Campus-38](https://www.campus38.de/newsfeed.xml). Des Weiteren gibt es den Bereich 'Neues aus X' wobei X eine konfigurierbare Quelle ist. Dazu zählen die Fakultäten der Ostfalia. Diese Informationen stammen ebenfalls von der offiziellen Ostfalia Webseite. News werden beim Backend angefragt. Dieses beantwortet die Anfrage entweder aus einem Cache oder fragt die Neuigkeiten von den jeweiligen News-Quellen ab. Bei einigen Quellen müssen die Informationen erst mit Hilfe eines Parsers aus HTML Seiten herausgefiltert werden.
 
 ### Busplan
 

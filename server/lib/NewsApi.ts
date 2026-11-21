@@ -8,30 +8,27 @@ import { NewsElement } from '../model/SplusEinsModel';
 const CACHE_SECONDS = config.newsCacheSeconds;
 
 const OSTFALIA_URL = 'https://www.ostfalia.de/';
-const FACULTIES = 'hochschule/fakultaeten/';
+const CENTRAL_NEWS_URL = OSTFALIA_URL + 'hochschule/nachrichten';
 
 /**
- * News list pages of the Ostfalia website. Selectors without a page there
- * (e, f, w and the campuses) are still accepted but return no news.
+ * Faculty news are the central news that name the faculty, as the faculty
+ * pages only repeat them
  */
-const OSTFALIA_NEWS_PAGES: Record<string, string | undefined> = {
-  campus: 'hochschule/nachrichten',
-  b: FACULTIES + 'fakultaet-bau-wasser-boden/nachrichten',
-  g: FACULTIES + 'fakultaet-gesundheitswesen/nachrichten',
-  h: FACULTIES + 'handel-und-soziale-arbeit/nachrichten',
-  k: FACULTIES + 'fakultaet-verkehr-sport-tourismus-medien/nachrichten',
-  m: FACULTIES + 'fakultaet-maschinenbau/nachrichten',
-  r: FACULTIES + 'fakultaet-recht/nachrichten',
-  s: FACULTIES + 'fakultaet-soziale-arbeit/nachrichten',
-  v: FACULTIES + 'fakultaet-versorgungstechnik/nachrichten',
-  e: undefined,
-  f: undefined,
-  w: undefined,
-  wob: undefined,
-  wf: undefined,
-  sud: undefined,
-  sz: undefined,
+const FACULTIES: Record<string, string> = {
+  b: 'Bau-Wasser-Boden',
+  e: 'Elektro- und Informationstechnik',
+  f: 'Fahrzeugtechnik',
+  g: 'Gesundheitswesen',
+  h: 'Handel und Soziale Arbeit',
+  i: 'Informatik',
+  k: 'Verkehr-Sport-Tourismus-Medien',
+  m: 'Maschinenbau',
+  r: 'Recht',
+  s: 'Soziale Arbeit',
+  v: 'Versorgungstechnik',
+  w: 'Wirtschaft',
 };
+const SELECTORS = ['campus', 'campus38', ...Object.keys(FACULTIES)];
 
 async function fetchOk(url: string): Promise<Response> {
   const response = await fetch(url);
@@ -39,31 +36,41 @@ async function fetchOk(url: string): Promise<Response> {
   return response;
 }
 
+/* the central news have about 10 news a week on each page */
+const CENTRAL_NEWS_PAGES = 3;
+
 /**
- * Scrape the news list page of the Ostfalia website (TYPO3)
+ * Scrape the first pages of the central news of the Ostfalia website (TYPO3)
  */
-async function ostfaliaNewsRequest(
-  newsSelector: string,
-): Promise<NewsElement[]> {
-  const page = OSTFALIA_NEWS_PAGES[newsSelector];
-  if (!page) return [];
-  const response = await fetchOk(OSTFALIA_URL + page);
-  const $ = cheerio.load(await response.text());
+async function centralNewsRequest(): Promise<NewsElement[]> {
+  const htmls = await Promise.all(
+    Array.from({ length: CENTRAL_NEWS_PAGES }, async (_, i) => {
+      const url = `${CENTRAL_NEWS_URL}?tx_solr%5Bpage%5D=${i + 1}`;
+      return (await fetchOk(url)).text();
+    }),
+  );
+  const $ = cheerio.load(htmls.join(''));
   const elements = $('.teaser-wall__item')
     .map((_, item) => {
+      // "Aktuelles | 20.11.2026 | Fakultät Maschinenbau, Fakultät Wirtschaft"
+      const [, , departments = ''] = $('.teaser__meta', item).text().split('|');
       const href = $('.teaser__title-link', item).attr('href');
       const date = $('time.teaser__date', item).attr('datetime');
       return <NewsElement>{
         title: $('.teaser__title-text', item).text().trim(),
-        link: href ? new URL(href, OSTFALIA_URL).href : OSTFALIA_URL + page,
+        link: href ? new URL(href, OSTFALIA_URL).href : CENTRAL_NEWS_URL,
         text: $('.teaser__snippet', item).text().trim(),
         date: date ? dayjs(date).toDate() : undefined,
+        departments: departments
+          .split(',')
+          .map((department) => department.trim())
+          .filter(Boolean),
       };
     })
     .get()
     .filter((article) => article.title);
   if (elements.length === 0) {
-    throw new Error(`No news found on ${page}, did the page layout change?`);
+    throw new Error('No central news found, did the page layout change?');
   }
   return elements;
 }
@@ -138,6 +145,19 @@ function truncateAndSortNews(
   return news.sort((a1, a2) => time(a2) - time(a1)).slice(0, limit);
 }
 
+async function loadNews(newsSelector: string): Promise<NewsElement[]> {
+  if (newsSelector === 'campus38') {
+    return cached('news-campus38', CACHE_SECONDS, campus38NewsRequest);
+  }
+  const news = await cached('news-campus', CACHE_SECONDS, centralNewsRequest);
+  const faculty = FACULTIES[newsSelector];
+  return faculty
+    ? news.filter(({ departments }) =>
+        departments?.includes(`Fakultät ${faculty}`),
+      )
+    : news;
+}
+
 /**
  * Manages news requests including caching
  *
@@ -149,26 +169,14 @@ export default async function getNews(
   newsSelectors: string[],
   limit: number,
 ): Promise<NewsElement[]> {
-  const allowedSelectors = [...Object.keys(OSTFALIA_NEWS_PAGES), 'campus38'];
+  const unknown = newsSelectors.find((s) => !SELECTORS.includes(s));
+  if (unknown) throw new Error(`Selector "${unknown}" not supported`);
 
   const news = await Promise.all(
     newsSelectors.map(async (newsSelector) => {
-      if (!allowedSelectors.includes(newsSelector)) {
-        throw new Error(`Selector "${newsSelector}" not supported`);
-      }
       try {
-        const key = 'news-' + newsSelector;
-        return await cached(key, CACHE_SECONDS, async () => {
-          let newsEls: NewsElement[] =
-            newsSelector !== 'campus38'
-              ? await ostfaliaNewsRequest(newsSelector)
-              : await campus38NewsRequest();
-          newsEls = newsEls.map((article) => ({
-            ...article,
-            source: newsSelector,
-          }));
-          return newsEls;
-        });
+        const news = await loadNews(newsSelector);
+        return news.map((article) => ({ ...article, source: newsSelector }));
       } catch (e) {
         if (!(e instanceof Error)) throw e;
         console.log(

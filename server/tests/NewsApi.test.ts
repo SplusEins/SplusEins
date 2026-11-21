@@ -27,7 +27,7 @@ describe('Test NewsApi', () => {
   it('should scrape the Ostfalia news list', async () => {
     const news = await getNews(['campus'], 100);
     expect(fetchSpy).toHaveBeenCalledWith(
-      'https://www.ostfalia.de/hochschule/nachrichten',
+      'https://www.ostfalia.de/hochschule/nachrichten?tx_solr%5Bpage%5D=3',
     );
     expect(news[0]).toEqual({
       title: 'Exkursion: SDGnext in Genf',
@@ -35,12 +35,21 @@ describe('Test NewsApi', () => {
       text: 'Masterstudierende aus Deutschland und der Schweiz verhandeln die Nachhaltigkeitsziele nach 2030',
       date: new Date(2026, 10, 18).toISOString(),
       source: 'campus',
+      departments: ['Fakultät Recht'],
     });
     expect(
       news.every(({ link }) =>
         link.startsWith('https://www.ostfalia.de/hochschule/'),
       ),
     ).toBe(true);
+  });
+
+  it('should read who published the Ostfalia news', async () => {
+    const departments = (await getNews(['campus'], 100)).map(
+      ({ departments }) => departments,
+    );
+    expect(departments).toContainEqual(['Marketing und Kommunikation']);
+    expect(departments).toContainEqual([]);
   });
 
   it('should resolve relative Ostfalia links without leading slash', async () => {
@@ -69,9 +78,17 @@ describe('Test NewsApi', () => {
     expect(texts).not.toMatch(/&#?\w+;/);
   });
 
-  it('should return no news for selectors without an Ostfalia page', async () => {
-    expect(await getNews(['e', 'wob'], 100)).toEqual([]);
-    expect(fetchSpy).not.toHaveBeenCalled();
+  it('should take the news of a faculty from the central news', async () => {
+    const news = await getNews(['r'], 100);
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'https://www.ostfalia.de/hochschule/nachrichten?tx_solr%5Bpage%5D=1',
+    );
+    expect(news).toHaveLength(2);
+    expect(news.map(({ departments }) => departments)).toEqual([
+      ['Fakultät Recht'],
+      ['Fakultät Recht'],
+    ]);
+    expect(news[0].source).toBe('r');
   });
 
   it('should return no news if the page layout changed', async () => {
@@ -81,6 +98,7 @@ describe('Test NewsApi', () => {
 
   it('should reject unknown selectors', async () => {
     await expect(getNews(['x'], 100)).rejects.toThrow('not supported');
+    await expect(getNews(['wob'], 100)).rejects.toThrow('not supported');
   });
 
   it('should sort the news of all sources by date', async () => {

@@ -11,6 +11,7 @@ import {
   timetablePlan,
   timetableDisplayName,
   truncateText,
+  uniq,
 } from '../lib/util';
 
 // 20 evenly spread hues, the first ten are 36° apart
@@ -258,12 +259,12 @@ export const useSplusStore = defineStore('splus', {
         {}
       );
     },
-    /**
-     * Faculty of the subscribed timetable, of the first one for a custom timetable
-     */
-    subscribedFaculty() {
-      const [id] = [].concat(this.subscribedTimetable.id ?? []);
-      return this.getTimetableById(id)?.faculty;
+    /* faculties of the favorite and custom timetables */
+    savedFaculties() {
+      const ids = this.subscribableTimetables.flatMap(({ id }) => id);
+      return uniq(ids.map((id) => SCHEDULES_BY_ID.get(id)?.faculty)).filter(
+        Boolean,
+      );
     },
     hasSubscribableTimetables() {
       return this.subscribableTimetables.length > 0;

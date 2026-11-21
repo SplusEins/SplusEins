@@ -54,15 +54,6 @@ describe('splus store', () => {
     });
   });
 
-  it('knows the faculty of the subscribed timetable', () => {
-    expect(splus.subscribedFaculty).toBeUndefined();
-    splus.addCustomSchedule(custom('Mein Plan', [otherTimetable.id]));
-    expect(splus.subscribedFaculty).toBe(otherTimetable.faculty);
-    splus.addFavoriteSchedule(timetable);
-    splus.deleteCustomSchedule(custom('Mein Plan', [otherTimetable.id]));
-    expect(splus.subscribedFaculty).toBe(timetable.faculty);
-  });
-
   it('adds each favorite only once', () => {
     splus.addFavoriteSchedule(timetable);
     splus.addFavoriteSchedule({ ...timetable });
@@ -95,6 +86,14 @@ describe('splus store', () => {
       expect(splus.isCustomTimetable).toBe(true);
       expect(splus.customTimetableLabels).toEqual(['Mein Plan']);
     });
+  });
+
+  it('knows the faculties of the saved timetables', () => {
+    expect(splus.savedFaculties).toEqual([]);
+    const law = TIMETABLES.find(({ faculty }) => faculty === 'Recht');
+    splus.addCustomSchedule(custom('Mein Plan', [timetable.id, law.id]));
+    splus.addFavoriteSchedule(otherTimetable);
+    expect(splus.savedFaculties).toEqual([timetable.faculty, 'Recht']);
   });
 
   it('groups the timetables by faculty, degree and semester', () => {

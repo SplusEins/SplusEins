@@ -17,6 +17,16 @@
             {{ item.title }}
           </a>
           <div class="text-medium-emphasis">
+            <v-chip
+              v-for="department in item.departments"
+              :key="department"
+              :title="department"
+              size="x-small"
+              label
+              class="mr-1"
+            >
+              {{ departmentLabel(department) }}
+            </v-chip>
             {{ dayjs(item.date).format('DD.MM.') }} · {{ item.text }}
           </div>
         </div>
@@ -26,48 +36,53 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue';
-import { storeToRefs } from 'pinia';
+import { computed, onMounted, ref } from 'vue';
 import dayjs from '../lib/dayjs';
 import { apiGet } from '../lib/api';
-import { ostfaliaNewsPath, recentNews } from '../lib/news';
+import { departmentLabel, recentNews } from '../lib/news';
 import { useSplusStore } from '../stores/splus';
 
 /* emits the number of shown news, so that the page can hide the card */
 const emit = defineEmits(['loaded']);
 
-const { subscribedFaculty: faculty } = storeToRefs(useSplusStore());
+const splus = useSplusStore();
 
 const ostfaliaNews = ref([]);
 const campus38News = ref([]);
 
 const sections = computed(() =>
   [
-    { title: '', items: ostfaliaNews.value },
-    { title: 'Campus38 Magazin', items: campus38News.value },
+    {
+      title: '',
+      items: recentNews(
+        ostfaliaNews.value,
+        5,
+        splus.savedFaculties.map((name) => `Fakultät ${name}`),
+      ),
+    },
+    { title: 'Campus38 Magazin', items: recentNews(campus38News.value, 3) },
   ].filter(({ items }) => items.length > 0),
 );
 
-async function loadNews(path, count) {
+async function loadNews(selector) {
   try {
-    return recentNews(await apiGet(`${path}?limit=10`), count);
+    return await apiGet(`/api/news/${selector}`);
   } catch (error) {
     console.error('error during News API call', error.message);
     return [];
   }
 }
 
-watch(
-  faculty,
-  async () => {
-    [ostfaliaNews.value, campus38News.value] = await Promise.all([
-      loadNews(ostfaliaNewsPath(faculty.value), 3),
-      loadNews('/api/news/campus38', 2),
-    ]);
-    emit('loaded', ostfaliaNews.value.length + campus38News.value.length);
-  },
-  { immediate: true },
-);
+onMounted(async () => {
+  [ostfaliaNews.value, campus38News.value] = await Promise.all([
+    loadNews('campus'),
+    loadNews('campus38'),
+  ]);
+  emit(
+    'loaded',
+    sections.value.reduce((count, { items }) => count + items.length, 0),
+  );
+});
 </script>
 
 <style scoped>
