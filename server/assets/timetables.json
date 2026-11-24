@@ -1386,11 +1386,29 @@
     "degree": "Bachelor"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261456.html",
+    "label": "Informatik - DS",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_informatik_ds_5_ws26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/111825.html",
     "label": "Informatik - IE",
     "faculty": "Informatik",
     "type": "intranet",
     "id": "i_informatik_ie_5_ws26",
+    "semester": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261464.html",
+    "label": "Informatik - ITS",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_informatik_its_5_ws26",
     "semester": 5,
     "degree": "Bachelor"
   },
@@ -1521,6 +1539,15 @@
     "degree": "Master"
   },
   {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/171911.html",
+    "label": "Informatik - IE",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_informatik_ie_1_ws26",
+    "semester": 1,
+    "degree": "Master"
+  },
+  {
     "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261476.html",
     "label": "Informatik - SCE",
     "faculty": "Informatik",
@@ -1554,6 +1581,33 @@
     "type": "intranet",
     "id": "i_master_wirtschaftsinformatik_vfh_1_ws26",
     "semester": 1,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261475.html",
+    "label": "Informatik - DS",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_informatik_ds_3_ws26",
+    "semester": 3,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261478.html",
+    "label": "Informatik - SCE",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_informatik_sce_3_ws26",
+    "semester": 3,
+    "degree": "Master"
+  },
+  {
+    "timetablePath": "https://intranet-i.ostfalia.de/fips/stundenplan/261472.html",
+    "label": "Informatik - SE",
+    "faculty": "Informatik",
+    "type": "intranet",
+    "id": "i_master_informatik_se_3_ws26",
+    "semester": 3,
     "degree": "Master"
   },
   {
