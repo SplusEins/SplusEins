@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div
+      v-if="meals.length === 0"
+      class="px-4 py-3 text-body-medium text-medium-emphasis"
+    >
+      Keine passenden Gerichte.
+    </div>
     <template v-for="(meal, idx) in meals" :key="idx">
       <v-divider v-if="idx > 0" />
       <div class="d-flex ga-3 px-4 py-3">
@@ -23,7 +29,7 @@
             {{ meal.title }}
           </div>
           <div v-if="meal.sides" class="text-body-medium text-medium-emphasis">
-            mit {{ meal.sides }}
+            {{ meal.sides }}
           </div>
         </div>
         <div class="text-right text-no-wrap pt-5">
@@ -38,20 +44,6 @@
         </div>
       </div>
     </template>
-    <template v-if="hiddenCount > 0">
-      <v-divider />
-      <div
-        class="d-flex align-center pl-4 pr-2 text-body-medium text-medium-emphasis"
-      >
-        <span class="flex-grow-1">
-          {{ hiddenCount }} {{ hiddenCount === 1 ? 'Gericht' : 'Gerichte' }}
-          ausgeblendet
-        </span>
-        <v-btn variant="text" color="primary" @click="mensa.setDiet('all')">
-          Alle zeigen
-        </v-btn>
-      </div>
-    </template>
   </div>
 </template>
 
@@ -64,7 +56,7 @@ const props = defineProps({
   /* meals of one day */
   plan: {
     type: Object,
-    default: () => ({ meals: [] }),
+    required: true,
   },
 });
 
@@ -75,19 +67,15 @@ const EURO = new Intl.NumberFormat('de-DE', {
   currency: 'EUR',
 });
 
-const shownMeals = computed(() =>
-  props.plan.meals.filter((meal) => matchesDiet(mensa.diet, meal.categories)),
-);
-const hiddenCount = computed(
-  () => props.plan.meals.length - shownMeals.value.length,
-);
 const meals = computed(() =>
-  shownMeals.value.map((meal) => ({
-    lane: meal.lane,
-    ...splitMealName(meal.name),
-    chips: mealChips(meal.categories),
-    student: EURO.format(meal.price.student),
-    employee: EURO.format(meal.price.employee),
-  })),
+  props.plan.meals
+    .filter((meal) => matchesDiet(mensa.diet, meal.categories))
+    .map((meal) => ({
+      lane: meal.lane,
+      ...splitMealName(meal.name),
+      chips: mealChips(meal.categories),
+      student: EURO.format(meal.price.student),
+      employee: EURO.format(meal.price.employee),
+    })),
 );
 </script>

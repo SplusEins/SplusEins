@@ -18,17 +18,20 @@
       <div class="text-body-large font-weight-bold">
         {{ mensa.nextPlanDay }}
       </div>
+      <div
+        v-if="DIET_NOTES[mensa.diet]"
+        class="text-body-small text-medium-emphasis"
+      >
+        {{ DIET_NOTES[mensa.diet] }}
+      </div>
       <template v-if="mensaMenus.length > 0">
         <div v-for="(item, idx) in mensaMenus" :key="idx" class="py-2">
           <div class="text-body-small text-medium-emphasis">
             {{ item.lane }}
           </div>
-          <div>{{ splitMealName(item.name).title }}</div>
-          <div
-            v-if="splitMealName(item.name).sides"
-            class="text-body-small text-medium-emphasis"
-          >
-            mit {{ splitMealName(item.name).sides }}
+          <div>{{ item.title }}</div>
+          <div v-if="item.sides" class="text-body-small text-medium-emphasis">
+            {{ item.sides }}
           </div>
         </div>
       </template>
@@ -61,16 +64,25 @@
 import { computed, onMounted, ref } from 'vue';
 import { mdiChevronRight, mdiMenuDown } from '@mdi/js';
 import { useMensaStore } from '../stores/mensa';
-import { splitMealName } from '../lib/mensa';
+import { matchesDiet, splitMealName } from '../lib/mensa';
 import SelectDialog from './select-dialog.vue';
+
+const DIET_NOTES = {
+  vegetarian: 'Nur vegetarische Gerichte',
+  vegan: 'Nur vegane Gerichte',
+};
 
 const mensa = useMensaStore();
 const dialogOpen = ref(false);
 
 const mensaMenus = computed(() =>
-  mensa.getNextAvailablePlan.meals.filter((meal) =>
-    meal.lane.startsWith('Essen '),
-  ),
+  mensa.getNextAvailablePlan.meals
+    .filter(
+      (meal) =>
+        meal.lane.startsWith('Essen ') &&
+        matchesDiet(mensa.diet, meal.categories),
+    )
+    .map((meal) => ({ lane: meal.lane, ...splitMealName(meal.name) })),
 );
 
 onMounted(() => mensa.load());

@@ -1,17 +1,10 @@
 <template>
   <v-container fluid>
-    <div v-if="$vuetify.display.mobile" class="d-flex align-center">
-      <h1 class="text-headline-small">{{ mensa.selectedPlan?.name }}</h1>
-      <v-btn
-        v-if="mensa.plans?.length > 1"
-        :icon="mdiMenuDown"
-        variant="text"
-        density="compact"
-        aria-label="Mensa auswählen"
-        @click="dialogOpen = true"
-      />
-    </div>
-    <v-tabs v-else v-model="location" show-arrows>
+    <v-tabs
+      :model-value="mensa.selectedPlan?.key"
+      show-arrows
+      @update:model-value="mensa.setLocation"
+    >
       <v-tab v-for="plan in mensa.plans" :key="plan.key" :value="plan.key">
         {{ plan.name }}
       </v-tab>
@@ -19,7 +12,7 @@
 
     <div class="d-flex flex-wrap align-center ga-4 my-4">
       <v-btn-toggle
-        v-model="diet"
+        v-model="mensa.diet"
         mandatory
         divided
         variant="outlined"
@@ -31,7 +24,7 @@
           v-for="option in DIETS"
           :key="option.value"
           :value="option.value"
-          :prepend-icon="diet === option.value ? mdiCheck : undefined"
+          :prepend-icon="mensa.diet === option.value ? mdiCheck : undefined"
         >
           {{ option.title }}
         </v-btn>
@@ -53,21 +46,6 @@
       Aktuell sind keine Pläne verfügbar.
     </v-alert>
 
-    <template v-else-if="$vuetify.display.mobile">
-      <v-tabs v-model="dayIdx" show-arrows>
-        <v-tab
-          v-for="(dayPlan, idx) in dayPlans"
-          :key="dayPlan.date"
-          :value="idx"
-        >
-          {{ dayTitle(dayPlan.date, 'dd D.') }}
-        </v-tab>
-      </v-tabs>
-      <v-card border rounded="lg" class="mt-3">
-        <mensa-dayplan :plan="dayPlans[dayIdx]" />
-      </v-card>
-    </template>
-
     <v-row v-else>
       <v-col
         v-for="dayPlan in dayPlans"
@@ -77,8 +55,12 @@
         xl="4"
       >
         <v-card border rounded="lg" class="fill-height">
-          <v-card-title :class="{ 'text-primary': isToday(dayPlan.date) }">
-            {{ dayTitle(dayPlan.date, 'dddd') }}
+          <v-card-title
+            :class="{ 'text-primary': relativeDay(dayPlan.date) === 'Heute' }"
+          >
+            {{
+              relativeDay(dayPlan.date) ?? dayjs(dayPlan.date).format('dddd')
+            }}
             <span class="text-body-medium text-medium-emphasis">
               {{ dayjs(dayPlan.date).format('DD.MM.') }}
             </span>
@@ -88,25 +70,16 @@
         </v-card>
       </v-col>
     </v-row>
-
-    <select-dialog
-      v-model:open="dialogOpen"
-      :selected="mensa.selectedPlan"
-      :items="mensa.plans ?? []"
-      :item-title="(plan) => plan.name"
-      title="Standort auswählen"
-      @update:selected="(plan) => (location = plan.key)"
-    />
   </v-container>
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue';
-import { mdiCheck, mdiMenuDown } from '@mdi/js';
+import { computed, onMounted } from 'vue';
+import { mdiCheck } from '@mdi/js';
 import dayjs from '../lib/dayjs';
+import { relativeDay } from '../lib/mensa';
 import { useMensaStore } from '../stores/mensa';
 import MensaDayplan from '../components/mensa-dayplan.vue';
-import SelectDialog from '../components/select-dialog.vue';
 
 const DIETS = [
   { value: 'all', title: 'Alle' },
@@ -115,40 +88,8 @@ const DIETS = [
 ];
 
 const mensa = useMensaStore();
-const dialogOpen = ref(false);
 
 onMounted(() => mensa.load());
 
 const dayPlans = computed(() => mensa.selectedPlan?.dayPlans ?? []);
-
-const location = computed({
-  get: () => mensa.selectedPlan?.key,
-  set: (key) => {
-    mensa.setLocation(key);
-    selectedDayIdx.value = undefined;
-  },
-});
-const diet = computed({
-  get: () => mensa.diet,
-  set: (value) => mensa.setDiet(value),
-});
-
-/* on mobile, the day the user picked, otherwise the next one with meals */
-const selectedDayIdx = ref(undefined);
-const dayIdx = computed({
-  get: () =>
-    selectedDayIdx.value ??
-    Math.max(0, dayPlans.value.indexOf(mensa.getNextAvailablePlan)),
-  set: (value) => {
-    selectedDayIdx.value = value;
-  },
-});
-
-const isToday = (date) => dayjs().isSame(date, 'day');
-
-function dayTitle(date, format) {
-  if (isToday(date)) return 'Heute';
-  if (dayjs().add(1, 'day').isSame(date, 'day')) return 'Morgen';
-  return dayjs(date).format(format);
-}
 </script>

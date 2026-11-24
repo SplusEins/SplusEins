@@ -131,10 +131,10 @@ Durch einen Klick auf eine beliebigen Veranstaltungsblock öffnet sich eine Deta
 
 ### Mensa
 
-Diese Seite zeigt den Speiseplan der Mensen der Ostfalia für den aktuellen bzw. den morgigen Tag an. Je nach Verfügbarkeit können Speisepläne bis zu 6 Tage im Voraus eingesehen werden.
+Diese Seite zeigt die Speisepläne der Mensen der Ostfalia für die nächsten Tage, je nach Verfügbarkeit bis zu 6 Tage im Voraus. Die Startseite zeigt den Plan für heute bzw. morgen.
 ![img](./img/spluseins_start_mensa.png)
 
-Außerdem werden Öffnungszeiten angezeigt, sowie die Addresse und Gerichte mit Symbolen versehen, welche weitere Informationen hinterlegen.
+Die Gerichte sind mit ihren Kategorien gekennzeichnet (z.B. Vegan, Schwein, Aktion) und lassen sich auf vegetarische oder vegane Gerichte beschränken. Diese Auswahl wird gespeichert und gilt auch für die Startseite. Die Öffnungszeiten stehen auf der verlinkten Seite des Studentenwerks.
 
 ### Busse Wolfenbüttel
 

@@ -1,8 +1,14 @@
-const MEAT = ['Schwein', 'Rind', 'Geflügel', 'Fisch', 'Lamm', 'Wild'];
-const HIGHLIGHTS = {
-  'Niedersachsen Menü': 'Niedersachsen-Menü',
-  Aktion: 'Aktion',
-  'NEU bei uns': 'Neu',
+import dayjs from './dayjs';
+
+/* chip color of a meal category, other categories get the default color */
+const CHIP_COLORS = {
+  Vegan: 'success',
+  Vegetarisch: 'warning',
+  'Niedersachsen Menü': 'primary',
+  Aktion: 'primary',
+  'NEU bei uns': 'primary',
+  StudiDeal: 'primary',
+  Klimaessen: 'primary',
 };
 
 /**
@@ -14,28 +20,14 @@ export function splitMealName(name) {
     .split('|')
     .map((part) => part.trim())
     .filter(Boolean);
-  return { title: title ?? name, sides: sides.join(', ') };
+  return {
+    title: title ?? name,
+    sides: sides.length > 0 ? `mit ${sides.join(', ')}` : '',
+  };
 }
 
-/**
- * Chips of a meal: vegan, vegetarian or the kind of meat, then highlights.
- */
 export function mealChips(categories) {
-  const chips = [];
-  if (categories.includes('Vegan')) {
-    chips.push({ text: 'Vegan', color: 'success' });
-  } else if (categories.includes('Vegetarisch')) {
-    chips.push({ text: 'Vegetarisch', color: 'warning' });
-  } else {
-    const meat = categories.filter((category) => MEAT.includes(category));
-    if (meat.length > 0) chips.push({ text: meat.join(', ') });
-  }
-  for (const category of categories) {
-    if (HIGHLIGHTS[category]) {
-      chips.push({ text: HIGHLIGHTS[category], color: 'primary' });
-    }
-  }
-  return chips;
+  return categories.map((text) => ({ text, color: CHIP_COLORS[text] }));
 }
 
 /**
@@ -47,4 +39,13 @@ export function matchesDiet(diet, categories) {
     return categories.includes('Vegan') || categories.includes('Vegetarisch');
   }
   return true;
+}
+
+/**
+ * 'Heute' or 'Morgen' if the date is one of these days, otherwise undefined
+ */
+export function relativeDay(date) {
+  if (dayjs().isSame(date, 'day')) return 'Heute';
+  if (dayjs().add(1, 'day').isSame(date, 'day')) return 'Morgen';
+  return undefined;
 }

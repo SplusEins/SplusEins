@@ -87,7 +87,7 @@ describe('mensa meals', () => {
     expect(splitMealName('Ofenkartoffel | Kräuterquark | Feldsalat |')).toEqual(
       {
         title: 'Ofenkartoffel',
-        sides: 'Kräuterquark, Feldsalat',
+        sides: 'mit Kräuterquark, Feldsalat',
       },
     );
     expect(splitMealName('Sauerkraut')).toEqual({
@@ -96,13 +96,11 @@ describe('mensa meals', () => {
     });
   });
 
-  it('shows the diet or the meat, then highlights', () => {
-    expect(mealChips(['Vegetarisch', 'Niedersachsen Menü'])).toEqual([
+  it('shows every category as a chip', () => {
+    expect(mealChips(['Vegetarisch', 'Niedersachsen Menü', 'Rind'])).toEqual([
       { text: 'Vegetarisch', color: 'warning' },
-      { text: 'Niedersachsen-Menü', color: 'primary' },
-    ]);
-    expect(mealChips(['Schwein', 'Rind', 'Artgemäß'])).toEqual([
-      { text: 'Schwein, Rind' },
+      { text: 'Niedersachsen Menü', color: 'primary' },
+      { text: 'Rind', color: undefined },
     ]);
     expect(mealChips([])).toEqual([]);
   });
