@@ -51,8 +51,8 @@ fetch_osm_data() {
   for ((i=1; i<=max_retries; i++)); do
     local response=$(curl -s -H "User-Agent: spluseins-api/1.0.0 (https://github.com/SplusEins/SplusEins)" --data-urlencode "data=${query}" "https://overpass-api.de/api/interpreter")
 
-    # Check if response is valid JSON
-    if echo "$response" | jq empty 2>/dev/null; then
+    # Overpass answers errors and timeouts with a remark, an empty answer would delete all rooms
+    if echo "$response" | jq -e '.elements and .remark == null' >/dev/null 2>&1; then
       # Process response and ensure empty object if no data
       processed=$(echo "$response" | jq '.elements | map({
         id: .id,

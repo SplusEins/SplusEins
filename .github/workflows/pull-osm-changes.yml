@@ -39,10 +39,10 @@ jobs:
           branch: actions/update-osm-data
           author: actions-user <actions@github.com>
           committer: actions-user <actions@github.com>
-          title: "Sync overpassOSMRoomsData.json with OSM"
+          title: "Sync room data with OSM"
           labels: automated
           add-paths: |
-            **/overpassOSMRoomsData.json
+            server/assets/overpass_osm/*.json
           body: |
             Room Data updated via [Overpass Turbo](https://overpass-turbo.eu/).
             Docs: https://spluseins-i.ostfalia.de/docs/semesterbeginn.html#aktualisierung-der-osm-raumdaten
