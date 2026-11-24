@@ -16,8 +16,7 @@ import { getLectureRoomLocations } from './Room/RoomLocationApi';
 const CACHE_SECONDS = config.splusCacheSeconds;
 const TIMEOUT_MILLISECONDS = 20 * 1000;
 
-// Allow only specific HTML attributes for the room since we directly render the HTML in the client
-// Not doing this could lead to XSS possibilities, or some weird rendering if classes or styles are present in the tag
+// The client renders the info as HTML, so only plain links are allowed
 const ALLOW_LINKS: sanitize.IOptions = {
   allowedTags: ['a'],
   allowedAttributes: { a: ['href', 'target'] },
@@ -117,7 +116,7 @@ async function fetchWithRetries(timetable: TimetableRequest): Promise<string> {
  * @returns parsed Events
  */
 async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
-  const key = `lectures-${timetable.id}`;
+  const key = `lectures-v2-${timetable.id}`;
 
   return await cached(key, CACHE_SECONDS, async () => {
     console.log(`Lectures cache miss for key ${key}`);
@@ -143,10 +142,7 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
     }
     lectures = lectures.map((lecture) => ({
       ...lecture,
-      room: getLectureRoomLocations(
-        clean(lecture.room, ALLOW_LINKS).split(','),
-        timetable.faculty,
-      ),
+      room: clean(lecture.room, STRIP_HTML),
       info: clean(lecture.info, ALLOW_LINKS),
       lecturer: clean(lecture.lecturer, STRIP_HTML),
       title: clean(lecture.title, STRIP_HTML),
@@ -154,7 +150,10 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
     console.log(
       `Storing ${lectures.length} parsed lectures for ${key} in cache`,
     );
-    return lectures.map(createEvent);
+    return lectures.map((lecture) => ({
+      ...createEvent(lecture),
+      rooms: getLectureRoomLocations(lecture.room, timetable.faculty),
+    }));
   });
 }
 

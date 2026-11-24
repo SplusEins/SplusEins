@@ -59,6 +59,19 @@ describe('Test SplusApi', () => {
     expect(events[0].title).toBe('Zeile B & C & D');
   });
 
+  it('should add the rooms with their maps', async () => {
+    mockFetch(
+      async () =>
+        new Response(fixture('graphical.html').replace('Zeile D', 'A012, X1')),
+    );
+    const [event] = await splusApi.getEvents([request('a')], [FIXTURE_WEEK]);
+    expect(event.location).toBe('A012, X1');
+    expect(event.rooms).toEqual([
+      { name: 'A012', url: expect.stringContaining('indoorequal.org') },
+      { name: 'X1' },
+    ]);
+  });
+
   it('should return one event per lecture', async () => {
     const events = await splusApi.getUniqueEvents(request('a'));
     const ids = events.map(({ id }) => id);
