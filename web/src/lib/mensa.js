@@ -1,16 +1,5 @@
 import dayjs from './dayjs';
 
-/* chip color of a meal category, other categories get the default color */
-const CHIP_COLORS = {
-  Vegan: 'success',
-  Vegetarisch: 'warning',
-  'Niedersachsen Menü': 'primary',
-  Aktion: 'primary',
-  'NEU bei uns': 'primary',
-  StudiDeal: 'primary',
-  Klimaessen: 'primary',
-};
-
 /**
  * Split a meal name like "Ofenkartoffel | Kräuterquark | Feldsalat" into
  * the dish and its sides.
@@ -24,10 +13,6 @@ export function splitMealName(name) {
     title: title ?? name,
     sides: sides.length > 0 ? `mit ${sides.join(', ')}` : '',
   };
-}
-
-export function mealChips(categories) {
-  return categories.map((text) => ({ text, color: CHIP_COLORS[text] }));
 }
 
 /**

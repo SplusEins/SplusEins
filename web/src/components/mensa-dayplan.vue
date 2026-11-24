@@ -17,12 +17,11 @@
               {{ meal.lane }}
             </span>
             <v-chip
-              v-for="chip in meal.chips"
-              :key="chip.text"
-              :color="chip.color"
+              v-for="category in meal.categories"
+              :key="category"
               size="small"
             >
-              {{ chip.text }}
+              {{ category }}
             </v-chip>
           </div>
           <div class="text-body-large font-weight-medium">
@@ -50,7 +49,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useMensaStore } from '../stores/mensa';
-import { matchesDiet, mealChips, splitMealName } from '../lib/mensa';
+import { matchesDiet, splitMealName } from '../lib/mensa';
 
 const props = defineProps({
   /* meals of one day */
@@ -73,7 +72,7 @@ const meals = computed(() =>
     .map((meal) => ({
       lane: meal.lane,
       ...splitMealName(meal.name),
-      chips: mealChips(meal.categories),
+      categories: meal.categories,
       student: EURO.format(meal.price.student),
       employee: EURO.format(meal.price.employee),
     })),

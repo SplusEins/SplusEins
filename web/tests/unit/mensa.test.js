@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
 import { useMensaStore } from '../../src/stores/mensa';
-import { matchesDiet, mealChips, splitMealName } from '../../src/lib/mensa';
+import { matchesDiet, splitMealName } from '../../src/lib/mensa';
 
 const dayPlan = (date) => ({ date, meals: [{ name: `Essen am ${date}` }] });
 const plans = [
@@ -94,15 +94,6 @@ describe('mensa meals', () => {
       title: 'Sauerkraut',
       sides: '',
     });
-  });
-
-  it('shows every category as a chip', () => {
-    expect(mealChips(['Vegetarisch', 'Niedersachsen Menü', 'Rind'])).toEqual([
-      { text: 'Vegetarisch', color: 'warning' },
-      { text: 'Niedersachsen Menü', color: 'primary' },
-      { text: 'Rind', color: undefined },
-    ]);
-    expect(mealChips([])).toEqual([]);
   });
 
   it('filters meals by diet', () => {
