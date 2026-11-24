@@ -68,8 +68,8 @@ import { matchesDiet, splitMealName } from '../lib/mensa';
 import SelectDialog from './select-dialog.vue';
 
 const DIET_NOTES = {
-  vegetarian: 'Nur vegetarische Gerichte',
-  vegan: 'Nur vegane Gerichte',
+  vegetarian: 'Nur vegetarisch',
+  vegan: 'Nur vegan',
 };
 
 const mensa = useMensaStore();
