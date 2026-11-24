@@ -13,6 +13,10 @@ export const useMensaStore = defineStore('mensa', {
      * key of the selected mensa, e.g. 'wf'
      */
     location: 'wf',
+    /**
+     * meals to show: 'all', 'vegetarian' or 'vegan'
+     */
+    diet: 'all',
   }),
   getters: {
     /**
@@ -64,6 +68,9 @@ export const useMensaStore = defineStore('mensa', {
   actions: {
     setLocation(location) {
       this.location = location;
+    },
+    setDiet(diet) {
+      this.diet = diet;
     },
     async load() {
       try {

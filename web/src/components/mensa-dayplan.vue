@@ -1,111 +1,93 @@
 <template>
-  <v-card class="fill-height" border>
-    <v-card-title class="text-title-large">
-      {{ getDayHeader(plan) }}
-    </v-card-title>
-    <v-divider />
-    <v-card-text class="py-1">
-      <div v-for="(item, idx) in plan.meals" :key="idx" class="py-2">
-        <div class="d-flex">
-          <div class="text-title-medium">
-            {{ item.lane }}
+  <div>
+    <template v-for="(meal, idx) in meals" :key="idx">
+      <v-divider v-if="idx > 0" />
+      <div class="d-flex ga-3 px-4 py-3">
+        <div class="flex-grow-1">
+          <div class="d-flex flex-wrap align-center ga-1 mb-1">
+            <span
+              class="text-label-medium text-uppercase text-medium-emphasis mr-1"
+            >
+              {{ meal.lane }}
+            </span>
+            <v-chip
+              v-for="chip in meal.chips"
+              :key="chip.text"
+              :color="chip.color"
+              size="small"
+            >
+              {{ chip.text }}
+            </v-chip>
           </div>
-          <v-icon
-            v-for="icon in getIcons(item)"
-            :key="icon.text"
-            v-tooltip:bottom="icon.text"
-            :icon="icon.icon"
-            :color="icon.color"
-            :aria-label="icon.text"
-            class="icon ml-1 align-self-center"
-            size="small"
-          />
+          <div class="text-body-large font-weight-medium">
+            {{ meal.title }}
+          </div>
+          <div v-if="meal.sides" class="text-body-medium text-medium-emphasis">
+            mit {{ meal.sides }}
+          </div>
         </div>
-        <div>
-          {{ item.name }}
-        </div>
-        <div class="text-body-small text-medium-emphasis">
-          <span class="text-no-wrap">
-            Studis {{ getPriceLabel(item.price.student) }}
-          </span>
-          ·
-          <span class="text-no-wrap">
-            Angestellte {{ getPriceLabel(item.price.employee) }}
-          </span>
+        <div class="text-right text-no-wrap pt-5">
+          <div class="text-body-large font-weight-bold">
+            <span class="d-sr-only">Studis</span>
+            {{ meal.student }}
+          </div>
+          <div class="text-body-small text-medium-emphasis">
+            <span class="d-sr-only">Angestellte</span>
+            {{ meal.employee }}
+          </div>
         </div>
       </div>
-    </v-card-text>
-  </v-card>
+    </template>
+    <template v-if="hiddenCount > 0">
+      <v-divider />
+      <div
+        class="d-flex align-center pl-4 pr-2 text-body-medium text-medium-emphasis"
+      >
+        <span class="flex-grow-1">
+          {{ hiddenCount }} {{ hiddenCount === 1 ? 'Gericht' : 'Gerichte' }}
+          ausgeblendet
+        </span>
+        <v-btn variant="text" color="primary" @click="mensa.setDiet('all')">
+          Alle zeigen
+        </v-btn>
+      </div>
+    </template>
+  </div>
 </template>
 
 <script setup>
-import {
-  mdiSprout,
-  mdiCurrencyEur,
-  mdiPig,
-  mdiCarrot,
-  mdiAlertDecagramOutline,
-  mdiNewBox,
-  mdiCow,
-  mdiInformationBoxOutline,
-  mdiTurkey,
-  mdiHomeSiloOutline,
-  mdiFish,
-  mdiSheep,
-  mdiEarth,
-} from '@mdi/js';
-import dayjs from '../lib/dayjs';
+import { computed } from 'vue';
+import { useMensaStore } from '../stores/mensa';
+import { matchesDiet, mealChips, splitMealName } from '../lib/mensa';
 
-defineProps({
+const props = defineProps({
   /* meals of one day */
   plan: {
     type: Object,
-    default: () => ({}),
+    default: () => ({ meals: [] }),
   },
 });
 
-/* icon and color for the categories of a meal, others get an info icon */
-const CATEGORY_ICONS = {
-  Schwein: { icon: mdiPig },
-  Rind: { icon: mdiCow },
-  Geflügel: { icon: mdiTurkey },
-  Fisch: { icon: mdiFish },
-  Lamm: { icon: mdiSheep },
-  'Artgerechte Tierhaltung': { icon: mdiHomeSiloOutline },
-  Aktion: { icon: mdiAlertDecagramOutline, color: 'purple' },
-  'NEU bei uns': { icon: mdiNewBox, color: 'blue' },
-  Vegan: { icon: mdiSprout, color: 'green' },
-  Vegetarisch: { icon: mdiCarrot, color: 'orange' },
-  StudiDeal: { icon: mdiCurrencyEur, color: 'red' },
-  Klimaessen: { icon: mdiEarth, color: 'blue' },
-};
-
-function getDayHeader(dayPlan) {
-  const day = dayjs(dayPlan.date.toString());
-  return (
-    (day.isSame(dayjs(), 'day') ? 'Heute' : day.format('dddd')) +
-    ' - ' +
-    day.format('DD.MM.YYYY')
-  );
-}
+const mensa = useMensaStore();
 
 const EURO = new Intl.NumberFormat('de-DE', {
   style: 'currency',
   currency: 'EUR',
 });
-const getPriceLabel = (price) => EURO.format(price);
 
-function getIcons(item) {
-  return item.categories.map((category) => ({
-    icon: mdiInformationBoxOutline,
-    ...CATEGORY_ICONS[category],
-    text: category,
-  }));
-}
+const shownMeals = computed(() =>
+  props.plan.meals.filter((meal) => matchesDiet(mensa.diet, meal.categories)),
+);
+const hiddenCount = computed(
+  () => props.plan.meals.length - shownMeals.value.length,
+);
+const meals = computed(() =>
+  shownMeals.value.map((meal) => ({
+    lane: meal.lane,
+    ...splitMealName(meal.name),
+    chips: mealChips(meal.categories),
+    student: EURO.format(meal.price.student),
+    employee: EURO.format(meal.price.employee),
+  })),
+);
 </script>
-
-<style scoped>
-.icon {
-  opacity: 0.7;
-}
-</style>

@@ -23,7 +23,13 @@
           <div class="text-body-small text-medium-emphasis">
             {{ item.lane }}
           </div>
-          <div>{{ item.name }}</div>
+          <div>{{ splitMealName(item.name).title }}</div>
+          <div
+            v-if="splitMealName(item.name).sides"
+            class="text-body-small text-medium-emphasis"
+          >
+            mit {{ splitMealName(item.name).sides }}
+          </div>
         </div>
       </template>
       <div v-else>
@@ -55,6 +61,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { mdiChevronRight, mdiMenuDown } from '@mdi/js';
 import { useMensaStore } from '../stores/mensa';
+import { splitMealName } from '../lib/mensa';
 import SelectDialog from './select-dialog.vue';
 
 const mensa = useMensaStore();

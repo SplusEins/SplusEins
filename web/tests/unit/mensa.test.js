@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
 import { useMensaStore } from '../../src/stores/mensa';
+import { matchesDiet, mealChips, splitMealName } from '../../src/lib/mensa';
 
 const dayPlan = (date) => ({ date, meals: [{ name: `Essen am ${date}` }] });
 const plans = [
@@ -78,5 +79,38 @@ describe('mensa store', () => {
     await mensa.load();
     expect(mensa.plans).toBeNull();
     vi.unstubAllGlobals();
+  });
+});
+
+describe('mensa meals', () => {
+  it('splits a meal name into dish and sides', () => {
+    expect(splitMealName('Ofenkartoffel | Kräuterquark | Feldsalat |')).toEqual(
+      {
+        title: 'Ofenkartoffel',
+        sides: 'Kräuterquark, Feldsalat',
+      },
+    );
+    expect(splitMealName('Sauerkraut')).toEqual({
+      title: 'Sauerkraut',
+      sides: '',
+    });
+  });
+
+  it('shows the diet or the meat, then highlights', () => {
+    expect(mealChips(['Vegetarisch', 'Niedersachsen Menü'])).toEqual([
+      { text: 'Vegetarisch', color: 'warning' },
+      { text: 'Niedersachsen-Menü', color: 'primary' },
+    ]);
+    expect(mealChips(['Schwein', 'Rind', 'Artgemäß'])).toEqual([
+      { text: 'Schwein, Rind' },
+    ]);
+    expect(mealChips([])).toEqual([]);
+  });
+
+  it('filters meals by diet', () => {
+    expect(matchesDiet('all', ['Schwein'])).toBe(true);
+    expect(matchesDiet('vegetarian', ['Vegan'])).toBe(true);
+    expect(matchesDiet('vegetarian', ['Fisch'])).toBe(false);
+    expect(matchesDiet('vegan', ['Vegetarisch'])).toBe(false);
   });
 });
