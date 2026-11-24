@@ -6,6 +6,7 @@ import { config } from '../config';
 import { upcomingIsoWeeks } from '../lib/dayjs';
 import { Event } from '../model/SplusEinsModel';
 import { getEvents } from '../lib/SplusApi';
+import { roomsToText } from '../lib/Room/RoomLocationApi';
 import { findTimetables, splitList } from '../lib/timetables';
 
 const router = express.Router();
@@ -18,7 +19,9 @@ const CACHE_SECONDS = config.icsCacheSeconds;
  * @returns ical event
  */
 function eventToICSEvent(lecture: Event) {
-  const uid = sha256(JSON.stringify(lecture)).slice(0, 16);
+  // the uid must not change with the room data
+  const stable = { ...lecture, rooms: undefined };
+  const uid = sha256(JSON.stringify(stable)).slice(0, 16);
   return {
     uid,
     start: lecture.start,
@@ -29,7 +32,7 @@ function eventToICSEvent(lecture: Event) {
       lecture.meta.organiserName +
       (lecture.meta.description !== '' ? ' - ' : '') +
       lecture.meta.description,
-    location: lecture.location,
+    location: roomsToText(lecture.rooms),
   };
 }
 

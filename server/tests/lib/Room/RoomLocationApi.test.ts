@@ -1,7 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import {
   FacultyLocation,
+  getLectureRoomLocations,
   getRoomLocation,
+  roomsToText,
 } from '../../../lib/Room/RoomLocationApi';
 
 // Mock location of faculty data
@@ -53,9 +55,11 @@ describe('RoomLocationApi', () => {
         'WF-EX-2/252',
         'Fakultät in Wolfenbüttel',
       );
-      expect(locationInfo).toEqual(
-        'WF-EX-2/252 (Am Exer 2, 38302 Wolfenbüttel) Link: https://osmapp.org/way/123456789',
-      );
+      expect(locationInfo).toEqual({
+        name: 'WF-EX-2/252',
+        address: 'Am Exer 2, 38302 Wolfenbüttel',
+        url: 'https://osmapp.org/way/123456789',
+      });
     });
 
     it('should return correct location info for WF-EX-3/101 in WF faculty', () => {
@@ -63,16 +67,20 @@ describe('RoomLocationApi', () => {
         'WF-EX-3/101',
         'Fakultät in Wolfenbüttel',
       );
-      expect(locationInfo).toEqual(
-        'WF-EX-3/101 (Am Exer 3, 38302 Wolfenbüttel) Link: https://osmapp.org/way/987654321',
-      );
+      expect(locationInfo).toEqual({
+        name: 'WF-EX-3/101',
+        address: 'Am Exer 3, 38302 Wolfenbüttel',
+        url: 'https://osmapp.org/way/987654321',
+      });
     });
 
     it('should return correct location info for A068 in WF faculty', () => {
       const locationInfo = getRoomLocation('A068', 'Fakultät in Wolfenbüttel');
-      expect(locationInfo).toEqual(
-        'A068 (Salzdahlumer Str. 46/48, 38302 Wolfenbüttel) Link: https://osmapp.org/way/123456789',
-      );
+      expect(locationInfo).toEqual({
+        name: 'A068',
+        address: 'Salzdahlumer Str. 46/48, 38302 Wolfenbüttel',
+        url: 'https://osmapp.org/way/123456789',
+      });
     });
 
     it('should return room name only for unknown room in WF faculty', () => {
@@ -80,7 +88,32 @@ describe('RoomLocationApi', () => {
         'UNKNOWN_ROOM',
         'Fakultät in Wolfenbüttel',
       );
-      expect(locationInfo).toEqual('UNKNOWN_ROOM');
+      expect(locationInfo).toEqual({ name: 'UNKNOWN_ROOM' });
     });
+  });
+
+  it('should split the rooms of a lecture', () => {
+    expect(
+      getLectureRoomLocations('A068, Online,', 'Fakultät in Wolfenbüttel'),
+    ).toEqual([
+      {
+        name: 'A068',
+        address: 'Salzdahlumer Str. 46/48, 38302 Wolfenbüttel',
+        url: 'https://osmapp.org/way/123456789',
+      },
+      { name: 'Online' },
+    ]);
+  });
+
+  it('should write the rooms as text with their address', () => {
+    expect(
+      roomsToText([
+        {
+          name: 'A068',
+          address: 'Salzdahlumer Str. 46/48, 38302 Wolfenbüttel',
+        },
+        { name: 'B107' },
+      ]),
+    ).toBe('A068, Salzdahlumer Str. 46/48, 38302 Wolfenbüttel / B107');
   });
 });

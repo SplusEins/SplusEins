@@ -1,6 +1,7 @@
 import { ParsedLecture } from './SplusModel';
 import { config } from '../config';
 import { shortHash } from '../lib/shortHash';
+import { Room } from '../lib/Room/RoomLocationApi';
 
 const CENSOR_DISABLE = config.censorDisable;
 const ACADEMIC_TITLES =
@@ -118,7 +119,9 @@ export interface Event {
   start: string;
   end: string;
   duration: number;
+  /* the rooms as in the timetable, e.g. 'A209, B107' */
   location: string;
+  rooms: Room[];
   meta: EventMetadata;
   colorIndex?: number;
 }
@@ -161,7 +164,7 @@ function generateOrganiserShortname(lecturer: string): string {
     .join(', ');
 }
 
-export function createEvent(lecture: ParsedLecture): Event {
+export function createEvent(lecture: ParsedLecture): Omit<Event, 'rooms'> {
   const organiserName = CENSOR_DISABLE
     ? lecture.lecturer
     : censorOrganiserName(lecture.lecturer);

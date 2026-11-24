@@ -44,7 +44,7 @@ Da manche Räume an unterschiedlichen Standorten gleich heißen, wird für jeden
 
 ### Links erstellen
 
-IndoorEqual unterstützt nicht das Markieren von Räumen. Daher berechnen wir die Mitte des Raums und zentrieren die Kamera darauf.
+IndoorEqual unterstützt nicht das Markieren von Räumen. Daher berechnen wir die Mitte des Raums und zentrieren die Kamera darauf. Das passiert in `server/lib/Room/`. Die API liefert pro Termin `rooms: [{ name, address?, url? }]`, `location` enthält nur die Raumnamen aus dem Stundenplan.
 
 #### Beispiel
 

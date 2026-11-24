@@ -48,9 +48,9 @@
                 />
                 {{ event.name }}
               </v-list-item-title>
-              <v-list-item-subtitle v-if="event.room">
+              <v-list-item-subtitle v-if="event.location">
                 <v-icon :icon="mdiMapMarkerOutline" size="14" class="mb-1" />
-                {{ event.room }}
+                {{ event.location }}
               </v-list-item-subtitle>
             </div>
           </div>
@@ -116,14 +116,9 @@ const events = computed(() => {
     .map((event) => {
       const start = dayjs(event.start);
       const end = dayjs(event.end);
-      const room = (event.location || '')
-        .split(' / ')
-        .map((location) => location.split(/ \(| Link: /)[0])
-        .join(' / ');
       return {
         ...event,
-        key: `${event.name}|${event.start}|${room}`,
-        room,
+        key: `${event.name}|${event.start}|${event.location}`,
         day: relativeDay(start, now.value) ?? start.format('dddd, DD.MM.'),
         start,
         end,

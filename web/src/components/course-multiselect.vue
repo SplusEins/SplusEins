@@ -43,7 +43,6 @@
 <script setup>
 import { computed } from 'vue';
 import { overlappingCourseTitles } from '../lib/overlaps';
-import { roomWithoutLinks } from '../lib/util';
 
 const props = defineProps({
   maxCourses: {
@@ -68,7 +67,7 @@ const headers = [
   {
     key: 'room',
     title: 'Raum',
-    value: (lecture) => roomWithoutLinks(lecture.location),
+    value: (lecture) => lecture.location,
   },
 ];
 const headersMobile = [{ key: 'title', title: 'Vorlesung' }];

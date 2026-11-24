@@ -42,17 +42,17 @@
         />
 
         <v-list-item
-          v-for="(loc, i) in location"
+          v-for="(room, i) in event.rooms"
           :key="i"
-          :title="loc.text"
-          :subtitle="loc.extraInfo"
+          :title="room.name"
+          :subtitle="room.address"
         >
           <template #prepend>
             <v-icon :icon="mdiMapMarkerOutline" :class="{ 'opacity-0': i }" />
           </template>
-          <template v-if="loc.url" #append>
+          <template v-if="room.url" #append>
             <v-btn
-              :href="loc.url"
+              :href="room.url"
               target="_blank"
               :append-icon="mdiOpenInNew"
               color="primary"
@@ -139,42 +139,4 @@ const day = computed(() =>
     .filter(Boolean)
     .join(', '),
 );
-
-/**
- * Parses the location string into an array of objects with text and url
- * @returns {{ text: string, url?: string, extraInfo?: string }[]}
- */
-const location = computed(() => {
-  const rawLocation = props.event.location;
-  if (!rawLocation) return [];
-
-  // If there are multiple locations separated by ' / '
-  const locations = rawLocation.split(' / ');
-
-  /**
-   * The rawLocation is in the form "WF-EX-2/252 (Am Exer 2, 38302 Wolfenbüttel) Link: https://..."
-   * Explanation:
-   * The WF-EX-2/252 is the text to display as link text
-   * The (Am Exer 2, 38302 Wolfenbüttel) is optional and should be displayed after the link in parentheses
-   * The URL after "Link: " is the href of the link
-   */
-  return locations.map((location) => {
-    const trimmed = location.trim();
-    const [nameAndInfoPart, linkPart] = trimmed.split(' Link: ');
-
-    if (!linkPart) return { text: nameAndInfoPart.trim() };
-
-    const url = linkPart.trim();
-    const [displayText, extraInfo] = nameAndInfoPart.split(' (');
-
-    if (extraInfo) {
-      return {
-        text: displayText.trim(),
-        url,
-        extraInfo: extraInfo.trim().slice(0, -1) /* remove trailing ) */,
-      };
-    }
-    return { text: nameAndInfoPart.trim(), url };
-  });
-});
 </script>

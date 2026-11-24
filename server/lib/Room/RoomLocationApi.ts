@@ -18,32 +18,40 @@ const FACULTY_LOCATIONS: FacultyLocation[] = ['WF', 'WOB', 'SZ', 'SUD'];
 const isFacultyLocation = (location?: string): location is FacultyLocation =>
   FACULTY_LOCATIONS.some((facultyLocation) => facultyLocation === location);
 
-export function getRoomLocation(room: string, faculty: string): string {
-  let result = room;
-
-  // Determine faculty location
-  const location = LOCATION_OF_FACULTY[faculty];
-  const facultyLocation = isFacultyLocation(location) ? location : null;
-
-  // Add address and OSM link if faculty location is known
-  const address = facultyLocation
-    ? createRoomAddress(room, facultyLocation)
-    : null;
-  if (address) {
-    result += ` (${address})`;
-  }
-  const osmLink = facultyLocation ? createOSMLink(room, facultyLocation) : null;
-  if (osmLink) {
-    result += ` Link: ${osmLink}`;
-  }
-
-  return result;
+export interface Room {
+  name: string;
+  address?: string;
+  /* a map centered on the room */
+  url?: string;
 }
 
+export function getRoomLocation(room: string, faculty: string): Room {
+  const location = LOCATION_OF_FACULTY[faculty];
+  if (!isFacultyLocation(location)) return { name: room };
+  return {
+    name: room,
+    address: createRoomAddress(room, location) ?? undefined,
+    url: createOSMLink(room, location) ?? undefined,
+  };
+}
+
+/**
+ * @param rooms the rooms as in the timetable, e.g. 'A209, B107'
+ */
 export function getLectureRoomLocations(
-  rooms: string[],
+  rooms: string,
   faculty: string,
-): string {
-  const locations = rooms.map((room) => getRoomLocation(room.trim(), faculty));
-  return locations.join(' / ');
+): Room[] {
+  return rooms
+    .split(',')
+    .map((room) => room.trim())
+    .filter(Boolean)
+    .map((room) => getRoomLocation(room, faculty));
+}
+
+/* e.g. 'A209, Salzdahlumer Str. 46/48, 38302 Wolfenbüttel / B107' */
+export function roomsToText(rooms: Room[]): string {
+  return rooms
+    .map(({ name, address }) => (address ? `${name}, ${address}` : name))
+    .join(' / ');
 }

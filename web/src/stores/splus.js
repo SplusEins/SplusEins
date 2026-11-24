@@ -48,6 +48,7 @@ function toCalendarEvent(event, timetable) {
     start: dayjs(event.start).format('YYYY-MM-DD HH:mm'),
     end: dayjs(event.end).format('YYYY-MM-DD HH:mm'),
     location: event.location,
+    rooms: event.rooms ?? [],
     lecturer: event.meta.organiserName,
     info: event.meta.description,
     color: courseColor(event, timetable),
