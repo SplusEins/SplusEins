@@ -1,111 +1,138 @@
 <template>
-  <v-card class="fill-height" border>
-    <v-card-title class="text-title-large">
-      {{ getDayHeader(plan) }}
-    </v-card-title>
+  <v-card
+    border
+    flat
+    rounded="lg"
+    :style="isToday ? 'border-color: rgb(var(--v-theme-primary))' : undefined"
+  >
+    <div class="d-flex align-baseline ga-2 px-4 pt-3 pb-2">
+      <span class="text-title-medium" :class="{ 'text-primary': isToday }">
+        {{ relativeDay(plan.date) ?? dayjs(plan.date).format('dddd') }}
+      </span>
+      <span class="text-body-small text-medium-emphasis">
+        {{ dayjs(plan.date).format('DD.MM.') }}
+      </span>
+    </div>
     <v-divider />
-    <v-card-text class="py-1">
-      <div v-for="(item, idx) in plan.meals" :key="idx" class="py-2">
-        <div class="d-flex">
-          <div class="text-title-medium">
-            {{ item.lane }}
-          </div>
+    <div
+      v-if="meals.length === 0"
+      class="px-4 py-3 text-body-medium text-medium-emphasis"
+    >
+      Keine passenden Gerichte.
+    </div>
+    <template v-for="(meal, idx) in meals" :key="idx">
+      <v-divider v-if="idx > 0" />
+      <div class="px-4 py-3">
+        <div class="d-flex flex-wrap align-center ga-1 mb-1">
+          <span class="text-label-medium text-medium-emphasis mr-1">
+            {{ meal.lane }}
+          </span>
           <v-icon
-            v-for="icon in getIcons(item)"
-            :key="icon.text"
-            v-tooltip:bottom="icon.text"
-            :icon="icon.icon"
-            :color="icon.color"
-            :aria-label="icon.text"
-            class="icon ml-1 align-self-center"
+            v-for="category in meal.icons"
+            :key="category"
+            v-tooltip:bottom="category"
+            :icon="CATEGORY_ICONS[category].icon"
+            :color="CATEGORY_ICONS[category].color"
+            :aria-label="category"
+            :class="{ 'text-medium-emphasis': !CATEGORY_ICONS[category].color }"
             size="small"
           />
+          <v-chip
+            v-for="category in meal.chips"
+            :key="category"
+            :color="CHIP_COLORS[category]"
+            :variant="CHIP_COLORS[category] ? 'tonal' : 'outlined'"
+            :class="{ 'text-medium-emphasis': !CHIP_COLORS[category] }"
+            size="x-small"
+          >
+            {{ category }}
+          </v-chip>
         </div>
-        <div>
-          {{ item.name }}
+        <div
+          class="text-body-large font-weight-medium"
+          style="hyphens: auto; hyphenate-limit-chars: 12 5 5"
+        >
+          {{ meal.title }}
         </div>
-        <div class="text-body-small text-medium-emphasis">
-          <span class="text-no-wrap">
-            Studis {{ getPriceLabel(item.price.student) }}
+        <div v-if="meal.sides" class="text-body-small text-medium-emphasis">
+          {{ meal.sides }}
+        </div>
+        <div class="d-flex flex-wrap align-baseline ga-2 mt-1">
+          <span class="text-body-large font-weight-bold">
+            <span class="d-sr-only">Studis</span>
+            {{ meal.student }}
           </span>
-          ·
-          <span class="text-no-wrap">
-            Angestellte {{ getPriceLabel(item.price.employee) }}
+          <span class="text-body-small text-medium-emphasis">
+            {{ meal.employee }}
+            Angestellte
           </span>
         </div>
       </div>
-    </v-card-text>
+    </template>
   </v-card>
 </template>
 
 <script setup>
-import {
-  mdiSprout,
-  mdiCurrencyEur,
-  mdiPig,
-  mdiCarrot,
-  mdiAlertDecagramOutline,
-  mdiNewBox,
-  mdiCow,
-  mdiInformationBoxOutline,
-  mdiTurkey,
-  mdiHomeSiloOutline,
-  mdiFish,
-  mdiSheep,
-  mdiEarth,
-} from '@mdi/js';
+import { computed } from 'vue';
+import { mdiCow, mdiFish, mdiPig, mdiSheep, mdiTurkey } from '@mdi/js';
 import dayjs from '../lib/dayjs';
+import { useMensaStore } from '../stores/mensa';
+import {
+  DIET_ICONS,
+  matchesDiet,
+  relativeDay,
+  splitMealName,
+} from '../lib/mensa';
 
-defineProps({
+const props = defineProps({
   /* meals of one day */
   plan: {
     type: Object,
-    default: () => ({}),
+    required: true,
   },
 });
 
-/* icon and color for the categories of a meal, others get an info icon */
+const CHIP_COLORS = {
+  'NEU bei uns': 'primary',
+  Aktion: 'primary',
+  StudiDeal: 'primary',
+};
+
 const CATEGORY_ICONS = {
+  ...DIET_ICONS,
   Schwein: { icon: mdiPig },
   Rind: { icon: mdiCow },
   Geflügel: { icon: mdiTurkey },
   Fisch: { icon: mdiFish },
   Lamm: { icon: mdiSheep },
-  'Artgerechte Tierhaltung': { icon: mdiHomeSiloOutline },
-  Aktion: { icon: mdiAlertDecagramOutline, color: 'purple' },
-  'NEU bei uns': { icon: mdiNewBox, color: 'blue' },
-  Vegan: { icon: mdiSprout, color: 'green' },
-  Vegetarisch: { icon: mdiCarrot, color: 'orange' },
-  StudiDeal: { icon: mdiCurrencyEur, color: 'red' },
-  Klimaessen: { icon: mdiEarth, color: 'blue' },
 };
 
-function getDayHeader(dayPlan) {
-  const day = dayjs(dayPlan.date.toString());
-  return (
-    (day.isSame(dayjs(), 'day') ? 'Heute' : day.format('dddd')) +
-    ' - ' +
-    day.format('DD.MM.YYYY')
-  );
-}
+const HIDDEN_CATEGORIES = ['Niedersachsen Menü'];
+
+const mensa = useMensaStore();
+
+const isToday = computed(() => relativeDay(props.plan.date) === 'Heute');
 
 const EURO = new Intl.NumberFormat('de-DE', {
   style: 'currency',
   currency: 'EUR',
 });
-const getPriceLabel = (price) => EURO.format(price);
 
-function getIcons(item) {
-  return item.categories.map((category) => ({
-    icon: mdiInformationBoxOutline,
-    ...CATEGORY_ICONS[category],
-    text: category,
-  }));
-}
+const meals = computed(() =>
+  props.plan.meals
+    .filter((meal) => matchesDiet(mensa.diet, meal.categories))
+    .map((meal) => ({
+      lane: meal.lane,
+      ...splitMealName(meal.name),
+      icons: meal.categories.filter((c) => CATEGORY_ICONS[c]),
+      chips: meal.categories.filter(
+        (c) =>
+          !CATEGORY_ICONS[c] &&
+          !HIDDEN_CATEGORIES.includes(c) &&
+          c !== meal.lane,
+      ),
+      student: EURO.format(meal.price.student),
+      employee: EURO.format(meal.price.employee),
+    })),
+);
 </script>
-
-<style scoped>
-.icon {
-  opacity: 0.7;
-}
-</style>

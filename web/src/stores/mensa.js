@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import dayjs from '../lib/dayjs';
 import { apiGet } from '../lib/api';
+import { relativeDay } from '../lib/mensa';
 import { useAppStore } from './app';
 
 export const useMensaStore = defineStore('mensa', {
@@ -13,6 +14,10 @@ export const useMensaStore = defineStore('mensa', {
      * key of the selected mensa, e.g. 'wf'
      */
     location: 'wf',
+    /**
+     * meals to show: 'all', 'vegetarian' or 'vegan'
+     */
+    diet: 'all',
   }),
   getters: {
     /**
@@ -55,10 +60,7 @@ export const useMensaStore = defineStore('mensa', {
      */
     nextPlanDay() {
       const date = this.getNextAvailablePlan.date;
-      if (!date) return undefined;
-      if (dayjs().isSame(date, 'day')) return 'Heute';
-      if (dayjs().add(1, 'day').isSame(date, 'day')) return 'Morgen';
-      return undefined;
+      return date ? relativeDay(date) : undefined;
     },
   },
   actions: {

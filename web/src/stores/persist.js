@@ -84,6 +84,7 @@ export function persistStores(pinia) {
     },
     mensa: {
       location: mensa.location,
+      diet: mensa.diet,
     },
   });
   watch(
