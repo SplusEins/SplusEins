@@ -1,7 +1,5 @@
 <template>
   <v-list v-model:opened="opened">
-    <v-list-subheader> Alle Pläne </v-list-subheader>
-
     <v-list-group
       v-for="(semesters, path) in schedulesTree"
       :key="path"

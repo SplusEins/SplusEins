@@ -50,7 +50,7 @@
               Weiteren Plan hinzufügen
             </v-btn>
             <span v-else class="text-body-medium text-medium-emphasis">
-              Höchstens {{ maxSchedules }} Pläne
+              Du kannst höchstens {{ maxSchedules }} Pläne kombinieren
             </span>
           </div>
           <div class="px-4">

@@ -25,6 +25,17 @@
               @update:model-value="toggleAll(schedule, $event)"
             />
           </template>
+          <template #append>
+            <v-btn
+              :icon="mdiDeleteOutline"
+              :aria-label="`${timetableDisplayName(schedule)} entfernen`"
+              variant="text"
+              size="small"
+              @click.stop="emit('remove', schedule)"
+            />
+            <!-- the expand icon of the group -->
+            <v-icon />
+          </template>
         </v-list-item>
       </template>
 
@@ -56,18 +67,13 @@
           </template>
         </div>
       </v-list-item>
-
-      <div class="pb-2">
-        <v-btn variant="text" color="error" @click="emit('remove', schedule)">
-          Plan entfernen
-        </v-btn>
-      </div>
     </v-list-group>
   </v-list>
 </template>
 
 <script setup>
 import { computed } from 'vue';
+import { mdiDeleteOutline } from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { overlappingCourses } from '../lib/overlaps';
 import { timetableDisplayName, uniq } from '../lib/util';

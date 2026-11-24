@@ -85,9 +85,9 @@
             :prepend-icon="mdiEyeOffOutline"
             :disabled="customPlan.whitelist.length === 1"
             variant="outlined"
-            @click="hideCourse()"
+            @click="hideFromPlan()"
           >
-            Alle Termine ausblenden
+            Kurs ausblenden
           </v-btn>
           <v-btn
             v-if="addTargets.length === 1"
@@ -212,7 +212,7 @@ function addTo(plan) {
 }
 
 /* removes the course with all its lectures from the custom plan */
-function hideCourse() {
+function hideFromPlan() {
   const updated = splus.removeCourseFromCustomSchedule(
     customPlan.value.label,
     props.event.id,

@@ -9,6 +9,7 @@
           @click="customTimetableDialogOpen = true"
         />
       </my-timetables-list>
+      <v-list-subheader class="px-4">Alle Pläne</v-list-subheader>
       <general-timetables-list />
     </timetable-search>
     <custom-timetable-dialog v-model="customTimetableDialogOpen" />

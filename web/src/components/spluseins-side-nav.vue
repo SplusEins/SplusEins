@@ -6,6 +6,7 @@
       <my-timetables-list />
     </template>
     <v-divider />
+    <v-list-subheader class="px-4">Alle Pläne</v-list-subheader>
     <timetable-search>
       <general-timetables-list />
     </timetable-search>
