@@ -5,3 +5,4 @@ node_modules
 dist
 __snapshots__
 tests/fixtures
+assets/overpass_osm
