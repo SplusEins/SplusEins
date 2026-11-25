@@ -226,6 +226,9 @@ describe('mensa', () => {
     expect(response.body[0].url).toBe(
       'https://www.stw-on.de/wolfenbüttel/essen/mensa',
     );
+    expect(response.body[2].faculties).toEqual([
+      'Verkehr-Sport-Tourismus-Medien',
+    ]);
     expect(
       response.body[0].dayPlans.map(({ date }: MensaDayPlan) => date),
     ).toEqual(['2026-11-10', '2026-11-11']);

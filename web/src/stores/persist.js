@@ -54,7 +54,10 @@ export function persistStores(pinia) {
   // restore
   const saved = readSavedState();
   ui.$patch(saved.ui || {});
-  mensa.$patch(saved.mensa || {});
+  // older versions saved 'wf' even if nothing was chosen, other locations were chosen
+  const { location, ...savedMensa } = saved.mensa || {};
+  if (location && location !== 'wf') savedMensa.chosenLocation ??= location;
+  mensa.$patch(savedMensa);
   // broken saved timetables must not break the app
   try {
     if (saved.version === 18 && saved.splus) {
@@ -83,7 +86,7 @@ export function persistStores(pinia) {
       subscribedKey: splus.subscribedKey,
     },
     mensa: {
-      location: mensa.location,
+      chosenLocation: mensa.chosenLocation,
       diet: mensa.diet,
     },
   });

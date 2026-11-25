@@ -12,6 +12,7 @@ import {
   StwMensaMeal,
 } from '../model/SplusEinsModel';
 import { isRecord } from '../lib/isRecord';
+import LOCATION_OF_FACULTY from '../assets/locationOfFaculty.json';
 
 // abort requests if the API of the Studentenwerk is too slow to respond
 const TIMEOUT_MILLISECONDS = 3000;
@@ -103,7 +104,7 @@ function getMensa({
   id,
   key: mensaKey,
 }: (typeof MENSAS)[number]): Promise<Mensa> {
-  const key = `mensa-v2-${id}-${dayjs().format('YYYY-MM-DD')}`;
+  const key = `mensa-v3-${id}-${dayjs().format('YYYY-MM-DD')}`;
   return cached(key, CACHE_SECONDS, async () => {
     console.log(`mensa cache miss for key ${key}`);
 
@@ -125,6 +126,9 @@ function getMensa({
       url: `https://www.stw-on.de/${response.address.city.toLowerCase()}/essen/${page}`,
       opening_hours: filterMensaOpenings(response.opening_hours, response.id),
       address: response.address,
+      faculties: Object.entries(LOCATION_OF_FACULTY)
+        .filter(([, location]) => location.toLowerCase() === mensaKey)
+        .map(([faculty]) => faculty),
     };
   });
 }

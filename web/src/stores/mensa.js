@@ -3,6 +3,7 @@ import dayjs from '../lib/dayjs';
 import { apiGet } from '../lib/api';
 import { relativeDay } from '../lib/mensa';
 import { useAppStore } from './app';
+import { useSplusStore } from './splus';
 
 export const useMensaStore = defineStore('mensa', {
   state: () => ({
@@ -11,9 +12,9 @@ export const useMensaStore = defineStore('mensa', {
      */
     plans: null,
     /**
-     * key of the selected mensa, e.g. 'wf'
+     * key of the mensa chosen by the user, e.g. 'wf', or null to choose by faculty
      */
-    location: 'wf',
+    chosenLocation: null,
     /**
      * meals to show: 'all', 'vegetarian' or 'vegan'
      */
@@ -21,11 +22,16 @@ export const useMensaStore = defineStore('mensa', {
   }),
   getters: {
     /**
-     * The selected mensa, or the first one if it is not available.
+     * The chosen mensa, else the one of the first saved faculty, else the first one.
      */
-    selectedPlan: (state) =>
-      state.plans?.find((plan) => plan.key === state.location) ??
-      state.plans?.[0],
+    selectedPlan(state) {
+      const faculty = useSplusStore().savedFaculties[0];
+      return (
+        state.plans?.find((plan) => plan.key === state.chosenLocation) ??
+        state.plans?.find((plan) => plan.faculties?.includes(faculty)) ??
+        state.plans?.[0]
+      );
+    },
     getNextAvailablePlan() {
       const plan = this.selectedPlan;
       if (!plan || plan.dayPlans.length === 0) {
@@ -65,7 +71,7 @@ export const useMensaStore = defineStore('mensa', {
   },
   actions: {
     setLocation(location) {
-      this.location = location;
+      this.chosenLocation = location;
     },
     async load() {
       try {

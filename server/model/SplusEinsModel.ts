@@ -61,6 +61,8 @@ export interface Mensa {
   address: MensaAddress;
   dayPlans: MensaDayPlan[];
   url: string;
+  /* faculties on the campus of the mensa */
+  faculties: string[];
 }
 
 export interface StwLocation {

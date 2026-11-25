@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
 import { useMensaStore } from '../../src/stores/mensa';
+import { useSplusStore } from '../../src/stores/splus';
 import { matchesDiet, splitMealName, weekLabel } from '../../src/lib/mensa';
 
 const dayPlan = (date) => ({ date, meals: [{ name: `Essen am ${date}` }] });
@@ -10,7 +11,12 @@ const plans = [
     name: 'Mensa Wolfenbüttel',
     dayPlans: [dayPlan('2026-11-10'), dayPlan('2026-11-11')],
   },
-  { key: 'sz', name: 'Mensa Salzgitter', dayPlans: [dayPlan('2026-11-12')] },
+  {
+    key: 'sz',
+    name: 'Mensa Salzgitter',
+    faculties: ['Verkehr-Sport-Tourismus-Medien'],
+    dayPlans: [dayPlan('2026-11-12')],
+  },
 ];
 
 describe('mensa store', () => {
@@ -48,6 +54,13 @@ describe('mensa store', () => {
   it('uses the first mensa if the selected one is missing', () => {
     vi.useFakeTimers({ now: new Date(2026, 10, 10, 12) });
     mensa.setLocation('sud');
+    expect(mensa.selectedPlan.key).toBe('wf');
+  });
+
+  it('uses the mensa of the saved faculty until one is chosen', () => {
+    useSplusStore().favoriteIds = ['k_ap_1_ws26'];
+    expect(mensa.selectedPlan.key).toBe('sz');
+    mensa.setLocation('wf');
     expect(mensa.selectedPlan.key).toBe('wf');
   });
 
