@@ -14,7 +14,9 @@ export function mockFetch(
 ) {
   return vi
     .spyOn(globalThis, 'fetch')
-    .mockImplementation(async (input) => handler(String(input)));
+    .mockImplementation(async (input) =>
+      handler(input instanceof Request ? input.url : input.toString()),
+    );
 }
 
 /* a timetable whose plan is parsed like tests/fixtures/graphical.html */

@@ -1,7 +1,7 @@
 import express from 'express';
 import { config } from '../config';
 import RSS from 'rss';
-import getNews from '../lib/NewsApi';
+import { getNews } from '../lib/NewsApi';
 import { shortHash } from '../lib/shortHash';
 import { NewsElement } from '../model/SplusEinsModel';
 
@@ -16,7 +16,9 @@ const MAX_NEWS_ITEMS = 100;
  */
 router.get('/:newstypes{.:ext}', async (req, res) => {
   const newstypes = req.params.newstypes.split(',');
-  let limit = parseInt(String(req.query.limit)) || MAX_NEWS_ITEMS;
+  const { limit: limitParam } = req.query;
+  let limit =
+    (typeof limitParam === 'string' && parseInt(limitParam)) || MAX_NEWS_ITEMS;
   if (limit > MAX_NEWS_ITEMS) limit = MAX_NEWS_ITEMS;
   let news: NewsElement[];
   try {
