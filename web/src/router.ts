@@ -46,7 +46,7 @@ const router = createRouter({
   routes,
 });
 
-export function setPageTitle(title) {
+export function setPageTitle(title?: string) {
   document.title = title ? `${title} - SplusEins` : 'SplusEins';
 }
 
