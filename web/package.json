@@ -19,7 +19,7 @@
     "fmt": "prettier . --write",
     "fmt:check": "prettier . --check",
     "lint": "eslint .",
-    "typecheck": "vue-tsc",
+    "typecheck": "vue-tsc -b",
     "lintfix": "eslint --fix ."
   },
   "dependencies": {
@@ -34,6 +34,8 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@types/express": "5.0.6",
+    "@types/node": "24.19.2",
     "@vitejs/plugin-vue": "6.0.10",
     "eslint": "10.14.0",
     "eslint-config-prettier": "10.1.8",

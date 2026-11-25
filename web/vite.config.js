@@ -1,15 +1,16 @@
 import { readFileSync } from 'node:fs';
-import { defineConfig } from 'vite';
+// vitest/config also knows the test options
+import { defineConfig } from 'vitest/config';
 import vue from '@vitejs/plugin-vue';
 import vuetify from 'vite-plugin-vuetify';
 import { VitePWA } from 'vite-plugin-pwa';
 
 // Names for the Impressum. The real ones are passed as environment variable
 // so they do not have to be committed to the repository.
-const protectedInformation =
-  'PROTECTED_INFORMATION' in process.env
-    ? JSON.parse(process.env.PROTECTED_INFORMATION)
-    : JSON.parse(readFileSync('./src/assets/protected-information.json'));
+const protectedInformation = JSON.parse(
+  process.env.PROTECTED_INFORMATION ??
+    readFileSync('./src/assets/protected-information.json', 'utf8'),
+);
 
 // During development, the API and the docs are served by other processes.
 // See README.md for how to start them.
