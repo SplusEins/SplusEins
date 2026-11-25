@@ -30,6 +30,8 @@ function clean(html: string, options: sanitize.IOptions): string {
   return sanitize(html, options).replaceAll('&amp;', '&');
 }
 
+export const stripHtml = (html: string) => clean(html, STRIP_HTML);
+
 /**
  * The Ostfalia server answered with an error status.
  */

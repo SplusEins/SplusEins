@@ -92,7 +92,7 @@ describe('Test SkedParser', () => {
     ).toEqual([
       {
         title: 'Mentoring',
-        room: 'D-222',
+        room: expect.stringContaining('>D-222</a>'),
         lecturer: '',
         start: '2026-11-11T10:30:00.000Z',
       },
@@ -110,7 +110,7 @@ describe('Test SkedParser', () => {
       },
       {
         title: 'Mathematik II',
-        room: 'D-021',
+        room: expect.stringContaining('>D-021</a>'),
         lecturer: 'Prof. Dr. Vanis',
         start: '2026-11-16T07:00:00.000Z',
       },

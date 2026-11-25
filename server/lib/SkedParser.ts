@@ -235,9 +235,7 @@ export function parseSkedGraphical(
         }
         // 'Mo, 09.11.2026' or '09.11.2026'
         const datum = col[0].split(', ').pop() ?? '';
-        const parts = entry
-          .split('<br>')
-          .map((part) => part.replace(/<a.+>(.+)<\/a>/, '$1'));
+        const parts = entry.split('<br>');
         if (parts.length < 3) {
           // Should at least have time & name, otherwise no valid column
           return;
