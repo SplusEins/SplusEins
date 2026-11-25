@@ -7,7 +7,7 @@ Guidance for coding agents working in this repository.
 Three independent npm packages, each with its own `package.json`, `.nvmrc` (Node 24) and ESLint/Prettier config. There is no root `package.json`, so `cd` into one first.
 
 - `server/`: Express 5 API in TypeScript, served at `/api`
-- `web/`: Vue 3 SPA (Vite, Vuetify, Pinia, PWA) in JavaScript; new code may use TypeScript
+- `web/`: Vue 3 SPA (Vite, Vuetify, Pinia, PWA), moving to TypeScript step by step; new code and touched components should use TypeScript
 - `docs/`: VitePress docs in German, served at `/docs`. `konfiguration.md` documents every env var, `server.md` the API, `deployment.md` the Dokku setup.
 - `app/`: generated Android TWA wrapper, not maintained by hand
 
@@ -26,7 +26,7 @@ npx vitest run -u    # update parser snapshots after an intended parser change
 # web/
 npm run dev:remote   # Vite on :3000 against https://spluseins.de/api
 npm run dev:local    # against a local server/
-npm run typecheck    # vue-tsc, checks TypeScript only (checkJs is off)
+npm run typecheck    # vue-tsc -b: src/ and tests/ (tsconfig.app.json, checkJs is off) and the Node files (tsconfig.node.json)
 
 # every package
 npm test / lint / lintfix / fmt / fmt:check
@@ -50,7 +50,8 @@ A plan request goes `controllers/splus.ts` -> `lib/SplusApi.ts` (fetches from Os
 
 ## Web
 
-- `src/stores/persist.js` saves parts of the `ui`, `splus` and `mensa` stores to `localStorage`. Saved timetables are only ids that contain the semester (e.g. `_ws26`), and ids of other semesters are dropped on startup, so a semester change needs no migration. Bump `VERSION` only when the saved format changes. Version 18 code still uses the old `spluseins` key, so only read it, never write it.
+- API response types live in `server/model/api.ts`, which must not import anything. The web app imports them via `src/types.ts` with `import type` only, so the Vite build (and Dokku, which only gets `web/`) never needs `server/`. Keep the typecheck out of `npm run build` for the same reason.
+- `src/stores/persist.ts` saves parts of the `ui`, `splus` and `mensa` stores to `localStorage`. Saved timetables are only ids that contain the semester (e.g. `_ws26`), and ids of other semesters are dropped on startup, so a semester change needs no migration. Bump `VERSION` only when the saved format changes. Version 18 code still uses the old `spluseins` key, so only read it, never write it.
 - `__TEAM__`, `__STAGING__` and `__VERSION__` are build-time constants from `vite.config.js`. `__TEAM__` ends up in the client bundle.
 - `/api` and `/docs` are always proxied, by Vite in dev and by `web/server.js` in production, which also serves `dist/` and answers unknown paths with `index.html`.
 - The service worker caches `/api/*` NetworkFirst, except `/api/ics/`.
