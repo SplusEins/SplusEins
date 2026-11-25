@@ -18,7 +18,9 @@
           </a>
           <div class="text-medium-emphasis">
             <v-chip
-              v-for="department in item.departments"
+              v-for="department in item.departments?.length
+                ? item.departments
+                : section.fallbackDepartments"
               :key="department"
               :title="department"
               size="x-small"
@@ -54,6 +56,8 @@ const sections = computed(() =>
   [
     {
       title: '',
+      /* general news name no department on the Ostfalia website */
+      fallbackDepartments: ['Ostfalia'],
       items: recentNews(
         ostfaliaNews.value,
         5,
