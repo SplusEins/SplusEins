@@ -5,7 +5,7 @@ import { createHash } from 'crypto';
 import { config } from '../config';
 import { upcomingIsoWeeks } from '../lib/dayjs';
 import { Event } from '../model/SplusEinsModel';
-import { getEvents } from '../lib/SplusApi';
+import { getEvents, stripHtml } from '../lib/SplusApi';
 import { roomsToText } from '../lib/Room/RoomLocationApi';
 import { findTimetables, splitList } from '../lib/timetables';
 
@@ -31,7 +31,7 @@ function eventToICSEvent(lecture: Event) {
     description:
       lecture.meta.organiserName +
       (lecture.meta.description !== '' ? ' - ' : '') +
-      lecture.meta.description,
+      stripHtml(lecture.meta.description),
     location: roomsToText(lecture.rooms),
   };
 }

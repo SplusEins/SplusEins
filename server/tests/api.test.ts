@@ -141,6 +141,23 @@ describe('splus', () => {
       expect(response.text).not.toContain('SUMMARY:B7');
     });
 
+    it('should show links as text', async () => {
+      mockFetch(
+        async () =>
+          new Response(
+            fixture('graphical.html').replace(
+              'Zeile A',
+              '<a href="https://moodle.ostfalia.de/1">moodle</a>',
+            ),
+          ),
+      );
+      const response = await request(app)
+        .get(`/api/ics/v1/${timetable.id}`)
+        .expect(200);
+      expect(response.text).toContain('moodle');
+      expect(response.text).not.toContain('<a');
+    });
+
     it('should answer 404 for unknown timetables', async () => {
       await request(app).get('/api/ics/v1/unknown').expect(404);
     });
