@@ -6,7 +6,7 @@ export const useUiStore = defineStore('ui', {
      * Dark theme active.
      */
     isDark: false,
-    sidenavIsOpen: undefined,
+    sidenavIsOpen: undefined as boolean | undefined,
     /**
      * Whether the "Inoffiziell" Disclaimer at first launch has been dismissed
      */
@@ -21,7 +21,7 @@ export const useUiStore = defineStore('ui', {
     toggleSidenav() {
       this.sidenavIsOpen = !this.sidenavIsOpen;
     },
-    setSidenav(value) {
+    setSidenav(value: boolean) {
       this.sidenavIsOpen = value;
     },
     dismissDisclaimer() {

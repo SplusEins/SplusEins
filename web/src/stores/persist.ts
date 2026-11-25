@@ -1,9 +1,35 @@
 // Saves a part of the stores in the browser (localStorage), so that
 // timetables and settings are still there on the next visit.
 import { watch } from 'vue';
+import type { Pinia } from 'pinia';
 import { useUiStore } from './ui';
 import { subscriptionKey, useSplusStore } from './splus';
 import { useMensaStore } from './mensa';
+import type { AnyTimetable, CustomTimetable, Schedule } from '../types';
+
+interface SavedSplus {
+  customSchedules?: Record<string, CustomTimetable>;
+  favoriteIds?: string[];
+  subscribedKey?: string | null;
+}
+
+/* what version 18 saved */
+interface SavedSplus18 {
+  customSchedules?: Record<string, CustomTimetable>;
+  favoriteSchedules?: Schedule | Schedule[] | null;
+  subscribedTimetable?: AnyTimetable | null;
+}
+
+/* the saved data may be of any older version, or broken */
+interface SavedState {
+  version?: number;
+  ui?: { isDark?: boolean; hasSeenDisclaimer?: boolean };
+  splus?: SavedSplus;
+  mensa?: { location?: string };
+}
+
+const errorMessage = (error: unknown) =>
+  error instanceof Error ? error.message : error;
 
 const STORAGE_KEY = 'spluseins-state';
 // Up to version 18 the data was saved here. It is only read, so that an older
@@ -17,15 +43,15 @@ const LEGACY_STORAGE_KEY = 'spluseins';
  */
 const VERSION = 19;
 
-function readSavedState() {
+function readSavedState(): SavedState {
   try {
     const saved =
       localStorage.getItem(STORAGE_KEY) ??
       localStorage.getItem(LEGACY_STORAGE_KEY);
-    return JSON.parse(saved) || {};
+    return (saved && (JSON.parse(saved) as SavedState | null)) || {};
   } catch (error) {
     // e.g. localStorage is blocked by the browser
-    console.error('could not read saved state', error.message);
+    console.error('could not read saved state', errorMessage(error));
     return {};
   }
 }
@@ -36,17 +62,20 @@ function migrateFrom18({
   customSchedules,
   favoriteSchedules,
   subscribedTimetable,
-}) {
+}: SavedSplus18): SavedSplus {
   return {
     customSchedules,
-    favoriteIds: [].concat(favoriteSchedules ?? []).map((t) => t?.id),
+    favoriteIds: ([] as (Schedule | null | undefined)[])
+      .concat(favoriteSchedules ?? [])
+      .map((t) => t?.id)
+      .filter((id) => id !== undefined),
     subscribedKey: subscribedTimetable?.id
       ? subscriptionKey(subscribedTimetable)
       : null,
   };
 }
 
-export function persistStores(pinia) {
+export function persistStores(pinia: Pinia) {
   const ui = useUiStore(pinia);
   const splus = useSplusStore(pinia);
   const mensa = useMensaStore(pinia);
@@ -58,14 +87,14 @@ export function persistStores(pinia) {
   // broken saved timetables must not break the app
   try {
     if (saved.version === 18 && saved.splus) {
-      saved.splus = migrateFrom18(saved.splus);
-    } else if (saved.version < VERSION) {
+      saved.splus = migrateFrom18(saved.splus as SavedSplus18);
+    } else if (saved.version !== undefined && saved.version < VERSION) {
       delete saved.splus;
     }
     splus.$patch(saved.splus || {});
     splus.forgetPastSemesters();
   } catch (error) {
-    console.error('could not restore saved timetables', error.message);
+    console.error('could not restore saved timetables', errorMessage(error));
     splus.$reset();
   }
 
@@ -92,7 +121,7 @@ export function persistStores(pinia) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       } catch (error) {
-        console.error('could not save state', error.message);
+        console.error('could not save state', errorMessage(error));
       }
     },
     // also save right away, so that converted or dropped timetables are stored

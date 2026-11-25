@@ -2,13 +2,17 @@ import { defineStore } from 'pinia';
 import dayjs from '../lib/dayjs';
 import { apiGet } from '../lib/api';
 import { useAppStore } from './app';
+import type { Mensa, MensaDayPlan, MensaMeal } from '../types';
+
+/* a day plan, or no meals if there is none */
+type NextPlan = Partial<MensaDayPlan> & { meals: MensaMeal[] };
 
 export const useMensaStore = defineStore('mensa', {
   state: () => ({
     /**
      * List of Mensa objects
      */
-    plans: null,
+    plans: null as Mensa[] | null,
     /**
      * key of the selected mensa, e.g. 'wf'
      */
@@ -21,7 +25,7 @@ export const useMensaStore = defineStore('mensa', {
     selectedPlan: (state) =>
       state.plans?.find((plan) => plan.key === state.location) ??
       state.plans?.[0],
-    getNextAvailablePlan() {
+    getNextAvailablePlan(): NextPlan {
       const plan = this.selectedPlan;
       if (!plan || plan.dayPlans.length === 0) {
         return { meals: [] };
@@ -53,7 +57,7 @@ export const useMensaStore = defineStore('mensa', {
     /**
      * 'Heute' or 'Morgen' if the next plan is for one of these days, otherwise undefined
      */
-    nextPlanDay() {
+    nextPlanDay(): 'Heute' | 'Morgen' | undefined {
       const date = this.getNextAvailablePlan.date;
       if (!date) return undefined;
       if (dayjs().isSame(date, 'day')) return 'Heute';
@@ -62,12 +66,12 @@ export const useMensaStore = defineStore('mensa', {
     },
   },
   actions: {
-    setLocation(location) {
+    setLocation(location: string) {
       this.location = location;
     },
     async load() {
       try {
-        this.plans = await apiGet('/api/mensa');
+        this.plans = await apiGet<Mensa[]>('/api/mensa');
       } catch (error) {
         useAppStore().reportLoadError('Mensaplan', error);
       }
