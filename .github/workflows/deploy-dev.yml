@@ -34,3 +34,9 @@ jobs:
           git_remote_url: "${{ env.REMOTE_HOST }}/api-staging"
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
           git_push_flags: "--force"
+  record-deployment:
+    needs: [deploy-web-staging, deploy-api-staging]
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - run: echo "Deployed ${{ github.ref_name }} to dev"

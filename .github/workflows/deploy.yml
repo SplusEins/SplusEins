@@ -51,3 +51,11 @@ jobs:
           git_remote_url: "${{ env.REMOTE_HOST }}/docs"
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
           git_push_flags: "--force"
+  record-deployment:
+    needs: [deploy-api, deploy-web, deploy-docs]
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://spluseins.de
+    steps:
+      - run: echo "Deployed ${{ github.sha }} to production"
