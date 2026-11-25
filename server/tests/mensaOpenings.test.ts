@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { filterMensaOpenings } from '../lib/mensaOpenings';
-import { MensaOpening } from '../model/SplusEinsModel';
+import type { MensaOpening } from '../model/api';
 
 const opening = (
   start_day: number,

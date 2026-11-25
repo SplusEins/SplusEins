@@ -3,7 +3,7 @@ import { config } from '../config';
 import RSS from 'rss';
 import { getNews } from '../lib/NewsApi';
 import { shortHash } from '../lib/shortHash';
-import { NewsElement } from '../model/SplusEinsModel';
+import type { NewsElement } from '../model/api';
 
 const CACHE_SECONDS = config.newsCacheSeconds;
 const router = express.Router();

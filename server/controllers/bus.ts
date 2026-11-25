@@ -1,6 +1,7 @@
 import express from 'express';
 import { config } from '../config';
 import { cached } from '../lib/cache';
+import type { BusDepartures } from '../model/api';
 
 import { createClient, Journey } from '@motis-project/motis-fptf-client';
 import { profile } from '@motis-project/motis-fptf-client/p/transitous';
@@ -27,39 +28,43 @@ router.get('/', async (req, res, next) => {
   const fh = 'de-DELFI_de:03158:598:0:1';
 
   try {
-    const data = await cached('bus', CACHE_SECONDS, async () => {
-      console.log('bus cache miss for key bus');
+    const data = await cached(
+      'bus',
+      CACHE_SECONDS,
+      async (): Promise<BusDepartures> => {
+        console.log('bus cache miss for key bus');
 
-      const [exerToFh, fhToExer] = await Promise.all([
-        motisClient.journeys(exer, fh, motisOpts),
-        motisClient.journeys(fh, exer, motisOpts),
-      ]);
-      const extractDateAndLine = (journeys: Journey[]) =>
-        journeys
-          .map(({ legs }) => legs)
-          .filter((legs) => legs.length === 1)
-          .map((legs) => legs[0])
-          // walking-only journeys have no line
-          .flatMap((leg) =>
-            leg.line?.name
-              ? [
-                  {
-                    date: leg.departure,
-                    line: leg.line.name.replace('Bus ', ''),
-                  },
-                ]
-              : [],
-          )
-          .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+        const [exerToFh, fhToExer] = await Promise.all([
+          motisClient.journeys(exer, fh, motisOpts),
+          motisClient.journeys(fh, exer, motisOpts),
+        ]);
+        const extractDateAndLine = (journeys: Journey[]) =>
+          journeys
+            .map(({ legs }) => legs)
+            .filter((legs) => legs.length === 1)
+            .map((legs) => legs[0])
+            // walking-only journeys have no line
+            .flatMap((leg) =>
+              leg.line?.name
+                ? [
+                    {
+                      date: leg.departure,
+                      line: leg.line.name.replace('Bus ', ''),
+                    },
+                  ]
+                : [],
+            )
+            .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 
-      return {
-        departures: {
-          exerToFh: extractDateAndLine(exerToFh.journeys),
-          fhToExer: extractDateAndLine(fhToExer.journeys),
-        },
-        lastUpdated: Date.now(),
-      };
-    });
+        return {
+          departures: {
+            exerToFh: extractDateAndLine(exerToFh.journeys),
+            fhToExer: extractDateAndLine(fhToExer.journeys),
+          },
+          lastUpdated: Date.now(),
+        };
+      },
+    );
 
     res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
     res.json(data);

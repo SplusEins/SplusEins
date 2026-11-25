@@ -1,7 +1,7 @@
 import express from 'express';
 import { config } from '../config';
 
-import { TimetableMetadata, Timetable } from '../model/SplusEinsModel';
+import type { TimetableMetadata, Timetable } from '../model/api';
 import { getEvents, getUniqueEvents } from '../lib/SplusApi';
 import { findTimetables, splitList } from '../lib/timetables';
 

@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import { config } from '../config';
 import dayjs from './dayjs';
 import { cached } from './cache';
-import { NewsElement } from '../model/SplusEinsModel';
+import type { NewsElement } from '../model/api';
 import { isRecord } from './isRecord';
 
 const CACHE_SECONDS = config.newsCacheSeconds;

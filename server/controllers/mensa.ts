@@ -4,13 +4,8 @@ import { config } from '../config';
 import dayjs from '../lib/dayjs';
 import { cached } from '../lib/cache';
 import { filterMensaOpenings } from '../lib/mensaOpenings';
-import {
-  MensaDayPlan,
-  MensaMeal,
-  Mensa,
-  StwLocation,
-  StwMensaMeal,
-} from '../model/SplusEinsModel';
+import type { MensaDayPlan, MensaMeal, Mensa } from '../model/api';
+import { StwLocation, StwMensaMeal } from '../model/SplusEinsModel';
 import { isRecord } from '../lib/isRecord';
 
 // abort requests if the API of the Studentenwerk is too slow to respond

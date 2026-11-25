@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import App from '../App';
-import { Event, Mensa, MensaDayPlan } from '../model/SplusEinsModel';
+import type { Event, Mensa, MensaDayPlan } from '../model/api';
 import {
   fixture,
   FIXTURE_WEEK,

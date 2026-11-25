@@ -3,7 +3,8 @@ import { config } from '../config';
 import iconv from 'iconv-lite';
 import dayjs from './dayjs';
 import { cached } from './cache';
-import { createEvent, Event, TimetableRequest } from '../model/SplusEinsModel';
+import type { Event } from '../model/api';
+import { createEvent, TimetableRequest } from '../model/SplusEinsModel';
 import {
   parseSkedCSV,
   parseSkedGraphical,

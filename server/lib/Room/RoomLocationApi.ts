@@ -2,6 +2,7 @@ import LOCATION_OF_FACULTY_JSON from '../../assets/locationOfFaculty.json';
 
 import { createRoomAddress } from './RoomAddressCreator';
 import { createOSMLink } from './RoomOSMLinkCreator';
+import type { Room } from '../../model/api';
 
 /**
  * Make sure in the locationOfFaculty.json the values are only of the following types:
@@ -17,13 +18,6 @@ const FACULTY_LOCATIONS: FacultyLocation[] = ['WF', 'WOB', 'SZ', 'SUD'];
 
 const isFacultyLocation = (location?: string): location is FacultyLocation =>
   FACULTY_LOCATIONS.some((facultyLocation) => facultyLocation === location);
-
-export interface Room {
-  name: string;
-  address?: string;
-  /* a map centered on the room */
-  url?: string;
-}
 
 export function getRoomLocation(room: string, faculty: string): Room {
   const location = LOCATION_OF_FACULTY[faculty];

@@ -1,4 +1,4 @@
-import { MensaOpening } from '../model/SplusEinsModel';
+import type { MensaOpening } from '../model/api';
 
 const SUDERBURG = 134;
 const SATURDAY = 6;

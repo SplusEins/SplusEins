@@ -4,7 +4,7 @@ import { createHash } from 'crypto';
 
 import { config } from '../config';
 import { upcomingIsoWeeks } from '../lib/dayjs';
-import { Event } from '../model/SplusEinsModel';
+import type { Event } from '../model/api';
 import { getEvents, stripHtml } from '../lib/SplusApi';
 import { roomsToText } from '../lib/Room/RoomLocationApi';
 import { findTimetables, splitList } from '../lib/timetables';
