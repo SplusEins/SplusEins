@@ -3,7 +3,7 @@ import { mkdtempSync, readdirSync, rmSync, writeFileSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 
-type CacheModule = typeof import('../lib/cache');
+type CacheModule = typeof import('../lib/cache.js');
 
 describe('Test cache', () => {
   let cachePath: string;
@@ -15,7 +15,7 @@ describe('Test cache', () => {
     process.env.CACHE_DISABLE = '';
     // the configuration is read when the module is loaded
     vi.resetModules();
-    cache = await import('../lib/cache');
+    cache = await import('../lib/cache.js');
   });
 
   afterEach(() => {
@@ -83,7 +83,7 @@ describe('Test cache', () => {
   it('should not write files if the cache is disabled', async () => {
     process.env.CACHE_DISABLE = 'true';
     vi.resetModules();
-    cache = await import('../lib/cache');
+    cache = await import('../lib/cache.js');
     const load = vi.fn(async () => value);
 
     await cache.cached('key', 60, load);

@@ -1,10 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fixture, mockFetch } from './helpers';
 
-type NewsApi = typeof import('../lib/NewsApi');
+type NewsApi = typeof import('../lib/NewsApi.js');
 
 describe('Test NewsApi', () => {
-  let getNews: NewsApi['default'];
+  let getNews: NewsApi['getNews'];
   let fetchSpy: ReturnType<typeof mockFetch>;
 
   beforeEach(async () => {
@@ -16,7 +16,7 @@ describe('Test NewsApi', () => {
         : new Response(fixture('ostfalia-news.html')),
     );
     vi.resetModules();
-    getNews = (await import('../lib/NewsApi')).default;
+    getNews = (await import('../lib/NewsApi.js')).getNews;
   });
 
   afterEach(() => {

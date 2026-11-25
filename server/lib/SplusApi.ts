@@ -76,8 +76,7 @@ async function fetchWithRetries(timetable: TimetableRequest): Promise<string> {
 
   const url = timetable.timetablePath;
   console.log(`Url for ${timetable.id} is ${url}`);
-  let error: SkedError | undefined;
-  for (let attempt = 0; attempt < 3; attempt++) {
+  for (let attempt = 0; ; attempt++) {
     const res = await fetch(url, {
       headers,
       signal: AbortSignal.timeout(TIMEOUT_MILLISECONDS),
@@ -100,15 +99,14 @@ async function fetchWithRetries(timetable: TimetableRequest): Promise<string> {
         `${res.status}: Ostfalia Sked replied "${res.statusText}"`,
       );
     }
-    error = new SkedError(
+    const error = new SkedError(
       res.status,
       `${res.status} Sked error for ${timetable.id}: ${res.statusText} (attempt ${attempt})`,
     );
     console.error(error.message);
+    if (attempt === 2) throw error;
     await sleep(100);
   }
-
-  throw error;
 }
 
 /**

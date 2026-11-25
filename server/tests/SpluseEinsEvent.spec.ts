@@ -93,5 +93,6 @@ describe('Test Event', () => {
 
   it('should generate ids for an empty title and lecturer', () => {
     const lecture = createEvent(testLecture('', ''));
+    expect(lecture.id).toMatch(/^\w{5}$/);
   });
 });
