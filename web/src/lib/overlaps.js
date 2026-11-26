@@ -1,12 +1,16 @@
-const time = (date) => new Date(date).getTime();
+// times like '08:00' compare correctly as text
+const sameTime = (x, y) =>
+  x.day === y.day && x.start < y.end && y.start < x.end;
 
 /**
- * @param a lecture with `start` and `end` dates
+ * @param a lecture with `slots`, its weekly times
  * @param b another lecture
- * @returns true if the two lectures take place at the same time
+ * @returns true if the two lectures take place at the same time of the week
  */
 export function overlaps(a, b) {
-  return time(a.start) < time(b.end) && time(b.start) < time(a.end);
+  return (a.slots ?? []).some((x) =>
+    (b.slots ?? []).some((y) => sameTime(x, y)),
+  );
 }
 
 /**

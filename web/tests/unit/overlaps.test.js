@@ -1,43 +1,70 @@
 import { describe, expect, it } from 'vitest';
 import { overlappingCourses, overlaps } from '../../src/lib/overlaps';
 
-const at = (hours) => new Date(Date.UTC(2026, 10, 9) + hours * 3600000);
-const slot = (begin, duration) => ({
-  start: at(begin).toISOString(),
-  end: at(begin + duration).toISOString(),
-});
+const course = (...slots) => ({ slots });
+const slot = (day, start, end) => ({ day, start, end });
 
 describe('overlaps', () => {
-  it('detects lectures at the same time', () => {
-    expect(overlaps(slot(8, 2), slot(9, 2))).toBe(true);
-    expect(overlaps(slot(8, 2), slot(8, 1))).toBe(true);
-    expect(overlaps(slot(8, 4), slot(9, 1))).toBe(true);
+  it('detects courses at the same time of the week', () => {
+    expect(
+      overlaps(
+        course(slot(1, '08:00', '09:30')),
+        course(slot(1, '09:00', '10:30')),
+      ),
+    ).toBe(true);
+    expect(
+      overlaps(
+        course(slot(1, '08:00', '12:00')),
+        course(slot(1, '09:00', '10:00')),
+      ),
+    ).toBe(true);
   });
 
-  it('allows lectures right after each other', () => {
-    expect(overlaps(slot(8, 2), slot(10, 2))).toBe(false);
+  it('compares every weekly time of a course', () => {
+    expect(
+      overlaps(
+        course(slot(1, '08:00', '09:30'), slot(4, '13:00', '14:30')),
+        course(slot(4, '14:00', '15:30')),
+      ),
+    ).toBe(true);
   });
 
-  it('ignores lectures at the same time on other days', () => {
-    expect(overlaps(slot(8, 2), slot(24 + 8, 2))).toBe(false);
+  it('allows courses right after each other', () => {
+    expect(
+      overlaps(
+        course(slot(1, '08:00', '09:30')),
+        course(slot(1, '09:30', '11:00')),
+      ),
+    ).toBe(false);
+  });
+
+  it('ignores courses at the same time on other days', () => {
+    expect(
+      overlaps(
+        course(slot(1, '08:00', '09:30')),
+        course(slot(2, '08:00', '09:30')),
+      ),
+    ).toBe(false);
+  });
+
+  it('never reports block courses or courses without times', () => {
+    expect(overlaps(course(), course(slot(1, '08:00', '09:30')))).toBe(false);
+    expect(overlaps({}, course(slot(1, '08:00', '09:30')))).toBe(false);
   });
 });
 
 describe('overlappingCourses', () => {
-  const lecture = (id, start, duration = 1.5) => ({
+  const lecture = (id, ...slots) => ({
     id,
     title: `Vorlesung ${id}`,
-    meta: { organiserShortname: 'X' },
-    location: 'A1',
-    start,
-    end: new Date(Date.parse(start) + duration * 3600000).toISOString(),
+    slots,
   });
 
-  it('returns selected courses which overlap on the same day', () => {
+  it('returns selected courses which overlap', () => {
     const lectures = [
-      lecture('a', '2026-11-09T07:15:00Z'),
-      lecture('b', '2026-11-09T08:00:00Z'),
-      lecture('c', '2026-11-10T08:00:00Z'),
+      lecture('a', slot(1, '08:15', '09:45')),
+      lecture('b', slot(1, '09:00', '10:30')),
+      lecture('c', slot(2, '09:00', '10:30')),
     ];
     expect(overlappingCourses(lectures, ['a', 'b', 'c'])).toEqual(
       new Map([
@@ -47,19 +74,18 @@ describe('overlappingCourses', () => {
     );
   });
 
-  it('ignores courses which are not selected or on other days', () => {
+  it('ignores courses which are not selected', () => {
     const lectures = [
-      lecture('a', '2026-11-09T07:15:00Z'),
-      lecture('b', '2026-11-09T08:00:00Z'),
-      lecture('c', '2026-11-10T07:15:00Z'),
+      lecture('a', slot(1, '08:15', '09:45')),
+      lecture('b', slot(1, '09:00', '10:30')),
     ];
-    expect(overlappingCourses(lectures, ['a', 'c'])).toEqual(new Map());
+    expect(overlappingCourses(lectures, ['a'])).toEqual(new Map());
   });
 
   it('does not count a lecture which is in two timetables', () => {
     const lectures = [
-      lecture('a', '2026-11-09T07:15:00Z'),
-      lecture('a', '2026-11-09T07:15:00Z'),
+      lecture('a', slot(1, '08:15', '09:45')),
+      lecture('a', slot(1, '08:15', '09:45')),
     ];
     expect(overlappingCourses(lectures, ['a'])).toEqual(new Map());
   });

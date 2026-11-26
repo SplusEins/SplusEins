@@ -159,24 +159,47 @@ async function parseTimetable(timetable: TimetableRequest): Promise<Event[]> {
   });
 }
 
+/* a weekly time: ISO weekday (1 is monday) and times like '08:00' */
+export type Slot = { day: number; start: string; end: string };
+type Times = { start: string; end: string };
+
+const inGermany = (date: string) => dayjs(date).tz('Europe/Berlin');
+
+const slotOf = ({ start, end }: Times): Slot => ({
+  day: inGermany(start).isoWeekday(),
+  start: inGermany(start).format('HH:mm'),
+  end: inGermany(end).format('HH:mm'),
+});
+
+/**
+ * @param events all events of one course
+ * @returns the weekly times at which the course takes place in at least two
+ * weeks, so a block course has none
+ */
+export function weeklySlots(events: Times[]): Slot[] {
+  const eventsBySlot = Map.groupBy(events, (e) => JSON.stringify(slotOf(e)));
+  return [...eventsBySlot.values()]
+    .filter((group) => new Set(group.map(({ start }) => start)).size >= 2)
+    .map((group) => slotOf(group[0]));
+}
+
 /**
  * Executes the timetable parsing and returns only unique events.
  *
  * Uniqueness is determined by the ID field (which is derived from the title of the event/lecture).
  *
  * @param timetable request
- * @returns The first event of each lecture.
+ * @returns The first event of each lecture with its weekly times.
  */
 export async function getUniqueEvents(
   timetable: TimetableRequest,
-): Promise<Event[]> {
+): Promise<(Event & { slots: Slot[] })[]> {
   const allEvents = await parseTimetable(timetable);
-  // keep the first event of each lecture
-  const eventsById = new Map<string, Event>();
-  for (const event of allEvents) {
-    if (!eventsById.has(event.id)) eventsById.set(event.id, event);
-  }
-  const uniqueEvents = [...eventsById.values()];
+  const eventsById = Map.groupBy(allEvents, ({ id }) => id);
+  const uniqueEvents = [...eventsById.values()].map((events) => ({
+    ...events[0],
+    slots: weeklySlots(events),
+  }));
   console.log(
     `Returning ${uniqueEvents.length} unique lecture metadata for ${timetable.id}`,
   );
