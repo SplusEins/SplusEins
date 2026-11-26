@@ -5,6 +5,7 @@ import { mkdir, readdir, readFile, rename, rm, writeFile } from 'fs/promises';
 import { join } from 'path';
 import type { Jsonify } from 'type-fest';
 import { config } from '../config';
+import { isRecord } from './isRecord';
 
 const CLEANUP_INTERVAL_MILLISECONDS = 60 * 60 * 1000;
 
@@ -25,7 +26,10 @@ function fileOf(key: string): string {
 
 async function readEntry(file: string): Promise<CacheEntry | undefined> {
   try {
-    return JSON.parse(await readFile(file, 'utf8'));
+    const entry: unknown = JSON.parse(await readFile(file, 'utf8'));
+    return isRecord(entry) && typeof entry.expires === 'number'
+      ? { expires: entry.expires, value: entry.value }
+      : undefined;
   } catch {
     // not cached yet or the file is broken
     return undefined;
@@ -92,7 +96,7 @@ export async function cached<T>(
 function asJson<T>(value: T): Jsonify<T> {
   return value === undefined
     ? (value as Jsonify<T>)
-    : JSON.parse(JSON.stringify(value));
+    : (JSON.parse(JSON.stringify(value)) as Jsonify<T>);
 }
 
 /**
@@ -120,7 +124,10 @@ export async function removeExpiredCacheEntries(): Promise<void> {
  * Remove expired cache files now and then every hour.
  */
 export function startCacheCleanup(): void {
-  removeExpiredCacheEntries();
+  void removeExpiredCacheEntries();
   // unref: the timer alone does not keep the process running
-  setInterval(removeExpiredCacheEntries, CLEANUP_INTERVAL_MILLISECONDS).unref();
+  setInterval(
+    () => void removeExpiredCacheEntries(),
+    CLEANUP_INTERVAL_MILLISECONDS,
+  ).unref();
 }

@@ -98,16 +98,17 @@ const firstDayFrom = (days, from) =>
  * @returns the events of the given timetable and weeks and the day of the first
  *   lecture of each week of the semester with lectures, e.g. ['2026-09-21']
  */
-export async function loadEvents(timetable, weeks) {
+export async function loadEvents(timetable, weeks, signal) {
   let data;
   if (isCustomTimetable(timetable)) {
     const ids = timetable.id.join(',');
     const whitelist = timetable.whitelist.join(',');
     data = await apiGet(
       `/api/splus/${ids}/${weeks}/${whitelist}/${encodeURIComponent(timetable.label)}`,
+      signal,
     );
   } else {
-    data = await apiGet(`/api/splus/${timetable.id}/${weeks}`);
+    data = await apiGet(`/api/splus/${timetable.id}/${weeks}`, signal);
   }
 
   return {
@@ -144,9 +145,9 @@ const searchText = (text) =>
     .toLowerCase()
     .replace(/[^\p{L}\p{N}]+/gu, ' ')}`;
 
-/* count the requests, so that only the response of the last one is used */
-let loadCounter = 0;
-let agendaCounter = 0;
+/* the running requests, a newer one aborts them */
+let weekRequest;
+let agendaRequest;
 /* week of the last showWeek() call, which may still be loading */
 let requestedWeek;
 
@@ -396,14 +397,17 @@ export const useSplusStore = defineStore('splus', {
      */
     async showWeek(week = defaultWeek()) {
       requestedWeek = week;
-      const request = ++loadCounter;
+      weekRequest?.abort();
+      weekRequest = new AbortController();
+      const { signal } = weekRequest;
       try {
         const { events, weeksWithLectures } = await loadEvents(
           this.schedule,
           dayjs(week).isoWeek(),
+          signal,
         );
         // e.g. the user switched to the next week before the response arrived
-        if (request !== loadCounter) return;
+        if (signal.aborted) return;
         this.events = events;
         this.nextLectureDay = firstDayFrom(
           weeksWithLectures,
@@ -411,7 +415,7 @@ export const useSplusStore = defineStore('splus', {
         );
         this.planHasLectures = weeksWithLectures.length > 0;
       } catch (error) {
-        if (request !== loadCounter) return;
+        if (signal.aborted) return;
         this.events = [];
         this.nextLectureDay = undefined;
         this.planHasLectures = undefined;
@@ -434,12 +438,14 @@ export const useSplusStore = defineStore('splus', {
      * Request events of all subscribable timetables for this and next week
      */
     async loadAgendaEvents() {
-      const request = ++agendaCounter;
+      agendaRequest?.abort();
+      agendaRequest = new AbortController();
+      const { signal } = agendaRequest;
       const week = dayjs(defaultWeek());
       const weeks = [week.isoWeek(), week.add(1, 'week').isoWeek()].join(',');
       const perTimetable = await Promise.allSettled(
         this.subscribableTimetables.map(async (timetable, i) => {
-          const { events } = await loadEvents(timetable, weeks);
+          const { events } = await loadEvents(timetable, weeks, signal);
           return events.map((event) => ({
             ...toCalendarEvent(event, timetable),
             color: planColor(i),
@@ -448,7 +454,7 @@ export const useSplusStore = defineStore('splus', {
         }),
       );
       // e.g. a timetable was removed before the response arrived
-      if (request !== agendaCounter) return;
+      if (signal.aborted) return;
       // a failing plan must not hide the events of the others
       this.agendaEvents = perTimetable.flatMap((result) => {
         if (result.status === 'fulfilled') return result.value;
@@ -463,6 +469,11 @@ export const useSplusStore = defineStore('splus', {
      * Import timetable from route and set as current timetable.
      */
     importSchedule({ params, query }) {
+      // never show events of the timetable opened before
+      weekRequest?.abort();
+      requestedWeek = undefined;
+      this.events = [];
+
       switch (parseFloat(query.v)) {
         case 1: {
           // query parameters are arrays only if they are given multiple times

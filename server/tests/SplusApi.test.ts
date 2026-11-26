@@ -5,7 +5,7 @@ import { join } from 'path';
 import { TimetableRequest } from '../model/SplusEinsModel';
 import { fixture, FIXTURE_WEEK, mockFetch } from './helpers';
 
-type SplusApi = typeof import('../lib/SplusApi');
+type SplusApi = typeof import('../lib/SplusApi.js');
 
 const request = (id: string): TimetableRequest => ({
   id,
@@ -20,7 +20,7 @@ describe('Test SplusApi', () => {
   beforeEach(async () => {
     mockFetch(async () => new Response(fixture('graphical.html')));
     vi.resetModules();
-    splusApi = await import('../lib/SplusApi');
+    splusApi = await import('../lib/SplusApi.js');
   });
 
   afterEach(() => vi.restoreAllMocks());
@@ -93,7 +93,7 @@ describe('Test SplusApi', () => {
       process.env.CACHE_PATH = cachePath;
       process.env.CACHE_DISABLE = '';
       vi.resetModules();
-      splusApi = await import('../lib/SplusApi');
+      splusApi = await import('../lib/SplusApi.js');
     });
 
     afterEach(() => {

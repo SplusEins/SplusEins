@@ -9,13 +9,14 @@ export const pendingRequests = ref(0);
 /**
  * Load JSON data from the SplusEins API.
  * @param path e.g. '/api/mensa'
+ * @param signal cancels the request when aborted
  * @returns the data, or null if the API has no data (204 No Content)
  * @throws Error with the HTTP status code as `status`, if there is one
  */
-export async function apiGet(path) {
+export async function apiGet(path, signal) {
   pendingRequests.value++;
   try {
-    const response = await fetch(path);
+    const response = await fetch(path, { signal });
     if (!response.ok) {
       const error = new Error(`HTTP ${response.status} for ${path}`);
       error.status = response.status;

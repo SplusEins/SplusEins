@@ -56,7 +56,7 @@ class App {
           return;
         }
       }
-      console.error(err.stack);
+      console.error(err);
       res
         .status(500)
         .type('txt')

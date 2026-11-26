@@ -181,7 +181,7 @@ async function loadNews(newsSelector: string): Promise<NewsElement[]> {
  * @param limit Maximum number of news to return
  * @returns NewsElement[] Sorted news for the specified `newsSelectors`
  */
-export default async function getNews(
+export async function getNews(
   newsSelectors: string[],
   limit: number,
 ): Promise<NewsElement[]> {

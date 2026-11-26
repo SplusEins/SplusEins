@@ -1,11 +1,9 @@
 import express from 'express';
-import { config } from '../config';
+import { BROWSER_CACHE } from '../lib/browserCache';
 
 import { TimetableMetadata, Timetable } from '../model/SplusEinsModel';
 import { getEvents, getUniqueEvents } from '../lib/SplusApi';
 import { findTimetables, splitList } from '../lib/timetables';
-
-const CACHE_CONTROL = `public, max-age=${config.splusCacheSeconds}`;
 
 const router = express.Router();
 
@@ -19,14 +17,14 @@ router.get('/:timetable/lectures', async (req, res, next) => {
   const [timetable] = findTimetables(req.params.timetable);
 
   if (!timetable) {
-    res.set('Cache-Control', CACHE_CONTROL);
+    res.set('Cache-Control', BROWSER_CACHE);
     res.sendStatus(404);
     return;
   }
 
   try {
     const events = await getUniqueEvents(timetable);
-    res.set('Cache-Control', CACHE_CONTROL);
+    res.set('Cache-Control', BROWSER_CACHE);
     res.json(events);
   } catch (error) {
     next(error);
@@ -45,7 +43,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
   const weeks = splitList(req.params.weeks).map((week) => parseInt(week));
 
   if (!timetable || weeks.length === 0) {
-    res.set('Cache-Control', CACHE_CONTROL);
+    res.set('Cache-Control', BROWSER_CACHE);
     res.status(404).send('Stundenplan existiert nicht');
     return;
   }
@@ -70,7 +68,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
       meta,
     };
 
-    res.set('Cache-Control', CACHE_CONTROL);
+    res.set('Cache-Control', BROWSER_CACHE);
     res.json(response);
   } catch (error) {
     next(error);
@@ -91,7 +89,7 @@ router.get('/:timetables/:weeks{/:lectures}/:name', async (req, res, next) => {
   const weeks = splitList(req.params.weeks).map((week) => parseInt(week));
 
   if (timetables.length === 0 || weeks.length === 0) {
-    res.set('Cache-Control', CACHE_CONTROL);
+    res.set('Cache-Control', BROWSER_CACHE);
     res.status(404).send('Stundenplan existiert nicht');
     return;
   }
@@ -117,7 +115,7 @@ router.get('/:timetables/:weeks{/:lectures}/:name', async (req, res, next) => {
       meta,
     };
 
-    res.set('Cache-Control', CACHE_CONTROL);
+    res.set('Cache-Control', BROWSER_CACHE);
     res.json(response);
   } catch (error) {
     next(error);

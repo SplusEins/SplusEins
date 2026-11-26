@@ -9,6 +9,9 @@ env:
 
 concurrency: deploy-dev
 
+permissions:
+  contents: read
+
 jobs:
   deploy-web-staging:
     runs-on: ubuntu-latest
@@ -34,3 +37,11 @@ jobs:
           git_remote_url: "${{ env.REMOTE_HOST }}/api-staging"
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
           git_push_flags: "--force"
+  record-deployment:
+    needs: [deploy-web-staging, deploy-api-staging]
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+      url: https://staging.spluseins.de
+    steps:
+      - run: echo "Deployed ${{ github.ref_name }} to dev"

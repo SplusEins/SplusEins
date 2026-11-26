@@ -1,4 +1,5 @@
 import express from 'express';
+import { BROWSER_CACHE } from '../lib/browserCache';
 
 import { config } from '../config';
 import dayjs from '../lib/dayjs';
@@ -139,11 +140,15 @@ router.get('/', async (req, res, next) => {
     .map((result) => result.value);
   const errors = results
     .filter((result) => result.status === 'rejected')
-    .map((result) => result.reason);
+    .map((result): unknown => result.reason);
   errors.forEach((error) => console.error('Error loading mensa:', error));
 
   if (mensas.length === 0) {
-    if (errors.some((error) => error?.name === 'TimeoutError')) {
+    if (
+      errors.some(
+        (error) => error instanceof Error && error.name === 'TimeoutError',
+      )
+    ) {
       res.status(504).send('Mensa request to STW-ON timed out'); // Gateway timeout, STW-ON API is down
     } else {
       next(errors[0]);
@@ -152,10 +157,7 @@ router.get('/', async (req, res, next) => {
   }
 
   // do not keep incomplete results for long
-  res.set(
-    'Cache-Control',
-    errors.length === 0 ? `public, max-age=${CACHE_SECONDS}` : 'no-cache',
-  );
+  res.set('Cache-Control', errors.length === 0 ? BROWSER_CACHE : 'no-cache');
   res.json(mensas);
 });
 
