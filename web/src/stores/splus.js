@@ -473,6 +473,8 @@ export const useSplusStore = defineStore('splus', {
       weekRequest?.abort();
       requestedWeek = undefined;
       this.events = [];
+      this.nextLectureDay = undefined;
+      this.planHasLectures = undefined;
 
       switch (parseFloat(query.v)) {
         case 1: {

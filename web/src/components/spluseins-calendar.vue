@@ -80,6 +80,7 @@
       contained
       persistent
       no-click-animation
+      :transition="false"
       :scrim="false"
       scroll-strategy="none"
       style="z-index: 1"
@@ -94,36 +95,41 @@
       >
         <template v-if="nextLecture">
           <div class="text-title-medium font-weight-bold">
-            Diese Woche keine Vorlesungen
+            Keine Vorlesungen für diese Woche gefunden
           </div>
-          <div class="text-body-medium text-medium-emphasis mt-1">
-            Nächste am
+          <div class="text-body-medium text-medium-emphasis mt-2">
+            Die nächste ist am
             <span class="text-primary font-weight-bold">
               {{ nextLecture.format('dddd, DD.MM.') }}
             </span>
           </div>
-          <v-btn
-            class="mt-4"
-            color="primary"
-            variant="flat"
-            rounded="pill"
-            :append-icon="mdiArrowRight"
-            text="Zur Woche springen"
-            @click="
-              splus.showWeek(
-                nextLecture.startOf('isoWeek').format('YYYY-MM-DD'),
-              )
+        </template>
+        <div v-else class="text-title-medium font-weight-bold">
+          Der Plan enthält keine weiteren Vorlesungen
+        </div>
+        <div class="text-body-medium text-medium-emphasis mt-2">
+          Prüfe im Zweifel den
+          <a
+            :href="
+              schedule?.timetablePath ?? 'https://stundenplan.ostfalia.de/'
             "
-          />
-        </template>
-        <template v-else>
-          <div class="text-title-medium font-weight-bold">
-            Keine weiteren Vorlesungen
-          </div>
-          <div class="text-body-medium text-medium-emphasis mt-1">
-            Der Plan enthält keine späteren Termine.
-          </div>
-        </template>
+            class="text-medium-emphasis"
+            target="_blank"
+            rel="nofollow noopener"
+            >offiziellen Stundenplan</a
+          >.
+        </div>
+        <v-btn
+          v-if="nextLecture"
+          class="mt-4"
+          color="primary"
+          variant="flat"
+          :append-icon="mdiArrowRight"
+          text="Zur Woche springen"
+          @click="
+            splus.showWeek(nextLecture.startOf('isoWeek').format('YYYY-MM-DD'))
+          "
+        />
       </v-card>
     </v-overlay>
 
