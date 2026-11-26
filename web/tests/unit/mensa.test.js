@@ -1,6 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
 import { useMensaStore } from '../../src/stores/mensa';
+import { useSplusStore } from '../../src/stores/splus';
+import { matchesDiet, sortMeals, splitMealName } from '../../src/lib/mensa';
 
 const dayPlan = (date) => ({ date, meals: [{ name: `Essen am ${date}` }] });
 const plans = [
@@ -9,7 +11,12 @@ const plans = [
     name: 'Mensa Wolfenbüttel',
     dayPlans: [dayPlan('2026-11-10'), dayPlan('2026-11-11')],
   },
-  { key: 'sz', name: 'Mensa Salzgitter', dayPlans: [dayPlan('2026-11-12')] },
+  {
+    key: 'sz',
+    name: 'Mensa Salzgitter',
+    faculties: ['Verkehr-Sport-Tourismus-Medien'],
+    dayPlans: [dayPlan('2026-11-12')],
+  },
 ];
 
 describe('mensa store', () => {
@@ -50,6 +57,13 @@ describe('mensa store', () => {
     expect(mensa.selectedPlan.key).toBe('wf');
   });
 
+  it('uses the mensa of the saved faculty until one is chosen', () => {
+    useSplusStore().favoriteIds = ['k_ap_1_ws26'];
+    expect(mensa.selectedPlan.key).toBe('sz');
+    mensa.setLocation('wf');
+    expect(mensa.selectedPlan.key).toBe('wf');
+  });
+
   it('names the day of a plan of today', () => {
     vi.useFakeTimers({ now: new Date(2026, 10, 10, 12) });
     expect(mensa.nextPlanDay).toBe('Heute');
@@ -78,5 +92,41 @@ describe('mensa store', () => {
     await mensa.load();
     expect(mensa.plans).toBeNull();
     vi.unstubAllGlobals();
+  });
+});
+
+describe('mensa meals', () => {
+  it('splits a meal name into dish and sides', () => {
+    expect(splitMealName('Ofenkartoffel | Kräuterquark | Feldsalat |')).toEqual(
+      {
+        title: 'Ofenkartoffel',
+        sides: 'mit Kräuterquark, Feldsalat',
+      },
+    );
+    expect(splitMealName('Sauerkraut')).toEqual({
+      title: 'Sauerkraut',
+      sides: '',
+    });
+  });
+
+  it('filters meals by diet', () => {
+    expect(matchesDiet('all', ['Schwein'])).toBe(true);
+    expect(matchesDiet('vegetarian', ['Vegan'])).toBe(true);
+    expect(matchesDiet('vegetarian', ['Fisch'])).toBe(false);
+    expect(matchesDiet('vegan', ['Vegetarisch'])).toBe(false);
+  });
+});
+
+describe('sortMeals', () => {
+  it('keeps the order but puts the sides last', () => {
+    const lanes = ['Essen 1', 'Gemüse', 'Beilage', 'Aktion', 'Dessert'];
+    const sorted = sortMeals(lanes.map((lane) => ({ lane })));
+    expect(sorted.map((meal) => meal.lane)).toEqual([
+      'Essen 1',
+      'Aktion',
+      'Dessert',
+      'Gemüse',
+      'Beilage',
+    ]);
   });
 });

@@ -202,6 +202,13 @@ describe('mensa', () => {
         lane: { name: 'Essen 2' },
         tags: { categories: [] },
       },
+      {
+        date: '2026-11-12',
+        name: 'Ohne Preis',
+        price: {},
+        lane: { name: 'Essen 1' },
+        tags: { categories: [] },
+      },
     ],
   };
 
@@ -226,6 +233,9 @@ describe('mensa', () => {
     expect(response.body[0].url).toBe(
       'https://www.stw-on.de/wolfenbüttel/essen/mensa',
     );
+    expect(response.body[2].faculties).toEqual([
+      'Verkehr-Sport-Tourismus-Medien',
+    ]);
     expect(
       response.body[0].dayPlans.map(({ date }: MensaDayPlan) => date),
     ).toEqual(['2026-11-10', '2026-11-11']);
