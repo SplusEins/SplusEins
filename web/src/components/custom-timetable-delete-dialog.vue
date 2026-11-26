@@ -4,7 +4,9 @@
       <v-card-actions>
         <v-spacer />
         <v-btn @click="dialogOpen = false"> Abbrechen </v-btn>
-        <v-btn color="error" @click="confirmDelete()"> Löschen </v-btn>
+        <v-btn color="error" variant="flat" @click="confirmDelete()">
+          Löschen
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

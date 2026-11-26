@@ -32,10 +32,3 @@ import SpluseinsFooter from './spluseins-footer.vue';
 const splus = useSplusStore();
 const { sidenavIsOpen: drawer } = storeToRefs(useUiStore());
 </script>
-
-<style>
-/* show long timetable names completely */
-.v-navigation-drawer .v-list-item-title {
-  white-space: normal;
-}
-</style>

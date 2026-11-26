@@ -1,15 +1,9 @@
 <template>
-  <v-container fluid class="mt-3 px-4">
+  <v-container>
     <v-row justify="center">
-      <v-col
-        v-for="direction in directions"
-        :key="direction"
-        cols="12"
-        md="5"
-        xl="4"
-      >
-        <v-card v-if="departures" class="pa-2">
-          <v-card-title class="text-headline-small">
+      <v-col v-for="direction in directions" :key="direction" cols="12" md="6">
+        <v-card v-if="departures">
+          <v-card-title>
             {{ directionLabel[direction] }}
           </v-card-title>
 
@@ -29,6 +23,7 @@
                 <v-chip
                   v-if="minutesUntilDate(departure.date) < 60"
                   v-bind="departsSoon(departure.date) ? SOON_CHIP : {}"
+                  :label="false"
                   size="small"
                 >
                   {{ departureLabel(departure.date) }}
@@ -42,7 +37,9 @@
     </v-row>
     <span class="pt-4 d-flex justify-end text-body-small text-medium-emphasis">
       Quelle:&nbsp;
-      <a href="https://transitous.org/" class="link"> Transitous </a>
+      <a href="https://transitous.org/" class="text-decoration-none">
+        Transitous
+      </a>
     </span>
     <span
       v-if="lastUpdated"

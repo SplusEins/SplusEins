@@ -1,8 +1,7 @@
 <template>
   <v-dialog v-model="dialogOpen" width="500">
-    <v-card>
-      <v-card-title class="bg-primary px-4"> SplusEins </v-card-title>
-      <v-card-text class="px-4 pt-2 pb-0">
+    <v-card title="SplusEins">
+      <v-card-text class="pb-0">
         <p class="mb-4">
           Ein inoffizieller Stundenplan von Studenten für Studenten der
           Ostfalia.

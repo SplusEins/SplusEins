@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title class="d-flex align-center">
-      <div class="text-title-large text-wrap mr-1">
+      <div class="text-wrap mr-1">
         {{ mensa.selectedPlan?.name }}
       </div>
       <v-btn

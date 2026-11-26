@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pa-0" fluid>
+  <v-container class="pa-0 bg-surface">
     <timetable-search>
       <my-timetables-list>
         <v-list-item

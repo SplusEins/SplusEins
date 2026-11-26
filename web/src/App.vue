@@ -34,15 +34,8 @@ watch(isDark, () => theme.change(isDark.value ? 'dark' : 'light'), {
 </script>
 
 <style>
-/* long titles continue on the next line instead of being cut off */
-.v-card-title {
-  white-space: normal;
-}
 /* text links use the color of the theme, also in dark mode */
-:where(a:not(.v-btn, .v-list-item, .v-tab, .text-medium-emphasis)) {
+:where(a:not(.v-btn, .v-list-item, .v-tab, [class*='-emphasis'])) {
   color: rgb(var(--v-theme-primary));
-}
-a.link {
-  text-decoration: none;
 }
 </style>

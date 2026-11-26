@@ -2,7 +2,7 @@
 <template>
   <v-dialog v-model="dialogOpen" max-width="400">
     <v-card>
-      <v-toolbar color="primary">
+      <v-toolbar color="surface">
         <v-btn :icon="mdiClose" aria-label="Schließen" @click="close()" />
         <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>

@@ -6,8 +6,7 @@
         :prepend-inner-icon="mdiMagnify"
         placeholder="Plan suchen"
         aria-label="Plan suchen"
-        variant="solo-filled"
-        flat
+        density="comfortable"
         clearable
         hide-details
       />

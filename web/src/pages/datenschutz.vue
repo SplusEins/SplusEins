@@ -1,5 +1,5 @@
 <template>
-  <v-container class="container">
+  <v-container max-width="800">
     <div>
       <h1>Datenschutzerklärung</h1>
       <p>
@@ -7,7 +7,6 @@
         EU-Datenschutzgrundverordnung (DSGVO), ist:
       </p>
       <h4>SplusEins Team</h4>
-      <br />
       <p><b>Vertreten durch:</b></p>
 
       <p>{{ team.member1 }}</p>
@@ -304,18 +303,3 @@
 <script setup>
 import { team } from '../lib/config';
 </script>
-
-<style scoped>
-.container {
-  margin: auto;
-  max-width: 1100px;
-}
-/* spacing between paragraphs of the legal texts */
-.container p,
-.container ul {
-  margin-bottom: 16px;
-}
-.container ul {
-  padding-left: 24px;
-}
-</style>

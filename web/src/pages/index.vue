@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid max-width="1200">
+  <v-container>
     <v-row density="compact">
       <v-col cols="12" lg="7">
         <upcoming-lectures-card />

@@ -3,11 +3,21 @@
   --v-font-body: 'Inter Variable', sans-serif;
 }
 
+@layer vuetify-overrides {
+  .v-btn:not(.v-btn--icon, .v-btn-group .v-btn, .v-bottom-navigation .v-btn) {
+    border-radius: 8px;
+  }
+}
+
 /* the Material scale is made for Roboto */
 @layer vuetify-utilities.typography {
   [class*='text-title-'],
   [class*='text-body-'],
   [class*='text-label-'] {
     letter-spacing: normal;
+  }
+  .text-title-large,
+  .text-title-medium {
+    font-weight: 600;
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title class="text-headline-small">Als Nächstes</v-card-title>
+    <v-card-title>Als Nächstes</v-card-title>
 
     <template v-if="!splus.hasSubscribableTimetables">
       <v-card-text class="pb-0">

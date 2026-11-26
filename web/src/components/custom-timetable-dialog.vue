@@ -7,7 +7,7 @@
     transition="dialog-bottom-transition"
   >
     <v-card>
-      <v-toolbar color="primary">
+      <v-toolbar color="surface">
         <v-btn
           v-if="addingPlan"
           :icon="mdiArrowLeft"
@@ -23,7 +23,7 @@
         <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
 
-      <v-card-text class="px-0">
+      <v-card-text class="px-0 pt-2">
         <template v-if="adding">
           <p v-if="selectedSchedules.length === 0" class="px-4 mb-2">
             Such deinen Plan und wähle Kurse aus, auch aus mehreren Plänen.
@@ -69,7 +69,7 @@
       </v-card-text>
 
       <v-divider />
-      <v-card-actions class="px-4">
+      <v-card-actions>
         <span
           v-if="selectedSchedules.length > 0"
           class="text-body-medium text-medium-emphasis"
