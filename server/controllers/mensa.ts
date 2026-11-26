@@ -57,6 +57,8 @@ function isStwMensaMeal(meal: unknown): meal is StwMensaMeal {
     typeof meal.date === 'string' &&
     typeof meal.name === 'string' &&
     isRecord(meal.price) &&
+    typeof meal.price.student === 'string' &&
+    typeof meal.price.employee === 'string' &&
     isRecord(meal.lane) &&
     typeof meal.lane.name === 'string' &&
     isRecord(meal.tags) &&

@@ -1,5 +1,4 @@
 import { mdiCarrot, mdiSprout } from '@mdi/js';
-import dayjs from './dayjs';
 
 /* icons of the diet categories, shown on the meals and the filter */
 export const DIET_ICONS = {
@@ -33,22 +32,13 @@ export function matchesDiet(diet, categories) {
   return true;
 }
 
-/**
- * 'Heute' or 'Morgen' if the date is one of these days, otherwise undefined
- */
-export function relativeDay(date) {
-  if (dayjs().isSame(date, 'day')) return 'Heute';
-  if (dayjs().add(1, 'day').isSame(date, 'day')) return 'Morgen';
-  return undefined;
-}
+/* whether the meal is one of the main dishes 'Essen 1', 'Essen 2', ... */
+export const isMainDish = (lane) => lane.startsWith('Essen');
 
-/**
- * 'Diese Woche', 'Nächste Woche' or the calendar week of the date
- */
-export function weekLabel(date) {
-  const day = dayjs(date);
-  const weeks = day.startOf('isoWeek').diff(dayjs().startOf('isoWeek'), 'week');
-  if (weeks === 0) return 'Diese Woche';
-  if (weeks === 1) return 'Nächste Woche';
-  return `KW ${day.isoWeek()}`;
+/* whether the meal is one of the vegetables and sides */
+export const isSide = (lane) => ['Gemüse', 'Beilage'].includes(lane);
+
+/* the meals in the order of the API, with the vegetables and sides last */
+export function sortMeals(meals) {
+  return [...meals].sort((a, b) => isSide(a.lane) - isSide(b.lane));
 }

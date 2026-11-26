@@ -64,7 +64,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { mdiChevronRight, mdiMenuDown } from '@mdi/js';
 import { useMensaStore } from '../stores/mensa';
-import { matchesDiet, splitMealName } from '../lib/mensa';
+import { isMainDish, matchesDiet, splitMealName } from '../lib/mensa';
 import SelectDialog from './select-dialog.vue';
 
 const DIET_NOTES = {
@@ -79,8 +79,7 @@ const mensaMenus = computed(() =>
   mensa.getNextAvailablePlan.meals
     .filter(
       (meal) =>
-        meal.lane.startsWith('Essen ') &&
-        matchesDiet(mensa.diet, meal.categories),
+        isMainDish(meal.lane) && matchesDiet(mensa.diet, meal.categories),
     )
     .map((meal) => ({ lane: meal.lane, ...splitMealName(meal.name) })),
 );

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import dayjs from '../lib/dayjs';
 import { apiGet } from '../lib/api';
-import { relativeDay } from '../lib/mensa';
+import { relativeDay } from '../lib/util';
 import { useAppStore } from './app';
 import { useSplusStore } from './splus';
 
@@ -66,7 +66,7 @@ export const useMensaStore = defineStore('mensa', {
      */
     nextPlanDay() {
       const date = this.getNextAvailablePlan.date;
-      return date ? relativeDay(date) : undefined;
+      return date ? relativeDay(dayjs(date)) : undefined;
     },
   },
   actions: {

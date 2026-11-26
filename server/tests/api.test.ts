@@ -202,6 +202,13 @@ describe('mensa', () => {
         lane: { name: 'Essen 2' },
         tags: { categories: [] },
       },
+      {
+        date: '2026-11-12',
+        name: 'Ohne Preis',
+        price: {},
+        lane: { name: 'Essen 1' },
+        tags: { categories: [] },
+      },
     ],
   };
 

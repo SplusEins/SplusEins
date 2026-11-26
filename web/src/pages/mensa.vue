@@ -72,19 +72,9 @@
     <div
       v-else
       class="ga-3"
-      :style="`display: grid; grid-template-columns: repeat(${mdAndUp ? DESKTOP_DAYS : 1}, minmax(0, 1fr))`"
+      :style="`display: grid; align-items: start; grid-template-columns: repeat(${mdAndUp ? DESKTOP_DAYS : 1}, minmax(0, 1fr))`"
     >
-      <div v-for="(day, idx) in days" :key="day.plan.date">
-        <div
-          v-if="mdAndUp || day.week"
-          class="text-label-medium text-medium-emphasis mb-2"
-          :class="{ 'mt-3': !mdAndUp && idx > 0 }"
-          style="min-height: 16px"
-        >
-          {{ day.week }}
-        </div>
-        <mensa-dayplan :plan="day.plan" />
-      </div>
+      <mensa-dayplan v-for="plan in days" :key="plan.date" :plan="plan" />
     </div>
   </v-container>
 </template>
@@ -93,7 +83,7 @@
 import { computed, onMounted } from 'vue';
 import { useDisplay } from 'vuetify';
 import { mdiMapMarker, mdiMenuDown, mdiOpenInNew } from '@mdi/js';
-import { DIET_ICONS, weekLabel } from '../lib/mensa';
+import { DIET_ICONS } from '../lib/mensa';
 import { useMensaStore } from '../stores/mensa';
 import MensaDayplan from '../components/mensa-dayplan.vue';
 
@@ -113,15 +103,8 @@ const { mdAndUp } = useDisplay();
 
 const dayPlans = computed(() => mensa.selectedPlan?.dayPlans ?? []);
 
-/* desktop shows the next days in one row, the first day of each week names it */
-const days = computed(() => {
-  const plans = mdAndUp.value
-    ? dayPlans.value.slice(0, DESKTOP_DAYS)
-    : dayPlans.value;
-  return plans.map((plan, idx) => {
-    const week = weekLabel(plan.date);
-    const newWeek = idx === 0 || week !== weekLabel(plans[idx - 1].date);
-    return { plan, week: newWeek ? week : '' };
-  });
-});
+/* desktop shows the next days in one row */
+const days = computed(() =>
+  mdAndUp.value ? dayPlans.value.slice(0, DESKTOP_DAYS) : dayPlans.value,
+);
 </script>
