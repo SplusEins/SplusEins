@@ -24,7 +24,7 @@
           <a href="https://vuetifyjs.com">Vuetify</a>, Icons von
           <a href="https://materialdesignicons.com/">Material Design Icons</a>
           und der Schriftart
-          <a href="https://fonts.google.com/specimen/Roboto">Roboto</a>.<br />
+          <a href="https://rsms.me/inter/">Inter</a>.<br />
           Alle Stundenpläne basieren auf den Inhalten von
           <a href="http://stundenplan.ostfalia.de/">stundenplan.ostfalia.de</a>
           und

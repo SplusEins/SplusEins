@@ -1,5 +1,6 @@
 // https://vuetifyjs.com/en/getting-started/installation/
 import 'vuetify/styles';
+import '../assets/style/vuetify.css';
 import { createVuetify } from 'vuetify';
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 import { de } from 'vuetify/locale';

@@ -1,0 +1,13 @@
+/* imported after vuetify/styles, so the layers below keep their order */
+:root {
+  --v-font-body: 'Inter Variable', sans-serif;
+}
+
+/* the Material scale is made for Roboto */
+@layer vuetify-utilities.typography {
+  [class*='text-title-'],
+  [class*='text-body-'],
+  [class*='text-label-'] {
+    letter-spacing: normal;
+  }
+}

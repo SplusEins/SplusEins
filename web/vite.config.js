@@ -53,7 +53,7 @@ export default defineConfig({
       },
       workbox: {
         // files of the app itself: download once, then always load from cache
-        globPatterns: ['**/*.{js,css,html,png,ico,woff2,otf}'],
+        globPatterns: ['**/*.{js,css,html,png,ico,woff2}'],
         // big images which are rarely needed
         globIgnores: ['logo.png', 'icon.png', '404.png'],
         // all pages are rendered by index.html - except these paths
