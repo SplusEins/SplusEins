@@ -1,4 +1,5 @@
 import express from 'express';
+import { BROWSER_CACHE } from '../lib/browserCache';
 
 import { config } from '../config';
 import dayjs from '../lib/dayjs';
@@ -156,10 +157,7 @@ router.get('/', async (req, res, next) => {
   }
 
   // do not keep incomplete results for long
-  res.set(
-    'Cache-Control',
-    errors.length === 0 ? `public, max-age=${CACHE_SECONDS}` : 'no-cache',
-  );
+  res.set('Cache-Control', errors.length === 0 ? BROWSER_CACHE : 'no-cache');
   res.json(mensas);
 });
 

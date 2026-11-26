@@ -1,11 +1,10 @@
 import express from 'express';
-import { config } from '../config';
+import { BROWSER_CACHE } from '../lib/browserCache';
 import RSS from 'rss';
 import { getNews } from '../lib/NewsApi';
 import { shortHash } from '../lib/shortHash';
 import { NewsElement } from '../model/SplusEinsModel';
 
-const CACHE_SECONDS = config.newsCacheSeconds;
 const router = express.Router();
 
 const MAX_NEWS_ITEMS = 100;
@@ -28,7 +27,7 @@ router.get('/:newstypes{.:ext}', async (req, res) => {
     console.log(`Error while fetching news: ${error.message}`);
     return res.status(404).send(error.message);
   }
-  res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
+  res.set('Cache-Control', BROWSER_CACHE);
   if (req.params.ext !== 'rss') {
     // Normal request, send news as JSON
     return res.json(news);

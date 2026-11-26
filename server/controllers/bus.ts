@@ -61,7 +61,8 @@ router.get('/', async (req, res, next) => {
       };
     });
 
-    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
+    // departures change every minute; the file cache above still applies
+    res.set('Cache-Control', 'no-cache');
     res.json(data);
   } catch (error) {
     next(error);
