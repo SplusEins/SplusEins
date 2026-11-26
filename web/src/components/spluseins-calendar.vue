@@ -8,12 +8,9 @@
     class="pa-1 pa-md-3"
   >
     <v-toolbar flat density="compact" class="inherit-background-color mb-2">
-      <responsive-icon-button
-        :breakpoint="!$vuetify.display.mobile"
-        :icon="mdiCalendarToday"
-        text="Heute"
-        @click="splus.showWeek()"
-      />
+      <v-btn variant="outlined" class="mr-2" @click="splus.showWeek()">
+        Heute
+      </v-btn>
       <v-btn
         v-tooltip:bottom="'Vorherige Woche'"
         :icon="mdiChevronLeft"
@@ -27,7 +24,10 @@
         @click="splus.moveWeek(1)"
       />
 
-      <v-toolbar-title class="ml-2">
+      <v-toolbar-title
+        class="ml-2"
+        :class="{ 'text-title-medium': $vuetify.display.mobile }"
+      >
         {{ monthSummary }}
       </v-toolbar-title>
 
@@ -68,8 +68,8 @@
           <div class="font-weight-bold">
             {{ event.name }}
           </div>
-          <div v-if="!$vuetify.display.mobile" class="pt-1">
-            {{ event.start.slice(-5) }} - {{ event.end.slice(-5) }} Uhr
+          <div v-if="!$vuetify.display.mobile" class="pt-1 tabular-nums">
+            {{ event.start.slice(-5) }} - {{ event.end.slice(-5) }}
           </div>
         </div>
       </template>
@@ -93,12 +93,11 @@
 import { computed, onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useDisplay } from 'vuetify';
-import { mdiChevronLeft, mdiChevronRight, mdiCalendarToday } from '@mdi/js';
+import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
 import CalendarActionBar from './calendar-action-bar.vue';
 import CalendarEventPopover from './calendar-event-popover.vue';
-import ResponsiveIconButton from './responsive-icon-button.vue';
 
 const splus = useSplusStore();
 const { schedule, week, getCalendarEvents: events } = storeToRefs(splus);

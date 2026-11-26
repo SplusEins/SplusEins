@@ -4,6 +4,10 @@
 }
 
 @layer vuetify-overrides {
+  /* Inter also spaces hyphens with this, so only for times and prices */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
   .v-btn:not(.v-btn--icon, .v-btn-group .v-btn, .v-bottom-navigation .v-btn) {
     border-radius: 8px;
   }

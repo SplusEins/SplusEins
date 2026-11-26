@@ -14,20 +14,22 @@
     <v-skeleton-loader v-else-if="loading" type="list-item-two-line@3" />
 
     <v-card-text v-else-if="events.length === 0">
-      Keine Vorlesungen in den nächsten zwei Wochen.
+      <empty-hint :icon="mdiCalendarCheckOutline">
+        Keine Vorlesungen in den nächsten zwei Wochen.
+      </empty-hint>
     </v-card-text>
 
     <v-list v-else class="agenda pt-0">
       <template v-for="(event, i) in events" :key="event.key">
         <template v-if="i === 0 || event.day !== events[i - 1].day">
           <v-divider v-if="i > 0" class="mx-4 my-3" />
-          <div class="text-body-large font-weight-bold px-4 py-1">
+          <div class="text-body-large font-weight-semibold px-4 py-1">
             {{ event.day }}
           </div>
         </template>
         <v-list-item @click="showEvent(event)">
           <div class="d-flex align-start">
-            <div class="d-flex flex-column mr-4 text-body-medium">
+            <div class="d-flex flex-column mr-4 text-body-medium tabular-nums">
               <span class="font-weight-medium">
                 {{ event.start.format('HH:mm') }}
               </span>
@@ -67,24 +69,19 @@
       v-if="mobile && splus.hasSubscribableTimetables"
       class="flex-wrap ga-2 px-4"
     >
-      <v-chip
+      <v-btn
         v-for="plan in plans"
         :key="plan.name"
         :to="plan.route"
         :append-icon="mdiChevronRight"
-        variant="outlined"
-        label
+        variant="tonal"
+        color="primary"
       >
         <template #prepend>
-          <v-icon
-            :icon="mdiCircle"
-            :color="plan.color"
-            size="10"
-            class="mr-2"
-          />
+          <v-icon :icon="mdiCircle" :color="plan.color" size="10" />
         </template>
         {{ plan.name }}
-      </v-chip>
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -93,6 +90,7 @@
 import { computed, onMounted, ref, watch } from 'vue';
 import { useDisplay } from 'vuetify';
 import {
+  mdiCalendarCheckOutline,
   mdiChevronRight,
   mdiCircle,
   mdiHeartOutline,
@@ -104,6 +102,7 @@ import { relativeDay, timetableDisplayName, timetablePlan } from '../lib/util';
 import { useNow } from '../lib/now';
 import CalendarEventPopover from './calendar-event-popover.vue';
 import TimetableSearch from './timetable-search.vue';
+import EmptyHint from './empty-hint.vue';
 
 const MAX_EVENTS = 5;
 const MAX_DAYS = 2;

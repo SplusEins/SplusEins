@@ -8,6 +8,13 @@
           </v-card-title>
 
           <v-list>
+            <v-list-item
+              v-if="removePastDepartures(departures[direction]).length === 0"
+            >
+              <empty-hint :icon="mdiBusClock">
+                Gerade keine direkte Verbindung.
+              </empty-hint>
+            </v-list-item>
             <!-- use composite key to ensure we have only unique keys (date only won't be unique if a bus is late) -->
             <v-list-item
               v-for="(departure, index) in removePastDepartures(
@@ -15,8 +22,8 @@
               )"
               :key="departure.date + '-' + departure.line + '-' + index"
             >
-              <div class="d-flex align-center ga-2">
-                <v-chip size="small" label color="primary" variant="flat">
+              <div class="d-flex align-center ga-2 tabular-nums">
+                <v-chip size="small" color="primary" variant="flat">
                   Linie {{ departure.line }}
                 </v-chip>
                 {{ absoluteDate(departure.date) }} Uhr
@@ -55,7 +62,9 @@
 import { onMounted, onUnmounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import dayjs from '../lib/dayjs';
+import { mdiBusClock } from '@mdi/js';
 import { useBusStore } from '../stores/bus';
+import EmptyHint from '../components/empty-hint.vue';
 
 const bus = useBusStore();
 const { departures, lastUpdated } = storeToRefs(bus);

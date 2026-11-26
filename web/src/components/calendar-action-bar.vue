@@ -2,7 +2,7 @@
   <div class="d-flex align-center">
     <responsive-icon-button
       v-if="!isCustomSchedule"
-      :breakpoint="$vuetify.display.xlAndUp"
+      :breakpoint="$vuetify.display.lgAndUp"
       :icon="isFavorite ? mdiHeart : mdiHeartOutline"
       :text="isFavorite ? 'Gemerkt' : 'Merken'"
       :color="isFavorite ? 'primary' : undefined"
@@ -38,27 +38,27 @@
     <!-- desktop action bar -->
     <template v-else>
       <responsive-icon-button
-        :breakpoint="$vuetify.display.xlAndUp"
-        :icon="mdiShareVariant"
+        :breakpoint="$vuetify.display.lgAndUp"
+        :icon="mdiShareVariantOutline"
         text="Teilen"
         @click="share()"
       />
       <responsive-icon-button
         v-if="isCustomSchedule"
-        :breakpoint="$vuetify.display.xlAndUp"
-        :icon="mdiDelete"
+        :breakpoint="$vuetify.display.lgAndUp"
+        :icon="mdiDeleteOutline"
         text="Löschen"
         @click="deleteTimetableDialogOpen = true"
       />
       <responsive-icon-button
         :text="isCustomSchedule ? 'Bearbeiten' : 'Kurse auswählen'"
-        :breakpoint="$vuetify.display.xlAndUp"
-        :icon="mdiPencil"
+        :breakpoint="$vuetify.display.lgAndUp"
+        :icon="mdiPencilOutline"
         @click="editTimetableDialogOpen = true"
       />
       <responsive-icon-button
-        :breakpoint="$vuetify.display.xlAndUp"
-        :icon="mdiCalendar"
+        :breakpoint="$vuetify.display.lgAndUp"
+        :icon="mdiCalendarOutline"
         text="Extern öffnen"
         @click="openCalendarDialogOpen = true"
       />
@@ -91,10 +91,10 @@ import {
   mdiHeart,
   mdiHeartOutline,
   mdiDotsVertical,
-  mdiShareVariant,
-  mdiDelete,
-  mdiPencil,
-  mdiCalendar,
+  mdiShareVariantOutline,
+  mdiDeleteOutline,
+  mdiPencilOutline,
+  mdiCalendarOutline,
 } from '@mdi/js';
 import { useSplusStore } from '../stores/splus';
 import CopyTextDialog from './copy-text-dialog.vue';

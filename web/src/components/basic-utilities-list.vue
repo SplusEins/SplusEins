@@ -1,6 +1,6 @@
 <template>
   <v-list>
-    <v-list-item to="/" :prepend-icon="mdiHome" title="Startseite" />
+    <v-list-item to="/" :prepend-icon="mdiHomeOutline" title="Startseite" />
     <v-list-item
       :prepend-icon="mdiPlus"
       title="Eigenen Plan zusammenstellen"
@@ -15,7 +15,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { mdiHome, mdiPlus, mdiFoodForkDrink, mdiBus } from '@mdi/js';
+import { mdiHomeOutline, mdiPlus, mdiFoodForkDrink, mdiBus } from '@mdi/js';
 import CustomTimetableDialog from './custom-timetable-dialog.vue';
 
 const customTimetableDialogOpen = ref(false);

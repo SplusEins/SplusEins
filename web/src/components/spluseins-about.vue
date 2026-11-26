@@ -43,14 +43,13 @@
       <v-card-actions>
         <v-spacer />
         <v-btn
-          :icon="mdiGithub"
-          variant="outlined"
-          size="small"
+          :prepend-icon="mdiGithub"
           target="_blank"
           href="https://github.com/SplusEins/SplusEins"
           rel="noopener"
-          aria-label="GitHub"
-        />
+        >
+          GitHub
+        </v-btn>
         <v-btn color="primary" @click="dialogOpen = false"> Schließen </v-btn>
       </v-card-actions>
     </v-card>
