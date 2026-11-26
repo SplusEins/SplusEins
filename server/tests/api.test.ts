@@ -45,6 +45,16 @@ describe('splus', () => {
     expect(response.body.meta.id).toBe(timetable.id);
   });
 
+  it('should let the browser keep a timetable for 5 minutes', async () => {
+    const url = `/api/splus/${timetable.id}/${FIXTURE_WEEK}`;
+    const response = await request(app).get(url).expect(200);
+    expect(response.headers['cache-control']).toBe('public, max-age=300');
+    await request(app)
+      .get(url)
+      .set('If-None-Match', response.headers.etag)
+      .expect(304);
+  });
+
   it('should return the lectures of a timetable', async () => {
     const response = await request(app)
       .get(`/api/splus/${timetable.id}/lectures`)
@@ -132,6 +142,7 @@ describe('splus', () => {
       expect(response.text).toContain('BEGIN:VCALENDAR');
       expect(response.text).toContain('SUMMARY:Mathematik 1');
       expect(response.text).toContain('SUMMARY:B7');
+      expect(response.headers['cache-control']).toBe('public, max-age=300');
     });
 
     it('should return a calendar of selected lectures', async () => {
@@ -231,7 +242,7 @@ describe('mensa', () => {
     expect(
       response.body[0].dayPlans.map(({ date }: MensaDayPlan) => date),
     ).toEqual(['2026-11-10', '2026-11-11']);
-    expect(response.headers['cache-control']).toContain('max-age');
+    expect(response.headers['cache-control']).toBe('public, max-age=300');
   });
 
   it('should leave out mensas which could not be loaded', async () => {

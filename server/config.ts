@@ -38,6 +38,5 @@ export const config = {
   mensaCacheSeconds: number('MENSA_CACHE_SECONDS', 7200),
   newsCacheSeconds: number('NEWS_CACHE_SECONDS', 10800),
   busCacheSeconds: number('BUS_CACHE_SECONDS', 60),
-  icsCacheSeconds: number('ICS_CACHE_SECONDS', 600),
   icsPreloadWeeks: number('ICS_PRELOAD_WEEKS', 4),
 };

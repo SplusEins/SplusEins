@@ -1,4 +1,5 @@
 import express from 'express';
+import { BROWSER_CACHE } from '../lib/browserCache';
 import ical from 'ical-generator';
 import { createHash } from 'crypto';
 
@@ -12,7 +13,6 @@ import { findTimetables, splitList } from '../lib/timetables';
 const router = express.Router();
 const sha256 = (x: string) =>
   createHash('sha256').update(x, 'utf8').digest('hex');
-const CACHE_SECONDS = config.icsCacheSeconds;
 
 /**
  * @param lecture lecture
@@ -49,7 +49,7 @@ router.get('/:version/:timetables{/:lectures}', async (req, res, next) => {
   const timetables = findTimetables(req.params.timetables);
 
   if (timetables.length === 0) {
-    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
+    res.set('Cache-Control', BROWSER_CACHE);
     res.sendStatus(404);
     return;
   }
@@ -67,7 +67,7 @@ router.get('/:version/:timetables{/:lectures}', async (req, res, next) => {
 
     res.set('Content-Type', 'text/plain');
     res.set('Content-Disposition', 'attachment;filename="spluseins.ics"');
-    res.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
+    res.set('Cache-Control', BROWSER_CACHE);
     res.send(cal.toString());
   } catch (error) {
     next(error);
