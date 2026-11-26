@@ -10,6 +10,14 @@
       :aria-pressed="isFavorite"
       @click="splus.toggleFavoriteSchedule(currentSchedule)"
     />
+    <responsive-icon-button
+      :breakpoint="$vuetify.display.lgAndUp"
+      :icon="mdiPencilOutline"
+      :text="isCustomSchedule ? 'Bearbeiten' : 'Kurse auswählen'"
+      color="primary"
+      variant="tonal"
+      @click="editTimetableDialogOpen = true"
+    />
 
     <!-- mobile action bar -->
     <v-menu v-if="isMobile" location="bottom end">
@@ -18,17 +26,19 @@
       </template>
 
       <v-list>
-        <v-list-item title="Teilen" @click="share()" />
         <v-list-item
+          :prepend-icon="mdiShareVariantOutline"
+          title="Teilen"
+          @click="share()"
+        />
+        <v-list-item
+          :prepend-icon="mdiCalendarOutline"
           title="Extern öffnen"
           @click="openCalendarDialogOpen = true"
         />
         <v-list-item
-          :title="isCustomSchedule ? 'Bearbeiten' : 'Kurse auswählen'"
-          @click="editTimetableDialogOpen = true"
-        />
-        <v-list-item
           v-if="isCustomSchedule"
+          :prepend-icon="mdiDeleteOutline"
           title="Löschen"
           @click="deleteTimetableDialogOpen = true"
         />
@@ -49,12 +59,6 @@
         :icon="mdiDeleteOutline"
         text="Löschen"
         @click="deleteTimetableDialogOpen = true"
-      />
-      <responsive-icon-button
-        :text="isCustomSchedule ? 'Bearbeiten' : 'Kurse auswählen'"
-        :breakpoint="$vuetify.display.lgAndUp"
-        :icon="mdiPencilOutline"
-        @click="editTimetableDialogOpen = true"
       />
       <responsive-icon-button
         :breakpoint="$vuetify.display.lgAndUp"

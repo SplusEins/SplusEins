@@ -195,6 +195,8 @@ export const useSplusStore = defineStore('splus', {
     agendaEvents: [],
   }),
   getters: {
+    /** Whether the week of today (or the next one on weekends) is shown */
+    showsCurrentWeek: (state) => state.week === defaultWeek(),
     /**
      * Last day of the week to show: Friday, or the last day with events on the weekend
      * (1: Monday, 7: Sunday)
