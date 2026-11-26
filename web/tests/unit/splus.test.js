@@ -114,6 +114,34 @@ describe('splus store', () => {
       expect(splus.isCustomTimetable).toBe(true);
       expect(splus.customTimetableLabels).toEqual(['Mein Plan']);
     });
+
+    it('never shows the events of the timetable opened before', () => {
+      splus.importSchedule({ params: { timetable: timetable.id }, query: {} });
+      splus.events = [{ title: 'old' }];
+      splus.importSchedule({
+        params: { timetable: otherTimetable.id },
+        query: {},
+      });
+      expect(splus.events).toEqual([]);
+    });
+
+    it('cancels the request of the timetable opened before', async () => {
+      let respond;
+      vi.stubGlobal(
+        'fetch',
+        vi.fn(() => new Promise((resolve) => (respond = resolve))),
+      );
+      splus.importSchedule({ params: { timetable: timetable.id }, query: {} });
+      const loading = splus.showWeek('2026-11-16');
+      splus.importSchedule({
+        params: { timetable: otherTimetable.id },
+        query: {},
+      });
+      expect(fetch.mock.calls[0][1].signal.aborted).toBe(true);
+      respond(Response.json({ events: [{ title: 'old' }] }));
+      await loading;
+      expect(splus.events).toEqual([]);
+    });
   });
 
   it('knows the faculties of the saved timetables', () => {
