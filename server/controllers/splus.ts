@@ -49,7 +49,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
   }
 
   try {
-    const events = await getEvents([timetable], weeks);
+    const { events, weeksWithLectures } = await getEvents([timetable], weeks);
 
     const meta: TimetableMetadata = {
       id: timetable.id,
@@ -64,6 +64,7 @@ router.get('/:timetable/:weeks', async (req, res, next) => {
           ? `${timetable.semester} ${timetable.label}`
           : `${timetable.degree} ${timetable.label} - ${timetable.semester}. Semester`,
       events,
+      weeksWithLectures,
       meta,
     };
 
@@ -94,7 +95,7 @@ router.get('/:timetables/:weeks{/:lectures}/:name', async (req, res, next) => {
   }
 
   try {
-    const events = await getEvents(
+    const { events, weeksWithLectures } = await getEvents(
       timetables,
       weeks,
       splitList(req.params.lectures),
@@ -110,6 +111,7 @@ router.get('/:timetables/:weeks{/:lectures}/:name', async (req, res, next) => {
     const response: Timetable = {
       name: decodeURIComponent(req.params.name),
       events,
+      weeksWithLectures,
       meta,
     };
 

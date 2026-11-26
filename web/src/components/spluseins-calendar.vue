@@ -5,7 +5,7 @@
       left: () => splus.moveWeek(1),
     }"
     fluid
-    class="pa-1 pa-md-3"
+    class="pa-1 pa-md-3 position-relative"
   >
     <v-toolbar flat density="compact" class="inherit-background-color mb-2">
       <responsive-icon-button
@@ -75,6 +75,64 @@
       </template>
     </v-calendar>
 
+    <v-overlay
+      :model-value="events.length === 0 && splus.planHasLectures !== undefined"
+      contained
+      persistent
+      no-click-animation
+      :transition="false"
+      :scrim="false"
+      scroll-strategy="none"
+      style="z-index: 1"
+      class="align-center justify-center"
+    >
+      <v-card
+        class="pa-6 text-center"
+        width="300"
+        max-width="calc(100vw - 32px)"
+        rounded="xl"
+        elevation="6"
+      >
+        <template v-if="nextLecture">
+          <div class="text-title-medium font-weight-bold">
+            Keine Vorlesungen für diese Woche gefunden
+          </div>
+          <div class="text-body-medium text-medium-emphasis mt-2">
+            Die nächste ist am
+            <span class="text-primary font-weight-bold">
+              {{ nextLecture.format('dddd, DD.MM.') }}
+            </span>
+          </div>
+        </template>
+        <div v-else class="text-title-medium font-weight-bold">
+          Der Plan enthält keine weiteren Vorlesungen
+        </div>
+        <div class="text-body-medium text-medium-emphasis mt-2">
+          Prüfe im Zweifel den
+          <a
+            :href="
+              schedule?.timetablePath ?? 'https://stundenplan.ostfalia.de/'
+            "
+            class="text-medium-emphasis"
+            target="_blank"
+            rel="nofollow noopener"
+            >offiziellen Stundenplan</a
+          >.
+        </div>
+        <v-btn
+          v-if="nextLecture"
+          class="mt-4"
+          color="primary"
+          variant="flat"
+          :append-icon="mdiArrowRight"
+          text="Zur Woche springen"
+          @click="
+            splus.showWeek(nextLecture.startOf('isoWeek').format('YYYY-MM-DD'))
+          "
+        />
+      </v-card>
+    </v-overlay>
+
     <calendar-event-popover v-model="selectedOpen" :event="selectedEvent" />
 
     <a
@@ -93,7 +151,12 @@
 import { computed, onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useDisplay } from 'vuetify';
-import { mdiChevronLeft, mdiChevronRight, mdiCalendarToday } from '@mdi/js';
+import {
+  mdiArrowRight,
+  mdiChevronLeft,
+  mdiChevronRight,
+  mdiCalendarToday,
+} from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
 import CalendarActionBar from './calendar-action-bar.vue';
@@ -108,6 +171,9 @@ const calendarEndDate = computed(() =>
   dayjs(week.value)
     .add(splus.lastWeekday - 1, 'days')
     .format('YYYY-MM-DD'),
+);
+const nextLecture = computed(
+  () => splus.nextLectureDay && dayjs(splus.nextLectureDay),
 );
 const monthSummary = computed(() => {
   const startDate = dayjs(week.value);

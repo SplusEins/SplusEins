@@ -58,7 +58,7 @@ router.get('/:version/:timetables{/:lectures}', async (req, res, next) => {
   const weeks = upcomingIsoWeeks(config.icsPreloadWeeks);
 
   try {
-    const events = await getEvents(
+    const { events } = await getEvents(
       timetables,
       weeks,
       splitList(req.params.lectures),

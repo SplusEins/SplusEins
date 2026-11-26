@@ -1,55 +1,25 @@
 # Wartung
 
-## Aufgaben zu Semesterbeginn
+## Semesterbeginn
 
-Alle relevanten Stellen im Code können auch gefunden werden, indem man nach `TODO Semesterwechsel` sucht. Im Folgenden werden diese kurz beschrieben.
+Anders als früher ist zum Semesterwechsel keine manuelle Anpassung mehr nötig. `sked-parser` leitet das Semester aus dem Datum ab (ab Februar `ss{yy}`, ab August `ws{yy}`) und überspringt Pläne anderer Semester. Es muss nur der PR mit den neuen Plänen gemerged werden, siehe [Aktualisierung der Pläne](#aktualisierung-der-plane).
 
-### Semesterstart setzen
-
-Im Frontend muss gesetzt werden, welche Woche die erste Vorlesungswoche ist. Das wird in der Variable `SEMESTER_WEEK_1` in [`web/src/lib/util.js`](https://github.com/SplusEins/SplusEins/blob/master/web/src/lib/util.js#L9) gesetzt. Der Vorlesungsbeginn der Ostfalia wird auf [dieser Seite](https://www.ostfalia.de/studieren/im-studium/studienorganisation/semestertermine) veröffentlicht, woraus man die ISO-Woche berechnen kann.
-
-### `sked-parser` Konfiguration überprüfen
-
-Die oben erwähnte Aktualisierung der Pläne nutzt die Datei [`timetable-config.yaml`](https://github.com/SplusEins/SplusEins/blob/master/timetable-config.yaml) als Konfiguration. Das aktuelle Semester leitet `sked-parser` aus dem Datum ab (z. B. ab Februar 2027 `ss27`, ab August 2027 `ws27`) und hängt es an die IDs an. Pläne, deren URL oder Bezeichnung ein anderes Semester nennt, z. B. `SS2026` oder `WS2526`, werden übersprungen. Falls nötig, kann das Semester mit `current_sem` in der Datei festgelegt werden.
-
-Zu Semesterstart sollten nur die Stundenplan-URLs in der Datei überprüft werden, ob diese noch aktuell sind. Die Übersichtsseite der Ostfalia findet sich [hier](https://stundenplan.ostfalia.de).
-
-::: tip
-Die tägliche Github Action, die den PR erstellt, kann auch [hier](https://github.com/SplusEins/SplusEins/actions/workflows/timetables.yml) mit `Run workflow` manuell ausgeführt werden, um die veränderte Konfiguration zu überprüfen.
-
-<u>**Wichtig für Forks:**</u> Für die erfolgreiche Ausführung der Action ist das Hinterlegen von `SKED_USER` und `SKED_PASSWORD` als [Repository Secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-a-repository) mit validen Ostfalia-Accountdaten im Fork zwingend erforderlich. Ohne diese Secrets können ausschließlich Pläne der Fakultät I abgerufen werden, da hierfür keine Authentifizierung notwendig ist.
-:::
-
-### Gespeicherte Pläne
-
-Hier ist nichts zu tun, Pläne vergangener Semester entfernt die App beim Start automatisch.
-
-### Überprüfen der einzelnen Stundenpläne
-
-Zu Semesterbeginn sollte im besten Fall von jeder Fakultät mindestens ein Stundenplan in der UI angeschaut werden. Wichtig ist, dass die Dozierenden richtig geparst werden und zensiert angezeigt werden. Außerdem sollte der Raumname richtig angezeigt werden.
-
-Wenn in Spluseins gar keine Vorlesungen angezeigt werden, bei der Ostfalia aber schon, kann es sein, dass der serverseitige Parser [in dieser Datei](https://github.com/SplusEins/SplusEins/blob/master/server/lib/SkedParser.ts) angepasst werden muss, das ist aber eher selten der Fall.
+Danach sollte von jeder Fakultät mindestens ein Stundenplan in der UI angeschaut werden: Sind alle Fakultäten und Studiengänge da, werden die Dozierenden zensiert und die Räume richtig angezeigt? Fehlen Pläne, ist eventuell eine Übersichts-URL in [`timetable-config.yaml`](https://github.com/SplusEins/SplusEins/blob/master/timetable-config.yaml) veraltet. Zeigt SplusEins gar keine Vorlesungen, die Ostfalia aber schon, muss eventuell der [Parser](https://github.com/SplusEins/SplusEins/blob/master/server/lib/SkedParser.ts) angepasst werden.
 
 ## Aktualisierung der Pläne
 
-Wenn sich die Pläne oder deren URLs ändern, wird automatisch ein PR erstellt, der die Datei `assets/timetables.json` (sowohl in `/web` als auch `/server`) aktualisiert. Dieser PR sollte grob überprüft werden und zeitnah gemerged werden.
+Ändern sich die Pläne oder deren URLs, erstellt eine tägliche GitHub Action mit [sked_parser](https://github.com/SplusEins/sked_parser) einen PR, der `assets/timetables.json` in `/web` und `/server` aktualisiert. Er sollte grob überprüft und zeitnah gemerged werden. Der Aufbau der `timetables.json` ist [hier](./server.md#struktur-der-stundenplane) beschrieben.
 
-Für diese Aktualisierung wird [sked_parser](https://github.com/SplusEins/sked_parser) verwendet. Der Aufbau der `timetables.json` ist [hier](./server.md#struktur-der-stundenplane) beschrieben.
+Zu Semesterbeginn kann der PR noch alte Pläne von Fakultäten enthalten, die ihre neuen noch nicht veröffentlicht haben. Die ersetzt der Bot nach und nach.
 
 ::: tip
-Bei Semesterbeginn sind möglicherweise noch alte Stundenplane in dem PR enthalten sind, wenn einige Fakultäten die neuen Stundenpläne noch nicht veröffentlicht haben und andere schon.
-
-Dann kann es sinnvoll sein, die alten Pläne aus dem PR manuell zu entfernen und dann zu mergen. Es ist aber auch okay, einfach die alten erstmal mit zu mergen und dann nach und nach durch den Bot ersetzen zu lassen.
+Die Action kann [hier](https://github.com/SplusEins/SplusEins/actions/workflows/timetables.yml) mit `Run workflow` manuell gestartet werden. In Forks braucht sie `OSTFALIA_USER` und `OSTFALIA_PASS` als [Repository Secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-a-repository), sonst kann sie nur die Pläne der Fakultät I abrufen.
 :::
 
 ## Aktualisierung der Dependencies
 
-Der `renovate`-Bot öffnet automatisch PRs, sobald es Updates für Dependencies gibt. Diese können einfach gemerged werden, solange im Changelog in der PR-Beschreibung keine kritischen Breaking Changes angezeigt werden.
+Der `renovate`-Bot öffnet PRs für Updates. Sie können gemerged werden, solange der Changelog in der PR-Beschreibung keine kritischen Breaking Changes zeigt.
 
 ## Updates auf dem Ubuntu-Server
 
-Der Ubuntu-Server, der uns von der Fakultaet I zur Verfuegung gestellt wird, sollte auch gelegentlich aktualisiert werden. Dies kann mit dem Befehl `apt-get dist-upgrade` geschehen. Sicherheitsupdates werden allerdings automatisch installiert, weshalb das nicht sehr regelmaessig geschehen muss.
-
-Falls irgendwelche Abfragen vom `dokku`-Paket kommen, koennen diese in der Regel einfach mit dem Default bestaetigt werden. Nach dem Upgrade muss der Server wegen `dokku` in der Regel neugestartet werden, damit SplusEins wieder funktioniert.
-
-Ausserdem muss alle paar Jahre die Ubuntu-Version mit dem Befehl `do-release-upgrade` aktualisiert werden.
+Der Server der Fakultät I sollte gelegentlich mit `apt-get dist-upgrade` aktualisiert werden, Sicherheitsupdates installiert er automatisch. Abfragen vom `dokku`-Paket können meist mit dem Default bestätigt werden, danach muss der Server neu gestartet werden, damit SplusEins wieder läuft. Alle paar Jahre muss außerdem die Ubuntu-Version mit `do-release-upgrade` aktualisiert werden.

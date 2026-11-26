@@ -109,6 +109,8 @@ export interface TimetableMetadata {
 export interface Timetable {
   name?: string;
   events: Event[];
+  /* day of the first lecture of each week of the semester with lectures, e.g. '2026-09-21' */
+  weeksWithLectures: string[];
   meta: TimetableMetadata;
 }
 

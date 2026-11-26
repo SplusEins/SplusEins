@@ -204,19 +204,34 @@ export async function getUniqueEvents(
   return uniqueEvents;
 }
 
+/* e.g. ['2026-09-21', '2026-09-29'] for lectures from Monday and from Tuesday a week later */
+function firstLectureDays(events: Event[]): string[] {
+  const days = [
+    ...new Set(
+      events.map(({ start }) =>
+        dayjs(start).tz('Europe/Berlin').format('YYYY-MM-DD'),
+      ),
+    ),
+  ].sort();
+  return days.filter(
+    (day, i) => i === 0 || !dayjs(day).isSame(days[i - 1], 'isoWeek'),
+  );
+}
+
 /**
  * @param timetables the timetables to merge
  * @param weeks ISO weeks to return events of
  * @param titleIds return only events with these ids, or all if empty
- * @returns the events, each only once even if it is in several timetables
+ * @returns the events, each only once even if it is in several timetables,
+ *   and the day of the first lecture of each week of the semester with lectures
  */
 export async function getEvents(
   timetables: TimetableRequest[],
   weeks: number[],
   titleIds: string[] = [],
-): Promise<Event[]> {
+): Promise<{ events: Event[]; weeksWithLectures: string[] }> {
   const weekSet = new Set(weeks);
-  const allEvents = (
+  const lectures = (
     await Promise.all(
       timetables.map(async (timetable) => {
         const parsed = await parseTimetable(timetable);
@@ -225,22 +240,27 @@ export async function getEvents(
         parsed.forEach((event) => {
           event.colorIndex = titles.indexOf(event.title);
         });
-        const events = parsed.filter(
-          (event) =>
-            weekSet.has(dayjs(event.start).isoWeek()) &&
-            (titleIds.length === 0 || titleIds.includes(event.id)),
+        return parsed.filter(
+          (event) => titleIds.length === 0 || titleIds.includes(event.id),
         );
-        console.log(`Serving ${events.length} lectures for ${timetable.id}`);
-        return events;
       }),
     )
   ).flat();
+  const events = lectures.filter((event) =>
+    weekSet.has(dayjs(event.start).isoWeek()),
+  );
+  console.log(
+    `Serving ${events.length} lectures for ${timetables.map(({ id }) => id).join(',')}`,
+  );
 
   // filter duplicates
   const key = (event: Event) =>
     `${event.meta.organiserShortname} ${event.id} ${event.location} ` +
     `${event.start} ${event.end}`;
   const eventsByKey = new Map<string, Event>();
-  allEvents.forEach((event) => eventsByKey.set(key(event), event));
-  return [...eventsByKey.values()];
+  events.forEach((event) => eventsByKey.set(key(event), event));
+  return {
+    events: [...eventsByKey.values()],
+    weeksWithLectures: firstLectureDays(lectures),
+  };
 }
