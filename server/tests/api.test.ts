@@ -52,6 +52,8 @@ describe('splus', () => {
     expect(response.body.map(({ title }: Event) => title)).toContain(
       'Mathematik 1',
     );
+    // the fixture has only one week, so no course takes place weekly
+    expect(response.body[0].slots).toEqual([]);
   });
 
   it('should return a personal timetable with selected lectures', async () => {

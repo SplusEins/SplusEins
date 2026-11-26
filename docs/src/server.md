@@ -64,7 +64,9 @@ Der Stundenplan hat den übergebenen Namen.
 - timetable: Stundenplan-ID wie in `assets/timetables.json`
 
 **Rückgabe:**
-Liefert ein `Event`-Array (siehe `model/SplusEinsModel.ts`), welches aus den einzelnen Vorlesungen dieses Stundenplans besteht. Damit kann herausgefunden werden, welches und wie viele Module es in diesem Plan gibt. Wird im Frontend genutzt, um die Liste zum Personalisieren eines Plans bereitzustellen.
+Liefert ein `Event`-Array (siehe `model/SplusEinsModel.ts`) mit dem ersten Termin jeder Vorlesung dieses Stundenplans. Damit kann herausgefunden werden, welches und wie viele Module es in diesem Plan gibt. Wird im Frontend genutzt, um die Liste zum Personalisieren eines Plans bereitzustellen.
+
+Jede Vorlesung enthält zusätzlich `slots`, die Zeiten, zu denen sie in mindestens zwei Wochen stattfindet, z. B. `{ "day": 1, "start": "08:00", "end": "09:30" }` für montags (Wochentag nach ISO, Uhrzeit in deutscher Zeit). Blockveranstaltungen haben keine. Das Frontend erkennt daran Überschneidungen.
 
 **Beispiel:**
 `/splus/informatik-wpf/lectures`
