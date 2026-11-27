@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer v-model="drawer" width="350">
     <basic-utilities-list />
-    <template v-if="splus.hasSubscribableTimetables">
+    <template v-if="splus.hasPlans">
       <v-divider />
       <my-timetables-list />
     </template>

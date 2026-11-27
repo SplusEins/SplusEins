@@ -6,9 +6,9 @@ import { createHash } from 'crypto';
 import { config } from '../config';
 import { upcomingIsoWeeks } from '../lib/dayjs';
 import { Event } from '../model/SplusEinsModel';
-import { getEvents, stripHtml } from '../lib/SplusApi';
+import { eventKey, getEvents, stripHtml } from '../lib/SplusApi';
 import { roomsToText } from '../lib/Room/RoomLocationApi';
-import { findTimetables, splitList } from '../lib/timetables';
+import { parseSources } from '../lib/timetables';
 
 const router = express.Router();
 const sha256 = (x: string) =>
@@ -19,11 +19,8 @@ const sha256 = (x: string) =>
  * @returns ical event
  */
 function eventToICSEvent(lecture: Event) {
-  // the uid must not change with the room data
-  const stable = { ...lecture, rooms: undefined };
-  const uid = sha256(JSON.stringify(stable)).slice(0, 16);
   return {
-    uid,
+    uid: sha256(eventKey(lecture)).slice(0, 16),
     start: lecture.start,
     end: lecture.end,
     timestamp: new Date(),
@@ -37,18 +34,16 @@ function eventToICSEvent(lecture: Event) {
 }
 
 /**
- * Get all lectures for the given timetables in the
- * upcoming weeks, then filter for the given titles.
+ * Get the events of the given timetables in the upcoming weeks
  *
  * @param version Reserved for later use, should be 'v1'
- * @param timetables Comma-separated list of timetable IDs
- * @param lectures Comma-separated list of lecture title IDs
+ * @param sources Timetables and courses like in GET /splus/:sources/:weeks
  * @return An ICS calendar
  */
-router.get('/:version/:timetables{/:lectures}', async (req, res, next) => {
-  const timetables = findTimetables(req.params.timetables);
+router.get('/:version/:sources', async (req, res, next) => {
+  const sources = parseSources(req.params.sources);
 
-  if (timetables.length === 0) {
+  if (sources.length === 0) {
     res.set('Cache-Control', BROWSER_CACHE);
     res.sendStatus(404);
     return;
@@ -58,11 +53,7 @@ router.get('/:version/:timetables{/:lectures}', async (req, res, next) => {
   const weeks = upcomingIsoWeeks(config.icsPreloadWeeks);
 
   try {
-    const events = await getEvents(
-      timetables,
-      weeks,
-      splitList(req.params.lectures),
-    );
+    const events = await getEvents(sources, weeks);
     const cal = ical({ events: events.map(eventToICSEvent) });
 
     res.set('Content-Type', 'text/plain');
