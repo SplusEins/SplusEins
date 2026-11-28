@@ -6,8 +6,7 @@
         :prepend-inner-icon="mdiMagnify"
         placeholder="Plan suchen"
         aria-label="Plan suchen"
-        variant="solo-filled"
-        flat
+        density="comfortable"
         clearable
         hide-details
       />
@@ -20,10 +19,7 @@
         :timetable="timetable"
         subtitle
       />
-      <div
-        v-if="hits.length === 0"
-        class="px-4 text-body-medium text-medium-emphasis"
-      >
+      <empty-hint v-if="hits.length === 0" :icon="mdiMagnifyClose" class="px-4">
         Kein Plan gefunden. Fehlt deiner, hilft
         <a
           href="https://stundenplan.ostfalia.de/"
@@ -32,7 +28,7 @@
         >
           stundenplan.ostfalia.de</a
         >.
-      </div>
+      </empty-hint>
     </v-list>
     <!-- shown while nothing is searched -->
     <slot v-else />
@@ -41,9 +37,10 @@
 
 <script setup>
 import { computed } from 'vue';
-import { mdiMagnify } from '@mdi/js';
+import { mdiMagnify, mdiMagnifyClose } from '@mdi/js';
 import { useSplusStore } from '../stores/splus';
 import TimetableListItem from './timetable-list-item.vue';
+import EmptyHint from './empty-hint.vue';
 
 /* v-model: the search input */
 const query = defineModel({ type: String, default: '' });

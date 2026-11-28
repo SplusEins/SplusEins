@@ -4,7 +4,7 @@ import { errorCode } from '../lib/api';
 export const useAppStore = defineStore('app', {
   state: () => ({
     /**
-     * Error messages which are shown to the user one after another.
+     * Error messages which are not shown yet, App.vue takes them out to show them.
      */
     errorQueue: [],
   }),
@@ -21,9 +21,6 @@ export const useAppStore = defineStore('app', {
         `${what} konnte nicht geladen werden (${errorCode(error)}).`,
       );
       console.error(`could not load ${what}`, error.message);
-    },
-    dequeueError() {
-      this.errorQueue.shift();
     },
   },
 });

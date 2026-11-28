@@ -1,8 +1,7 @@
 <template>
   <v-dialog v-model="dialogOpen" width="500">
-    <v-card>
-      <v-card-title class="bg-primary px-4"> SplusEins </v-card-title>
-      <v-card-text class="px-4 pt-2 pb-0">
+    <v-card title="SplusEins">
+      <v-card-text class="pb-0">
         <p class="mb-4">
           Ein inoffizieller Stundenplan von Studenten für Studenten der
           Ostfalia.
@@ -24,7 +23,7 @@
           <a href="https://vuetifyjs.com">Vuetify</a>, Icons von
           <a href="https://materialdesignicons.com/">Material Design Icons</a>
           und der Schriftart
-          <a href="https://fonts.google.com/specimen/Roboto">Roboto</a>.<br />
+          <a href="https://rsms.me/inter/">Inter</a>.<br />
           Alle Stundenpläne basieren auf den Inhalten von
           <a href="http://stundenplan.ostfalia.de/">stundenplan.ostfalia.de</a>
           und
@@ -44,14 +43,13 @@
       <v-card-actions>
         <v-spacer />
         <v-btn
-          :icon="mdiGithub"
-          variant="outlined"
-          size="small"
+          :prepend-icon="mdiGithub"
           target="_blank"
           href="https://github.com/SplusEins/SplusEins"
           rel="noopener"
-          aria-label="GitHub"
-        />
+        >
+          GitHub
+        </v-btn>
         <v-btn color="primary" @click="dialogOpen = false"> Schließen </v-btn>
       </v-card-actions>
     </v-card>

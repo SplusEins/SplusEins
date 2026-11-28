@@ -1,10 +1,8 @@
 <template>
-  <v-container class="container">
+  <v-container max-width="800">
     <div>
       <h1>Impressum</h1>
-      <br />
       <h3>SplusEins Team</h3>
-      <br />
       <p><b>Vertreten durch:</b></p>
 
       <p>{{ team.member1 }}</p>
@@ -18,8 +16,6 @@
       <p><b>Kontakt:</b></p>
 
       <p>E-Mail: team (at) spluseins (Punkt) de</p>
-
-      <br />
 
       <p>Angaben gemäß § 5 TMG</p>
 
@@ -89,18 +85,3 @@
 <script setup>
 import { team } from '../lib/config';
 </script>
-
-<style scoped>
-.container {
-  margin: auto;
-  max-width: 1100px;
-}
-/* spacing between paragraphs of the legal texts */
-.container p,
-.container ul {
-  margin-bottom: 16px;
-}
-.container ul {
-  padding-left: 24px;
-}
-</style>

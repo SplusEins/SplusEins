@@ -1,0 +1,27 @@
+/* imported after vuetify/styles, so the layers below keep their order */
+:root {
+  --v-font-body: 'Inter Variable', sans-serif;
+}
+
+@layer vuetify-overrides {
+  /* Inter also spaces hyphens with this, so only for times and prices */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+  .v-btn:not(.v-btn--icon, .v-btn-group .v-btn, .v-bottom-navigation .v-btn) {
+    border-radius: 8px;
+  }
+}
+
+/* the Material scale is made for Roboto */
+@layer vuetify-utilities.typography {
+  [class*='text-title-'],
+  [class*='text-body-'],
+  [class*='text-label-'] {
+    letter-spacing: normal;
+  }
+  .text-title-large,
+  .text-title-medium {
+    font-weight: 600;
+  }
+}

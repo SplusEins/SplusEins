@@ -1,10 +1,10 @@
 <template>
   <v-card>
-    <v-card-title class="text-title-large">Neuigkeiten</v-card-title>
+    <v-card-title>Neuigkeiten</v-card-title>
     <v-card-text>
       <template v-for="(section, idx) in sections" :key="section.title">
         <v-divider v-if="idx > 0" class="my-3" />
-        <div v-if="section.title" class="text-body-large font-weight-bold">
+        <div v-if="section.title" class="text-body-large font-weight-semibold">
           {{ section.title }}
         </div>
         <div v-for="item in section.items" :key="item.link" class="py-1">
@@ -12,7 +12,7 @@
             :href="item.link"
             target="_blank"
             rel="noopener"
-            class="news-link font-weight-medium"
+            class="text-high-emphasis text-decoration-none font-weight-medium"
           >
             {{ item.title }}
           </a>
@@ -24,7 +24,6 @@
               :key="department"
               :title="department"
               size="x-small"
-              label
               class="mr-1"
             >
               {{ departmentLabel(department) }}
@@ -88,13 +87,3 @@ onMounted(async () => {
   );
 });
 </script>
-
-<style scoped>
-.news-link {
-  color: inherit;
-  text-decoration: none;
-}
-.news-link:hover {
-  text-decoration: underline;
-}
-</style>

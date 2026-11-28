@@ -15,21 +15,23 @@
       />
       <a v-if="staging" :href="commitUrl"> STAGING </a>
       <router-link
-        v-else
+        v-else-if="showPlanTitle"
         to="/"
-        class="text-truncate"
-        :class="showPlanTitle ? 'text-title-large' : 'header-text'"
+        class="text-truncate text-title-large"
       >
-        {{ showPlanTitle ? planTitle : 'SPLUSEINS' }}
+        {{ planTitle }}
+      </router-link>
+      <router-link v-else to="/" class="d-flex">
+        <img src="../assets/img/wordmark.svg" alt="SplusEins" height="18" />
       </router-link>
     </div>
     <template #append>
       <v-btn
         v-show="isOffline"
+        v-tooltip:bottom="'Keine Internetverbindung'"
         color="warning"
         :icon="mdiWifiOff"
-        aria-label="Offline"
-        @click="enqueueError('Internetverbindung: Nicht verfügbar')"
+        aria-label="Keine Internetverbindung"
       />
       <v-btn
         v-if="!mobile"
@@ -72,7 +74,6 @@ import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useDisplay } from 'vuetify';
 import { mdiWifiOff, mdiThemeLightDark, mdiDotsVertical } from '@mdi/js';
-import { useAppStore } from '../stores/app';
 import { useUiStore } from '../stores/ui';
 import { useSplusStore } from '../stores/splus';
 import { pendingRequests } from '../lib/api';
@@ -86,7 +87,6 @@ const ui = useUiStore();
 const { toggleDark, toggleSidenav } = ui;
 const { isDark } = storeToRefs(ui);
 const { mobile } = useDisplay();
-const { enqueueError } = useAppStore();
 
 const commitUrl = 'https://github.com/SplusEins/SplusEins/commit/' + version;
 
@@ -105,10 +105,6 @@ window.addEventListener('online', () => {
 </script>
 
 <style scoped>
-@font-face {
-  font-family: Schluber;
-  src: url(../assets/fonts/Schluber.otf);
-}
 .header-title {
   /* use the space between the buttons and center the content */
   flex: 1;
@@ -120,10 +116,5 @@ window.addEventListener('online', () => {
 .header-title a {
   color: inherit;
   text-decoration: none;
-}
-.header-text {
-  font-family: Schluber;
-  font-size: 24px;
-  transform: translateY(13%);
 }
 </style>

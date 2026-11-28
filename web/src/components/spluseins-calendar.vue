@@ -7,13 +7,7 @@
     fluid
     class="pa-1 pa-md-3"
   >
-    <v-toolbar flat density="compact" class="inherit-background-color mb-2">
-      <responsive-icon-button
-        :breakpoint="!$vuetify.display.mobile"
-        :icon="mdiCalendarToday"
-        text="Heute"
-        @click="splus.showWeek()"
-      />
+    <v-toolbar flat density="compact" color="transparent" class="mb-2">
       <v-btn
         v-tooltip:bottom="'Vorherige Woche'"
         :icon="mdiChevronLeft"
@@ -26,16 +20,31 @@
         aria-label="Nächste Woche"
         @click="splus.moveWeek(1)"
       />
+      <template v-if="!splus.showsCurrentWeek">
+        <v-btn
+          v-if="mobile"
+          :icon="mdiCalendarTodayOutline"
+          aria-label="Heute"
+          @click="splus.showWeek()"
+        />
+        <v-btn v-else variant="outlined" class="ml-2" @click="splus.showWeek()">
+          Heute
+        </v-btn>
+      </template>
 
-      <v-toolbar-title class="ml-2">
+      <v-toolbar-title
+        class="ml-2 flex-0-1"
+        :class="{ 'text-title-medium': mobile }"
+      >
         {{ monthSummary }}
       </v-toolbar-title>
+      <v-spacer />
 
       <calendar-action-bar />
     </v-toolbar>
 
     <v-calendar
-      class="inherit-background-color"
+      class="bg-transparent"
       type="custom-daily"
       :events="events"
       :start="week"
@@ -57,19 +66,12 @@
         </span>
       </template>
       <template #event="{ event }">
-        <div
-          :class="[
-            'pa-md-1',
-            'custom-event',
-            { 'mini-padding': $vuetify.display.mobile },
-          ]"
-          :style="{ '--course': event.color }"
-        >
+        <div class="custom-event" :style="{ '--course': event.color }">
           <div class="font-weight-bold">
             {{ event.name }}
           </div>
-          <div v-if="!$vuetify.display.mobile" class="pt-1">
-            {{ event.start.slice(-5) }} - {{ event.end.slice(-5) }} Uhr
+          <div v-if="!$vuetify.display.mobile" class="pt-1 tabular-nums">
+            {{ event.start.slice(-5) }} - {{ event.end.slice(-5) }}
           </div>
         </div>
       </template>
@@ -93,12 +95,15 @@
 import { computed, onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useDisplay } from 'vuetify';
-import { mdiChevronLeft, mdiChevronRight, mdiCalendarToday } from '@mdi/js';
+import {
+  mdiCalendarTodayOutline,
+  mdiChevronLeft,
+  mdiChevronRight,
+} from '@mdi/js';
 import dayjs from '../lib/dayjs';
 import { useSplusStore } from '../stores/splus';
 import CalendarActionBar from './calendar-action-bar.vue';
 import CalendarEventPopover from './calendar-event-popover.vue';
-import ResponsiveIconButton from './responsive-icon-button.vue';
 
 const splus = useSplusStore();
 const { schedule, week, getCalendarEvents: events } = storeToRefs(splus);
@@ -113,10 +118,9 @@ const monthSummary = computed(() => {
   const startDate = dayjs(week.value);
   const endDate = dayjs(calendarEndDate.value);
   if (startDate.isSame(endDate, 'month')) {
-    return startDate.format('MMM YYYY');
-  } else {
-    return startDate.format('MMM') + '/' + endDate.format('MMM YYYY');
+    return startDate.format('MMMM');
   }
+  return startDate.format('MMM') + '/' + endDate.format('MMM');
 });
 
 onMounted(() => splus.showWeek(splus.week));
@@ -144,27 +148,28 @@ function showEvent(nativeEvent, { event }) {
 .v-calendar .v-calendar-daily_head-day.v-past > * {
   opacity: 0.38;
 }
+/* the day labels look clickable, but they are not */
 .v-calendar .v-calendar-daily_head-day-label {
   cursor: auto;
 }
+/* all hours without an inner scrollbar or an outer border */
 .v-calendar .v-calendar-daily__scroll-area {
   overflow-y: hidden;
 }
 .v-calendar.v-calendar-daily {
-  border-left: none !important;
-  border-top: none !important;
+  border-left: none;
+  border-top: none;
 }
+/* events fill the whole day column */
 .v-calendar .v-event-timed-container {
   margin-right: -1px;
 }
-
-.inherit-background-color {
-  background: inherit !important;
-}
 .custom-event {
   height: 100%;
+  overflow: hidden;
+  padding: 2px;
   white-space: normal;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   line-height: normal;
   border-top: 3px solid var(--course);
   background: oklch(from var(--course) 0.95 0.03 h);
@@ -173,14 +178,5 @@ function showEvent(nativeEvent, { event }) {
 .v-theme--dark .custom-event {
   background: oklch(from var(--course) 0.32 0.05 h);
   color: oklch(from var(--course) 0.9 0.05 h);
-}
-.mini-padding {
-  padding-top: 2px;
-  padding-left: 2px;
-  padding-right: 1px;
-}
-
-.v-calendar .v-event-timed {
-  overflow: hidden;
 }
 </style>

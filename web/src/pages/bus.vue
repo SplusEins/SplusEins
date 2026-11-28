@@ -1,34 +1,44 @@
 <template>
-  <v-container fluid class="mt-3 px-4">
+  <v-container>
     <v-row justify="center">
-      <v-col
-        v-for="direction in directions"
-        :key="direction"
-        cols="12"
-        md="5"
-        xl="4"
-      >
-        <v-card v-if="departures" class="pa-2">
-          <v-card-title class="text-headline-small">
+      <v-col v-for="direction in directions" :key="direction" cols="12" md="6">
+        <v-card>
+          <v-card-title>
             {{ directionLabel[direction] }}
           </v-card-title>
 
-          <v-list>
+          <v-skeleton-loader v-if="!departures && !failed" type="list-item@3" />
+          <v-list v-else>
+            <v-list-item v-if="!departures">
+              <empty-hint :icon="mdiCloudOffOutline">
+                Abfahrten konnten nicht geladen werden.
+              </empty-hint>
+            </v-list-item>
+            <v-list-item
+              v-else-if="
+                removePastDepartures(departures[direction]).length === 0
+              "
+            >
+              <empty-hint :icon="mdiBusClock">
+                Gerade keine direkte Verbindung.
+              </empty-hint>
+            </v-list-item>
             <!-- use composite key to ensure we have only unique keys (date only won't be unique if a bus is late) -->
             <v-list-item
               v-for="(departure, index) in removePastDepartures(
-                departures[direction],
+                departures?.[direction],
               )"
               :key="departure.date + '-' + departure.line + '-' + index"
             >
-              <div class="d-flex align-center ga-2">
-                <v-chip size="small" label color="primary" variant="flat">
+              <div class="d-flex align-center ga-2 tabular-nums">
+                <v-chip size="small" color="primary" variant="flat">
                   Linie {{ departure.line }}
                 </v-chip>
                 {{ absoluteDate(departure.date) }} Uhr
                 <v-chip
                   v-if="minutesUntilDate(departure.date) < 60"
                   v-bind="departsSoon(departure.date) ? SOON_CHIP : {}"
+                  :label="false"
                   size="small"
                 >
                   {{ departureLabel(departure.date) }}
@@ -37,12 +47,13 @@
             </v-list-item>
           </v-list>
         </v-card>
-        <v-skeleton-loader v-else type="article" />
       </v-col>
     </v-row>
     <span class="pt-4 d-flex justify-end text-body-small text-medium-emphasis">
       Quelle:&nbsp;
-      <a href="https://transitous.org/" class="link"> Transitous </a>
+      <a href="https://transitous.org/" class="text-decoration-none">
+        Transitous
+      </a>
     </span>
     <span
       v-if="lastUpdated"
@@ -58,10 +69,12 @@
 import { onMounted, onUnmounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import dayjs from '../lib/dayjs';
+import { mdiBusClock, mdiCloudOffOutline } from '@mdi/js';
 import { useBusStore } from '../stores/bus';
+import EmptyHint from '../components/empty-hint.vue';
 
 const bus = useBusStore();
-const { departures, lastUpdated } = storeToRefs(bus);
+const { departures, lastUpdated, failed } = storeToRefs(bus);
 
 const directions = ['exerToFh', 'fhToExer'];
 const directionLabel = {

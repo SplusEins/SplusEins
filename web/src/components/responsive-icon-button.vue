@@ -3,7 +3,6 @@
   <v-btn
     v-if="breakpoint"
     variant="outlined"
-    rounded="pill"
     class="mr-2"
     :prepend-icon="icon"
     @click="$emit('click')"

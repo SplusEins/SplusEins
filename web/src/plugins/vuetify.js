@@ -1,5 +1,6 @@
 // https://vuetifyjs.com/en/getting-started/installation/
 import 'vuetify/styles';
+import '../assets/style/vuetify.css';
 import { createVuetify } from 'vuetify';
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 import { de } from 'vuetify/locale';
@@ -17,8 +18,19 @@ export default createVuetify({
   },
   // default props of components
   defaults: {
-    VTextField: { variant: 'underlined' },
-    VSelect: { variant: 'underlined' },
+    VContainer: { fluid: true, maxWidth: 1200 },
+    VCard: { flat: true, border: true, rounded: 'lg' },
+    VCardTitle: { class: 'text-wrap font-weight-semibold pt-4' },
+    VCardItem: { VCardTitle: { class: 'text-wrap font-weight-semibold' } },
+    VCardActions: { class: 'px-4 pt-3 pb-4', VBtn: { slim: false } },
+    VToolbarTitle: { class: 'font-weight-semibold' },
+    VNavigationDrawer: { VListItemTitle: { class: 'text-wrap' } },
+    VChip: { label: true },
+    VDialog: { VCard: { flat: false, border: false } },
+    VMenu: { VCard: { flat: false, border: false } },
+    VList: { color: 'primary' },
+    VTextField: { variant: 'outlined', rounded: 'lg' },
+    VSelect: { variant: 'outlined', rounded: 'lg' },
   },
   display: {
     // $vuetify.display.mobile is true for windows narrower than this
@@ -30,6 +42,10 @@ export default createVuetify({
     themes: {
       light: {
         colors: {
+          background: '#F6F8FB',
+          'surface-light': '#EEF2F7',
+          'on-background': '#0F1B2D',
+          'on-surface': '#0F1B2D',
           primary: '#1A5FC4',
           secondary: '#00234A',
           accent: '#FFC53D',
@@ -38,11 +54,15 @@ export default createVuetify({
           success: '#15703A',
           warning: '#8F4E00',
         },
+        variables: { 'border-color': '#0F1B2D' },
       },
       dark: {
         colors: {
           background: '#0B1424',
           surface: '#121E33',
+          'surface-light': '#1A2842',
+          'on-background': '#E8EEF7',
+          'on-surface': '#E8EEF7',
           primary: '#8AB4F8',
           secondary: '#00234A',
           accent: '#FFC53D',

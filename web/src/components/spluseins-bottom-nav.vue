@@ -6,11 +6,11 @@
     color="primary"
   >
     <v-btn value="start" to="/">
-      <v-icon :icon="mdiHome" />
+      <v-icon :icon="mdiHomeOutline" />
       <span>Start</span>
     </v-btn>
     <v-btn value="plan" to="/plaene">
-      <v-icon :icon="mdiCalendar" />
+      <v-icon :icon="mdiCalendarOutline" />
       <span>Pläne</span>
     </v-btn>
     <v-btn value="mensa" to="/mensa">
@@ -27,7 +27,12 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { mdiHome, mdiCalendar, mdiFoodForkDrink, mdiBus } from '@mdi/js';
+import {
+  mdiHomeOutline,
+  mdiCalendarOutline,
+  mdiFoodForkDrink,
+  mdiBus,
+} from '@mdi/js';
 
 const route = useRoute();
 

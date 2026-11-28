@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title class="d-flex align-center">
-      <div class="text-title-large text-wrap mr-1">
+      <div class="text-wrap mr-1">
         {{ mensa.selectedPlan?.name }}
       </div>
       <v-btn
@@ -15,7 +15,7 @@
       />
     </v-card-title>
     <v-card-text class="pb-0">
-      <div class="text-body-large font-weight-bold">
+      <div class="text-body-large font-weight-semibold">
         {{ mensa.nextPlanDay }}
       </div>
       <template v-if="mensaMenus.length > 0">
@@ -26,19 +26,19 @@
           <div>{{ item.name }}</div>
         </div>
       </template>
-      <div v-else>
-        <i>Kein Menü verfügbar.</i>
-      </div>
+      <empty-hint v-else :icon="mdiFoodOffOutline" class="py-2">
+        Kein Menü verfügbar.
+      </empty-hint>
     </v-card-text>
-    <v-card-actions class="px-4">
-      <v-chip
+    <v-card-actions>
+      <v-btn
         to="/mensa"
         :append-icon="mdiChevronRight"
-        variant="outlined"
-        label
+        variant="tonal"
+        color="primary"
       >
         Speiseplan
-      </v-chip>
+      </v-btn>
     </v-card-actions>
     <select-dialog
       v-model:open="dialogOpen"
@@ -52,10 +52,11 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue';
-import { mdiChevronRight, mdiMenuDown } from '@mdi/js';
+import { computed, ref } from 'vue';
+import { mdiChevronRight, mdiFoodOffOutline, mdiMenuDown } from '@mdi/js';
 import { useMensaStore } from '../stores/mensa';
 import SelectDialog from './select-dialog.vue';
+import EmptyHint from './empty-hint.vue';
 
 const mensa = useMensaStore();
 const dialogOpen = ref(false);
@@ -65,6 +66,4 @@ const mensaMenus = computed(() =>
     meal.lane.startsWith('Essen '),
   ),
 );
-
-onMounted(() => mensa.load());
 </script>

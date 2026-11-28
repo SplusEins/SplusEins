@@ -17,7 +17,7 @@
             />
             {{ event.plan?.name ?? splus.scheduleDisplayName() }}
           </div>
-          <div class="text-headline-small text-wrap">{{ event.name }}</div>
+          <div class="text-title-large text-wrap">{{ event.name }}</div>
         </div>
         <v-btn
           :icon="mdiClose"
