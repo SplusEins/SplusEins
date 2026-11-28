@@ -13,6 +13,12 @@
 
     <v-skeleton-loader v-else-if="loading" type="list-item-two-line@3" />
 
+    <v-card-text v-else-if="events.length === 0 && splus.agendaFailed">
+      <empty-hint :icon="mdiCloudOffOutline">
+        Vorlesungen konnten nicht geladen werden.
+      </empty-hint>
+    </v-card-text>
+
     <v-card-text v-else-if="events.length === 0">
       <empty-hint :icon="mdiCalendarCheckOutline">
         Keine Vorlesungen in den nächsten zwei Wochen.
@@ -93,6 +99,7 @@ import {
   mdiCalendarCheckOutline,
   mdiChevronRight,
   mdiCircle,
+  mdiCloudOffOutline,
   mdiHeartOutline,
   mdiMapMarkerOutline,
 } from '@mdi/js';

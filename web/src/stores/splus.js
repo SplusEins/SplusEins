@@ -193,6 +193,10 @@ export const useSplusStore = defineStore('splus', {
      * Events of all favorite and custom timetables for this and next week
      */
     agendaEvents: [],
+    /* whether a plan of the agenda could not be loaded */
+    agendaFailed: false,
+    /* whether the shown week could not be loaded */
+    weekFailed: false,
   }),
   getters: {
     /** Whether the week of today (or the next one on weekends) is shown */
@@ -405,9 +409,12 @@ export const useSplusStore = defineStore('splus', {
         // e.g. the user switched to the next week before the response arrived
         if (signal.aborted) return;
         this.events = events;
+        this.weekFailed = false;
       } catch (error) {
         if (signal.aborted) return;
         this.events = [];
+        // a missing plan does not come back when loading again
+        this.weekFailed = error.status !== 404;
         if (error.status === 404) {
           useAppStore().enqueueError('Dieser Plan existiert nicht (mehr).');
         } else {
@@ -445,6 +452,9 @@ export const useSplusStore = defineStore('splus', {
       // e.g. a timetable was removed before the response arrived
       if (signal.aborted) return;
       // a failing plan must not hide the events of the others
+      this.agendaFailed = perTimetable.some(
+        (result) => result.status === 'rejected',
+      );
       this.agendaEvents = perTimetable.flatMap((result) => {
         if (result.status === 'fulfilled') return result.value;
         console.error(

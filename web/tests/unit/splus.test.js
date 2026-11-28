@@ -185,6 +185,7 @@ describe('splus store', () => {
       await first;
 
       expect(splus.agendaEvents.map(({ name }) => name)).toEqual(['new']);
+      expect(splus.agendaFailed).toBe(false);
     });
 
     it('keeps the events of the other plans when one fails', async () => {
@@ -203,6 +204,7 @@ describe('splus store', () => {
       await splus.loadAgendaEvents();
 
       expect(splus.agendaEvents.map(({ name }) => name)).toEqual(['ok']);
+      expect(splus.agendaFailed).toBe(true);
     });
   });
 
@@ -267,6 +269,26 @@ describe('splus store', () => {
       expect(useAppStore().errorQueue).toEqual([
         'Dieser Plan existiert nicht (mehr).',
       ]);
+      expect(splus.weekFailed).toBe(false);
+    });
+
+    it('remembers a failed week until it loads', async () => {
+      vi.spyOn(console, 'error').mockImplementation(() => {});
+      vi.stubGlobal(
+        'fetch',
+        vi.fn(async () => {
+          throw new TypeError('Failed to fetch');
+        }),
+      );
+      await splus.showWeek();
+      expect(splus.weekFailed).toBe(true);
+
+      vi.stubGlobal(
+        'fetch',
+        vi.fn(async () => Response.json({ events: [] })),
+      );
+      await splus.showWeek();
+      expect(splus.weekFailed).toBe(false);
     });
   });
 });

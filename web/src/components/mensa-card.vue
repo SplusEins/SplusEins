@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { mdiChevronRight, mdiFoodOffOutline, mdiMenuDown } from '@mdi/js';
 import { useMensaStore } from '../stores/mensa';
 import SelectDialog from './select-dialog.vue';
@@ -66,6 +66,4 @@ const mensaMenus = computed(() =>
     meal.lane.startsWith('Essen '),
   ),
 );
-
-onMounted(() => mensa.load());
 </script>

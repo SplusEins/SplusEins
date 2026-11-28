@@ -6,7 +6,7 @@ import { useAppStore } from './app';
 export const useMensaStore = defineStore('mensa', {
   state: () => ({
     /**
-     * List of Mensa objects
+     * List of Mensa objects, null until loaded
      */
     plans: null,
     /**
@@ -70,6 +70,7 @@ export const useMensaStore = defineStore('mensa', {
         this.plans = await apiGet('/api/mensa');
       } catch (error) {
         useAppStore().reportLoadError('Mensaplan', error);
+        this.plans ??= [];
       }
     },
   },
